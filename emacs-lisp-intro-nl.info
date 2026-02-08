@@ -5,7 +5,7 @@ Dit is ‘Een introductie in Programmeren in Emacs Lisp’, voor mensen die
 geen programmeur zijn.
 
 
-   Gedistribueerd met Emacs versie {No value for 'EMACSVER'}.
+   Gedistribueerd met Emacs versie {Geen waarde voor 'EMACSVER'}.
 
    Copyright © 1990-1995, 1997, 2001-2025 Free Software Foundation, Inc.
 
@@ -49,7 +49,7 @@ Dit is ‘Een introductie in Programmeren in Emacs Lisp’, voor mensen die
 geen programmeur zijn.
 
 
-   Gedistribueerd met Emacs versie {No value for 'EMACSVER'}.
+   Gedistribueerd met Emacs versie {Geen waarde voor 'EMACSVER'}.
 
    Copyright © 1990-1995, 1997, 2001-2025 Free Software Foundation, Inc.
 
@@ -133,7 +133,7 @@ Lijsten verwerken
 
 
 
-* Lips Lists::               Wat zijn lijsten
+* Lisp lijsten::             Wat zijn lijsten
 * Draai een programma::      Elke lijst in Lisp is een programma gereed om
                                te draaien.
 * Fouten maken::             Een foutboodschap genereren
@@ -146,7 +146,7 @@ Lijsten verwerken
 * Samenvatting::             De belangrijkste punten
 * Foutmelding oefeningen::   Foutmelding oefeningen
 
-Lips Lists
+Lisp lijsten
 
 
 
@@ -726,14 +726,15 @@ te doen wanneer je die commando's geeft.  Emacs is zo ontworpen dat je
 nieuwe code in Emacs Lisp kunt schrijven en die makkelijk als
 uitbreiding op de editor installeert.
 
-   (GNU Emacs is sometimes called an "extensible editor", but it does
-much more than provide editing capabilities.  It is better to refer to
-Emacs as an "extensible computing environment".  However, that phrase is
-quite a mouthful.  It is easier to refer to Emacs simply as an editor.
-Moreover, everything you do in Emacs--find the Mayan date and phases of
-the moon, simplify polynomials, debug code, manage files, read letters,
-write books--all these activities are kinds of editing in the most
-general sense of the word.)
+   (GNU Emacs wordt soms een 'uitbreidbare editor" genoemd, maar biedt
+veel meer dan mogelijkheden voor tekstbewerking.  Het is beter om Emacs
+als een "uitbreidbare computer omgeving" te beschrijven.  Dat is echter
+nogal een mond vol.  Het is eenvoudiger om Emacs een editor te noemen.
+Bovendien is alles wat je in Emacs doet, zoals het vinden van de
+Maya-datum, fasen van de maan, het vereenvoudigen van polynomen, code
+debuggen, bestanden beheren, brieven lezen, boeken schrijven, al deze
+activiteiten komen neer op tekst bewerken in de breedste zin van het
+woord.)
 
 * Menu:
 
@@ -775,7 +776,7 @@ voorbeelden.)  Daarnaast kan je deze introductie lezen in een gedrukt
 boek zittend bij een computer waarop Emacs draait.  (Dit is wat ik graag
 doe, ik hou van gedrukte boeken.)  Wanneer je geen draaiende Emacs bij
 de hand hebt dan kan je nog steeds dit boek lezen.  Beschouw het in dat
-geval als een novel of een reisgids naar een land waar je niet geweest
+geval als een roman of een reisgids naar een land waar je niet geweest
 bent, interessant, maar niet hetzelfde als er daadwerkelijk zijn.
 
    Een groot deel van deze introductie leidt je rond door de code van
@@ -794,8 +795,8 @@ Emacs ondersteunt het programmeren en verschaft gereedschappen waar je
 comfortabel gebruik van wilt maken, zoals ‘M-.’ (de toetsaanslag waarmee
 je het ‘xref-find-definitions’ commando start).  Je leert ook over
 buffers en andere objecten die onderdeel van de omgeving uitmaken.  Deze
-functionaliteiten van Emacs leren is als nieuwe routes door je
-geboorteplaats leren.
+functionaliteiten van Emacs ontdekken is als nieuwe routes door je
+geboorteplaats ontdekken.
 
    Tenslotte hoop ik hiermee vaardigheden over te brengen over het
 gebruik van Emacs om aspecten van het programmeren te leren die je nog
@@ -812,20 +813,20 @@ Voor wie dit is geschreven
 De tekst is bedoeld als een elementaire introductie voor mensen die geen
 programmeur zijn.  Wanneer je een programmeur bent, zal je niet tevreden
 zijn met deze introductie.  De reden daarvoor is dat je waarschijnlijk
-een expert bent geworden in het lezen van referentie handleidingen en
+een expert bent geworden in het lezen van referentiehandleidingen en
 niet blij wordt van de manier waarop deze tekst is opgezet.
 
-   expert programmeur die deze tekst heeft gereviewed zei me:
+   Een expert-programmeur die deze tekst heeft gereviewed zei me:
 
-     Ik geeft de voorkeur aan het bestuderen van referentie
-     handleidingen.  Ik "duik" in elke paragraaf en "kom boven voor
-     lucht" tussen de paragrafen.
+     Ik geeft de voorkeur aan het bestuderen van
+     referentiehandleidingen.  Ik "duik" in elke paragraaf en "kom boven
+     voor lucht" tussen de paragrafen.
 
      Wanneer ik aan het einde van een paragraaf ben verwacht ik dat het
      onderwerp klaar is, dat ik alles weet wat ik moet weten (met als
-     mogelijke uitzondering in het geval de volgende paragraaf dieper op
-     de inhoud ingaat).  Ik verwacht dat een goed geschreven referentie
-     handleiding weinig herhaling bevat en dat het uitstekende
+     mogelijke uitzondering het geval de volgende paragraaf dieper op de
+     inhoud ingaat).  Ik verwacht dat een goed geschreven
+     referentiehandleiding weinig herhaling bevat en dat het uitstekende
      verwijzingen heeft naar de (enige) plek waar de informatie is die
      ik zoek.
 
@@ -833,18 +834,18 @@ niet blij wordt van de manier waarop deze tekst is opgezet.
 
    Ten eerste probeer ik alles tenminste drie keer te behandelen: eerst
 om het te introduceren, dan om het in context te laten zien, en
-vervolgens in een andere context, of om het te reviewen.
+vervolgens in een andere context, of om het te herhalen.
 
    Ten tweede stop ik vrijwel nooit alle informatie over een onderwerp
 op een enkele plek, laat staat in een paragraaf.  In mijn manier van
 denken legt dit een te zware last op de lezer.  In plaats daarvan
 probeer ik alleen uit te leggen wat de lezer op dat moment moet weten.
-(Soms voeg ik wat extra informatie toe zodat je later verrast wordt
+(Soms voeg ik wat extra informatie toe zodat je later niet verrast wordt
 wanneer de aanvullende informatie formeel wordt geïntroduceerd.)
 
    Wanneer je deze test leest wordt niet van je verwacht dat je alles
 meteen de eerste keer leert.  Je hoeft slechts vluchtig kennis te maken
-met enkele van de genoemde onderdelen.  Mijn hoop is ik de tekst zo
+met enkele van de genoemde onderdelen.  Ik hoop dat ik de tekst zo
 gestructureerd heb en je genoeg hints gegeven heb dat je bewust bent van
 wat belangrijk is en je daarop concentreert.
 
@@ -855,8 +856,8 @@ een ontmoedigende berg.
 
    Dit boek, ‘Een introductie in programmeren in Emacs Lisp’, heeft een
 bijpassend document, *note The GNU Emacs Lisp Reference Manual:
-(elisp)Top.  Deze referentie handleiding heeft meer details dan deze
-introductie.  In de referentie handleiding is alle informatie met
+(elisp)Top.  Deze referentiehandleiding bevat meer details dan deze
+introductie.  In de referentiehandleiding is alle informatie met
 betrekking tot een onderwerp op een plek geconcentreerd.  Je zou die
 moeten gebruiken wanneer je bent zoals de hierboven genoemde
 programmeur.  En nadat je deze ‘Introductie’ gelezen hebt is de
@@ -869,11 +870,11 @@ File: emacs-lisp-intro-nl.info,  Node: Geschiedenis van Lisp,  Next: Opmerking v
 Geschiedenis van Lisp
 =====================
 
-Lisp is oorspronkelijk ontwikkeld in het eind van de jaren '50 in het
-Massachusetts Institute of Technology voor onderzoek op het gebied van
-kunstmatige intelligentie.  De grote kracht van de Lisp taal maakt het
-ook voor andere toepassingen superieur, zoals het schrijven van editor
-commando's en geïntegreerde omgevingen.
+Lisp is oorspronkelijk eind jaren '50 ontwikkeld in het Massachusetts
+Institute of Technology voor onderzoek op het gebied van kunstmatige
+intelligentie.  De grote kracht van de Lisp taal maakt het ook voor
+andere toepassingen superieur, zoals het schrijven van editor-commando's
+en geïntegreerde omgevingen.
 
    GNU Emacs Lisp is grotendeels geïnspireerd door Maclisp, dat in de
 jaren '60 in het MIT is geschreven.  Het is ook enigszins geïnspireerd
@@ -895,14 +896,14 @@ Emacs leren met de ingebouwde tutorial.  Om die te gebruiken, type je
 ‘C-h t’.  (Dit betekent dat je de toetsen <CTRL> ‘h’ tegelijk indrukt en
 loslaat, en daarna de toets ‘t’ indrukt en loslaat.)
 
-   Ook verwijs ik vaak naar een Emacs's standaard commando's door de
-toetscombinaties die je gebruikt om het commando aan te roepen en
-vervolgens de naam van het commando tussen haakjes, zoals dit: ‘C-M-\’
-(‘indent-region’).  Wat dit betekent is dat het ‘indent-region’ commando
-gebruikelijk wordt aangeroepen door ‘C-M-\’ te typen.  (Je kunt, als je
-dat wilt, de toetscombinaties om commando's aan te roepen wijzigen, dit
-heet “rebinding”.  *Note Keymaps: Keymaps.)  De afkorting ‘C-M-\’
-betekent dat je de <CTRL>-toets, de <META>-toets en de ‘\’-toets
+   Ook verwijs ik vaak naar Emacs's standaard commando's door de
+toetscombinaties te noemen die je gebruikt om het commando aan te roepen
+en vervolgens de naam van het commando tussen haakjes, zoals dit:
+‘C-M-\’ (‘indent-region’).  Wat dit betekent is dat het ‘indent-region’
+commando gebruikelijk wordt aangeroepen door ‘C-M-\’ te typen.  (Je
+kunt, als je dat wilt, de toetscombinaties om commando's aan te roepen
+wijzigen, dit heet “rebinding”.  *Note Keymaps: Keymaps.)  De afkorting
+‘C-M-\’ betekent dat je de <CTRL>-toets, de <META>-toets en de ‘\’-toets
 allemaal tegelijk indrukt.  Soms wordt een toetscombinatie als dit een
 keychord genoemd, omdat het vergelijkbaar is met de manier waarop je een
 akkoord op een piano speelt.  Wanneer je toetsenbord geen <META>-toets
@@ -923,7 +924,7 @@ voert het commando anders uit).  *Note Numeric Arguments:
 
    Wanneer je dit in Info met GNU Emacs leest, dan kun je het hele
 document lezen slechts door het indrukken van de spatiebalk, <SPC>.  (Om
-mover Info te leren, type ‘C-h i’ en selecteer daarna Info.)
+meer over Info te leren, type ‘C-h i’ en selecteer daarna Info.)
 
    Een opmerking over terminologie: wanneer ik het woord Lisp alleen
 gebruik, dan refereer ik meestal naar de verschillende dialecten van
@@ -938,8 +939,8 @@ Dank
 
 Mijn dank aan iedereen die met met dit boek hielpen.  Mijn speciale dank
 gaat uit naar Jim Blandy, Noah Friedman, Jim Kingdon, Roland McGrath,
-Frank Ritter, Randy Smith, Richard M. Stallman, en Melissa Weisshaus.
-Mijn gaat ook uit naar Philip Johnson and David Stampe voor hun
+Frank Ritter, Randy Smith, Richard M. Stallman en Melissa Weisshaus.
+Mijn dank gaat ook uit naar Philip Johnson en David Stampe voor hun
 geduldige aanmoediging.  Mijn vergissingen zijn van mij zelf.
 
                                                      Robert J. Chassell
@@ -956,13 +957,13 @@ code staan overal haakjes.  Sommige mensen stellen zelfs dat de naam
 voor "Lots of Isolated Silly Parentheses" staat.  Maar die stelling is
 ongegrond.  Lisp staat voor LISt Processing en de programmeertaal
 behandelt _lijsten_ (en lijsten van lijsten) door ze tussen haakjes te
-zetten.  De haakjes markeren de grenzen van de list.  Soms wordt een
+zetten.  De haakjes markeren de grenzen van de lijst.  Soms wordt een
 lijst voorafgegaan door een apostrof ‘'’, in Lips heet dat een
 “single-quote”.  (1)  Lijsten zijn de basis van Lisp.
 
 * Menu:
 
-* Lips Lists::               Wat zijn lijsten
+* Lisp lijsten::             Wat zijn lijsten
 * Draai een programma::      Elke lijst in Lisp is een programma gereed om
                                te draaien.
 * Fouten maken::             Een foutboodschap genereren
@@ -982,14 +983,14 @@ Je hoeft nu nog niet over speciale vormen na te denken.  *Note
 Complicaties::.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lips Lists,  Next: Draai een programma,  Up: Lijsten verwerken
+File: emacs-lisp-intro-nl.info,  Node: Lisp lijsten,  Next: Draai een programma,  Up: Lijsten verwerken
 
-1.1 Lips Lists
-==============
+1.1 Lisp lijsten
+================
 
 In Lisp ziet een lijst er zo uit: ‘'(roos viool madelief boterbloem)’.
 Deze lijst wordt voorafgegaan door een enkele apostrof.  Het kon net zo
-goedals volgt geschreven worden, wat meer lijkt op de soort van lijsten
+goed als volgt geschreven worden, wat meer lijkt op de soort van lijsten
 waar je waarschijnlijk bekend mee bent:
 
      '(roos
@@ -1009,7 +1010,7 @@ net als bloemen in een veld met een stenen muur er omheen.
 * Typen van lists::          Hoe GNU Emacs helpt bij het typen van lists
 
 
-File: emacs-lisp-intro-nl.info,  Node: Genummerde lijsten,  Next: Lisp atoms,  Up: Lips Lists
+File: emacs-lisp-intro-nl.info,  Node: Genummerde lijsten,  Next: Lisp atoms,  Up: Lisp lijsten
 
 Getallen, lijsten binnen lijsten
 --------------------------------
@@ -1031,11 +1032,11 @@ Lisp lijsten, omdat zij ‘;’ en ‘.’ als leesteken bevatten.)
      '(deze lijst heeft (van binnen een lijst))
 
    De componenten van deze lijst zijn de woorden ‘deze’, ‘lijst’,
-‘heeft’ en de list ‘(van binnen een lijst)’.  De binnenste lijst bestaat
-uit de woorden ‘van’, ‘binnen’, ‘een’ en ‘lijst’.
+‘heeft’ en de lijst ‘(van binnen een lijst)’.  De binnenste lijst
+bestaat uit de woorden ‘van’, ‘binnen’, ‘een’ en ‘lijst’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lisp atoms,  Next: Whitespace in lijsten,  Prev: Genummerde lijsten,  Up: Lips Lists
+File: emacs-lisp-intro-nl.info,  Node: Lisp atoms,  Next: Whitespace in lijsten,  Prev: Genummerde lijsten,  Up: Lisp lijsten
 
 1.1.1 Lisp atoms
 ----------------
@@ -1045,7 +1046,7 @@ van de historische betekenis van het woord atoom, wat "onscheidbaar"
 betekent.  Wat Lisp betreft kunnen de woorden die we in de lijst
 gebruikt hebben niet in kleinere delen opgedeeld worden en nog steeds
 dezelfde betekenis als onderdeel van een programma hebben, net als
-getallen en enkele karakter symbolen zoals ‘+’.  Aan de andere kant, in
+getallen en enkele-karakter symbolen zoals ‘+’.  Aan de andere kant, in
 tegenstelling tot het oude atoom, kan een lijst in delen worden
 opgesplitst.  (*Note ‘car’ ‘cdr’ en ‘cons’ Fundamentele functies: car
 cdr en cons.)
@@ -1054,11 +1055,12 @@ cdr en cons.)
 Zij kunnen meteen naast een haakje staan.
 
    Technisch gesproken bestaat een lijst in Lisp uit haakjes rondom
-atomen gescheiden door witte ruimte of romdon andere lijsten of rondom
-zowel atoms als andere lijsten.  Een list kan slechts een atoom
-bevatten, of helemaal niets bevatten.  Een list met niets er in ziet er
-zo uit: ‘()’, en heet een “lege lijst”.  Anders dan alles anders wordt
-een lege lijst tegelijk zowel als een atom als als een list beschouwd.
+atomen gescheiden door witte ruimte of rondom andere lijsten of rondom
+zowel atomen als andere lijsten.  Een list kan slechts een atoom
+bevatten, of helemaal niets bevatten.  Een lijst met niets er in ziet er
+zo uit: ‘()’, en heet een “lege lijst”.  In tegenstelling tot alles
+anders wordt een lege lijst tegelijk zowel als een atoom als een lijst
+beschouwd.
 
    De afgedrukte representatie van zowel atomen als lijsten heten
 “symbolische expressies” of, korter, “s-expressies”.  Het woord
@@ -1075,8 +1077,8 @@ afsplitsen of het kan zich in twee ongeveer even grote delen opsplitsen.
 Fysieke atomen werden voortijdig zo genoemd, voordat hun ware aard was
 ontdekt.  In Lisp kunnen sommige soorten atomen, zoals een array, in
 delen worden gescheiden, maar het mechanisme om dit te doen wijkt af van
-het mechanisme om een lijst op te splitsen.  Voor zover het lisp
-operaties betreft, zijn de atomen van een list ondeelbaar.
+het mechanisme om een lijst op te splitsen.  Voor zover het
+lijst-operaties betreft, zijn de atomen van een lijst ondeelbaar.
 
    Net als in het Engels, is de betekenis van de samenstellende letters
 van een Lisp atoom verschillend van de betekenis die de letters als
@@ -1108,18 +1110,18 @@ een andere atoom-soort dan getallen of symbolen en worden anders
 gebruikt.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Whitespace in lijsten,  Next: Typen van lists,  Prev: Lisp atoms,  Up: Lips Lists
+File: emacs-lisp-intro-nl.info,  Node: Whitespace in lijsten,  Next: Typen van lists,  Prev: Lisp atoms,  Up: Lisp lijsten
 
 1.1.2 Whitespace in lijsten
 ---------------------------
 
 De hoeveelheid witte ruimte in een lijst maakt niet uit.  Vanuit het
-gezichtspunt van de Lisp taal,
+gezichtspunt van de Lisp taal, is
 
      '(deze lijst
          lijkt op dit)
 
-is exact hetzelfde als dit:
+exact hetzelfde als dit:
 
      '(deze lijst lijkt op dit)
 
@@ -1129,8 +1131,8 @@ die volgorde.
 
    Extra witte ruimte en regels zijn bedoeld om de lijst meer voor
 mensen leesbaar te maken.  Wanneer Lisp de expressie leest, verwijdert
-alle extra witte ruimte (maar heeft tenminste een spatie tussen de
-atomen nodig om ze uit elkaar te houden.
+het alle extra witte ruimte (maar heeft tenminste een spatie tussen de
+atomen nodig om ze uit elkaar te houden).
 
    Hoe vreemd het ook lijkt, de voorbeelden die we gezien hebben dekken
 alles hoe lijsten er uit zien!  Elke andere lijst in Lisp ziet er min of
@@ -1142,7 +1144,7 @@ vierkante haken, punten en enkele andere speciale karakters gebruikt,
 maar we gaan vrij ver zonder hen.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Typen van lists,  Prev: Whitespace in lijsten,  Up: Lips Lists
+File: emacs-lisp-intro-nl.info,  Node: Typen van lists,  Prev: Whitespace in lijsten,  Up: Lisp lijsten
 
 1.1.3 GNU Emacs helpt je om lijsten te typen
 --------------------------------------------
@@ -1151,7 +1153,7 @@ Wanneer je een Lisp expressie in GNU Emacs typt, met hetzij Lisp
 Interaction mode of Emacs Lisp mode, dan zijn verschillende commando's
 beschikbaar om de Lisp expressie zo te formatteren dat deze makkelijk te
 lezen is.  Bijvoorbeeld het indrukken van de <TAB>-toets laat de regel
-waar de cursor is automatisch met je juiste hoeveelheid inspringen.  Het
+waar de cursor is automatisch met de juiste hoeveelheid inspringen.  Het
 commando om de code in een region juist te laten inspringen is normaal
 gesproken gebonden aan ‘C-M-\’.  De inspringingen zijn ontworpen om te
 laten zien welke elementen van een lijst bij welke lijst
@@ -1166,43 +1168,43 @@ moet hebben.  (*Note Major Modes: (emacs)Major Modes, voor meer
 informatie over Emacs's modes.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Draai een programma,  Next: Fouten maken,  Prev: Lips Lists,  Up: Lijsten verwerken
+File: emacs-lisp-intro-nl.info,  Node: Draai een programma,  Next: Fouten maken,  Prev: Lisp lijsten,  Up: Lijsten verwerken
 
 1.2 Draai een programma
 =======================
 
 Een lijst in Lisp--elke lijst--is een programma om te draaien.  Wanneer
 je het draait (wat in Lisp-jargon “evalueren” is), doet de computer een
-van deze drie dingen: doe niets en behalve de lijst zelf teruggeven; een
-foutmelding geven; of het eerste symbool in de lijst als commando om
-iets te doen behandelen.  (Meestal is dat laatste natuurlijk wat je echt
-wilt!)
+van deze drie dingen: doe niets behalve de lijst zelf teruggeven; een
+foutmelding geven; of het eerste symbool in de lijst behandelen als
+commando om iets te doen.  (Meestal is dat laatste natuurlijk wat je
+echt wilt!)
 
    De enkele apostrof, ‘'’, die ik aan de voorkant van enkele voorbeeld
 lijsten in de voorgaande hoofdstukken gebruikte, heten een “quote”.
-Wanneer zij aan een lijst voorafgaan, dan vertelt dat Lisp om niets met
+Wanneer die aan een lijst voorafgaan, dan vertelt dat Lisp om niets met
 de lijst te doen, anders dan te accepteren precies zoals die is
 geschreven.  Maar wanneer er geen quote aan de lijst voorafgaat, dan is
 het eerste element in de lijst speciaal: het is een commando voor de
-computer om te gehoorzamen.  (In Lisp, heten deze commando's _functies_.
-De eerder genoemde lijst ‘(+ 2 2)’ is een instructie om iets met de rest
-van de lijst te doen: tel de getallen die volgen op.
+computer om te gehoorzamen.  (In Lisp, heten deze commando's
+_functies_.)  De eerder genoemde lijst ‘(+ 2 2)’ is een instructie om
+iets met de rest van de lijst te doen: tel de getallen die volgen op.
 
-   Wanneer je dit binnen GNU Emacs in Info leest, dan kan je zo de lijst
-evalueren: ga met de cursor direct achter het rechtse haakje sluiten
-staan van de volgende lijst en typ vervolgens ‘C-x C-e’:
+   Wanneer je dit binnen GNU Emacs in Info leest, dan kun je de lijst
+als volgt evalueren: ga met de cursor direct achter het rechtse haakje
+sluiten staan van de volgende lijst en typ vervolgens ‘C-x C-e’:
 
      (+ 2 2)
 
 Je ziet het getal ‘4’ verschijnen in het echogebied (1).  (Wat je
 zojuist gedaan hebt is het evalueren van de lijst.  Het echogebied is de
 regel aan de onderkant van het scherm dat de echotekst toont.)  Probeer
-nu hetzelfde met een gequote lijst: plaats de cursor meteenna de
+nu hetzelfde met een gequote lijst: plaats de cursor meteen achter de
 volgende lijst en type ‘C-x C-e’:
 
      '(dit is een gequote lijst)
 
-Je ziet de ‘(dit is een gequote lijst)’ in het echogebied verschijnen.
+Je ziet ‘(dit is een gequote lijst)’ in het echogebied verschijnen.
 
    Wat je in beide gevallen deed is het geven van een commando aan een
 programma in GNU Emacs met de naam “Lisp interpreter”--de interpreter
@@ -1210,7 +1212,7 @@ een commando geven om de expressie te evalueren.  De naam van de Lisp
 interpreter komt van het woord voor de taak die een mens uitvoert die de
 betekenis van de expressie bedenkt--die het interpreteert.
 
-   Je kunt ook een atoom evalueren dat geen deel van een list is--een
+   Je kunt ook een atoom evalueren dat geen deel van een lijst is--een
 die niet door haakjes ingesloten is.  Weer vertaalt de Lisp interpreter
 van de voor mensen leesbare expressie naar de taal van de computer.
 Maar voor we dit bespreken (*note Variabelen::), bespreken we eerste wat
@@ -1253,7 +1255,7 @@ type ‘C-x C-e’:
 zien:
 
      ---------- Buffer: *Backtrace* ----------
-     Debugger entered--Lisp error: (void-function this)
+     Debugger entered--Lisp error: (void-function dit)
        (dit is een ongequote lijst)
        eval((dit is een ongequote lijst) nil)
        elisp--eval-last-sexp(nil)
@@ -1264,7 +1266,7 @@ zien:
      ---------- Buffer: *Backtrace* ----------
 
 Je cursor staat in dit window (mogelijk moet je een paar seconden
-wachten voordat het zichtbar wordt).  Om de debugger af te sluiten en
+wachten voordat het zichtbaar wordt).  Om de debugger af te sluiten en
 het window te laten verdwijnen, typ je:
 
      q
@@ -1277,7 +1279,7 @@ verlaten.  Type vervolgens weer ‘C-x C-e’ om er opnieuw in te gaan.
    Je leest de ‘*Backtrace*’ buffer van beneden naar boven; het vertelt
 je wat Emacs deed.  Toen je ‘C-x C-e’ typte, maakte je een interactieve
 aanroep naar het commando ‘eval-last-sexp’.  ‘eval’ is een afkorting van
-"evalueer" en ‘sexp’is een afkorting voor "symbolische expressie", de
+"evalueer" en ‘sexp’ is een afkorting voor "symbolische expressie", de
 expressie vlak voor de cursor.
 
    Elke regel er boven vertelt je wat de Lisp interpreter er na
@@ -1290,7 +1292,7 @@ volgen.
      Debugger entered--Lisp error: (void-function dit)
 
 De Lisp interpreter probeerde het eerste atoom van de lijst te
-evalueren, het woord ‘dit’.  Het is deze actie de foutmelding
+evalueren, het woord ‘dit’.  Het is deze actie die de foutmelding
 ‘(void-function dit)’ genereerde.
 
    De melding bevat de woorden ‘void-function’ en ‘dit’.
@@ -1305,7 +1307,7 @@ functie (het woord ‘dit’) heeft geen definitie van enige verzameling
 instructies voor de computer om uit te voeren.
 
    Het ietwat vreemde woord ‘void-function’ is ontworpen voor de manier
-waarop Emacs Lisp is geïmplementeerd, dat is wat he tdoet wanneer een
+waarop Emacs Lisp is geïmplementeerd, dat is wat het doet wanneer een
 symbool geen functiedefinitie heeft waaraan het gekoppeld is, de plaats
 die de instructies zou moeten bevatten is leeg.
 
@@ -1315,10 +1317,10 @@ tellen door ‘(+ 2 2)’ te evalueren, kunnen we afleiden dat het symbool
 gehoorzamen en dat deze instructies het optellen van de getallen achter
 de ‘+’ moeten zijn.
 
-   Het is mogelijk te voorkomen date Emacs de debugger in gaat in
-situaties zoals deze.  Hier leggen we niet uit hoe je dat doe, maar we
+   Het is mogelijk te voorkomen dat Emacs de debugger in gaat in
+situaties zoals deze.  Hier leggen we niet uit hoe je dat doet, maar we
 vertellen hoe het resultaat er uit ziet, omdat je een vergelijkbare
-situatie kunt tegenkomen wanneer er een bug zit in wat Emacs code die je
+situatie kunt tegenkomen wanneer er een bug zit in de Emacs code die je
 gebruikt.  In zulke gevallen zie je een foutmelding met maar een regel,
 het verschijnt in het echogebied en ziet er alsvolgt uit:
 
@@ -1330,8 +1332,8 @@ verplaatst.
    We kennen de betekenis van het woord ‘Symbool’.  Het refereert naar
 de eerste atoom van de lijst, het woord ‘dit’.  Het woord ‘functie’
 refereert naar de instructies die de computer vertellen wat te doen.
-(Technisch, het symbool vertelt de computer waar de instructies te
-vinden, maar dit is een complicatie dit we op dit moment kunnen
+(Technisch gezien, vertelt het symbool de computer waar de instructies
+zijn te vinden, maar dit is een complicatie dit we op dit moment kunnen
 negeren.)
 
    De foutmelding kan begrepen worden: ‘Symbol's function definition is
@@ -1348,13 +1350,13 @@ We kunnen een ander kenmerk van Lisp verwoorden op basis van wat we tot
 nu toe besproken hebben--en belangrijk kenmerk: een symbool, zoals ‘+’,
 is zelf geen verzameling van instructies die de computer kan uitvoeren.
 In plaats daarvan wordt het symbool gebruikt, misschien tijdelijk, als
-een manier om de instructies te localiseren.  Namen van mensen werken op
+een manier om de instructies te lokaliseren.  Namen van mensen werken op
 de zelfde manier.  Ik kan worden gerefereerd als ‘Bob’.  Ik ben echter
 niet de letters ‘B’, ‘o’ en ‘b’ maar ik ben of was het bewustzijn dat
 consequent met een bepaalde levensvorm wordt geassocieerd.  De naam is
 niet mij, maar het kan worden gebruikt om naar mij te refereren.
 
-   In Lisp kan een enkele verzameling instructis meerdere namen hebben.
+   In Lisp kan een enkele verzameling instructies meerdere namen hebben.
 De computer instructies om getallen op te tellen kan bijvoorbeeld zijn
 gekoppeld aan zowel het symbool ‘plus’ als het symbool ‘+’ (en zijn dat
 in sommige Lisp-dialecten).  Onder mensen kan ik gerefereerd met zowel
@@ -1367,10 +1369,10 @@ dan kan er in de hele wereld maar een persoon de naam ‘Bob’ hebben.
 Echter de functiedefinie naar de naam naar refereert kan makkelijk
 worden aangepast.  (*Note Installeer een functiedefinitie: Installeer.)
 
-   Omdat Emacs er groot is, is het gebruikelijk om de symbolen zo te
+   Omdat Emacs erg groot is, is het gebruikelijk om de symbolen zo te
 benoemen dat zij het deel van Emacs waar zij thuishoren identificeren.
 Alle namen voor functies die met Texinfo te maken hebben beginnen met
-‘texinfo-’ en die voor de functies die met reading mail te maken hebben
+‘texinfo-’ en die voor de functies die met e-mail lezen te maken hebben
 beginnen met ‘rmail-’.
 
 
@@ -1379,18 +1381,19 @@ File: emacs-lisp-intro-nl.info,  Node: Lisp interpreter,  Next: Evaluatie,  Prev
 1.5 De Lisp interpreter
 =======================
 
-Based on what we have seen, we can now start to figure out what the Lisp
-interpreter does when we command it to evaluate a list.  First, it looks
-to see whether there is a quote before the list; if there is, the
-interpreter just gives us the list.  On the other hand, if there is no
-quote, the interpreter looks at the first element in the list and sees
-whether it has a function definition.  If it does, the interpreter
-carries out the instructions in the function definition.  Otherwise, the
-interpreter prints an error message.
+Op basis van wat we nu gezien hebben kunnen we beginnen te achterhalen
+wat de Lisp interpreter doet wanneer we de opdracht geven een lijst te
+evalueren.  Eerst kijkt die of er een quote voor de lijst staat.  Als
+die er is, dan geeft de interpreter ons slechts de lijst.  Aan de andere
+kant, als er geen quote is, dan kijkt de interpreter naar het eerste
+element van de lijst om te zien of die een functiedefinitie heeft.
+Wanneer dat het geval is, dan voert de interpreter de instructies in de
+functiedefinitie uit.  Zo niet, dan drukt de interpreter een foutmelding
+af.
 
    Dit is hoe Lisp werkt.  Simpel.  Er zijn aanvullende complicaties
 waar we zo aan toe komen, maar dit zijn de basisprincipes.  Om
-Lisp-programma's te schrijven moet je weten natuurlijk weten hoe je
+Lisp-programma's te schrijven moet je natuurlijk weten hoe je
 functiedefinities schrijft en aan een naam koppelt, en hoe je dit doet
 zonder zelf of de computer in verwarring te brengen.
 
@@ -1406,12 +1409,12 @@ Complicaties
 ------------
 
 Nu komt de eerste complicatie.  Naast lijsten kan de Lisp interpreter
-een symbool evaluaeren dat niet is gequote en niet tussen haakjes staat.
+een symbool evalueren dat niet is gequote en niet tussen haakjes staat.
 De Lisp interpreter zal proberen de waarde van het symbool als een
 “variabele” te bepalen.  Deze situatie wordt besproken in het hoofdstuk
 over variabelen.  (*Note Variabelen::.)
 
-   De tweede complicatie vindt plaats omdat sommige functies
+   De tweede complicatie ontstaat doordat sommige functies
 ongebruikelijk zijn en niet op de normale manier werken.  Zij die dat
 niet doen worden “speciale vormen” genoemd.  Zij worden voor speciale
 taken gebruikt, zoals het definieren van een functie, er er zijn er niet
@@ -1426,20 +1429,20 @@ orginele expressie geëvalueerd gaat worden.
    Voor deze introductie hoef je je niet al te veel zorgen te maken of
 iets een speciale vorm, een macro of een gewone functie is.  ‘if’
 bijvoorbeeld is een speciale vorm (*note if::), maar ‘when’ is een
-macro.  In eerdere versies van emacs was ‘defun’ een speciale vorm, maar
+macro.  In eerdere versies van Emacs was ‘defun’ een speciale vorm, maar
 nu is het een macro (*note defun::).  Het gedraagt zich nog steeds op
 dezelfde manier.
 
    De laatste complicatie is het volgende: wanneer een functie waar de
-Lisp interpreter naar kijkt geen speciale form is, en deel van een lijst
+Lisp interpreter naar kijkt geen speciale vorm is, en deel van een lijst
 uitmaakt, dan kijkt de interpreter of de lijst een lijst in zich bevat.
-Wanneer er een binnenste lijst is, dan zoekt de interpreter eerst uit
-wat het moet doen met die binnenste lijst en daarna gaat die met de
-buitenste lijst aan de slag.  Als er weer een lijst opgenomen is in de
-binnenste lijst, dan werkt die eerst aan die lijst, enzovoorts.  Het
-begint steeds met de meeste binnenste lijst, om het resultaat van die
-lijst te evalueren.  Het resultaat kan gebruikt worden van de
-omsluitende expressie.
+Wanneer er een binnenliggende lijst is, dan zoekt de interpreter eerst
+uit wat het moet doen met die binnenliggende lijst en daarna gaat die
+met de buitenste lijst aan de slag.  Als er weer een lijst opgenomen is
+in de binnenliggende lijst, dan werkt die eerst aan die lijst,
+enzovoorts.  Het begint steeds met de meest binnenliggende lijst, om het
+resultaat van die lijst te evalueren.  Het resultaat kan gebruikt worden
+door de omsluitende expressie.
 
    Zo niet, dan werkt de interpreter van links naar rechts, van de ene
 expressie naar de ander.
@@ -1456,16 +1459,16 @@ welke wij ons exclusief richten, en speciaal geproduceerde code, “byte
 compiled” code genoemd, die niet door mensen te lezen is.  Byte compiled
 code draait sneller dan voor mensen leesbare code.
 
-   Je transormeert voor mensen leesbare code in byte compiled code met
-een van de compile commandos zoals ‘byte-compile-file’.  Byte compiled
+   Je transformeert voor mensen leesbare code in byte compiled code met
+een van de compile commando's zoals ‘byte-compile-file’.  Byte compiled
 code is meestal opgeslagen in een bestand dat eindigt met de extensie
 ‘.elc’.  Je ziet beide soorten bestanden in de ‘emacs/lisp’ directory.
 De bestandeon om te lezen zijn die met de extensie ‘.el’.
 
-   As a practical matter, for most things you might do to customize or
-extend Emacs, you do not need to byte compile; and I will not discuss
-the topic here.  *Note Byte Compilation: (elisp)Byte Compilation, for a
-full description of byte compilation.
+   Praktisch gesproken, voor de meeste dingen die je doet om Emacs aan
+te passen of uit te breiden is er geen noodzaak voor byte compile, en ik
+bespreek dit onderwerp hier niet.  *Note Byte Compilation: (elisp)Byte
+Compilation, voor een volledige beschrijving van byte compilation.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Evaluatie,  Next: Variabelen,  Prev: Lisp interpreter,  Up: Lijsten verwerken
@@ -1503,7 +1506,7 @@ Meestal geeft de interpreter een waarde terug.
    Op hetzelfde moment dat de interpreter een waarde terug geeft kan het
 ook iets anders doen, zoals de cursor verplaatsen of een bestand
 kopiëren.  Deze andere soort activiteit heet een “zij-effect”.  Acties
-die wij belangrijk vinden, zoals het afdrukken van resultaten, zijn vaak
+die wij belangrijk vinden, zoals het tonen van resultaten, zijn vaak
 zij-effecten voor de Lisp interpreter.  Het is vrij eenvoudig te leren
 hoe deze zij-effecten te gebruiken.
 
@@ -1519,11 +1522,11 @@ File: emacs-lisp-intro-nl.info,  Node: Geneste lijsten evalueren,  Prev: Hoe de 
 -------------------------------
 
 Wanneer de evaluatie van toepassing is op een lijst die binnen een
-andere lijst zit, kan de buitenste lijst de waarde gebruiken van de
-eerste evaluatie als informatie bij het evalueren van de buitenste
+andere lijst zit, kan de omsluitende lijst de waarde gebruiken van de
+eerste evaluatie als informatie bij het evalueren van de omsluitende
 lijst.  Dit verklaart waarom de binnenste expressies het eerst worden
 geëvalueerd: de waarden die zij teruggeven worden gebruikt door de
-buitenste expressies.
+buitenliggende expressies.
 
    Wij kunnen dit proces onderzoeken door het evalueren van een ander
 optelvoorbeeld.  Plaats je cursor achter de volgende expressie en type
@@ -1577,14 +1580,14 @@ File: emacs-lisp-intro-nl.info,  Node: Variabelen,  Next: Argumenten,  Prev: Eva
 1.7 Variabelen
 ==============
 
-In Emacs Lisp kan een symbool aan een waarde aan zich gekoppeld hebben,
-net zoals het een functiedefinitie aan zich gekoppeld kan hebben.  Dit
-twee zijn verschillend.  De functiedefinitie is een verzameling
-instructies die de computer zal gehoorzamen.  Daartegenover is een waard
-is iets, zoals een getaal of een naam die kan variëren (daarom wordt
-zo'n symbool een variabele genoemd).  De waarde van een symbool kan elke
-expressie in Lisp zijn, zoals een symbool, getal, lijst of string.  Een
-symbool die een waarde heeft wordt vaak een “variable” genoemd.
+In Emacs Lisp kan een symbool een waarde aan zich gekoppeld hebben, net
+zoals het een functiedefinitie aan zich gekoppeld kan hebben.  Die twee
+zijn verschillend.  De functiedefinitie is een verzameling instructies
+die de computer zal gehoorzamen.  Daartegenover is een waarde iets,
+zoals een getal of een naam die kan variëren (daarom wordt zo'n symbool
+een variabele genoemd).  De waarde van een symbool kan elke expressie in
+Lisp zijn, zoals een symbool, getal, lijst of string.  Een symbool die
+een waarde heeft wordt vaak een “variabele” genoemd.
 
    Een symbool kan zowel een functiedefinitie als een waarde
 tegelijkertijd aan zich gekoppeld hebben.  Of het kan slechts een van
@@ -1613,22 +1616,22 @@ File: emacs-lisp-intro-nl.info,  Node: fill-column voorbeeld,  Next: Void functi
 
 De variabele ‘fill-column’ illustreert een symbool waar een waarde aan
 gekoppeld is.  In elk GNU Emacs buffer is dit symbool op een bepaalde
-waarde gezet, meetal 72 of 70, maar soms een andere waarde.  Om de
-waarde van dit symbool te vinden evalueer het op zichzelf.  wanneer je
-dit in Info binnen GNU Emacs leest, dan doe je dit door de cursor achter
-het symbool te zetten en vervolgens ‘C-x C-e’ te typen:
+waarde ingesteld, meetal 72 of 70, maar soms een andere waarde.  Om de
+waarde van dit symbool te vinden evalueer je het op zichzelf.  Wanneer
+je dit in Info binnen GNU Emacs leest, dan doe je dit door de cursor
+achter het symbool te zetten en vervolgens ‘C-x C-e’ te typen:
 
      fill-column
 
 Nadat ik ‘C-x C-e’ typte, toonde Emacs het getal 72 in mijn echogebied.
-Dit is waarde waar voor mij ‘fill-column’ op is gezet terwijl ik dit
-schrijf.  Het kan verschillend zijn voor in jouw Infobuffer.  Merk op
-dat de waarde die de variabele teruggeeft op precies dezelfde manier
-wordt getoond als de waarde die teruggeven wordt door een functie die
-zijn instructies uitvoert.  Vanuit het gezichtspunt van de Lisp
-interpreter is een teruggeven waarde een teruggegeven waarde.  Van wat
-voor soort expresse het vandaan kwam doet er niet meer toe zodra de
-waarde bekend is.
+Dit is waarde waar voor mij ‘fill-column’ op is ingesteld terwijl ik dit
+schrijf.  Het kan verschillend zijn in jouw Infobuffer.  Merk op dat de
+waarde die de variabele teruggeeft op precies dezelfde manier wordt
+getoond als de waarde die teruggeven wordt door een functie die zijn
+instructies uitvoert.  Vanuit het gezichtspunt van de Lisp interpreter
+is een teruggeven waarde een teruggegeven waarde.  Van wat voor soort
+expresse het vandaan kwam doet er niet meer toe zodra de waarde bekend
+is.
 
    Een symbool kan elke waarde aan zich gekoppeld hebben, of om het
 jargon te gebruiken, we kunnen de variabele aan een waarde “binden”: aan
@@ -1646,13 +1649,14 @@ File: emacs-lisp-intro-nl.info,  Node: Void functie,  Next: Void variabele,  Pre
 1.7.1 Foutmelding voor een symbool zonder functie
 -------------------------------------------------
 
-Bij het evalueren van ‘fill-column’ om de de waarde daarvan als een
+Bij het evalueren van ‘fill-column’ om de waarde daarvan als een
 variabele te ontdekken, plaatsten we geen haakjes rondom het woord.  Dit
 is omdat we het niet als functienaam wilden gebruiken.
 
-   If ‘fill-column’ were the first or only element of a list, the Lisp
-interpreter would attempt to find the function definition attached to
-it.  But ‘fill-column’ has no function definition.  Try evaluating this:
+   Wanneer ‘fill-column’ het eerste of enige element van een lijst was,
+zou de Lisp interpreter proberen de er aangekoppelde functiedefinitie te
+vinden.  Maar ‘fill-column’ heeft geen functiedefinitie.  Probeer dit te
+evalueren:
 
      (fill-column)
 
@@ -1670,7 +1674,7 @@ Je maakt een ‘*Backtrace*’ buffer dat het volgende toont:
      ---------- Buffer: *Backtrace* ----------
 
 (Onthoud, om de debugger te sluiten en het debugger window te laten
-verdwijnen type je ‘q’ in het ‘*Backtrace*’ buffer.)
+verdwijnen typ je ‘q’ in het ‘*Backtrace*’ buffer.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Void variabele,  Prev: Void functie,  Up: Variabelen
@@ -1678,7 +1682,7 @@ File: emacs-lisp-intro-nl.info,  Node: Void variabele,  Prev: Void functie,  Up:
 1.7.2 Foutmelding voor een symbool zonder waarde
 ------------------------------------------------
 
-Wanneer je een symbool dat geen waarde aan het gekoppeld heeft probeert
+Wanneer je een symbool dat geen waarde aan zich gekoppeld heeft probeert
 te evalueren, dan krijg je een foutmelding.  Dit kan je zien door te
 experimenteren met onze 2 plus 2 optelling.  Zet de cursor meteen achter
 de ‘+’, voor het eerste getal 2 in de volgende expressie, en typ ‘C-x
@@ -1708,12 +1712,12 @@ foutmelding, de functie (het woord ‘dit’) geen definitie had.
 
    Wat we in het experiment met de ‘+’ deden liet de Lisp interpreter de
 ‘+’ evaluaren en zoeken naar de waarde van de variabele in plaats van de
-functiedefinitie.  Dit deze we door de cursor meteen achter het symbool
-te plaatsen dan achter het haakje van de omsluitende lijst, zoals we
-eerder deden.  Als gevolg hiervan evalueerde de Lisp interpreter de
-voorafgaande s-expressie, in dit geval ‘+’ op zichzelf.
+functiedefinitie.  We deden dit door de cursor meteen achter het symbool
+te plaatsen in plaats van achter het haakje van de omsluitende lijst,
+zoals we eerder deden.  Als gevolg hiervan evalueerde de Lisp
+interpreter de voorafgaande s-expressie, in dit geval ‘+’ op zichzelf.
 
-   Omdat ‘+’ geen waarde aan zicht gekoppeld heeft en alleen een
+   Omdat ‘+’ geen waarde aan zich gekoppeld heeft en alleen een
 functiedefinitie, rapporteerde de foutmelding dat de waarde van het
 symbool als variabele leeg was.
 
@@ -1723,7 +1727,7 @@ File: emacs-lisp-intro-nl.info,  Node: Argumenten,  Next: setq,  Prev: Variabele
 1.8 Argumenten
 ==============
 
-Laten we nog eens naar onze oude voorbeeld kijken om te zien hoe
+Laten we nog eens naar ons oude voorbeeld kijken om te zien hoe
 informatie tussen functies doorgegeven wordt, de optelling van twee plus
 twee.  In Lisp schrijven we dit als volgt:
 
@@ -1786,7 +1790,7 @@ optelt.  Andere functies gebruiken andere vormen van data voor hun
 argumenten.
 
    De functie ‘concat’ bijvoorbeeld koppelt of verbindt twee of meer
-tekstreeksen om een string te produceren.  De argumeten zijn strings.
+tekstreeksen om een string te produceren.  De argumenten zijn strings.
 Het concatenaten van de twee tekenreeksen ‘abc’ en ‘def’ produceert de
 enkele string ‘abcdef’.  Dit is te zien door het volgende te evalueren:
 
@@ -1841,7 +1845,7 @@ van alleen ‘fill-column’.  Voor mij is dit 74, omdat mijn waarde van
 
    Zoals we zojuist zagen kan een argument een symbool zijn dat een
 waarde teruggeeft wanneer het geëvalueerd wordt.  Daarnaast kan een
-argument ene lijst zijn die een waarde teruggeeft wanneer die
+argument een lijst zijn die een waarde teruggeeft wanneer die
 geëvalueerd wordt.  Bijvoorbeeld in de volgende expressie zijn de
 argumenten voor de functie ‘concat’ de strings ‘"De "’ en
 ‘" rode vossen."’ en de lijst ‘(number-to-string (+ 2 fill-column))’.
@@ -1851,8 +1855,8 @@ argumenten voor de functie ‘concat’ de strings ‘"De "’ en
 Wanneer je deze expressie evalueert--en als, zoals met mijn Emacs,
 ‘fill-column’ naar 72 evalueert--verschijnt ‘"De 74 rode vossen."’ in
 het echogebied.  (Merk op dat je spaties achter het woord ‘De’ en voor
-het voord ‘rode’ zet zodat deze in de finale string verschijnen.  De
-functie ‘number-to-string’ converteert de integer die de optelling
+het voord ‘rode’ zet zodat deze in de uiteindelijke string verschijnen.
+De functie ‘number-to-string’ converteert de integer die de optelling
 teruggeeft naar een string.  ‘number-to-string’ is ook bekend als
 ‘int-to-string’.)
 
@@ -1933,7 +1937,7 @@ argument de ‘+’ verwachtte.
 probeert vast te stellen of de informatie die het kreeg een getal is of
 een marker (een speciaal object dat een bufferpositie vertegenwoordigt).
 Wat het doet is testen of de ‘+’ getallen kreeg om op te tellen.  Ook
-test of of het argument iets is dat een marker genoemd wordt, wat een
+test of het argument iets is dat een marker genoemd wordt, wat een
 specifieke eigenschap van Emacs Lisp is.  (In Emacs worden locaties in
 een buffer geregistreerd als markers.  Wanneer de mark is gezet met het
 ‘C-@’ of ‘C-<SPC>’ commando, wordt zijn positie bewaard als een marker.
@@ -1943,15 +1947,15 @@ lokatie ten opzichte van het begin van de buffer.)  In Emacs Lisp kan
 getallen op te tellen.
 
    De ‘p’ in ‘number-or-marker-p’ is de belichaming van een praktijk die
-in de beginjaren van Lisp programmeren.  De ‘p’ staat voor “predicate”.
-In het jargon dat door de eerste Lisp onderzoekers, een predicate
-refereert aan een functie die bepaalt of een bepaalde eigenschap waar is
-of onwaar.  De ‘p’ vertelt ons dus dat ‘number-or-marker-p’ de naam van
-een functie is die bepaalt of het waar of onwaar is dat het doorgegeven
-argument een getal of een marker is.  Andere Lisp symbolen die eindigen
-in ‘p’ zijn onder andere ‘zerop’, een functie die test of zijn argument
-de waarde nul heeft, en ‘listp’, een functie die test of zijn argument
-een lijst is.
+startte in de beginjaren van Lisp programmeren.  De ‘p’ staat voor
+“predicate”.  In het jargon dat de eerste Lisp onderzoekers gebruikten,
+refereert een predicate aan een functie die bepaalt of een bepaalde
+eigenschap waar of onwaar is.  De ‘p’ vertelt ons dus dat
+‘number-or-marker-p’ de naam van een functie is die bepaalt of het waar
+of onwaar is dat het doorgegeven argument een getal of een marker is.
+Andere Lisp symbolen die eindigen in ‘p’ zijn onder andere ‘zerop’, een
+functie die test of zijn argument de waarde nul heeft, en ‘listp’, een
+functie die test of zijn argument een lijst is.
 
    Het laatste deel van de foutmelding tenslotte is het symbool ‘hello’.
 Dit is de waarde van het argument dat was doorgegeven aan ‘+’.  Wanneer
@@ -1970,7 +1974,7 @@ File: emacs-lisp-intro-nl.info,  Node: boodschap,  Prev: Verkeerde type argument
 --------------------------
 
 Net als ‘+’ accepteert de ‘message’ functie een variabel aantal
-argumenten.  Het wordt gebruikt om berchten naar de gebruiker te zenden
+argumenten.  Het wordt gebruikt om berichten naar de gebruiker te sturen
 en is zo nuttig dat we het hier beschrijven.
 
    Een bericht wordt getoond in het echogebied.  Je kunt bijvoorbeeld
@@ -1990,8 +1994,8 @@ in detail: vermenigvuldig-met-zeven in detail, voor een voorbeeld
 hiervan).
 
    Wanneer er echter een ‘%s’ in de string tussen aanhalingstekens
-staat, toont de ‘message’ functie de ‘%s’ niet als zodanig, maar kijkt
-naar het argument dat na de string volgt.  Het evalueert het tweede
+staat, toont de ‘message’-functie de ‘%s’ niet als zodanig, maar kijkt
+naar het argument dat op de string volgt.  Het evalueert het tweede
 argument en toont de waarde op de locatie in de string waar de ‘%s’
 staat.
 
@@ -2022,8 +2026,8 @@ enzovoorts.
 
    Wanneer je bijvoorbeeld het volgende evalueert,
 
-     (message "There are %d %s in the office!"
-              (- fill-column 14) "pink elephants")
+     (message "Er zijn %d %s in het kantoor!"
+              (- fill-column 14) "paarse olifanten")
 
 zal een nogal eigenaardig bericht in je echogebied verschijnen.  Op mijn
 systeem zegt het ‘"Er zijn 58 paarse olifanten in het kantoor!"’.
@@ -2095,7 +2099,7 @@ achter de expressie te zetten en ‘C-x C-e’ te typen:
      (setq bloemen '(roos viool madelief boterbloem))
 
 De lijst ‘(roos viool madelief boterbloem)’ verschijnt in het
-echogebied.  Dat is wat is _teruggeven_ door de speciale vorm ‘setq’.
+echogebied.  Dat is wat is _teruggegeven_ door de speciale vorm ‘setq’.
 Als zij-effect is het symbool ‘bloemen’ aan de lijst gebonden.  Dat wil
 zeggen dat het symbool ‘bloemen’, welke als een variabel gezien kan
 worden, de lijst als waarde krijgt.  (Overigens illustreert dit proces
@@ -2106,7 +2110,7 @@ fout krijgt, maar alleen een zij-effect heeft wanneer die is ontworpen
 om er een te hebben.
 
    Nadat je de ‘setq’ expressie hebt geëvalueerd, kun je het symbool
-‘bloemen’ evalueren, dit geeft je de waarde terug die je zojuist geet
+‘bloemen’ evalueren, dit geeft je de waarde terug die je zojuist gezet
 hebt.  Hier is het symbool.  Plaats je cursor er achter en typ ‘C-x
 C-e’.
 
@@ -2125,31 +2129,32 @@ enkele quote er voor, dat zie je in het echogebied het symbool zelf,
 verschillende waarden te zetten, in een enkele expressie.
 
    Om de waarde van de variabele ‘carnivoren’ met ‘setq’ naar de lijst
-‘'(leeuw tijger luipaard)’ is de volgende expressie gebruikt:
+‘'(leeuw tijger luipaard)’ te zetten is de volgende expressie gebruikt:
 
      (setq carnivoren '(leeuw tijger luipaard)
 
    ‘setq’ kan ook gebruikt worden om verschillende waarden naar
-verschillende variabelen te zetten.  Het eerste argument wordt gebonden
-aan de waarde van het tweede argument, het derde argument aan de waarde
-van het vierde argument, enzovoorts.  Bijvoorbeeld kan je het volgende
-gebruiken om een lijst van bomen aan het symbool ‘bomen’ en een lijst
-van herbivoren aan het symbool ‘herbivoren’ toe te wijzen:
+verschillende variabelen toe te kennen.  Het eerste argument wordt
+gebonden aan de waarde van het tweede argument, het derde argument aan
+de waarde van het vierde argument, enzovoorts.  Bijvoorbeeld kan je het
+volgende gebruiken om een lijst van bomen aan het symbool ‘bomen’ en een
+lijst van herbivoren aan het symbool ‘herbivoren’ toe te kennen:
 
      (setq bomen '(den spar eik esdoorn)
-            herbivoren '(gazelle antiloop zebra)
+           herbivoren '(gazelle antiloop zebra)
 
-(The expression could just as well have been on one line, but it might
-not have fit on a page; and humans find it easier to read nicely
-formatted lists.)
+(De expressie had net zo goed op een enkele regel gekund, maar het zou
+misschien niet op een bladzijde passen, en mensen vinden het makkelijker
+om mooi opemaakte lijsten te lezen).
 
-   Although I have been using the term "assign", there is another way of
-thinking about the workings of ‘setq’; and that is to say that ‘setq’
-makes the symbol _point_ to the list.  This latter way of thinking is
-very common and in forthcoming chapters we shall come upon at least one
-symbol that has "pointer" as part of its name.  The name is chosen
-because the symbol has a value, specifically a list, attached to it; or,
-expressed another way, the symbol is set to point to the list.
+   Alhoewel ik de term "toekennen" heb gebruikt, is er een andere manier
+over de werking van ‘setq’ te denken, en dat zo te zeggen dat ‘setq’ het
+symbool laat _wijzen_ naar de lijst.  Deze laatste manier van denken is
+erg gebruikelijk en in de volgende hoofdstukken zullen we een symbool
+tegenkomen dat "pointer" als onderdeel van zijn naam heeft.  De naam is
+gekozen omdat het symbool een waarde, in het bijzonder een lijst aan
+zich gebonden heeft, of, op een andere manier uitgedrukt, het symbool is
+ingesteld om naar de lijst te wijzen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Tellen,  Prev: Setq gebruiken,  Up: setq
@@ -2157,40 +2162,41 @@ File: emacs-lisp-intro-nl.info,  Node: Tellen,  Prev: Setq gebruiken,  Up: setq
 1.9.2 Tellen
 ------------
 
-Here is an example that shows how to use ‘setq’ in a counter.  You might
-use this to count how many times a part of your program repeats itself.
-First set a variable to zero; then add one to the number each time the
-program repeats itself.  To do this, you need a variable that serves as
-a counter, and two expressions: an initial ‘setq’ expression that sets
-the counter variable to zero; and a second ‘setq’ expression that
-increments the counter each time it is evaluated.
+Hier volgt een voorbeeld dat laat zien hoe je ‘setq’ in een teller
+gebruikt.  Je kunt dit gebruiken om te tellen hoe vaak een deel van je
+programma zichzelf herhaalt.  Stel eerst een variabele op nul.
+Vervolgens tel je iedere keer dat het programma zich herhaalt een bij
+het getal op.  Om dit te doen heb je een variabele nodig die dienst doet
+als teller, en twee expressies: een initiële ‘setq’ expressie die de
+variabele instelt op nul, en een tweede ‘setq’ expressie die elke keer
+dat die wordt geëvalueerd de teller verhoogt.
 
-     (setq counter 0)                ; Let's call this the initializer.
+     (setq counter 0)                ; Laten wij dit de initialisator noemen.
 
-     (setq counter (+ counter 1))    ; This is the incrementer.
+     (setq counter (+ counter 1))    ; Dit is de incrementer.
 
-     counter                         ; This is the counter.
+     counter                         ; Dit is de teller.
 
-(The text following the ‘;’ are comments.  *Note Change a Function
-Definition: Change a defun.)
+(De tekst die volgt na de ‘;’ zijn comments.  *Note Wijzig een
+functiedefinitie: Een defun wijzigen.)
 
-   If you evaluate the first of these expressions, the initializer,
-‘(setq counter 0)’, and then evaluate the third expression, ‘counter’,
-the number ‘0’ will appear in the echo area.  If you then evaluate the
-second expression, the incrementer, ‘(setq counter (+ counter 1))’, the
-counter will get the value 1.  So if you again evaluate ‘counter’, the
-number ‘1’ will appear in the echo area.  Each time you evaluate the
-second expression, the value of the counter will be incremented.
+   Wanneer je de eerste van deze drie expressies evalueert, de
+initialisator, ‘(setq counter 0)’, en daarna evalueer je de derde
+expressie, ‘counter’.  dan verschijnt het getal ‘0’ in het echogebied.
+Wanneer je de tweede expressie, de incrementer, ‘(setq counter (+
+counter 1))’, evalueert, dan verschijnt het getal ‘1’ in het echogebied.
+Elke keer dat je de tweede expressie evalueert, wordt de waarde van de
+counter verhoogd.
 
-   When you evaluate the incrementer, ‘(setq counter (+ counter 1))’,
-the Lisp interpreter first evaluates the innermost list; this is the
-addition.  In order to evaluate this list, it must evaluate the variable
-‘counter’ and the number ‘1’.  When it evaluates the variable ‘counter’,
-it receives its current value.  It passes this value and the number ‘1’
-to the ‘+’ which adds them together.  The sum is then returned as the
-value of the inner list and passed to the ‘setq’ which sets the variable
-‘counter’ to this new value.  Thus, the value of the variable,
-‘counter’, is changed.
+   Wanneer je de incrementer, ‘(setq counter (+ counter 1))’ evalueert,
+evalueert de Lisp interpreter eerst de meest binnenste lijst, dit is de
+optelling.  Om deze lijst te evalueren, moet het de variabele ‘counter’
+en het getal ‘1’ evalueren.  Wanneer het de variabele ‘counter’
+evalueert, krijgt het diens huidige waarde.  Het geeft deze waarde en
+het getal ‘1’ door aan de ‘+’, die ze bij elkaar optelt.  De som wordt
+teruggegeven als de waarde van de binnenste lijst en doorgegeven aan de
+‘setq’, die de variabele ‘counter’ op deze nieuwe waarde instelt.  Zo is
+de waarde van de variabele ‘counter’ gewijzigd.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Samenvatting,  Next: Foutmelding oefeningen,  Prev: setq,  Up: Lijsten verwerken
@@ -2198,64 +2204,68 @@ File: emacs-lisp-intro-nl.info,  Node: Samenvatting,  Next: Foutmelding oefening
 1.10 Samenvatting
 =================
 
-Learning Lisp is like climbing a hill in which the first part is the
-steepest.  You have now climbed the most difficult part; what remains
-becomes easier as you progress onwards.
+Lisp leren is net zo iets als een heuvel beklimmen, waar het eerste deel
+het stijlste is.  Je hebt inmiddels het moeilijkste deel beklommen, wat
+overblijft wordst makkelijker naarmate je verder komt.
 
-   In summary,
+   Samenvattend,
 
-   • Lisp programs are made up of expressions, which are lists or single
-     atoms.
+   • Lisp programma's zijn gemaakt van expressies, elke lijsten of
+     enkelvoudige atomen zijn.
 
-   • Lists are made up of zero or more atoms or inner lists, separated
-     by whitespace and surrounded by parentheses.  A list can be empty.
+   • Lijsten zijn gemaakt van nul of meer atomen of binnenliggende
+     lijsten, gescheiden door witte ruimte en omgeven door haakjes.  Een
+     lijst kan leeg zijn.
 
-   • Atoms are multi-character symbols, like ‘forward-paragraph’, single
-     character symbols like ‘+’, strings of characters between double
-     quotation marks, or numbers.
+   • Atomen zijn multi-karakter symbolen, zoals ‘forward-paragraph’,
+     enkele-karakter symboleen zoals ‘+’, strings of karakters tussen
+     dubbele aanhalingstekens, of getallen.
 
-   • A number evaluates to itself.
+   • Een getal evalueert naar zichzelf.
 
-   • A string between double quotes also evaluates to itself.
+   • Een string tussen dubbele aanhalingstekens evalueert ook naar
+     zichzelf.
 
-   • When you evaluate a symbol by itself, its value is returned.
+   • Wanneer je een symbool op zichzelf evalueert, wordt zijn waarde
+     teruggegeven.
 
-   • When you evaluate a list, the Lisp interpreter looks at the first
-     symbol in the list and then at the function definition bound to
-     that symbol.  Then the instructions in the function definition are
-     carried out.
+   • Wanneer je een lijst evaluseert, kijkt de Lisp interpreter naar het
+     eerste symbool in de lijst en vervolgens naar de functiedefinitie
+     die aan dat symbool gebonden is.  Daaran worden de instructies in
+     de funciedefinitie uitgevoerd.
 
-   • A single-quote ‘'’ tells the Lisp interpreter that it should return
-     the following expression as written, and not evaluate it as it
-     would if the quote were not there.
+   • Een enkele quote ‘'’ vertelt de Lisp interpreter dat het de
+     daaropvolgende expressie moet teruggeven zoals die is geschreven,
+     en niet evalueren alsof de quote er niet was.
 
-   • Arguments are the information passed to a function.  The arguments
-     to a function are computed by evaluating the rest of the elements
-     of the list of which the function is the first element.
+   • Argumenten vormen de informatie die aan een functie wordt
+     doorgegeven.  De argumenten voor een functie worden berekend door
+     de rest van de elementen van de lijst te evalueren, waarvan de
+     functie het eerste element is.
 
-   • A function always returns a value when it is evaluated (unless it
-     gets an error); in addition, it may also carry out some action that
-     is a side effect.  In many cases, a function's primary purpose is
-     to create a side effect.
+   • Een functie geeft altijd een waarde terug wanneer die wordt
+     geëvalueerd (tenzij het een fout krijgt).  Ook kan die een actie
+     uitvoeren dat een zij-effect is.  In veel gevallen is het creëren
+     van zij-effecten het primaire doel.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Foutmelding oefeningen,  Prev: Samenvatting,  Up: Lijsten verwerken
 
-1.11 Exercises
-==============
+1.11 Oefeningen
+===============
 
-A few simple exercises:
+Enkele simpele oefeningen:
 
-   • Generate an error message by evaluating an appropriate symbol that
-     is not within parentheses.
+   • Genereer een foutmelding door een geschikt symbool te evalueren dat
+     niet tussen haakjes staat.
 
-   • Generate an error message by evaluating an appropriate symbol that
-     is between parentheses.
+   • Genereer een foutmelding door een geschikt symbool te evalueren dat
+     tussen haakjes staat.
 
-   • Create a counter that increments by two rather than one.
+   • Maak een teller die met twee verhoogt in plaats van een.
 
-   • Write an expression that prints a message in the echo area when
-     evaluated.
+   • Schrijf een expressie die een boodschap in het echogebied toont
+     wanneer die wordt geëvalueerd.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Oefenen van evaluatie,  Next: Defuns schrijven,  Prev: Lijsten verwerken,  Up: Top
@@ -2263,14 +2273,14 @@ File: emacs-lisp-intro-nl.info,  Node: Oefenen van evaluatie,  Next: Defuns schr
 2 Oefenen van evaluatie
 ***********************
 
-Before learning how to write a function definition in Emacs Lisp, it is
-useful to spend a little time evaluating various expressions that have
-already been written.  These expressions will be lists with the
-functions as their first (and often only) element.  Since some of the
-functions associated with buffers are both simple and interesting, we
-will start with those.  In this section, we will evaluate a few of
-these.  In another section, we will study the code of several other
-buffer-related functions, to see how they were written.
+Voordat je leert hoe je een functiedefinitie in Emacs Lisp schrijft, is
+het zinnig om wat tijd te besteden aan het evalueren van diverse
+expressies die al zijn geschreven.  Deze expressies zijn lijsten met de
+functies al hun eerste (en vaak enige) element.  Omdat sommige
+buffer-geassocieerd functies zowel eenvoudig als interessant zijn,
+beginnen we met die.  In deze sectie evalueren we enkele daarvan.  In
+een andere sectie bestuderen we de code van verscheidene andere
+buffer-gerelateerde functie om te zien hoe die zijn geschreven.
 
 * Menu:
 
@@ -2289,30 +2299,31 @@ File: emacs-lisp-intro-nl.info,  Node: Hoe te evalueren,  Next: Buffer namen,  U
 Hoe te evalueren
 ================
 
-Whenever you give an editing command to Emacs Lisp, such as the command
-to move the cursor or to scroll the screen, you are evaluating an
-expression, the first element of which is a function.  This is how Emacs
-works.
+Telkens wanneer je een edit-commando aan Emacs Lisp geeft, zoals het
+commando om de cursor te verplaatsen of het scherm te scrollen, evalueer
+je een expressie, waarvan het eerste element een functie is.  Dit is hoe
+Emacs werkt.
 
-   When you type keys, you cause the Lisp interpreter to evaluate an
-expression and that is how you get your results.  Even typing plain text
-involves evaluating an Emacs Lisp function, in this case, one that uses
-‘self-insert-command’, which simply inserts the character you typed.
-The functions you evaluate by typing keystrokes are called “interactive”
-functions, or “commands”; how you make a function interactive will be
-illustrated in the chapter on how to write function definitions.  *Note
-Making a Function Interactive: Interactive.
+   Wanneer je toetsen aanslaat laat je de Lisp interpreter een expressie
+evalueren en zo krijg je je resultaten.  Zelfs het typen van een platte
+tekst houdt het evalueren van een Emacs Lisp functie in, in dit geval
+eentje dat het ‘self-insert-command’ gebruikt, die eenvoudig het
+karakter dat je typte invoegt.  De functies die je evalueert met het
+typen van toetsaanslagen worden “interactief” genoemd, of “commando's”.
+Hoe je een functie interactief maakt wordt in het volgende hoofdstuk
+geïllustreerd.  *Note Een functie interactief maken: Interactief.
 
-   In addition to typing keyboard commands, we have seen a second way to
-evaluate an expression: by positioning the cursor after a list and
-typing ‘C-x C-e’.  This is what we will do in the rest of this section.
-There are other ways to evaluate an expression as well; these will be
-described as we come to them.
+   Naast het typen van toetsenbord commando's, hebben we een tweede
+manier gezien om een expressie te evalueren: door de cursor achter de
+lijst te plaatsen en ‘C-x C-e’ te typen.  Dit is wat we in rest van deze
+sectie zullen doen.  Er zijn nog meer manieren om een expressie te
+evalueren, deze zullen we beschrijven wanneer die aan de orde komen.
 
-   Besides being used for practicing evaluation, the functions shown in
-the next few sections are important in their own right.  A study of
-these functions makes clear the distinction between buffers and files,
-how to switch to a buffer, and how to determine a location within it.
+   Naast dat we ze voor evaluatie-oefeningen gebruiken, zijn de functies
+die in volgende secties behandeld worden op zichzelf belangrijk.  Het
+bestuderen van deze functies verheldert het verschil tussen buffers en
+bestanden, hoe van buffer te switchen, en hoe een locatie er binnen vast
+te stellen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Buffer namen,  Next: Buffers pakken,  Prev: Hoe te evalueren,  Up: Oefenen van evaluatie
@@ -2320,36 +2331,37 @@ File: emacs-lisp-intro-nl.info,  Node: Buffer namen,  Next: Buffers pakken,  Pre
 2.1 Buffer namen
 ================
 
-The two functions, ‘buffer-name’ and ‘buffer-file-name’, show the
-difference between a file and a buffer.  When you evaluate the following
-expression, ‘(buffer-name)’, the name of the buffer appears in the echo
-area.  When you evaluate ‘(buffer-file-name)’, the name of the file to
-which the buffer refers appears in the echo area.  Usually, the name
-returned by ‘(buffer-name)’ is the same as the name of the file to which
-it refers, and the name returned by ‘(buffer-file-name)’ is the full
-path-name of the file.
+De twee functies ‘buffer-name’ en ‘buffer-file-name’ tonen het verschil
+tussen een buffer en een bestand.  Wanneer je volgende expressie
+evalueert, ‘(buffer-name)’, verschijnt de naam van het buffer in het
+echogebied.  Wanneer je ‘(buffer-file-name)’ evalueert, verschijnt de
+naam van het bestand waar de buffer naar refereert in het echogebied.
+Meestal is de naam die ‘(buffer-name)’ teruggeeft hetzelfde als de naam
+van het bestand waarnaar het refereert, en is de naam die
+‘(buffer-file-name)’ teruggeeft de volledige padnaam van het bestand.
 
-   A file and a buffer are two different entities.  A file is
-information recorded permanently in the computer (unless you delete it).
-A buffer, on the other hand, is information inside of Emacs that will
-vanish at the end of the editing session (or when you kill the buffer).
-Usually, a buffer contains information that you have copied from a file;
-we say the buffer is “visiting” that file.  This copy is what you work
-on and modify.  Changes to the buffer do not change the file, until you
-save the buffer.  When you save the buffer, the buffer is copied to the
-file and is thus saved permanently.
+   Een bestand en een buffer zijn twee verschillende entiteiten.  Een
+bestand is informatie permanent opgeslagen op de computer (tenzij je het
+verwijdert).  Een buffer daarentegen is informatie binnen Emacs, die
+verdwijnt aan het einde van de editing sessie (of wanneer je het buffer
+killt).  Meestal bevat een buffer informatie die je van een bestand
+gekopieerd hebt, we zeggen dat de buffer het bestand “bezoekt”.  Deze
+kopie is waar je op werkt en wijzigt.  Veranderingen in het buffer
+wijzigen het bestand niet, totdat je het buffer opslaat.  Wanneer je het
+buffer opslaat, wordt de buffer gekopieerd naar het bestand en zo
+permanent opgeslagen.
 
-   If you are reading this in Info inside of GNU Emacs, you can evaluate
-each of the following expressions by positioning the cursor after it and
-typing ‘C-x C-e’.
+   Wanneer je dit in Info leest binnen Emacs, kan je elk van de volgende
+expressies evalueren door de cursor er achter te zetten en ‘C-x C-e’ te
+typen.
 
      (buffer-name)
 
      (buffer-file-name)
 
-When I do this in Info, the value returned by evaluating ‘(buffer-name)’
-is ‘"*info*"’, and the value returned by evaluating ‘(buffer-file-name)’
-is ‘nil’.
+Wanneer ik dit in Info doe, geeft evaluatie van ‘(buffer-name)’ de
+waarde ‘"*info*"’ terug, en is de waarde die de evaluatie van
+‘(buffer-file-name)’ teruggeeft ‘nil’.
 
    On the other hand, while I am writing this document, the value
 returned by evaluating ‘(buffer-name)’ is ‘"introduction.texinfo"’, and
@@ -2871,8 +2883,8 @@ your screen that says:
 
 File: emacs-lisp-intro-nl.info,  Node: Een defun wijzigen,  Prev: Effect van installatie,  Up: Installeer
 
-3.2.1 Change a Function Definition
-----------------------------------
+3.2.1 Wijzig een functiedefinitie
+---------------------------------
 
 If you want to change the code in ‘multiply-by-seven’, just rewrite it.
 To install the new version in place of the old one, evaluate the
@@ -4068,8 +4080,8 @@ with a few similar functions that have not been mentioned yet.
 
 File: emacs-lisp-intro-nl.info,  Node: defun oefeningen,  Prev: Terugblik,  Up: Defuns schrijven
 
-3.12 Exercises
-==============
+3.12 Oefeningen
+===============
 
    • Write a non-interactive function that doubles the value of its
      argument, a number.  Make that function interactive.
@@ -4472,9 +4484,9 @@ File: emacs-lisp-intro-nl.info,  Node: append interactief,  Next: append-to-buff
 4.4.1 The ‘append-to-buffer’ Interactive Expression
 ---------------------------------------------------
 
-Since the ‘append-to-buffer’ function will be used interactively, the
-function must have an ‘interactive’ expression.  (For a review of
-‘interactive’, see *note Making a Function Interactive: Interactive.)
+Omdat de ‘append-to-buffer’ functie interactief gebruikt gaat worden,
+moet de functie een ‘interactive’ expressie hebben.  (Voor een terugblik
+op d‘interactive’, zie *note Een functie interactief maken: Interactief.
 
    The expression reads as follows:
 
@@ -4771,8 +4783,8 @@ chapter.
 
 File: emacs-lisp-intro-nl.info,  Node: Buffer oefeningen,  Prev: Buffer gerelateerde terugblik,  Up: Buffer rondleiding
 
-4.6 Exercises
-=============
+4.6 Oefeningen
+==============
 
    • Write your own ‘simplified-end-of-buffer’ function definition; then
      test it to see whether it works.
@@ -17423,7 +17435,7 @@ Index
 * Bindings, key, fixing unpleasant:      Diverse.             (line  88)
 * Binnenste lijst evaluatie:             Geneste lijsten evalueren.
                                                               (line   6)
-* Bloemen in een veld:                   Lips Lists.          (line  18)
+* Bloemen in een veld:                   Lisp lijsten.        (line  18)
 * body defined:                          defun.               (line  38)
 * Body of graph:                         Een grafiek klaarmaken.
                                                               (line   6)
@@ -17433,7 +17445,7 @@ Index
 * buffer-file-name:                      Buffer namen.        (line   6)
 * buffer-menu, bound to key:             Key bindings.        (line  69)
 * buffer-name:                           Buffer namen.        (line   6)
-* Buffer, history of word:               Buffer namen.        (line  66)
+* Buffer, history of word:               Buffer namen.        (line  67)
 * Bug, most insidious type:              Een andere bug.      (line   6)
 * Building robots:                       Robots bouwen.       (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
@@ -17444,14 +17456,13 @@ Index
 * cancel-debug-on-entry:                 debug-on-entry.      (line  86)
 * car, introduced:                       car cdr en cons.     (line   6)
 * cdr, introduced:                       car cdr en cons.     (line   6)
-* Changing a function definition:        Een defun wijzigen.  (line   6)
 * Chest of Drawers, metaphor for a symbol: Symbolen als ladekast.
                                                               (line   6)
 * Clipping text:                         Knippen en opslaan van tekst.
                                                               (line   6)
 * Code installation:                     Permanent installeren.
                                                               (line   6)
-* command defined:                       Hoe te evalueren.    (line  11)
+* command gedefinieerd:                  Hoe te evalueren.    (line  11)
 * Comments in Lisp code:                 Een defun wijzigen.  (line  22)
 * Common Lisp:                           Geschiedenis van Lisp.
                                                               (line  12)
@@ -17498,8 +17509,8 @@ Index
 * defcustom:                             defcustom.           (line   6)
 * Deferment in recursion:                Geen uitstel.        (line   6)
 * Definitie installatie:                 Installeer.          (line   6)
+* Definitie, hoe te wijzigen:            Een defun wijzigen.  (line   6)
 * Definition writing:                    Defuns schrijven.    (line   6)
-* Definition, how to change:             Een defun wijzigen.  (line   6)
 * defsubst:                              defcustom.           (line 127)
 * defun:                                 defun.               (line   6)
 * defvar:                                defvar.              (line   6)
@@ -17528,6 +17539,7 @@ Index
                                                               (line  16)
 * edebug:                                edebug.              (line   6)
 * Een bestand vinden:                    Een bestand vinden.  (line   6)
+* Een functiedefinitie wijzigen:         Een defun wijzigen.  (line   6)
 * Een programma draaien:                 Draai een programma. (line   6)
 * Else:                                  else.                (line   6)
 * Emacs version, choosing:               Eenvoudige uitbreiding.
@@ -17545,10 +17557,12 @@ Index
                                                               (line  40)
 * evaluate gedefinieerd:                 Draai een programma. (line   6)
 * Evaluatie:                             Evaluatie.           (line   6)
-* Evaluation practice:                   Oefenen van evaluatie.
+* Evaluatie oefenen:                     Oefenen van evaluatie.
+                                                              (line   6)
+* Evalusatiepraktijk:                    Oefenen van evaluatie.
                                                               (line   6)
 * Every, soort van recursief patroon:    Every.               (line   6)
-* expressie gedefinieerd:                Lisp atoms.          (line  26)
+* expressie gedefinieerd:                Lisp atoms.          (line  27)
 * Falsehood and truth in Emacs Lisp:     Waar en onwaarheid.  (line   6)
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                               (line   6)
@@ -17571,9 +17585,9 @@ Index
 * functie gedefinieerd:                  Fouten maken.        (line  51)
 * functie gedefinieerd <1>:              Fouten maken.        (line  74)
 * functiedefinitie installatie:          Installeer.          (line   6)
+* Functiedefinitie, hoe te wijzigen:     Een defun wijzigen.  (line   6)
 * function definition defined:           defun.               (line   6)
 * Function definition writing:           Defuns schrijven.    (line   6)
-* Function definition, how to change:    Een defun wijzigen.  (line   6)
 * Functions, primitive:                  Primitieve functies. (line   6)
 * Geen uitstel oplossing:                Geen uitstel oplossing.
                                                               (line   6)
@@ -17614,7 +17628,7 @@ Index
                                                               (line   6)
 * Installeer een functiedefinitie:       Installeer.          (line   6)
 * interactive:                           Interactief.         (line   6)
-* interactive function defined:          Hoe te evalueren.    (line  11)
+* interactive function gedefinieerd:     Hoe te evalueren.    (line  11)
 * Interactive functions:                 Interactief.         (line   6)
 * Interactive options:                   Interactieve operaties.
                                                               (line   6)
@@ -17658,13 +17672,13 @@ Index
 * Library, as term for "file":           Meer vinden.         (line  41)
 * line-to-top-of-window:                 Eenvoudige uitbreiding.
                                                               (line   6)
-* Lips Lists:                            Lips Lists.          (line   6)
 * Lisp atoms:                            Lisp atoms.          (line   6)
 * Lisp geschiedenis:                     Geschiedenis van Lisp.
                                                               (line   6)
 * Lisp interpreter, uitgelegd:           Draai een programma. (line  39)
 * Lisp interpreter, wat die doet:        Lisp interpreter.    (line   6)
 * Lisp interpreter, wat die doet <1>:    Lisp interpreter.    (line   6)
+* Lisp lijsten:                          Lisp lijsten.        (line   6)
 * Lisp macro:                            Lisp macro.          (line   6)
 * list-buffers, rebound:                 Key bindings.        (line  69)
 * Lists in a computer:                   Implementatie van lijsten.
@@ -17702,7 +17716,7 @@ Index
                                                               (line  42)
 * new version body for insert-buffer:    Nieuw insert-buffer. (line   6)
 * nil:                                   Waar en onwaarheid.  (line   6)
-* nil, history of word:                  Buffer namen.        (line  42)
+* nil, history of word:                  Buffer namen.        (line  43)
 * nreverse:                              Functiedefinities tellen.
                                                               (line 100)
 * nth:                                   nth.                 (line   6)
@@ -17734,8 +17748,6 @@ Index
 * point defined:                         Buffer grootte en locatie.
                                                               (line  19)
 * Point location:                        Buffer grootte en locatie.
-                                                              (line   6)
-* Practicing evaluation:                 Oefenen van evaluatie.
                                                               (line   6)
 * predicate gedefinieerd:                Verkeerde type argument.
                                                               (line  56)
@@ -17827,13 +17839,13 @@ Index
 * Speciale vorm:                         Complicaties.        (line  12)
 * Storing and cutting text:              Knippen en opslaan van tekst.
                                                               (line   6)
-* string gedefinieerd:                   Lisp atoms.          (line  66)
+* string gedefinieerd:                   Lisp atoms.          (line  67)
 * substring:                             Data typen.          (line  21)
 * switch-to-buffer:                      Van buffer verwisselen.
                                                               (line   6)
 * Switching to a buffer:                 Van buffer verwisselen.
                                                               (line   6)
-* Symbolische expressies, geïntroduceerd: Lisp atoms.         (line  26)
+* Symbolische expressies, geïntroduceerd: Lisp atoms.         (line  27)
 * Symbols as a Chest of Drawers:         Symbolen als ladekast.
                                                               (line   6)
 * Symbool zonder functie foutmelding:    Void functie.        (line   6)
@@ -17841,7 +17853,7 @@ Index
 * Symboolnamen:                          Namen en definities. (line   6)
 * Syntax categories and tables:          Syntax.              (line   6)
 * Tabs, preventing:                      Indent Tabs Mode.    (line   6)
-* Tekst tussen dubbele aanhalingstekens: Lisp atoms.          (line  62)
+* Tekst tussen dubbele aanhalingstekens: Lisp atoms.          (line  63)
 * Tellen:                                Tellen.              (line   6)
 * teruggegeven waarde uitgelegd:         Hoe de interpreter werkt.
                                                               (line   6)
@@ -17880,7 +17892,7 @@ Index
                                                               (line   6)
 * Voorbeeldvariabele, fill-column:       fill-column voorbeeld.
                                                               (line   6)
-* vorm gedefinieerd:                     Lisp atoms.          (line  26)
+* vorm gedefinieerd:                     Lisp atoms.          (line  27)
 * what-line:                             what-line.           (line   6)
 * while:                                 while.               (line   6)
 * Whole graph printing:                  De gehele grafiek afdrukken.
@@ -17934,326 +17946,327 @@ Over de auteur
 
 
 Tag Table:
-Node: Top1626
-Node: Voorwoord24325
-Node: Waarom25744
-Node: Over het lezen van deze tekst26407
-Node: Doelgroep28739
-Node: Geschiedenis van Lisp31742
-Node: Opmerking voor beginners32660
-Node: Dank35387
-Node: Lijsten verwerken35979
-Ref: Lijsten verwerken-Footnote-137435
-Node: Lips Lists37591
-Node: Genummerde lijsten38509
-Node: Lisp atoms39674
-Node: Whitespace in lijsten43571
-Node: Typen van lists44913
-Node: Draai een programma46130
-Ref: Draai een programma-Footnote-148672
-Node: Fouten maken48816
-Node: Namen en definities54000
-Node: Lisp interpreter55952
-Node: Complicaties57143
-Node: Byte compiling59375
-Node: Evaluatie60472
-Node: Hoe de interpreter werkt61103
-Node: Geneste lijsten evalueren62480
-Node: Variabelen65158
-Node: fill-column voorbeeld66781
-Node: Void functie68462
-Node: Void variabele69734
-Node: Argumenten71649
-Ref: Argumenten-Footnote-173456
-Node: Data typen74328
-Node: Argumenten als variabele of als lijst76564
-Node: Variabel aantal argumenten78299
-Node: Verkeerde type argument79195
-Ref: Verkeerde type argument-Footnote-182979
-Node: boodschap83054
-Ref: boodschap-Footnote-187276
-Node: setq87481
-Node: Setq gebruiken88206
-Node: Tellen91345
-Node: Samenvatting93378
-Node: Foutmelding oefeningen95204
-Node: Oefenen van evaluatie95734
-Node: Hoe te evalueren96959
-Node: Buffer namen98475
-Node: Buffers pakken104319
-Ref: Buffers pakken-Footnote-1106902
-Node: Van buffer verwisselen107127
-Ref: Van buffer verwisselen-Footnote-1110531
-Ref: Van buffer verwisselen-Footnote-2110817
-Node: Buffer grootte en locatie111570
-Node: Evaluatie oefening113750
-Node: Defuns schrijven114041
-Node: Primitieve functies115418
-Node: defun116591
-Node: Installeer123075
-Node: Effect van installatie124472
-Node: Een defun wijzigen125313
-Node: Interactief127039
-Node: Interactieve vermenigvuldig-met-zeven128147
-Node: vermenigvuldig-met-zeven in detail130049
-Node: Interactieve operaties132811
-Node: Permanent installeren136027
-Node: let138167
-Node: Voorkom verwarring139715
-Ref: Voorkom verwarring-Footnote-1141801
-Node: Delen van een let expressie141929
-Node: Voorbeeld let expressie143556
-Ref: Voorbeeld let expressie-Footnote-1145412
-Node: Niet-geïnitialiseerde let variabelen145667
-Node: How let Binds Variables147350
-Node: Lexical en dynamische binding verschillen148580
-Node: Lexical vs Dynamic Binding Example150408
-Node: if152375
-Node: if in meer detail153241
-Node: type-of-animal in detail156065
-Node: else158660
-Node: Waar en onwaarheid161564
-Node: nil uitgelegd162509
-Node: save-excursion164606
-Node: Point en mark165373
-Node: Template voor save-excursion168403
-Node: Terugblik169678
-Node: defun oefeningen177323
-Node: Buffer rondleiding177771
-Node: Meer vinden178926
-Ref: Meer vinden-Footnote-1181828
-Node: simplified-beginning-of-buffer182020
-Node: mark-whole-buffer186521
-Node: mark-whole-buffer overzicht187379
-Node: Body van mark-whole-buffer188772
-Node: append-to-buffer191900
-Node: append-to-buffer overzicht192625
-Node: append interactief195374
-Node: append-to-buffer body197862
-Node: append save-excursion200029
-Ref: let* introduced201836
-Node: Buffer gerelateerde terugblik205429
-Node: Buffer oefeningen207709
-Node: Meer complex208208
-Node: copy-to-buffer209289
-Ref: copy-to-buffer-Footnote-1212067
-Node: insert-buffer212259
-Node: insert-buffer code213655
-Node: insert-buffer interactief214658
-Node: Read-only buffer215200
-Node: b for interactief215801
-Node: insert-buffer body216966
-Node: if en or218183
-Node: Voeg or in221237
-Node: Voeg let in223589
-Node: Nieuw insert-buffer227428
-Node: beginning-of-buffer228645
-Node: Optionele argumenten230299
-Node: beginning-of-buffer opt arg233698
-Node: Ontrafelen beginning-of-buffer234692
-Node: In geval van een groot buffer235959
-Node: In geval van een klein buffer238516
-Node: beginning-of-buffer compleet240184
-Node: Tweede buffer gerelateerde terugblik243217
-Node: optionele oefening244941
-Node: Versmallen en verbreden245436
-Node: Voordelen van versmallen246078
-Node: save-restriction247962
-Node: what-line249959
-Node: versmal oefening254192
-Node: car cdr en cons255224
-Node: Vreemde namen256422
-Node: car en cdr257128
-Node: cons261651
-Node: Bouw een lijst262667
-Ref: Bouw een lijst-Footnote-1264227
-Node: lengte264411
-Node: nthcdr265951
-Node: nth268865
-Node: setcar270255
-Node: setcdr273057
-Node: cons oefening274644
-Node: Knippen en opslaan van tekst275032
-Node: Tekst opslaan276403
-Node: zap-to-char278438
-Node: Complete zap-to-char279045
-Node: zap-to-char interactief281741
-Node: zap-to-char body283258
-Node: search-forward284833
-Node: progn287896
-Node: Samenvatting zap-to-char289642
-Node: kill-region290812
-Node: Complete kill-region291818
-Node: condition-case296056
-Node: Lisp macro298641
-Node: copy-region-as-kill301124
-Node: Complete copy-region-as-kill302041
-Node: copy-region-as-kill body304854
-Node: last-command en this-command305946
-Node: kill-append functie308255
-Node: kill-new functie312432
-Node: Uitwijding naar C323028
-Node: defvar328432
-Node: Inzien huidige variabele waarde330226
-Node: defvar en asterisk332151
-Node: cons en search-fwd terugblik334011
-Node: zoek oefening337066
-Node: Implementatie van lijsten337830
-Node: Lijsten uitgetekend339009
-Node: Symbolen als ladekast345232
-Node: Lijst oefening347265
-Node: Yanken347644
-Node: Kill ring overzicht348988
-Node: kill-ring-yank-pointer350700
-Node: yank nthcdr oefeningen353128
-Node: Loops en recursie353886
-Ref: Loops en recursie-Footnote-1355038
-Node: while355511
-Node: Looping met while356921
-Node: Loop voorbeeld358732
-Node: print-elements-of-list362187
-Node: Incrementele loop364732
-Node: Incrementele loop details365308
-Node: Incrementeel voorbeeld366703
-Node: Inc voorbeeld onderdelen369095
-Node: inc voorbeeld samengesteld373115
-Node: Decrementele loop376699
-Node: Decerementeel voorbeeld378165
-Node: Dec voorbeeld onderdelen379657
-Node: Dec voorbeeld samengesteld381716
-Node: dolist dotimes383970
-Node: dolist384802
-Node: dotimes387966
-Node: Recursie389480
-Node: Robots bouwen390692
-Node: Recursive definitie onderdelen392399
-Node: Recursie met lijst394837
-Node: Recursieve driehoek functie398430
-Node: Recursief voorbeeld arg van 1 of 2399806
-Node: Recursief voorbeeld arg van 3 of 4402086
-Node: Recursie met cond405132
-Node: Recursieve patronen407520
-Node: Every408013
-Node: Accumulate410467
-Node: Bewaar411760
-Node: Geen uitstel413670
-Node: Geen uitstel oplossing416374
-Ref: Geen uitstel oplossing-Footnote-1420347
-Ref: Geen uitstel oplossing-Footnote-2420453
-Node: Looping oefening420964
-Node: Rexexp zoeken422201
-Node: sentence-end424228
-Node: re-search-forward428145
-Node: forward-sentence430691
-Node: Complete forward-sentence431457
-Node: fwd-sentence while loops435009
-Node: fwd-sentence re-search438658
-Node: forward-paragraph440826
-Node: forward-paragraph in het kort442642
-Node: fwd-para let444112
-Node: fwd-para while450792
-Node: Regexp terugblik459374
-Node: re-search oefeningen461803
-Node: Woorden tellen462589
-Node: Waarom woorden tellen463347
-Node: count-words-example464393
-Node: Ontwerp count-words-example465677
-Node: Wiite ruimte bug472218
-Node: recursive-count-words481811
-Node: Tellen voorbeeld493892
-Node: Woorden in een defun494273
-Node: Verdeel en heers496014
-Node: Woorden en symbolen497245
-Node: Syntax499304
-Node: count-words-in-defun502940
-Node: Enkele defuns509239
-Node: Een bestand vinden511631
-Node: lengths-list-file514273
-Node: Enkele bestanden519548
-Node: lengths-list-many-files520309
-Node: append523101
-Node: Enkele bestanden recursief523738
-Node: De data voorbereiden526578
-Node: Data in detail te tonen527707
-Node: Sorteren528631
-Node: Bestanden lijst530309
-Ref: Bestanden lijst-Footnote-1537842
-Node: Functiedefinities tellen538059
-Node: Een grafiek klaarmaken547383
-Node: Kolommen van een grafiek548712
-Node: graph-body-print562350
-Node: recursive-graph-body-print567155
-Node: Afgedrukte assen569845
-Node: Lijngrafiek oefening570592
-Node: Initialisatie van Emacs570799
-Node: Default configuratie572289
-Ref: Default configuratie-Footnote-1574273
-Node: Site-wide init574589
-Node: defcustom576651
-Node: Een init bestand beginnen582534
-Node: Tekst en auto-fill584916
-Ref: Tekst en auto-fill-Footnote-1588932
-Ref: Tekst en auto-fill-Footnote-2589216
-Node: Mail aliasen589477
-Node: Indent Tabs Mode590403
-Node: Key bindings591348
-Node: Keymaps596122
-Node: Bestanden laden598782
-Node: Autoload602064
-Node: Eenvoudige uitbreiding604952
-Ref: Eenvoudige uitbreiding-Footnote-1607517
-Node: X11 kleuren607806
-Ref: X11 kleuren-Footnote-1609624
-Node: Diverse609778
-Node: Mode line614000
-Node: Debuggen.619536
-Node: debug620432
-Node: debug-on-entry623564
-Node: debug-on-quit627169
-Node: edebug628206
-Node: Debuggen oefeningen632328
-Node: Conclusie634093
-Node: de-de639451
-Node: Killring642241
-Node: Wat de killring doet643058
-Node: current-kill644576
-Node: Code voor current-kill645274
-Node: current-kill begrijpen648106
-Node: Body van current-kill648906
-Node: Uitwijding over fout652057
-Node: Het element vaststellen653232
-Node: yank656939
-Node: yank-pop660155
-Node: ring bestand662690
-Node: Volledige grafiek663067
-Node: Gelabeld voorbeeld663907
-Node: print-graph varlist665904
-Node: print-Y-axis667627
-Node: print-Y-axis in detail668480
-Node: Hoogte van label669290
-Node: Bereken het restant671307
-Node: Y-as element675173
-Node: Y-axis-column678936
-Node: print-Y-axis enalaatste680548
-Node: print-X-axis682533
-Node: Overeenkomsten verschillen683851
-Node: X-as tic marks684684
-Node: De gehele grafiek afdrukken691689
-Node: De finale versie692805
-Node: Test print-graph697060
-Node: Woorden in defuns grafisch weergeven698744
-Node: lambda701368
-Node: mapcar703052
-Node: Een andere bug705111
-Node: Finale afgedrukte grafiek710640
-Node: Vrije software en vrije handleidingen711591
-Node: GNU Free Documentation License717907
-Node: Index743096
-Node: Over de auteur781989
+Node: Top1630
+Node: Voorwoord24335
+Node: Waarom25798
+Node: Over het lezen van deze tekst26461
+Node: Doelgroep28801
+Node: Geschiedenis van Lisp31804
+Node: Opmerking voor beginners32708
+Node: Dank35445
+Node: Lijsten verwerken36040
+Ref: Lijsten verwerken-Footnote-137497
+Node: Lisp lijsten37653
+Node: Genummerde lijsten38578
+Node: Lisp atoms39746
+Node: Whitespace in lijsten43657
+Node: Typen van lists45006
+Node: Draai een programma46225
+Ref: Draai een programma-Footnote-148778
+Node: Fouten maken48922
+Node: Namen en definities54122
+Node: Lisp interpreter56076
+Node: Complicaties57300
+Node: Byte compiling59549
+Node: Evaluatie60679
+Node: Hoe de interpreter werkt61310
+Node: Geneste lijsten evalueren62683
+Node: Variabelen65370
+Node: fill-column voorbeeld66987
+Node: Void functie68674
+Node: Void variabele69957
+Node: Argumenten71883
+Ref: Argumenten-Footnote-173689
+Node: Data typen74561
+Node: Argumenten als variabele of als lijst76798
+Node: Variabel aantal argumenten78539
+Node: Verkeerde type argument79435
+Ref: Verkeerde type argument-Footnote-183230
+Node: boodschap83305
+Ref: boodschap-Footnote-187529
+Node: setq87734
+Node: Setq gebruiken88459
+Node: Tellen91693
+Node: Samenvatting93755
+Node: Foutmelding oefeningen95758
+Node: Oefenen van evaluatie96314
+Node: Hoe te evalueren97538
+Node: Buffer namen99132
+Node: Buffers pakken105055
+Ref: Buffers pakken-Footnote-1107638
+Node: Van buffer verwisselen107863
+Ref: Van buffer verwisselen-Footnote-1111267
+Ref: Van buffer verwisselen-Footnote-2111553
+Node: Buffer grootte en locatie112306
+Node: Evaluatie oefening114486
+Node: Defuns schrijven114777
+Node: Primitieve functies116154
+Node: defun117327
+Node: Installeer123811
+Node: Effect van installatie125208
+Node: Een defun wijzigen126049
+Node: Interactief127773
+Node: Interactieve vermenigvuldig-met-zeven128881
+Node: vermenigvuldig-met-zeven in detail130783
+Node: Interactieve operaties133545
+Node: Permanent installeren136761
+Node: let138901
+Node: Voorkom verwarring140449
+Ref: Voorkom verwarring-Footnote-1142535
+Node: Delen van een let expressie142663
+Node: Voorbeeld let expressie144290
+Ref: Voorbeeld let expressie-Footnote-1146146
+Node: Niet-geïnitialiseerde let variabelen146401
+Node: How let Binds Variables148084
+Node: Lexical en dynamische binding verschillen149314
+Node: Lexical vs Dynamic Binding Example151142
+Node: if153109
+Node: if in meer detail153975
+Node: type-of-animal in detail156799
+Node: else159394
+Node: Waar en onwaarheid162298
+Node: nil uitgelegd163243
+Node: save-excursion165340
+Node: Point en mark166107
+Node: Template voor save-excursion169137
+Node: Terugblik170412
+Node: defun oefeningen178057
+Node: Buffer rondleiding178507
+Node: Meer vinden179662
+Ref: Meer vinden-Footnote-1182564
+Node: simplified-beginning-of-buffer182756
+Node: mark-whole-buffer187257
+Node: mark-whole-buffer overzicht188115
+Node: Body van mark-whole-buffer189508
+Node: append-to-buffer192636
+Node: append-to-buffer overzicht193361
+Node: append interactief196110
+Node: append-to-buffer body198608
+Node: append save-excursion200775
+Ref: let* introduced202582
+Node: Buffer gerelateerde terugblik206175
+Node: Buffer oefeningen208455
+Node: Meer complex208956
+Node: copy-to-buffer210037
+Ref: copy-to-buffer-Footnote-1212815
+Node: insert-buffer213007
+Node: insert-buffer code214403
+Node: insert-buffer interactief215406
+Node: Read-only buffer215948
+Node: b for interactief216549
+Node: insert-buffer body217714
+Node: if en or218931
+Node: Voeg or in221985
+Node: Voeg let in224337
+Node: Nieuw insert-buffer228176
+Node: beginning-of-buffer229393
+Node: Optionele argumenten231047
+Node: beginning-of-buffer opt arg234446
+Node: Ontrafelen beginning-of-buffer235440
+Node: In geval van een groot buffer236707
+Node: In geval van een klein buffer239264
+Node: beginning-of-buffer compleet240932
+Node: Tweede buffer gerelateerde terugblik243965
+Node: optionele oefening245689
+Node: Versmallen en verbreden246184
+Node: Voordelen van versmallen246826
+Node: save-restriction248710
+Node: what-line250707
+Node: versmal oefening254940
+Node: car cdr en cons255972
+Node: Vreemde namen257170
+Node: car en cdr257876
+Node: cons262399
+Node: Bouw een lijst263415
+Ref: Bouw een lijst-Footnote-1264975
+Node: lengte265159
+Node: nthcdr266699
+Node: nth269613
+Node: setcar271003
+Node: setcdr273805
+Node: cons oefening275392
+Node: Knippen en opslaan van tekst275780
+Node: Tekst opslaan277151
+Node: zap-to-char279186
+Node: Complete zap-to-char279793
+Node: zap-to-char interactief282489
+Node: zap-to-char body284006
+Node: search-forward285581
+Node: progn288644
+Node: Samenvatting zap-to-char290390
+Node: kill-region291560
+Node: Complete kill-region292566
+Node: condition-case296804
+Node: Lisp macro299389
+Node: copy-region-as-kill301872
+Node: Complete copy-region-as-kill302789
+Node: copy-region-as-kill body305602
+Node: last-command en this-command306694
+Node: kill-append functie309003
+Node: kill-new functie313180
+Node: Uitwijding naar C323776
+Node: defvar329180
+Node: Inzien huidige variabele waarde330974
+Node: defvar en asterisk332899
+Node: cons en search-fwd terugblik334759
+Node: zoek oefening337814
+Node: Implementatie van lijsten338578
+Node: Lijsten uitgetekend339757
+Node: Symbolen als ladekast345980
+Node: Lijst oefening348013
+Node: Yanken348392
+Node: Kill ring overzicht349736
+Node: kill-ring-yank-pointer351448
+Node: yank nthcdr oefeningen353876
+Node: Loops en recursie354634
+Ref: Loops en recursie-Footnote-1355786
+Node: while356259
+Node: Looping met while357669
+Node: Loop voorbeeld359480
+Node: print-elements-of-list362935
+Node: Incrementele loop365480
+Node: Incrementele loop details366056
+Node: Incrementeel voorbeeld367451
+Node: Inc voorbeeld onderdelen369843
+Node: inc voorbeeld samengesteld373863
+Node: Decrementele loop377447
+Node: Decerementeel voorbeeld378913
+Node: Dec voorbeeld onderdelen380405
+Node: Dec voorbeeld samengesteld382464
+Node: dolist dotimes384718
+Node: dolist385550
+Node: dotimes388714
+Node: Recursie390228
+Node: Robots bouwen391440
+Node: Recursive definitie onderdelen393147
+Node: Recursie met lijst395585
+Node: Recursieve driehoek functie399178
+Node: Recursief voorbeeld arg van 1 of 2400554
+Node: Recursief voorbeeld arg van 3 of 4402834
+Node: Recursie met cond405880
+Node: Recursieve patronen408268
+Node: Every408761
+Node: Accumulate411215
+Node: Bewaar412508
+Node: Geen uitstel414418
+Node: Geen uitstel oplossing417122
+Ref: Geen uitstel oplossing-Footnote-1421095
+Ref: Geen uitstel oplossing-Footnote-2421201
+Node: Looping oefening421712
+Node: Rexexp zoeken422949
+Node: sentence-end424976
+Node: re-search-forward428893
+Node: forward-sentence431439
+Node: Complete forward-sentence432205
+Node: fwd-sentence while loops435757
+Node: fwd-sentence re-search439406
+Node: forward-paragraph441574
+Node: forward-paragraph in het kort443390
+Node: fwd-para let444860
+Node: fwd-para while451540
+Node: Regexp terugblik460122
+Node: re-search oefeningen462551
+Node: Woorden tellen463337
+Node: Waarom woorden tellen464095
+Node: count-words-example465141
+Node: Ontwerp count-words-example466425
+Node: Wiite ruimte bug472966
+Node: recursive-count-words482559
+Node: Tellen voorbeeld494640
+Node: Woorden in een defun495021
+Node: Verdeel en heers496762
+Node: Woorden en symbolen497993
+Node: Syntax500052
+Node: count-words-in-defun503688
+Node: Enkele defuns509987
+Node: Een bestand vinden512379
+Node: lengths-list-file515021
+Node: Enkele bestanden520296
+Node: lengths-list-many-files521057
+Node: append523849
+Node: Enkele bestanden recursief524486
+Node: De data voorbereiden527326
+Node: Data in detail te tonen528455
+Node: Sorteren529379
+Node: Bestanden lijst531057
+Ref: Bestanden lijst-Footnote-1538590
+Node: Functiedefinities tellen538807
+Node: Een grafiek klaarmaken548131
+Node: Kolommen van een grafiek549460
+Node: graph-body-print563098
+Node: recursive-graph-body-print567903
+Node: Afgedrukte assen570593
+Node: Lijngrafiek oefening571340
+Node: Initialisatie van Emacs571547
+Node: Default configuratie573037
+Ref: Default configuratie-Footnote-1575021
+Node: Site-wide init575337
+Node: defcustom577399
+Node: Een init bestand beginnen583282
+Node: Tekst en auto-fill585664
+Ref: Tekst en auto-fill-Footnote-1589680
+Ref: Tekst en auto-fill-Footnote-2589964
+Node: Mail aliasen590225
+Node: Indent Tabs Mode591151
+Node: Key bindings592096
+Node: Keymaps596870
+Node: Bestanden laden599530
+Node: Autoload602812
+Node: Eenvoudige uitbreiding605700
+Ref: Eenvoudige uitbreiding-Footnote-1608265
+Node: X11 kleuren608554
+Ref: X11 kleuren-Footnote-1610372
+Node: Diverse610526
+Node: Mode line614748
+Node: Debuggen.620284
+Node: debug621180
+Node: debug-on-entry624312
+Node: debug-on-quit627917
+Node: edebug628954
+Node: Debuggen oefeningen633076
+Node: Conclusie634841
+Node: de-de640199
+Node: Killring642989
+Node: Wat de killring doet643806
+Node: current-kill645324
+Node: Code voor current-kill646022
+Node: current-kill begrijpen648854
+Node: Body van current-kill649654
+Node: Uitwijding over fout652805
+Node: Het element vaststellen653980
+Node: yank657687
+Node: yank-pop660903
+Node: ring bestand663438
+Node: Volledige grafiek663815
+Node: Gelabeld voorbeeld664655
+Node: print-graph varlist666652
+Node: print-Y-axis668375
+Node: print-Y-axis in detail669228
+Node: Hoogte van label670038
+Node: Bereken het restant672055
+Node: Y-as element675921
+Node: Y-axis-column679684
+Node: print-Y-axis enalaatste681296
+Node: print-X-axis683281
+Node: Overeenkomsten verschillen684599
+Node: X-as tic marks685432
+Node: De gehele grafiek afdrukken692437
+Node: De finale versie693553
+Node: Test print-graph697808
+Node: Woorden in defuns grafisch weergeven699492
+Node: lambda702116
+Node: mapcar703800
+Node: Een andere bug705859
+Node: Finale afgedrukte grafiek711388
+Node: Vrije software en vrije handleidingen712339
+Node: GNU Free Documentation License718655
+Node: Index743844
+Node: Over de auteur782737
 
 End Tag Table
 
 
 Local Variables:
 coding: utf-8
+Info-documentlanguage: nl
 End:
