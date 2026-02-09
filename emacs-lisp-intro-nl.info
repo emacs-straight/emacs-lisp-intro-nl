@@ -2276,11 +2276,11 @@ File: emacs-lisp-intro-nl.info,  Node: Oefenen van evaluatie,  Next: Defuns schr
 Voordat je leert hoe je een functiedefinitie in Emacs Lisp schrijft, is
 het zinnig om wat tijd te besteden aan het evalueren van diverse
 expressies die al zijn geschreven.  Deze expressies zijn lijsten met de
-functies al hun eerste (en vaak enige) element.  Omdat sommige
-buffer-geassocieerd functies zowel eenvoudig als interessant zijn,
+functies als hun eerste (en vaak enige) element.  Omdat sommige
+buffer-geassocieerde functies zowel eenvoudig als interessant zijn,
 beginnen we met die.  In deze sectie evalueren we enkele daarvan.  In
 een andere sectie bestuderen we de code van verscheidene andere
-buffer-gerelateerde functie om te zien hoe die zijn geschreven.
+buffer-gerelateerde functies om te zien hoe die zijn geschreven.
 
 * Menu:
 
@@ -2335,7 +2335,7 @@ De twee functies ‘buffer-name’ en ‘buffer-file-name’ tonen het verschil
 tussen een buffer en een bestand.  Wanneer je volgende expressie
 evalueert, ‘(buffer-name)’, verschijnt de naam van het buffer in het
 echogebied.  Wanneer je ‘(buffer-file-name)’ evalueert, verschijnt de
-naam van het bestand waar de buffer naar refereert in het echogebied.
+naam van het bestand waar het buffer naar refereert in het echogebied.
 Meestal is de naam die ‘(buffer-name)’ teruggeeft hetzelfde als de naam
 van het bestand waarnaar het refereert, en is de naam die
 ‘(buffer-file-name)’ teruggeeft de volledige padnaam van het bestand.
@@ -2345,10 +2345,10 @@ bestand is informatie permanent opgeslagen op de computer (tenzij je het
 verwijdert).  Een buffer daarentegen is informatie binnen Emacs, die
 verdwijnt aan het einde van de editing sessie (of wanneer je het buffer
 killt).  Meestal bevat een buffer informatie die je van een bestand
-gekopieerd hebt, we zeggen dat de buffer het bestand “bezoekt”.  Deze
+gekopieerd hebt, we zeggen dat het buffer het bestand “bezoekt”.  Deze
 kopie is waar je op werkt en wijzigt.  Veranderingen in het buffer
 wijzigen het bestand niet, totdat je het buffer opslaat.  Wanneer je het
-buffer opslaat, wordt de buffer gekopieerd naar het bestand en zo
+buffer opslaat, wordt het buffer gekopieerd naar het bestand en zo
 permanent opgeslagen.
 
    Wanneer je dit in Info leest binnen Emacs, kan je elk van de volgende
@@ -2363,80 +2363,82 @@ Wanneer ik dit in Info doe, geeft evaluatie van ‘(buffer-name)’ de
 waarde ‘"*info*"’ terug, en is de waarde die de evaluatie van
 ‘(buffer-file-name)’ teruggeeft ‘nil’.
 
-   On the other hand, while I am writing this document, the value
-returned by evaluating ‘(buffer-name)’ is ‘"introduction.texinfo"’, and
-the value returned by evaluating ‘(buffer-file-name)’ is
+   Aan de andere kant, terwijl ik dit document schrijf is de waarde die
+het evalueren van ‘(buffer-name)’ teruggeeft, ‘"introduction.texinfo"’
+en de waarde die de evaluatie van ‘(buffer-file-name)’ teruggeeft
 ‘"/gnu/work/intro/introduction.texinfo"’.
 
-   The former is the name of the buffer and the latter is the name of
-the file.  In Info, the buffer name is ‘"*info*"’.  Info does not point
-to any file, so the result of evaluating ‘(buffer-file-name)’ is ‘nil’.
-The symbol ‘nil’ is from the Latin word for "nothing"; in this case, it
-means that the buffer is not associated with any file.  (In Lisp, ‘nil’
-is also used to mean "false" and is a synonym for the empty list, ‘()’.)
+   De eerste is de naam van het buffer en het tweede is de naam van het
+bestand.  In Info is de naam van het buffer ‘"*info*"’.  Info wijst niet
+naar een bestand, waardoor ‘nil’ het resultaat van de evaluatie
+‘(buffer-file-name)’ is.  Het symbool ‘nil’ is van het Latijnse woord
+for "niets", in dit geval betekent het dat het buffer met geen enkel
+bestand geassocieerd is.  (In Lisp wordt ‘nil’ ook gebruikt om "onwaar"
+te betekenen en is synoniem voor de lege lijst, ‘()’.)
 
-   When I am writing, the name of my buffer is ‘"introduction.texinfo"’.
-The name of the file to which it points is
-‘"/gnu/work/intro/introduction.texinfo"’.
+   Wanneer ik schrijf is de naam van mijn buffer
+‘"introduction.texinfo"’.  De naam van het bestand waar het naar wijst
+is ‘"/gnu/work/intro/introduction.texinfo"’.
 
-   (In the expressions, the parentheses tell the Lisp interpreter to
-treat ‘buffer-name’ and ‘buffer-file-name’ as functions; without the
-parentheses, the interpreter would attempt to evaluate the symbols as
-variables.  *Note Variables::.)
+   (In de expressies vertellen de haakjes aan de Lisp interpreter om
+‘buffer-name’ en ‘buffer-file-name’ als functies te behandelen.  Zonder
+de haakjes zou de interpreter proberen de symbolen als variabelen te
+behandelen.  *Note Variabelen::.)
 
-   In spite of the distinction between files and buffers, you will often
-find that people refer to a file when they mean a buffer and vice versa.
-Indeed, most people say, "I am editing a file," rather than saying, "I
-am editing a buffer which I will soon save to a file."  It is almost
-always clear from context what people mean.  When dealing with computer
-programs, however, it is important to keep the distinction in mind,
-since the computer is not as smart as a person.
+   Ondanks het onderscheid tussen bestanden en buffers zie je vaak dat
+mensen aan een bestand refereren wanneer ze een buffer bedoelen en vice
+versa.  Inderdaad zeggen de meeste mensen "ik edit een bestand" in
+plaats van "ik edit een buffer dat ik binnenkort naar een bestand ga
+saven".  Het is vrijwel altijd duidelijk van de context wat mensen
+bedoelen.  Wanneer we met computerprogramma's werken is het belangrijk
+het onderscheid in gedachten te houden, want computers zijn niet zo slim
+als mensen.
 
-   The word "buffer", by the way, comes from the meaning of the word as
-a cushion that deadens the force of a collision.  In early computers, a
-buffer cushioned the interaction between files and the computer's
-central processing unit.  The drums or tapes that held a file and the
-central processing unit were pieces of equipment that were very
-different from each other, working at their own speeds, in spurts.  The
-buffer made it possible for them to work together effectively.
-Eventually, the buffer grew from being an intermediary, a temporary
-holding place, to being the place where work is done.  This
-transformation is rather like that of a small seaport that grew into a
-great city: once it was merely the place where cargo was warehoused
-temporarily before being loaded onto ships; then it became a business
-and cultural center in its own right.
+   Overigens komt het woord "buffer" van de betekenis van het woord als
+een "kussen dat de kracht van een botsing opvangt".  In de eerste
+computers verzachtte een buffer de interactie tussen bestanden en de
+centrale verwerkingseenheid.  De drums of tapes die het bestand bevatten
+en de centrale verwerkingseenheid waren onderdelen van de apparatuur die
+zeer verschillend van elkaar waren en op hun eigen snelheid werkten, in
+stoten.  Uiteindelijk groeide het buffer van een tussenpersoon, een
+tijdelijke opslagplaats uit naar de plaats waar het werk wordt gedaan.
+Deze transformatie is ongeveer zoals een kleine zeehaven uitgroeide naar
+een grote stad.  Eens was het slechts de plaats waar lading tijdelijk in
+magazijnen werd opgeslagen voordat het op schepen werd verladen en
+daarna een zakelijk en cultureel centrum op zichzelf werd.
 
-   Not all buffers are associated with files.  For example, a
-‘*scratch*’ buffer does not visit any file.  Similarly, a ‘*Help*’
-buffer is not associated with any file.
+   Niet alle buffers zijn geassocieerd met bestanden.  Bijvoorbeeld een
+‘*scratch*’-buffer bezoekt geen enkel bestand.  Op dezelfde manier is
+het ‘*Help*’-buffer met geen enkel bestand geassocieerd.
 
-   In the old days, when you lacked a ‘~/.emacs’ file and started an
-Emacs session by typing the command ‘emacs’ alone, without naming any
-files, Emacs started with the ‘*scratch*’ buffer visible.  Nowadays, you
-will see a splash screen.  You can follow one of the commands suggested
-on the splash screen, visit a file, or press ‘q’ to quit the splash
-screen and reach the ‘*scratch*’ buffer.
+   Wanneer je vroeger geen ‘~/.emacs’ bestand had en een Emacs sessie
+startte door het typen van alleen het commando ‘emacs’, zonder enig
+bestand te noemen, startte Emacs met het ‘*scratch*’ buffer zichtbaar.
+Tegenwoordig zie je een startscherm.  Je kunt een van de commando's
+volgen die op het startscherm gesuggereerd worden, een bestand bezoeken
+of op ‘q’ drukken om het startscherm te sluiten en het
+‘*scratch*’-buffer te bereiken.
 
-   If you switch to the ‘*scratch*’ buffer, type ‘(buffer-name)’,
-position the cursor after it, and then type ‘C-x C-e’ to evaluate the
-expression.  The name ‘"*scratch*"’ will be returned and will appear in
-the echo area.  ‘"*scratch*"’ is the name of the buffer.  When you type
-‘(buffer-file-name)’ in the ‘*scratch*’ buffer and evaluate that, ‘nil’
-will appear in the echo area, just as it does when you evaluate
-‘(buffer-file-name)’ in Info.
+   Schakel over naar het ‘*scratch*’-buffer en typ ‘(buffer-name)’,
+plaats de cursor direct er achter, en typ vervolgens ‘C-x C-e’ om de
+expressie te evalueren.  De naam ‘"*scratch*"’ wordt teruggegeven en
+verschijnt in het echogebied.  ‘"*scratch*"’ is de naam van het buffer.
+Wanneer je ‘(buffer-file-name)’ in het ‘*scratch*’ buffer typt en dat
+evalueert, verschijnt ‘nil’ in het echogebied, net zoals dat gebeurt
+wanneer je ‘(buffer-file-name)’ in Info evalueert.
 
-   Incidentally, if you are in the ‘*scratch*’ buffer and want the value
-returned by an expression to appear in the ‘*scratch*’ buffer itself
-rather than in the echo area, type ‘C-u C-x C-e’ instead of ‘C-x C-e’.
-This causes the value returned to appear after the expression.  The
-buffer will look like this:
+   Overigens, als je in het ‘*scratch*’ buffer bent en door een
+expressie teruggeven waarde in het ‘*scratch*’ wilt laten verschijnen in
+plaats van het echogebied, typ je ‘C-u C-x C-e’ in plaats van ‘C-x C-e’.
+Dit zorgt dat de teruggegeven waarde achter de expressie verschijnt.
+Het buffer ziet er zo uit:
 
      (buffer-name)"*scratch*"
 
-You cannot do this in Info since Info is read-only and it will not allow
-you to change the contents of the buffer.  But you can do this in any
-buffer you can edit; and when you write code or documentation (such as
-this book), this feature is very useful.
+Je kunt dit niet in Info doen, omdat Info read-only is en je niet
+toestaat de inhoud van het buffer te wijzigen.  Maar je kunt dit in elk
+buffer doen dat je kunt editen.  Wanneer je code schrijft of
+documentatie (zoals dit boek), is deze eigenschap erg nuttig.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Buffers pakken,  Next: Van buffer verwisselen,  Prev: Buffer namen,  Up: Oefenen van evaluatie
@@ -2444,61 +2446,63 @@ File: emacs-lisp-intro-nl.info,  Node: Buffers pakken,  Next: Van buffer verwiss
 2.2 Buffers pakken
 ==================
 
-The ‘buffer-name’ function returns the _name_ of the buffer; to get the
-buffer _itself_, a different function is needed: the ‘current-buffer’
-function.  If you use this function in code, what you get is the buffer
-itself.
+De ‘buffer-name’-functie geeft de _naam_ van het buffer.  Om het buffer
+_zelf_ te krijgen is een andere functie benodigd, de functie
+‘current-buffer’.  Wanneer je deze functie in code gebruikt krijg je het
+buffer zelf.
 
-   A name and the object or entity to which the name refers are
-different from each other.  You are not your name.  You are a person to
-whom others refer by name.  If you ask to speak to George and someone
-hands you a card with the letters ‘G’, ‘e’, ‘o’, ‘r’, ‘g’, and ‘e’
-written on it, you might be amused, but you would not be satisfied.  You
-do not want to speak to the name, but to the person to whom the name
-refers.  A buffer is similar: the name of the scratch buffer is
-‘*scratch*’, but the name is not the buffer.  To get a buffer itself,
-you need to use a function such as ‘current-buffer’.
+   Een naam en het object of entiteit waar de naam aan refereert zijn
+van elkaar verschillend.  Jij bent niet je naam.  Je bent een persoon
+die anderen bij naam noemen.  Wanneer je vraagt om met George te spreken
+en iemand geeft je een kaart met de letters ‘G’, ‘e’, ‘o’, ‘r’, ‘g’ en
+‘e’, dan kan dat je amuseren, maar je zal er niet tevreden mee zijn.  Je
+wilt niet met de naam spreken, maar met de persoon die met die naam
+genoemd is.  Een buffer is vergelijkbaar: de naam van het scratch-buffer
+is ‘*scratch*’, maar de naam is niet het buffer.  Om het buffer zelf te
+krijgen, heb je een functie nodig zoals ‘current-buffer’.
 
-   However, there is a slight complication: if you evaluate
-‘current-buffer’ in an expression on its own, as we will do here, what
-you see is a printed representation of the name of the buffer without
-the contents of the buffer.  Emacs works this way for two reasons: the
-buffer may be thousands of lines long--too long to be conveniently
-displayed; and, another buffer may have the same contents but a
-different name, and it is important to distinguish between them.
+   Er is echter een kleine complicatie: wanneer je ‘current-buffer’ zelf
+evalueert in een expressie, zoals we hier gaan doen, dan wordt de de
+representatie van de naam van het buffer getoond zonder de inhoud van
+het buffer.  Emacs werkt op deze manier wegens twee redenen: het buffer
+kan duizenden regels lang zijn--te lang om handig weer te geven, en een
+ander buffer kan dezelfde inhoud maar een andere naam hebben en het is
+belangrijk om onderscheid tussen hen te maken.
 
-   Here is an expression containing the function:
+   Hier is een expressie die de functie bevat:
 
      (current-buffer)
 
-If you evaluate this expression in Info in Emacs in the usual way,
-‘#<buffer *info*>’ will appear in the echo area.  The special format
-indicates that the buffer itself is being returned, rather than just its
-name.
+Wanneer je deze expressie in Info in Emacs op de gebruikelijke manier
+evalueert, verschijnt ‘#<buffer *info*>’ in het echogebied.  Het
+speciale formaat geeft aan dat het buffer zelf is teruggegeven in plaats
+van slechts de naam.
 
-   Incidentally, while you can type a number or symbol into a program,
-you cannot do that with the printed representation of a buffer: the only
-way to get a buffer itself is with a function such as ‘current-buffer’.
+   Overigens, hoewel je een getal of symbool in een programma kunt
+typen, kan je dit niet doen met de getoonde representatie van een
+buffer: de enige manier om een buffer zelf te krijgen is met een functie
+zoals ‘current-buffer’.
 
-   A related function is ‘other-buffer’.  This returns the most recently
-selected buffer other than the one you are in currently, not a printed
-representation of its name.  If you have recently switched back and
-forth from the ‘*scratch*’ buffer, ‘other-buffer’ will return that
-buffer.
+   Een gerelateerde functie is ‘other-buffer’.  Deze geeft de meest
+recent geselecteerde buffer terug, anders dan degene waar je nu in bent,
+en niet de getoonde representatie van de naam.  Wanneer je recentelijk
+heen en weer tussen het ‘*scratch*’ buffer geschakeld hebt, dan zal
+‘other-buffer’ dat buffer teruggeven.
 
-   You can see this by evaluating the expression:
+   Dit zie je door de volgende expressie te evalueren:
 
      (other-buffer)
 
-You should see ‘#<buffer *scratch*>’ appear in the echo area, or the
-name of whatever other buffer you switched back from most recently(1).
+Je zou ‘#<buffer *scratch*>’ moeten zien verschijnen in het echogebied,
+of de naam van welk ander buffer je het meest recent van teruggeschakeld
+hebt.  (1)
 
    ---------- Footnotes ----------
 
-   (1) Actually, by default, if the buffer from which you just switched
-is visible to you in another window, ‘other-buffer’ will choose the most
-recent buffer that you cannot see; this is a subtlety that I often
-forget.
+   (1) Eigenlijk wanneer het buffer waar je laatst vandaan schakelde
+voor je zichtbaar is in een ander venster.  zal standaard ‘other-buffer’
+het meest recente buffer kiezen dat je niet kunt zien.  Dit is een
+subtiliteit die ik meestal vergeet.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Van buffer verwisselen,  Next: Buffer grootte en locatie,  Prev: Buffers pakken,  Up: Oefenen van evaluatie
@@ -2506,23 +2510,25 @@ File: emacs-lisp-intro-nl.info,  Node: Van buffer verwisselen,  Next: Buffer gro
 2.3 Van buffer verwisselen
 ==========================
 
-The ‘other-buffer’ function actually provides a buffer when it is used
-as an argument to a function that requires one.  We can see this by
-using ‘other-buffer’ and ‘switch-to-buffer’ to switch to a different
-buffer.
+De ‘other-buffer’-functie biedt eigenlijk een buffer wanneer het
+gebruikt wordt als een argument voor een functie die er een vereist.  We
+zien dit door ‘other-buffer’ en ‘switch-to-buffer’ te gebruiken om naar
+een ander buffer te schakelen.
 
-   But first, a brief introduction to the ‘switch-to-buffer’ function.
-When you switched back and forth from Info to the ‘*scratch*’ buffer to
-evaluate ‘(buffer-name)’, you most likely typed ‘C-x b’ and then typed
-‘*scratch*’(1) when prompted in the minibuffer for the name of the
-buffer to which you wanted to switch.  The keystrokes, ‘C-x b’, cause
-the Lisp interpreter to evaluate the interactive function
-‘switch-to-buffer’.  As we said before, this is how Emacs works:
-different keystrokes call or run different functions.  For example,
-‘C-f’ calls ‘forward-char’, ‘M-e’ calls ‘forward-sentence’, and so on.
+   Maar eerst een korte introductie in de ‘switch-to-buffer’ functie.
+Toen je heen en weer schakelde tussen Info en het ‘*scratch*’-buffer om
+‘(buffer-name)’ te evalueren, heb je hoogstwaarschijnlijk ‘C-x b’ en
+daarna ‘*scratch*’ getypt(1) toen je in het minibuffer gevraagd werd
+naar de naam van het buffer waar naar toe te schakelen.  De
+toetsaanslagen ‘C-x b’ laten de Lisp interpreter de interactieve
+‘switch-to-buffer’-functie evalueren.  Zoals we eerder gezegd hebben,
+dit is hoe Emacs werkt: verschillende toetsaanslagen roepen
+verschillende functies aan of draaien die.  Bijvoorbeeld ‘C-f’ roept
+‘forward-char’ aan, ‘M-e’ roept ‘forward-sentence’ aan, enzovoorts.
 
-   By writing ‘switch-to-buffer’ in an expression, and giving it a
-buffer to switch to, we can switch buffers just the way ‘C-x b’ does:
+   Door ‘switch-to-buffer’ in een expressie te schrijven en het een
+buffernaam te geven om naar te schakelen, kunnen we buffers schakelen op
+dezelfde manier zoals ‘C-x b’ doet:
 
      (switch-to-buffer (other-buffer))
 
@@ -2538,36 +2544,36 @@ door, waar Emacs naar zal omschakelen.  Wanneer je dit in Info leest,
 probeer het dan nu direct.  Evalueer de expressie.  (Typ ‘C-x b <RET>’
 om terug te gaan.)  (2)
 
-   In the programming examples in later sections of this document, you
-will see the function ‘set-buffer’ more often than ‘switch-to-buffer’.
-This is because of a difference between computer programs and humans:
-humans have eyes and expect to see the buffer on which they are working
-on their computer terminals.  This is so obvious, it almost goes without
-saying.  However, programs do not have eyes.  When a computer program
-works on a buffer, that buffer does not need to be visible on the
-screen.
+   In de programmeervoorbeelden in volgende secties van dit document zie
+je de functie ‘set-buffer’ vaker dan ‘switch-to-buffer’.  Dit is wegens
+een verschil tussen computerprogramma's en mensen: mensen hebben ogen en
+verwachten het buffer te zien waarop ze werken op hun computerterminals.
+Dit is zo voor de hand liggend, het spreekt bijna voor zich.  Echter,
+programma's hebben geen ogen.  Wanneer een computerprogramma op een
+buffer werkt, dan hoeft dat buffer niet op het scherm zichtbaar te zijn.
 
-   ‘switch-to-buffer’ is designed for humans and does two different
-things: it switches the buffer to which Emacs's attention is directed;
-and it switches the buffer displayed in the window to the new buffer.
-‘set-buffer’, on the other hand, does only one thing: it switches the
-attention of the computer program to a different buffer.  The buffer on
-the screen remains unchanged (of course, normally nothing happens there
-until the command finishes running).
+   ‘switch-to-buffer’ is ontworpen voor mensen en doet twee
+verschillende dingen: het schakelt het buffer waar de aandacht van Emacs
+op is gevestigd en het schakelt het buffer dat getoond wordt in het
+venster naar een nieuw buffer.  ‘set-buffer’ anderzijds doet meer een
+enkel ding: het schakelt de aandacht van het computerprogramma naar een
+ander buffer.  Het buffer op het scherm blijft onveranderd (uiteraard
+gebeurt er niets totdat het commando klaar is met lopen).
 
-   Also, we have just introduced another jargon term, the word “call”.
-When you evaluate a list in which the first symbol is a function, you
-are calling that function.  The use of the term comes from the notion of
-the function as an entity that can do something for you if you call
-it--just as a plumber is an entity who can fix a leak if you call him or
-her.
+   Ook hebben we net een ander jargon term geïntroduceerd, het woord
+“aanroepen”.  Wanneer je een lijst evalueert waar het eerste symbool een
+functie is, dan roep je die functie aan.  Het gebruik van deze term komt
+voort uit het begrip van de functie als entiteit dan iets voor je kan
+doen wanneer je het aanroept--net als een loodgieter een entiteit is die
+een lek kan repareren wanneer je hem of haar roept.
 
    ---------- Footnotes ----------
 
-   (1) Or rather, to save typing, you probably only typed ‘RET’ if the
-default buffer was ‘*scratch*’, or if it was different, then you typed
-just part of the name, such as ‘*sc’, pressed your ‘TAB’ key to cause it
-to expand to the full name, and then typed ‘RET’.
+   (1) Of beter gezegd, om toetsaanslagen te besparen, heb je
+waarschijnlijk alleen ‘RET’ getypt indien het default buffer ‘*scratch*’
+was, of wanneer het niet zo was, je slechts een gedeelte van de naam
+typte, zoals ‘*sc’, en de ‘TAB’-toets gebruikte zodat het expandeerde
+naar de volledige naam, en daarna ‘RET’ typte.
 
    (2) Onthoudt, deze expressie zal je naar het meest recent
 geselecteerde buffer brengen, die je niet kunt zien.  Wanneer je
@@ -2584,62 +2590,63 @@ in windows zichtbaar is omdat je hoogst waarschijnlijk ‘C-x o’
 
 File: emacs-lisp-intro-nl.info,  Node: Buffer grootte en locatie,  Next: Evaluatie oefening,  Prev: Van buffer verwisselen,  Up: Oefenen van evaluatie
 
-2.4 Buffer Size and the Location of Point
+2.4 Buffergrootte en de locatie van point
 =========================================
 
-Finally, let's look at several rather simple functions, ‘buffer-size’,
-‘point’, ‘point-min’, and ‘point-max’.  These give information about the
-size of a buffer and the location of point within it.
+Laten wij tenslotte naar enkele nogal eenvoudige functies kijken,
+‘buffer-size’, ‘point’, ‘point-min’ en ‘point-max’.  Deze geven
+informatie over de grootte van een buffer en de locatie van point
+daarin.
 
-   The function ‘buffer-size’ tells you the size of the current buffer;
-that is, the function returns a count of the number of characters in the
-buffer.
+   De functie ‘buffer-size’ vertelt je hoe groot het huidige buffer is.
+Dit houdt in dat de functie de som van het aantal karakters in het
+buffer teruggeeft.
 
      (buffer-size)
 
-You can evaluate this in the usual way, by positioning the cursor after
-the expression and typing ‘C-x C-e’.
+Je kunt dit op de gebruikelijke manier evalueren door de cursor achter
+de expressie te plaatsen en ‘C-x C-e’ te typen.
 
-   In Emacs, the current position of the cursor is called “point”.  The
-expression ‘(point)’ returns a number that tells you where the cursor is
-located as a count of the number of characters from the beginning of the
-buffer up to point.
+   In Emacs wordt de huidige positie van de cursor “point” genoemd.  De
+expressie ‘(point)’ geeft een getal terug dat je vertelt waar de cursor
+is gepositioneerd als een telling van het aantal karakters vanaf het
+begin van het buffer tot point.
 
-   You can see the character count for point in this buffer by
-evaluating the following expression in the usual way:
-
-     (point)
-
-As I write this, the value of point is 65724.  The ‘point’ function is
-frequently used in some of the examples later in this book.
-
-   The value of point depends, of course, on its location within the
-buffer.  If you evaluate point in this spot, the number will be larger:
+   Je kunt de karaktertelling voor point in dit buffer zien door het op
+de gebruikelijke manier evalueren van de volgende expressie:
 
      (point)
 
-For me, the value of point in this location is 66043, which means that
-there are 319 characters (including spaces) between the two expressions.
-(Doubtless, you will see different numbers, since I will have edited
-this since I first evaluated point.)
+Terwijl ik dit schrijf is de waarde van point 65724.  De ‘point’ functie
+wordt vaak gebruikt in sommige voorbeelden later in dit boek.
 
-   The function ‘point-min’ is somewhat similar to ‘point’, but it
-returns the value of the minimum permissible value of point in the
-current buffer.  This is the number 1 unless “narrowing” is in effect.
-(Narrowing is a mechanism whereby you can restrict yourself, or a
-program, to operations on just a part of a buffer.  *Note Narrowing and
-Widening: Narrowing & Widening.)  Likewise, the function ‘point-max’
-returns the value of the maximum permissible value of point in the
-current buffer.
+   De waarde van point hangt natuurlijk af van zijn locatie in het
+buffer.  Wanneer je point op deze plek evalueert, is het getal groter:
+
+     (point)
+
+Voor mij is de waarde van point op deze plek 66043, wat betekent dat er
+319 karakters (inclusief spaties) tussen de twee expressies zijn.
+(Ongetwijfeld zie je verschillende getallen, omdat ik dit heb geschreven
+heb na de eerste evaluatie van point.)
+
+   De functie ‘point-min’ lijkt enigszins op ‘point’, maar het geeft de
+waarde van de minimum toegestane waarde van point in het huidige buffer.
+Dit is het getal 1 tenzij “versmallen” van toepassing is.  (Versmallen
+is het mechanisme waarmee je jezelf of een programma beperkt tot
+operaties op slechts een deel van een buffer.  *Note Versmallen en
+verbreden: Versmallen en verbreden.)  Evenzo geeft de functie
+‘point-max’ de maximum toegestane waarde van point in het huidige
+buffer.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Evaluatie oefening,  Prev: Buffer grootte en locatie,  Up: Oefenen van evaluatie
 
-2.5 Exercise
+2.5 Oefening
 ============
 
-Find a file with which you are working and move towards its middle.
-Find its buffer name, file name, length, and your position in the file.
+Vindt een bestand waarmee je werkt en ga naar het midden.  Vindt zijn
+buffernaam, bestandsnaam, lengte en je positie in het bestand.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Defuns schrijven,  Next: Buffer rondleiding,  Prev: Oefenen van evaluatie,  Up: Top
@@ -6367,7 +6374,7 @@ dog)’.
 
 File: emacs-lisp-intro-nl.info,  Node: cons oefening,  Prev: setcdr,  Up: car cdr en cons
 
-7.7 Exercise
+7.7 Oefening
 ============
 
 Construct a list of four birds by evaluating several expressions with
@@ -8036,7 +8043,7 @@ Property Lists: (elisp)Property Lists.)
 
 File: emacs-lisp-intro-nl.info,  Node: Lijst oefening,  Prev: Symbolen als ladekast,  Up: Implementatie van lijsten
 
-9.2 Exercise
+9.2 Oefening
 ============
 
 Set ‘flowers’ to ‘violet’ and ‘buttercup’.  Cons two more flowers on to
@@ -13235,7 +13242,7 @@ appendix.  *Note A Graph with Labeled Axes: Full Graph.
 
 File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Afgedrukte assen,  Up: Een grafiek klaarmaken
 
-15.4 Exercise
+15.4 Oefening
 =============
 
 Write a line graph version of the graph printing functions.
@@ -17400,6 +17407,8 @@ Index
 * <= (less than or equal):               Inc voorbeeld onderdelen.
                                                               (line  47)
 * > (greater than):                      if in meer detail.   (line  31)
+* aanroepen gedefinieerd:                Van buffer verwisselen.
+                                                              (line  56)
 * Accumulate, type of recursive pattern: Accumulate.          (line   6)
 * add-hook:                              Tekst en auto-fill.  (line  54)
 * and:                                   kill-new functie.    (line 211)
@@ -17440,19 +17449,19 @@ Index
 * Body of graph:                         Een grafiek klaarmaken.
                                                               (line   6)
 * boodschap:                             boodschap.           (line   6)
-* Buffer size:                           Buffer grootte en locatie.
-                                                              (line   6)
 * buffer-file-name:                      Buffer namen.        (line   6)
 * buffer-menu, bound to key:             Key bindings.        (line  69)
 * buffer-name:                           Buffer namen.        (line   6)
-* Buffer, history of word:               Buffer namen.        (line  67)
+* Buffer, history of word:               Buffer namen.        (line  69)
+* Buffergrootte:                         Buffer grootte en locatie.
+                                                              (line   6)
+* Buffergrootte <1>:                     Buffer grootte en locatie.
+                                                              (line   6)
 * Bug, most insidious type:              Een andere bug.      (line   6)
 * Building robots:                       Robots bouwen.       (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
 * C language primitives:                 Primitieve functies. (line   6)
 * C, a digression into:                  Uitwijding naar C.   (line   6)
-* call defined:                          Van buffer verwisselen.
-                                                              (line  55)
 * cancel-debug-on-entry:                 debug-on-entry.      (line  86)
 * car, introduced:                       car cdr en cons.     (line   6)
 * cdr, introduced:                       car cdr en cons.     (line   6)
@@ -17509,8 +17518,8 @@ Index
 * defcustom:                             defcustom.           (line   6)
 * Deferment in recursion:                Geen uitstel.        (line   6)
 * Definitie installatie:                 Installeer.          (line   6)
+* Definitie schrijven:                   Defuns schrijven.    (line   6)
 * Definitie, hoe te wijzigen:            Een defun wijzigen.  (line   6)
-* Definition writing:                    Defuns schrijven.    (line   6)
 * defsubst:                              defcustom.           (line 127)
 * defun:                                 defun.               (line   6)
 * defvar:                                defvar.              (line   6)
@@ -17539,6 +17548,7 @@ Index
                                                               (line  16)
 * edebug:                                edebug.              (line   6)
 * Een bestand vinden:                    Een bestand vinden.  (line   6)
+* Een buffer krijgen:                    Buffers pakken.      (line   6)
 * Een functiedefinitie wijzigen:         Een defun wijzigen.  (line   6)
 * Een programma draaien:                 Draai een programma. (line   6)
 * Else:                                  else.                (line   6)
@@ -17584,15 +17594,14 @@ Index
 * Foutmelding generatie:                 Fouten maken.        (line   6)
 * functie gedefinieerd:                  Fouten maken.        (line  51)
 * functie gedefinieerd <1>:              Fouten maken.        (line  74)
+* Functiedefenitie schrijven:            Defuns schrijven.    (line   6)
 * functiedefinitie installatie:          Installeer.          (line   6)
 * Functiedefinitie, hoe te wijzigen:     Een defun wijzigen.  (line   6)
 * function definition defined:           defun.               (line   6)
-* Function definition writing:           Defuns schrijven.    (line   6)
 * Functions, primitive:                  Primitieve functies. (line   6)
 * Geen uitstel oplossing:                Geen uitstel oplossing.
                                                               (line   6)
 * Genereer een foutmelding:              Fouten maken.        (line   6)
-* Getting a buffer:                      Buffers pakken.      (line   6)
 * Global set key:                        Key bindings.        (line  82)
 * global variable defined:               Het element vaststellen.
                                                               (line  89)
@@ -17688,7 +17697,9 @@ Index
 * Loading files:                         Bestanden laden.     (line   6)
 * local variable defined:                Voorkom verwarring.  (line   6)
 * Local variables list, per-buffer,:     Tekst en auto-fill.  (line  22)
-* Location of point:                     Buffer grootte en locatie.
+* Locatie van point:                     Buffer grootte en locatie.
+                                                              (line   6)
+* Locatie van point <1>:                 Buffer grootte en locatie.
                                                               (line   6)
 * looking-at:                            fwd-para while.      (line  81)
 * Loops:                                 while.               (line   6)
@@ -17713,10 +17724,10 @@ Index
 * Narrowing:                             Versmallen en verbreden.
                                                               (line   6)
 * narrowing defined:                     Buffer grootte en locatie.
-                                                              (line  42)
+                                                              (line  43)
 * new version body for insert-buffer:    Nieuw insert-buffer. (line   6)
 * nil:                                   Waar en onwaarheid.  (line   6)
-* nil, history of word:                  Buffer namen.        (line  43)
+* nil, geschiedenis van woord:           Buffer namen.        (line  43)
 * nreverse:                              Functiedefinities tellen.
                                                               (line 100)
 * nth:                                   nth.                 (line   6)
@@ -17745,10 +17756,8 @@ Index
                                                               (line   6)
 * point:                                 save-excursion.      (line   6)
 * Point and buffer preservation:         save-excursion.      (line   6)
-* point defined:                         Buffer grootte en locatie.
-                                                              (line  19)
-* Point location:                        Buffer grootte en locatie.
-                                                              (line   6)
+* point gedefinieerd:                    Buffer grootte en locatie.
+                                                              (line  20)
 * predicate gedefinieerd:                Verkeerde type argument.
                                                               (line  56)
 * Preserving point and buffer:           save-excursion.      (line   6)
@@ -17814,6 +17823,7 @@ Index
 * Robots, building:                      Robots bouwen.       (line   6)
 * save-excursion:                        save-excursion.      (line   6)
 * save-restriction:                      save-restriction.    (line   6)
+* Schrijven van een functiedefnitie:     Defuns schrijven.    (line   6)
 * search-forward:                        search-forward.      (line   6)
 * Searches, illustrating:                Rexexp zoeken.       (line   6)
 * sentence-end:                          sentence-end.        (line   6)
@@ -17832,8 +17842,6 @@ Index
                                                               (line   6)
 * site-init.el init file:                Site-wide init.      (line   6)
 * site-load.el init file:                Site-wide init.      (line   6)
-* Size of buffer:                        Buffer grootte en locatie.
-                                                              (line   6)
 * sort:                                  Sorteren.            (line   6)
 * Source level debugger:                 edebug.              (line   6)
 * Speciale vorm:                         Complicaties.        (line  12)
@@ -17908,7 +17916,6 @@ Index
 * Words, counted recursively:            recursive-count-words.
                                                               (line   6)
 * Words, duplicated:                     de-de.               (line   6)
-* Writing a function definition:         Defuns schrijven.    (line   6)
 * X axis printing:                       print-X-axis.        (line   6)
 * X-axis-element:                        X-as tic marks.      (line 105)
 * Y axis printing:                       print-Y-axis.        (line   6)
@@ -17990,278 +17997,278 @@ Node: Tellen91693
 Node: Samenvatting93755
 Node: Foutmelding oefeningen95758
 Node: Oefenen van evaluatie96314
-Node: Hoe te evalueren97538
-Node: Buffer namen99132
-Node: Buffers pakken105055
-Ref: Buffers pakken-Footnote-1107638
-Node: Van buffer verwisselen107863
-Ref: Van buffer verwisselen-Footnote-1111267
-Ref: Van buffer verwisselen-Footnote-2111553
-Node: Buffer grootte en locatie112306
-Node: Evaluatie oefening114486
-Node: Defuns schrijven114777
-Node: Primitieve functies116154
-Node: defun117327
-Node: Installeer123811
-Node: Effect van installatie125208
-Node: Een defun wijzigen126049
-Node: Interactief127773
-Node: Interactieve vermenigvuldig-met-zeven128881
-Node: vermenigvuldig-met-zeven in detail130783
-Node: Interactieve operaties133545
-Node: Permanent installeren136761
-Node: let138901
-Node: Voorkom verwarring140449
-Ref: Voorkom verwarring-Footnote-1142535
-Node: Delen van een let expressie142663
-Node: Voorbeeld let expressie144290
-Ref: Voorbeeld let expressie-Footnote-1146146
-Node: Niet-geïnitialiseerde let variabelen146401
-Node: How let Binds Variables148084
-Node: Lexical en dynamische binding verschillen149314
-Node: Lexical vs Dynamic Binding Example151142
-Node: if153109
-Node: if in meer detail153975
-Node: type-of-animal in detail156799
-Node: else159394
-Node: Waar en onwaarheid162298
-Node: nil uitgelegd163243
-Node: save-excursion165340
-Node: Point en mark166107
-Node: Template voor save-excursion169137
-Node: Terugblik170412
-Node: defun oefeningen178057
-Node: Buffer rondleiding178507
-Node: Meer vinden179662
-Ref: Meer vinden-Footnote-1182564
-Node: simplified-beginning-of-buffer182756
-Node: mark-whole-buffer187257
-Node: mark-whole-buffer overzicht188115
-Node: Body van mark-whole-buffer189508
-Node: append-to-buffer192636
-Node: append-to-buffer overzicht193361
-Node: append interactief196110
-Node: append-to-buffer body198608
-Node: append save-excursion200775
-Ref: let* introduced202582
-Node: Buffer gerelateerde terugblik206175
-Node: Buffer oefeningen208455
-Node: Meer complex208956
-Node: copy-to-buffer210037
-Ref: copy-to-buffer-Footnote-1212815
-Node: insert-buffer213007
-Node: insert-buffer code214403
-Node: insert-buffer interactief215406
-Node: Read-only buffer215948
-Node: b for interactief216549
-Node: insert-buffer body217714
-Node: if en or218931
-Node: Voeg or in221985
-Node: Voeg let in224337
-Node: Nieuw insert-buffer228176
-Node: beginning-of-buffer229393
-Node: Optionele argumenten231047
-Node: beginning-of-buffer opt arg234446
-Node: Ontrafelen beginning-of-buffer235440
-Node: In geval van een groot buffer236707
-Node: In geval van een klein buffer239264
-Node: beginning-of-buffer compleet240932
-Node: Tweede buffer gerelateerde terugblik243965
-Node: optionele oefening245689
-Node: Versmallen en verbreden246184
-Node: Voordelen van versmallen246826
-Node: save-restriction248710
-Node: what-line250707
-Node: versmal oefening254940
-Node: car cdr en cons255972
-Node: Vreemde namen257170
-Node: car en cdr257876
-Node: cons262399
-Node: Bouw een lijst263415
-Ref: Bouw een lijst-Footnote-1264975
-Node: lengte265159
-Node: nthcdr266699
-Node: nth269613
-Node: setcar271003
-Node: setcdr273805
-Node: cons oefening275392
-Node: Knippen en opslaan van tekst275780
-Node: Tekst opslaan277151
-Node: zap-to-char279186
-Node: Complete zap-to-char279793
-Node: zap-to-char interactief282489
-Node: zap-to-char body284006
-Node: search-forward285581
-Node: progn288644
-Node: Samenvatting zap-to-char290390
-Node: kill-region291560
-Node: Complete kill-region292566
-Node: condition-case296804
-Node: Lisp macro299389
-Node: copy-region-as-kill301872
-Node: Complete copy-region-as-kill302789
-Node: copy-region-as-kill body305602
-Node: last-command en this-command306694
-Node: kill-append functie309003
-Node: kill-new functie313180
-Node: Uitwijding naar C323776
-Node: defvar329180
-Node: Inzien huidige variabele waarde330974
-Node: defvar en asterisk332899
-Node: cons en search-fwd terugblik334759
-Node: zoek oefening337814
-Node: Implementatie van lijsten338578
-Node: Lijsten uitgetekend339757
-Node: Symbolen als ladekast345980
-Node: Lijst oefening348013
-Node: Yanken348392
-Node: Kill ring overzicht349736
-Node: kill-ring-yank-pointer351448
-Node: yank nthcdr oefeningen353876
-Node: Loops en recursie354634
-Ref: Loops en recursie-Footnote-1355786
-Node: while356259
-Node: Looping met while357669
-Node: Loop voorbeeld359480
-Node: print-elements-of-list362935
-Node: Incrementele loop365480
-Node: Incrementele loop details366056
-Node: Incrementeel voorbeeld367451
-Node: Inc voorbeeld onderdelen369843
-Node: inc voorbeeld samengesteld373863
-Node: Decrementele loop377447
-Node: Decerementeel voorbeeld378913
-Node: Dec voorbeeld onderdelen380405
-Node: Dec voorbeeld samengesteld382464
-Node: dolist dotimes384718
-Node: dolist385550
-Node: dotimes388714
-Node: Recursie390228
-Node: Robots bouwen391440
-Node: Recursive definitie onderdelen393147
-Node: Recursie met lijst395585
-Node: Recursieve driehoek functie399178
-Node: Recursief voorbeeld arg van 1 of 2400554
-Node: Recursief voorbeeld arg van 3 of 4402834
-Node: Recursie met cond405880
-Node: Recursieve patronen408268
-Node: Every408761
-Node: Accumulate411215
-Node: Bewaar412508
-Node: Geen uitstel414418
-Node: Geen uitstel oplossing417122
-Ref: Geen uitstel oplossing-Footnote-1421095
-Ref: Geen uitstel oplossing-Footnote-2421201
-Node: Looping oefening421712
-Node: Rexexp zoeken422949
-Node: sentence-end424976
-Node: re-search-forward428893
-Node: forward-sentence431439
-Node: Complete forward-sentence432205
-Node: fwd-sentence while loops435757
-Node: fwd-sentence re-search439406
-Node: forward-paragraph441574
-Node: forward-paragraph in het kort443390
-Node: fwd-para let444860
-Node: fwd-para while451540
-Node: Regexp terugblik460122
-Node: re-search oefeningen462551
-Node: Woorden tellen463337
-Node: Waarom woorden tellen464095
-Node: count-words-example465141
-Node: Ontwerp count-words-example466425
-Node: Wiite ruimte bug472966
-Node: recursive-count-words482559
-Node: Tellen voorbeeld494640
-Node: Woorden in een defun495021
-Node: Verdeel en heers496762
-Node: Woorden en symbolen497993
-Node: Syntax500052
-Node: count-words-in-defun503688
-Node: Enkele defuns509987
-Node: Een bestand vinden512379
-Node: lengths-list-file515021
-Node: Enkele bestanden520296
-Node: lengths-list-many-files521057
-Node: append523849
-Node: Enkele bestanden recursief524486
-Node: De data voorbereiden527326
-Node: Data in detail te tonen528455
-Node: Sorteren529379
-Node: Bestanden lijst531057
-Ref: Bestanden lijst-Footnote-1538590
-Node: Functiedefinities tellen538807
-Node: Een grafiek klaarmaken548131
-Node: Kolommen van een grafiek549460
-Node: graph-body-print563098
-Node: recursive-graph-body-print567903
-Node: Afgedrukte assen570593
-Node: Lijngrafiek oefening571340
-Node: Initialisatie van Emacs571547
-Node: Default configuratie573037
-Ref: Default configuratie-Footnote-1575021
-Node: Site-wide init575337
-Node: defcustom577399
-Node: Een init bestand beginnen583282
-Node: Tekst en auto-fill585664
-Ref: Tekst en auto-fill-Footnote-1589680
-Ref: Tekst en auto-fill-Footnote-2589964
-Node: Mail aliasen590225
-Node: Indent Tabs Mode591151
-Node: Key bindings592096
-Node: Keymaps596870
-Node: Bestanden laden599530
-Node: Autoload602812
-Node: Eenvoudige uitbreiding605700
-Ref: Eenvoudige uitbreiding-Footnote-1608265
-Node: X11 kleuren608554
-Ref: X11 kleuren-Footnote-1610372
-Node: Diverse610526
-Node: Mode line614748
-Node: Debuggen.620284
-Node: debug621180
-Node: debug-on-entry624312
-Node: debug-on-quit627917
-Node: edebug628954
-Node: Debuggen oefeningen633076
-Node: Conclusie634841
-Node: de-de640199
-Node: Killring642989
-Node: Wat de killring doet643806
-Node: current-kill645324
-Node: Code voor current-kill646022
-Node: current-kill begrijpen648854
-Node: Body van current-kill649654
-Node: Uitwijding over fout652805
-Node: Het element vaststellen653980
-Node: yank657687
-Node: yank-pop660903
-Node: ring bestand663438
-Node: Volledige grafiek663815
-Node: Gelabeld voorbeeld664655
-Node: print-graph varlist666652
-Node: print-Y-axis668375
-Node: print-Y-axis in detail669228
-Node: Hoogte van label670038
-Node: Bereken het restant672055
-Node: Y-as element675921
-Node: Y-axis-column679684
-Node: print-Y-axis enalaatste681296
-Node: print-X-axis683281
-Node: Overeenkomsten verschillen684599
-Node: X-as tic marks685432
-Node: De gehele grafiek afdrukken692437
-Node: De finale versie693553
-Node: Test print-graph697808
-Node: Woorden in defuns grafisch weergeven699492
-Node: lambda702116
-Node: mapcar703800
-Node: Een andere bug705859
-Node: Finale afgedrukte grafiek711388
-Node: Vrije software en vrije handleidingen712339
-Node: GNU Free Documentation License718655
-Node: Index743844
-Node: Over de auteur782737
+Node: Hoe te evalueren97541
+Node: Buffer namen99135
+Node: Buffers pakken105238
+Ref: Buffers pakken-Footnote-1107927
+Node: Van buffer verwisselen108177
+Ref: Van buffer verwisselen-Footnote-1111768
+Ref: Van buffer verwisselen-Footnote-2112110
+Node: Buffer grootte en locatie112863
+Node: Evaluatie oefening115077
+Node: Defuns schrijven115361
+Node: Primitieve functies116738
+Node: defun117911
+Node: Installeer124395
+Node: Effect van installatie125792
+Node: Een defun wijzigen126633
+Node: Interactief128357
+Node: Interactieve vermenigvuldig-met-zeven129465
+Node: vermenigvuldig-met-zeven in detail131367
+Node: Interactieve operaties134129
+Node: Permanent installeren137345
+Node: let139485
+Node: Voorkom verwarring141033
+Ref: Voorkom verwarring-Footnote-1143119
+Node: Delen van een let expressie143247
+Node: Voorbeeld let expressie144874
+Ref: Voorbeeld let expressie-Footnote-1146730
+Node: Niet-geïnitialiseerde let variabelen146985
+Node: How let Binds Variables148668
+Node: Lexical en dynamische binding verschillen149898
+Node: Lexical vs Dynamic Binding Example151726
+Node: if153693
+Node: if in meer detail154559
+Node: type-of-animal in detail157383
+Node: else159978
+Node: Waar en onwaarheid162882
+Node: nil uitgelegd163827
+Node: save-excursion165924
+Node: Point en mark166691
+Node: Template voor save-excursion169721
+Node: Terugblik170996
+Node: defun oefeningen178641
+Node: Buffer rondleiding179091
+Node: Meer vinden180246
+Ref: Meer vinden-Footnote-1183148
+Node: simplified-beginning-of-buffer183340
+Node: mark-whole-buffer187841
+Node: mark-whole-buffer overzicht188699
+Node: Body van mark-whole-buffer190092
+Node: append-to-buffer193220
+Node: append-to-buffer overzicht193945
+Node: append interactief196694
+Node: append-to-buffer body199192
+Node: append save-excursion201359
+Ref: let* introduced203166
+Node: Buffer gerelateerde terugblik206759
+Node: Buffer oefeningen209039
+Node: Meer complex209540
+Node: copy-to-buffer210621
+Ref: copy-to-buffer-Footnote-1213399
+Node: insert-buffer213591
+Node: insert-buffer code214987
+Node: insert-buffer interactief215990
+Node: Read-only buffer216532
+Node: b for interactief217133
+Node: insert-buffer body218298
+Node: if en or219515
+Node: Voeg or in222569
+Node: Voeg let in224921
+Node: Nieuw insert-buffer228760
+Node: beginning-of-buffer229977
+Node: Optionele argumenten231631
+Node: beginning-of-buffer opt arg235030
+Node: Ontrafelen beginning-of-buffer236024
+Node: In geval van een groot buffer237291
+Node: In geval van een klein buffer239848
+Node: beginning-of-buffer compleet241516
+Node: Tweede buffer gerelateerde terugblik244549
+Node: optionele oefening246273
+Node: Versmallen en verbreden246768
+Node: Voordelen van versmallen247410
+Node: save-restriction249294
+Node: what-line251291
+Node: versmal oefening255524
+Node: car cdr en cons256556
+Node: Vreemde namen257754
+Node: car en cdr258460
+Node: cons262983
+Node: Bouw een lijst263999
+Ref: Bouw een lijst-Footnote-1265559
+Node: lengte265743
+Node: nthcdr267283
+Node: nth270197
+Node: setcar271587
+Node: setcdr274389
+Node: cons oefening275976
+Node: Knippen en opslaan van tekst276364
+Node: Tekst opslaan277735
+Node: zap-to-char279770
+Node: Complete zap-to-char280377
+Node: zap-to-char interactief283073
+Node: zap-to-char body284590
+Node: search-forward286165
+Node: progn289228
+Node: Samenvatting zap-to-char290974
+Node: kill-region292144
+Node: Complete kill-region293150
+Node: condition-case297388
+Node: Lisp macro299973
+Node: copy-region-as-kill302456
+Node: Complete copy-region-as-kill303373
+Node: copy-region-as-kill body306186
+Node: last-command en this-command307278
+Node: kill-append functie309587
+Node: kill-new functie313764
+Node: Uitwijding naar C324360
+Node: defvar329764
+Node: Inzien huidige variabele waarde331558
+Node: defvar en asterisk333483
+Node: cons en search-fwd terugblik335343
+Node: zoek oefening338398
+Node: Implementatie van lijsten339162
+Node: Lijsten uitgetekend340341
+Node: Symbolen als ladekast346564
+Node: Lijst oefening348597
+Node: Yanken348976
+Node: Kill ring overzicht350320
+Node: kill-ring-yank-pointer352032
+Node: yank nthcdr oefeningen354460
+Node: Loops en recursie355218
+Ref: Loops en recursie-Footnote-1356370
+Node: while356843
+Node: Looping met while358253
+Node: Loop voorbeeld360064
+Node: print-elements-of-list363519
+Node: Incrementele loop366064
+Node: Incrementele loop details366640
+Node: Incrementeel voorbeeld368035
+Node: Inc voorbeeld onderdelen370427
+Node: inc voorbeeld samengesteld374447
+Node: Decrementele loop378031
+Node: Decerementeel voorbeeld379497
+Node: Dec voorbeeld onderdelen380989
+Node: Dec voorbeeld samengesteld383048
+Node: dolist dotimes385302
+Node: dolist386134
+Node: dotimes389298
+Node: Recursie390812
+Node: Robots bouwen392024
+Node: Recursive definitie onderdelen393731
+Node: Recursie met lijst396169
+Node: Recursieve driehoek functie399762
+Node: Recursief voorbeeld arg van 1 of 2401138
+Node: Recursief voorbeeld arg van 3 of 4403418
+Node: Recursie met cond406464
+Node: Recursieve patronen408852
+Node: Every409345
+Node: Accumulate411799
+Node: Bewaar413092
+Node: Geen uitstel415002
+Node: Geen uitstel oplossing417706
+Ref: Geen uitstel oplossing-Footnote-1421679
+Ref: Geen uitstel oplossing-Footnote-2421785
+Node: Looping oefening422296
+Node: Rexexp zoeken423533
+Node: sentence-end425560
+Node: re-search-forward429477
+Node: forward-sentence432023
+Node: Complete forward-sentence432789
+Node: fwd-sentence while loops436341
+Node: fwd-sentence re-search439990
+Node: forward-paragraph442158
+Node: forward-paragraph in het kort443974
+Node: fwd-para let445444
+Node: fwd-para while452124
+Node: Regexp terugblik460706
+Node: re-search oefeningen463135
+Node: Woorden tellen463921
+Node: Waarom woorden tellen464679
+Node: count-words-example465725
+Node: Ontwerp count-words-example467009
+Node: Wiite ruimte bug473550
+Node: recursive-count-words483143
+Node: Tellen voorbeeld495224
+Node: Woorden in een defun495605
+Node: Verdeel en heers497346
+Node: Woorden en symbolen498577
+Node: Syntax500636
+Node: count-words-in-defun504272
+Node: Enkele defuns510571
+Node: Een bestand vinden512963
+Node: lengths-list-file515605
+Node: Enkele bestanden520880
+Node: lengths-list-many-files521641
+Node: append524433
+Node: Enkele bestanden recursief525070
+Node: De data voorbereiden527910
+Node: Data in detail te tonen529039
+Node: Sorteren529963
+Node: Bestanden lijst531641
+Ref: Bestanden lijst-Footnote-1539174
+Node: Functiedefinities tellen539391
+Node: Een grafiek klaarmaken548715
+Node: Kolommen van een grafiek550044
+Node: graph-body-print563682
+Node: recursive-graph-body-print568487
+Node: Afgedrukte assen571177
+Node: Lijngrafiek oefening571924
+Node: Initialisatie van Emacs572131
+Node: Default configuratie573621
+Ref: Default configuratie-Footnote-1575605
+Node: Site-wide init575921
+Node: defcustom577983
+Node: Een init bestand beginnen583866
+Node: Tekst en auto-fill586248
+Ref: Tekst en auto-fill-Footnote-1590264
+Ref: Tekst en auto-fill-Footnote-2590548
+Node: Mail aliasen590809
+Node: Indent Tabs Mode591735
+Node: Key bindings592680
+Node: Keymaps597454
+Node: Bestanden laden600114
+Node: Autoload603396
+Node: Eenvoudige uitbreiding606284
+Ref: Eenvoudige uitbreiding-Footnote-1608849
+Node: X11 kleuren609138
+Ref: X11 kleuren-Footnote-1610956
+Node: Diverse611110
+Node: Mode line615332
+Node: Debuggen.620868
+Node: debug621764
+Node: debug-on-entry624896
+Node: debug-on-quit628501
+Node: edebug629538
+Node: Debuggen oefeningen633660
+Node: Conclusie635425
+Node: de-de640783
+Node: Killring643573
+Node: Wat de killring doet644390
+Node: current-kill645908
+Node: Code voor current-kill646606
+Node: current-kill begrijpen649438
+Node: Body van current-kill650238
+Node: Uitwijding over fout653389
+Node: Het element vaststellen654564
+Node: yank658271
+Node: yank-pop661487
+Node: ring bestand664022
+Node: Volledige grafiek664399
+Node: Gelabeld voorbeeld665239
+Node: print-graph varlist667236
+Node: print-Y-axis668959
+Node: print-Y-axis in detail669812
+Node: Hoogte van label670622
+Node: Bereken het restant672639
+Node: Y-as element676505
+Node: Y-axis-column680268
+Node: print-Y-axis enalaatste681880
+Node: print-X-axis683865
+Node: Overeenkomsten verschillen685183
+Node: X-as tic marks686016
+Node: De gehele grafiek afdrukken693021
+Node: De finale versie694137
+Node: Test print-graph698392
+Node: Woorden in defuns grafisch weergeven700076
+Node: lambda702700
+Node: mapcar704384
+Node: Een andere bug706443
+Node: Finale afgedrukte grafiek711972
+Node: Vrije software en vrije handleidingen712923
+Node: GNU Free Documentation License719239
+Node: Index744428
+Node: Over de auteur783321
 
 End Tag Table
 
