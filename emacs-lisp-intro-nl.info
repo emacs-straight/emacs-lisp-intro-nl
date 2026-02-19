@@ -278,8 +278,8 @@ Enkele buffer gerelateerde functies
 
 
 * Meer vinden::              Hoe meer informatie te vinden
-* simplified-beginning-of-buffer::  Toon ‘goto-char’, ‘point-min’
-                                      en ‘push-mark’.
+* versimpelde-beginning-of-buffer::  Toon ‘goto-char’, ‘point-min’
+                                       en ‘push-mark’.
 * mark-whole-buffer::        Bijna hetzelde als ‘beginning-of-buffer’.
 * append-to-buffer::         Gebruikt ‘save-excursion’ en
                                ‘insert-buffer-substring’.
@@ -3447,7 +3447,7 @@ als een stapel papieren op je bureau waarop de waarden zijn geschreven.)
 Wanneer je een variabele dynamisch bindt met ‘let’, plaatst het de nieuw
 gespecificeerde binding bovenop de stapel en voert vervolgens de ‘let’
 body uit.  Nadat de ‘let’ body eindigt, neemt het die binding van de
-stapel, en toont diegene die er voor de ‘let’-expresie was (als er een
+stapel, en toont diegene die er voor de ‘let’-expressie was (als er een
 was).
 
 
@@ -4162,8 +4162,8 @@ zijn alle gerelateerd aan bufers.  Later kijken we naar andere functies.
 * Menu:
 
 * Meer vinden::              Hoe meer informatie te vinden
-* simplified-beginning-of-buffer::  Toon ‘goto-char’, ‘point-min’
-                                      en ‘push-mark’.
+* versimpelde-beginning-of-buffer::  Toon ‘goto-char’, ‘point-min’
+                                       en ‘push-mark’.
 * mark-whole-buffer::        Bijna hetzelde als ‘beginning-of-buffer’.
 * append-to-buffer::         Gebruikt ‘save-excursion’ en
                                ‘insert-buffer-substring’.
@@ -4171,7 +4171,7 @@ zijn alle gerelateerd aan bufers.  Later kijken we naar andere functies.
 * Buffer oefeningen::        Buffer oefeningen
 
 
-File: emacs-lisp-intro-nl.info,  Node: Meer vinden,  Next: simplified-beginning-of-buffer,  Up: Buffer rondleiding
+File: emacs-lisp-intro-nl.info,  Node: Meer vinden,  Next: versimpelde-beginning-of-buffer,  Up: Buffer rondleiding
 
 4.1 Meer informatie vinden
 ==========================
@@ -4232,7 +4232,7 @@ asks you which tags table to visit, invoke ‘M-.’ from a buffer whose
 major mode is Emacs Lisp or Lisp Interaction.
 
 
-File: emacs-lisp-intro-nl.info,  Node: simplified-beginning-of-buffer,  Next: mark-whole-buffer,  Prev: Meer vinden,  Up: Buffer rondleiding
+File: emacs-lisp-intro-nl.info,  Node: versimpelde-beginning-of-buffer,  Next: mark-whole-buffer,  Prev: Meer vinden,  Up: Buffer rondleiding
 
 4.2 Een versimpelde ‘beginning-of-buffer’ definitie
 ===================================================
@@ -4334,7 +4334,7 @@ van de functie de expressie ‘(goto-char (point-max))’ bevat in plaats
 van ‘(goto-char (point-min))’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: mark-whole-buffer,  Next: append-to-buffer,  Prev: simplified-beginning-of-buffer,  Up: Buffer rondleiding
+File: emacs-lisp-intro-nl.info,  Node: mark-whole-buffer,  Next: append-to-buffer,  Prev: versimpelde-beginning-of-buffer,  Up: Buffer rondleiding
 
 4.3 De definitie van ‘mark-whole-buffer’
 ========================================
@@ -5036,8 +5036,8 @@ twee onderdelen, een sterretje, ‘*’ en ‘bInsert buffer: ’.
 
 File: emacs-lisp-intro-nl.info,  Node: Read-only buffer,  Next: b for interactief,  Up: insert-buffer interactief
 
-A Read-only Buffer
-..................
+Een read-only buffer
+....................
 
 Het sterretje is voor de situatie dat het huidige buffer een read-only
 buffer is--een buffer dat niet kan worden gewijzigd.  Wanneer
@@ -5184,102 +5184,101 @@ argumenten dat niet ‘nil’ is.  Dus, en dit is een cruciale eigenschap
 van ‘or’, evalueert het geen verdere argumenten na het teruggeven van de
 eerste non-‘nil’ waarde.
 
-   The ‘or’ expression looks like this:
+   De ‘or’ expressie ziet er zo uit:
 
      (or (bufferp buffer)
          (setq buffer (get-buffer buffer)))
 
-The first argument to ‘or’ is the expression ‘(bufferp buffer)’.  This
-expression returns true (a non-‘nil’ value) if the buffer is actually a
-buffer, and not just the name of a buffer.  In the ‘or’ expression, if
-this is the case, the ‘or’ expression returns this true value and does
-not evaluate the next expression--and this is fine with us, since we do
-not want to do anything to the value of ‘buffer’ if it really is a
+Het eerste argument voor ‘or’ is de expressie ‘(bufferp buffer)’.  Deze
+expressie geeft waar terug (een non-‘nil’ waarde) wanneer het buffer
+inderdaad een buffer is en niet slechts de naam van een buffer.  De ‘or’
+expressie, wanneer dit het geval is, geeft deze waar waarde terug en
+evalueert de volgende expressie niet--en dat is prima voor on, omdat we
+niets anders willen dan de waarde van ‘buffer’ wanneer die echt een
+buffer is.
+
+   Anderzijds, als de waarde van ‘(bufferp buffer)’ ‘nil’ is, wat het is
+wanneer de waarde van ‘buffer’ de naam van buffer is, evalueert de Lisp
+interpreter het volgende element van de ‘or’ expressie.  Dit is de
+expressie ‘(setq buffer (get-buffer buffer))’.  Deze expressie geeft een
+non-‘nil’ waarde terug, wat de waarde is waarop het de variabele
+‘buffer’ instelt--en deze waarde is het buffer zelf, niet de naam.
+
+   Het resultaat van dit alles is dat het symbool ‘buffer’ altijd
+gebonden is aan een buffer in plaats van aan de naam van een buffer.
+Dit is allemaal noodzakelijk omdat de functie ‘set-buffer’ op een
+volgende regel alleen werkt met een buffer, niet met de naam van een
 buffer.
 
-   On the other hand, if the value of ‘(bufferp buffer)’ is ‘nil’, which
-it will be if the value of ‘buffer’ is the name of a buffer, the Lisp
-interpreter evaluates the next element of the ‘or’ expression.  This is
-the expression ‘(setq buffer (get-buffer buffer))’.  This expression
-returns a non-‘nil’ value, which is the value to which it sets the
-variable ‘buffer’--and this value is a buffer itself, not the name of a
-buffer.
+   Overigens, met ‘or’ is de situatie met de ceremoniemeester als volgt:
 
-   The result of all this is that the symbol ‘buffer’ is always bound to
-a buffer itself rather than to the name of a buffer.  All this is
-necessary because the ‘set-buffer’ function in a following line only
-works with a buffer itself, not with the name to a buffer.
-
-   Incidentally, using ‘or’, the situation with the usher would be
-written like this:
-
-     (or (holding-on-to-guest) (find-and-take-arm-of-guest))
+     (or (heeft-arm-van-gast) (vind-en-neem-de-arm-van-de-gast))
 
 
 File: emacs-lisp-intro-nl.info,  Node: Voeg let in,  Next: Nieuwe insert-buffer,  Prev: Voeg or in,  Up: insert-buffer
 
-5.2.5 The ‘let’ Expression in ‘insert-buffer’
----------------------------------------------
+5.2.5 De ‘let’ expresse in ‘insert-buffer’
+------------------------------------------
 
-After ensuring that the variable ‘buffer’ refers to a buffer itself and
-not just to the name of a buffer, the ‘insert-buffer’ function continues
-with a ‘let’ expression.  This specifies three local variables, ‘start’,
-‘end’, and ‘newmark’ and binds them to the initial value ‘nil’.  These
-variables are used inside the remainder of the ‘let’ and temporarily
-hide any other occurrence of variables of the same name in Emacs until
-the end of the ‘let’.
+Na zeker stelling dat de variabele ‘buffer’ naar een buffer en niet
+slechts naar de naam van een buffer refereert, gaat de functie
+‘insert-buffer’ verder met de ‘let’ expressie.  Deze specificeert drie
+lokale variabelen, ‘start’, ‘end’ en ‘newmark’ en bindt ze aan de
+initiele waarde ‘nil’.  Deze variabelen worden binnen de rest van de
+‘let’ gebruikt en verbergen tijdelijk elke andere variabele met
+eenzelfde naam in Emacs tot het einde van de ‘let’.
 
-   The body of the ‘let’ contains two ‘save-excursion’ expressions.
-First, we will look at the inner ‘save-excursion’ expression in detail.
-The expression looks like this:
+   De body van de ‘let’ bevat twee ‘save-excursion’ expressies.  Eerst
+kijken we in detail naar de binnenste ‘save-excursion’ expressie.  De
+expressie ziet er zo uit:
 
      (save-excursion
        (set-buffer buffer)
        (setq start (point-min) end (point-max)))
 
-The expression ‘(set-buffer buffer)’ changes Emacs's attention from the
-current buffer to the one from which the text will copied.  In that
-buffer, the variables ‘start’ and ‘end’ are set to the beginning and end
-of the buffer, using the commands ‘point-min’ and ‘point-max’.  Note
-that we have here an illustration of how ‘setq’ is able to set two
-variables in the same expression.  The first argument of ‘setq’ is set
-to the value of its second, and its third argument is set to the value
-of its fourth.
+De expressie ‘(set-buffer buffer)’ schakelt de aandacht van Emacs van
+het huidige buffer naar een waarvan de tekst gekopieerd zal worden.  In
+dat buffer zijn met het gebruik van de commando's ‘point-min’ en
+‘point-max’ de variabelen ‘start’ en ‘end’ ingesteld op het begin en het
+eind van het buffer.  Merk op dat hier zien hoe ‘setq’ twee variabelen
+in een enkele expressie kan instellen.  Het eerste argument van ‘setq’
+is ingesteld op de waarde van de tweede, en het derde argument op de
+waarde van de vierde.
 
-   After the body of the inner ‘save-excursion’ is evaluated, the
-‘save-excursion’ restores the original buffer, but ‘start’ and ‘end’
-remain set to the values of the beginning and end of the buffer from
-which the text will be copied.
+   Nadat de body van de binnenste ‘save-excursion’ is geëvalueerd
+herstelt ‘save-excursion’ het oorspronkelijke buffer, maar ‘start’ en
+‘eind’ blijven ingesteld op de waarden van het begin en eind van het
+buffer van waar de tekst gekopieerd wordt.
 
-   The outer ‘save-excursion’ expression looks like this:
+   De buitenste ‘save-excursion’ expressie ziet er zo uit:
 
      (save-excursion
-       (INNER-save-excursion-EXPRESSION
-          (GO-TO-NEW-BUFFER-AND-SET-start-AND-end)
+       (BINNENSTE-save-excursion-EXPRESSIE
+          (GA-NAAR-NIEUW-BUFFER-EN-ZET-start-EN-end)
        (insert-buffer-substring buffer start end)
        (setq newmark (point)))
 
-The ‘insert-buffer-substring’ function copies the text _into_ the
-current buffer _from_ the region indicated by ‘start’ and ‘end’ in
-‘buffer’.  Since the whole of the second buffer lies between ‘start’ and
-‘end’, the whole of the second buffer is copied into the buffer you are
-editing.  Next, the value of point, which will be at the end of the
-inserted text, is recorded in the variable ‘newmark’.
+De functie ‘insert-buffer-substring’ kopieert de tekst _in_ het huidige
+buffer _van_ de region aangeduid met ‘start’ en ‘eind’ in ‘buffer’.
+Omdat het geheel van het tweede buffer tussen ‘start’ en ‘eind’ ligt,
+wordt het geheel van het tweede buffer gekopieerd naar het buffer dat je
+aan het editen bent.  Vervolgens wordt de waarde van point, die aan het
+eind van de ingevoegde tekst is, vastgelegd in de variabele ‘newmark’.
 
-   After the body of the outer ‘save-excursion’ is evaluated, point is
-relocated to its original place.
+   Nadat de body van de buitenste ‘save-excursion’ is geëvalueerd, wordt
+point naar zijn oorspronkelijke plek teruggeplaatst.
 
-   However, it is convenient to locate a mark at the end of the newly
-inserted text and locate point at its beginning.  The ‘newmark’ variable
-records the end of the inserted text.  In the last line of the ‘let’
-expression, the ‘(push-mark newmark)’ expression function sets a mark to
-this location.  (The previous location of the mark is still accessible;
-it is recorded on the mark ring and you can go back to it with ‘C-u
-C-<SPC>’.)  Meanwhile, point is located at the beginning of the inserted
-text, which is where it was before you called the insert function, the
-position of which was saved by the first ‘save-excursion’.
+   Het is echter handig om de mark aan het eind van de nieuw ingevoegde
+tekst te plaatsen en point aan het begin.  De variabele ‘newmark’
+registreert het eind van de ingevoegde tekst.  In de laatste regel van
+de ‘let’ expressie zet de ‘(push-mark newmark)’ expressie op deze
+lokatie.  (De vorige plek van de mark is nog steeds bereikbaar: het is
+opgeslagen in de mark-ring en je kunt teruggaan met ‘C-u C-<SPC>’.)
+Ondertussen staat point aan het begin van de ingevoegde tekst, waar deze
+was voordat je de insert-functie aanriep, die plek was bewaarde met de
+eerste ‘save-excursion’.
 
-   The whole ‘let’ expression looks like this:
+   De hele ‘let’ ziet er zo uit:
 
      (let (start end newmark)
        (save-excursion
@@ -5290,10 +5289,10 @@ position of which was saved by the first ‘save-excursion’.
          (setq newmark (point)))
        (push-mark newmark))
 
-   Like the ‘append-to-buffer’ function, the ‘insert-buffer’ function
-uses ‘let’, ‘save-excursion’, and ‘set-buffer’.  In addition, the
-function illustrates one way to use ‘or’.  All these functions are
-building blocks that we will find and use again and again.
+   De functie ‘insert-buffer’ gebruikt, net als de functie
+‘append-to-buffer’, ‘let’, ‘save-excursion’ en ‘set-buffer’.  Daarnaast
+illustreert de functie een manier om ‘or’ te gebruiken.  Al deze
+functies zijn bouwblokken die we keer op keer zullen gebruiken.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Nieuwe insert-buffer,  Prev: Voeg let in,  Up: insert-buffer
@@ -5301,10 +5300,9 @@ File: emacs-lisp-intro-nl.info,  Node: Nieuwe insert-buffer,  Prev: Voeg let in,
 5.2.6 Nieuwe body voor ‘insert-buffer’
 --------------------------------------
 
-The body in the GNU Emacs 22 version is more confusing than the
-original.
+De body in de GNU Emacs 22 versie is meer verwarrend dan het orgineel.
 
-   It consists of two expressions,
+   Het bestaat uit twee expressies
 
        (push-mark
         (save-excursion
@@ -5313,21 +5311,20 @@ original.
 
         nil
 
-except, and this is what confuses novices, very important work is done
-inside the ‘push-mark’ expression.
+behalve, en dit is wat veel beginners in de war brengt, wordt veel werk
+verricht in de ‘push-mark’ expressie.
 
-   The ‘get-buffer’ function returns a buffer with the name provided.
-You will note that the function is _not_ called ‘get-buffer-create’; it
-does not create a buffer if one does not already exist.  The buffer
-returned by ‘get-buffer’, an existing buffer, is passed to
-‘insert-buffer-substring’, which inserts the whole of the buffer (since
-you did not specify anything else).
+   De functie ‘get-buffer’ geeft een buffer met de opgegeven naam terug.
+Merk op dat de functie _niet_ ‘get-buffer-create’ heet, het maakt geen
+buffer wanneer er geen bestaat.  De buffer die ‘get-buffer’ teruggeeft,
+een bestaand buffer, wordt doorgegeven aan ‘insert-buffer-substring’, de
+het gehele buffer invoegt (omdat je niets anders opgaf).
 
-   The location into which the buffer is inserted is recorded by
-‘push-mark’.  Then the function returns ‘nil’, the value of its last
-command.  Put another way, the ‘insert-buffer’ function exists only to
-produce a side effect, inserting another buffer, not to return any
-value.
+   De plek waar het buffer is ingevoegd is vastgelegd door ‘push-mark’.
+Daarna geeft de functie ‘nil’ terug, de waarde van het laatste commando.
+Anders gezegd, de functie ‘insert-buffer’ bestaat alleen om een
+zij-effect te produceren, invoegen in een ander buffer en niet om enige
+waarde terug te geven.
 
 
 File: emacs-lisp-intro-nl.info,  Node: beginning-of-buffer,  Next: Tweede buffer gerelateerde terugblik,  Prev: insert-buffer,  Up: Meer complex
@@ -5335,26 +5332,26 @@ File: emacs-lisp-intro-nl.info,  Node: beginning-of-buffer,  Next: Tweede buffer
 5.3 Complete definitie van ‘beginning-of-buffer’
 ================================================
 
-The basic structure of the ‘beginning-of-buffer’ function has already
-been discussed.  (*Note A Simplified ‘beginning-of-buffer’ Definition:
-simplified-beginning-of-buffer.)  This section describes the complex
-part of the definition.
+De basisstructuur van de functie ‘beginning-of-buffer’ hebben we eerder
+besproken.  (*Note Een versimpelde ‘beginning-of-buffer’ definitie:
+versimpelde-beginning-of-buffer.)  Deze sectie beschrijft het complexe
+deel van de definitie.
 
-   As previously described, when invoked without an argument,
-‘beginning-of-buffer’ moves the cursor to the beginning of the buffer
-(in truth, the beginning of the accessible portion of the buffer),
-leaving the mark at the previous position.  However, when the command is
-invoked with a number between one and ten, the function considers that
-number to be a fraction of the length of the buffer, measured in tenths,
-and Emacs moves the cursor that fraction of the way from the beginning
-of the buffer.  Thus, you can either call this function with the key
-command ‘M-<’, which will move the cursor to the beginning of the
-buffer, or with a key command such as ‘C-u 7 M-<’ which will move the
-cursor to a point 70% of the way through the buffer.  If a number bigger
-than ten is used for the argument, it moves to the end of the buffer.
+   Wanneer ‘beginning-of-buffer’ zonder argument wordt aangeroepen
+plaatst het, zoals eerder beschreven, de cursor naar het begin van het
+buffer (eerlijk gezegd, het begin van het bereikbare deel van het
+buffer), en laat de mark op de voorgaande positie.  Echter, wanneer het
+commando wordt aangeroepen met een getal tussen één en tien, dan
+beschouwt de functie dat getal als een fractie van de lengte van het
+buffer, gemeten in tienden, en verplaatst Emacs de cursor die fractie
+vanaf het begin van het buffer.  Dus je kunt de functie aanroepen met
+het commando ‘M-<’, wat de cursor naar het begin van het buffer
+verplaatst, of met een toets commando zoals ‘C-u 7 M-<’ wat de cursor op
+een punt 70% in het buffer plaatst.  Bij gebruik van een getal groter
+dan tien als argument gaat het naar het einde van het buffer.
 
-   The ‘beginning-of-buffer’ function can be called with or without an
-argument.  The use of the argument is optional.
+   De functie ‘beginning-of-buffer’ kan met of zonder argument worden
+aangeroepen.  Het gebruik van een argument is optioneel.
 
 * Menu:
 
@@ -5368,72 +5365,74 @@ File: emacs-lisp-intro-nl.info,  Node: Optionele argumenten,  Next: beginning-of
 5.3.1 Optionele argumenten
 --------------------------
 
-Unless told otherwise, Lisp expects that a function with an argument in
-its function definition will be called with a value for that argument.
-If that does not happen, you get an error and a message that says ‘Wrong
-number of arguments’.
+Tenzij anders verteld verwacht Lisp dat een functie met een argument in
+zijn functiedefinitie wordt aangeroepen met een waarde voor dat
+argument.  Wanneer dat niet gebeurt, dan krijg je een fout en de
+boodschap ‘Wrong number of arguments’.
 
-   However, optional arguments are a feature of Lisp: a particular
-“keyword” is used to tell the Lisp interpreter that an argument is
-optional.  The keyword is ‘&optional’.  (The ‘&’ in front of ‘optional’
-is part of the keyword.)  In a function definition, if an argument
-follows the keyword ‘&optional’, no value need be passed to that
-argument when the function is called.
+   Optionele argumenten zijn echter een eigenschap van Lisp: een
+specifiek “sleutelwoord” wordt gebruikt om aan de Lisp interpreter te
+vertellen dat een argument optioneel is.  Het sleutelwoord is
+‘&optional’.  (De ‘&’ aan de voorkant van ‘optional’ is onderdeel van
+het sleutelwoord.)  Wanneer een argument in een functiedefinitie volgt
+op het sleutelwoord ‘&optional’ dan behoeft geen waarde aan het argument
+te worden doorgegeven bij het aanroepen van de functie.
 
-   The first line of the function definition of ‘beginning-of-buffer’
-therefore looks like this:
-
-     (defun beginning-of-buffer (&optional arg)
-
-   In outline, the whole function looks like this:
+   De eerste regel van de functiedefinitie van ‘beginning-of-buffer’
+ziet er daardoor als volgt uit:
 
      (defun beginning-of-buffer (&optional arg)
-       "DOCUMENTATION..."
+
+   Globaal ziet de hele functie er zo uit:
+
+     (defun beginning-of-buffer (&optional arg)
+       "DOCUMENTATIE..."
        (interactive "P")
-       (or (IS-THE-ARGUMENT-A-CONS-CELL arg)
-           (and ARE-BOTH-TRANSIENT-MARK-MODE-AND-MARK-ACTIVE-TRUE)
+       (or (IS-HET-ARGUMENT-EEN-CONS-CEL arg)
+           (and ZIJN-ZOWEL-TRANSIENT-MARK-MODE-ALS-MARK-ACTIVE-WAAR)
            (push-mark))
-       (let (DETERMINE-SIZE-AND-SET-IT)
+       (let (STEL-GROOTTE-VAST-EN-STEL-IN)
          (goto-char
-           (IF-THERE-IS-AN-ARGUMENT
-               FIGURE-OUT-WHERE-TO-GO
-             ELSE-GO-TO
+           (ALS-ER-EEN-ARGUMENT-IS
+               ZOEK-UIT-WAAR-HEEN-TE-GAAN
+             ANDERS-GA-NAAR
              (point-min))))
-       DO-NICETY
+       WEES-BELEEFD
 
-   The function is similar to the ‘simplified-beginning-of-buffer’
-function except that the ‘interactive’ expression has ‘"P"’ as an
-argument and the ‘goto-char’ function is followed by an if-then-else
-expression that figures out where to put the cursor if there is an
-argument that is not a cons cell.
+   De functie is vergelijkbaar met de ‘versimpelde-beginning-of-buffer’
+functie, behalve dat de ‘interactive’ expressie als argument ‘"P"’ heeft
+en de functie ‘goto-char’ gevolgd wordt door een if-then-else expressie
+die uitzoekt waar de cursor geplaatst moet worden wanneer er een
+argument is dat geen cons-cel is.
 
-   (Since I do not explain a cons cell for many more chapters, please
-consider ignoring the function ‘consp’.  *Note How Lists are
-Implemented: List Implementation, and *note Cons Cell and List Types:
-(elisp)Cons Cell Type.)
+   (Omdat ik een cons-cel pas een aantal hoofdstukken verderop uitleg,
+negeer alsjeblieft de functie ‘consp’.  *Note Hoe lijsten zijn
+geïmplementeerd: Implementatie van lijsten. en *note Cons Cell and List
+Types: (elisp)Cons Cell Type.)
 
-   The ‘"P"’ in the ‘interactive’ expression tells Emacs to pass a
-prefix argument, if there is one, to the function in raw form.  A prefix
-argument is made by typing the <META> key followed by a number, or by
-typing ‘C-u’ and then a number.  (If you don't type a number, ‘C-u’
-defaults to a cons cell with a 4.  A lowercase ‘"p"’ in the
-‘interactive’ expression causes the function to convert a prefix arg to
-a number.)
+   De ‘"P"’ in de ‘interactive’ expressie vertelt Emacs om een
+prefix-argument, wanneer die er is, ongewijzigd aan de functie door te
+geven.  Een prefix-argument maak je het typen van de <META>-toets,
+gevolgd door een getal, of door ‘C-u’ te typen en dan een getal.  (Als
+je geen getal typt, dan leidt ‘C-u’ standaard naar een cons-cel met een
+4).  De kleine letter ‘"p"’ in de ‘interactive’ expressie laat de
+functie de prefix naar een getal converteren.
 
-   The true-or-false-test of the ‘if’ expression looks complex, but it
-is not: it checks whether ‘arg’ has a value that is not ‘nil’ and
-whether it is a cons cell.  (That is what ‘consp’ does; it checks
-whether its argument is a cons cell.)  If ‘arg’ has a value that is not
-‘nil’ (and is not a cons cell), which will be the case if
-‘beginning-of-buffer’ is called with a numeric argument, then this
-true-or-false-test will return true and the then-part of the ‘if’
-expression will be evaluated.  On the other hand, if
-‘beginning-of-buffer’ is not called with an argument, the value of ‘arg’
-will be ‘nil’ and the else-part of the ‘if’ expression will be
-evaluated.  The else-part is simply ‘point-min’, and when this is the
-outcome, the whole ‘goto-char’ expression is ‘(goto-char (point-min))’,
-which is how we saw the ‘beginning-of-buffer’ function in its simplified
-form.
+   De waar-of-onwaar-test in de ‘if’-expressie ziet er gecompliceerd
+uit, maar is het niet: het controleert of ‘arg’ een waarde heeft doe
+niet ‘nil’ is en of het wel of niet een cons-cel is.  (Dat is wat
+‘consp’ doet, het controleert of zijn argument een cons-cel is.)
+Wanneer ‘arg’ een waarde heeft die ongelijk aan ‘nil’ is (en ook geen
+cons-cel is), wat het geval is wanneer ‘beginning-of-buffer’ wordt
+aangeroepen met een numeriek argument, dan geeft deze
+waar-of-onwaar-test waar terug en wordt het dan-deel van de
+‘if’-expressie geëvalueerd.  Anderzijds, wanneer ‘beginning-of-buffer’
+niet met een argument is aangeroepen, heeft ‘arg’ de waarde ‘nil’ en
+wordt het anders-deel van de ‘if’-expressie geëvalueerd.  Dit
+anders-deel is eenvoudigweg ‘point-min’, en wanneer dit de uitkomst is,
+dan is de gehele ‘goto-char’-expressie ‘(goto-char (point-min))’, wat
+overeenkomt met hoe we de functie ‘beginning-of-buffer’ zagen in de
+vereenvoudigde vorm.
 
 
 File: emacs-lisp-intro-nl.info,  Node: beginning-of-buffer opt arg,  Next: beginning-of-buffer compleet,  Prev: Optionele argumenten,  Up: beginning-of-buffer
@@ -5441,10 +5440,11 @@ File: emacs-lisp-intro-nl.info,  Node: beginning-of-buffer opt arg,  Next: begin
 5.3.2 ‘beginning-of-buffer’ met een argument
 --------------------------------------------
 
-When ‘beginning-of-buffer’ is called with an argument, an expression is
-evaluated which calculates what value to pass to ‘goto-char’.  This
-expression is rather complicated at first sight.  It includes an inner
-‘if’ expression and much arithmetic.  It looks like this:
+Wanneer ‘beginning-of-buffer’ wordt aangeroepen met een argument, dan
+wordt een expressie geëvalueerd die de waarde berekent om aan
+‘goto-char’ door te geven.  Deze expressie is op het eerste gezicht
+nogal complex.  Het bevat een binnenliggende ‘if’ en flink wat
+rekenkunde.  Het ziet er zo uit:
 
      (if (> (buffer-size) 10000)
          ;; Avoid overflow for large buffer sizes!
@@ -5465,112 +5465,114 @@ expression is rather complicated at first sight.  It includes an inner
 
 File: emacs-lisp-intro-nl.info,  Node: Ontrafelen beginning-of-buffer,  Next: In geval van een groot buffer,  Up: beginning-of-buffer opt arg
 
-Disentangle ‘beginning-of-buffer’
-.................................
+Ontrafelen ‘beginning-of-buffer’
+................................
 
-Like other complex-looking expressions, the conditional expression
-within ‘beginning-of-buffer’ can be disentangled by looking at it as
-parts of a template, in this case, the template for an if-then-else
-expression.  In skeletal form, the expression looks like this:
+Net als andere expressies die er complex uitzien, kan de conditionele
+expressie in ‘beginning-of-buffer’ worden ontrafeld door het te bekijken
+als delen van een sjabloon, in dit geval het sjabloon voor een
+if-then-else-expressie.  Globaal ziet de expressie er zo uit:
 
-     (if (BUFFER-IS-LARGE
-         DIVIDE-BUFFER-SIZE-BY-10-AND-MULTIPLY-BY-ARG
-       ELSE-USE-ALTERNATE-CALCULATION
+     (if (BUFFER-IS-GROOT
+         DEEL-BUFFER-GROOTTE-DOOR-10-EN-VERMENIGVULDIG-MET-ARG
+       ANDERS-GEBRUIK-ALTERNATIEVE-BEREKENING
 
-   The true-or-false-test of this inner ‘if’ expression checks the size
-of the buffer.  The reason for this is that the old version 18 Emacs
-used numbers that are no bigger than eight million or so and in the
-computation that followed, the programmer feared that Emacs might try to
-use over-large numbers if the buffer were large.  The term "overflow",
-mentioned in the comment, means numbers that are over large.  More
-recent versions of Emacs use larger numbers, but this code has not been
-touched, if only because people now look at buffers that are far, far
-larger than ever before.
+   De waar-of-onwaar-test van de binnenliggende ‘if’-expressie
+controleert de grootte van het buffer.  De reden hiervoor is, is dat de
+oude versie 18 van Emacs met getallen werkte die niet hoger kunnen zijn
+dan ongeveer acht miljoen en in de berekening die volgt, de programmeur
+bang was dat Emacs zou proberen te grootte getallen te gebruiken wanneer
+de buffers groot zijn.  De term "overflow" die in het commentaar genoemd
+wordt betekent dat getallen te groot zijn.  Meer recente versies van
+Emacs gebruiken grotere getallen, maar de code is niet gewijzigd, al is
+het alleen maar omdat mensen nu met buffers werken die vele malen groter
+zijn dan ooit.
 
-   There are two cases: if the buffer is large and if it is not.
+   Er zijn twee gevallen: wanneer de buffer groot is, en wanneer niet.
 
 
 File: emacs-lisp-intro-nl.info,  Node: In geval van een groot buffer,  Next: In geval van een klein buffer,  Prev: Ontrafelen beginning-of-buffer,  Up: beginning-of-buffer opt arg
 
-What happens in a large buffer
-..............................
+Wat in een groot buffer gebeurt
+...............................
 
-In ‘beginning-of-buffer’, the inner ‘if’ expression tests whether the
-size of the buffer is greater than 10,000 characters.  To do this, it
-uses the ‘>’ function and the computation of ‘size’ that comes from the
-let expression.
+In In ‘beginning-of-buffer’ test de binnenliggende ‘if’-expressie of de
+grootte van het buffer groter is dan 10.000 karakters.  Om dit te doen
+gebruikt het de functie ‘>’ en de berekening van ‘size’ die van de
+let-expressie komt.
 
-   In the old days, the function ‘buffer-size’ was used.  Not only was
-that function called several times, it gave the size of the whole
-buffer, not the accessible part.  The computation makes much more sense
-when it handles just the accessible part.  (*Note Narrowing and
-Widening: Narrowing & Widening, for more information on focusing
-attention to an accessible part.)
+   Oorspronkelijk werd de functie ‘buffer-size’ gebruikt.  Niet alleen
+werd die functie meerdere keren aangeroepen, het gaf de grootte van het
+gehele buffer, niet het bereikbare deel.  De berekening is veel
+logischer wanneer het alleen het bereikbare deel gebruikt.  (*Note
+Versmallen en verbreden: Versmallen en verbreden, voor meer informatie
+over het richten van de aandacht op een bereikbaar deel.)
 
-   The line looks like this:
+   De regel ziet er zo uit:
 
      (if (> size 10000)
 
-When the buffer is large, the then-part of the ‘if’ expression is
-evaluated.  It reads like this (after formatting for easy reading):
+Wanneer het buffer groot is, dan wordt het dan-deel van de
+‘if’-expressie geëvalueerd.  Dit staat er (na het formatteren voor
+makkelijk lezen):
 
      (*
        (prefix-numeric-value arg)
        (/ size 10))
 
-This expression is a multiplication, with two arguments to the function
-‘*’.
+Deze expressie is een vermenigvuldiging met twee argumenten voor de
+functie ‘*’.
 
-   The first argument is ‘(prefix-numeric-value arg)’.  When ‘"P"’ is
-used as the argument for ‘interactive’, the value passed to the function
-as its argument is passed a “raw prefix argument”, and not a number.
-(It is a number in a list.)  To perform the arithmetic, a conversion is
-necessary, and ‘prefix-numeric-value’ does the job.
+   Het eerste argument is ‘(prefix-numeric-value arg)’.  Wanneer ‘"P"’
+wordt gebruik als argument voor ‘interactive’, is de waarde die als
+argument wordt doorgegeven een “ongewijzigd prefix-argument”, en niet
+een getal.  (Het is een getal in een list.)  Om de berekening uit te
+voeren is een conversie nodig, en ‘prefix-numeric-value’ doet dat.
 
-   The second argument is ‘(/ size 10)’.  This expression divides the
-numeric value by ten--the numeric value of the size of the accessible
-portion of the buffer.  This produces a number that tells how many
-characters make up one tenth of the buffer size.  (In Lisp, ‘/’ is used
-for division, just as ‘*’ is used for multiplication.)
+   Het tweede argument is ‘(/ size 10)’.  Deze expressie deelt het getal
+door tien--de numerieke waarde van de grootte van het bereikbare deel
+van de buffer.  Dit produceert een getal dat vertelt hoeveel karakters
+een tiende van de buffergrootte vormen.  (In Lisp wordt ‘/’ gebruikt
+voor deling, net als ‘*’ wordt gebruikt voor vermenigvuldiging.)
 
-   In the multiplication expression as a whole, this amount is
-multiplied by the value of the prefix argument--the multiplication looks
-like this:
+   In de complete vermenigvuldiging expressie wordt dit getal
+vermenigvuldigd met de waarde van het prefix-argument--de
+vermenigvuldiging ziet er zo uit:
 
-     (* NUMERIC-VALUE-OF-PREFIX-ARG
-        NUMBER-OF-CHARACTERS-IN-ONE-TENTH-OF-THE-ACCESSIBLE-BUFFER)
+     (* NUMERIEKE-WAARDE-VAN-HET-PREFIX-ARG
+        AANTAL KARAKTERS-IN-EEN-TIENDE-VAN-HET-BEREIKBARE-BUFFER)
 
-If, for example, the prefix argument is ‘7’, the one-tenth value will be
-multiplied by 7 to give a position 70% of the way through.
+Als bijvoorbeeld het prefix-argument ‘7’ is, wordt de een-tiende waarde
+vermenigvuldigd met 7, om op een positie van 70% uit te komen.
 
-   The result of all this is that if the accessible portion of the
-buffer is large, the ‘goto-char’ expression reads like this:
+   Het resultaat van dit alles is dat wanneer het bereikbare deel van
+het buffer groot is, de ‘goto-char’ als volgt is:
 
      (goto-char (* (prefix-numeric-value arg)
                    (/ size 10)))
 
-   This puts the cursor where we want it.
+   Dit plaatst de cursor waar wij die willen hebben.
 
 
 File: emacs-lisp-intro-nl.info,  Node: In geval van een klein buffer,  Prev: In geval van een groot buffer,  Up: beginning-of-buffer opt arg
 
-What happens in a small buffer
-..............................
+Wat in een klein buffer gebeurt
+...............................
 
-If the buffer contains fewer than 10,000 characters, a slightly
-different computation is performed.  You might think this is not
-necessary, since the first computation could do the job.  However, in a
-small buffer, the first method may not put the cursor on exactly the
-desired line; the second method does a better job.
+Wanneer het buffer minder dan 10.000 karakters bevat wordt een iets
+andere berekening uitgevoerd.  Je zou kunnen denken dat dit niet nodig
+is, omdat de eerste berekening dat zou kunnen doen.  Maar in een klein
+buffer zou de eerste methode de cursor niet precies op de gewenste regel
+kunnen plaatsen.  De tweede methode doet dat beter.
 
-   The code looks like this:
+   De code ziet er zo uit:
 
      (/ (+ 10 (* size (prefix-numeric-value arg))) 10)
 
-This is code in which you figure out what happens by discovering how the
-functions are embedded in parentheses.  It is easier to read if you
-reformat it with each expression indented more deeply than its enclosing
-expression:
+Dit is de code waarin je uitzoekt wat er gebeurt door te ontdekken hoe
+de functies tussen de haakjes zijn ingebed.  Het wordt makkelijker te
+lezen wanneer je het zo formatteert dat elke expressie dieper inspringt
+dan zijn omsluitende expressie:
 
        (/
         (+ 10
@@ -5579,29 +5581,29 @@ expression:
             (prefix-numeric-value arg)))
         10)
 
-Looking at parentheses, we see that the innermost operation is
-‘(prefix-numeric-value arg)’, which converts the raw argument to a
-number.  In the following expression, this number is multiplied by the
-size of the accessible portion of the buffer:
+Naar de haakjes kijkend zien we dat de meest binnenste bewerking
+‘(prefix-numeric-value arg)’ is, die het ongewijzigde argument naar een
+getal converteert.  In de volgende expressie wordt dit getal
+vermenigvuldigd met de grootte van het bereikbare deel van het buffer:
 
      (* size (prefix-numeric-value arg))
 
-This multiplication creates a number that may be larger than the size of
-the buffer--seven times larger if the argument is 7, for example.  Ten
-is then added to this number and finally the large number is divided by
-ten to provide a value that is one character larger than the percentage
-position in the buffer.
+Deze vermenigvuldiging creëert een getal dat groter zou kunnen zijn dan
+de grootte van het buffer--zeven keer groter als het argument 7 is,
+bijvoorbeeld.  Hierna wordt tien bij dit getal opgeteld en uiteindelijk
+wordt het grote getal gedeeld door tien om een waarde te geven die één
+karakter groter is dan de procentuele positie in het buffer.
 
-   The number that results from all this is passed to ‘goto-char’ and
-the cursor is moved to that point.
+   Het getal dat de uitkomst is van dit alles wordt doorgegeven aan
+‘goto-char’ en de cursor wordt naar dat punt verplaatst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: beginning-of-buffer compleet,  Prev: beginning-of-buffer opt arg,  Up: beginning-of-buffer
 
-5.3.3 The Complete ‘beginning-of-buffer’
-----------------------------------------
+5.3.3 De complete ‘beginning-of-buffer’
+---------------------------------------
 
-Here is the complete text of the ‘beginning-of-buffer’ function:
+Hiet is de complete tekst van de functie ‘beginning-of-buffer’:
 
      (defun beginning-of-buffer (&optional arg)
        "Move point to the beginning of the buffer;
@@ -5634,36 +5636,37 @@ Here is the complete text of the ‘beginning-of-buffer’ function:
                       (point-min))))
        (if (and arg (not (consp arg))) (forward-line 1)))
 
-Except for two small points, the previous discussion shows how this
-function works.  The first point deals with a detail in the
-documentation string, and the second point concerns the last line of the
-function.
+Afgezien van twee kleine punten toont de voorgaande bespreking hoe deze
+functie werkt.  Het eerste punt betreft een detail in de
+documenatiestring en het tweede punt betreft de laatste regel van de
+functie.
 
-   In the documentation string, there is reference to an expression:
+   In de documenatiestring is een referencie naar een expressie:
 
      \\[universal-argument]
 
-A ‘\\’ is used before the first square bracket of this expression.  This
-‘\\’ tells the Lisp interpreter to substitute whatever key is currently
-bound to the ‘[...]’.  In the case of ‘universal-argument’, that is
-usually ‘C-u’, but it might be different.  (*Note Tips for Documentation
-Strings: (elisp)Documentation Tips, for more information.)
+Een ‘\\’ wordt gebruikt voor de eerste vierkante haak in deze expressie.
+Deze ‘\\’ vertelt de Lisp interpreter de toets te vervangen door wat dan
+ook thans gebonden is aan de ‘[...]’.  In het geval van het universele
+argument, die meestal gebonden is aan ‘C-u’, maar dit kan anders zijn
+(*Note Tips for Documentation Strings: (elisp)Documentation Tips, for
+more information.)
 
-   Finally, the last line of the ‘beginning-of-buffer’ command says to
-move point to the beginning of the next line if the command is invoked
-with an argument:
+   Tenslotte zegt de laatste regel van het ‘beginning-of-buffer’
+commando de point te verplaatsten naar het begin van de volgende regel
+wanneer het commando met een argument is aangeroepen:
 
      (if (and arg (not (consp arg))) (forward-line 1))
 
-This puts the cursor at the beginning of the first line after the
-appropriate tenths position in the buffer.  This is a flourish that
-means that the cursor is always located _at least_ the requested tenths
-of the way through the buffer, which is a nicety that is, perhaps, not
-necessary, but which, if it did not occur, would be sure to draw
-complaints.  (The ‘(not (consp arg))’ portion is so that if you specify
-the command with a ‘C-u’, but without a number, that is to say, if the
-raw prefix argument is simply a cons cell, the command does not put you
-at the beginning of the second line.)
+Dit plaatst de cursor aan het begin van de eerste regel na de juiste
+tiende deel positie in het buffer.  Deze elegantie zorgt dat de cursor
+altijd _tenminste_ het aantal gewenste tienden in het buffer is
+geplaatst, wat een misschien onnodige verfraaiing is, die, als dat niet
+zou gebeuren ongetwijfeld tot klachten zou leiden.  (Het ‘(not (consp
+arg))’ deel is zo dat wanneer je het commando met ‘C-u’ maar zonder
+getal aanroept, wat inhoudt dat het prefix-argument eenvoudig een
+cons-cel is, het commando je niet aan het begin van de tweede regel
+plaatst.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Tweede buffer gerelateerde terugblik,  Next: optionele oefening,  Prev: beginning-of-buffer,  Up: Meer complex
@@ -5671,54 +5674,58 @@ File: emacs-lisp-intro-nl.info,  Node: Tweede buffer gerelateerde terugblik,  Ne
 5.4 Terugblik
 =============
 
-Here is a brief summary of some of the topics covered in this chapter.
+Hier is een korte samenvatting van enkele van de onderwerpen in dit
+hoofdstuk.
 
-‘of’
-     Evaluate each argument in sequence, and return the value of the
-     first argument that is not ‘nil’; if none return a value that is
-     not ‘nil’, return ‘nil’.  In brief, return the first true value of
-     the arguments; return a true value if one _or_ any of the others
-     are true.
+‘or’
+     Evalueer elk argument op volgorde, en geef de waarde van het eerste
+     argument dat niet ‘nil’ is.  Wanneer niet een van hen een waarde
+     ongelijk aan ‘nil’ teruggeeft, geef dan ‘nil’ terug.  In het kort,
+     geef de eerste waarde van de argumenten die waar is terug, geef een
+     waarde waar terug wanneer een _of_ meer van de andere waar zijn.
 
 ‘and’
-     Evaluate each argument in sequence, and if any are ‘nil’, return
-     ‘nil’; if none are ‘nil’, return the value of the last argument.
-     In brief, return a true value only if all the arguments are true;
-     return a true value if one _and_ each of the others is true.
+     Evalueer elk argument op volgorde, en als er een ‘nil’ is, geef dan
+     ‘nil’ terug.  Als niet een van hen ‘nil’ is, geef dan de waarde van
+     het laatste argument terug.  In het kort, geef een waarde waar
+     terug uitsluitend wanneer alle argumenten waar zijn, geef een
+     waarde waar terug wanneer een _en_ alle andere waar zijn.
 
 ‘&optional’
-     A keyword used to indicate that an argument to a function
-     definition is optional; this means that the function can be
-     evaluated without the argument, if desired.
+     Een sleutelwoord dat aangeeft dat een argument van een
+     functiedefinitie optioneel is, dit betekent dat de functie
+     desgewenst zonder dit argument kan worden geëvalueerd,
 
 ‘prefix-numeric-value’
-     Convert the raw prefix argument produced by ‘(interactive "P")’ to
-     a numeric value.
+     Converteer het ongewijzigde prefix-numeric-value geproduceerd door
+     ‘(interactive "P")’ naar een numerieke waarde.
 
 ‘forward-line’
-     Move point forward to the beginning of the next line, or if the
-     argument is greater than one, forward that many lines.  If it can't
-     move as far forward as it is supposed to, ‘forward-line’ goes
-     forward as far as it can and then returns a count of the number of
-     additional lines it was supposed to move but couldn't.
+     Verplaats point voorwaarts naar het begin van de volgende regel, of
+     wanneer het argument groter is dan één, dat aantal regels
+     voorwaarts.  Wanneer het niet zo ver voorwaarts kan als het bedoeld
+     is, gaat ‘forward-line’ zo ver mogelijk voorwaarts en geeft
+     vervolgens het aantal terug van de extra regels die het bedoeld was
+     te verplaatsen maar dat niet kon.
 
 ‘erase-buffer’
-     Delete the entire contents of the current buffer.
+     Verwijder de gehele inhoud van het huidige buffer.
 
 ‘bufferp’
-     Return ‘t’ if its argument is a buffer; otherwise return ‘nil’.
+     Geef ‘t’ terug wanneer het argument een buffer is, zo niet geef
+     ‘nil’ terug.
 
 
 File: emacs-lisp-intro-nl.info,  Node: optionele oefening,  Prev: Tweede buffer gerelateerde terugblik,  Up: Meer complex
 
-5.5 ‘optional’ Argument Exercise
-================================
+5.5 ‘optioneel’ argument oefening
+=================================
 
-Write an interactive function with an optional argument that tests
-whether its argument, a number, is greater than or equal to, or else,
-less than the value of ‘fill-column’, and tells you which, in a message.
-However, if you do not pass an argument to the function, use 56 as a
-default value.
+Schrijf een interactieve functie met een optioneel argument dat test of
+het argument, een getal, groter of gelijk is aan, dan wel kleiner is dan
+de waarde van ‘fill-column’, en je in een boodschap vertelt welke het
+geval is.  Wanneer je echter geen argument aan de functie doorgeeft,
+gebruik dan 56 als standaard waarde.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Versmallen en verbreden,  Next: car cdr en cons,  Prev: Meer complex,  Up: Top
@@ -11776,7 +11783,7 @@ variable to hold the count, and finally, we record the position of the
 end of the definition so the ‘while’ loop will know when to stop
 looping.
 
-   The code looks like this:
+   De code ziet er zo uit:
 
      (beginning-of-defun)
      (let ((count 0)
@@ -14325,7 +14332,7 @@ boot script and then include ‘xmodmap’ commands in their ‘.xinitrc’ or
 For a boot script:
 
      loadkeys /usr/share/keymaps/i386/qwerty/emacs2.kmap.gz
-of
+or
      install-keymap emacs2
 
 For a ‘.xinitrc’ or ‘.Xsession’ file when the <Caps Lock> key is at the
@@ -15300,7 +15307,7 @@ Among other actions, the else-part of the ‘if’ expression sets the value
 of ‘kill-ring-yank-pointer’ to ‘ARGth-kill-element’ when the kill ring
 has something in it and the value of ‘do-not-move’ is ‘nil’.
 
-   The code looks like this:
+   De code ziet er zo uit:
 
      (nthcdr (mod (- n (length kill-ring-yank-pointer))
                   (length kill-ring))
@@ -15402,7 +15409,7 @@ almost easy.
 variable directly.  It calls ‘insert-for-yank’ which calls
 ‘current-kill’ which sets the ‘kill-ring-yank-pointer’ variable.
 
-   The code looks like this:
+   De code ziet er zo uit:
 
      (defun yank (&optional arg)
        "Reinsert (\"paste\") the last stretch of killed text.
@@ -16112,7 +16119,7 @@ is indented to provide space for the Y axis labels.
 to the next plus a tic symbol.  The number of blanks is determined by
 the width of the tic symbol and the ‘X-axis-label-spacing’.
 
-   The code looks like this:
+   De code ziet er zo uit:
 
      ;;; X-axis-tic-element
      ...
@@ -17457,11 +17464,11 @@ Index
 * ' om te quoten:                        Draai een programma. (line  13)
 * (debug) in code:                       debug-on-quit.       (line  13)
 * * (vermenigvuldiging):                 defun.               (line 103)
-* * for read-only buffer:                Read-only buffer.    (line   6)
+* * voor read-only buffer:               Read-only buffer.    (line   6)
 * *scratch* buffer:                      print-elements-of-list.
                                                               (line   9)
-* / (division):                          In geval van een groot buffer.
-                                                              (line  38)
+* / (deling):                            In geval van een groot buffer.
+                                                              (line  39)
 * % (remainder function):                Bereken het restant. (line   6)
 * <= (less than or equal):               Inc voorbeeld onderdelen.
                                                               (line  47)
@@ -17488,7 +17495,6 @@ Index
 * Argumenten, variabel aantal:           Variabel aantal argumenten.
                                                               (line   6)
 * argumentlijst gedefinieerd:            defun.               (line  61)
-* Asterisk for read-only buffer:         Read-only buffer.    (line   6)
 * Auto Fill mode turned on:              Tekst en auto-fill.  (line  54)
 * autoload:                              Autoload.            (line   6)
 * Automatic mode selection:              Tekst en auto-fill.  (line  22)
@@ -17594,12 +17600,12 @@ Index
 * delete-and-extract-region:             Uitwijding naar C.   (line   6)
 * Deleting text:                         Knippen en opslaan van tekst.
                                                               (line   6)
-* describe-function:                     simplified-beginning-of-buffer.
+* Deling:                                In geval van een groot buffer.
+                                                              (line  39)
+* describe-function:                     versimpelde-beginning-of-buffer.
                                                               (line  80)
 * describe-function, geïntroduceerd:     Meer vinden.         (line   6)
 * directory-files:                       Bestanden lijst.     (line  12)
-* Division:                              In geval van een groot buffer.
-                                                              (line  38)
 * dolist:                                dolist.              (line   6)
 * dotimes:                               dotimes.             (line   6)
 * dotted pair:                           Lijsten uitgetekend. (line 102)
@@ -17689,7 +17695,7 @@ Index
 * insert-buffer:                         insert-buffer.       (line   6)
 * insert-buffer-substring:               append-to-buffer overzicht.
                                                               (line   6)
-* insert-buffer, new version body:       Nieuwe insert-buffer.
+* insert-buffer, nieuwe versie body:     Nieuwe insert-buffer.
                                                               (line   6)
 * Insidious type of bug:                 Een andere bug.      (line   6)
 * Installeer een functiedefinitie:       Installeer.          (line   6)
@@ -17709,8 +17715,6 @@ Index
 * keymap-global-set:                     Key bindings.        (line  18)
 * keymap-global-unset:                   Key bindings.        (line  58)
 * Keymaps:                               Keymaps.             (line   6)
-* Keyword:                               Optionele argumenten.
-                                                              (line  11)
 * Kill ring handling:                    Killring.            (line   6)
 * Kill ring overview:                    Kill ring overzicht. (line   6)
 * kill-append:                           kill-append functie. (line   6)
@@ -17783,7 +17787,7 @@ Index
                                                               (line   6)
 * narrowing defined:                     Buffer grootte en locatie.
                                                               (line  43)
-* new version body for insert-buffer:    Nieuwe insert-buffer.
+* nieuwe versie body voor insert-buffer: Nieuwe insert-buffer.
                                                               (line   6)
 * nil:                                   Waar en onwaarheid.  (line   6)
 * nil, geschiedenis van woord:           Buffer namen.        (line  43)
@@ -17795,7 +17799,6 @@ Index
 * nthcdr, example:                       kill-new functie.    (line 149)
 * number-to-string:                      Y-as element.        (line  12)
 * occur:                                 Key bindings.        (line  52)
-* of:                                    Voeg or in.          (line  13)
 * Ongeïnitialiseerde let variabelen:     Niet-geïnitialiseerde let variabelen.
                                                               (line   6)
 * Onwaarheid en waar in Emacs Lisp:      Waar en onwaarheid.  (line   6)
@@ -17803,10 +17806,11 @@ Index
                                                               (line   6)
 * Opties voor interactive:               Interactieve operaties.
                                                               (line   6)
-* optional:                              Optionele argumenten.
+* optionall:                             Optionele argumenten.
                                                               (line  11)
-* Optional arguments:                    Optionele argumenten.
+* Optionele argumenten:                  Optionele argumenten.
                                                               (line  11)
+* or:                                    Voeg or in.          (line  13)
 * other-buffer:                          Buffers pakken.      (line   6)
 * Paragraphs, movement by:               Rexexp zoeken.       (line   6)
 * Parts of a Recursive Definition:       Recursive definitie onderdelen.
@@ -17900,13 +17904,14 @@ Index
 * Setting a key globally:                Key bindings.        (line  18)
 * Simple extension in .emacs file:       Eenvoudige uitbreiding.
                                                               (line   6)
-* simplified-beginning-of-buffer:        simplified-beginning-of-buffer.
-                                                              (line   6)
 * site-init.el init file:                Site-wide init.      (line   6)
 * site-load.el init file:                Site-wide init.      (line   6)
+* Sleutelwoord:                          Optionele argumenten.
+                                                              (line  11)
 * sort:                                  Sorteren.            (line   6)
 * Source level debugger:                 edebug.              (line   6)
 * Speciale vorm:                         Complicaties.        (line  12)
+* Sterretje voor een read-only buffer:   Read-only buffer.    (line   6)
 * Storing and cutting text:              Knippen en opslaan van tekst.
                                                               (line   6)
 * string gedefinieerd:                   Lisp atoms.          (line  67)
@@ -17950,6 +17955,8 @@ Index
 * varlist gedefinieerd:                  Delen van een let expressie.
                                                               (line   6)
 * Verkeerde type argument:               Verkeerde type argument.
+                                                              (line   6)
+* versimpelde-beginning-of-buffer:       versimpelde-beginning-of-buffer.
                                                               (line   6)
 * Version of Emacs, choosing:            Eenvoudige uitbreiding.
                                                               (line  35)
@@ -18015,321 +18022,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24378
-Node: Waarom25841
-Node: Over het lezen van deze tekst26504
-Node: Doelgroep28844
-Node: Geschiedenis van Lisp31847
-Node: Opmerking voor beginners32751
-Node: Dank35488
-Node: Lijsten verwerken36083
-Ref: Lijsten verwerken-Footnote-137539
-Node: Lisp lijsten37695
-Node: Genummerde lijsten38625
-Node: Lisp atoms39793
-Node: Whitespace in lijsten43704
-Node: Typen van lijsten45055
-Node: Draai een programma46276
-Ref: Draai een programma-Footnote-148829
-Node: Fouten maken48973
-Node: Namen en definities54176
-Node: Lisp interpreter56132
-Node: Complicaties57356
-Node: Byte compiling59605
-Node: Evaluatie60734
-Node: Hoe de interpreter werkt61365
-Node: Geneste lijsten evalueren62738
-Node: Variabelen65426
-Node: fill-column voorbeeld67042
-Node: Void functie68729
-Node: Void variabele70012
-Node: Argumenten71938
-Ref: Argumenten-Footnote-173744
-Node: Data typen74616
-Node: Argumenten als variabele of als lijst76853
-Node: Variabel aantal argumenten78594
-Node: Verkeerde type argument79490
-Ref: Verkeerde type argument-Footnote-183283
-Node: message83358
-Ref: message-Footnote-187580
-Node: setq87785
-Node: Setq gebruiken88510
-Node: Tellen91744
-Node: Samenvatting93806
-Node: Foutmelding oefeningen95809
-Node: Oefenen van evaluatie96365
-Node: Hoe te evalueren97592
-Node: Buffer namen99186
-Node: Buffers pakken105279
-Ref: Buffers pakken-Footnote-1107968
-Node: Van buffer verwisselen108218
-Ref: Van buffer verwisselen-Footnote-1111809
-Ref: Van buffer verwisselen-Footnote-2112151
-Node: Buffer grootte en locatie112905
-Node: Evaluatie oefening115119
-Node: Defuns schrijven115403
-Node: Primitieve functies116695
-Node: defun117930
-Node: Installeer124773
-Node: Effect van installatie126205
-Node: Een defun wijzigen127123
-Node: Interactief129003
-Node: Interactieve vermenigvuldig-met-zeven130188
-Node: vermenigvuldig-met-zeven in detail132318
-Node: Interactieve operaties135171
-Node: Permanent installeren138539
-Node: let140849
-Node: Voorkom verwarring142424
-Ref: Voorkom verwarring-Footnote-1144692
-Node: Delen van een let expressie144836
-Node: Voorbeeld let expressie146551
-Ref: Voorbeeld let expressie-Footnote-1148371
-Node: Niet-geïnitialiseerde let variabelen148626
-Node: Hoe let variabelen bindt150396
-Node: Lexical en dynamische binding verschillen151735
-Node: Lexical vs dynamische binding voorbeeld153647
-Node: if155718
-Node: if in meer detail156664
-Node: type-dier in detail159479
-Node: else162126
-Node: Waar en onwaarheid165110
-Node: nil uitgelegd166112
-Node: save-excursion168308
-Node: Point en mark169084
-Node: Template voor save-excursion172205
-Node: Terugblik173491
-Node: defun oefeningen181421
-Node: Buffer rondleiding181894
-Node: Meer vinden183066
-Ref: Meer vinden-Footnote-1186070
-Node: simplified-beginning-of-buffer186262
-Node: mark-whole-buffer190752
-Node: mark-whole-buffer overzicht191625
-Node: Body van mark-whole-buffer192997
-Node: append-to-buffer196061
-Node: append-to-buffer overzicht196788
-Node: append interactief199587
-Node: append-to-buffer body202164
-Node: append save-excursion204352
-Ref: let* geïntroduceerd206144
-Node: Buffer gerelateerde terugblik209835
-Node: Buffer oefeningen212238
-Node: Meer complex212763
-Node: copy-to-buffer213862
-Ref: copy-to-buffer-Footnote-1216671
-Node: insert-buffer216890
-Node: insert-buffer code218349
-Node: insert-buffer interactief219358
-Node: Read-only buffer219908
-Node: b for interactief220548
-Node: insert-buffer body221674
-Node: if en or222893
-Node: Voeg or in226037
-Node: Voeg let in228389
-Node: Nieuwe insert-buffer232229
-Node: beginning-of-buffer233455
-Node: Optionele argumenten235111
-Node: beginning-of-buffer opt arg238510
-Node: Ontrafelen beginning-of-buffer239504
-Node: In geval van een groot buffer240771
-Node: In geval van een klein buffer243328
-Node: beginning-of-buffer compleet244996
-Node: Tweede buffer gerelateerde terugblik248029
-Node: optionele oefening249753
-Node: Versmallen en verbreden250248
-Node: Voordelen van versmallen250890
-Node: save-restriction252774
-Node: what-line254772
-Node: versmal oefening259005
-Node: car cdr en cons260037
-Node: Vreemde namen261235
-Node: car en cdr261941
-Node: cons266464
-Node: Bouw een lijst267480
-Ref: Bouw een lijst-Footnote-1269040
-Node: lengte269224
-Node: nthcdr270764
-Node: nth273678
-Node: setcar275068
-Node: setcdr277870
-Node: cons oefening279457
-Node: Knippen en opslaan van tekst279845
-Node: Tekst opslaan281216
-Node: zap-to-char283251
-Node: Complete zap-to-char283858
-Node: zap-to-char interactief286554
-Node: zap-to-char body288071
-Node: search-forward289646
-Node: progn292709
-Node: Samenvatting zap-to-char294455
-Node: kill-region295625
-Node: Complete kill-region296631
-Node: condition-case300869
-Node: Lisp macro303454
-Node: copy-region-as-kill305937
-Node: Complete copy-region-as-kill306854
-Node: copy-region-as-kill body309667
-Node: last-command en this-command310759
-Node: kill-append functie313068
-Node: kill-new functie317245
-Node: Uitwijding naar C327838
-Node: defvar333242
-Node: Inzien huidige variabele waarde335036
-Node: defvar en asterisk336961
-Node: cons en search-fwd terugblik338821
-Node: zoek oefening341876
-Node: Implementatie van lijsten342640
-Node: Lijsten uitgetekend343819
-Node: Symbolen als ladekast350042
-Node: Lijst oefening352075
-Node: Yanken352454
-Node: Kill ring overzicht353798
-Node: kill-ring-yank-pointer355510
-Node: yank nthcdr oefeningen357938
-Node: Loops en recursie358696
-Ref: Loops en recursie-Footnote-1359848
-Node: while360321
-Node: Looping met while361728
-Node: Loop voorbeeld363539
-Node: print-elements-of-list366994
-Node: Incrementele loop369539
-Node: Incrementele loop details370115
-Node: Incrementeel voorbeeld371510
-Node: Inc voorbeeld onderdelen373902
-Node: inc voorbeeld samengesteld377922
-Node: Decrementele loop381506
-Node: Decerementeel voorbeeld382972
-Node: Dec voorbeeld onderdelen384464
-Node: Dec voorbeeld samengesteld386523
-Node: dolist dotimes388777
-Node: dolist389609
-Node: dotimes392773
-Node: Recursie394287
-Node: Robots bouwen395499
-Node: Recursive definitie onderdelen397206
-Node: Recursie met lijst399644
-Node: Recursieve driehoek functie403237
-Node: Recursief voorbeeld arg van 1 of 2404613
-Node: Recursief voorbeeld arg van 3 of 4406893
-Node: Recursie met cond409939
-Node: Recursieve patronen412327
-Node: Every412820
-Node: Accumulate415274
-Node: Bewaar416567
-Node: Geen uitstel418477
-Node: Geen uitstel oplossing421181
-Ref: Geen uitstel oplossing-Footnote-1425154
-Ref: Geen uitstel oplossing-Footnote-2425260
-Node: Looping oefening425771
-Node: Rexexp zoeken427008
-Node: sentence-end429035
-Node: re-search-forward432952
-Node: forward-sentence435498
-Node: Complete forward-sentence436264
-Node: fwd-sentence while loops439816
-Node: fwd-sentence re-search443465
-Node: forward-paragraph445633
-Node: forward-paragraph in het kort447449
-Node: fwd-para let448919
-Node: fwd-para while455599
-Node: Regexp terugblik464181
-Node: re-search oefeningen466610
-Node: Woorden tellen467396
-Node: Waarom woorden tellen468154
-Node: count-words-example469200
-Node: Ontwerp count-words-example470484
-Node: Wiite ruimte bug477027
-Node: recursive-count-words486620
-Node: Tellen voorbeeld498701
-Node: Woorden in een defun499082
-Node: Verdeel en heers500823
-Node: Woorden en symbolen502054
-Node: Syntax504124
-Node: count-words-in-defun507760
-Node: Enkele defuns514059
-Node: Een bestand vinden516451
-Node: lengths-list-file519093
-Node: Enkele bestanden524368
-Node: lengths-list-many-files525129
-Node: append527921
-Node: Enkele bestanden recursief528558
-Node: De data voorbereiden531398
-Node: Data in detail te tonen532527
-Node: Sorteren533451
-Node: Bestanden lijst535129
-Ref: Bestanden lijst-Footnote-1542662
-Node: Functiedefinities tellen542879
-Node: Een grafiek klaarmaken552204
-Node: Kolommen van een grafiek553533
-Node: graph-body-print567172
-Node: recursive-graph-body-print571977
-Node: Afgedrukte assen574667
-Node: Lijngrafiek oefening575414
-Node: Initialisatie van Emacs575621
-Node: Default configuratie577115
-Ref: Default configuratie-Footnote-1579099
-Node: Site-wide init579415
-Node: defcustom581477
-Node: Een init bestand beginnen587360
-Node: Tekst en auto-fill589756
-Ref: Tekst en auto-fill-Footnote-1593772
-Ref: Tekst en auto-fill-Footnote-2594056
-Node: Mail aliasen594317
-Node: Indent Tabs Mode595243
-Node: Key bindings596188
-Node: Keymaps600962
-Node: Bestanden laden603622
-Node: Autoload606904
-Node: Eenvoudige uitbreiding609792
-Ref: Eenvoudige uitbreiding-Footnote-1612357
-Node: X11 kleuren612646
-Ref: X11 kleuren-Footnote-1614464
-Node: Diverse614618
-Node: Mode line618840
-Node: Debuggen.624376
-Node: debug625272
-Node: debug-on-entry628404
-Node: debug-on-quit632009
-Node: edebug633046
-Node: Debuggen oefeningen637168
-Node: Conclusie638933
-Node: de-de644291
-Node: Killring647081
-Node: Wat de killring doet647898
-Node: current-kill649416
-Node: Code voor current-kill650114
-Node: current-kill begrijpen652946
-Node: Body van current-kill653746
-Node: Uitwijding over fout656897
-Node: Het element vaststellen658072
-Node: yank661779
-Node: yank-pop664995
-Node: ring bestand667530
-Node: Volledige grafiek667907
-Node: Gelabeld voorbeeld668747
-Node: print-graph varlist670744
-Node: print-Y-axis672467
-Node: print-Y-axis in detail673320
-Node: Hoogte van label674130
-Node: Bereken het restant676147
-Node: Y-as element680013
-Node: Y-axis-column683776
-Node: print-Y-axis enalaatste685388
-Node: print-X-axis687373
-Node: Overeenkomsten verschillen688691
-Node: X-as tic marks689524
-Node: De gehele grafiek afdrukken696529
-Node: De finale versie697645
-Node: Test print-graph701900
-Node: Woorden in defuns grafisch weergeven703584
-Node: lambda706208
-Node: mapcar707892
-Node: Een andere bug709952
-Node: Finale afgedrukte grafiek715481
-Node: Vrije software en vrije handleidingen716432
-Node: GNU Free Documentation License722748
-Node: Index747937
-Node: Over de auteur786959
+Node: Voorwoord24380
+Node: Waarom25843
+Node: Over het lezen van deze tekst26506
+Node: Doelgroep28846
+Node: Geschiedenis van Lisp31849
+Node: Opmerking voor beginners32753
+Node: Dank35490
+Node: Lijsten verwerken36085
+Ref: Lijsten verwerken-Footnote-137541
+Node: Lisp lijsten37697
+Node: Genummerde lijsten38627
+Node: Lisp atoms39795
+Node: Whitespace in lijsten43706
+Node: Typen van lijsten45057
+Node: Draai een programma46278
+Ref: Draai een programma-Footnote-148831
+Node: Fouten maken48975
+Node: Namen en definities54178
+Node: Lisp interpreter56134
+Node: Complicaties57358
+Node: Byte compiling59607
+Node: Evaluatie60736
+Node: Hoe de interpreter werkt61367
+Node: Geneste lijsten evalueren62740
+Node: Variabelen65428
+Node: fill-column voorbeeld67044
+Node: Void functie68731
+Node: Void variabele70014
+Node: Argumenten71940
+Ref: Argumenten-Footnote-173746
+Node: Data typen74618
+Node: Argumenten als variabele of als lijst76855
+Node: Variabel aantal argumenten78596
+Node: Verkeerde type argument79492
+Ref: Verkeerde type argument-Footnote-183285
+Node: message83360
+Ref: message-Footnote-187582
+Node: setq87787
+Node: Setq gebruiken88512
+Node: Tellen91746
+Node: Samenvatting93808
+Node: Foutmelding oefeningen95811
+Node: Oefenen van evaluatie96367
+Node: Hoe te evalueren97594
+Node: Buffer namen99188
+Node: Buffers pakken105281
+Ref: Buffers pakken-Footnote-1107970
+Node: Van buffer verwisselen108220
+Ref: Van buffer verwisselen-Footnote-1111811
+Ref: Van buffer verwisselen-Footnote-2112153
+Node: Buffer grootte en locatie112907
+Node: Evaluatie oefening115121
+Node: Defuns schrijven115405
+Node: Primitieve functies116697
+Node: defun117932
+Node: Installeer124775
+Node: Effect van installatie126207
+Node: Een defun wijzigen127125
+Node: Interactief129005
+Node: Interactieve vermenigvuldig-met-zeven130190
+Node: vermenigvuldig-met-zeven in detail132320
+Node: Interactieve operaties135173
+Node: Permanent installeren138541
+Node: let140851
+Node: Voorkom verwarring142426
+Ref: Voorkom verwarring-Footnote-1144694
+Node: Delen van een let expressie144838
+Node: Voorbeeld let expressie146553
+Ref: Voorbeeld let expressie-Footnote-1148373
+Node: Niet-geïnitialiseerde let variabelen148628
+Node: Hoe let variabelen bindt150398
+Node: Lexical en dynamische binding verschillen151737
+Node: Lexical vs dynamische binding voorbeeld153650
+Node: if155721
+Node: if in meer detail156667
+Node: type-dier in detail159482
+Node: else162129
+Node: Waar en onwaarheid165113
+Node: nil uitgelegd166115
+Node: save-excursion168311
+Node: Point en mark169087
+Node: Template voor save-excursion172208
+Node: Terugblik173494
+Node: defun oefeningen181424
+Node: Buffer rondleiding181897
+Node: Meer vinden183071
+Ref: Meer vinden-Footnote-1186076
+Node: versimpelde-beginning-of-buffer186268
+Node: mark-whole-buffer190759
+Node: mark-whole-buffer overzicht191633
+Node: Body van mark-whole-buffer193005
+Node: append-to-buffer196069
+Node: append-to-buffer overzicht196796
+Node: append interactief199595
+Node: append-to-buffer body202172
+Node: append save-excursion204360
+Ref: let* geïntroduceerd206152
+Node: Buffer gerelateerde terugblik209843
+Node: Buffer oefeningen212246
+Node: Meer complex212771
+Node: copy-to-buffer213870
+Ref: copy-to-buffer-Footnote-1216679
+Node: insert-buffer216898
+Node: insert-buffer code218357
+Node: insert-buffer interactief219366
+Node: Read-only buffer219916
+Node: b for interactief220560
+Node: insert-buffer body221686
+Node: if en or222905
+Node: Voeg or in226049
+Node: Voeg let in228384
+Node: Nieuwe insert-buffer232230
+Node: beginning-of-buffer233451
+Node: Optionele argumenten235101
+Node: beginning-of-buffer opt arg238744
+Node: Ontrafelen beginning-of-buffer239766
+Node: In geval van een groot buffer241122
+Node: In geval van een klein buffer243770
+Node: beginning-of-buffer compleet245548
+Node: Tweede buffer gerelateerde terugblik248590
+Node: optionele oefening250555
+Node: Versmallen en verbreden251079
+Node: Voordelen van versmallen251721
+Node: save-restriction253605
+Node: what-line255603
+Node: versmal oefening259836
+Node: car cdr en cons260868
+Node: Vreemde namen262066
+Node: car en cdr262772
+Node: cons267295
+Node: Bouw een lijst268311
+Ref: Bouw een lijst-Footnote-1269871
+Node: lengte270055
+Node: nthcdr271595
+Node: nth274509
+Node: setcar275899
+Node: setcdr278701
+Node: cons oefening280288
+Node: Knippen en opslaan van tekst280676
+Node: Tekst opslaan282047
+Node: zap-to-char284082
+Node: Complete zap-to-char284689
+Node: zap-to-char interactief287385
+Node: zap-to-char body288902
+Node: search-forward290477
+Node: progn293540
+Node: Samenvatting zap-to-char295286
+Node: kill-region296456
+Node: Complete kill-region297462
+Node: condition-case301700
+Node: Lisp macro304285
+Node: copy-region-as-kill306768
+Node: Complete copy-region-as-kill307685
+Node: copy-region-as-kill body310498
+Node: last-command en this-command311590
+Node: kill-append functie313899
+Node: kill-new functie318076
+Node: Uitwijding naar C328669
+Node: defvar334073
+Node: Inzien huidige variabele waarde335867
+Node: defvar en asterisk337792
+Node: cons en search-fwd terugblik339652
+Node: zoek oefening342707
+Node: Implementatie van lijsten343471
+Node: Lijsten uitgetekend344650
+Node: Symbolen als ladekast350873
+Node: Lijst oefening352906
+Node: Yanken353285
+Node: Kill ring overzicht354629
+Node: kill-ring-yank-pointer356341
+Node: yank nthcdr oefeningen358769
+Node: Loops en recursie359527
+Ref: Loops en recursie-Footnote-1360679
+Node: while361152
+Node: Looping met while362559
+Node: Loop voorbeeld364370
+Node: print-elements-of-list367825
+Node: Incrementele loop370370
+Node: Incrementele loop details370946
+Node: Incrementeel voorbeeld372341
+Node: Inc voorbeeld onderdelen374733
+Node: inc voorbeeld samengesteld378753
+Node: Decrementele loop382337
+Node: Decerementeel voorbeeld383803
+Node: Dec voorbeeld onderdelen385295
+Node: Dec voorbeeld samengesteld387354
+Node: dolist dotimes389608
+Node: dolist390440
+Node: dotimes393604
+Node: Recursie395118
+Node: Robots bouwen396330
+Node: Recursive definitie onderdelen398037
+Node: Recursie met lijst400475
+Node: Recursieve driehoek functie404068
+Node: Recursief voorbeeld arg van 1 of 2405444
+Node: Recursief voorbeeld arg van 3 of 4407724
+Node: Recursie met cond410770
+Node: Recursieve patronen413158
+Node: Every413651
+Node: Accumulate416105
+Node: Bewaar417398
+Node: Geen uitstel419308
+Node: Geen uitstel oplossing422012
+Ref: Geen uitstel oplossing-Footnote-1425985
+Ref: Geen uitstel oplossing-Footnote-2426091
+Node: Looping oefening426602
+Node: Rexexp zoeken427839
+Node: sentence-end429866
+Node: re-search-forward433783
+Node: forward-sentence436329
+Node: Complete forward-sentence437095
+Node: fwd-sentence while loops440647
+Node: fwd-sentence re-search444296
+Node: forward-paragraph446464
+Node: forward-paragraph in het kort448280
+Node: fwd-para let449750
+Node: fwd-para while456430
+Node: Regexp terugblik465012
+Node: re-search oefeningen467441
+Node: Woorden tellen468227
+Node: Waarom woorden tellen468985
+Node: count-words-example470031
+Node: Ontwerp count-words-example471315
+Node: Wiite ruimte bug477858
+Node: recursive-count-words487451
+Node: Tellen voorbeeld499532
+Node: Woorden in een defun499913
+Node: Verdeel en heers501654
+Node: Woorden en symbolen502885
+Node: Syntax504955
+Node: count-words-in-defun508591
+Node: Enkele defuns514888
+Node: Een bestand vinden517280
+Node: lengths-list-file519922
+Node: Enkele bestanden525197
+Node: lengths-list-many-files525958
+Node: append528750
+Node: Enkele bestanden recursief529387
+Node: De data voorbereiden532227
+Node: Data in detail te tonen533356
+Node: Sorteren534280
+Node: Bestanden lijst535958
+Ref: Bestanden lijst-Footnote-1543491
+Node: Functiedefinities tellen543708
+Node: Een grafiek klaarmaken553033
+Node: Kolommen van een grafiek554362
+Node: graph-body-print568001
+Node: recursive-graph-body-print572806
+Node: Afgedrukte assen575496
+Node: Lijngrafiek oefening576243
+Node: Initialisatie van Emacs576450
+Node: Default configuratie577944
+Ref: Default configuratie-Footnote-1579928
+Node: Site-wide init580244
+Node: defcustom582306
+Node: Een init bestand beginnen588189
+Node: Tekst en auto-fill590585
+Ref: Tekst en auto-fill-Footnote-1594601
+Ref: Tekst en auto-fill-Footnote-2594885
+Node: Mail aliasen595146
+Node: Indent Tabs Mode596072
+Node: Key bindings597017
+Node: Keymaps601791
+Node: Bestanden laden604451
+Node: Autoload607733
+Node: Eenvoudige uitbreiding610621
+Ref: Eenvoudige uitbreiding-Footnote-1613186
+Node: X11 kleuren613475
+Ref: X11 kleuren-Footnote-1615293
+Node: Diverse615447
+Node: Mode line619669
+Node: Debuggen.625205
+Node: debug626101
+Node: debug-on-entry629233
+Node: debug-on-quit632838
+Node: edebug633875
+Node: Debuggen oefeningen637997
+Node: Conclusie639762
+Node: de-de645120
+Node: Killring647910
+Node: Wat de killring doet648727
+Node: current-kill650245
+Node: Code voor current-kill650943
+Node: current-kill begrijpen653775
+Node: Body van current-kill654575
+Node: Uitwijding over fout657726
+Node: Het element vaststellen658901
+Node: yank662606
+Node: yank-pop665820
+Node: ring bestand668355
+Node: Volledige grafiek668732
+Node: Gelabeld voorbeeld669572
+Node: print-graph varlist671569
+Node: print-Y-axis673292
+Node: print-Y-axis in detail674145
+Node: Hoogte van label674955
+Node: Bereken het restant676972
+Node: Y-as element680838
+Node: Y-axis-column684601
+Node: print-Y-axis enalaatste686213
+Node: print-X-axis688198
+Node: Overeenkomsten verschillen689516
+Node: X-as tic marks690349
+Node: De gehele grafiek afdrukken697352
+Node: De finale versie698468
+Node: Test print-graph702723
+Node: Woorden in defuns grafisch weergeven704407
+Node: lambda707031
+Node: mapcar708715
+Node: Een andere bug710775
+Node: Finale afgedrukte grafiek716304
+Node: Vrije software en vrije handleidingen717255
+Node: GNU Free Documentation License723571
+Node: Index748760
+Node: Over de auteur787784
 
 End Tag Table
 

@@ -6,7 +6,7 @@
 @c ===========================================================================
 
 @comment %**start of header
-@setfilename eintr.info
+@setfilename ../../info/eintr.info
 @settitle programmeren in Emacs Lisp
 @include docstyle.texi
 @syncodeindex vr cp
@@ -471,8 +471,8 @@ Enkele buffer gerelateerde functies
 
 
 * Meer vinden::              Hoe meer informatie te vinden
-* simplified-beginning-of-buffer::  Toon @code{goto-char}, @code{point-min} 
-                                      en @code{push-mark}.
+* versimpelde-beginning-of-buffer::  Toon @code{goto-char}, @code{point-min} 
+                                       en @code{push-mark}.
 * mark-whole-buffer::        Bijna hetzelde als @code{beginning-of-buffer}.
 * append-to-buffer::         Gebruikt @code{save-excursion} en 
                                @code{insert-buffer-substring}.
@@ -3955,7 +3955,7 @@ op je bureau waarop de waarden zijn geschreven.) Wanneer je een variabele
 dynamisch bindt met @code{let}, plaatst het de nieuw gespecificeerde binding
 bovenop de stapel en voert vervolgens de @code{let} body uit. Nadat de
 @code{let} body eindigt, neemt het die binding van de stapel, en toont
-diegene die er voor de @code{let}-expresie was (als er een was).
+diegene die er voor de @code{let}-expressie was (als er een was).
 
 @node Lexical vs dynamische binding voorbeeld
 @unnumberedsubsubsec Voorbeeld van lexical vs.@: dynamische binding
@@ -4785,8 +4785,8 @@ bufers. Later kijken we naar andere functies.
 
 @menu
 * Meer vinden::              Hoe meer informatie te vinden
-* simplified-beginning-of-buffer::  Toon @code{goto-char}, @code{point-min} 
-                                      en @code{push-mark}.
+* versimpelde-beginning-of-buffer::  Toon @code{goto-char}, @code{point-min} 
+                                       en @code{push-mark}.
 * mark-whole-buffer::        Bijna hetzelde als @code{beginning-of-buffer}.
 * append-to-buffer::         Gebruikt @code{save-excursion} en 
                                @code{insert-buffer-substring}.
@@ -4861,9 +4861,9 @@ verschaffen.) In @cite{The GNU Emacs Manual} zie je zinnen zoals ``het
 @kbd{C-h p} commando laat je de standaard Emacs lisp bibliotheken doorzoeken
 op onderwerp sleutelwoorden.''
 
-@node simplified-beginning-of-buffer
+@node versimpelde-beginning-of-buffer
 @section Een versimpelde @code{beginning-of-buffer} definitie
-@findex simplified-beginning-of-buffer
+@findex versimpelde-beginning-of-buffer
 
 De @code{beginning-of-buffer} is een goede functie om mee te starten omdat
 je er waarschijnlijk al bekend mee bent en makkelijk te begrijpen
@@ -5792,10 +5792,10 @@ buffer:@: }.
 @end menu
 
 @node Read-only buffer
-@unnumberedsubsubsec A Read-only Buffer
+@unnumberedsubsubsec Een read-only buffer
 @cindex Read-only buffer
-@cindex Asterisk for read-only buffer
-@findex * @r{for read-only buffer}
+@cindex Sterretje voor een read-only buffer
+@findex * @r{voor read-only buffer}
 
 Het sterretje is voor de situatie dat het huidige buffer een read-only
 buffer is---een buffer dat niet kan worden gewijzigd. Wanneer
@@ -5947,7 +5947,7 @@ deze taak met een @code{if} expressie gedaan kan worden. Echter, de functie
 @code{insert-buffer} gebruikt @code{or}. Om dit te begrijpen, is het nodig
 te begrijpen hoe @code{or} werkt.
 
-@findex of
+@findex or
 Een @code{or} functie kan allerlei argumenten hebben. Het evalueert elk
 argument op zijn beurt en geeft de waarde van het eerste van de argumenten
 dat niet @code{nil} is. Dus, en dit is een cruciale eigenschap van
@@ -5955,7 +5955,7 @@ dat niet @code{nil} is. Dus, en dit is een cruciale eigenschap van
 eerste non-@code{nil} waarde.
 
 @need 800
-The @code{or} expression looks like this:
+De @code{or} expressie ziet er zo uit:
 
 @smallexample
 @group
@@ -5965,50 +5965,48 @@ The @code{or} expression looks like this:
 @end smallexample
 
 @noindent
-The first argument to @code{or} is the expression @code{(bufferp buffer)}.
-This expression returns true (a non-@code{nil} value) if the buffer is
-actually a buffer, and not just the name of a buffer.  In the @code{or}
-expression, if this is the case, the @code{or} expression returns this true
-value and does not evaluate the next expression---and this is fine with us,
-since we do not want to do anything to the value of @code{buffer} if it
-really is a buffer.
+Het eerste argument voor @code{or} is de expressie @code{(bufferp
+buffer)}. Deze expressie geeft waar terug (een non-@code{nil} waarde)
+wanneer het buffer inderdaad een buffer is en niet slechts de naam van een
+buffer. De @code{or} expressie, wanneer dit het geval is, geeft deze waar
+waarde terug en evalueert de volgende expressie niet---en dat is prima voor
+on, omdat we niets anders willen dan de waarde van @code{buffer} wanneer die
+echt een buffer is.
 
-On the other hand, if the value of @code{(bufferp buffer)} is @code{nil},
-which it will be if the value of @code{buffer} is the name of a buffer, the
-Lisp interpreter evaluates the next element of the @code{or} expression.
-This is the expression @code{(setq buffer (get-buffer buffer))}.  This
-expression returns a non-@code{nil} value, which is the value to which it
-sets the variable @code{buffer}---and this value is a buffer itself, not the
-name of a buffer.
+Anderzijds, als de waarde van @code{(bufferp buffer)} @code{nil} is, wat het
+is wanneer de waarde van @code{buffer} de naam van buffer is, evalueert de
+Lisp interpreter het volgende element van de @code{or} expressie. Dit is de
+expressie @code{(setq buffer (get-buffer buffer))}. Deze expressie geeft een
+non-@code{nil} waarde terug, wat de waarde is waarop het de variabele
+@code{buffer} instelt---en deze waarde is het buffer zelf, niet de naam.
 
-The result of all this is that the symbol @code{buffer} is always bound to a
-buffer itself rather than to the name of a buffer.  All this is necessary
-because the @code{set-buffer} function in a following line only works with a
-buffer itself, not with the name to a buffer.
+Het resultaat van dit alles is dat het symbool @code{buffer} altijd gebonden
+is aan een buffer in plaats van aan de naam van een buffer. Dit is allemaal
+noodzakelijk omdat de functie @code{set-buffer} op een volgende regel alleen
+werkt met een buffer, niet met de naam van een buffer.
 
 @need 1250
-Incidentally, using @code{or}, the situation with the usher would be written
-like this:
+Overigens, met @code{or} is de situatie met de ceremoniemeester als volgt:
 
 @smallexample
-(or (holding-on-to-guest) (find-and-take-arm-of-guest))
+(or (heeft-arm-van-gast) (vind-en-neem-de-arm-van-de-gast))
 @end smallexample
 
 @node Voeg let in
-@subsection The @code{let} Expression in @code{insert-buffer}
+@subsection De @code{let} expresse in @code{insert-buffer}
 
-After ensuring that the variable @code{buffer} refers to a buffer itself and
-not just to the name of a buffer, the @code{insert-buffer} function
-continues with a @code{let} expression.  This specifies three local
-variables, @code{start}, @code{end}, and @code{newmark} and binds them to
-the initial value @code{nil}.  These variables are used inside the remainder
-of the @code{let} and temporarily hide any other occurrence of variables of
-the same name in Emacs until the end of the @code{let}.
+Na zeker stelling dat de variabele @code{buffer} naar een buffer en niet
+slechts naar de naam van een buffer refereert, gaat de functie
+@code{insert-buffer} verder met de @code{let} expressie. Deze specificeert
+drie lokale variabelen, @code{start}, @code{end} en @code{newmark} en bindt
+ze aan de initiele waarde @code{nil}. Deze variabelen worden binnen de rest
+van de @code{let} gebruikt en verbergen tijdelijk elke andere variabele met
+eenzelfde naam in Emacs tot het einde van de @code{let}. 
 
 @need 1200
-The body of the @code{let} contains two @code{save-excursion} expressions.
-First, we will look at the inner @code{save-excursion} expression in
-detail.  The expression looks like this:
+De body van de @code{let} bevat twee @code{save-excursion} expressies. Eerst
+kijken we in detail naar de binnenste @code{save-excursion} expressie. De
+expressie ziet er zo uit:
 
 @smallexample
 @group
@@ -6019,57 +6017,57 @@ detail.  The expression looks like this:
 @end smallexample
 
 @noindent
-The expression @code{(set-buffer buffer)} changes Emacs's attention from the
-current buffer to the one from which the text will copied.  In that buffer,
-the variables @code{start} and @code{end} are set to the beginning and end
-of the buffer, using the commands @code{point-min} and @code{point-max}.
-Note that we have here an illustration of how @code{setq} is able to set two
-variables in the same expression.  The first argument of @code{setq} is set
-to the value of its second, and its third argument is set to the value of
-its fourth.
+De expressie @code{(set-buffer buffer)} schakelt de aandacht van Emacs van
+het huidige buffer naar een waarvan de tekst gekopieerd zal worden. In dat
+buffer zijn met het gebruik van de commando's @code{point-min} en
+@code{point-max} de variabelen @code{start} en @code{end} ingesteld op het
+begin en het eind van het buffer. Merk op dat hier zien hoe @code{setq} twee
+variabelen in een enkele expressie kan instellen. Het eerste argument van
+@code{setq} is ingesteld op de waarde van de tweede, en het derde argument
+op de waarde van de vierde.
 
-After the body of the inner @code{save-excursion} is evaluated, the
-@code{save-excursion} restores the original buffer, but @code{start} and
-@code{end} remain set to the values of the beginning and end of the buffer
-from which the text will be copied.
+Nadat de body van de binnenste @code{save-excursion} is geëvalueerd herstelt
+@code{save-excursion} het oorspronkelijke buffer, maar @code{start} en
+@code{eind} blijven ingesteld op de waarden van het begin en eind van het
+buffer van waar de tekst gekopieerd wordt.
 
 @need 1250
-The outer @code{save-excursion} expression looks like this:
+De buitenste @code{save-excursion} expressie ziet er zo uit:
 
 @smallexample
 @group
 (save-excursion
-  (@var{inner-}@code{save-excursion}@var{-expression}
-     (@var{go-to-new-buffer-and-set-}@code{start}@var{-and-}@code{end})
+  (@var{binnenste-}@code{save-excursion}@var{-expressie}
+     (@var{ga-naar-nieuw-buffer-en-zet-}@code{start}@var{-en-}@code{end})
   (insert-buffer-substring buffer start end)
   (setq newmark (point)))
 @end group
 @end smallexample
 
 @noindent
-The @code{insert-buffer-substring} function copies the text @emph{into} the
-current buffer @emph{from} the region indicated by @code{start} and
-@code{end} in @code{buffer}.  Since the whole of the second buffer lies
-between @code{start} and @code{end}, the whole of the second buffer is
-copied into the buffer you are editing.  Next, the value of point, which
-will be at the end of the inserted text, is recorded in the variable
-@code{newmark}.
+De functie @code{insert-buffer-substring} kopieert de tekst @emph{in} het
+huidige buffer @emph{van} de region aangeduid met @code{start} en
+@code{eind} in @code{buffer}. Omdat het geheel van het tweede buffer tussen
+@code{start} en @code{eind} ligt, wordt het geheel van het tweede buffer
+gekopieerd naar het buffer dat je aan het editen bent. Vervolgens wordt de
+waarde van point, die aan het eind van de ingevoegde tekst is, vastgelegd in
+de variabele @code{newmark}.
 
-After the body of the outer @code{save-excursion} is evaluated, point is
-relocated to its original place.
+Nadat de body van de buitenste @code{save-excursion} is geëvalueerd, wordt
+point naar zijn oorspronkelijke plek teruggeplaatst.
 
-However, it is convenient to locate a mark at the end of the newly inserted
-text and locate point at its beginning.  The @code{newmark} variable records
-the end of the inserted text.  In the last line of the @code{let}
-expression, the @code{(push-mark newmark)} expression function sets a mark
-to this location.  (The previous location of the mark is still accessible;
-it is recorded on the mark ring and you can go back to it with @kbd{C-u
-C-@key{SPC}}.)  Meanwhile, point is located at the beginning of the inserted
-text, which is where it was before you called the insert function, the
-position of which was saved by the first @code{save-excursion}.
+Het is echter handig om de mark aan het eind van de nieuw ingevoegde tekst
+te plaatsen en point aan het begin. De variabele @code{newmark} registreert
+het eind van de ingevoegde tekst. In de laatste regel van de @code{let}
+expressie zet de @code{(push-mark newmark)} expressie op deze lokatie. (De
+vorige plek van de mark is nog steeds bereikbaar: het is opgeslagen in de
+mark-ring en je kunt teruggaan met @kbd{C-u C-@key{SPC}}.) Ondertussen staat
+point aan het begin van de ingevoegde tekst, waar deze was voordat je de
+insert-functie aanriep, die plek was bewaarde met de eerste
+@code{save-excursion}.
 
 @need 1250
-The whole @code{let} expression looks like this:
+De hele @code{let} ziet er zo uit:
 
 @smallexample
 @group
@@ -6084,20 +6082,21 @@ The whole @code{let} expression looks like this:
 @end group
 @end smallexample
 
-Like the @code{append-to-buffer} function, the @code{insert-buffer} function
-uses @code{let}, @code{save-excursion}, and @code{set-buffer}.  In addition,
-the function illustrates one way to use @code{or}.  All these functions are
-building blocks that we will find and use again and again.
+De functie @code{insert-buffer} gebruikt, net als de functie
+@code{append-to-buffer}, @code{let}, @code{save-excursion} en
+@code{set-buffer}. Daarnaast illustreert de functie een manier om @code{or}
+te gebruiken. Al deze functies zijn bouwblokken die we keer op keer zullen
+gebruiken.
 
 @node Nieuwe insert-buffer
 @subsection Nieuwe body voor @code{insert-buffer}
-@findex insert-buffer@r{, new version body}
-@cindex new version body for @code{insert-buffer}
+@findex insert-buffer@r{, nieuwe versie body}
+@cindex nieuwe versie body voor @code{insert-buffer}
 
-The body in the GNU Emacs 22 version is more confusing than the original.
+De body in de GNU Emacs 22 versie is meer verwarrend dan het orgineel.
 
 @need 1250
-It consists of two expressions,
+Het bestaat uit twee expressies
 
 @smallexample
 @group
@@ -6111,46 +6110,46 @@ It consists of two expressions,
 @end smallexample
 
 @noindent
-except, and this is what confuses novices, very important work is done
-inside the @code{push-mark} expression.
+behalve, en dit is wat veel beginners in de war brengt, wordt veel werk
+verricht in de @code{push-mark} expressie.
 
-The @code{get-buffer} function returns a buffer with the name provided.  You
-will note that the function is @emph{not} called @code{get-buffer-create};
-it does not create a buffer if one does not already exist.  The buffer
-returned by @code{get-buffer}, an existing buffer, is passed to
-@code{insert-buffer-substring}, which inserts the whole of the buffer (since
-you did not specify anything else).
+De functie @code{get-buffer} geeft een buffer met de opgegeven naam
+terug. Merk op dat de functie @emph{niet} @code{get-buffer-create} heet, het
+maakt geen buffer wanneer er geen bestaat. De buffer die @code{get-buffer}
+teruggeeft, een bestaand buffer, wordt doorgegeven aan
+@code{insert-buffer-substring}, de het gehele buffer invoegt (omdat je niets
+anders opgaf).
 
-The location into which the buffer is inserted is recorded by
-@code{push-mark}.  Then the function returns @code{nil}, the value of its
-last command.  Put another way, the @code{insert-buffer} function exists
-only to produce a side effect, inserting another buffer, not to return any
-value.
+De plek waar het buffer is ingevoegd is vastgelegd door
+@code{push-mark}. Daarna geeft de functie @code{nil} terug, de waarde van
+het laatste commando. Anders gezegd, de functie @code{insert-buffer} bestaat
+alleen om een zij-effect te produceren, invoegen in een ander buffer en niet
+om enige waarde terug te geven.
 
 @node beginning-of-buffer
 @section Complete definitie van @code{beginning-of-buffer}
 @findex beginning-of-buffer
 
-The basic structure of the @code{beginning-of-buffer} function has already
-been discussed.  (@xref{simplified-beginning-of-buffer, , A Simplified
-@code{beginning-of-buffer} Definition}.)  This section describes the complex
-part of the definition.
+De basisstructuur van de functie @code{beginning-of-buffer} hebben we eerder
+besproken. (@xref{versimpelde-beginning-of-buffer, , Een versimpelde
+@code{beginning-of-buffer} definitie}.) Deze sectie beschrijft het complexe
+deel van de definitie.
 
-As previously described, when invoked without an argument,
-@code{beginning-of-buffer} moves the cursor to the beginning of the buffer
-(in truth, the beginning of the accessible portion of the buffer), leaving
-the mark at the previous position.  However, when the command is invoked
-with a number between one and ten, the function considers that number to be
-a fraction of the length of the buffer, measured in tenths, and Emacs moves
-the cursor that fraction of the way from the beginning of the buffer.  Thus,
-you can either call this function with the key command @kbd{M-<}, which will
-move the cursor to the beginning of the buffer, or with a key command such
-as @kbd{C-u 7 M-<} which will move the cursor to a point 70% of the way
-through the buffer.  If a number bigger than ten is used for the argument,
-it moves to the end of the buffer.
+Wanneer @code{beginning-of-buffer} zonder argument wordt aangeroepen plaatst
+het, zoals eerder beschreven, de cursor naar het begin van het buffer
+(eerlijk gezegd, het begin van het bereikbare deel van het buffer), en laat
+de mark op de voorgaande positie. Echter, wanneer het commando wordt
+aangeroepen met een getal tussen één en tien, dan beschouwt de functie dat
+getal als een fractie van de lengte van het buffer, gemeten in tienden, en
+verplaatst Emacs de cursor die fractie vanaf het begin van het buffer. Dus
+je kunt de functie aanroepen met het commando @kbd{M-<}, wat de cursor naar
+het begin van het buffer verplaatst, of met een toets commando zoals
+@kbd{C-u 7 M-<} wat de cursor op een punt 70% in het buffer plaatst. Bij
+gebruik van een getal groter dan tien als argument gaat het naar het einde
+van het buffer.
 
-The @code{beginning-of-buffer} function can be called with or without an
-argument.  The use of the argument is optional.
+De functie @code{beginning-of-buffer} kan met of zonder argument worden
+aangeroepen. Het gebruik van een argument is optioneel.
 
 @menu
 * Optionele argumenten::     Optionele argumenten
@@ -6161,91 +6160,94 @@ argument.  The use of the argument is optional.
 @node Optionele argumenten
 @subsection Optionele argumenten
 
-Unless told otherwise, Lisp expects that a function with an argument in its
-function definition will be called with a value for that argument.  If that
-does not happen, you get an error and a message that says @samp{Wrong number
+Tenzij anders verteld verwacht Lisp dat een functie met een argument in zijn
+functiedefinitie wordt aangeroepen met een waarde voor dat argument. Wanneer
+dat niet gebeurt, dan krijg je een fout en de boodschap @samp{Wrong number
 of arguments}.
 
-@cindex Optional arguments
-@cindex Keyword
-@findex optional
-However, optional arguments are a feature of Lisp: a particular
-@dfn{keyword} is used to tell the Lisp interpreter that an argument is
-optional.  The keyword is @code{&optional}.  (The @samp{&} in front of
-@samp{optional} is part of the keyword.)  In a function definition, if an
-argument follows the keyword @code{&optional}, no value need be passed to
-that argument when the function is called.
+@cindex Optionele argumenten
+@cindex Sleutelwoord
+@findex optionall
+Optionele argumenten zijn echter een eigenschap van Lisp: een specifiek
+@dfn{sleutelwoord} wordt gebruikt om aan de Lisp interpreter te vertellen
+dat een argument optioneel is. Het sleutelwoord is @code{&optional}. (De
+@samp{&} aan de voorkant van @samp{optional} is onderdeel van het
+sleutelwoord.) Wanneer een argument in een functiedefinitie volgt op het
+sleutelwoord @code{&optional} dan behoeft geen waarde aan het argument te
+worden doorgegeven bij het aanroepen van de functie.
 
 @need 1200
-The first line of the function definition of @code{beginning-of-buffer}
-therefore looks like this:
+De eerste regel van de functiedefinitie van @code{beginning-of-buffer} ziet
+er daardoor als volgt uit:
 
 @smallexample
 (defun beginning-of-buffer (&optional arg)
 @end smallexample
 
 @need 1250
-In outline, the whole function looks like this:
+Globaal ziet de hele functie er zo uit:
 
 @smallexample
 @group
 (defun beginning-of-buffer (&optional arg)
-  "@var{documentation}@dots{}"
+  "@var{documentatie}@dots{}"
   (interactive "P")
-  (or (@var{is-the-argument-a-cons-cell} arg)
-      (and @var{are-both-transient-mark-mode-and-mark-active-true})
+  (or (@var{is-het-argument-een-cons-cel} arg)
+      (and @var{zijn-zowel-transient-mark-mode-als-mark-active-waar})
       (push-mark))
-  (let (@var{determine-size-and-set-it})
+  (let (@var{stel-grootte-vast-en-stel-in})
     (goto-char
-      (@var{if-there-is-an-argument}
-          @var{figure-out-where-to-go}
-        @var{else-go-to}
+      (@var{als-er-een-argument-is}
+          @var{zoek-uit-waar-heen-te-gaan}
+        @var{anders-ga-naar}
         (point-min))))
-  @var{do-nicety}
+  @var{wees-beleefd}
 @end group
 @end smallexample
 
-The function is similar to the @code{simplified-beginning-of-buffer}
-function except that the @code{interactive} expression has @code{"P"} as an
-argument and the @code{goto-char} function is followed by an if-then-else
-expression that figures out where to put the cursor if there is an argument
-that is not a cons cell.
+De functie is vergelijkbaar met de @code{versimpelde-beginning-of-buffer}
+functie, behalve dat de @code{interactive} expressie als argument @code{"P"}
+heeft en de functie @code{goto-char} gevolgd wordt door een if-then-else
+expressie die uitzoekt waar de cursor geplaatst moet worden wanneer er een
+argument is dat geen cons-cel is.
 
-(Since I do not explain a cons cell for many more chapters, please consider
-ignoring the function @code{consp}.  @xref{List Implementation, , How Lists
-are Implemented}, and @ref{Cons Cell Type, , Cons Cell and List Types,
-elisp, The GNU Emacs Lisp Reference Manual}.)
+(Omdat ik een cons-cel pas een aantal hoofdstukken verderop uitleg, negeer
+alsjeblieft de functie @code{consp}. @xref{Implementatie van lijsten, , Hoe
+lijsten zijn geïmplementeerd} en @ref{Cons Cell Type, , Cons Cell and List
+Types, elisp, The GNU Emacs Lisp Reference Manual}.)
 
-The @code{"P"} in the @code{interactive} expression tells Emacs to pass a
-prefix argument, if there is one, to the function in raw form.  A prefix
-argument is made by typing the @key{META} key followed by a number, or by
-typing @kbd{C-u} and then a number.  (If you don't type a number, @kbd{C-u}
-defaults to a cons cell with a 4.  A lowercase @code{"p"} in the
-@code{interactive} expression causes the function to convert a prefix arg to
-a number.)
+De @code{"P"} in de @code{interactive} expressie vertelt Emacs om een
+prefix-argument, wanneer die er is, ongewijzigd aan de functie door te
+geven. Een prefix-argument maak je het typen van de @key{META}-toets,
+gevolgd door een getal, of door @kbd{C-u} te typen en dan een getal. (Als je
+geen getal typt, dan leidt @kbd{C-u} standaard naar een cons-cel met een
+4). De kleine letter @code{"p"} in de @code{interactive} expressie laat de
+functie de prefix naar een getal converteren.
 
-The true-or-false-test of the @code{if} expression looks complex, but it is
-not: it checks whether @code{arg} has a value that is not @code{nil} and
-whether it is a cons cell.  (That is what @code{consp} does; it checks
-whether its argument is a cons cell.)  If @code{arg} has a value that is not
-@code{nil} (and is not a cons cell), which will be the case if
-@code{beginning-of-buffer} is called with a numeric argument, then this
-true-or-false-test will return true and the then-part of the @code{if}
-expression will be evaluated.  On the other hand, if
-@code{beginning-of-buffer} is not called with an argument, the value of
-@code{arg} will be @code{nil} and the else-part of the @code{if} expression
-will be evaluated.  The else-part is simply @code{point-min}, and when this
-is the outcome, the whole @code{goto-char} expression is @code{(goto-char
-(point-min))}, which is how we saw the @code{beginning-of-buffer} function
-in its simplified form.
+De waar-of-onwaar-test in de @code{if}-expressie ziet er gecompliceerd uit,
+maar is het niet: het controleert of @code{arg} een waarde heeft doe niet
+@code{nil} is en of het wel of niet een cons-cel is. (Dat is wat
+@code{consp} doet, het controleert of zijn argument een cons-cel is.)
+Wanneer @code{arg} een waarde heeft die ongelijk aan @code{nil} is (en ook
+geen cons-cel is), wat het geval is wanneer @code{beginning-of-buffer} wordt
+aangeroepen met een numeriek argument, dan geeft deze waar-of-onwaar-test
+waar terug en wordt het dan-deel van de @code{if}-expressie
+geëvalueerd. Anderzijds, wanneer @code{beginning-of-buffer} niet met een
+argument is aangeroepen, heeft @code{arg} de waarde @code{nil} en wordt het
+anders-deel van de @code{if}-expressie geëvalueerd. Dit anders-deel is
+eenvoudigweg @code{point-min}, en wanneer dit de uitkomst is, dan is de
+gehele @code{goto-char}-expressie @code{(goto-char (point-min))}, wat
+overeenkomt met hoe we de functie @code{beginning-of-buffer} zagen in de
+vereenvoudigde vorm.
 
 @node beginning-of-buffer opt arg
 @subsection @code{beginning-of-buffer} met een argument
 
-When @code{beginning-of-buffer} is called with an argument, an expression is
-evaluated which calculates what value to pass to @code{goto-char}.  This
-expression is rather complicated at first sight.  It includes an inner
-@code{if} expression and much arithmetic.  It looks like this:
+Wanneer @code{beginning-of-buffer} wordt aangeroepen met een argument, dan
+wordt een expressie geëvalueerd die de waarde berekent om aan
+@code{goto-char} door te geven. Deze expressie is op het eerste gezicht
+nogal complex. Het bevat een binnenliggende @code{if} en flink wat
+rekenkunde. Het ziet er zo uit:
 
 @smallexample
 @group
@@ -6269,50 +6271,51 @@ expression is rather complicated at first sight.  It includes an inner
 
 @ifnottex
 @node Ontrafelen beginning-of-buffer
-@unnumberedsubsubsec Disentangle @code{beginning-of-buffer}
+@unnumberedsubsubsec Ontrafelen @code{beginning-of-buffer}
 @end ifnottex
 
-Like other complex-looking expressions, the conditional expression within
-@code{beginning-of-buffer} can be disentangled by looking at it as parts of
-a template, in this case, the template for an if-then-else expression.  In
-skeletal form, the expression looks like this:
+Net als andere expressies die er complex uitzien, kan de conditionele
+expressie in @code{beginning-of-buffer} worden ontrafeld door het te
+bekijken als delen van een sjabloon, in dit geval het sjabloon voor een
+if-then-else-expressie. Globaal ziet de expressie er zo uit:
 
 @smallexample
 @group
-(if (@var{buffer-is-large}
-    @var{divide-buffer-size-by-10-and-multiply-by-arg}
-  @var{else-use-alternate-calculation}
+(if (@var{buffer-is-groot}
+    @var{deel-buffer-grootte-door-10-en-vermenigvuldig-met-arg}
+  @var{anders-gebruik-alternatieve-berekening}
 @end group
 @end smallexample
 
-The true-or-false-test of this inner @code{if} expression checks the size of
-the buffer.  The reason for this is that the old version 18 Emacs used
-numbers that are no bigger than eight million or so and in the computation
-that followed, the programmer feared that Emacs might try to use over-large
-numbers if the buffer were large.  The term ``overflow'', mentioned in the
-comment, means numbers that are over large.  More recent versions of Emacs
-use larger numbers, but this code has not been touched, if only because
-people now look at buffers that are far, far larger than ever before.
+De waar-of-onwaar-test van de binnenliggende @code{if}-expressie controleert
+de grootte van het buffer. De reden hiervoor is, is dat de oude versie 18
+van Emacs met getallen werkte die niet hoger kunnen zijn dan ongeveer acht
+miljoen en in de berekening die volgt, de programmeur bang was dat Emacs zou
+proberen te grootte getallen te gebruiken wanneer de buffers groot zijn. De
+term ``overflow'' die in het commentaar genoemd wordt betekent dat getallen
+te groot zijn. Meer recente versies van Emacs gebruiken grotere getallen,
+maar de code is niet gewijzigd, al is het alleen maar omdat mensen nu met
+buffers werken die vele malen groter zijn dan ooit.
 
-There are two cases: if the buffer is large and if it is not.
+Er zijn twee gevallen: wanneer de buffer groot is, en wanneer niet.
 
 @node In geval van een groot buffer
-@unnumberedsubsubsec What happens in a large buffer
+@unnumberedsubsubsec Wat in een groot buffer gebeurt
 
-In @code{beginning-of-buffer}, the inner @code{if} expression tests whether
-the size of the buffer is greater than 10,000 characters.  To do this, it
-uses the @code{>} function and the computation of @code{size} that comes
-from the let expression.
+In In @code{beginning-of-buffer} test de binnenliggende @code{if}-expressie
+of de grootte van het buffer groter is dan 10.000 karakters. Om dit te doen
+gebruikt het de functie @code{>} en de berekening van @code{size} die van de
+let-expressie komt.
 
-In the old days, the function @code{buffer-size} was used.  Not only was
-that function called several times, it gave the size of the whole buffer,
-not the accessible part.  The computation makes much more sense when it
-handles just the accessible part.  (@xref{Narrowing & Widening, , Narrowing
-and Widening}, for more information on focusing attention to an accessible
-part.)
+Oorspronkelijk werd de functie @code{buffer-size} gebruikt. Niet alleen werd
+die functie meerdere keren aangeroepen, het gaf de grootte van het gehele
+buffer, niet het bereikbare deel. De berekening is veel logischer wanneer
+het alleen het bereikbare deel gebruikt. (@xref{Versmallen en verbreden, ,
+Versmallen en verbreden}, voor meer informatie over het richten van de
+aandacht op een bereikbaar deel.)
 
 @need 800
-The line looks like this:
+De regel ziet er zo uit:
 
 @smallexample
 (if (> size 10000)
@@ -6320,8 +6323,9 @@ The line looks like this:
 
 @need 1200
 @noindent
-When the buffer is large, the then-part of the @code{if} expression is
-evaluated.  It reads like this (after formatting for easy reading):
+Wanneer het buffer groot is, dan wordt het dan-deel van de
+@code{if}-expressie geëvalueerd. Dit staat er (na het formatteren voor
+makkelijk lezen):
 
 @smallexample
 @group
@@ -6332,41 +6336,41 @@ evaluated.  It reads like this (after formatting for easy reading):
 @end smallexample
 
 @noindent
-This expression is a multiplication, with two arguments to the function
+Deze expressie is een vermenigvuldiging met twee argumenten voor de functie
 @code{*}.
 
-The first argument is @code{(prefix-numeric-value arg)}.  When @code{"P"} is
-used as the argument for @code{interactive}, the value passed to the
-function as its argument is passed a @dfn{raw prefix argument}, and not a
-number.  (It is a number in a list.)  To perform the arithmetic, a
-conversion is necessary, and @code{prefix-numeric-value} does the job.
+Het eerste argument is @code{(prefix-numeric-value arg)}. Wanneer @code{"P"}
+wordt gebruik als argument voor @code{interactive}, is de waarde die als
+argument wordt doorgegeven een @dfn{ongewijzigd prefix-argument}, en niet
+een getal. (Het is een getal in een list.) Om de berekening uit te voeren is
+een conversie nodig, en @code{prefix-numeric-value} doet dat.
 
-@findex / @r{(division)}
-@cindex Division
-The second argument is @code{(/ size 10)}.  This expression divides the
-numeric value by ten---the numeric value of the size of the accessible
-portion of the buffer.  This produces a number that tells how many
-characters make up one tenth of the buffer size.  (In Lisp, @code{/} is used
-for division, just as @code{*} is used for multiplication.)
+@findex / @r{(deling)}
+@cindex Deling
+Het tweede argument is @code{(/ size 10)}. Deze expressie deelt het getal
+door tien---de numerieke waarde van de grootte van het bereikbare deel van
+de buffer. Dit produceert een getal dat vertelt hoeveel karakters een tiende
+van de buffergrootte vormen. (In Lisp wordt @code{/} gebruikt voor deling,
+net als @code{*} wordt gebruikt voor vermenigvuldiging.)
 
 @need 1200
-In the multiplication expression as a whole, this amount is multiplied by
-the value of the prefix argument---the multiplication looks like this:
+In de complete vermenigvuldiging expressie wordt dit getal vermenigvuldigd
+met de waarde van het prefix-argument---de vermenigvuldiging ziet er zo uit:
 
 @smallexample
 @group
-(* @var{numeric-value-of-prefix-arg}
-   @var{number-of-characters-in-one-tenth-of-the-accessible-buffer})
+(* @var{numerieke-waarde-van-het-prefix-arg}
+   @var{aantal karakters-in-een-tiende-van-het-bereikbare-buffer})
 @end group
 @end smallexample
 
 @noindent
-If, for example, the prefix argument is @samp{7}, the one-tenth value will
-be multiplied by 7 to give a position 70% of the way through.
+Als bijvoorbeeld het prefix-argument @samp{7} is, wordt de een-tiende waarde
+vermenigvuldigd met 7, om op een positie van 70% uit te komen.
 
 @need 1200
-The result of all this is that if the accessible portion of the buffer is
-large, the @code{goto-char} expression reads like this:
+Het resultaat van dit alles is dat wanneer het bereikbare deel van het
+buffer groot is, de @code{goto-char} als volgt is:
 
 @smallexample
 @group
@@ -6375,19 +6379,19 @@ large, the @code{goto-char} expression reads like this:
 @end group
 @end smallexample
 
-This puts the cursor where we want it.
+Dit plaatst de cursor waar wij die willen hebben.
 
 @node In geval van een klein buffer
-@unnumberedsubsubsec What happens in a small buffer
+@unnumberedsubsubsec Wat in een klein buffer gebeurt
 
-If the buffer contains fewer than 10,000 characters, a slightly different
-computation is performed.  You might think this is not necessary, since the
-first computation could do the job.  However, in a small buffer, the first
-method may not put the cursor on exactly the desired line; the second method
-does a better job.
+Wanneer het buffer minder dan 10.000 karakters bevat wordt een iets andere
+berekening uitgevoerd. Je zou kunnen denken dat dit niet nodig is, omdat de
+eerste berekening dat zou kunnen doen. Maar in een klein buffer zou de
+eerste methode de cursor niet precies op de gewenste regel kunnen
+plaatsen. De tweede methode doet dat beter.
 
 @need 800
-The code looks like this:
+De code ziet er zo uit:
 
 @c Keep this on one line.
 @smallexample
@@ -6396,9 +6400,10 @@ The code looks like this:
 
 @need 1200
 @noindent
-This is code in which you figure out what happens by discovering how the
-functions are embedded in parentheses.  It is easier to read if you reformat
-it with each expression indented more deeply than its enclosing expression:
+Dit is de code waarin je uitzoekt wat er gebeurt door te ontdekken hoe de
+functies tussen de haakjes zijn ingebed. Het wordt makkelijker te lezen
+wanneer je het zo formatteert dat elke expressie dieper inspringt dan zijn
+omsluitende expressie:
 
 @smallexample
 @group
@@ -6413,31 +6418,31 @@ it with each expression indented more deeply than its enclosing expression:
 
 @need 1200
 @noindent
-Looking at parentheses, we see that the innermost operation is
-@code{(prefix-numeric-value arg)}, which converts the raw argument to a
-number.  In the following expression, this number is multiplied by the size
-of the accessible portion of the buffer:
+Naar de haakjes kijkend zien we dat de meest binnenste bewerking
+@code{(prefix-numeric-value arg)} is, die het ongewijzigde argument naar een
+getal converteert. In de volgende expressie wordt dit getal vermenigvuldigd
+met de grootte van het bereikbare deel van het buffer:
 
 @smallexample
 (* size (prefix-numeric-value arg))
 @end smallexample
 
 @noindent
-This multiplication creates a number that may be larger than the size of the
-buffer---seven times larger if the argument is 7, for example.  Ten is then
-added to this number and finally the large number is divided by ten to
-provide a value that is one character larger than the percentage position in
-the buffer.
+Deze vermenigvuldiging creëert een getal dat groter zou kunnen zijn dan de
+grootte van het buffer---zeven keer groter als het argument 7 is,
+bijvoorbeeld. Hierna wordt tien bij dit getal opgeteld en uiteindelijk wordt
+het grote getal gedeeld door tien om een waarde te geven die één karakter
+groter is dan de procentuele positie in het buffer.
 
-The number that results from all this is passed to @code{goto-char} and the
-cursor is moved to that point.
+Het getal dat de uitkomst is van dit alles wordt doorgegeven aan
+@code{goto-char} en de cursor wordt naar dat punt verplaatst.
 
 @need 1500
 @node beginning-of-buffer compleet
-@subsection The Complete @code{beginning-of-buffer}
+@subsection De complete @code{beginning-of-buffer}
 
 @need 1000
-Here is the complete text of the @code{beginning-of-buffer} function:
+Hiet is de complete tekst van de functie @code{beginning-of-buffer}:
 @sp 1
 
 @c In GNU Emacs 22
@@ -6516,93 +6521,97 @@ and does not set the mark."
 @end ignore
 
 @noindent
-Except for two small points, the previous discussion shows how this function
-works.  The first point deals with a detail in the documentation string, and
-the second point concerns the last line of the function.
+Afgezien van twee kleine punten toont de voorgaande bespreking hoe deze
+functie werkt. Het eerste punt betreft een detail in de documenatiestring en
+het tweede punt betreft de laatste regel van de functie.
 
 @need 800
-In the documentation string, there is reference to an expression:
+In de documenatiestring is een referencie naar een expressie:
 
 @smallexample
 \\[universal-argument]
 @end smallexample
 
 @noindent
-A @samp{\\} is used before the first square bracket of this expression.
-This @samp{\\} tells the Lisp interpreter to substitute whatever key is
-currently bound to the @samp{[@dots{}]}.  In the case of
-@code{universal-argument}, that is usually @kbd{C-u}, but it might be
-different.  (@xref{Documentation Tips, , Tips for Documentation Strings,
+Een @samp{\\} wordt gebruikt voor de eerste vierkante haak in deze
+expressie. Deze @samp{\\} vertelt de Lisp interpreter de toets te vervangen
+door wat dan ook thans gebonden is aan de @samp{[@dots{}]}. In het geval van
+het universele argument, die meestal gebonden is aan @kbd{C-u}, maar dit kan
+anders zijn (@xref{Documentation Tips, , Tips for Documentation Strings,
 elisp, The GNU Emacs Lisp Reference Manual}, for more information.)
 
 @need 1200
-Finally, the last line of the @code{beginning-of-buffer} command says to
-move point to the beginning of the next line if the command is invoked with
-an argument:
+Tenslotte zegt de laatste regel van het @code{beginning-of-buffer} commando
+de point te verplaatsten naar het begin van de volgende regel wanneer het
+commando met een argument is aangeroepen:
 
 @smallexample
 (if (and arg (not (consp arg))) (forward-line 1))
 @end smallexample
 
 @noindent
-This puts the cursor at the beginning of the first line after the
-appropriate tenths position in the buffer.  This is a flourish that means
-that the cursor is always located @emph{at least} the requested tenths of
-the way through the buffer, which is a nicety that is, perhaps, not
-necessary, but which, if it did not occur, would be sure to draw
-complaints.  (The @code{(not (consp arg))} portion is so that if you specify
-the command with a @kbd{C-u}, but without a number, that is to say, if the
-raw prefix argument is simply a cons cell, the command does not put you at
-the beginning of the second line.)
+Dit plaatst de cursor aan het begin van de eerste regel na de juiste tiende
+deel positie in het buffer. Deze elegantie zorgt dat de cursor altijd
+@emph{tenminste} het aantal gewenste tienden in het buffer is geplaatst, wat
+een misschien onnodige verfraaiing is, die, als dat niet zou gebeuren
+ongetwijfeld tot klachten zou leiden. (Het @code{(not (consp arg))} deel is
+zo dat wanneer je het commando met @kbd{C-u} maar zonder getal aanroept, wat
+inhoudt dat het prefix-argument eenvoudig een cons-cel is, het commando je
+niet aan het begin van de tweede regel plaatst.)
 
 @node Tweede buffer gerelateerde terugblik
 @section Terugblik
 
-Here is a brief summary of some of the topics covered in this chapter.
+Hier is een korte samenvatting van enkele van de onderwerpen in dit
+hoofdstuk.
 
 @table @code
-@item of
-Evaluate each argument in sequence, and return the value of the first
-argument that is not @code{nil}; if none return a value that is not
-@code{nil}, return @code{nil}.  In brief, return the first true value of the
-arguments; return a true value if one @emph{or} any of the others are true.
+@item or
+Evalueer elk argument op volgorde, en geef de waarde van het eerste argument
+dat niet @code{nil} is. Wanneer niet een van hen een waarde ongelijk aan
+@code{nil} teruggeeft, geef dan @code{nil} terug. In het kort, geef de
+eerste waarde van de argumenten die waar is terug, geef een waarde waar
+terug wanneer een @emph{of} meer van de andere waar zijn.
 
 @item and
-Evaluate each argument in sequence, and if any are @code{nil}, return
-@code{nil}; if none are @code{nil}, return the value of the last argument.
-In brief, return a true value only if all the arguments are true; return a
-true value if one @emph{and} each of the others is true.
+Evalueer elk argument op volgorde, en als er een @code{nil} is, geef dan
+@code{nil} terug. Als niet een van hen @code{nil} is, geef dan de waarde van
+het laatste argument terug. In het kort, geef een waarde waar terug
+uitsluitend wanneer alle argumenten waar zijn, geef een waarde waar terug
+wanneer een @emph{en} alle andere waar zijn.
 
 @item &optional
-A keyword used to indicate that an argument to a function definition is
-optional; this means that the function can be evaluated without the
-argument, if desired.
+Een sleutelwoord dat aangeeft dat een argument van een functiedefinitie
+optioneel is, dit betekent dat de functie desgewenst zonder dit argument kan
+worden geëvalueerd,
 
 @item prefix-numeric-value
-Convert the raw prefix argument produced by @code{(interactive "P")} to a
-numeric value.
+Converteer het ongewijzigde prefix-numeric-value geproduceerd door
+@code{(interactive "P")} naar een numerieke waarde.
 
 @item forward-line
-Move point forward to the beginning of the next line, or if the argument is
-greater than one, forward that many lines.  If it can't move as far forward
-as it is supposed to, @code{forward-line} goes forward as far as it can and
-then returns a count of the number of additional lines it was supposed to
-move but couldn't.
+Verplaats point voorwaarts naar het begin van de volgende regel, of wanneer
+het argument groter is dan één, dat aantal regels voorwaarts. Wanneer het
+niet zo ver voorwaarts kan als het bedoeld is, gaat @code{forward-line} zo
+ver mogelijk voorwaarts en geeft vervolgens het aantal terug van de extra
+regels die het bedoeld was te verplaatsen maar dat niet kon.
 
 @item erase-buffer
-Delete the entire contents of the current buffer.
+Verwijder de gehele inhoud van het huidige buffer.
 
 @item bufferp
-Return @code{t} if its argument is a buffer; otherwise return @code{nil}.
+Geef @code{t} terug wanneer het argument een buffer is, zo niet geef
+@code{nil} terug.
 @end table
 
 @node optionele oefening
-@section @code{optional} Argument Exercise
+@section @code{optioneel} argument oefening
 
-Write an interactive function with an optional argument that tests whether
-its argument, a number, is greater than or equal to, or else, less than the
-value of @code{fill-column}, and tells you which, in a message.  However, if
-you do not pass an argument to the function, use 56 as a default value.
+Schrijf een interactieve functie met een optioneel argument dat test of het
+argument, een getal, groter of gelijk is aan, dan wel kleiner is dan de
+waarde van @code{fill-column}, en je in een boodschap vertelt welke het
+geval is. Wanneer je echter geen argument aan de functie doorgeeft, gebruik
+dan 56 als standaard waarde.
 
 @node Versmallen en verbreden
 @chapter Versmallen en verbreden
@@ -14570,7 +14579,7 @@ variable to hold the count, and finally, we record the position of the end
 of the definition so the @code{while} loop will know when to stop looping.
 
 @need 1250
-The code looks like this:
+De code ziet er zo uit:
 
 @smallexample
 @group
@@ -17753,7 +17762,7 @@ For a boot script:
 @smallexample
 @group
 loadkeys /usr/share/keymaps/i386/qwerty/emacs2.kmap.gz
-@exdent of
+@exdent or
 install-keymap emacs2
 @end group
 @end smallexample
@@ -18958,7 +18967,7 @@ kill ring has something in it and the value of @code{do-not-move} is
 @code{nil}.
 
 @need 800
-The code looks like this:
+De code ziet er zo uit:
 
 @smallexample
 @group
@@ -19096,7 +19105,7 @@ variable directly.  It calls @code{insert-for-yank} which calls
 @code{current-kill} which sets the @code{kill-ring-yank-pointer} variable.
 
 @need 1250
-The code looks like this:
+De code ziet er zo uit:
 
 @c in GNU Emacs 22
 @smallexample
@@ -19948,7 +19957,7 @@ next plus a tic symbol.  The number of blanks is determined by the width of
 the tic symbol and the @code{X-axis-label-spacing}.
 
 @need 1250
-The code looks like this:
+De code ziet er zo uit:
 
 @smallexample
 @group
