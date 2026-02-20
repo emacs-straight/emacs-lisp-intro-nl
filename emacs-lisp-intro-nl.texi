@@ -1113,14 +1113,14 @@ indrukt en loslaat  en daarna tegelijkertijd de  @key{CTRL}-toets en de
 @key{CTRL}-toets samen met  de toets die als @key{ALT} is gelabeld indrukt
 en tegelijkertijd de  @kbd{\}-toets indrukt.
 
-In aanvulling op het typen van een keychord, kan je wat je typt uitbreiden
-met de prefix @kbd{C-u}, wat het @dfn{universal argument} heet. De
-@kbd{C-u}-keychord geeft een argument door aan het eerstvolgende
-commando. Dus, om een gebied met gewone tekst 6 spaties te indenten, markeer
-je het gebied en vervolgens type je  @w{@kbd{C-u 6 C-M-\}}. (Wanneer je geen
-getal opgeeft, dan geeft Emacs hetzij het getal 4 door aan het commando, of
-voert het commando anders uit). @xref{Arguments, , Numeric Arguments, emacs,
-The GNU Emacs Manual}.
+In aanvulling op het typen van een toetscombinatie, kan je wat je typt
+uitbreiden met de prefix @kbd{C-u}, wat het @dfn{universal argument}
+heet. De  @kbd{C-u}-toetscombinatie geeft een argument door aan het
+eerstvolgende commando. Dus, om een gebied met gewone tekst 6 spaties te
+indenten, markeer je het gebied en vervolgens type je  @w{@kbd{C-u 6
+C-M-\}}. (Wanneer je geen getal opgeeft, dan geeft Emacs hetzij het getal 4
+door aan het commando, of voert het commando anders uit). @xref{Arguments, ,
+Numeric Arguments, emacs, The GNU Emacs Manual}.
 
 Wanneer je dit in Info met GNU Emacs leest, dan kun je het hele document
 lezen slechts door het indrukken van de spatiebalk, @key{SPC}. (Om meer over
@@ -2760,9 +2760,9 @@ De eerste is de naam van het buffer en het tweede is de naam van het
 bestand. In Info is de naam van het buffer @file{"*info*"}. Info wijst niet
 naar een bestand, waardoor @file{nil} het resultaat van de evaluatie
 @code{(buffer-file-name)} is. Het symbool @file{nil} is van het Latijnse
-woord for ``niets'', in dit geval betekent het dat het buffer met geen enkel
-bestand geassocieerd is. (In Lisp wordt @code{nil} ook gebruikt om
-``onwaar'' te betekenen en is synoniem voor de lege lijst, @code{()}.)
+woord voor ``niets'', in dit geval betekent het dat het buffer met geen
+enkel bestand geassocieerd is. (In Lisp betekent @code{nil} ook ``onwaar''
+en is synoniem voor de lege lijst, @code{()}.)
 
 Wanneer ik schrijf is de naam van mijn buffer
 @file{"introduction.texinfo"}. De naam van het bestand waar het naar wijst
@@ -2789,8 +2789,8 @@ verzachtte een buffer de interactie tussen bestanden en de centrale
 verwerkingseenheid. De drums of tapes die het bestand bevatten en de
 centrale verwerkingseenheid waren onderdelen van de apparatuur die zeer
 verschillend van elkaar waren en op hun eigen snelheid werkten, in
-stoten. Uiteindelijk groeide het buffer van een tussenpersoon, een
-tijdelijke opslagplaats uit naar de plaats waar het werk wordt gedaan. Deze
+stoten. Uiteindelijk groeide het buffer van een intermediair, een tijdelijke
+opslagplaats uit naar de plaats waar het werk wordt gedaan. Deze
 transformatie is ongeveer zoals een kleine zeehaven uitgroeide naar een
 grote stad. Eens was het slechts de plaats waar lading tijdelijk in
 magazijnen werd opgeslagen voordat het op schepen werd verladen en daarna
@@ -2911,21 +2911,22 @@ gebruikt wordt als een argument voor een functie die er een vereist. We zien
 dit door @code{other-buffer} en @code{switch-to-buffer} te gebruiken om naar
 een ander buffer te schakelen.
 
-Maar eerst een korte introductie in de @code{switch-to-buffer} functie. Toen
-je heen en weer schakelde tussen Info en het @file{*scratch*}-buffer om
-@code{(buffer-name)} te evalueren, heb je hoogstwaarschijnlijk @kbd{C-x b}
-en daarna @file{*scratch*} getypt@footnote{Of beter gezegd, om
-toetsaanslagen te besparen, heb je waarschijnlijk alleen @kbd{RET} getypt
-indien het default buffer @file{*scratch*} was, of wanneer het niet zo was,
-je slechts een gedeelte van de naam typte, zoals @code{*sc}, en de
-@kbd{TAB}-toets gebruikte zodat het expandeerde naar de volledige naam, en
-daarna @kbd{RET} typte.} toen je in het minibuffer gevraagd werd naar de
-naam van het buffer waar naar toe te schakelen. De toetsaanslagen @kbd{C-x
-b} laten de Lisp interpreter de interactieve @code{switch-to-buffer}-functie
-evalueren. Zoals we eerder gezegd hebben, dit is hoe Emacs werkt:
-verschillende toetsaanslagen roepen verschillende functies aan of draaien
-die. Bijvoorbeeld @kbd{C-f} roept @code{forward-char} aan, @kbd{M-e} roept
-@code{forward-sentence} aan, enzovoorts.
+Maar eerst een korte introductie van de @code{switch-to-buffer}
+functie. Toen je heen en weer schakelde tussen Info en het
+@file{*scratch*}-buffer om @code{(buffer-name)} te evalueren, heb je
+hoogstwaarschijnlijk @kbd{C-x b} en daarna @file{*scratch*}
+getypt@footnote{Of beter gezegd, om toetsaanslagen te besparen, heb je
+waarschijnlijk alleen @kbd{RET} getypt indien het default buffer
+@file{*scratch*} was, of wanneer het niet zo was, je slechts een gedeelte
+van de naam typte, zoals @code{*sc}, en de @kbd{TAB}-toets gebruikte zodat
+het expandeerde naar de volledige naam, en daarna @kbd{RET} typte.} toen je
+in het minibuffer gevraagd werd naar de naam van het buffer waar naar toe te
+schakelen. De toetsaanslagen @kbd{C-x b} laten de Lisp interpreter de
+interactieve @code{switch-to-buffer}-functie evalueren. Zoals we eerder
+gezegd hebben, dit is hoe Emacs werkt: verschillende toetsaanslagen roepen
+verschillende functies aan of draaien die. Bijvoorbeeld @kbd{C-f} roept
+@code{forward-char} aan, @kbd{M-e} roept @code{forward-sentence} aan,
+enzovoorts.
 
 Door @code{switch-to-buffer} in een expressie te schrijven en het een
 buffernaam te geven om naar te schakelen, kunnen we buffers schakelen op
@@ -2943,7 +2944,7 @@ uitvoeren die daaraan gekoppeld zijn. Maar voordat die dat doet, merkt de
 interpreter op dat @code{other-buffer} tussen haakjes staat en eerst dat
 symbool verwerkt. @code{other-buffer} is het eerste (en in dit geval enige)
 element in deze lijst, dus de Lisp interpreter roept of runt deze
-functie. Het geeft een andere buffer terug. Vervolgens runt de interpreter
+functie. Het geeft een ander buffer terug. Vervolgens runt de interpreter
 @code{switch-to-buffer} en geeft het andere buffer als argument door, waar
 Emacs naar zal omschakelen. Wanneer je dit in Info leest, probeer het dan nu
 direct. Evalueer de expressie. (Typ @kbd{C-x b @key{RET}} om terug te gaan.)
@@ -3068,7 +3069,7 @@ Wanneer de Lisp interpreter een lijst evalueert, kijkt het of het eerste
 symbool in de lijst een functiedefinitie aan zich gekoppeld heeft, met
 andere woorden, of het symbool naar een functiedefinitie wijst. Een symbool
 met een functiedefinitie wordt eenvoudig een functie genoemd (alhoewel,
-eigenlijk is de definitie de functie en verwijst het symbool er naar.
+eigenlijk is de definitie de functie en verwijst het symbool er naar).
 
 @menu
 * Primitieve functies::      Primitieve functies
@@ -3125,9 +3126,9 @@ het evalueren van een Lisp expressie die start met het symbool @code{defun}
 
 In volgende secties kijken we naar functiedefinities van de Emacs broncode,
 zoals @code{mark-whole-buffer}. In deze sectie beschrijven we een eenvoudige
-functiedefinitie zodat je kunt zien hoe zij eruitzien. Die voorbeeld
+functiedefinitie zodat je kunt zien hoe die eruitzien. Dat voorbeeld
 gebruikt rekenkunde omdat het tot een eenvoudig voorbeeld leidt. Sommige
-mensen houden niet van voorbeelden met rekenkunde, echter wanneer jij zo'n
+mensen houden niet van voorbeelden met rekenkunde, echter wanneer je zo'n
 persoon bent, wanhoop niet. Nauwelijks enige code die we in de rest van deze
 introductie behandelen heeft met rekenkunde of wiskunde te maken. De
 voorbeelden hebben hoofdzakelijk op de een of andere manier met tekst te
@@ -3152,7 +3153,7 @@ aanbevolen.)
 @item
 Optioneel een expressie die de functie interactief maakt zodat je die kunt
 gebruiken door @kbd{M-x} gevolgd door de naam van de functie te typen, of
-door het typen van een passende toets of keychord.
+door het typen van een passende toets of toetscombinatie.
 
 @cindex @samp{body} gedefinieerd
 @item
@@ -3167,7 +3168,7 @@ een sjabloon met vijf slots voor elk onderdeel:
 @group
 (defun @var{functienaam} (@var{argumenten}@dots{})
   "@var{optionele-documentatie}@dots{}"
-  (interactive @var{argument-doorgevende-info})     ; @r{optioneell}
+  (interactive @var{argument-doorgevende-info})     ; @r{optioneel}
   @var{body}@dots{})
 @end group
 @end smallexample
@@ -3202,7 +3203,7 @@ net zo goed het woord ``multiplicant'' kunnen kiezen om de rol aan te geven
 die de in dit slot geplaatste waarde speelt in de werking van de functie. Ik
 had het ook @code{foogle} kunnen noemen, maar dat zou een slechte keuze zijn
 omdat het niet aan mensen vertelt wat het betekent. De keuze van de naam is
-aan de programmeur aan moet zo gekozen worden dat het de betekenis van de
+aan de programmeur en moet zo gekozen worden dat het de betekenis van de
 functie duidelijk maakt.
 
 Je kunt inderdaad elke naam die je maar wilt kiezen voor een symbool in de
@@ -3241,8 +3242,8 @@ commando's, zoals @code{apropos}, alleen de eerste regel tonen van een
 meerregelige documentatiestring. Ook moet je de tweede regel van een
 documenatiestring, wanneer die er is, niet laten inspringen, omdat dit er
 raar uitziet wanner je @kbd{C-h f} (@code{describe-function}) gebruikt. De
-documenatiestring is optioneel, maar is zo nuttig, dat je die deel zou
-vrijwel elke functie die je schrijft zou moeten zijn.
+documenatiestring is optioneel, maar is zo nuttig, dat die deel zou vrijwel
+elke functie die je schrijft zou moeten zijn.
 
 @findex * @r{(vermenigvuldiging)}
 De derde regel van ons voorbeeld bestaat uit de body van de
@@ -3305,11 +3306,11 @@ installeert deze actie de functiedefinitie.
 
 @noindent
 Met het evalueren van deze @code{defun} heb je
-zojuist@code{vermenigvuldig-met-zeven} in Emacs geïnstalleerd. De functieis
+zojuist@code{vermenigvuldig-met-zeven} in Emacs geïnstalleerd. De functie is
 nu net zo goed onderdeel van Emacs als
 @code{forward-word}.(@code{vermenigvuldig-met-zeven} blijft geïnstalleerd
-totdat jeEmacs afsluit. Om de code automatisch opnieuw te laden wanneer
-jeEmacs start, zie @ref{Permanent installeren, , Installeer codepermanent}.)
+totdat je Emacs afsluit. Om de code automatisch opnieuw te laden wanneer je
+Emacs start, zie @ref{Permanent installeren, , Installeer code permanent}.)
 
 @menu
 * Effect van installatie::   Effect van installatie
@@ -3408,7 +3409,7 @@ aanroept, de teruggegeven waarde niet automatisch in het echogebied wordt
 getoond. Dit is omdat je vaak een interactieve functie aanroept wegens de
 zij-effecten, zoals een woord of regel verder gaan, en niet voor de
 teruggegeven waarde. Wanneer de teruggegeven waarde elke keer dat je een
-toets aanslaat in het echogebied getoond zou orden, zou dat erg afleiden.
+toets aanslaat in het echogebied getoond zou worden, zou dat erg afleiden.
 
 @menu
 * Interactieve vermenigvuldig-met-zeven::  Een overzicht
@@ -3459,7 +3460,7 @@ zoals met @kbd{C-u 3 M-e}.
 @end enumerate
 
 @noindent
-Beide zojuist genoemde voorbeelden werken identiek om point drie regels
+Beide zojuist genoemde voorbeelden werken identiek om point drie zinnen
 verder te plaatsen. (Omdat @code{vermenigvuldig-met-zeven} niet aan een
 toets gebonden is, kan dit niet gebruikt worden als voorbeeld van een key
 binding.) 
@@ -3580,9 +3581,9 @@ met het gespecificeerde karakter, maar niet meer.
 De @samp{c} vertelt de functie de naam van het karakter tot waar te
 verwijderen.
 
-Meer formeel, een functie met twee of meer argumenten kan meer informatie
-doorgegeven aan elke argument krijgen door delen aan de string toe te voegen
-die volgt op @code{interactive}. Wanneer je dit doet is de informatie die
+Meer formeel, een functie met twee of meer argumenten kan voor elk argument
+informatie doorgegeven krijgen door delen toe te voegen aan de string die
+volgt op @code{interactive}. Wanneer je dit doet is de informatie die
 doorgegeven wordt in dezelfde volgorde als gespecificeerd is de
 @code{interactive} lijst. In de string is elk deel gescheiden van het
 volgende deel door een @samp{\n}, wat een nieuwe regel is. Bijvoorbeeld, je
@@ -3656,15 +3657,15 @@ onderdeel is van je Emacs distributie.)
 @end itemize
 
 Tenslotte, wanneer je code hebt die iedereen die Emacs gebruikt zou willen
-hebben, dan je het op een computernetwerk posten of een exemplaar naar de
-Free Software Foundation sturen. (Wanneer je dit doet, breng dan alsjeblieft
-de code en de bijbehorende documentatie onder een licentie die andere mensen
-toestaat het te draaien, kopiëren, bestuderen, aan te passen en verder te
-distribueren en die je beschermt tegen dat je werk van je afgenomen wordt.)
-Wanneer je een exemplaar van jouw code naar de Free Software Foundation
-stuurt, en jezelf en anderen juist beschermt, dan zou het in een volgende
-release van Emacs kunnen worden opgenomen. Dit is grotendeels hoe Emacs over
-de jaren gegroeid is, door donaties.
+hebben, dan kun je het op een computernetwerk posten of een exemplaar naar
+de Free Software Foundation sturen. (Wanneer je dit doet, breng dan
+alsjeblieft de code en de bijbehorende documentatie onder een licentie die
+andere mensen toestaat het te draaien, kopiëren, bestuderen, aan te passen
+en verder te distribueren en die je beschermt tegen dat je werk van je
+afgenomen wordt.) Wanneer je een exemplaar van jouw code naar de Free
+Software Foundation stuurt, en jezelf en anderen juist beschermt, dan zou
+het in een volgende release van Emacs kunnen worden opgenomen. Dit is
+grotendeels hoe Emacs over de jaren gegroeid is, door donaties.
 
 @xref{Contributing, Contributing to Emacs Development,, emacs, The GNU Emacs
 Manual}, over hoe bij te dragen met opname van je code in Emacs.
@@ -3677,7 +3678,7 @@ De @code{let} expressie is een speciale vorm in Lisp die je in de meeste
 functiedefinities nodig hebt.
 
 @code{let} wordt gebruikt om een symbool aan een variabele te koppelen of te
-binden op zo'n manier dat de Lisp interpreter het niet wil verwarren met een
+binden op zo'n manier dat de Lisp interpreter het niet verwart met een
 variabele met dezelfde naam die geen onderdeel van de functie is.
 
 Om te begrijpen waarom de speciale vorm @code{let} nodig is, beschouw de
@@ -3687,11 +3688,11 @@ bezoekt en de gastheer refereert aan ``het huis'', refereert hij
 waarschijnlijk aan @emph{zijn} huis, niet het jouwe, dus aan een ander huis.
 
 Wanneer je vriend naar zijn huis refereert en jij denkt dat hij naar jouw
-huis refereert, dan kan dat je verwarren. Hetzelfde kan in Lisp gebeuren
-wanneer een variabele die binnen de ene functie gebruikt wordt als een
-variabele die binnen een andere functie gebruikt wordt, en de twee zijn niet
-bedoeld om naar dezelfde waarde te refereren. De speciale vorm @code{let}
-voorkomt dit soort verwarring.
+huis refereert, dan kan dat verward zijn. Hetzelfde kan in Lisp gebeuren
+wanneer een variabele die binnen de ene functie gebruikt wordt dezelfde naam
+heeft als een variabele die binnen een andere functie gebruikt wordt, en de
+twee zijn niet bedoeld om naar dezelfde waarde te refereren. De speciale
+vorm @code{let} voorkomt dit soort verwarring.
 
 @menu
 * Voorkom verwarring::       Voorkom verwarring
@@ -3712,7 +3713,7 @@ voorkomt dit soort verwarring.
 @cindex @samp{lokale variabele} gedefinieerd
 @cindex @samp{variabele, lokaal}, gedefinieerd
 De speciale vorm @code{let} voorkomt verwarring. @code{let} creëert een naam
-foor een @dfn{lokale variabele} die elk gebruik van dezelfde naam buiten de
+voor een @dfn{lokale variabele} die elk gebruik van dezelfde naam buiten de
 @code{let}-expressie overschaduwt (in computerwetenschappelijk jargon noemen
 we dit het @dfn{binden} van de variabele). Dit is vergelijkbaar met
 begrijpen dat in het huis van je gastheer, wanneer hij refereert aan ``het
@@ -3723,7 +3724,7 @@ als lokale variabelen gebonden) @xref{defun, , De @code{defun} macro}.)
 Een andere manier om over @code{let} te denken is dat het een speciaal
 gebied in je code definieert: binnen de body van de @code{let}-expressie,
 hebben de variabelen die je benoemd hebt hun eigen lokale betekenis. Buiten
-de @code{let} body hebben zij andere betekenissen (of zij zijn helemaal niet
+de @code{let} body hebben zij een andere betekenis (of ze zijn helemaal niet
 gedefinieerd). Dit betekent dat binnen de @code{let} body het aanroepen van
 @code{setq} voor een variabele benoemd door de @code{let}-expressie de
 waarde instelt voor de @emph{lokale} variabele met die naam. Echter buiten
@@ -3797,7 +3798,7 @@ het geval is, dan ziet het sjabloon voor de @code{let}-expressie er zo uit:
 @cindex Voorbeeld @code{let} expressie
 @cindex @code{let} expressie voorbeeld
 
-De volgende expressie creëert een geef initiele waarden aan de twee
+De volgende expressie creëert en geeft initiele waarden aan de twee
 variabelen @code{zebra} en @code{tijger}. De body van de
 @code{let}-expressie is een lijst die de @code{message}-functie aanroept.
 
@@ -3806,7 +3807,7 @@ variabelen @code{zebra} en @code{tijger}. De body van de
 (let ((zebra "strepen")
       (tijger "woest"))
   (message "Eén soort dieren heeft %s en de ander is %s."
-           zebra tiger))
+           zebra tijger))
 @end group
 @end smallexample
 
@@ -3814,7 +3815,7 @@ Hier is de varlist @code{((zebra "strepen") (tijger "woest"))}
 
 De twee variabelen zijn @code{zebra} en @code{tijger}. Elke variabele is het
 eerste element van een lijst met twee elementen en elke waarde is het tweede
-element van die lijst. In de varlist bindt Emacs de variabel @code{zebra}
+element van die lijst. In de varlist bindt Emacs de variabele @code{zebra}
 aan de waarde @code{"strepen"}@footnote{volgens Jared Diamond in @cite{Guns,
 Germs, and Steel}, ``@dots{} worden zebras onvoorstelbaar gevaarlijk als ze
 ouder worden'' maar de claim hier is dat ze niet zo woest worden als een
@@ -3878,12 +3879,12 @@ het symbool @code{spar} en @code{den} aan @code{nil}, en bindt het symbool
 
 Merk op dat in het eerste deel van de @code{let}-expressie de variabelen
 @code{spar} en @code{den} op zichzelf staan als atomen en niet omgeven zijn
-met haakjes. Dit is omdat ze aan @code{nil} gebonden worden, de lege lijst
-Maar @code{eik} is gebonden aan @code{enige} en daarom is een deel van de
-lijst @code{(eik 'enige)}. @code{berk} is op dezelfde manier gebonden aan
-het getal 3 en is daarom in een lijst met dat getal. (Omdat een getal naar
-zichzelf evalueert hoeft een getal niet gequote te worden. Ook wordt het
-getal in de boodschap getoond met @samp{%d} in plaats van @samp{%s}.) De
+met haakjes. Dit is omdat ze aan @code{nil} gebonden worden, de lege
+lijst. Maar @code{eik} is gebonden aan @code{enige} en daarom is een deel
+van de lijst @code{(eik 'enige)}. @code{berk} is op dezelfde manier gebonden
+aan het getal 3 en staat daarom in een lijst met dat getal. (Omdat een getal
+naar zichzelf evalueert hoeft een getal niet gequote te worden. Ook wordt
+het getal in de boodschap getoond met @samp{%d} in plaats van @samp{%s}.) De
 vier variabelen zijn als groep in de lijst geplaatst om ze te scheiden van
 de body van de @code{let}. 
 
@@ -3891,7 +3892,7 @@ de body van de @code{let}.
 @subsection Hoe @code{let} variabelen bindt
 
 Emacs Lisp ondersteunt twee manieren om een variabele namen aan hun waarde
-te binnden. Deze manieren raken de delen van je programma waar een bepaalde
+te binden. Deze manieren raken de delen van je programma waar een bepaalde
 binding geldig is. Wegens historische redenen gebruikt Emacs Lisp standaard
 een vorm van variabele binding met de naam @dfn{dynamic binding}. Echter in
 deze handleiding behandelen we de voorkeursvorm voor binding, met de naam
@@ -3945,7 +3946,7 @@ gebruikt. zijn de lokale variabelen geldig gedurende de uitvoering van de
 @code{let}-expressie. Dit betekent dat wanneer je @code{let}-expressie een
 functie aanroept, die functie deze lokale variabelen kan zien, ongeacht waar
 de functie is gedefinieerd (inclusief wanneer dit zelfs in een heel ander
-bestand is.
+bestand staat).
 
 Een andere manier om over @code{let} bij het gebruik van dynamische binding
 te denken is dat elke variabele naam een globale ``stapel'' van bindings
@@ -4082,7 +4083,7 @@ boodschap @samp{5 is groter dan 4!} getoond.
 @smallexample
 @group
 (if (> 5 4)                             ; @r{wanneer-deel}
-    (message "5 is greater than 4!"))   ; @r{dan-deel}
+    (message "5 is groter dan 4!"))     ; @r{dan-deel}
 @end group
 @end smallexample
 
@@ -4093,9 +4094,9 @@ argument en geeft waar terug indien dat zo is.)
 
 In werkelijk gebruik is de test natuurlijk niet voor altijd vastgelegd zoals
 dat het geval is bij de expressie @code{(> 5 4)}. In plaats daarvan is
-tenminste een va de variabelen die in de test gebruikt worden gebonden aan
+tenminste een van de variabelen die in de test gebruikt worden gebonden aan
 een waarde die vooraf niet bekend is. (Als de waarde vooraf bekend zou zijn,
-hoeven we de test niet draaien!)
+hoeven we de test niet doen!)
 
 De waarde kan bijvoorbeeld gebonden zijn aan het argument van een
 functiedefinitie. In de volgende functiedefinitie is het karakter van een
@@ -4170,7 +4171,7 @@ dan waarschuw voor een tijger."
 @end smallexample
 
 De naam van de functie is @code{type-dier}, het krijgt de waarde van één
-argument doorgegeven. De argument-list wordt gevolgd door een meerregelige
+argument doorgegeven. De argumentlijst wordt gevolgd door een meerregelige
 documentatiestring. De documentatiestring is in dit voorbeeld opgenomen
 omdat het een goede gewoonte is voor elke functiedefinitie een
 documentatiestring te schrijven. De body van de functiedefinitie bestaat uit
@@ -4217,7 +4218,7 @@ waarde waar terug. Wanneer dit gebeurt, evalueert de @code{if} het tweede
 argument oftewel het dan-deel van de @code{if}: @code{(message "Het is een
 tijger!")}.
 
-Daarnaast in de tweede oefening van @code{type-dier} het argument
+Daarnaast is in de tweede oefening van @code{type-dier} het argument
 @code{"gestreept"} doorgegeven naar @code{type-dier}. @code{"gestreept"} is
 niet gelijk aan @code{"woest"} en daarom is het dan-deel niet geëvalueerd en
 is @code{nil} teruggeven door de @code{if}-expressie.
@@ -4232,12 +4233,12 @@ teruggeeft. Wanneer dit gebeurt wordt het tweede argument, het dan-deel van
 de @code{if}-expressie @emph{niet} geëvalueerd, maar wordt het derde deel,
 het anders-deel, @emph{wel} geëvalueerd. Je kunt dit zien als het bewolkte
 dag alternatief voor de beslissing ``als het warm en zonnig is, ga dan naar
-het strand, ander lees een boek!''.
+het strand, anders lees een boek!''.
 
-In de Lisp-code wordt Het woord ``else'' niet geschreven, het anders-deel
-van een @code{if}-expressie komt na het dan-gedeelte. In de geschreven Lisp
-wordt het anders-deel gebruikelijk op zichzelf op een nieuwe regel
-geschreven en minder ingesprongen dan het dan-deel:
+In de Lisp-code wordt het woord ``else'' niet geschreven, het anders-deel
+van een @code{if}-expressie komt na het dan-gedeelte. In Lisp staat het
+anders-deel gebruikelijk op zichzelf op een nieuwe regel en minder
+ingesprongen dan het dan-deel:
 
 @smallexample
 @group
@@ -4247,14 +4248,14 @@ geschreven en minder ingesprongen dan het dan-deel:
 @end group
 @end smallexample
 
-Bijvoorbeeld toont de volgende @code{if}-expressie de boodschap @samp{4 is
+De volgende @code{if}-expressie bijvoorbeeld toont de boodschap @samp{4 is
 niet groter dan 5!} wanneer je het op de gebruikelijke manier evalueert:
 
 @smallexample
 @group
 (if (> 4 5)                               ; @r{if-deel}
     (message "4 valselijk groter dan 5!") ; @r{dan-deel}
-  (message "4 is niet groter dan 5!"))   ; @r{anders-deel}
+  (message "4 is niet groter dan 5!"))    ; @r{anders-deel}
 @end group
 @end smallexample
 
@@ -4263,7 +4264,7 @@ Merk op dat de verschillende niveaus van inspringen het makkelijk maken het
 dan-deel te onderscheiden van het anders-deel. (GNU Emacs heeft
 verschillende commando's die automatisch @code{if}-expressies correct laat
 inspringen. @xref{Typen van lijsten, , GNU Emacs helpt je om lijsten te
-typen}.)
+typen}.) 
 
 We kunnen de @code{type-dier}-functie uitbreiden met een anders-deel door
 eenvoudig een aanvullend deel in de @code{if}-expressie in te voegen.
@@ -4318,7 +4319,7 @@ Er is een belangrijk aspect aan de waarheidstest in een
 @code{if}-expressie. Tot nu toe hebben we gesproken over ``waar'' en
 ``onwaar'' als waarden van predicaten alsof het nieuwe soorten van Emacs
 Lisp objecten zijn. Feitelijk is ``onwaar'' onze oude vriend
-@code{nil}. Alles anders---wat dan ook--- is ``waar''.
+@code{nil}. Alles wat anders is---wat dan ook--- is ``waar''.
 
 De expressie die de test op waar wordt geïnterpreteerd als @dfn{waar}
 wanneer het resultaat van de evaluatie een waarde ongelijk aan @code{nil}
@@ -4351,10 +4352,10 @@ In Emacs Lisp wordt elke waarde die niet @code{nil} is---niet de lege lijst
 is--- beschouwd als waar. Dit betekent dat wanneer een evaluatie iets
 teruggeeft dat geen lege lijst is, een @code{if}-expressie het als waar
 test. Wanneer bijvoorbeeld een getal in het slot voor de test gestopt
-wordt. wordt het geëvalueerd en zal het zichzelf teruggeven omdat dat is wat
-getallen doen wanneer ze worden geëvalueerd. De expressie test als onwaar
-uitsluitend wanneer @code{nil}, een lege lijst, wordt teruggegeven door de
-expressie te evalueren.
+wordt. wordt het geëvalueerd en zal het zichzelf teruggeven, omdat dat is
+wat getallen doen wanneer ze worden geëvalueerd. De expressie test als
+onwaar uitsluitend wanneer @code{nil}, een lege lijst, wordt teruggegeven
+door de expressie te evalueren.
 
 Je kunt dit zien door het evalueren van de twee expressies in de volgende
 voorbeelden.
@@ -4472,9 +4473,9 @@ Om zeker te stellen dat het huis schoon blijft, herstelt
 code in het (of, meer preciezer en in het juiste jargon, ``in geval van een
 abnormale exit''). Deze eigenschap is erg behulpzaam.
 
-Naast het registreren van de waarde van point @code{save-excursion} houdt
-het bij wat de huidige buffer is en herstelt die ook. Dit betekent dat je
-code kunt schrijven die van buffer wisselt en laat @code{save-excursion} je
+Naast het registreren van de waarde van point houdt @code{save-excursion}
+bij wat de huidige buffer is en herstelt die ook. Dit betekent dat je code
+kunt schrijven die van buffer wisselt en je @code{save-excursion} laat
 terugschakelen naar de originele buffer. Dit is hoe @code{save-excursion}
 gebruikt wordt in @code{append-to-buffer}. (@xref{append-to-buffer, , De
 definitie van @code{append-to-buffer}}.)
@@ -4495,9 +4496,9 @@ Het sjabloon voor code die @code{save-excursion} gebruikt is simpel:
 @noindent
 De body van de functie bestaat uit een of meer expressies die de Lisp
 interpreter opvolgend evalueert. Wanneer de body meer dan een expressie
-bevat. wordt de waarde van de laatste teruggegeven als waarde van de
+bevat, wordt de waarde van de laatste teruggegeven als waarde van de
 @code{save-excursion}-functie. De andere expressies in de body worden
-uitsluitend geëvalueerd voor hun zij-effecten en @code{save-excursion} zefl
+uitsluitend geëvalueerd voor hun zij-effecten en @code{save-excursion} zelf
 wordt alleen gebruikt voor zijn zij-effect (het herstellen van de positie
 van point).
 
@@ -4533,9 +4534,9 @@ van een @code{let}-expressie. Dit ziet er zo uit:
 @node Terugblik
 @section Terugblik
 
-In de laatste hoofdstukken hebben een macro en een flink aantal functies en
-speciale vormen geïntroduceerd. Deze hebben in het kort besproken, samen met
-enkele vergelijkbare functies die we nog niet genoemd hebben.
+In de laatste hoofdstukken introduceerden we een macro en een flink aantal
+functies en speciale vormen. Deze bespreken we hier in het kort, samen met
+enkele vergelijkbare functies die we nog niet behandeld hebben.
 
 @table @code
 @item eval-last-sexp
@@ -4633,7 +4634,7 @@ Bijvoorbeeld,
 
 @item if
 Evalueer het eerste argument van de functie. Wanneer het waar is, evalueer
-het tweede argument, ander evalueer het derde argument, wanneer er een is.
+het tweede argument, anders evalueer het derde argument, mits die er is.
 
 De speciale vorm @code{if} heet een @dfn{conditional}. Er zijn andere
 conditionals in Emacs Lisp, maar @code{if} is waarschijnlijk de meest
@@ -4717,7 +4718,7 @@ de waarde van het tweede argument. Het eerste argument wordt automatisch
 gequote door @code{setq}. Het doet hetzelfde voor opvolgende argumentparen.
 
 @item buffer-name
-Zonder een argument geeft de waarde van het buffer terug als een string.
+Zonder een argument, geeft de waarde van het buffer terug als een string.
 
 @item buffer-file-name
 Zonder een argument, geeft de naam van het bestand terug dat het buffer
@@ -4733,23 +4734,23 @@ doorgegeven aan @code{other-buffer} als een argument en anders dan het
 huidige buffer).
 
 @item switch-to-buffer
-Selecteer een buffer voor Emacs om actief in te zijn en toon het in het
+Selecteert een buffer voor Emacs om actief in te zijn en toon het in het
 huidige venster zodat de gebruiker het kan zien. Gebruikelijk gebonden aan
 @kbd{C-x b}.
 
 @item set-buffer
-Schakel de aandacht van Emacs naar een buffer waarop programma's gaan
-draaien. Verander niet wat het venster toont.
+Schakelt de aandacht van Emacs naar een buffer waarop programma's gaan
+draaien. Verandert niet wat het venster toont.
 
 @item buffer-size
-Geef het aantal karakters in het huidige buffer.
+Geeft het aantal karakters in het huidige buffer.
 
 @item point
-Geef de waarde van de huidige positie van de cursor, als een integer, tel
+Geeft de waarde van de huidige positie van de cursor, als een integer, telt
 het aantal karakters vanaf het begin van het buffer.
 
 @item point-min
-Geef de minimaal toegestane waarde van point in het huidige buffer. Dit is
+Geeft de minimaal toegestane waarde van point in het huidige buffer. Dit is
 1, behalve wanneer narrowing van toepassing is.
 
 @item point-max
@@ -5912,7 +5913,7 @@ gebruiken}.)
 
 @need 1200
 De functie @code{not} gaat vooraf aan de expressie @code{(bufferp buffer)},
-waardoor de waar-of-onwaar-test er zo uit ziet:
+waardoor de waar-of-onwaar-test er zo uitziet:
 
 @smallexample
 (not (bufferp buffer))
@@ -6615,13 +6616,14 @@ dan 56 als standaard waarde.
 
 @node Versmallen en verbreden
 @chapter Versmallen en verbreden
-@cindex Focusing attention (narrowing)
-@cindex Narrowing
-@cindex Widening
+@cindex Aandacht richten (versmallen)
+@cindex Versmallen
+@cindex Verbreden
 
-Narrowing is a feature of Emacs that makes it possible for you to focus on a
-specific part of a buffer, and work without accidentally changing other
-parts.  Narrowing is normally disabled since it can confuse novices.
+Versmallen is een eigenschap van Emacs die het mogelijk maakt je aandacht te
+richten op een specifiek deel van een buffer, en te werken zonder dat je per
+ongeluk iets in de andere delen wijzigt. Versmallen is normaal gesproken
+uitgeschakeld omdat het verwarrend is voor beginners.
 
 @menu
 * Voordelen van versmallen::  De voordelen van versmallen
@@ -6632,55 +6634,57 @@ parts.  Narrowing is normally disabled since it can confuse novices.
 
 @ifnottex
 @node Voordelen van versmallen
-@unnumberedsec The Advantages of Narrowing
+@unnumberedsec De voordelen van versmallen
 @end ifnottex
 
-With narrowing, the rest of a buffer is made invisible, as if it weren't
-there.  This is an advantage if, for example, you want to replace a word in
-one part of a buffer but not in another: you narrow to the part you want and
-the replacement is carried out only in that section, not in the rest of the
-buffer.  Searches will only work within a narrowed region, not outside of
-one, so if you are fixing a part of a document, you can keep yourself from
-accidentally finding parts you do not need to fix by narrowing just to the
-region you want.  (The key binding for @code{narrow-to-region} is @kbd{C-x n
-n}.)
+Met versmallen is de rest van het buffer onzichtbaar, alsof het er niet
+is. Dit is een voordeel wanneer je bijvoorbeeld een woord in een deel van
+het buffer wilt vervangen, maar niet in een ander deel: je versmalt naar het
+deel dat je wilt en de vervanging wordt alleen in dat deel uitgevoerd en
+niet in de rest van het buffer. Zoeken werkt ook binnen een versmald gebied,
+niet daarbuiten, zodat als je een deel van een document aan het verbeteren
+bent, je jezelf beschermt tegen per ongeluk vinden van delen die je niet
+wilt verbeteren door te versmallen naar precies dat gebied dat je wilt. (De
+toetscombinatie voor @code{narrow-to-region} is @kbd{C-x n n}.)
 
-However, narrowing does make the rest of the buffer invisible, which can
-scare people who inadvertently invoke narrowing and think they have deleted
-a part of their file.  Moreover, the @code{undo} command (which is usually
-bound to @kbd{C-x u}) does not turn off narrowing (nor should it), so people
-can become quite desperate if they do not know that they can return the rest
-of a buffer to visibility with the @code{widen} command.  (The key binding
-for @code{widen} is @kbd{C-x n w}.)
+Versmallen maakt echter de rest van het buffer onzichtbaar, wat mensen bang
+kan maken die onbedoeld versmalling aanroepen en denken dat ze een deel van
+het buffer verwijderd hebben. Verder zet het @code{undo} commando (wat
+normaal gebonden is aan @kbd{C-x u}) het versmallen niet uit (en moet dat
+ook niet doen), wat mensen wanhopig kan maken wanneer zij niet weten dat ze
+de zichtbaarheid van de rest van het buffer kunnen herstellen met het
+@code{widen} commando. (De toetscombinatie voor @code{widen} is @kbd{C-x n
+w}.)
 
-Narrowing is just as useful to the Lisp interpreter as to a human.  Often,
-an Emacs Lisp function is designed to work on just part of a buffer; or
-conversely, an Emacs Lisp function needs to work on all of a buffer that has
-been narrowed.  The @code{what-line} function, for example, removes the
-narrowing from a buffer, if it has any narrowing and when it has finished
-its job, restores the narrowing to what it was.  On the other hand, the
-@code{count-lines} function uses narrowing to restrict itself to just that
-portion of the buffer in which it is interested and then restores the
-previous situation.
+Versmallen is net zo zinvol voor de Lisp interpreter als voor mensen. Vaak
+is een Emacs Lisp functie ontworpen om op slechts een deel van een buffer te
+werken, of omgekeerd, een Emacs Lisp functie moet werken op het gehele
+buffer dat is versmald. De functie @code{what-line} bijvoorbeeld, haalt de
+versmalling van een buffer als die versmald is en wanneer het zijn taak
+gedaan heeft, herstelt de versmalling naar wat het was. Anderzijds gebruikt
+de functie @code{count-lines} versmalling om zichzelf te beperken tot dat
+deel van het buffer waarin het geïnteresseerd is en herstelt daarna de
+vorige situatie.
 
 @node save-restriction
-@section The @code{save-restriction} Special Form
+@section De speciale vorm @code{save-restriction}
 @findex save-restriction
 
-In Emacs Lisp, you can use the @code{save-restriction} special form to keep
-track of whatever narrowing is in effect, if any.  When the Lisp interpreter
-meets with @code{save-restriction}, it executes the code in the body of the
-@code{save-restriction} expression, and then undoes any changes to narrowing
-that the code caused.  If, for example, the buffer is narrowed and the code
-that follows @code{save-restriction} gets rid of the narrowing,
-@code{save-restriction} returns the buffer to its narrowed region
-afterwards.  In the @code{what-line} command, any narrowing the buffer may
-have is undone by the @code{widen} command that immediately follows the
-@code{save-restriction} command.  Any original narrowing is restored just
-before the completion of the function.
+In Emacs Lisp gebruik je de speciale vorm @code{save-restriction} om bij te
+houden welke versmalling van toepassing is. Wanneer de Lisp interpreter
+@code{save-restriction} tegenkomt, voert het de code in de body van de
+@code{save-restriction} expressie uit en maakt de eventuele wijzigingen die
+het in de versmalling heeft aangebracht ongedaan. Wanneer bijvoorbeeld het
+buffer versmald is en de code die volgt op @code{save-restriction} de
+versmalling weghaalt, herstelt @code{save-restriction} na afloop het buffer
+naar zijn versmalde region. In het @code{what-line} commando wordt de
+versmalling die het buffer mogelijk heeft ongedaan gemaakt met het
+@code{widen} commando, dat onmiddellijk volgt op het
+@code{save-restriction}. De eventuele oorspronkelijke versmalling wordt
+hersteld vlak voor het beëindigen van de functie.
 
 @need 1250
-The template for a @code{save-restriction} expression is simple:
+Het sjabloon voor een @code{save-restriction} expressie is eenvoudig:
 
 @smallexample
 @group
@@ -6690,16 +6694,16 @@ The template for a @code{save-restriction} expression is simple:
 @end smallexample
 
 @noindent
-The body of the @code{save-restriction} is one or more expressions that will
-be evaluated in sequence by the Lisp interpreter.
+De body van de @code{save-restriction} bestaat uit een of meer expressies
+die de Lisp interpreter  op volgorde evalueert.
 
-Finally, a point to note: when you use both @code{save-excursion} and
-@code{save-restriction}, one right after the other, you should use
-@code{save-excursion} outermost.  If you write them in reverse order, you
-may fail to record narrowing in the buffer to which Emacs switches after
-calling @code{save-excursion}.  Thus, when written together,
-@code{save-excursion} and @code{save-restriction} should be written like
-this:
+Tenslotte, een punt om op te merken: wanneer je zowel @code{save-excursion}
+en @code{save-restriction} gebruikt, de een na de ander, dan moet je
+@code{save-excursion} als de buitenste gebruiken. Wanneer je ze in
+omgekeerde volgorde schrijft, kan het bijhouden van de versmalling in het
+buffer waar Emacs naar toe schakelt na het aanroepen van
+@code{save-excursion} fout gaan. Wanneer je daarom samen gebruikt, schrijf
+je  @code{save-excursion} en @code{save-restriction} als volgt:
 
 @smallexample
 @group
@@ -6709,9 +6713,9 @@ this:
 @end group
 @end smallexample
 
-In other circumstances, when not written together, the @code{save-excursion}
-and @code{save-restriction} special forms must be written in the order
-appropriate to the function.
+In andere omstandigheden, waar ze niet samen gebruikt worden, schrijf je de
+speciale vormen @code{save-excursion} en @code{save-restriction} in de
+volgorde die past bij de functie.
 
 @need 1250
 Bijvoorbeeld,
@@ -6782,12 +6786,12 @@ and the greater of them is not at the start of a line."
 @node what-line
 @section @code{what-line}
 @findex what-line
-@cindex Widening, example of
+@cindex Verbreden, voorbeeld van
 
-The @code{what-line} command tells you the number of the line in which the
-cursor is located.  The function illustrates the use of the
-@code{save-restriction} and @code{save-excursion} commands.  Here is the
-original text of the function:
+Het @code{what-line} commando vertelt het je het regelnummer waarop de
+cursor staat. De functie illustreert het gebruik van de
+@code{save-excursion} en @code{save-restriction} commando's. Hier is de
+oorspronkelijke tekst van de functie.
 
 @smallexample
 @group
@@ -6803,50 +6807,53 @@ original text of the function:
 @end group
 @end smallexample
 
-(In modern versions of GNU Emacs, the @code{what-line} function has been
-expanded to tell you your line number in a narrowed buffer as well as your
-line number in a widened buffer.  The modern version is more complex than
-the version shown here.  If you feel adventurous, you might want to look at
-it after figuring out how this version works.  You will probably need to use
-@kbd{C-h f} (@code{describe-function}).  The newer version uses a
-conditional to determine whether the buffer has been narrowed.
+(In moderne versies van GNU Emacs is de functie @code{what-line} uitgebreid
+zodat het zowel het regelnummer in het versmalde buffer als het regelnummer
+in het verbrede buffer vertelt. De moderne versie is complexer dan de versie
+die we hier laten zien. Wanneer je een avontuurlijke bui hebt, kan je er
+naar kijken nadat je uitgezocht hebt hoe deze versie werkt. Je hebt daar
+waarschijnlijk @kbd{C-h f} (@code{describe-function}) bij nodig.) De
+nieuwere versie gebruikt een conditional om vast te stellen of het buffer is
+versmald.
 
-Also, the modern version of @code{what-line} uses @code{line-number-at-pos},
-which among other simple expressions, such as @code{(goto-char
-(point-min))}, moves point to the beginning of the current line with
-@code{(forward-line 0)} rather than @code{beginning-of-line}.)
+Verder maakt de moderne versie van @code{what-line} gebruik van
+@code{line-number-at-pos}, die net als andere eenvoudige expressies, zoals
+@code{(goto-char (point-min))}, @code{(forward-line 0)} in plaats van
+@code{beginning-of-line} gebruikt om point naar het begin van de huidige
+regel te verplaatsen.
 
-The @code{what-line} function as shown here has a documentation line and is
-interactive, as you would expect.  The next two lines use the functions
-@code{save-restriction} and @code{widen}.
+De functie @code{what-line} zoals hier getoond heeft zoals je zou verwachten
+een documentatieregel en is interactief. De volgende twee regels gebruiken
+de functies @code{save-restriction} en @code{widen}.
 
-The @code{save-restriction} special form notes whatever narrowing is in
-effect, if any, in the current buffer and restores that narrowing after the
-code in the body of the @code{save-restriction} has been evaluated.
+De speciale vorm @code{save-restriction} noteert eventuele versmalling die
+van kracht is in het huidige buffer en herstelt de versmalling nadat de code
+in de body van @code{save-restriction} is geëvalueerd.
 
-The @code{save-restriction} special form is followed by @code{widen}.  This
-function undoes any narrowing the current buffer may have had when
-@code{what-line} was called.  (The narrowing that was there is the narrowing
-that @code{save-restriction} remembers.)  This widening makes it possible
-for the line counting commands to count from the beginning of the buffer.
-Otherwise, they would have been limited to counting within the accessible
-region.  Any original narrowing is restored just before the completion of
-the function by the @code{save-restriction} special form.
+De speciale vorm @code{save-restriction} wordt gevolgd door
+@code{widen}. Deze functie maakt eventuele versmalling in het huidige buffer
+ongedaan voor zover die er was toen @code{what-line} werd aangeroepen. (De
+versmalling die daar was is de versmalling die @code{save-restriction}
+onthoudt.) Deze verbreding maakt het voor de commando's die de regels tellen
+mogelijk om vanaf het begin van het buffer te tellen. Anders zouden ze
+beperkt zijn tot het tellen binnen het bereikbare gebied. Eventuele
+oorspronkelijke versmalling wordt hersteld vlak voor de voltooiing van de
+functie door de speciale vorm @code{save-restriction}.
 
-The call to @code{widen} is followed by @code{save-excursion}, which saves
-the location of the cursor (i.e., of point), and restores it after the code
-in the body of the @code{save-excursion} uses the @code{beginning-of-line}
-function to move point.
+De aanroep van @code{widen} wordt gevolgd door @code{save-excursion} die de
+locatie van de cursor (dus van point) bewaart, en herstelt die nadat de code
+in de body van de @code{save-excursion} de functie @code{beginning-of-line}
+gebruikt om point te verplaatsen.
 
-(Note that the @code{(widen)} expression comes between the
-@code{save-restriction} and @code{save-excursion} special forms.  When you
-write the two @code{save- @dots{}} expressions in sequence, write
-@code{save-excursion} outermost.)
+(Merk op dat de @code{(widen)} expressie tussen de speciale vormen
+@code{save-restriction} en de @code{save-excursion} staat. Wanneer je de
+twee @code{save- @dots{}} expressies opeenvolgend schrijft, zet je
+@code{save-excursion} als buitenste.)
 
 @need 1200
-The last two lines of the @code{what-line} function are functions to count
-the number of lines in the buffer and then print the number in the echo
-area.
+De laatste twee regels van de functie @code{what-line} zijn functies die het
+aantal regels in het buffer tellen en daarna dat aantal in het echogebied
+tonen.
 
 @smallexample
 @group
@@ -6855,15 +6862,15 @@ area.
 @end group
 @end smallexample
 
-The @code{message} function prints a one-line message at the bottom of the
-Emacs screen.  The first argument is inside of quotation marks and is
-printed as a string of characters.  However, it may contain a @samp{%d}
-expression to print a following argument.  @samp{%d} prints the argument as
-a decimal, so the message will say something such as @samp{Line 243}.
+De functie @code{message} toont een eenregelige boodschap onderaan het Emacs
+scherm. Het eerste argument staat tussen aanhalingstekens en wordt getoond
+als een string karakters. Het mag echter een  @samp{%d} expressie bevatten
+om het volgende argument te tonen. @samp{%d} toont het argument als een
+decimaal getal, zodat de boodschap iets als @samp{Line 243} zegt.
 
 @need 1200
-The number that is printed in place of the @samp{%d} is computed by the last
-line of the function:
+Het getal dat getoond wordt op de plek van de @samp{%d} wordt berekend door
+de laatste regel van de functie:
 
 @smallexample
 (1+ (count-lines 1 (point)))
@@ -6897,37 +6904,37 @@ and the greater of them is not at the start of a line."
 @end ignore
 
 @noindent
-What this does is count the lines from the first position of the buffer,
-indicated by the @code{1}, up to @code{(point)}, and then add one to that
-number.  (The @code{1+} function adds one to its argument.)  We add one to
-it because line 2 has only one line before it, and @code{count-lines} counts
-only the lines @emph{before} the current line.
+Wat dit doet is het tellen van de regels vanaf de eerste positie van het
+buffer, aangegeven door de @code{1}, tot de @code{(point)} en telt daar
+vervolgens één bij op. (De functie @code{1+} telt één bij zijn argument op.)
+We tellen één er bij op omdat regel 2 maar één regel voor zich heeft, en
+@code{count-lines} alleen de regels @emph{voor} de huidige regel telt.
 
-After @code{count-lines} has done its job, and the message has been printed
-in the echo area, the @code{save-excursion} restores point to its original
-position; and @code{save-restriction} restores the original narrowing, if
-any.
+Nadat @code{count-lines} zijn werk heeft gedaan en de boodschap in het
+echogebied is getoond, herstelt @code{save-excursion} point naar zijn
+oorspronkelijke positie en herstelt @code{save-restriction} de eventuele
+oorspronkelijke versmalling.
 
 @node versmal oefening
-@section Exercise with Narrowing
+@section Oefening met versmalling
 
-Write a function that will display the first 60 characters of the current
-buffer, even if you have narrowed the buffer to its latter half so that the
-first line is inaccessible.  Restore point, mark, and narrowing.  For this
-exercise, you need to use a whole potpourri of functions, including
+Schrijf een functie dat de eerste 60 karakters van het huidige buffer toont,
+zelfs wanneer je het buffer hebt versmald naar zijn tweede helft zodat de
+eerste regel onbereikbaar is. Herstel point, mark en de versmalling. Gebruik
+voor deze oefening de gehele potpourri van functies, inclusief
 @code{save-restriction}, @code{widen}, @code{goto-char}, @code{point-min},
-@code{message}, and @code{buffer-substring}.
+@code{message} en @code{buffer-substring}.
 
-@cindex Properties, mention of @code{buffer-substring-no-properties}
-(@code{buffer-substring} is a previously unmentioned function you will have
-to investigate yourself; or perhaps you will have to use
-@code{buffer-substring-no-properties} or @code{filter-buffer-substring}
-@dots{}, yet other functions.  Text properties are a feature otherwise not
-discussed here.  @xref{Text Properties, , Text Properties, elisp, The GNU
-Emacs Lisp Reference Manual}.)
+@cindex Eigenschappen, vermelding van @code{buffer-substring-no-properties}
+(@code{buffer-substring} is een eerder ongenoemde functie die je zelf moet
+onderzoeken, of misschien moet je gebruik maken van
+. @code{buffer-substring-no-properties} of @code{filter-buffer-substring}
+@dots{}, nog meer andere functies. Teksteigenschappen zijn een eigenschap
+die overigens hier niet besproken wordt. @xref{Text Properties, , Text
+Properties, elisp, The GNU Emacs Lisp Reference Manual}.)
 
-Additionally, do you really need @code{goto-char} or @code{point-min}? Or
-can you write the function without them?
+Daarnaast, heb je @code{goto-char} of @code{point-min} echt nodig? Of kan je
+de functie zonder hen schrijven?
 
 @node car cdr en cons
 @chapter @code{car}, @code{cdr}, @code{cons}: Fundamentele functies
