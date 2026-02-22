@@ -573,7 +573,7 @@ Versmallen en verbreden
 
 
 * Bouw een lijst::           Bouw een lijst
-* lengte::                   Hoe de lengte van een lijst te vinden.
+* length::                   Hoe de lengte van een lijst te vinden.
 
 Tekst knippen en opslaan
 
@@ -6941,13 +6941,13 @@ de functie zonder hen schrijven?
 @findex car@r{, introduced}
 @findex cdr@r{, introduced}
 
-In Lisp, @code{car}, @code{cdr}, and @code{cons} are fundamental functions.
-The @code{cons} function is used to construct lists, and the @code{car} and
-@code{cdr} functions are used to take them apart.
+@code{car}, @code{cdr} en @code{cons} zijn fundamentele functies in Lisp. De
+functie @code{cons} wordt gebruikt om lijsten te construeren, en de functies
+@code{car} en @code{cdr} worden gebruikt om ze uit elkaar te halen.
 
-In the walk through of the @code{copy-region-as-kill} function, we will see
-@code{cons} as well as two variants on @code{cdr}, namely, @code{setcdr} and
-@code{nthcdr}.  (@xref{copy-region-as-kill}.)
+In de rondleiding door de functie @code{copy-region-as-kill} kijken we naar
+@code{cons} en naar twee varianten van @code{cdr}, namelijk @code{setcdr} en
+@code{nthcdr}.
 
 @menu
 * Vreemde namen::            Een historische terzijde: waarom de vreemde 
@@ -6967,77 +6967,79 @@ In the walk through of the @code{copy-region-as-kill} function, we will see
 @unnumberedsec Vreemde namen
 @end ifnottex
 
-The name of the @code{cons} function is not unreasonable: it is an
-abbreviation of the word ``construct''.  The origins of the names for
-@code{car} and @code{cdr}, on the other hand, are esoteric: @code{car} is an
-acronym from the phrase ``Contents of the Address part of the Register'';
-and @code{cdr} (pronounced ``could-er'') is an acronym from the phrase
-``Contents of the Decrement part of the Register''.  These phrases refer to
-the IBM 704 computer on which the original Lisp was developed.
+De naam van de functie @code{cons} is niet onredelijk, het is een afkorting
+van het woord ``construct''. De herkomst van de name voor @code{car} en
+@code{cdr} aan de andere kant zijn esoterisch: @code{car} is een acroniem
+van de zin ``Contents of the Address part of the Register'', en @code{cdr}
+(uitgesproken als ``coeld-er'') is een acroniem van de zin ``Contents of the
+Decrement part of the Register''. Deze zinnen refereren aan de IBM 704
+computer waarop de oorspronkelijke Lisp werd ontwikkeld.
 
-The IBM 704 is a footnote in history, but these names are now beloved
-traditions of Lisp.
+De IBM 704 is een voetnoot in de geschiedenis, maar deze namen zijn nu
+geliefde tradities van Lisp.
 
 @node car en cdr
-@section @code{car} and @code{cdr}
+@section @code{car} en @code{cdr}
 
-The @sc{car} of a list is, quite simply, the first item in the list.  Thus
-the @sc{car} of the list @code{(rose violet daisy buttercup)} is
-@code{rose}.
+De @sc{car} van een lijst is, vrij eenvoudig, het eerste item in de
+lijst. Dus de @sc{car} van de lijst @code{(roos viool madelief boterbloem)}
+is @code{roos}.
 
 @need 1200
-If you are reading this in Info in GNU Emacs, you can see this by evaluating
-the following:
+Wanneer je dit in Info in GNU Emacs leest kan je dit door het volgende te
+evalueren:
 
 @smallexample
-(car '(rose violet daisy buttercup))
+(car '(roos viool madelief boterbloem))
 @end smallexample
 
 @noindent
-After evaluating the expression, @code{rose} will appear in the echo area.
+Na het evalueren van de expressie verschijnt @code{roos} in het echogebied.
 
-@code{car} does not remove the first item from the list; it only reports
-what it is.  After @code{car} has been applied to a list, the list is still
-the same as it was.  In the jargon, @code{car} is ``non-destructive''.  This
-feature turns out to be important.
+@code{car} verwijdert het eerste element van de lijst niet, het vertelt
+alleen wat het is. Nadat @code{car} op een lijst is toegepast is de lijst
+nog steeds hetzelfde. @code{car} is ``niet-destructief'', in het
+jargon. Deze eigenschap blijkt belangrijk te zijn.
 
-The @sc{cdr} of a list is the rest of the list, that is, the @code{cdr}
-function returns the part of the list that follows the first item.  Thus,
-while the @sc{car} of the list @code{'(rose violet daisy buttercup)} is
-@code{rose}, the rest of the list, the value returned by the @code{cdr}
-function, is @code{(violet daisy buttercup)}.
+De @sc{cdr} van een lijst is de rest van de lijst, dat wil zeggen dat de
+@sc{cdr} het deel van de lijst dat volgt op het eerste item. Dus terwijl de
+@sc{car} van de lijst @code{'(roos viool madelief boterbloem)} @code{roos}
+is, is de rest van de, de waarde die de functie @code{cdr} teruggeeft, is
+@code{(viool madelief boterbloem)}.
 
 @need 800
-You can see this by evaluating the following in the usual way:
+Je ziet door het volgende op de gebruikelijke manier te evalueren:
 
 @smallexample
-(cdr '(rose violet daisy buttercup))
+(cdr '(roos viool madelief boterbloem))
 @end smallexample
 
 @noindent
-When you evaluate this, @code{(violet daisy buttercup)} will appear in the
-echo area.
+Wanneer je dit evalueert, verschijnt @code{(viool madelief boterbloem)} in
+het echogebied.
 
-Like @code{car}, @code{cdr} does not remove any elements from the list---it
-just returns a report of what the second and subsequent elements are.
+Net als @code{car} verwijdert @code{cdr} geen elementen uit de lijst---het
+vertelt aleen wat het de tweede en volgende elementen zijn.
 
-Incidentally, in the example, the list of flowers is quoted.  If it were
-not, the Lisp interpreter would try to evaluate the list by calling
-@code{rose} as a function.  In this example, we do not want to do that.
+Overigens in het voorbeeld is de lijst met bloemen gequote. Wanneer dat niet
+zo was zou de Lisp interpreter de lijst proberen te evalueren door
+@code{roos} als een functie aan te roepen. In dit voorbeeld willen we dat
+niet.
 
-For operating on lists, the names @code{first} and @code{rest} would make
-more sense than the names @code{car} and @code{cdr}.  Indeed, some
-programmers define @code{first} and @code{rest} as aliases for @code{car}
-and @code{cdr}, then write @code{first} and @code{rest} in their code.
+Voor het werken met lijsten zouden de namen @code{first} en @code{rest}
+logischer zijn dan de namen @code{car} en @code{cdr}. Sommige programmers
+definieren inderdaad @code{first} en @code{rest} als aliassen voor
+@code{car} en @code{cdr} en gebruiken daarna @code{first} en @code{rest} in
+de rest van hun code.
 
-However, lists in Lisp are built using a lower-level structure known as
-``cons cells'' (@pxref{List Implementation}), in which there is no such
-thing as ``first'' or ``rest'', and the @sc{car} and the @sc{cdr} are
-symmetrical.  Lisp does not try to hide the existence of cons cells, and
-programs do use them for things other than lists.  For this reason, the
-names are helpful for reminding programmers that @code{car} and @code{cdr}
-are in fact symmetrical, despite the asymmetrical way they are used in
-lists.
+Lijsten in Lisp worden echter gebouwd met een onderliggende structuur bekend
+als ``cons cells'' (@pxref{Implementatie van lijsten}), waarin niet zo iets
+als ``eerste'' of ``rest'' bestaat, en de @sc{car} en de @sc{cdr}
+symmetrisch zijn. Lisp probeert niet het bestaan van cons cellen te
+verstoppen en programma's gebruiken ze ook voor andere dingen dan
+lijsten. Om deze reden helpen de namen de programmers te herinneren dat
+@code{car} en @code{cdr} symmetrisch zijn, ondanks de asymmetrische manier
+waarop ze in lijsten gebruikt worden.
 
 @ignore
 Clearly, a more reasonable name for @code{cdr} would be @code{rest}.
@@ -7051,97 +7053,100 @@ please, try to avoid using these terms yourself.  The people who come
 after you will be grateful to you.)
 @end ignore
 
-When @code{car} and @code{cdr} are applied to a list made up of symbols,
-such as the list @code{(pine fir oak maple)}, the element of the list
-returned by the function @code{car} is the symbol @code{pine} without any
-parentheses around it.  @code{pine} is the first element in the list.
-However, the @sc{cdr} of the list is a list itself, @code{(fir oak maple)},
-as you can see by evaluating the following expressions in the usual way:
+Wanneer @code{car} en @code{cdr} worden toegepast op lijsten van symbolen,
+zoals de lijst @code{(den spar eik esdoorn)}, is het element van de lijst
+dat de functie @code{car} teruggeeft het symbool @code{den}, zonder haakjes
+er omheen. @code{den} is het eerste symbool in de lijst. De @sc{cdr} van de
+lijst is echter een list op zichzelf, @code{(spar eik esdoorn)}, zoals je
+ziet door de volgende expressie op de gebruikelijke manier te evalueren:
 
 @smallexample
 @group
-(car '(pine fir oak maple))
+(car '(den spar eik esdoorn))
 
-(cdr '(pine fir oak maple))
+(cdr '(den spar eik esdoorn))
 @end group
 @end smallexample
 
-On the other hand, in a list of lists, the first element is itself a list.
-@code{car} returns this first element as a list.  For example, the following
-list contains three sub-lists, a list of carnivores, a list of herbivores
-and a list of sea mammals:
+Anderzijds is in een lijst van lijsten het eerste element op zichzelf een
+lijst. @code{car} geeft het eerste element als lijst terug. De volgende
+lijst bijvoorbeeld bevat drie sublijsten, een lijst van carnivoren, een
+lijst van herbivoren en een lijst van zeezoogdieren:
 
 @smallexample
 @group
-(car '((lion tiger cheetah)
-       (gazelle antelope zebra)
-       (whale dolphin seal)))
+(car '((leeuw tijger cheeta)
+       (gazelle antiloop zebra)
+       (walvis dolfijn zeehond)))
 @end group
 @end smallexample
 
 @noindent
-In this example, the first element or @sc{car} of the list is the list of
-carnivores, @code{(lion tiger cheetah)}, and the rest of the list is
-@code{((gazelle antelope zebra) (whale dolphin seal))}.
+In dit voorbeeld is het eerste element of de @sc{car} van de lijst de lijst
+met carnivoren, @code{(leeuw tijger cheeta)} en is de rest van de lijst
+@code{(gazelle antiloop zebra) (walvis dolfijn zeehond)}.
 
 @smallexample
 @group
-(cdr '((lion tiger cheetah)
-       (gazelle antelope zebra)
-       (whale dolphin seal)))
+(cdr '((leeuw tijger cheeta)
+       (gazelle antiloop zebra)
+       (walvis dolfijn zeehond)))
 @end group
 @end smallexample
 
-It is worth saying again that @code{car} and @code{cdr} are
-non-destructive---that is, they do not modify or change lists to which they
-are applied.  This is very important for how they are used.
+Het is het waard nog een keer te zeggen dat @code{car} en @code{cdr}
+niet-destructief zijn, zij wijzigen de lijsten waarop worden toegepast
+niet. Dit is erg belangrijk voor hoe ze worden gebruikt.
 
-Also, in the first chapter, in the discussion about atoms, I said that in
-Lisp, certain kinds of atom, such as an array, can be separated into parts;
-but the mechanism for doing this is different from the mechanism for
-splitting a list.  As far as Lisp is concerned, the atoms of a list are
-unsplittable.  (@xref{Lisp Atoms}.)  The @code{car} and @code{cdr} functions
-are used for splitting lists and are considered fundamental to Lisp.  Since
-they cannot split or gain access to the parts of an array, an array is
-considered an atom.  Conversely, the other fundamental function,
-@code{cons}, can put together or construct a list, but not an array.
-(Arrays are handled by array-specific functions.  @xref{Arrays, , Arrays,
-elisp, The GNU Emacs Lisp Reference Manual}.)
+Daarnaast zei ik bij de bespreking van atomen in het eerste hoofdstuk dat in
+Lisp sommige soorten atomen, zoals een array, in delen gescheiden kunnen
+worden maar dat het mechanisme om dit te doen afwijkt van het mechanisme om
+een lijst te splijten. Voor zover het Lisp aangaat, zijn de atomen van
+lijsten onsplijtbaar. (@xref{Lisp atomen}.) De functies @code{car} en
+@code{cdr} worden gebruikt om lijsten te splijten en worden als fundamenteel
+voor Lisp beschouwd. Aangezien zij een array niet kunnen splijten of toegang
+krijgen tot de delen van een array, wordt een array beschouwd als een
+atoom. Omgekeerd kan de andere fundamentele functie @code{cons} gebruikt
+worden om een lijst samen te stellen, maar niet een array. (Arrays worden
+behandeld met array-specifieke functies  @xref{Arrays, , Arrays, elisp, The
+GNU Emacs Lisp Reference Manual}.)
 
 @node cons
 @section @code{cons}
-@findex cons@r{, introduced}
+@findex cons@r{, geïntroduceerd}
 
-The @code{cons} function constructs lists; it is the inverse of @code{car}
-and @code{cdr}.  For example, @code{cons} can be used to make a four element
-list from the three element list, @code{(fir oak maple)}:
+De @code{cons} functie construeert lijsten. Het is de inverse van @code{car}
+en @code{cdr}. @code{cons} kan bijvoorbeeld gebruikt worden om de lijst van
+vier elementen te maken van een lijst met drie elementen, bijvoorbeeld
+@code{(spar eik esdoorn)}:
 
 @smallexample
-(cons 'pine '(fir oak maple))
+(cons 'den '(spar eik esdoorn))
 @end smallexample
 
 @need 800
 @noindent
-After evaluating this list, you will see
+Na evaluatie van de lijst zie je
 
 @smallexample
-(pine fir oak maple)
+(den spar eik esdoorn)
 @end smallexample
 
 @noindent
-appear in the echo area.  @code{cons} causes the creation of a new list in
-which the element is followed by the elements of the original list.
+in het echogebied verschijnen. @code{cons} veroorzaakt de creatie van een
+nieuwe lijst waarin het element wordt gevolgd door de elementen van de
+oorspronkelijke lijst.
 
-We often say that @code{cons} puts a new element at the beginning of a list,
-or that it attaches or pushes elements onto the list, but this phrasing can
-be misleading, since @code{cons} does not change an existing list, but
-creates a new one.
+We zeggen vaak dat @code{cons} een nieuw element aan het begin van de lijst
+plaatst, of dat het een element aan de lijst vastmaakt of pusht, maar deze
+formulering is misleidend, omdat @code{cons} geen bestaande lijst verandert,
+maar een nieuwe maakt.
 
 Like @code{car} and @code{cdr}, @code{cons} is non-destructive.
 
 @menu
 * Bouw een lijst::           Bouw een lijst
-* lengte::                   Hoe de lengte van een lijst te vinden.
+* length::                   Hoe de lengte van een lijst te vinden.
 @end menu
 
 @ifnottex
@@ -7149,84 +7154,84 @@ Like @code{car} and @code{cdr}, @code{cons} is non-destructive.
 @unnumberedsubsec Bouw een lijst
 @end ifnottex
 
-@code{cons} must have a list to attach to.@footnote{Actually, you can
-@code{cons} an element to an atom to produce a dotted pair.  Dotted pairs
-are not discussed here; see @ref{Dotted Pair Notation, , Dotted Pair
-Notation, elisp, The GNU Emacs Lisp Reference Manual}.} You cannot start
-from absolutely nothing.  If you are building a list, you need to provide at
-least an empty list at the beginning.  Here is a series of @code{cons}
-expressions that build up a list of flowers.  If you are reading this in
-Info in GNU Emacs, you can evaluate each of the expressions in the usual
-way; the value is printed in this text after @samp{@result{}}, which you may
-read as ``evaluates to''.
+@code{cons} moet een lijst hebben om aan vast te maken@footnote{Eigenlijk
+kan je met @code{cons} een element aan een atoom consen om een dotted pair
+te maken. Dotted pairs worden hier niet behandeld. Zie @ref{Dotted Pair
+Notation, , Dotted Pair Notation, elisp, The GNU Emacs Lisp Reference
+Manual}.} Je kunt niet van absoluut niets beginnen. Wanneer je een lijst
+bouwt, dan moet je tenminste een lege lijst als begin geven. Hier is een
+serie van @code{cons} expressies die een lijst van bloemen opbouwen. Wanneer
+je dit in Info in GNU Emacs leest, kan je elk van expressies op de
+gebruikelijke manier evalueren. De waarde wordt in deze tekst getoond na
+@samp{@result{}}, wat je kunt zien als ``evalueert naar''.
 
 @smallexample
 @group
-(cons 'buttercup ())
-     @result{} (buttercup)
+(cons 'boterbloem ())
+     @result{} (boterbloem)
 @end group
 
 @group
-(cons 'daisy '(buttercup))
-     @result{} (daisy buttercup)
+(cons 'madelief '(boterbloem))
+     @result{} (madelief boterbloem)
 @end group
 
 @group
-(cons 'violet '(daisy buttercup))
-     @result{} (violet daisy buttercup)
+(cons 'viool '(madelief boterbloem))
+     @result{} (violet madelief boterbloem)
 @end group
 
 @group
-(cons 'rose '(violet daisy buttercup))
-     @result{} (rose violet daisy buttercup)
+(cons 'roos '(viool madelief boterbloem))
+     @result{} (roos viool madelief boterbloem)
 @end group
 @end smallexample
 
 @noindent
-In the first example, the empty list is shown as @code{()} and a list made
-up of @code{buttercup} followed by the empty list is constructed.  As you
-can see, the empty list is not shown in the list that was constructed.  All
-that you see is @code{(buttercup)}.  The empty list is not counted as an
-element of a list because there is nothing in an empty list.  Generally
-speaking, an empty list is invisible.
+In het eerste voorbeeld wordt de lege lijst getoond als @code{()} en wordt
+lijst geconstrueerd van @code{boterbloem} gevold door de lege lijst. Zoals
+je ziet wordt de lege lijst niet getoond in de geconstrueerde lijst. Het
+enige wat je ziet is @code{(boterbloem)}. De lege lijst telt niet als een
+element van de lijst omdat er niets is in een lege lijst. Over het algemeen
+is een lege lijst onzichtbaar.
 
-The second example, @code{(cons 'daisy '(buttercup))} constructs a new, two
-element list by putting @code{daisy} in front of @code{buttercup}; and the
-third example constructs a three element list by putting @code{violet} in
-front of @code{daisy} and @code{buttercup}.
+Het tweede voorbeeld, @code{(cons 'madelief '(boterbloem))} construeert een
+nieuwe lijst met twee elementen door @code{madelief} voor @code{boterbloem}
+te plaatsen, en het derde voorbeeld construeert een lijst met drie elementen
+door @code{viool} voor @code{madelief} en @code{boterbloem} te plaatsen.
 
-@node lengte
-@subsection Find the Length of a List: @code{length}
-@findex lengte
+@node length
+@subsection Achterhaal de lengte van een lijst: @code{length}
+@findex length
 
-You can find out how many elements there are in a list by using the Lisp
-function @code{length}, as in the following examples:
+Je achterhaalt hoeveel elementen in een lijst zijn met de Lisp functie
+@code{length}, zoals in de volgende voorbeelden:
 
 @smallexample
 @group
-(length '(buttercup))
+(length '(boterbloem))
      @result{} 1
 @end group
 
 @group
-(length '(daisy buttercup))
+(length '(madelief boterbloem))
      @result{} 2
 @end group
 
 @group
-(length (cons 'violet '(daisy buttercup)))
+(length (cons 'viool '(madelief boterbloem)))
      @result{} 3
 @end group
 @end smallexample
 
 @noindent
-In the third example, the @code{cons} function is used to construct a three
-element list which is then passed to the @code{length} function as its
-argument.
+In het derde voorbeeld is de functie @code{cons} gebruikt om een lijst met
+drie elementen te construeren die daarna als argument wordt doorgegeven aan
+de functie @code{length}.
 
 @need 1200
-We can also use @code{length} to count the number of elements in an empty
-list:
+We kunnen @code{length} ook gebruiken om het aantal elementen in een lege
+lijst te tellen:
 
 @smallexample
 @group
@@ -7236,11 +7241,11 @@ list:
 @end smallexample
 
 @noindent
-As you would expect, the number of elements in an empty list is zero.
+Zoals je zou verwachten is het aantal elementen van een lege lijst nul.
 
-An interesting experiment is to find out what happens if you try to find the
-length of no list at all; that is, if you try to call @code{length} without
-giving it an argument, not even an empty list:
+Een interessant experiment is te ontdekken wat gebeurt wanneer je probeert
+de lengte van totaal geen lijst te achterhalen, dus als je probeert
+@code{length} zonder enig argument aan te roepen, zelfs geen lege lijst.
 
 @smallexample
 (length )
@@ -7248,21 +7253,21 @@ giving it an argument, not even an empty list:
 
 @need 800
 @noindent
-What you see, if you evaluate this, is the error message
+Wat je ziet als je dit evalueert is de foutmelding
 
 @smallexample
 Lisp error: (wrong-number-of-arguments length 0)
 @end smallexample
 
 @noindent
-This means that the function receives the wrong number of arguments, zero,
-when it expects some other number of arguments.  In this case, one argument
-is expected, the argument being a list whose length the function is
-measuring.  (Note that @emph{one} list is @emph{one} argument, even if the
-list has many elements inside it.)
+Dit betekent dat de functie een verkeerd aantal argumenten krijgt, nul,
+terwijl het een ander aantal argumenten verwacht. In dit geval wordt één
+argument verwacht, een argument dat een lijst is wiens lengte de functie
+moet meten. (Merk op dat @emph{één} lijst @emph{één} argument is, zelfs als
+de lijst veel elementen in zich heeft.)
 
-The part of the error message that says @samp{length} is the name of the
-function.
+Het deel van de foutmelding dat @samp{length} zegt, is de naam van de
+functie.
 
 @ignore
 @code{length} is still a subroutine, but you need C-h f to discover that.
@@ -7280,40 +7285,40 @@ In an earlier version:
 @section @code{nthcdr}
 @findex nthcdr
 
-The @code{nthcdr} function is associated with the @code{cdr} function.  What
-it does is take the @sc{cdr} of a list repeatedly.
+De functie @code{nthcdr} is geassocieerd met de functie @code{cdr}. Wat het
+doet is dat het herhaaldelijk de @sc{cdr} van een lijst neemt.
 
-If you take the @sc{cdr} of the list @code{(pine fir oak maple)}, you will
-be returned the list @code{(fir oak maple)}.  If you repeat this on what was
-returned, you will be returned the list @code{(oak maple)}.  (Of course,
-repeated @sc{cdr}ing on the original list will just give you the original
-@sc{cdr} since the function does not change the list.  You need to evaluate
-the @sc{cdr} of the @sc{cdr} and so on.)  If you continue this, eventually
-you will be returned an empty list, which in this case, instead of being
-shown as @code{()} is shown as @code{nil}.
+Wanneer je de @sc{cdr} van de lijst @code{(den spar eik esdoorn)} neemt,
+krijg je de lijst @code{(spar eik esdoorn)}. Wanneer je dit herhaalt op wat
+je terugkreeg, krijg je de lijst @code{(eik esdoorn)} terug. (Als je
+herhaaldelijk de @sc{cdr} van de originele lijst neemt, dan krijg je
+natuurlijk de originele @sc{cdr} terug, omdat deze functie de lijst niet
+verandert. Je moet de @sc{cdr} van de @sc{cdr} nemen, enzovoort.) Wanneer je
+hiermee doorgaat, dan krijg je uiteindelijk de lege lijst terug, welke in
+dit geval in plaats van @code{()} getoond wordt als @code{nil}.
 
 @need 1200
-For review, here is a series of repeated @sc{cdr}s, the text following the
-@samp{@result{}} shows what is returned.
+Ter beoordeling is hier een lijst van herhaaldelijke @sc{cdr}'s, de tekst
+volgend op @samp{@result{}} toont wat wordt teruggegeven.
 
 @smallexample
 @group
-(cdr '(pine fir oak maple))
-     @result{} (fir oak maple)
+(cdr '(den spar eik esdoorn))
+     @result{} (spar eik esdoorn)
 @end group
 
 @group
-(cdr '(fir oak maple))
-     @result{} (oak maple)
+(cdr '(spar eik esdoorn))
+     @result{} (eik esdoorn)
 @end group
 
 @group
-(cdr '(oak maple))
-     @result{} (maple)
+(cdr '(eik esdoorn))
+     @result{} (esdoorn)
 @end group
 
 @group
-(cdr '(maple))
+(cdr '(esdoorn))
      @result{} nil
 @end group
 
@@ -7329,71 +7334,72 @@ For review, here is a series of repeated @sc{cdr}s, the text following the
 @end smallexample
 
 @need 1200
-You can also do several @sc{cdr}s without printing the values in between,
-like this:
+Het is ook mogelijk meerdere @sc{cdr}'s te doen zonder de waarden er tussen
+te tonen.
 
 @smallexample
 @group
-(cdr (cdr '(pine fir oak maple)))
-     @result{} (oak maple)
+(cdr (cdr '(den spar eik esdoorn)))
+     @result{} (eik esdoorn)
 @end group
 @end smallexample
 
 @noindent
-In this example, the Lisp interpreter evaluates the innermost list first.
-The innermost list is quoted, so it just passes the list as it is to the
-innermost @code{cdr}.  This @code{cdr} passes a list made up of the second
-and subsequent elements of the list to the outermost @code{cdr}, which
-produces a list composed of the third and subsequent elements of the
-original list.  In this example, the @code{cdr} function is repeated and
-returns a list that consists of the original list without its first two
-elements.
+in dit voorbeeld evalueert de Lisp interpreter eerst de binnenste lijst. De
+binnenste lijst is gequote, en geeft dus de lijst zoals die is door aan de
+binnenste @code{cdr}. Deze @code{cdr} geeft de lijst, bestaande uit het
+tweede en volgende elementen van de lijst door aan de buitenste @code{cdr},
+die de lijst produceert die bestaat uit het derde en volgende elementen van
+de oorspronkelijke lijst. In dit voorbeeld wordt de @code{cdr} herhaald en
+geeft een lijst terug die bestaat uit de oorspronkelijke lijst zonder de
+eerste twee elementen.
 
-The @code{nthcdr} function does the same as repeating the call to
-@code{cdr}.  In the following example, the argument 2 is passed to the
-function @code{nthcdr}, along with the list, and the value returned is the
-list without its first two items, which is exactly the same as repeating
-@code{cdr} twice on the list:
+De functie @code{nthcdr} doet hetzelfde als een herhaalde aanroep van
+@code{cdr}. In het volgende voorbeeld wordt het argument 2 doorgegeven aan
+de functie @code{nthcdr}, samen met de lijst, en de teruggegeven waarde is
+de lijst zonder de eerste twee elementen, wat exact hetzelfde is als twee
+keer @code{cdr} herhalen op de lijst.
 
 @smallexample
 @group
-(nthcdr 2 '(pine fir oak maple))
-     @result{} (oak maple)
+(nthcdr 2 '(den spar eik esdoorn))
+     @result{} (eik esdoorn)
 @end group
 @end smallexample
 
 @need 1200
-Using the original four element list, we can see what happens when various
-numeric arguments are passed to @code{nthcdr}, including 0, 1, and 5:
+Je kunt met de oorspronkelijke lijst van vier elementen zien wat gebeurt
+wanneer je verschillende numerieke argumenten doorgeeft aan @code{nthcdr},
+waaronder 0, 1 en 5:
 
 @smallexample
 @group
-;; @r{Leave the list as it was.}
-(nthcdr 0 '(pine fir oak maple))
-     @result{} (pine fir oak maple)
+;; @r{Houd de lijst zoals die was.}
+(nthcdr 0 '(den spar eik esdoorn))
+     @result{} (den spar eik esdoorn)
 @end group
 
 @group
-;; @r{Return a copy without the first element.}
-(nthcdr 1 '(pine fir oak maple))
-     @result{} (fir oak maple)
+;; @r{Geef een exemplaar terug zonder eerste element.}
+(nthcdr 1 '(den spar eik esdoorn))
+     @result{} (spar eik esdoorn)
 @end group
 
 @group
-;; @r{Return a copy of the list without three elements.}
-(nthcdr 3 '(pine fir oak maple))
-     @result{} (maple)
+;; @r{Geef een exemplaar terug zonder drie elementen.}
+(nthcdr 3 '(den spar eik esdoorn))
+     @result{} (esdoorn)
 @end group
 
 @group
-;; @r{Return a copy lacking all four elements.}
-(nthcdr 4 '(pine fir oak maple))
+;; @r{Geef een exemplaar terug waar alle vier elementen ontbreken.}
+(nthcdr 4 '(den spar eik esdoorn))
      @result{} nil
 @end group
 
 @group
-;; @r{Return a copy lacking all elements.}
-(nthcdr 5 '(pine fir oak maple))
+;; @r{Geef een exemplaar terug zonder alle elementen.}
+(nthcdr 5 '(den spar eik esdoorn))
      @result{} nil
 @end group
 @end smallexample
@@ -7402,13 +7408,14 @@ numeric arguments are passed to @code{nthcdr}, including 0, 1, and 5:
 @section @code{nth}
 @findex nth
 
-The @code{nthcdr} function takes the @sc{cdr} of a list repeatedly.  The
-@code{nth} function takes the @sc{car} of the result returned by
-@code{nthcdr}.  It returns the Nth element of the list.
+De functie @code{nthcdr} neemt herhaaldelijk de @sc{cdr} van een lijst. De
+functie @code{nth} neemt de @sc{car} van het resultaat dat door
+@code{nthcdr} wordt teruggegeven. Het geeft het N-de element van de lijst
+terug.
 
 @need 1500
-Thus, if it were not defined in C for speed, the definition of @code{nth}
-would be:
+Dus, als het, in verband met de snelheid, niet in C zou zijn gedefinieerd
+zou dit de definitie van @code{nth} zijn:
 
 @smallexample
 @group
@@ -7420,180 +7427,186 @@ N counts from zero.  If LIST is not that long, nil is returned."
 @end smallexample
 
 @noindent
-(Originally, @code{nth} was defined in Emacs Lisp in @file{subr.el}, but its
-definition was redone in C in the 1980s.)
+(Oorspronkelijk was @code{nth} gedefinieerd in Emacs Lisp in @file{subr.el},
+maar de definitie was in de jaren tachtig opnieuw gedaan in C.)
 
-The @code{nth} function returns a single element of a list.  This can be
-very convenient.
+De functie @code{nth} geeft een enkel element van een lijst terug. Dit kan
+erg handig zijn.
 
-Note that the elements are numbered from zero, not one.  That is to say, the
-first element of a list, its @sc{car} is the zeroth element.  This
-zero-based counting often bothers people who are accustomed to the first
-element in a list being number one, which is one-based.
+Merk op de de elementen vanaf nul zijn genummerd, niet een. Dat wil zeggen
+dat het eerste element van een lijst, zijn @sc{car}, is het nulde
+element. Deze nul-gebaseerde telling is lastig voor mensen die gewend zijn
+die gewend zijn dat het eerste element in een lijst nummer een is, wat
+een-gebaseerd is.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
-(nth 0 '("one" "two" "three"))
-    @result{} "one"
+(nth 0 '("een" "twee" "drie"))
+    @result{} "een"
 
-(nth 1 '("one" "two" "three"))
-    @result{} "two"
+(nth 1 '("een" "twee" "drie"))
+    @result{} "twee"
 @end group
 @end smallexample
 
-It is worth mentioning that @code{nth}, like @code{nthcdr} and @code{cdr},
-does not change the original list---the function is non-destructive.  This
-is in sharp contrast to the @code{setcar} and @code{setcdr} functions.
+Het is waardevol op te merken dat @code{nth}, net als @code{nthcdr} en
+@code{cdr}, de oorspronkelijke lijst niet verandert---de functie is
+niet-destructief. Dit is in scherp contrast met de functies @code{setcar} en
+@code{setcdr}.
 
 @node setcar
 @section @code{setcar}
 @findex setcar
 
-As you might guess from their names, the @code{setcar} and @code{setcdr}
-functions set the @sc{car} or the @sc{cdr} of a list to a new value.  They
-actually change the original list, unlike @code{car} and @code{cdr} which
-leave the original list as it was.  One way to find out how this works is to
-experiment.  We will start with the @code{setcar} function.
+Zoals je wellicht door hun namen vermoedt, stellen de functies @code{setcar}
+en @code{setcdr} de @sc{car} of de @sc{cdr} van een lijst in op een nieuwe
+waarde. Zij wijzigen echt de oorspronkelijke lijst, in tegenstelling tot
+@code{car} en @code{cdr} die de oorspronkelijke lijst laten zoals die
+was. Een manier om te ontdekken hoe dit werkt is door te proberen. Wij
+beginnen met de functie @code{setcar}.
 
 @need 1200
-First, we can make a list and then set the value of a variable to the list,
-using the @code{setq} special form.  Because we intend to use @code{setcar}
-to change the list, this @code{setq} should not use the quoted form
-@code{'(antelope giraffe lion tiger)}, as that would yield a list that is
-part of the program and bad things could happen if we tried to change part
-of the program while running it.  Generally speaking an Emacs Lisp program's
-components should be constant (or unchanged) while the program is running.
-So we instead construct an animal list by using the @code{list} function, as
-follows:
+Eerst maken we een lijst en stellen die met de speciale vorm @code{setq} als
+de waarde in van een variabele. Omdat we van plan zijn @code{setcar} te
+gebruiken om de lijst te wijzigen, moet deze @code{setq} geen gebruik van de
+gequote vorm @code{'(antiloop giraf leeuw tijger)} maken, omdat dit een
+lijst oplevert die onderdeel van het programma is en slechte dingen zouden
+kunnen gebeuren wanneer we proberen een deel van het programma te wijzigen
+terwijl dat loopt. In het algemeen moeten de componenten van een Emacs Lisp
+programma constant zijn (of ongewijzigd) terwijl het programma loopt. In
+plaats daarvan construeren we daarom als volgt een lijst met de functie
+@code{list}:
 
 @smallexample
-(setq animals (list 'antelope 'giraffe 'lion 'tiger))
+(setq dieren (list 'antiloop 'giraf 'leeuw 'tijger))
 @end smallexample
 
 @noindent
-If you are reading this in Info inside of GNU Emacs, you can evaluate this
-expression in the usual fashion, by positioning the cursor after the
-expression and typing @kbd{C-x C-e}.  (I'm doing this right here as I write
-this.  This is one of the advantages of having the interpreter built into
-the computing environment.  Incidentally, when there is nothing on the line
-after the final parentheses, such as a comment, point can be on the next
-line.  Thus, if your cursor is in the first column of the next line, you do
-not need to move it.  Indeed, Emacs permits any amount of white space after
-the final parenthesis.)
+Wanneer je dit in Info binnen GNU Emacs leest kan je deze expressie op de
+gebruikelijke manier evalueren, door de cursor achter de expressie te
+plaatsen en @kbd{C-x C-e} te typen. (Ik doe dat meteen hier terwijl ik dit
+schrijft. Dat is een van de voordelen van een in je computer omgeving
+ingebouwde interpreter Overigen, wanneer is niets op de regel na het laatste
+haakje staat, zoals commentaar, kan point ook de volgende regel staan. Dus
+als point op de eerste kolom van de regel staat, hoef je die niet te
+verplaatsten. Emacs staat zelfs een willekeurige hoeveelheid witte ruimte
+achter het laaste haakje toe.)
 
 @need 1200
-When we evaluate the variable @code{animals}, we see that it is bound to the
-list @code{(antelope giraffe lion tiger)}:
+Wanneer we de variabele @code{dieren} evalueren dan zien we dat die gebonden
+is aan de lijst @code{(antiloop giraf leeuw tijger)}:
 
 @smallexample
 @group
-animals
-     @result{} (antelope giraffe lion tiger)
+dieren
+     @result{} (antiloop giraf leeuw tijger)
 @end group
 @end smallexample
 
 @noindent
-Put another way, the variable @code{animals} points to the list
-@code{(antelope giraffe lion tiger)}.
+Anders gezegd, de variabele @code{dieren} wijst naar de lijst
+@code{(antiloop giraf leeuw tijger)}.
 
-Next, evaluate the function @code{setcar} while passing it two arguments,
-the variable @code{animals} and the quoted symbol @code{hippopotamus}; this
-is done by writing the three element list @code{(setcar animals
-'hippopotamus)} and then evaluating it in the usual fashion:
+Vervolgens evalueren we de functie @code{setcar} terwijl we daar twee
+argumenten aan doorgeven, de variabele @code{dieren} en het geqoute symbool
+@code{nijlpaard}. Dit doen we door de lijst van drie elementen @code{(setcar
+dieren 'nijlpaard)} te schrijven en die dan op de gebruikelijke manier te
+evalueren.
 
 @smallexample
-(setcar animals 'hippopotamus)
+(setcar dieren 'nijlpaard)
 @end smallexample
 
 @need 1200
 @noindent
-After evaluating this expression, evaluate the variable @code{animals}
-again.  You will see that the list of animals has changed:
+Na het evalueren van deze expressie, evalueer je de variabele @code{dieren}
+nogmaals. Je zult zien dat de lijst gewijzigd is:
 
 @smallexample
 @group
-animals
-     @result{} (hippopotamus giraffe lion tiger)
+dieren
+     @result{} (nijlpaard giraf leeuw tijger)
 @end group
 @end smallexample
 
 @noindent
-The first element on the list, @code{antelope} is replaced by
-@code{hippopotamus}.
+Het eerste element van de lijst, @code{antiloop} is vervangen met
+@code{nijlpaard}.
 
-So we can see that @code{setcar} did not add a new element to the list as
-@code{cons} would have; it replaced @code{antelope} with
-@code{hippopotamus}; it @emph{changed} the list.
+We zien dus dat @code{setcar} geen nieuw element aan de lijst heeft
+toegevoegd, wat @code{cons} gedaan zou hebben, maar het verving
+@code{antiloop} met @code{nijlpaard}. Het @emph{wijzigde} de lijst.
 
 @node setcdr
 @section @code{setcdr}
 @findex setcdr
 
-The @code{setcdr} function is similar to the @code{setcar} function, except
-that the function replaces the second and subsequent elements of a list
-rather than the first element.
+De functie @code{setcdr} is vergelijkbaar met de functie @code{setcar},
+behalve dat de functie de tweede en volgende elementen van een lijst
+vervangt in plaats van het eerste element.
 
 (Kijk vooruit naar @ref{kill-new functie, , De @code{kill-new} functie} om
 te zien hoe het laatste element van een list te wijzigen. De @code{kill-new}
-functie gebruikt de  @code{nthcdr} en de @code{setcdr} functies.)
+functie gebruikt de @code{nthcdr} en de @code{setcdr} functies.)
 
 @need 1200
-To see how this works, set the value of the variable to a list of
-domesticated animals by evaluating the following expression:
+Om de zien hoe dit werkt stel je waarde van de variabele in op een lijst van
+gedomesticeerde dieren door de volgende expressie te evalueren:
 
 @smallexample
-(setq domesticated-animals (list 'horse 'cow 'sheep 'goat))
+(setq gedomesticeerde-dieren (list 'paard 'koe 'schaap 'gijt))
 @end smallexample
 
 @need 1200
 @noindent
-If you now evaluate the list, you will be returned the list @code{(horse cow
-sheep goat)}:
+Wanneer je nu de lijst evalueert, krijg je de lijst @code{(paard koe schaap
+gijt)} terug.
 
 @smallexample
 @group
-domesticated-animals
-     @result{} (horse cow sheep goat)
+gedomesticeerde-dieren
+     @result{} (paard koe schaap gijt)
 @end group
 @end smallexample
 
 @need 1200
-Next, evaluate @code{setcdr} with two arguments, the name of the variable
-which has a list as its value, and the list to which the @sc{cdr} of the
-first list will be set;
+Evalueer vervolgens @code{setcdr} met twee argumenten, de naam van de
+variabele die een lijst als waarde heeft, en de lijst waarop we de @sc{cdr}
+van de eerste lijst willen instellen:
 
 @smallexample
-(setcdr domesticated-animals '(cat dog))
+(setcdr gedomesticeerde-dieren '(kat hond))
 @end smallexample
 
 @noindent
-If you evaluate this expression, the list @code{(cat dog)} will appear in
-the echo area.  This is the value returned by the function.  The result we
-are interested in is the side effect, which we can see by evaluating the
-variable @code{domesticated-animals}:
+Wanneer je deze expressie evalueert verschijnt de lijst @code{(kat hond)} in
+het echogebied. Dit is de waarde die de functie teruggaf. Het resultaat waar
+wij in geïnteresseerd zijn is in het zij-effect, wat we kunnen zien wanneer
+we de variabele @code{gedomesticeerde-dieren} evalueren:
 
 @smallexample
 @group
-domesticated-animals
-     @result{} (horse cat dog)
+gedomesticeerde-dieren
+     @result{} (paard kat hond)
 @end group
 @end smallexample
 
 @noindent
-Indeed, the list is changed from @code{(horse cow sheep goat)} to
-@code{(horse cat dog)}.  The @sc{cdr} of the list is changed from @code{(cow
-sheep goat)} to @code{(cat dog)}.
+Inderdaad is de lijst gewijzigd van @code{(paard koe schaap gijt)} naar
+@code{(paard kat hond)}. De @sc{cdr} van de lijst is gewijzigd van
+@code{(koe schaap gijt)} naar @code{(kat hond)}.
 
 @node cons oefening
 @section Oefening
 
-Construct a list of four birds by evaluating several expressions with
-@code{cons}.  Find out what happens when you @code{cons} a list onto
-itself.  Replace the first element of the list of four birds with a fish.
-Replace the rest of that list with a list of other fish.
+Construeer een lijst met vier vogels door verschillende expressies met
+@code{cons} te evalueren. Ontdek wat gebeurt wanneer je een lijst met
+zichzelf @code{const}-t. Vervang het eerste element van de lijst met vier
+vogels met een vis. Vervang de rest van de lijst met een lijst van andere
+vissen.
 
 @node Knippen en opslaan van tekst
 @chapter Tekst knippen en opslaan
@@ -9408,7 +9421,7 @@ Here is a brief summary of some recently introduced functions.
 second and subsequent elements of a list.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -9424,7 +9437,7 @@ For example:
 argument.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -9449,7 +9462,7 @@ $n^{th}$
 The ``rest of the rest'', as it were.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -9464,7 +9477,7 @@ For example:
 second and subsequent elements of a list.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -9486,7 +9499,7 @@ triple
 Evaluate each argument in sequence and then return the value of the last.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -13367,7 +13380,7 @@ of the body tests true.  Then return @code{nil}.  (The expression is
 evaluated only for its side effects.)
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group
@@ -13417,7 +13430,7 @@ remaining arguments, returning the value of the last one.  While binding the
 local variables, use the local values of variables bound earlier, if any.
 
 @need 1250
-For example:
+Bijvoorbeeld:
 
 @smallexample
 @group

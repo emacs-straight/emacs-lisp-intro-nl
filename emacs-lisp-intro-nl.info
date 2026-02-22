@@ -380,7 +380,7 @@ Versmallen en verbreden
 
 
 * Bouw een lijst::           Bouw een lijst
-* lengte::                   Hoe de lengte van een lijst te vinden.
+* length::                   Hoe de lengte van een lijst te vinden.
 
 Tekst knippen en opslaan
 
@@ -5956,13 +5956,13 @@ File: emacs-lisp-intro-nl.info,  Node: car cdr en cons,  Next: Knippen en opslaa
 7 ‘car’, ‘cdr’, ‘cons’: Fundamentele functies
 *********************************************
 
-In Lisp, ‘car’, ‘cdr’, and ‘cons’ are fundamental functions.  The ‘cons’
-function is used to construct lists, and the ‘car’ and ‘cdr’ functions
-are used to take them apart.
+‘car’, ‘cdr’ en ‘cons’ zijn fundamentele functies in Lisp.  De functie
+‘cons’ wordt gebruikt om lijsten te construeren, en de functies ‘car’ en
+‘cdr’ worden gebruikt om ze uit elkaar te halen.
 
-   In the walk through of the ‘copy-region-as-kill’ function, we will
-see ‘cons’ as well as two variants on ‘cdr’, namely, ‘setcdr’ and
-‘nthcdr’.  (*Note copy-region-as-kill::.)
+   In de rondleiding door de functie ‘copy-region-as-kill’ kijken we
+naar ‘cons’ en naar twee varianten van ‘cdr’, namelijk ‘setcdr’ en
+‘nthcdr’.
 
 * Menu:
 
@@ -5983,114 +5983,117 @@ File: emacs-lisp-intro-nl.info,  Node: Vreemde namen,  Next: car en cdr,  Up: ca
 Vreemde namen
 =============
 
-The name of the ‘cons’ function is not unreasonable: it is an
-abbreviation of the word "construct".  The origins of the names for
-‘car’ and ‘cdr’, on the other hand, are esoteric: ‘car’ is an acronym
-from the phrase "Contents of the Address part of the Register"; and
-‘cdr’ (pronounced "could-er") is an acronym from the phrase "Contents of
-the Decrement part of the Register".  These phrases refer to the IBM 704
-computer on which the original Lisp was developed.
+De naam van de functie ‘cons’ is niet onredelijk, het is een afkorting
+van het woord "construct".  De herkomst van de name voor ‘car’ en ‘cdr’
+aan de andere kant zijn esoterisch: ‘car’ is een acroniem van de zin
+"Contents of the Address part of the Register", en ‘cdr’ (uitgesproken
+als "coeld-er") is een acroniem van de zin "Contents of the Decrement
+part of the Register".  Deze zinnen refereren aan de IBM 704 computer
+waarop de oorspronkelijke Lisp werd ontwikkeld.
 
-   The IBM 704 is a footnote in history, but these names are now beloved
-traditions of Lisp.
+   De IBM 704 is een voetnoot in de geschiedenis, maar deze namen zijn
+nu geliefde tradities van Lisp.
 
 
 File: emacs-lisp-intro-nl.info,  Node: car en cdr,  Next: cons,  Prev: Vreemde namen,  Up: car cdr en cons
 
-7.1 ‘car’ and ‘cdr’
-===================
+7.1 ‘car’ en ‘cdr’
+==================
 
-The CAR of a list is, quite simply, the first item in the list.  Thus
-the CAR of the list ‘(rose violet daisy buttercup)’ is ‘rose’.
+De CAR van een lijst is, vrij eenvoudig, het eerste item in de lijst.
+Dus de CAR van de lijst ‘(roos viool madelief boterbloem)’ is ‘roos’.
 
-   If you are reading this in Info in GNU Emacs, you can see this by
-evaluating the following:
+   Wanneer je dit in Info in GNU Emacs leest kan je dit door het
+volgende te evalueren:
 
-     (car '(rose violet daisy buttercup))
+     (car '(roos viool madelief boterbloem))
 
-After evaluating the expression, ‘rose’ will appear in the echo area.
+Na het evalueren van de expressie verschijnt ‘roos’ in het echogebied.
 
-   ‘car’ does not remove the first item from the list; it only reports
-what it is.  After ‘car’ has been applied to a list, the list is still
-the same as it was.  In the jargon, ‘car’ is "non-destructive".  This
-feature turns out to be important.
+   ‘car’ verwijdert het eerste element van de lijst niet, het vertelt
+alleen wat het is.  Nadat ‘car’ op een lijst is toegepast is de lijst
+nog steeds hetzelfde.  ‘car’ is "niet-destructief", in het jargon.  Deze
+eigenschap blijkt belangrijk te zijn.
 
-   The CDR of a list is the rest of the list, that is, the ‘cdr’
-function returns the part of the list that follows the first item.
-Thus, while the CAR of the list ‘'(rose violet daisy buttercup)’ is
-‘rose’, the rest of the list, the value returned by the ‘cdr’ function,
-is ‘(violet daisy buttercup)’.
+   De CDR van een lijst is de rest van de lijst, dat wil zeggen dat de
+CDR het deel van de lijst dat volgt op het eerste item.  Dus terwijl de
+CAR van de lijst ‘'(roos viool madelief boterbloem)’ ‘roos’ is, is de
+rest van de, de waarde die de functie ‘cdr’ teruggeeft, is ‘(viool
+madelief boterbloem)’.
 
-   You can see this by evaluating the following in the usual way:
+   Je ziet door het volgende op de gebruikelijke manier te evalueren:
 
-     (cdr '(rose violet daisy buttercup))
+     (cdr '(roos viool madelief boterbloem))
 
-When you evaluate this, ‘(violet daisy buttercup)’ will appear in the
-echo area.
+Wanneer je dit evalueert, verschijnt ‘(viool madelief boterbloem)’ in
+het echogebied.
 
-   Like ‘car’, ‘cdr’ does not remove any elements from the list--it just
-returns a report of what the second and subsequent elements are.
+   Net als ‘car’ verwijdert ‘cdr’ geen elementen uit de lijst--het
+vertelt aleen wat het de tweede en volgende elementen zijn.
 
-   Incidentally, in the example, the list of flowers is quoted.  If it
-were not, the Lisp interpreter would try to evaluate the list by calling
-‘rose’ as a function.  In this example, we do not want to do that.
+   Overigens in het voorbeeld is de lijst met bloemen gequote.  Wanneer
+dat niet zo was zou de Lisp interpreter de lijst proberen te evalueren
+door ‘roos’ als een functie aan te roepen.  In dit voorbeeld willen we
+dat niet.
 
-   For operating on lists, the names ‘first’ and ‘rest’ would make more
-sense than the names ‘car’ and ‘cdr’.  Indeed, some programmers define
-‘first’ and ‘rest’ as aliases for ‘car’ and ‘cdr’, then write ‘first’
-and ‘rest’ in their code.
+   Voor het werken met lijsten zouden de namen ‘first’ en ‘rest’
+logischer zijn dan de namen ‘car’ en ‘cdr’.  Sommige programmers
+definieren inderdaad ‘first’ en ‘rest’ als aliassen voor ‘car’ en ‘cdr’
+en gebruiken daarna ‘first’ en ‘rest’ in de rest van hun code.
 
-   However, lists in Lisp are built using a lower-level structure known
-as "cons cells" (*note List Implementation::), in which there is no such
-thing as "first" or "rest", and the CAR and the CDR are symmetrical.
-Lisp does not try to hide the existence of cons cells, and programs do
-use them for things other than lists.  For this reason, the names are
-helpful for reminding programmers that ‘car’ and ‘cdr’ are in fact
-symmetrical, despite the asymmetrical way they are used in lists.
+   Lijsten in Lisp worden echter gebouwd met een onderliggende structuur
+bekend als "cons cells" (*note Implementatie van lijsten::), waarin niet
+zo iets als "eerste" of "rest" bestaat, en de CAR en de CDR symmetrisch
+zijn.  Lisp probeert niet het bestaan van cons cellen te verstoppen en
+programma's gebruiken ze ook voor andere dingen dan lijsten.  Om deze
+reden helpen de namen de programmers te herinneren dat ‘car’ en ‘cdr’
+symmetrisch zijn, ondanks de asymmetrische manier waarop ze in lijsten
+gebruikt worden.
 
-   When ‘car’ and ‘cdr’ are applied to a list made up of symbols, such
-as the list ‘(pine fir oak maple)’, the element of the list returned by
-the function ‘car’ is the symbol ‘pine’ without any parentheses around
-it.  ‘pine’ is the first element in the list.  However, the CDR of the
-list is a list itself, ‘(fir oak maple)’, as you can see by evaluating
-the following expressions in the usual way:
+   Wanneer ‘car’ en ‘cdr’ worden toegepast op lijsten van symbolen,
+zoals de lijst ‘(den spar eik esdoorn)’, is het element van de lijst dat
+de functie ‘car’ teruggeeft het symbool ‘den’, zonder haakjes er omheen.
+‘den’ is het eerste symbool in de lijst.  De CDR van de lijst is echter
+een list op zichzelf, ‘(spar eik esdoorn)’, zoals je ziet door de
+volgende expressie op de gebruikelijke manier te evalueren:
 
-     (car '(pine fir oak maple))
+     (car '(den spar eik esdoorn))
 
-     (cdr '(pine fir oak maple))
+     (cdr '(den spar eik esdoorn))
 
-   On the other hand, in a list of lists, the first element is itself a
-list.  ‘car’ returns this first element as a list.  For example, the
-following list contains three sub-lists, a list of carnivores, a list of
-herbivores and a list of sea mammals:
+   Anderzijds is in een lijst van lijsten het eerste element op zichzelf
+een lijst.  ‘car’ geeft het eerste element als lijst terug.  De volgende
+lijst bijvoorbeeld bevat drie sublijsten, een lijst van carnivoren, een
+lijst van herbivoren en een lijst van zeezoogdieren:
 
-     (car '((lion tiger cheetah)
-            (gazelle antelope zebra)
-            (whale dolphin seal)))
+     (car '((leeuw tijger cheeta)
+            (gazelle antiloop zebra)
+            (walvis dolfijn zeehond)))
 
-In this example, the first element or CAR of the list is the list of
-carnivores, ‘(lion tiger cheetah)’, and the rest of the list is
-‘((gazelle antelope zebra) (whale dolphin seal))’.
+In dit voorbeeld is het eerste element of de CAR van de lijst de lijst
+met carnivoren, ‘(leeuw tijger cheeta)’ en is de rest van de lijst
+‘(gazelle antiloop zebra) (walvis dolfijn zeehond)’.
 
-     (cdr '((lion tiger cheetah)
-            (gazelle antelope zebra)
-            (whale dolphin seal)))
+     (cdr '((leeuw tijger cheeta)
+            (gazelle antiloop zebra)
+            (walvis dolfijn zeehond)))
 
-   It is worth saying again that ‘car’ and ‘cdr’ are
-non-destructive--that is, they do not modify or change lists to which
-they are applied.  This is very important for how they are used.
+   Het is het waard nog een keer te zeggen dat ‘car’ en ‘cdr’
+niet-destructief zijn, zij wijzigen de lijsten waarop worden toegepast
+niet.  Dit is erg belangrijk voor hoe ze worden gebruikt.
 
-   Also, in the first chapter, in the discussion about atoms, I said
-that in Lisp, certain kinds of atom, such as an array, can be separated
-into parts; but the mechanism for doing this is different from the
-mechanism for splitting a list.  As far as Lisp is concerned, the atoms
-of a list are unsplittable.  (*Note Lisp Atoms::.)  The ‘car’ and ‘cdr’
-functions are used for splitting lists and are considered fundamental to
-Lisp.  Since they cannot split or gain access to the parts of an array,
-an array is considered an atom.  Conversely, the other fundamental
-function, ‘cons’, can put together or construct a list, but not an
-array.  (Arrays are handled by array-specific functions.  *Note Arrays:
-(elisp)Arrays.)
+   Daarnaast zei ik bij de bespreking van atomen in het eerste hoofdstuk
+dat in Lisp sommige soorten atomen, zoals een array, in delen gescheiden
+kunnen worden maar dat het mechanisme om dit te doen afwijkt van het
+mechanisme om een lijst te splijten.  Voor zover het Lisp aangaat, zijn
+de atomen van lijsten onsplijtbaar.  (*Note Lisp atomen::.)  De functies
+‘car’ en ‘cdr’ worden gebruikt om lijsten te splijten en worden als
+fundamenteel voor Lisp beschouwd.  Aangezien zij een array niet kunnen
+splijten of toegang krijgen tot de delen van een array, wordt een array
+beschouwd als een atoom.  Omgekeerd kan de andere fundamentele functie
+‘cons’ gebruikt worden om een lijst samen te stellen, maar niet een
+array.  (Arrays worden behandeld met array-specifieke functies *Note
+Arrays: (elisp)Arrays.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: cons,  Next: nthcdr,  Prev: car en cdr,  Up: car cdr en cons
@@ -6098,123 +6101,126 @@ File: emacs-lisp-intro-nl.info,  Node: cons,  Next: nthcdr,  Prev: car en cdr,  
 7.2 ‘cons’
 ==========
 
-The ‘cons’ function constructs lists; it is the inverse of ‘car’ and
-‘cdr’.  For example, ‘cons’ can be used to make a four element list from
-the three element list, ‘(fir oak maple)’:
+De ‘cons’ functie construeert lijsten.  Het is de inverse van ‘car’ en
+‘cdr’.  ‘cons’ kan bijvoorbeeld gebruikt worden om de lijst van vier
+elementen te maken van een lijst met drie elementen, bijvoorbeeld ‘(spar
+eik esdoorn)’:
 
-     (cons 'pine '(fir oak maple))
+     (cons 'den '(spar eik esdoorn))
 
-After evaluating this list, you will see
+Na evaluatie van de lijst zie je
 
-     (pine fir oak maple)
+     (den spar eik esdoorn)
 
-appear in the echo area.  ‘cons’ causes the creation of a new list in
-which the element is followed by the elements of the original list.
+in het echogebied verschijnen.  ‘cons’ veroorzaakt de creatie van een
+nieuwe lijst waarin het element wordt gevolgd door de elementen van de
+oorspronkelijke lijst.
 
-   We often say that ‘cons’ puts a new element at the beginning of a
-list, or that it attaches or pushes elements onto the list, but this
-phrasing can be misleading, since ‘cons’ does not change an existing
-list, but creates a new one.
+   We zeggen vaak dat ‘cons’ een nieuw element aan het begin van de
+lijst plaatst, of dat het een element aan de lijst vastmaakt of pusht,
+maar deze formulering is misleidend, omdat ‘cons’ geen bestaande lijst
+verandert, maar een nieuwe maakt.
 
    Like ‘car’ and ‘cdr’, ‘cons’ is non-destructive.
 
 * Menu:
 
 * Bouw een lijst::           Bouw een lijst
-* lengte::                   Hoe de lengte van een lijst te vinden.
+* length::                   Hoe de lengte van een lijst te vinden.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Bouw een lijst,  Next: lengte,  Up: cons
+File: emacs-lisp-intro-nl.info,  Node: Bouw een lijst,  Next: length,  Up: cons
 
 Bouw een lijst
 --------------
 
-‘cons’ must have a list to attach to.(1)  You cannot start from
-absolutely nothing.  If you are building a list, you need to provide at
-least an empty list at the beginning.  Here is a series of ‘cons’
-expressions that build up a list of flowers.  If you are reading this in
-Info in GNU Emacs, you can evaluate each of the expressions in the usual
-way; the value is printed in this text after ‘⇒’, which you may read as
-"evaluates to".
+‘cons’ moet een lijst hebben om aan vast te maken(1) Je kunt niet van
+absoluut niets beginnen.  Wanneer je een lijst bouwt, dan moet je
+tenminste een lege lijst als begin geven.  Hier is een serie van ‘cons’
+expressies die een lijst van bloemen opbouwen.  Wanneer je dit in Info
+in GNU Emacs leest, kan je elk van expressies op de gebruikelijke manier
+evalueren.  De waarde wordt in deze tekst getoond na ‘⇒’, wat je kunt
+zien als "evalueert naar".
 
-     (cons 'buttercup ())
-          ⇒ (buttercup)
+     (cons 'boterbloem ())
+          ⇒ (boterbloem)
 
-     (cons 'daisy '(buttercup))
-          ⇒ (daisy buttercup)
+     (cons 'madelief '(boterbloem))
+          ⇒ (madelief boterbloem)
 
-     (cons 'violet '(daisy buttercup))
-          ⇒ (violet daisy buttercup)
+     (cons 'viool '(madelief boterbloem))
+          ⇒ (violet madelief boterbloem)
 
-     (cons 'rose '(violet daisy buttercup))
-          ⇒ (rose violet daisy buttercup)
+     (cons 'roos '(viool madelief boterbloem))
+          ⇒ (roos viool madelief boterbloem)
 
-In the first example, the empty list is shown as ‘()’ and a list made up
-of ‘buttercup’ followed by the empty list is constructed.  As you can
-see, the empty list is not shown in the list that was constructed.  All
-that you see is ‘(buttercup)’.  The empty list is not counted as an
-element of a list because there is nothing in an empty list.  Generally
-speaking, an empty list is invisible.
+In het eerste voorbeeld wordt de lege lijst getoond als ‘()’ en wordt
+lijst geconstrueerd van ‘boterbloem’ gevold door de lege lijst.  Zoals
+je ziet wordt de lege lijst niet getoond in de geconstrueerde lijst.
+Het enige wat je ziet is ‘(boterbloem)’.  De lege lijst telt niet als
+een element van de lijst omdat er niets is in een lege lijst.  Over het
+algemeen is een lege lijst onzichtbaar.
 
-   The second example, ‘(cons 'daisy '(buttercup))’ constructs a new,
-two element list by putting ‘daisy’ in front of ‘buttercup’; and the
-third example constructs a three element list by putting ‘violet’ in
-front of ‘daisy’ and ‘buttercup’.
+   Het tweede voorbeeld, ‘(cons 'madelief '(boterbloem))’ construeert
+een nieuwe lijst met twee elementen door ‘madelief’ voor ‘boterbloem’ te
+plaatsen, en het derde voorbeeld construeert een lijst met drie
+elementen door ‘viool’ voor ‘madelief’ en ‘boterbloem’ te plaatsen.
 
    ---------- Footnotes ----------
 
-   (1) Actually, you can ‘cons’ an element to an atom to produce a
-dotted pair.  Dotted pairs are not discussed here; see *note Dotted Pair
-Notation: (elisp)Dotted Pair Notation.
+   (1) Eigenlijk kan je met ‘cons’ een element aan een atoom consen om
+een dotted pair te maken.  Dotted pairs worden hier niet behandeld.  Zie
+*note Dotted Pair Notation: (elisp)Dotted Pair Notation.
 
 
-File: emacs-lisp-intro-nl.info,  Node: lengte,  Prev: Bouw een lijst,  Up: cons
+File: emacs-lisp-intro-nl.info,  Node: length,  Prev: Bouw een lijst,  Up: cons
 
-7.2.1 Find the Length of a List: ‘length’
------------------------------------------
+7.2.1 Achterhaal de lengte van een lijst: ‘length’
+--------------------------------------------------
 
-You can find out how many elements there are in a list by using the Lisp
-function ‘length’, as in the following examples:
+Je achterhaalt hoeveel elementen in een lijst zijn met de Lisp functie
+‘length’, zoals in de volgende voorbeelden:
 
-     (length '(buttercup))
+     (length '(boterbloem))
           ⇒ 1
 
-     (length '(daisy buttercup))
+     (length '(madelief boterbloem))
           ⇒ 2
 
-     (length (cons 'violet '(daisy buttercup)))
+     (length (cons 'viool '(madelief boterbloem)))
           ⇒ 3
 
-In the third example, the ‘cons’ function is used to construct a three
-element list which is then passed to the ‘length’ function as its
-argument.
+In het derde voorbeeld is de functie ‘cons’ gebruikt om een lijst met
+drie elementen te construeren die daarna als argument wordt doorgegeven
+aan de functie ‘length’.
 
-   We can also use ‘length’ to count the number of elements in an empty
-list:
+   We kunnen ‘length’ ook gebruiken om het aantal elementen in een lege
+lijst te tellen:
 
      (length ())
           ⇒ 0
 
-As you would expect, the number of elements in an empty list is zero.
+Zoals je zou verwachten is het aantal elementen van een lege lijst nul.
 
-   An interesting experiment is to find out what happens if you try to
-find the length of no list at all; that is, if you try to call ‘length’
-without giving it an argument, not even an empty list:
+   Een interessant experiment is te ontdekken wat gebeurt wanneer je
+probeert de lengte van totaal geen lijst te achterhalen, dus als je
+probeert ‘length’ zonder enig argument aan te roepen, zelfs geen lege
+lijst.
 
      (length )
 
-What you see, if you evaluate this, is the error message
+Wat je ziet als je dit evalueert is de foutmelding
 
      Lisp error: (wrong-number-of-arguments length 0)
 
-This means that the function receives the wrong number of arguments,
-zero, when it expects some other number of arguments.  In this case, one
-argument is expected, the argument being a list whose length the
-function is measuring.  (Note that _one_ list is _one_ argument, even if
-the list has many elements inside it.)
+Dit betekent dat de functie een verkeerd aantal argumenten krijgt, nul,
+terwijl het een ander aantal argumenten verwacht.  In dit geval wordt
+één argument verwacht, een argument dat een lijst is wiens lengte de
+functie moet meten.  (Merk op dat _één_ lijst _één_ argument is, zelfs
+als de lijst veel elementen in zich heeft.)
 
-   The part of the error message that says ‘length’ is the name of the
-function.
+   Het deel van de foutmelding dat ‘length’ zegt, is de naam van de
+functie.
 
 
 File: emacs-lisp-intro-nl.info,  Node: nthcdr,  Next: nth,  Prev: cons,  Up: car cdr en cons
@@ -6222,31 +6228,31 @@ File: emacs-lisp-intro-nl.info,  Node: nthcdr,  Next: nth,  Prev: cons,  Up: car
 7.3 ‘nthcdr’
 ============
 
-The ‘nthcdr’ function is associated with the ‘cdr’ function.  What it
-does is take the CDR of a list repeatedly.
+De functie ‘nthcdr’ is geassocieerd met de functie ‘cdr’.  Wat het doet
+is dat het herhaaldelijk de CDR van een lijst neemt.
 
-   If you take the CDR of the list ‘(pine fir oak maple)’, you will be
-returned the list ‘(fir oak maple)’.  If you repeat this on what was
-returned, you will be returned the list ‘(oak maple)’.  (Of course,
-repeated CDRing on the original list will just give you the original CDR
-since the function does not change the list.  You need to evaluate the
-CDR of the CDR and so on.)  If you continue this, eventually you will be
-returned an empty list, which in this case, instead of being shown as
-‘()’ is shown as ‘nil’.
+   Wanneer je de CDR van de lijst ‘(den spar eik esdoorn)’ neemt, krijg
+je de lijst ‘(spar eik esdoorn)’.  Wanneer je dit herhaalt op wat je
+terugkreeg, krijg je de lijst ‘(eik esdoorn)’ terug.  (Als je
+herhaaldelijk de CDR van de originele lijst neemt, dan krijg je
+natuurlijk de originele CDR terug, omdat deze functie de lijst niet
+verandert.  Je moet de CDR van de CDR nemen, enzovoort.)  Wanneer je
+hiermee doorgaat, dan krijg je uiteindelijk de lege lijst terug, welke
+in dit geval in plaats van ‘()’ getoond wordt als ‘nil’.
 
-   For review, here is a series of repeated CDRs, the text following the
-‘⇒’ shows what is returned.
+   Ter beoordeling is hier een lijst van herhaaldelijke CDR's, de tekst
+volgend op ‘⇒’ toont wat wordt teruggegeven.
 
-     (cdr '(pine fir oak maple))
-          ⇒ (fir oak maple)
+     (cdr '(den spar eik esdoorn))
+          ⇒ (spar eik esdoorn)
 
-     (cdr '(fir oak maple))
-          ⇒ (oak maple)
+     (cdr '(spar eik esdoorn))
+          ⇒ (eik esdoorn)
 
-     (cdr '(oak maple))
-          ⇒ (maple)
+     (cdr '(eik esdoorn))
+          ⇒ (esdoorn)
 
-     (cdr '(maple))
+     (cdr '(esdoorn))
           ⇒ nil
 
      (cdr 'nil)
@@ -6255,51 +6261,52 @@ returned an empty list, which in this case, instead of being shown as
      (cdr ())
           ⇒ nil
 
-   You can also do several CDRs without printing the values in between,
-like this:
+   Het is ook mogelijk meerdere CDR's te doen zonder de waarden er
+tussen te tonen.
 
-     (cdr (cdr '(pine fir oak maple)))
-          ⇒ (oak maple)
+     (cdr (cdr '(den spar eik esdoorn)))
+          ⇒ (eik esdoorn)
 
-In this example, the Lisp interpreter evaluates the innermost list
-first.  The innermost list is quoted, so it just passes the list as it
-is to the innermost ‘cdr’.  This ‘cdr’ passes a list made up of the
-second and subsequent elements of the list to the outermost ‘cdr’, which
-produces a list composed of the third and subsequent elements of the
-original list.  In this example, the ‘cdr’ function is repeated and
-returns a list that consists of the original list without its first two
-elements.
+in dit voorbeeld evalueert de Lisp interpreter eerst de binnenste lijst.
+De binnenste lijst is gequote, en geeft dus de lijst zoals die is door
+aan de binnenste ‘cdr’.  Deze ‘cdr’ geeft de lijst, bestaande uit het
+tweede en volgende elementen van de lijst door aan de buitenste ‘cdr’,
+die de lijst produceert die bestaat uit het derde en volgende elementen
+van de oorspronkelijke lijst.  In dit voorbeeld wordt de ‘cdr’ herhaald
+en geeft een lijst terug die bestaat uit de oorspronkelijke lijst zonder
+de eerste twee elementen.
 
-   The ‘nthcdr’ function does the same as repeating the call to ‘cdr’.
-In the following example, the argument 2 is passed to the function
-‘nthcdr’, along with the list, and the value returned is the list
-without its first two items, which is exactly the same as repeating
-‘cdr’ twice on the list:
+   De functie ‘nthcdr’ doet hetzelfde als een herhaalde aanroep van
+‘cdr’.  In het volgende voorbeeld wordt het argument 2 doorgegeven aan
+de functie ‘nthcdr’, samen met de lijst, en de teruggegeven waarde is de
+lijst zonder de eerste twee elementen, wat exact hetzelfde is als twee
+keer ‘cdr’ herhalen op de lijst.
 
-     (nthcdr 2 '(pine fir oak maple))
-          ⇒ (oak maple)
+     (nthcdr 2 '(den spar eik esdoorn))
+          ⇒ (eik esdoorn)
 
-   Using the original four element list, we can see what happens when
-various numeric arguments are passed to ‘nthcdr’, including 0, 1, and 5:
+   Je kunt met de oorspronkelijke lijst van vier elementen zien wat
+gebeurt wanneer je verschillende numerieke argumenten doorgeeft aan
+‘nthcdr’, waaronder 0, 1 en 5:
 
-     ;; Leave the list as it was.
-     (nthcdr 0 '(pine fir oak maple))
-          ⇒ (pine fir oak maple)
+     ;; Houd de lijst zoals die was.
+     (nthcdr 0 '(den spar eik esdoorn))
+          ⇒ (den spar eik esdoorn)
 
-     ;; Return a copy without the first element.
-     (nthcdr 1 '(pine fir oak maple))
-          ⇒ (fir oak maple)
+     ;; Geef een exemplaar terug zonder eerste element.
+     (nthcdr 1 '(den spar eik esdoorn))
+          ⇒ (spar eik esdoorn)
 
-     ;; Return a copy of the list without three elements.
-     (nthcdr 3 '(pine fir oak maple))
-          ⇒ (maple)
+     ;; Geef een exemplaar terug zonder drie elementen.
+     (nthcdr 3 '(den spar eik esdoorn))
+          ⇒ (esdoorn)
 
-     ;; Return a copy lacking all four elements.
-     (nthcdr 4 '(pine fir oak maple))
+     ;; Geef een exemplaar terug waar alle vier elementen ontbreken.
+     (nthcdr 4 '(den spar eik esdoorn))
           ⇒ nil
 
-     ;; Return a copy lacking all elements.
-     (nthcdr 5 '(pine fir oak maple))
+     ;; Geef een exemplaar terug zonder alle elementen.
+     (nthcdr 5 '(den spar eik esdoorn))
           ⇒ nil
 
 
@@ -6308,40 +6315,41 @@ File: emacs-lisp-intro-nl.info,  Node: nth,  Next: setcar,  Prev: nthcdr,  Up: c
 7.4 ‘nth’
 =========
 
-The ‘nthcdr’ function takes the CDR of a list repeatedly.  The ‘nth’
-function takes the CAR of the result returned by ‘nthcdr’.  It returns
-the Nth element of the list.
+De functie ‘nthcdr’ neemt herhaaldelijk de CDR van een lijst.  De
+functie ‘nth’ neemt de CAR van het resultaat dat door ‘nthcdr’ wordt
+teruggegeven.  Het geeft het N-de element van de lijst terug.
 
-   Thus, if it were not defined in C for speed, the definition of ‘nth’
-would be:
+   Dus, als het, in verband met de snelheid, niet in C zou zijn
+gedefinieerd zou dit de definitie van ‘nth’ zijn:
 
      (defun nth (n list)
        "Returns the Nth element of LIST.
      N counts from zero.  If LIST is not that long, nil is returned."
        (car (nthcdr n list)))
 
-(Originally, ‘nth’ was defined in Emacs Lisp in ‘subr.el’, but its
-definition was redone in C in the 1980s.)
+(Oorspronkelijk was ‘nth’ gedefinieerd in Emacs Lisp in ‘subr.el’, maar
+de definitie was in de jaren tachtig opnieuw gedaan in C.)
 
-   The ‘nth’ function returns a single element of a list.  This can be
-very convenient.
+   De functie ‘nth’ geeft een enkel element van een lijst terug.  Dit
+kan erg handig zijn.
 
-   Note that the elements are numbered from zero, not one.  That is to
-say, the first element of a list, its CAR is the zeroth element.  This
-zero-based counting often bothers people who are accustomed to the first
-element in a list being number one, which is one-based.
+   Merk op de de elementen vanaf nul zijn genummerd, niet een.  Dat wil
+zeggen dat het eerste element van een lijst, zijn CAR, is het nulde
+element.  Deze nul-gebaseerde telling is lastig voor mensen die gewend
+zijn die gewend zijn dat het eerste element in een lijst nummer een is,
+wat een-gebaseerd is.
 
-   For example:
+   Bijvoorbeeld:
 
-     (nth 0 '("one" "two" "three"))
-         ⇒ "one"
+     (nth 0 '("een" "twee" "drie"))
+         ⇒ "een"
 
-     (nth 1 '("one" "two" "three"))
-         ⇒ "two"
+     (nth 1 '("een" "twee" "drie"))
+         ⇒ "twee"
 
-   It is worth mentioning that ‘nth’, like ‘nthcdr’ and ‘cdr’, does not
-change the original list--the function is non-destructive.  This is in
-sharp contrast to the ‘setcar’ and ‘setcdr’ functions.
+   Het is waardevol op te merken dat ‘nth’, net als ‘nthcdr’ en ‘cdr’,
+de oorspronkelijke lijst niet verandert--de functie is niet-destructief.
+Dit is in scherp contrast met de functies ‘setcar’ en ‘setcdr’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: setcar,  Next: setcdr,  Prev: nth,  Up: car cdr en cons
@@ -6349,61 +6357,65 @@ File: emacs-lisp-intro-nl.info,  Node: setcar,  Next: setcdr,  Prev: nth,  Up: c
 7.5 ‘setcar’
 ============
 
-As you might guess from their names, the ‘setcar’ and ‘setcdr’ functions
-set the CAR or the CDR of a list to a new value.  They actually change
-the original list, unlike ‘car’ and ‘cdr’ which leave the original list
-as it was.  One way to find out how this works is to experiment.  We
-will start with the ‘setcar’ function.
+Zoals je wellicht door hun namen vermoedt, stellen de functies ‘setcar’
+en ‘setcdr’ de CAR of de CDR van een lijst in op een nieuwe waarde.  Zij
+wijzigen echt de oorspronkelijke lijst, in tegenstelling tot ‘car’ en
+‘cdr’ die de oorspronkelijke lijst laten zoals die was.  Een manier om
+te ontdekken hoe dit werkt is door te proberen.  Wij beginnen met de
+functie ‘setcar’.
 
-   First, we can make a list and then set the value of a variable to the
-list, using the ‘setq’ special form.  Because we intend to use ‘setcar’
-to change the list, this ‘setq’ should not use the quoted form
-‘'(antelope giraffe lion tiger)’, as that would yield a list that is
-part of the program and bad things could happen if we tried to change
-part of the program while running it.  Generally speaking an Emacs Lisp
-program's components should be constant (or unchanged) while the program
-is running.  So we instead construct an animal list by using the ‘list’
-function, as follows:
+   Eerst maken we een lijst en stellen die met de speciale vorm ‘setq’
+als de waarde in van een variabele.  Omdat we van plan zijn ‘setcar’ te
+gebruiken om de lijst te wijzigen, moet deze ‘setq’ geen gebruik van de
+gequote vorm ‘'(antiloop giraf leeuw tijger)’ maken, omdat dit een lijst
+oplevert die onderdeel van het programma is en slechte dingen zouden
+kunnen gebeuren wanneer we proberen een deel van het programma te
+wijzigen terwijl dat loopt.  In het algemeen moeten de componenten van
+een Emacs Lisp programma constant zijn (of ongewijzigd) terwijl het
+programma loopt.  In plaats daarvan construeren we daarom als volgt een
+lijst met de functie ‘list’:
 
-     (setq animals (list 'antelope 'giraffe 'lion 'tiger))
+     (setq dieren (list 'antiloop 'giraf 'leeuw 'tijger))
 
-If you are reading this in Info inside of GNU Emacs, you can evaluate
-this expression in the usual fashion, by positioning the cursor after
-the expression and typing ‘C-x C-e’.  (I'm doing this right here as I
-write this.  This is one of the advantages of having the interpreter
-built into the computing environment.  Incidentally, when there is
-nothing on the line after the final parentheses, such as a comment,
-point can be on the next line.  Thus, if your cursor is in the first
-column of the next line, you do not need to move it.  Indeed, Emacs
-permits any amount of white space after the final parenthesis.)
+Wanneer je dit in Info binnen GNU Emacs leest kan je deze expressie op
+de gebruikelijke manier evalueren, door de cursor achter de expressie te
+plaatsen en ‘C-x C-e’ te typen.  (Ik doe dat meteen hier terwijl ik dit
+schrijft.  Dat is een van de voordelen van een in je computer omgeving
+ingebouwde interpreter Overigen, wanneer is niets op de regel na het
+laatste haakje staat, zoals commentaar, kan point ook de volgende regel
+staan.  Dus als point op de eerste kolom van de regel staat, hoef je die
+niet te verplaatsten.  Emacs staat zelfs een willekeurige hoeveelheid
+witte ruimte achter het laaste haakje toe.)
 
-   When we evaluate the variable ‘animals’, we see that it is bound to
-the list ‘(antelope giraffe lion tiger)’:
+   Wanneer we de variabele ‘dieren’ evalueren dan zien we dat die
+gebonden is aan de lijst ‘(antiloop giraf leeuw tijger)’:
 
-     animals
-          ⇒ (antelope giraffe lion tiger)
+     dieren
+          ⇒ (antiloop giraf leeuw tijger)
 
-Put another way, the variable ‘animals’ points to the list ‘(antelope
-giraffe lion tiger)’.
+Anders gezegd, de variabele ‘dieren’ wijst naar de lijst ‘(antiloop
+giraf leeuw tijger)’.
 
-   Next, evaluate the function ‘setcar’ while passing it two arguments,
-the variable ‘animals’ and the quoted symbol ‘hippopotamus’; this is
-done by writing the three element list ‘(setcar animals 'hippopotamus)’
-and then evaluating it in the usual fashion:
+   Vervolgens evalueren we de functie ‘setcar’ terwijl we daar twee
+argumenten aan doorgeven, de variabele ‘dieren’ en het geqoute symbool
+‘nijlpaard’.  Dit doen we door de lijst van drie elementen ‘(setcar
+dieren 'nijlpaard)’ te schrijven en die dan op de gebruikelijke manier
+te evalueren.
 
-     (setcar animals 'hippopotamus)
+     (setcar dieren 'nijlpaard)
 
-After evaluating this expression, evaluate the variable ‘animals’ again.
-You will see that the list of animals has changed:
+Na het evalueren van deze expressie, evalueer je de variabele ‘dieren’
+nogmaals.  Je zult zien dat de lijst gewijzigd is:
 
-     animals
-          ⇒ (hippopotamus giraffe lion tiger)
+     dieren
+          ⇒ (nijlpaard giraf leeuw tijger)
 
-The first element on the list, ‘antelope’ is replaced by ‘hippopotamus’.
+Het eerste element van de lijst, ‘antiloop’ is vervangen met
+‘nijlpaard’.
 
-   So we can see that ‘setcar’ did not add a new element to the list as
-‘cons’ would have; it replaced ‘antelope’ with ‘hippopotamus’; it
-_changed_ the list.
+   We zien dus dat ‘setcar’ geen nieuw element aan de lijst heeft
+toegevoegd, wat ‘cons’ gedaan zou hebben, maar het verving ‘antiloop’
+met ‘nijlpaard’.  Het _wijzigde_ de lijst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: setcdr,  Next: cons oefening,  Prev: setcar,  Up: car cdr en cons
@@ -6411,42 +6423,43 @@ File: emacs-lisp-intro-nl.info,  Node: setcdr,  Next: cons oefening,  Prev: setc
 7.6 ‘setcdr’
 ============
 
-The ‘setcdr’ function is similar to the ‘setcar’ function, except that
-the function replaces the second and subsequent elements of a list
-rather than the first element.
+De functie ‘setcdr’ is vergelijkbaar met de functie ‘setcar’, behalve
+dat de functie de tweede en volgende elementen van een lijst vervangt in
+plaats van het eerste element.
 
    (Kijk vooruit naar *note De ‘kill-new’ functie: kill-new functie. om
 te zien hoe het laatste element van een list te wijzigen.  De ‘kill-new’
 functie gebruikt de ‘nthcdr’ en de ‘setcdr’ functies.)
 
-   To see how this works, set the value of the variable to a list of
-domesticated animals by evaluating the following expression:
+   Om de zien hoe dit werkt stel je waarde van de variabele in op een
+lijst van gedomesticeerde dieren door de volgende expressie te
+evalueren:
 
-     (setq domesticated-animals (list 'horse 'cow 'sheep 'goat))
+     (setq gedomesticeerde-dieren (list 'paard 'koe 'schaap 'gijt))
 
-If you now evaluate the list, you will be returned the list ‘(horse cow
-sheep goat)’:
+Wanneer je nu de lijst evalueert, krijg je de lijst ‘(paard koe schaap
+gijt)’ terug.
 
-     domesticated-animals
-          ⇒ (horse cow sheep goat)
+     gedomesticeerde-dieren
+          ⇒ (paard koe schaap gijt)
 
-   Next, evaluate ‘setcdr’ with two arguments, the name of the variable
-which has a list as its value, and the list to which the CDR of the
-first list will be set;
+   Evalueer vervolgens ‘setcdr’ met twee argumenten, de naam van de
+variabele die een lijst als waarde heeft, en de lijst waarop we de CDR
+van de eerste lijst willen instellen:
 
-     (setcdr domesticated-animals '(cat dog))
+     (setcdr gedomesticeerde-dieren '(kat hond))
 
-If you evaluate this expression, the list ‘(cat dog)’ will appear in the
-echo area.  This is the value returned by the function.  The result we
-are interested in is the side effect, which we can see by evaluating the
-variable ‘domesticated-animals’:
+Wanneer je deze expressie evalueert verschijnt de lijst ‘(kat hond)’ in
+het echogebied.  Dit is de waarde die de functie teruggaf.  Het
+resultaat waar wij in geïnteresseerd zijn is in het zij-effect, wat we
+kunnen zien wanneer we de variabele ‘gedomesticeerde-dieren’ evalueren:
 
-     domesticated-animals
-          ⇒ (horse cat dog)
+     gedomesticeerde-dieren
+          ⇒ (paard kat hond)
 
-Indeed, the list is changed from ‘(horse cow sheep goat)’ to ‘(horse cat
-dog)’.  The CDR of the list is changed from ‘(cow sheep goat)’ to ‘(cat
-dog)’.
+Inderdaad is de lijst gewijzigd van ‘(paard koe schaap gijt)’ naar
+‘(paard kat hond)’.  De CDR van de lijst is gewijzigd van ‘(koe schaap
+gijt)’ naar ‘(kat hond)’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: cons oefening,  Prev: setcdr,  Up: car cdr en cons
@@ -6454,10 +6467,11 @@ File: emacs-lisp-intro-nl.info,  Node: cons oefening,  Prev: setcdr,  Up: car cd
 7.7 Oefening
 ============
 
-Construct a list of four birds by evaluating several expressions with
-‘cons’.  Find out what happens when you ‘cons’ a list onto itself.
-Replace the first element of the list of four birds with a fish.
-Replace the rest of that list with a list of other fish.
+Construeer een lijst met vier vogels door verschillende expressies met
+‘cons’ te evalueren.  Ontdek wat gebeurt wanneer je een lijst met
+zichzelf ‘const’-t.  Vervang het eerste element van de lijst met vier
+vogels met een vis.  Vervang de rest van de lijst met een lijst van
+andere vissen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Knippen en opslaan van tekst,  Next: Implementatie van lijsten,  Prev: car cdr en cons,  Up: Top
@@ -7778,7 +7792,7 @@ Here is a brief summary of some recently introduced functions.
      ‘car’ returns the first element of a list; ‘cdr’ returns the second
      and subsequent elements of a list.
 
-     For example:
+     Bijvoorbeeld:
 
           (car '(1 2 3 4 5 6 7))
                ⇒ 1
@@ -7789,7 +7803,7 @@ Here is a brief summary of some recently introduced functions.
      ‘cons’ constructs a list by prepending its first argument to its
      second argument.
 
-     For example:
+     Bijvoorbeeld:
 
           (cons 1 '(2 3 4))
                ⇒ (1 2 3 4)
@@ -7802,7 +7816,7 @@ Here is a brief summary of some recently introduced functions.
      Return the result of taking CDR N times on a list.  The "rest of
      the rest", as it were.
 
-     For example:
+     Bijvoorbeeld:
 
           (nthcdr 3 '(1 2 3 4 5 6 7))
                ⇒ (4 5 6 7)
@@ -7812,7 +7826,7 @@ Here is a brief summary of some recently introduced functions.
      ‘setcar’ changes the first element of a list; ‘setcdr’ changes the
      second and subsequent elements of a list.
 
-     For example:
+     Bijvoorbeeld:
 
           (setq triple (list 1 2 3))
 
@@ -7830,7 +7844,7 @@ Here is a brief summary of some recently introduced functions.
      Evaluate each argument in sequence and then return the value of the
      last.
 
-     For example:
+     Bijvoorbeeld:
 
           (progn 1 2 3 4)
                ⇒ 4
@@ -10744,7 +10758,7 @@ Here is a brief summary of some recently introduced functions.
      element of the body tests true.  Then return ‘nil’.  (The
      expression is evaluated only for its side effects.)
 
-     For example:
+     Bijvoorbeeld:
 
           (let ((foo 2))
             (while (> foo 0)
@@ -10782,7 +10796,7 @@ Here is a brief summary of some recently introduced functions.
      While binding the local variables, use the local values of
      variables bound earlier, if any.
 
-     For example:
+     Bijvoorbeeld:
 
           (let* ((foo 7)
                  (bar (* 3 foo)))
@@ -17563,7 +17577,7 @@ Index
                                                               (line  35)
 * Conditioneel met if:                   if.                  (line   6)
 * cons cell:                             Lijsten uitgetekend. (line 102)
-* cons, introduced:                      cons.                (line   6)
+* cons, geïntroduceerd:                  cons.                (line   6)
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
 * Count words recursively:               recursive-count-words.
@@ -17737,7 +17751,7 @@ Index
                                                               (line   6)
 * lambda:                                lambda.              (line   6)
 * lege string gedefinieerd:              Terugblik.           (line 142)
-* lengte:                                lengte.              (line   6)
+* length:                                length.              (line   6)
 * lengths-list-file:                     lengths-list-file.   (line  11)
 * lengths-list-many-files:               lengths-list-many-files.
                                                               (line  32)
@@ -18160,194 +18174,194 @@ Node: save-restriction253778
 Node: what-line255899
 Node: versmal oefening260350
 Node: car cdr en cons261398
-Node: Vreemde namen262596
-Node: car en cdr263302
-Node: cons267825
-Node: Bouw een lijst268841
-Ref: Bouw een lijst-Footnote-1270401
-Node: lengte270585
-Node: nthcdr272125
-Node: nth275039
-Node: setcar276429
-Node: setcdr279231
-Node: cons oefening280818
-Node: Knippen en opslaan van tekst281206
-Node: Tekst opslaan282577
-Node: zap-to-char284612
-Node: Complete zap-to-char285219
-Node: zap-to-char interactief287915
-Node: zap-to-char body289432
-Node: search-forward291007
-Node: progn294070
-Node: Samenvatting zap-to-char295816
-Node: kill-region296986
-Node: Complete kill-region297992
-Node: condition-case302230
-Node: Lisp macro304815
-Node: copy-region-as-kill307298
-Node: Complete copy-region-as-kill308215
-Node: copy-region-as-kill body311028
-Node: last-command en this-command312120
-Node: kill-append functie314429
-Node: kill-new functie318606
-Node: Uitwijding naar C329199
-Node: defvar334603
-Node: Inzien huidige variabele waarde336397
-Node: defvar en asterisk338322
-Node: cons en search-fwd terugblik340182
-Node: zoek oefening343237
-Node: Implementatie van lijsten344001
-Node: Lijsten uitgetekend345180
-Node: Symbolen als ladekast351403
-Node: Lijst oefening353436
-Node: Yanken353815
-Node: Kill ring overzicht355159
-Node: kill-ring-yank-pointer356871
-Node: yank nthcdr oefeningen359299
-Node: Loops en recursie360057
-Ref: Loops en recursie-Footnote-1361209
-Node: while361682
-Node: Looping met while363089
-Node: Loop voorbeeld364900
-Node: print-elements-of-list368355
-Node: Incrementele loop370900
-Node: Incrementele loop details371476
-Node: Incrementeel voorbeeld372871
-Node: Inc voorbeeld onderdelen375263
-Node: inc voorbeeld samengesteld379283
-Node: Decrementele loop382867
-Node: Decerementeel voorbeeld384333
-Node: Dec voorbeeld onderdelen385825
-Node: Dec voorbeeld samengesteld387884
-Node: dolist dotimes390138
-Node: dolist390970
-Node: dotimes394134
-Node: Recursie395648
-Node: Robots bouwen396860
-Node: Recursive definitie onderdelen398567
-Node: Recursie met lijst401005
-Node: Recursieve driehoek functie404598
-Node: Recursief voorbeeld arg van 1 of 2405974
-Node: Recursief voorbeeld arg van 3 of 4408254
-Node: Recursie met cond411300
-Node: Recursieve patronen413688
-Node: Every414181
-Node: Accumulate416635
-Node: Bewaar417928
-Node: Geen uitstel419838
-Node: Geen uitstel oplossing422542
-Ref: Geen uitstel oplossing-Footnote-1426515
-Ref: Geen uitstel oplossing-Footnote-2426621
-Node: Looping oefening427132
-Node: Rexexp zoeken428369
-Node: sentence-end430396
-Node: re-search-forward434313
-Node: forward-sentence436859
-Node: Complete forward-sentence437625
-Node: fwd-sentence while loops441177
-Node: fwd-sentence re-search444826
-Node: forward-paragraph446994
-Node: forward-paragraph in het kort448810
-Node: fwd-para let450280
-Node: fwd-para while456960
-Node: Regexp terugblik465542
-Node: re-search oefeningen467971
-Node: Woorden tellen468757
-Node: Waarom woorden tellen469515
-Node: count-words-example470561
-Node: Ontwerp count-words-example471845
-Node: Wiite ruimte bug478388
-Node: recursive-count-words487981
-Node: Tellen voorbeeld500062
-Node: Woorden in een defun500443
-Node: Verdeel en heers502184
-Node: Woorden en symbolen503415
-Node: Syntax505485
-Node: count-words-in-defun509121
-Node: Enkele defuns515418
-Node: Een bestand vinden517810
-Node: lengths-list-file520452
-Node: Enkele bestanden525727
-Node: lengths-list-many-files526488
-Node: append529280
-Node: Enkele bestanden recursief529917
-Node: De data voorbereiden532757
-Node: Data in detail te tonen533886
-Node: Sorteren534810
-Node: Bestanden lijst536488
-Ref: Bestanden lijst-Footnote-1544021
-Node: Functiedefinities tellen544238
-Node: Een grafiek klaarmaken553563
-Node: Kolommen van een grafiek554892
-Node: graph-body-print568531
-Node: recursive-graph-body-print573336
-Node: Afgedrukte assen576026
-Node: Lijngrafiek oefening576773
-Node: Initialisatie van Emacs576980
-Node: Default configuratie578474
-Ref: Default configuratie-Footnote-1580458
-Node: Site-wide init580774
-Node: defcustom582836
-Node: Een init bestand beginnen588719
-Node: Tekst en auto-fill591115
-Ref: Tekst en auto-fill-Footnote-1595131
-Ref: Tekst en auto-fill-Footnote-2595415
-Node: Mail aliasen595676
-Node: Indent Tabs Mode596602
-Node: Key bindings597547
-Node: Keymaps602321
-Node: Bestanden laden604981
-Node: Autoload608263
-Node: Eenvoudige uitbreiding611151
-Ref: Eenvoudige uitbreiding-Footnote-1613716
-Node: X11 kleuren614005
-Ref: X11 kleuren-Footnote-1615823
-Node: Diverse615977
-Node: Mode line620199
-Node: Debuggen.625735
-Node: debug626631
-Node: debug-on-entry629763
-Node: debug-on-quit633368
-Node: edebug634405
-Node: Debuggen oefeningen638527
-Node: Conclusie640292
-Node: de-de645650
-Node: Killring648440
-Node: Wat de killring doet649257
-Node: current-kill650775
-Node: Code voor current-kill651473
-Node: current-kill begrijpen654305
-Node: Body van current-kill655105
-Node: Uitwijding over fout658256
-Node: Het element vaststellen659431
-Node: yank663136
-Node: yank-pop666350
-Node: ring bestand668885
-Node: Volledige grafiek669262
-Node: Gelabeld voorbeeld670102
-Node: print-graph varlist672099
-Node: print-Y-axis673822
-Node: print-Y-axis in detail674675
-Node: Hoogte van label675485
-Node: Bereken het restant677502
-Node: Y-as element681368
-Node: Y-axis-column685131
-Node: print-Y-axis enalaatste686743
-Node: print-X-axis688728
-Node: Overeenkomsten verschillen690046
-Node: X-as tic marks690879
-Node: De gehele grafiek afdrukken697882
-Node: De finale versie698998
-Node: Test print-graph703253
-Node: Woorden in defuns grafisch weergeven704937
-Node: lambda707561
-Node: mapcar709245
-Node: Een andere bug711305
-Node: Finale afgedrukte grafiek716834
-Node: Vrije software en vrije handleidingen717785
-Node: GNU Free Documentation License724101
-Node: Index749290
-Node: Over de auteur788321
+Node: Vreemde namen262584
+Node: car en cdr263306
+Node: cons268039
+Node: Bouw een lijst269128
+Ref: Bouw een lijst-Footnote-1270756
+Node: length270962
+Node: nthcdr272573
+Node: nth275683
+Node: setcar277204
+Node: setcdr280185
+Node: cons oefening281857
+Node: Knippen en opslaan van tekst282276
+Node: Tekst opslaan283647
+Node: zap-to-char285682
+Node: Complete zap-to-char286289
+Node: zap-to-char interactief288985
+Node: zap-to-char body290502
+Node: search-forward292077
+Node: progn295140
+Node: Samenvatting zap-to-char296886
+Node: kill-region298056
+Node: Complete kill-region299062
+Node: condition-case303300
+Node: Lisp macro305885
+Node: copy-region-as-kill308368
+Node: Complete copy-region-as-kill309285
+Node: copy-region-as-kill body312098
+Node: last-command en this-command313190
+Node: kill-append functie315499
+Node: kill-new functie319676
+Node: Uitwijding naar C330269
+Node: defvar335673
+Node: Inzien huidige variabele waarde337467
+Node: defvar en asterisk339392
+Node: cons en search-fwd terugblik341252
+Node: zoek oefening344312
+Node: Implementatie van lijsten345076
+Node: Lijsten uitgetekend346255
+Node: Symbolen als ladekast352478
+Node: Lijst oefening354511
+Node: Yanken354890
+Node: Kill ring overzicht356234
+Node: kill-ring-yank-pointer357946
+Node: yank nthcdr oefeningen360374
+Node: Loops en recursie361132
+Ref: Loops en recursie-Footnote-1362284
+Node: while362757
+Node: Looping met while364164
+Node: Loop voorbeeld365975
+Node: print-elements-of-list369430
+Node: Incrementele loop371975
+Node: Incrementele loop details372551
+Node: Incrementeel voorbeeld373946
+Node: Inc voorbeeld onderdelen376338
+Node: inc voorbeeld samengesteld380358
+Node: Decrementele loop383942
+Node: Decerementeel voorbeeld385408
+Node: Dec voorbeeld onderdelen386900
+Node: Dec voorbeeld samengesteld388959
+Node: dolist dotimes391213
+Node: dolist392045
+Node: dotimes395209
+Node: Recursie396723
+Node: Robots bouwen397935
+Node: Recursive definitie onderdelen399642
+Node: Recursie met lijst402080
+Node: Recursieve driehoek functie405673
+Node: Recursief voorbeeld arg van 1 of 2407049
+Node: Recursief voorbeeld arg van 3 of 4409329
+Node: Recursie met cond412375
+Node: Recursieve patronen414763
+Node: Every415256
+Node: Accumulate417710
+Node: Bewaar419003
+Node: Geen uitstel420913
+Node: Geen uitstel oplossing423617
+Ref: Geen uitstel oplossing-Footnote-1427590
+Ref: Geen uitstel oplossing-Footnote-2427696
+Node: Looping oefening428207
+Node: Rexexp zoeken429444
+Node: sentence-end431471
+Node: re-search-forward435388
+Node: forward-sentence437934
+Node: Complete forward-sentence438700
+Node: fwd-sentence while loops442252
+Node: fwd-sentence re-search445901
+Node: forward-paragraph448069
+Node: forward-paragraph in het kort449885
+Node: fwd-para let451355
+Node: fwd-para while458035
+Node: Regexp terugblik466617
+Node: re-search oefeningen469048
+Node: Woorden tellen469834
+Node: Waarom woorden tellen470592
+Node: count-words-example471638
+Node: Ontwerp count-words-example472922
+Node: Wiite ruimte bug479465
+Node: recursive-count-words489058
+Node: Tellen voorbeeld501139
+Node: Woorden in een defun501520
+Node: Verdeel en heers503261
+Node: Woorden en symbolen504492
+Node: Syntax506562
+Node: count-words-in-defun510198
+Node: Enkele defuns516495
+Node: Een bestand vinden518887
+Node: lengths-list-file521529
+Node: Enkele bestanden526804
+Node: lengths-list-many-files527565
+Node: append530357
+Node: Enkele bestanden recursief530994
+Node: De data voorbereiden533834
+Node: Data in detail te tonen534963
+Node: Sorteren535887
+Node: Bestanden lijst537565
+Ref: Bestanden lijst-Footnote-1545098
+Node: Functiedefinities tellen545315
+Node: Een grafiek klaarmaken554640
+Node: Kolommen van een grafiek555969
+Node: graph-body-print569608
+Node: recursive-graph-body-print574413
+Node: Afgedrukte assen577103
+Node: Lijngrafiek oefening577850
+Node: Initialisatie van Emacs578057
+Node: Default configuratie579551
+Ref: Default configuratie-Footnote-1581535
+Node: Site-wide init581851
+Node: defcustom583913
+Node: Een init bestand beginnen589796
+Node: Tekst en auto-fill592192
+Ref: Tekst en auto-fill-Footnote-1596208
+Ref: Tekst en auto-fill-Footnote-2596492
+Node: Mail aliasen596753
+Node: Indent Tabs Mode597679
+Node: Key bindings598624
+Node: Keymaps603398
+Node: Bestanden laden606058
+Node: Autoload609340
+Node: Eenvoudige uitbreiding612228
+Ref: Eenvoudige uitbreiding-Footnote-1614793
+Node: X11 kleuren615082
+Ref: X11 kleuren-Footnote-1616900
+Node: Diverse617054
+Node: Mode line621276
+Node: Debuggen.626812
+Node: debug627708
+Node: debug-on-entry630840
+Node: debug-on-quit634445
+Node: edebug635482
+Node: Debuggen oefeningen639604
+Node: Conclusie641369
+Node: de-de646727
+Node: Killring649517
+Node: Wat de killring doet650334
+Node: current-kill651852
+Node: Code voor current-kill652550
+Node: current-kill begrijpen655382
+Node: Body van current-kill656182
+Node: Uitwijding over fout659333
+Node: Het element vaststellen660508
+Node: yank664213
+Node: yank-pop667427
+Node: ring bestand669962
+Node: Volledige grafiek670339
+Node: Gelabeld voorbeeld671179
+Node: print-graph varlist673176
+Node: print-Y-axis674899
+Node: print-Y-axis in detail675752
+Node: Hoogte van label676562
+Node: Bereken het restant678579
+Node: Y-as element682445
+Node: Y-axis-column686208
+Node: print-Y-axis enalaatste687820
+Node: print-X-axis689805
+Node: Overeenkomsten verschillen691123
+Node: X-as tic marks691956
+Node: De gehele grafiek afdrukken698959
+Node: De finale versie700075
+Node: Test print-graph704330
+Node: Woorden in defuns grafisch weergeven706014
+Node: lambda708638
+Node: mapcar710322
+Node: Een andere bug712382
+Node: Finale afgedrukte grafiek717911
+Node: Vrije software en vrije handleidingen718862
+Node: GNU Free Documentation License725178
+Node: Index750367
+Node: Over de auteur789399
 
 End Tag Table
 
