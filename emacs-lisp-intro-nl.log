@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  26 FEB 2026 22:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  1 MAR 2026 22:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -166,6 +166,7 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 \countC=\count61
 \countB=\count62
  and turning on texinfo input format.)
+(/usr/share/texmf/tex/texinfo/txi-en.tex)
 texinfo.tex: doing @include of docstyle.texi
 
 
@@ -206,7 +207,7 @@ already used, duplicate ignored
                                                   }
 <to be read again> 
                    I
-l.1296 I
+l.1299 I
         n een lijst worden atomen onderling gescheiden door witte ruimte. Zij
 [1]
 Missing character: There is no Ã in font cmr10!
@@ -222,7 +223,7 @@ already used, duplicate ignored
                                                   }
 @\need ...-@dimen 0 @vskip @dimen 0 @penalty 9999 
                                                   @vskip -@dimen 0 @penalty ...
-l.1370 @need 1200
+l.1373 @need 1200
                   [2]
 pdfTeX warning (ext4): destination with the same identifier (name{3}) has been 
 already used, duplicate ignored
@@ -232,7 +233,7 @@ already used, duplicate ignored
                                                   @headlinebox @pagebody {#1...
 <output> ...ark @onepageout {@pagecontents @PAGE }
                                                   }
-l.1455 
+l.1458 
         [3]
 pdfTeX warning (ext4): destination with the same identifier (name{4}) has been 
 already used, duplicate ignored
@@ -244,10 +245,10 @@ already used, duplicate ignored
                                                   }
 @\need ... @vskip 0pt plus @dimen 0 @penalty -100 
                                                   @vskip 0pt plus -@dimen 0 ...
-l.1539 @need 1200
+l.1542 @need 1200
                   [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
 [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 2593--2597
+Underfull \hbox (badness 10000) in paragraph at lines 2596--2600
  []@textrm Atomen zi-jn multi-karakter sym-bol-en, zoals @ssectt forward-paragr
 aph[]@textrm ,
 
@@ -265,7 +266,7 @@ aph[]@textrm ,
 .etc.
 
 [18] Hoofdstuk 2 [19] [20]
-Underfull \hbox (badness 7925) in paragraph at lines 2753--2757
+Underfull \hbox (badness 7925) in paragraph at lines 2756--2760
 []@textrm Anderzijds, ter-wi-jl ik dit doc-u-ment schri-jf is de waarde die het
 
 
@@ -278,7 +279,7 @@ Underfull \hbox (badness 7925) in paragraph at lines 2753--2757
 .etc.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2753--2757
+Underfull \hbox (badness 10000) in paragraph at lines 2756--2760
 @textrm eval-ueren van @ssectt (buffer-name)[] @textrm teruggeeft, @ssectt "int
 roduction.texinfo"[]
 
@@ -291,7 +292,7 @@ roduction.texinfo"[]
 .etc.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2753--2757
+Underfull \hbox (badness 10000) in paragraph at lines 2756--2760
 @textrm en de waarde die de eval-u-atie van @ssectt (buffer-file-name)[] @textr
 m teruggeeft
 
@@ -304,7 +305,7 @@ m teruggeeft
 .etc.
 
 
-Overfull \hbox (30.03749pt too wide) in paragraph at lines 2767--2770
+Overfull \hbox (30.03749pt too wide) in paragraph at lines 2770--2773
 @textrm naam van het be-stand waar het naar wi-jst is @ssectt "/gnu/work/intro/
 introduction.texinfo"[]@textrm . 
 
@@ -326,78 +327,88 @@ Missing character: There is no ¯ in font cmr10!
 Hoofdstuk 4 [47]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
- l.4844: Undefined cross reference `Interactive Options-snt'.
-l.4844: Undefined cross reference `Interactive Options-snt'.
-l.4844: Undefined cross reference `Interactive Options-pg'. [48] [49] [50]
-[51] [52] [53] [54] [55] [56] [57] [58] Hoofdstuk 5 [59] [60] [61] [62]
-[63] [64] [65] [66] [67] [68] [69] [70] [71] [72] Hoofdstuk 6 [73] [74]
-[75] [76] Hoofdstuk 7 [77] [78]
-l.7105: Undefined cross reference `Lisp atomen-snt'.
-l.7105: Undefined cross reference `Lisp atomen-snt'.
-l.7105: Undefined cross reference `Lisp atomen-pg'.
+ [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58]
+Hoofdstuk 5 [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70]
+[71] [72] Hoofdstuk 6 [73] [74] [75] [76] Hoofdstuk 7 [77] [78]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
- [79] [80] [81] [82]
-[83] [84] Hoofdstuk 8 [85] l.7705: Undefined cross reference `Yanking-snt'.
-l.7705: Undefined cross reference `Yanking-snt'.
-l.7705: Undefined cross reference `Yanking-pg'. [86] [87] [88] [89] [90]
-[91] l.8275: Undefined cross reference `Making Errors-snt'.
-l.8275: Undefined cross reference `Making Errors-snt'.
-l.8275: Undefined cross reference `Making Errors-pg'. [92] [93] [94] [95]
-[96] [97] [98] [99] [100] [101]
-l.9032: Undefined cross reference `Making Errors-snt'.
-l.9032: Undefined cross reference `Making Errors-snt'.
-l.9032: Undefined cross reference `Making Errors-pg'.
-l.9046: Undefined cross reference `Second Buffer Related Review-snt'.
-l.9046: Undefined cross reference `Second Buffer Related Review-snt'.
-l.9046: Undefined cross reference `Second Buffer Related Review-pg'. [102]
-[103] [104] l.9304: Undefined cross reference `How let Binds Variables-snt'.
-l.9304: Undefined cross reference `How let Binds Variables-snt'.
-l.9304: Undefined cross reference `How let Binds Variables-pg'. [105]
-l.9402: Undefined cross reference `Emacs Initialization-snt'.
-l.9402: Undefined cross reference `Emacs Initialization-snt'.
-l.9402: Undefined cross reference `Emacs Initialization-pg'. [106]
-l.9518: Undefined cross reference `Regexp Search-snt'.
-l.9518: Undefined cross reference `Regexp Search-snt'.
-l.9518: Undefined cross reference `Regexp Search-pg'. [107] Hoofdstuk 9
-[108] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-1.pdf> </home/elpa/elp
-a/packages/emacs-lisp-intro-nl/cons-2.pdf> [109] </home/elpa/elpa/packages/emac
-s-lisp-intro-nl/cons-2a.pdf> </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons
--3.pdf> [110] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-4.pdf>
-[111] </home/elpa/elpa/packages/emacs-lisp-intro-nl/drawers.pdf> [112]
-Hoofdstuk 10 [113] l.10046: Undefined cross reference `Kill Ring-snt'.
-l.10046: Undefined cross reference `Kill Ring-snt'.
-l.10046: Undefined cross reference `Kill Ring-pg'. [114]
-l.10120: Undefined cross reference `List Implementation-snt'.
-l.10120: Undefined cross reference `List Implementation-snt'.
-l.10120: Undefined cross reference `List Implementation-pg'. </home/elpa/elpa/p
-ackages/emacs-lisp-intro-nl/cons-5.pdf> Hoofdstuk 11 [115] [116] [117] [118]
-[119] [120] [121] [122] [123] [124] [125] [126]
-l.11117: Undefined cross reference `Loop Example-snt'.
-l.11117: Undefined cross reference `Loop Example-snt'.
-l.11117: Undefined cross reference `Loop Example-pg'. [127] [128] [129]
-[130] [131] [132] l.11594: Undefined cross reference `No Deferment-snt'.
-l.11594: Undefined cross reference `No Deferment-snt'.
-l.11594: Undefined cross reference `No Deferment-pg'. [133] [134]
-l.11740: Undefined cross reference `Recursion with list-snt'.
-l.11740: Undefined cross reference `Recursion with list-snt'.
-l.11740: Undefined cross reference `Recursion with list-pg'. [135]
-l.11829: Undefined cross reference `Files List-snt'.
-l.11829: Undefined cross reference `Files List-snt'.
-l.11829: Undefined cross reference `Files List-pg'. [136] [137] [138] [139]
-l.12163: Undefined cross reference `Cutting & Storing Text-snt'.
-l.12163: Undefined cross reference `Cutting & Storing Text-snt'.
-l.12163: Undefined cross reference `Cutting & Storing Text-pg'.
-l.12164: Undefined cross reference `Yanking-snt'.
-l.12164: Undefined cross reference `Yanking-snt'.
-l.12164: Undefined cross reference `Yanking-pg'. Hoofdstuk 12 [140] [141]
-[142] [143] [144] l.12614: Undefined cross reference `Decrementing Loop-snt'.
-l.12614: Undefined cross reference `Decrementing Loop-snt'.
-l.12614: Undefined cross reference `Decrementing Loop-pg'. [145] [146] [147]
-l.12957: Undefined cross reference `let* introduced-snt'.
-l.12957: Undefined cross reference `let* introduced-snt'.
-l.12957: Undefined cross reference `let* introduced-pg'.
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 12970--12970
+ [79] [80]
+[81] [82] [83] [84] Hoofdstuk 8 [85] [86] [87] [88] [89] [90]
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 8143--8143
+ []      @reducedtt ;;    de oude aan elkaar. De ^^Mkill-new^^M functie voegt t
+ekst in als een[] 
+
+@hbox(5.49998+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[91]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 8190--8190
+ []     @reducedtt ;;    Vervolgens, dus als deel van het dan-deel, zet this-co
+mmand, zodat[] 
+
+@hbox(5.49998+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (66.6765pt too wide) in paragraph at lines 8194--8194
+ []     @reducedtt ;;    tekst niet naar de the kill ring kan kopi^^?eren zonde
+r een fout te signaleren[] 
+
+@hbox(5.49998+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105]
+[106] Hoofdstuk 9 [107] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-1.pd
+f> </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-2.pdf> [108] </home/elpa/
+elpa/packages/emacs-lisp-intro-nl/cons-2a.pdf> </home/elpa/elpa/packages/emacs-
+lisp-intro-nl/cons-3.pdf> [109] </home/elpa/elpa/packages/emacs-lisp-intro-nl/c
+ons-4.pdf> [110] </home/elpa/elpa/packages/emacs-lisp-intro-nl/drawers.pdf>
+[111] Hoofdstuk 10 [112] l.9943: Undefined cross reference `Kill Ring-snt'.
+l.9943: Undefined cross reference `Kill Ring-snt'.
+l.9943: Undefined cross reference `Kill Ring-pg'. [113]
+l.10017: Undefined cross reference `List Implementation-snt'.
+l.10017: Undefined cross reference `List Implementation-snt'.
+l.10017: Undefined cross reference `List Implementation-pg'. </home/elpa/elpa/p
+ackages/emacs-lisp-intro-nl/cons-5.pdf> Hoofdstuk 11 [114] [115] [116] [117]
+[118] [119] [120] [121] [122] [123] [124] [125]
+l.10991: Undefined cross reference `Loop Example-snt'.
+l.10991: Undefined cross reference `Loop Example-snt'.
+l.10991: Undefined cross reference `Loop Example-pg'. [126] [127] [128]
+[129] [130] [131] l.11468: Undefined cross reference `No Deferment-snt'.
+l.11468: Undefined cross reference `No Deferment-snt'.
+l.11468: Undefined cross reference `No Deferment-pg'. [132] [133]
+l.11614: Undefined cross reference `Recursion with list-snt'.
+l.11614: Undefined cross reference `Recursion with list-snt'.
+l.11614: Undefined cross reference `Recursion with list-pg'. [134]
+l.11703: Undefined cross reference `Files List-snt'.
+l.11703: Undefined cross reference `Files List-snt'.
+l.11703: Undefined cross reference `Files List-pg'. [135] [136] [137] [138]
+l.12037: Undefined cross reference `Cutting & Storing Text-snt'.
+l.12037: Undefined cross reference `Cutting & Storing Text-snt'.
+l.12037: Undefined cross reference `Cutting & Storing Text-pg'. Hoofdstuk 12
+[139] [140] [141] [142] [143]
+l.12489: Undefined cross reference `Decrementing Loop-snt'.
+l.12489: Undefined cross reference `Decrementing Loop-snt'.
+l.12489: Undefined cross reference `Decrementing Loop-pg'. [144] [145] [146]
+l.12832: Undefined cross reference `let* introduced-snt'.
+l.12832: Undefined cross reference `let* introduced-snt'.
+l.12832: Undefined cross reference `let* introduced-pg'.
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 12845--12845
  []       @reducedtt ;; Remove ^ from paragraph-start and paragraph-sep if they
  are there.[] 
 
@@ -410,7 +421,7 @@ Overfull \hbox (19.42705pt too wide) in paragraph at lines 12970--12970
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 12974--12974
+Overfull \hbox (24.152pt too wide) in paragraph at lines 12849--12849
  []       @reducedtt ;; This hack will not find problem cases like "whatever\\|
 ^something".[] 
 
@@ -422,50 +433,50 @@ Overfull \hbox (24.152pt too wide) in paragraph at lines 12974--12974
 .@penalty 10000
 .etc.
 
-[148] [149] [150] [151] [152] [153]
-l.13475: Undefined cross reference `the-the-snt'.
-l.13475: Undefined cross reference `the-the-snt'.
-l.13475: Undefined cross reference `the-the-pg'. Hoofdstuk 13 [154] [155]
-[156] [157] [158] [159]
-l.13900: Undefined cross reference `kill-new function-snt'.
-l.13900: Undefined cross reference `kill-new function-snt'.
-l.13900: Undefined cross reference `kill-new function-pg'. [160] [161] [162]
-[163] l.14127: Undefined cross reference `Whitespace Bug-snt'.
-l.14127: Undefined cross reference `Whitespace Bug-snt'.
-l.14127: Undefined cross reference `Whitespace Bug-pg'. [164] [165]
-Hoofdstuk 14 [166] l.14343: Undefined cross reference `Counting Words-snt'.
-l.14343: Undefined cross reference `Counting Words-snt'.
-l.14343: Undefined cross reference `Counting Words-pg'. [167] [168] [169]
-[170] [171] [172] l.14846: Undefined cross reference `Switching Buffers-snt'.
-l.14846: Undefined cross reference `Switching Buffers-snt'.
-l.14846: Undefined cross reference `Switching Buffers-pg'. [173] [174]
-l.15016: Undefined cross reference `Loop Example-snt'.
-l.15016: Undefined cross reference `Loop Example-snt'.
-l.15016: Undefined cross reference `Loop Example-pg'. [175]
-l.15043: Undefined cross reference `Incrementing Example-snt'.
-l.15043: Undefined cross reference `Incrementing Example-snt'.
-l.15043: Undefined cross reference `Incrementing Example-pg'. [176] [177]
-[178] l.15272: Undefined cross reference `Wrong Type of Argument-snt'.
-l.15272: Undefined cross reference `Wrong Type of Argument-snt'.
-l.15272: Undefined cross reference `Wrong Type of Argument-pg'. [179] [180]
-[181] [182] l.15638: Undefined cross reference `Incrementing Loop-snt'.
-l.15638: Undefined cross reference `Incrementing Loop-snt'.
-l.15638: Undefined cross reference `Incrementing Loop-pg'. [183] [184] [185]
-l.15837: Undefined cross reference `kill-new function-snt'.
-l.15837: Undefined cross reference `kill-new function-snt'.
-l.15837: Undefined cross reference `kill-new function-pg'. Hoofdstuk 15
-[186] [187] [188] [189] [190] [191] [192]
-l.16379: Undefined cross reference `Readying a Graph-snt'.
-l.16379: Undefined cross reference `Readying a Graph-snt'.
-l.16379: Undefined cross reference `Readying a Graph-pg'. [193] [194]
-l.16520: Undefined cross reference `Full Graph-snt'.
-l.16520: Undefined cross reference `Full Graph-snt'.
-l.16520: Undefined cross reference `Full Graph-pg'. Hoofdstuk 16 [195] [196]
-l.16632: Undefined cross reference `Simple Extension-snt'.
-l.16632: Undefined cross reference `Simple Extension-snt'.
-l.16632: Undefined cross reference `Simple Extension-pg'. [197] [198] [199]
-[200] [201] [202] [203] [204] [205] [206] [207]
-Overfull \hbox (168.15451pt too wide) in paragraph at lines 17528--17529
+[147] [148] [149] [150] [151] [152]
+l.13350: Undefined cross reference `the-the-snt'.
+l.13350: Undefined cross reference `the-the-snt'.
+l.13350: Undefined cross reference `the-the-pg'. Hoofdstuk 13 [153] [154]
+[155] [156] [157] [158]
+l.13775: Undefined cross reference `kill-new function-snt'.
+l.13775: Undefined cross reference `kill-new function-snt'.
+l.13775: Undefined cross reference `kill-new function-pg'. [159] [160] [161]
+[162] l.14002: Undefined cross reference `Whitespace Bug-snt'.
+l.14002: Undefined cross reference `Whitespace Bug-snt'.
+l.14002: Undefined cross reference `Whitespace Bug-pg'. [163] [164]
+Hoofdstuk 14 [165] l.14218: Undefined cross reference `Counting Words-snt'.
+l.14218: Undefined cross reference `Counting Words-snt'.
+l.14218: Undefined cross reference `Counting Words-pg'. [166] [167] [168]
+[169] [170] [171] l.14721: Undefined cross reference `Switching Buffers-snt'.
+l.14721: Undefined cross reference `Switching Buffers-snt'.
+l.14721: Undefined cross reference `Switching Buffers-pg'. [172] [173]
+l.14891: Undefined cross reference `Loop Example-snt'.
+l.14891: Undefined cross reference `Loop Example-snt'.
+l.14891: Undefined cross reference `Loop Example-pg'. [174]
+l.14918: Undefined cross reference `Incrementing Example-snt'.
+l.14918: Undefined cross reference `Incrementing Example-snt'.
+l.14918: Undefined cross reference `Incrementing Example-pg'. [175] [176]
+[177] l.15147: Undefined cross reference `Wrong Type of Argument-snt'.
+l.15147: Undefined cross reference `Wrong Type of Argument-snt'.
+l.15147: Undefined cross reference `Wrong Type of Argument-pg'. [178] [179]
+[180] [181] l.15513: Undefined cross reference `Incrementing Loop-snt'.
+l.15513: Undefined cross reference `Incrementing Loop-snt'.
+l.15513: Undefined cross reference `Incrementing Loop-pg'. [182] [183] [184]
+l.15712: Undefined cross reference `kill-new function-snt'.
+l.15712: Undefined cross reference `kill-new function-snt'.
+l.15712: Undefined cross reference `kill-new function-pg'. Hoofdstuk 15
+[185] [186] [187] [188] [189] [190] [191]
+l.16254: Undefined cross reference `Readying a Graph-snt'.
+l.16254: Undefined cross reference `Readying a Graph-snt'.
+l.16254: Undefined cross reference `Readying a Graph-pg'. [192] [193]
+l.16395: Undefined cross reference `Full Graph-snt'.
+l.16395: Undefined cross reference `Full Graph-snt'.
+l.16395: Undefined cross reference `Full Graph-pg'. Hoofdstuk 16 [194] [195]
+l.16507: Undefined cross reference `Simple Extension-snt'.
+l.16507: Undefined cross reference `Simple Extension-snt'.
+l.16507: Undefined cross reference `Simple Extension-pg'. [196] [197] [198]
+[199] [200] [201] [202] [203] [204] [205] [206]
+Overfull \hbox (168.15451pt too wide) in paragraph at lines 17403--17404
  [] []@reducedtt verzameling opties emacs -Q -D[] 
 
 @hbox(6.25+2.0)x361.34999
@@ -482,25 +493,25 @@ Overfull \hbox (168.15451pt too wide) in paragraph at lines 17528--17529
 ..etc.
 .etc.
 
-[208] [209] [210] [211] [212] Hoofdstuk 17 [213]
-l.18004: Undefined cross reference `Decrementing Example-snt'.
-l.18004: Undefined cross reference `Decrementing Example-snt'.
-l.18004: Undefined cross reference `Decrementing Example-pg'. [214] [215]
-[216] [217]
-l.18289: Undefined cross reference `Recursive triangle function-snt'.
-l.18289: Undefined cross reference `Recursive triangle function-snt'.
-l.18289: Undefined cross reference `Recursive triangle function-pg'. [218]
-Hoofdstuk 18 [219] [220] Appendix A [221]
-l.18592: Undefined cross reference `Regexp Search-snt'.
-l.18592: Undefined cross reference `Regexp Search-snt'.
-l.18592: Undefined cross reference `Regexp Search-pg'. [222] Appendix B
-[223] [224] [225] l.18844: Undefined cross reference `kill-new function-snt'.
-l.18844: Undefined cross reference `kill-new function-snt'.
-l.18844: Undefined cross reference `kill-new function-pg'. [226] [227]
-l.19112: Undefined cross reference `Permanent Installation-snt'.
-l.19112: Undefined cross reference `Permanent Installation-snt'.
-l.19112: Undefined cross reference `Permanent Installation-pg'. [228]
-Overfull \hbox (113.92595pt too wide) in paragraph at lines 19137--19137
+[207] [208] [209] [210] [211] Hoofdstuk 17 [212]
+l.17879: Undefined cross reference `Decrementing Example-snt'.
+l.17879: Undefined cross reference `Decrementing Example-snt'.
+l.17879: Undefined cross reference `Decrementing Example-pg'. [213] [214]
+[215] [216]
+l.18164: Undefined cross reference `Recursive triangle function-snt'.
+l.18164: Undefined cross reference `Recursive triangle function-snt'.
+l.18164: Undefined cross reference `Recursive triangle function-pg'. [217]
+Hoofdstuk 18 [218] [219] Appendix A [220]
+l.18467: Undefined cross reference `Regexp Search-snt'.
+l.18467: Undefined cross reference `Regexp Search-snt'.
+l.18467: Undefined cross reference `Regexp Search-pg'. [221] Appendix B
+[222] [223] [224] l.18719: Undefined cross reference `kill-new function-snt'.
+l.18719: Undefined cross reference `kill-new function-snt'.
+l.18719: Undefined cross reference `kill-new function-pg'. [225] [226]
+l.18987: Undefined cross reference `Permanent Installation-snt'.
+l.18987: Undefined cross reference `Permanent Installation-snt'.
+l.18987: Undefined cross reference `Permanent Installation-pg'. [227]
+Overfull \hbox (113.92595pt too wide) in paragraph at lines 19012--19012
  []@reducedtt With just \\[universal-argument] as argument, same but put point 
 at beginning (and mark at end).[] 
 
@@ -513,7 +524,7 @@ at beginning (and mark at end).[]
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 19161--19161
+Overfull \hbox (24.152pt too wide) in paragraph at lines 19036--19036
  []      @reducedtt ;; This is like exchange-point-and-mark, but doesn^^Mt acti
 vate the mark.[] 
 
@@ -525,39 +536,43 @@ vate the mark.[]
 .@penalty 10000
 .etc.
 
-[229] [230] Appendix C [231]
-l.19278: Undefined cross reference `Readying a Graph-snt'.
-l.19278: Undefined cross reference `Readying a Graph-snt'.
-l.19278: Undefined cross reference `Readying a Graph-pg'. [232] [233] [234]
-[235] [236] [237] [238] [239] [240] [241] [242] [243]
-l.20225: Undefined cross reference `Full Graph-snt'.
-l.20225: Undefined cross reference `Full Graph-snt'.
-l.20225: Undefined cross reference `Full Graph-pg'. [244] [245] [246] [247]
-[248] </home/elpa/elpa/packages/emacs-lisp-intro-nl/lambda-1.pdf> </home/elpa/e
+[228] [229] Appendix C [230]
+l.19153: Undefined cross reference `Readying a Graph-snt'.
+l.19153: Undefined cross reference `Readying a Graph-snt'.
+l.19153: Undefined cross reference `Readying a Graph-pg'. [231] [232] [233]
+[234] [235] [236] [237] [238] [239] [240] [241] [242]
+l.20100: Undefined cross reference `Full Graph-snt'.
+l.20100: Undefined cross reference `Full Graph-snt'.
+l.20100: Undefined cross reference `Full Graph-pg'. [243] [244] [245] [246]
+[247] </home/elpa/elpa/packages/emacs-lisp-intro-nl/lambda-1.pdf> </home/elpa/e
 lpa/packages/emacs-lisp-intro-nl/lambda-2.pdf> </home/elpa/elpa/packages/emacs-
-lisp-intro-nl/lambda-3.pdf> [249]
-l.20762: Undefined cross reference `Readying a Graph-snt'.
-l.20762: Undefined cross reference `Readying a Graph-snt'.
-l.20762: Undefined cross reference `Readying a Graph-pg'. [250] [251] [252]
-Appendix D [253] [254] Appendix E [255]
+lisp-intro-nl/lambda-3.pdf> [248]
+l.20595: Undefined cross reference `Readying a Graph-snt'.
+l.20595: Undefined cross reference `Readying a Graph-snt'.
+l.20595: Undefined cross reference `Readying a Graph-pg'. [249] [250] [251]
+Appendix D [252] [253] Appendix E [254]
 texinfo.tex: doing @include of doclicense.texi
 
 
-(/home/elpa/elpa/packages/emacs-lisp-intro-nl/doclicense.texi [256] [257]
-[258] [259] [260] [261] [262] [263]) (Index) [264]
-(/home/elpa/elpa/packages/emacs-lisp-intro-nl/emacs-lisp-intro-nl.cps [265]
-[266] [267] [268] [269]) [270] [271] ) 
+(/home/elpa/elpa/packages/emacs-lisp-intro-nl/doclicense.texi [255] [256]
+[257] [258] [259] [260] [261] [262]) (Index) [263]
+(/home/elpa/elpa/packages/emacs-lisp-intro-nl/emacs-lisp-intro-nl.cps [264]
+[265] [266] [267] [268]) [269] [270] ) 
 Here is how much of TeX's memory you used:
- 5631 strings out of 497075
- 70601 string characters out of 6206386
- 131283 words of memory out of 5000000
- 6090 multiletter control sequences out of 15000+600000
+ 5605 strings out of 497075
+ 70031 string characters out of 6206386
+ 134268 words of memory out of 5000000
+ 6069 multiletter control sequences out of 15000+600000
  37169 words of font info for 128 fonts, out of 8000000 for 9000
  57 hyphenation exceptions out of 8191
- 16i,6n,16p,440b,491s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 17i,6n,16p,440b,491s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Permanent\040Installation} has been referenced but 
 does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Regexp\040Search} has been referenced but does not 
+exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{Recursive\040triangle\040function} has been referen
@@ -647,38 +662,6 @@ s not exist, replaced by a fixed one
 pdfTeX warning (dest): name{Kill\040Ring} has been referenced but does not exis
 t, replaced by a fixed one
 
-
-pdfTeX warning (dest): name{Regexp\040Search} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Emacs\040Initialization} has been referenced but do
-es not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{How\040let\040Binds\040Variables} has been referenc
-ed but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Second\040Buffer\040Related\040Review} has been ref
-erenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Making\040Errors} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Yanking} has been referenced but does not exist, re
-placed by a fixed one
-
-
-pdfTeX warning (dest): name{Lisp\040atomen} has been referenced but does not ex
-ist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{Interactive\040Options} has been referenced but doe
-s not exist, replaced by a fixed one
-
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -700,10 +683,10 @@ s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmtt9.pfb>
-Output written on emacs-lisp-intro-nl.pdf (287 pages, 1057269 bytes).
+Output written on emacs-lisp-intro-nl.pdf (286 pages, 1057179 bytes).
 PDF statistics:
- 3746 PDF objects out of 4296 (max. 8388607)
- 3325 compressed objects within 34 object streams
- 552 named destinations out of 1000 (max. 500000)
+ 3733 PDF objects out of 4296 (max. 8388607)
+ 3313 compressed objects within 34 object streams
+ 544 named destinations out of 1000 (max. 500000)
  2511 words of extra memory for PDF output out of 10000 (max. 10000000)
 

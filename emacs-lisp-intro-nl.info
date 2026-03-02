@@ -94,9 +94,9 @@ onderdeel van elk hoofdstuk.
 * Knippen en opslaan van tekst::  Tekst verwijderen en bewaren
 * Implementatie van lijsten::  Hoe lijsten zijn geïmplementeerd in de
                                  computer
-* Yanken::                   Opgeslagen tekst plakken
+* Yanking::                  Opgeslagen tekst plakken
 * Loops en recursie::        Hoe een proces te herhalen
-* Rexexp zoeken::            Reguliere expressies zoeken
+* Regexp zoeken::            Reguliere expressie zoekopdrachten
 * Woorden tellen::           Een terugblik op herhaling en regexps.
 * Woorden in een defun::     Woorden tellen in een ‘defun’.
 * Een grafiek klaarmaken::   Een prototype grafiek print functie.
@@ -152,7 +152,7 @@ Lisp lijsten
 
 
 * Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
-* Lisp atoms::               Elementaire entiteiten
+* Lisp atomen::              Elementaire entiteiten
 * Whitespace in lijsten::    Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 
@@ -219,7 +219,7 @@ Hoe functiedefinities te schrijven
 * defun::                    De ‘defun’ macro.
 * Installeer::               Installeer een functiedefinitie
 * Interactief::              Een functie interactief maken.
-* Interactieve operaties::   Verschillende opties voor ‘interactive’.
+* Interactieve opties::      Verschillende opties voor ‘interactive’.
 * Permanent installeren::    Installeer code permanent
 * let::                      Locale variabelen maken en initialiseren
 * if::                       Wat als?
@@ -524,7 +524,7 @@ Recursieve patronen
 * Accumulate::               Accumulate
 * Bewaar::                   Bewaar
 
-Zoekopdrachten met reguliere expressies
+Reguliere expressie zoekopdrachten
 
 
 
@@ -1006,12 +1006,12 @@ net als bloemen in een veld met een stenen muur er omheen.
 * Menu:
 
 * Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
-* Lisp atoms::               Elementaire entiteiten
+* Lisp atomen::              Elementaire entiteiten
 * Whitespace in lijsten::    Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 
 
-File: emacs-lisp-intro-nl.info,  Node: Genummerde lijsten,  Next: Lisp atoms,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Genummerde lijsten,  Next: Lisp atomen,  Up: Lisp lijsten
 
 Getallen, lijsten binnen lijsten
 --------------------------------
@@ -1037,10 +1037,10 @@ Lisp lijsten, omdat zij ‘;’ en ‘.’ als leesteken bevatten.)
 bestaat uit de woorden ‘van’, ‘binnen’, ‘een’ en ‘lijst’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lisp atoms,  Next: Whitespace in lijsten,  Prev: Genummerde lijsten,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Lisp atomen,  Next: Whitespace in lijsten,  Prev: Genummerde lijsten,  Up: Lisp lijsten
 
-1.1.1 Lisp atoms
-----------------
+1.1.1 Lisp atomen
+-----------------
 
 Wat we woorden genoemd hebben, heten in Lisp “atomen”.  Deze term komt
 van de historische betekenis van het woord atoom, wat "onscheidbaar"
@@ -1111,7 +1111,7 @@ een andere atoom-soort dan getallen of symbolen en worden anders
 gebruikt.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Whitespace in lijsten,  Next: Typen van lijsten,  Prev: Lisp atoms,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Whitespace in lijsten,  Next: Typen van lijsten,  Prev: Lisp atomen,  Up: Lisp lijsten
 
 1.1.2 Whitespace in lijsten
 ---------------------------
@@ -2668,7 +2668,7 @@ er naar).
 * defun::                    De ‘defun’ macro.
 * Installeer::               Installeer een functiedefinitie
 * Interactief::              Een functie interactief maken.
-* Interactieve operaties::   Verschillende opties voor ‘interactive’.
+* Interactieve opties::      Verschillende opties voor ‘interactive’.
 * Permanent installeren::    Installeer code permanent
 * let::                      Locale variabelen maken en initialiseren
 * if::                       Wat als?
@@ -2801,9 +2801,9 @@ functie typt.  Overigens, wanneer je een documentatiestring als deze
 schrijft moet je van de eerste regel een complete zin maken, omdat
 sommige commando's, zoals ‘apropos’, alleen de eerste regel tonen van
 een meerregelige documentatiestring.  Ook moet je de tweede regel van
-een documenatiestring, wanneer die er is, niet laten inspringen, omdat
+een documentatiestring, wanneer die er is, niet laten inspringen, omdat
 dit er raar uitziet wanner je ‘C-h f’ (‘describe-function’) gebruikt.
-De documenatiestring is optioneel, maar is zo nuttig, dat die deel zou
+De documentatiestring is optioneel, maar is zo nuttig, dat die deel zou
 vrijwel elke functie die je schrijft zou moeten zijn.
 
    De derde regel van ons voorbeeld bestaat uit de body van de
@@ -2888,7 +2888,8 @@ typen van ‘C-h f’ (‘describe-function’) en dan de naam van de functie
 ‘vermenigvuldig-met-zeven’.  Wanneer je dat doet dan verschijnt een
 ‘*Help*’-venster op het scherm, dat zegt:
 
-     vermenigvuldig-met-zeven is a Lisp function.
+     vermenigvuldig-met-zeven is an interpreted-function.
+
      (vermenigvuldig-met-zeven GETAL)
      Vermenigvuldig-met-zeven GETAL met zeven.
 
@@ -2934,7 +2935,7 @@ een functie, installeert die, test die en dan maak je verbeteringen of
 uitbreidingen en installeert die opnieuw.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Interactief,  Next: Interactieve operaties,  Prev: Installeer,  Up: Defuns schrijven
+File: emacs-lisp-intro-nl.info,  Node: Interactief,  Next: Interactieve opties,  Prev: Installeer,  Up: Defuns schrijven
 
 3.3 Een functie interactief maken
 =================================
@@ -3066,7 +3067,7 @@ verschijnt wanneer je een expressie evalueert wiens eerste element
 ‘message’ de tekst als een zij-effect zonder de aanhalingstekens.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Interactieve operaties,  Next: Permanent installeren,  Prev: Interactief,  Up: Defuns schrijven
+File: emacs-lisp-intro-nl.info,  Node: Interactieve opties,  Next: Permanent installeren,  Prev: Interactief,  Up: Defuns schrijven
 
 3.4 Verschillende opties voor ‘interactive’
 ===========================================
@@ -3135,7 +3136,7 @@ voorbeeld.  *Note Using ‘Interactive’: (elisp)Using Interactive, voor
 een meer complete uitleg over deze techniek.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Permanent installeren,  Next: let,  Prev: Interactieve operaties,  Up: Defuns schrijven
+File: emacs-lisp-intro-nl.info,  Node: Permanent installeren,  Next: let,  Prev: Interactieve opties,  Up: Defuns schrijven
 
 3.5 Code permanent installeren
 ==============================
@@ -4070,9 +4071,10 @@ hebben.
      Een lege string, ‘""’, is een string zonder karakters er in, en is
      kleiner dan elke andere string van karakters.
 
-     ‘string-equal’ verschaft de corresponderende test voor gelijkheid.
-     De kortere alternatieve naam is ‘string=’.  Er zijn geen string
-     test-functies die corresponderen met >, ‘>=’ of ‘<=’.
+     ‘string-equal’ provides the corresponding test for equality.  Its
+     shorter, alternative name is ‘string=’.  Recent versions of Emacs
+     added ‘string-greaterp’ with ‘string>’ as its shorter alternative.
+     There are no string test functions that correspond to ‘>=’ or ‘<=’.
 
 ‘message’
      Toon een boodschap in het echogebied.  Het eerste argument is een
@@ -4202,16 +4204,16 @@ voorwaarde dat je het ‘etags’-hulpprogramma alle nodes van alle
 handleidingen de met Emacs komen hebt laten registeren *note
 (emacs)Create Tags Table::).
 
-   To use the ‘xref-find-definitions’ command, type ‘M-.’ (i.e., press
-the period key while holding down the <META> key, or else type the <ESC>
-key and then type the period key), and then, at the prompt, type in the
-name of the function whose source code you want to see, such as
-‘mark-whole-buffer’, and then type <RET>.  (If the command doesn't
-prompt, invoke it with an argument: ‘C-u M-.’; *note Interactive
-Options::.)  Emacs will switch buffers and display the source code for
-the function on your screen(1).  To switch back to your current buffer,
-type ‘M-,’ or ‘C-x b <RET>’.  (On some keyboards, the <META> key is
-labeled <ALT>.)
+   Type ‘M-.’ (dus druk op de punt-toet terwijl je de <META>-toets
+ingedrukt houdt, of type anders de <ESC> gevold door de punt-toets) om
+het commando ‘xref-find-definitions’ te gebruiken, en vervolgens, na de
+prompt, de naam van de functie wiens broncode je wilt zien, zoals
+‘mark-whole-buffer’ en type daarna <RET>.  (Wanneer het commando geen
+prompt geeft, roep het dan met een argument: ‘C-u M-.’).  *note
+Interactieve opties::.)  Emacs schakelt buffers en toont de broncode van
+de functie op je scherm(1) Om naar je buffer terug te keren type je type
+‘M-,’ of ‘C-x b <RET>’.  (Op sommige toetsenborden, heeft de
+<META>-toets het label <ALT>.)
 
    Overigens worden de bestanden die Lisp code bevatten gewoonlijk
 “bibliotheken” genoemd.  De metafoor is afgeleid van een
@@ -4228,9 +4230,9 @@ doorzoeken op onderwerp sleutelwoorden."
 
    ---------- Footnotes ----------
 
-   (1) If instead of showing the source code for a Lisp function, Emacs
-asks you which tags table to visit, invoke ‘M-.’ from a buffer whose
-major mode is Emacs Lisp or Lisp Interaction.
+   (1) Wanneer Emacs, in plaats van het tonen van de broncode voor een
+Lisp functie, je vraagt welke tags tabel te openen, roep dan ‘M-.’ aan
+vanuit een buffer wiens major mode Emacs Lisp of Lisp Interaction is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: versimpelde-beginning-of-buffer,  Next: mark-whole-buffer,  Prev: Meer vinden,  Up: Buffer rondleiding
@@ -4254,7 +4256,7 @@ zullen we de volledige code bespreken.  (*Note Complete definitie van
 moet bevatten: het moet een expressie bevatten die de functie
 interactief maakt zodat het kan worden afgeroepen met typen van ‘M-x
 beginning-of-buffer’ of door het typen van een toetscombinatie zoals
-M-<.  Het moet code bevatten om de mark op de originele positie te
+‘M-<’.  Het moet code bevatten om de mark op de originele positie te
 plaatsen en het moet code bevatten om de cursor naar het begin van het
 buffer te verplaatsen.
 
@@ -4423,7 +4425,7 @@ van GNU Emacs ‘(push-mark (point-max))’.  Deze expressie zet de mark op
 het punt met het hoogste getal in het buffer.  Deze is aan het eind van
 het buffer (of, wanneer het buffer versmald is, aan het eind van het
 bereikbare deel van de buffer, *Note Versmallen en verbreden: Versmallen
-en verbreden.).  Nadat de mark is ingesteld, is de vorige mark, die op
+en verbreden.)  Nadat de mark is ingesteld, is de vorige mark, die op
 point was gezet, niet meer ingesteld, maar Emacs herinnert zijn positie,
 net als het alle recente marks altijd herinnert.  Dit betekent dat, als
 je het wilt, je naar de positie terugkeert met het twee keer typen van
@@ -4443,8 +4445,8 @@ argument is ‘t’.  Dit vertelt ‘push-mark’ om de mark te activeren
 wanneer Transient Mark mode aan staat.  Transient Mark mode highlight de
 huidige actieve region.  Het staat vaak uit.
 
-   De laatste regel van de functie is tenslotte code(goto-char
-(point-min))).  Dit is op precies dezelfde manier geschreven als in
+   De laatste regel van de functie is tenslotte ‘(goto-char
+(point-min)))’.  Dit is op precies dezelfde manier geschreven als in
 ‘beginning-of-buffer’.  De expressie verplaatst de cursor naar het
 minimale punt in het buffer, dat is het begin van het buffer (of het
 begin van het bereikbare deel van het buffer).  Het resultaat is dat
@@ -4669,7 +4671,7 @@ wordt gebruikt in ‘append-to-buffer’.
    Overigens is het waardevol hier op te merken dat een Lisp functie
 normaal zo geformatteerd is dat alles wat over meerdere regels verspreid
 is, meer inspringt dan het eerste symbool.  In deze functiedefinitie
-springt de codelet meer in dan de ‘defun’ en de ‘save-excursion’ springt
+springt de ‘let’ meer in dan de ‘defun’ en de ‘save-excursion’ springt
 meer in dan de ‘let’, zoals dit:
 
      (defun ...
@@ -5639,10 +5641,10 @@ Hiet is de complete tekst van de functie ‘beginning-of-buffer’:
 
 Afgezien van twee kleine punten toont de voorgaande bespreking hoe deze
 functie werkt.  Het eerste punt betreft een detail in de
-documenatiestring en het tweede punt betreft de laatste regel van de
+documentatiestring en het tweede punt betreft de laatste regel van de
 functie.
 
-   In de documenatiestring is een referencie naar een expressie:
+   In de documentatiestring is een referencie naar een expressie:
 
      \\[universal-argument]
 
@@ -6479,17 +6481,18 @@ File: emacs-lisp-intro-nl.info,  Node: Knippen en opslaan van tekst,  Next: Impl
 8 Tekst knippen en opslaan
 **************************
 
-Whenever you cut or clip text out of a buffer with a “kill” command in
-GNU Emacs, it is stored in a list and you can bring it back with a
-“yank” command.
+Steeds als je in GNU Emacs tekst uit een buffer snijdt op clipt met een
+“kill” commando, wordt het bewaard in een lijst en kan je het terughalen
+met een “yank” commando.
 
-   (The use of the word "kill" in Emacs for processes which specifically
-_do not_ destroy the values of the entities is an unfortunate historical
-accident.  A much more appropriate word would be "clip" since that is
-what the kill commands do; they clip text out of a buffer and put it
-into storage from which it can be brought back.  I have often been
-tempted to replace globally all occurrences of "kill" in the Emacs
-sources with "clip" and all occurrences of "killed" with "clipped".)
+   (Het gebruik van het woord "kill" in Emacs voor processen die _niet_
+specifiek de waarden van de entiteiten vernietigen), is een ongelukkig
+historisch ongeluk.  Een veel beter word zou "clip" zijn, omdat dat is
+wat kill commando's doen.  Zij clippen tekst uit het buffer en bergen
+dat in een opslagplaats op van waar het teruggebracht kan worden.  Ik
+ben vaak in de verleiding gekomen om overal waar "kill" voorkomt in de
+Emacs broncode dat met "clip" te vervangen en overal waar "killed"
+voorkomt met "clipped".)
 
 * Menu:
 
@@ -6505,52 +6508,54 @@ sources with "clip" and all occurrences of "killed" with "clipped".)
 
 File: emacs-lisp-intro-nl.info,  Node: Tekst opslaan,  Next: zap-to-char,  Up: Knippen en opslaan van tekst
 
-Storing Text in a List
-======================
+Tekst in een lijst opslaan
+==========================
 
-When text is cut out of a buffer, it is stored on a list.  Successive
-pieces of text are stored on the list successively, so the list might
-look like this:
+Wanneer tekst uit een buffer wordt gesneden, wordt het in een lijst
+opgeslagen.  Opvolgende stukken tekst worden in de lijst opeenvolgend
+opgeslagen, zodat de lijst er zo uit kan zien:
 
-     ("a piece of text" "previous piece")
+     ("een stuk tekst" "vorig stuk")
 
-The function ‘cons’ can be used to create a new list from a piece of
-text (an "atom", to use the jargon) and an existing list, like this:
+De functie ‘cons’ kan gebruikt worden om een nieuwe lijst te maken van
+een stuk tekst (een "atoom", om het jargon te gebruiken) en een
+bestaande lijst, zoals hier:
 
-     (cons "another piece"
-           '("a piece of text" "previous piece"))
+     (cons "nog een stuk"
+           '("een stuk tekst" "vorig stuk"))
 
-If you evaluate this expression, a list of three elements will appear in
-the echo area:
+Wanneer je deze expressie evalueert, verschijnt een lijst met drie
+elementen in het echogebied:
 
-     ("another piece" "a piece of text" "previous piece")
+     ("nog een stuk" "een stuk tekst" "vorig stuk")
 
-   With the ‘car’ and ‘nthcdr’ functions, you can retrieve whichever
-piece of text you want.  For example, in the following code, ‘nthcdr 1
-...’ returns the list with the first item removed; and the ‘car’ returns
-the first element of that remainder--the second element of the original
-list:
+   Met de functies ‘car’ en ‘nthcdr’ haal je een willekeurig stuk tekst
+naar keuze op.  Bijvoorbeeld, in de volgende code geeft ‘nthcdr 1 ...’
+de lijst met eerste element verwijderd terug, en de ‘car’ geeft het
+eerst element van de rest terug--het tweede element van de
+oorspronkelijke lijst:
 
-     (car (nthcdr 1 '("another piece"
-                      "a piece of text"
-                      "previous piece")))
-          ⇒ "a piece of text"
+     (car (nthcdr 1 '("nog een stuk"
+                       "een stuk tekst"
+                       "vorig stuk")))
+           ⇒ "een stuk tekst"
 
-   The actual functions in Emacs are more complex than this, of course.
-The code for cutting and retrieving text has to be written so that Emacs
-can figure out which element in the list you want--the first, second,
-third, or whatever.  In addition, when you get to the end of the list,
-Emacs should give you the first element of the list, rather than nothing
-at all.
+   De echte functies in Emacs zijn natuurlijk meer complex dan dit.  De
+code voor het snijden en terughalen van tekst moet zo zijn geschreven
+dat Emacs kan uitzoeken welk element in de lijst je wilt--eerste,
+tweede, derde, of welke dan ook.  Verder, wanneer je aan het einde van
+lijst komt, moet Emacs je het eerste element van de lijst geven, in
+plaats van helemaal niets.
 
-   The list that holds the pieces of text is called the “kill ring”.
-This chapter leads up to a description of the kill ring and how it is
-used by first tracing how the ‘zap-to-char’ function works.  This
-function calls a function that invokes a function that manipulates the
-kill ring.  Thus, before reaching the mountains, we climb the foothills.
+   De lijst die de stukken tekst bevat het de “kill ring”.  Dit
+hoofdstuk werkt naar een beschijving van de kill ring toe en hoe die
+gebruikt wordt door eerst te volgen hoe de functie ‘zap-to-char’ werkt.
+Deze functie roept een functie aan die een functie start die de kill
+ring manipuleert.  Dus, voordat we de bergen bereiken, beklimmen we
+eerst de voetheuvels.
 
-   A subsequent chapter describes how text that is cut from the buffer
-is retrieved.  *Note Yanking Text Back: Yanking.
+   Een volgend hoofdstuk beschrijft hoe tekst dat uit het buffer is
+gesneden wordt teruggehaald.  *Note Tekst terug yanken: Yanking.
 
 
 File: emacs-lisp-intro-nl.info,  Node: zap-to-char,  Next: kill-region,  Prev: Tekst opslaan,  Up: Knippen en opslaan van tekst
@@ -6558,7 +6563,7 @@ File: emacs-lisp-intro-nl.info,  Node: zap-to-char,  Next: kill-region,  Prev: T
 8.1 ‘zap-to-char’
 =================
 
-Let us look at the interactive ‘zap-to-char’ function.
+Laten we naar de interactieve functie ‘zap-to-char’ kijken.
 
 * Menu:
 
@@ -6572,30 +6577,26 @@ Let us look at the interactive ‘zap-to-char’ function.
 
 File: emacs-lisp-intro-nl.info,  Node: Complete zap-to-char,  Next: zap-to-char interactief,  Up: zap-to-char
 
-The Complete ‘zap-to-char’ Implementation
------------------------------------------
+De complete ‘zap-to-char’ implementatie
+---------------------------------------
 
-The ‘zap-to-char’ function removes the text in the region between the
-location of the cursor (i.e., of point) up to and including the next
-occurrence of a specified character.  The text that ‘zap-to-char’
-removes is put in the kill ring; and it can be retrieved from the kill
-ring by typing ‘C-y’ (‘yank’).  If the command is given an argument, it
-removes text through that number of occurrences.  Thus, if the cursor
-were at the beginning of this sentence and the character were ‘s’,
-‘Thus’ would be removed.  If the argument were two, ‘Thus, if the curs’
-would be removed, up to and including the ‘s’ in ‘cursor’.
+De functie ‘zap-to-char’ verwijdert de tekst in de region tussen de
+lokatie van de cursor (dus van point) tot en met waar het
+gespecificeerde karakter verschijnt.  De tekst die ‘zap-to-char’
+verwijdert wordt in de kill ring gestopt en het kan uit de kill ring
+worden opgehaald door ‘C-y’ (‘yank’) te typen.
 
-   If the specified character is not found, ‘zap-to-char’ will say
-"Search failed", tell you the character you typed, and not remove any
-text.
+   Wanneer het gespecificeerde karakter niet gevonden is, zegt
+‘zap-to-char’ "Search failed", en welk karakter je typte, en verwijdert
+geen tekst.
 
-   In order to determine how much text to remove, ‘zap-to-char’ uses a
-search function.  Searches are used extensively in code that manipulates
-text, and we will focus attention on them as well as on the deletion
-command.
+   Om vast te stellen hoeveel tekst te verwijderen, gebruikt
+‘zap-to-char’ een zoekfunctie.  Zoeken wordt extensief gebruikt in code
+die tekst manipuleert, en wij zullen aandacht aan ze besteden, net als
+aan de delete commando's.
 
-   Here is the complete text of the version 22 implementation of the
-function:
+   Hier is de complete tekst van de vesie 22 implementatie van de
+functie:
 
      (defun zap-to-char (arg char)
        "Kill up to and including ARG'th occurrence of CHAR.
@@ -6609,8 +6610,8 @@ function:
                                               nil nil arg)
                               (point))))
 
-   The documentation is thorough.  You do need to know the jargon
-meaning of the word "kill".
+   De documentatie is grondig.  Je moet weten wat in het jargon het
+woord "kill" betekent.
 
    The version 22 documentation string for ‘zap-to-char’ uses ASCII
 grave accent and apostrophe to quote a symbol, so it appears as
@@ -6626,46 +6627,47 @@ strings can also simply use curved quotes directly.
 
 File: emacs-lisp-intro-nl.info,  Node: zap-to-char interactief,  Next: zap-to-char body,  Prev: Complete zap-to-char,  Up: zap-to-char
 
-8.1.1 The ‘interactive’ Expression
-----------------------------------
+8.1.1 De ‘interactive’ expressie
+--------------------------------
 
-The interactive expression in the ‘zap-to-char’ command looks like this:
+De interactive expressie in het ‘zap-to-char’ commando ziet er zo uit:
 
      (interactive "p\ncZap to char: ")
 
-   The part within quotation marks, ‘"p\ncZap to char: "’, specifies two
-different things.  First, and most simply, is the ‘p’.  This part is
-separated from the next part by a newline, ‘\n’.  The ‘p’ means that the
-first argument to the function will be passed the value of a “processed
-prefix”.  The prefix argument is passed by typing ‘C-u’ and a number, or
-‘M-’ and a number.  If the function is called interactively without a
-prefix, 1 is passed to this argument.
+   Het gedeelte tussen de aanhalingstekens, ‘"p\ncZap to char: "’,
+specificeert twee verschillende dingen.  Het eerste en meest eenvoudige
+is de ‘p’.  Dit deel is met een nieuwe regelteken ‘\n’ gescheiden van
+het volgende deel.  Het ‘p’ betekent dat het eerste argument van de
+functie de waarde van een “processed prefix” doorgeeft.  Het
+prefix-argument wordt doorgegeven door ‘C-u’ en een getal te typen, of
+‘M-’ en een cijfer.  Wanneer een functie interactief wordt aangeroepen
+zonder een prefix, dan wordt 1 als argument doorgegeven.
 
-   The second part of ‘"p\ncZap to char: "’ is ‘cZap to char: ’.  In
-this part, the lower case ‘c’ indicates that ‘interactive’ expects a
-prompt and that the argument will be a character.  The prompt follows
-the ‘c’ and is the string ‘Zap to char: ’ (with a space after the colon
-to make it look good).
+   Het tweede deel van ‘"p\ncZap to char: "’ is ‘cZap to char: ’.  In
+dit deel geeft de kleine letter ‘c’ aan dat ‘interactive’ een prompt
+verwacht en dat het argument een karakter is.  De prompt volgt op de ‘c’
+en is de string ‘Zap to char: ’ (met een spatie achter de dubbele punt
+zodat het er goed uitziet.)
 
-   What all this does is prepare the arguments to ‘zap-to-char’ so they
-are of the right type, and give the user a prompt.
+   Dit alles bereidt de argumenten van ‘zap-to-char’ voor, zodat die van
+het juiste type zijn en de gebruiker een prompt geven.
 
-   In a read-only buffer, the ‘zap-to-char’ function copies the text to
-the kill ring, but does not remove it.  The echo area displays a message
-saying that the buffer is read-only.  Also, the terminal may beep or
-blink at you.
+   In een read-only buffer kopieert de functie ‘zap-to-char’ de tekst
+naar de kill ring, maar verwijdert die niet.  Het echogebied toont een
+boodschap dat het buffer read-only is.  Ook kan de terminal piepen of
+knipperen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: zap-to-char body,  Next: search-forward,  Prev: zap-to-char interactief,  Up: zap-to-char
 
-8.1.2 The Body of ‘zap-to-char’
+8.1.2 De body van ‘zap-to-char’
 -------------------------------
 
-The body of the ‘zap-to-char’ function contains the code that kills
-(that is, removes) the text in the region from the current position of
-the cursor up to and including the specified character.
+De body van de functie ‘zap-to-char’ bevat code die de tekst in de
+region van de huidige cursorpositie tot en met het gespecificeerde
+karakter killt (dat wil zeggen, verwijdert).
 
-   The first part of the code looks like this:
+   Het eerste deel van de code ziet er zo uit:
 
      (if (char-table-p translation-table-for-input)
          (setq char (or (aref translation-table-for-input char) char)))
@@ -6673,144 +6675,146 @@ the cursor up to and including the specified character.
                             (search-forward (char-to-string char) nil nil arg)
                             (point)))
 
-‘char-table-p’ is a hitherto unseen function.  It determines whether its
-argument is a character table.  When it is, it sets the character passed
-to ‘zap-to-char’ to one of them, if that character exists, or to the
-character itself.  (This becomes important for certain characters in
-non-European languages.  The ‘aref’ function extracts an element from an
-array.  It is an array-specific function that is not described in this
-document.  *Note Arrays: (elisp)Arrays.)
+‘char-table-p’ functie zien we voor het eerst.  Het stelt vast of het
+argument een karakter-tabel is.  Wanneer dat het geval is, dan stelt die
+het karakter was aan ‘zap-to-char’ wordt doorgegeven aan een van hen in.
+(Dit is belangrijk voor bepaalde karakters in niet-Europese talen.  De
+functie ‘aref’ extraheert een element uit een array.  Het is een
+array-specifieke functie die we in dit document niet bespreken.  *Note
+Arrays: (elisp)Arrays.)
 
-‘(point)’ is the current position of the cursor.
+‘(point)’ is de huidige cursorpositie.
 
-   The next part of the code is an expression using ‘progn’.  The body
-of the ‘progn’ consists of calls to ‘search-forward’ and ‘point’.
+   Het volgende deel van de code is een expressie met ‘progn’.  De body
+van de ‘progn’ bestaat uit aanroepen van ‘search-forward’ en ‘point’.
 
-   It is easier to understand how ‘progn’ works after learning about
-‘search-forward’, so we will look at ‘search-forward’ and then at
-‘progn’.
+   Het is eenvoudiger te begrijpen hoe ‘progn’ werkt nadat we
+‘search-forward’ bestudeerd hebben, dus we kijken eerst naar
+‘search-forward’ en dan naar ‘progn’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: search-forward,  Next: progn,  Prev: zap-to-char body,  Up: zap-to-char
 
-8.1.3 The ‘search-forward’ Function
------------------------------------
+8.1.3 De functie ‘search-forward’
+---------------------------------
 
-The ‘search-forward’ function is used to locate the zapped-for-character
-in ‘zap-to-char’.  If the search is successful, ‘search-forward’ leaves
-point immediately after the last character in the target string.  (In
-‘zap-to-char’, the target string is just one character long.
-‘zap-to-char’ uses the function ‘char-to-string’ to ensure that the
-computer treats that character as a string.)  If the search is
-backwards, ‘search-forward’ leaves point just before the first character
-in the target.  Also, ‘search-forward’ returns ‘t’ for true.  (Moving
-point is therefore a side effect.)
+De functie ‘search-forward’ wordt ‘zap-to-char’ gebruikt het
+zapped-for-karakter te vinden.  Wanneer het zoeken succesvol is, zet
+‘search-forward’ point onmiddellijk achter het laatste karakter in de
+doelstring.  (In ‘zap-to-char’ is de doelstring slechts één karakter
+lang.  ‘zap-to-char’ gebruikt de functie ‘char-to-string’ om zeker te
+stellen dat de computer het karakter als string behandelt.)  Wanneer het
+zoeken achterwaarts is dan zet ‘search-forward’ point onmiddellijk voor
+het eerste karakter in het doel.  Ook geeft ‘search-forward’ ‘t’ terug,
+voor waar.  (Het verplaatsen van point is daarom een zij-effect.)
 
-   In ‘zap-to-char’, the ‘search-forward’ function looks like this:
+   In ‘zap-to-char’ ziet de functie ‘search-forward’ er zo uit:
 
      (search-forward (char-to-string char) nil nil arg)
 
-   The ‘search-forward’ function takes four arguments:
+   De functie ‘search-forward’ heeft vier argumenten:
 
-  1. The first argument is the target, what is searched for.  This must
-     be a string, such as ‘"z"’.
+  1. Het eerste argument is het doel, waar naar gezocht wordt.  Dit moet
+     een string zijn, zoals ‘"z"’.
 
-     As it happens, the argument passed to ‘zap-to-char’ is a single
-     character.  Because of the way computers are built, the Lisp
-     interpreter may treat a single character as being different from a
-     string of characters.  Inside the computer, a single character has
-     a different electronic format than a string of one character.  (A
-     single character can often be recorded in the computer using
-     exactly one byte; but a string may be longer, and the computer
-     needs to be ready for this.)  Since the ‘search-forward’ function
-     searches for a string, the character that the ‘zap-to-char’
-     function receives as its argument must be converted inside the
-     computer from one format to the other; otherwise the
-     ‘search-forward’ function will fail.  The ‘char-to-string’ function
-     is used to make this conversion.
+     Het argument dat aan ‘zap-to-char’ wordt doorgegeven is een enkel
+     karakter.  Door de manier waarop computers zijn gebouwd kan de Lisp
+     interpreter een enkel karakter anders behandelen dan een string met
+     karakters.  Binnen de computer heeft een enkel karakter een ander
+     elektronisch formaat dan een string van één karakter.  (Een enkel
+     karakter kan vaak worden opgeslagen als precies één byte, maar een
+     string kan langer zijn en de computer moet daarop voorbereid zijn.)
+     Omdat de functie ‘search-forward’ naar een string zoekt, moet het
+     karakter dat de functie ‘zap-to-char’ ontvangt in de computer
+     worden geconverteerd van het ene formaat in het andere, anders
+     faalt de functie ‘search-forward’.  Deze conversie wordt met de
+     functie ‘char-to-string’ gemaakt.
 
-  2. The second argument bounds the search; it is specified as a
-     position in the buffer.  In this case, the search can go to the end
-     of the buffer, so no bound is set and the second argument is ‘nil’.
+  2. Het tweede argument begrenst het zoeken, het is gespecificeerd als
+     een positie in het buffer.  In dit geval kan het zoeken tot het
+     einde van het buffer doorgaan, daarom is geen grens bepaald en is
+     het tweede argument ‘nil’.
 
-  3. The third argument tells the function what it should do if the
-     search fails--it can signal an error (and print a message) or it
-     can return ‘nil’.  A ‘nil’ as the third argument causes the
-     function to signal an error when the search fails.
+  3. Het derde argument vertelt de functie wat het moet doen indien het
+     zoeken faailt--het kan een fout signaleren (en een boodschap tonen)
+     of het kan ‘nil’ teruggeven.  Een ‘nil’ als derde argument zorgt
+     dat de functie een fout signaleert wanneer het zoeken faalt.
 
-  4. The fourth argument to ‘search-forward’ is the repeat count--how
-     many occurrences of the string to look for.  This argument is
-     optional and if the function is called without a repeat count, this
-     argument is passed the value 1.  If this argument is negative, the
-     search goes backwards.
+  4. Het vierde argument van ‘search-forward’ is het aantal te
+     herhalen--naar hoe veel herhalingen van de string te zoeken.  Dit
+     argument is optioneel en wanneer de functie is aangeroepen zonder
+     dit aantal, wordt een argument met de waarde 1 doorgegeven.
+     Wanneer dit argument negatief is, vindt het zoeken achterwaarts
+     plaats.
 
-   In template form, a ‘search-forward’ expression looks like this:
+   In slaboonvorm ziet een ‘search-forward’ expressie er zo uit:
 
-     (search-forward "TARGET-STRING"
-                     LIMIT-OF-SEARCH
-                     WHAT-TO-DO-IF-SEARCH-FAILS
-                     REPEAT-COUNT)
+     (search-forward "DOEL-STRING"
+                     ZOEKLIMIET
+                     WAT-TE-DOEN-ALS-ZOEKEN-FAALT
+                     AANTAL-HERHALINGEN)
 
-   We will look at ‘progn’ next.
+   We kijken nu naar ‘progn’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: progn,  Next: Samenvatting zap-to-char,  Prev: search-forward,  Up: zap-to-char
 
-8.1.4 The ‘progn’ Special Form
+8.1.4 De speciale vorm ‘progn’
 ------------------------------
 
-‘progn’ is a special form that causes each of its arguments to be
-evaluated in sequence and then returns the value of the last one.  The
-preceding expressions are evaluated only for the side effects they
-perform.  The values produced by them are discarded.
+De speciale vorm ‘progn’ laat elk van zijn argumenten achtereenvolgens
+evalueren en geeft daarna de waarde van de laatste terug.  De voorgaande
+expressies worden uitsluitend geëvalueerd voor de zij-effecten die zij
+uitvoeren.  De waarden die zij produceren worden weggegooid.
 
-   The template for a ‘progn’ expression is very simple:
+   Het sjabloon voor een ‘progn’ expressie is erg eenvoudig:
 
      (progn
        BODY...)
 
-   In ‘zap-to-char’, the ‘progn’ expression has to do two things: put
-point in exactly the right position; and return the location of point so
-that ‘kill-region’ will know how far to kill to.
+   In ‘zap-to-char’ moet de ‘progn’ expressie twee dingen doen: zet
+point exact op de juiste positie en geef de locatie van point zodat
+‘kill-region’ weet hoe ver het moet killen.
 
-   The first argument to the ‘progn’ is ‘search-forward’.  When
-‘search-forward’ finds the string, the function leaves point immediately
-after the last character in the target string.  (In this case the target
-string is just one character long.)  If the search is backwards,
-‘search-forward’ leaves point just before the first character in the
-target.  The movement of point is a side effect.
+   Het eerste argument van de ‘progn’ is ‘search-forward’.  Wanneer
+‘search-forward’ de string vindt, zet het point onmiddellijk achter het
+laatste karakter in de doelstring.  (In dit geval is de doelstring
+slechts één karakter lang.)  Wanneer het achterwaarts zoekt zet
+‘search-forward’ point onmiddellijk voor het eerste karakter van het
+doel.  Het verplaatsen van point is een zij-effect.
 
-   The second and last argument to ‘progn’ is the expression ‘(point)’.
-This expression returns the value of point, which in this case will be
-the location to which it has been moved by ‘search-forward’.  (In the
-source, a line that tells the function to go to the previous character,
-if it is going forward, was commented out in 1999; I don't remember
-whether that feature or mis-feature was ever a part of the distributed
-source.)  The value of ‘point’ is returned by the ‘progn’ expression and
-is passed to ‘kill-region’ as ‘kill-region’'s second argument.
+   Het tweede en laatste argument van ‘progn’ is de expressie ‘(point)’.
+Deze expressie geeft de waarde van point, wat in dit geval de lokatie is
+waar het naar verplaatst is door ‘search-forward’.  (In de broncode is
+een regel die de functie vertelt om naar het voorgaande karakter te gaan
+wanneer het voorwaarts gaat, die in 1999 uitgecomment is.  Ik kan me
+niet herinneren of die eigenschap of onjuiste eigenschap ooit een deel
+van de gedistribueerde broncode was.)  De waarde van ‘point’ wordt
+teruggeven door de ‘progn’ expressie en wordt doorgegeven aan
+‘kill-region’ als het tweede argument van ‘kill-region’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Samenvatting zap-to-char,  Prev: progn,  Up: zap-to-char
 
-8.1.5 Summing up ‘zap-to-char’
+8.1.5 ‘zap-to-char’ samengevat
 ------------------------------
 
-Now that we have seen how ‘search-forward’ and ‘progn’ work, we can see
-how the ‘zap-to-char’ function works as a whole.
+Nu dat we hebben gezien hoe ‘search-forward’ en ‘progn’ werken, kunnen
+we zien hoe de functie ‘zap-to-char’ als geheel werkt.
 
-   The first argument to ‘kill-region’ is the position of the cursor
-when the ‘zap-to-char’ command is given--the value of point at that
-time.  Within the ‘progn’, the search function then moves point to just
-after the zapped-to-character and ‘point’ returns the value of this
-location.  The ‘kill-region’ function puts together these two values of
-point, the first one as the beginning of the region and the second one
-as the end of the region, and removes the region.
+   Het eerste argument voor ‘kill-region’ is de cursorpositie op het
+moment dat het ‘zap-to-char’ commando werd gegeven.  Binnen ‘progn’
+verplaatst de zoekfunctie vervolgens point naar onmiddellijk achter het
+zapped-to-character en ‘point’ geeft de waarde van deze lokatie terug.
+De ‘kill-region’ voegt deze twee waarden van point, het eerste als het
+begin van de region en en de tweede als einde van de region, en
+verwijdert de region.
 
-   The ‘progn’ special form is necessary because the ‘kill-region’
-command takes two arguments; and it would fail if ‘search-forward’ and
-‘point’ expressions were written in sequence as two additional
-arguments.  The ‘progn’ expression is a single argument to ‘kill-region’
-and returns the one value that ‘kill-region’ needs for its second
+   De speciale vorm ‘progn’ is noodzakelijk omdat het ‘kill-region’ twee
+argumenten verwacht, en het zou falen wanneer de ‘search-forward’ en
+‘point’ expressies als twee opeenvolgende argumenten geschreven zouden
+worden.  De ‘progn’ expressie is een enkel argument voor ‘kill-region’
+en geeft de ene waarde terug die ‘kill-region’ nodig heeft als tweede
 argument.
 
 
@@ -6819,19 +6823,19 @@ File: emacs-lisp-intro-nl.info,  Node: kill-region,  Next: copy-region-as-kill, 
 8.2 ‘kill-region’
 =================
 
-The ‘zap-to-char’ function uses the ‘kill-region’ function.  This
-function clips text from a region and copies that text to the kill ring,
-from which it may be retrieved.
+De functie ‘zap-to-char’ gebruikt de ‘kill-region’.  Deze functie clipt
+de tekst van een region en kopieert die tekst naar de kill ring, van
+waar het kan worden opgehaald.
 
-   The Emacs 22 version of that function uses ‘condition-case’ and
-‘copy-region-as-kill’, both of which we will explain.  ‘condition-case’
-is an important special form.
+   De Emacs 22 versie van die functie gebruikt ‘condition-case’ en
+‘copy-region-as-kill’ die wij beide uitleggen.  ‘condition-case’ is een
+belangrijke speciale vorm.
 
-   In essence, the ‘kill-region’ function calls ‘condition-case’, which
-takes three arguments.  In this function, the first argument does
-nothing.  The second argument contains the code that does the work when
-all goes well.  The third argument contains the code that is called in
-the event of an error.
+   De functie ‘kill-region’ in essentie roept ‘condition-case’ aan, die
+drie argumenten verwacht.  Het eerste argument deze functie doet niets.
+Het tweede argument bevat de code die het werk doet als alles goed gaat.
+Het derde argument bevat de code die aangeroepen wordt in het geval van
+een fout.
 
 * Menu:
 
@@ -6842,85 +6846,85 @@ the event of an error.
 
 File: emacs-lisp-intro-nl.info,  Node: Complete kill-region,  Next: condition-case,  Up: kill-region
 
-The Complete ‘kill-region’ Definition
--------------------------------------
+De complete ‘kill-region’ definitie
+-----------------------------------
 
-We will go through the ‘condition-case’ code in a moment.  First, let us
-look at the definition of ‘kill-region’, with comments added:
+We gaan zo meteen door de code van ‘condition-case’.  Laten we eerst
+naar de definitie van ‘kill-region’ kijken, met toegevoegd commentaar:
 
      (defun kill-region (beg end)
        "Kill (\"cut\") text between point and mark.
      This deletes the text from the buffer and saves it in the kill ring.
      The command \\[yank] can retrieve it from there. ... "
 
-       ;; • Since order matters, pass point first.
+       ;; • Omdat volgorde belangrijk is, geeft eerst point door.
        (interactive (list (point) (mark)))
-       ;; • And tell us if we cannot cut the text.
-       ;; 'unless' is an 'if' without a then-part.
+       ;; • En vertel ons wanneer we geen tekst kunnen snijden.
+       ;; 'unless' is een 'if' zonder een dan-deel.
        (unless (and beg end)
          (error "The mark is not set now, so there is no region"))
 
-       ;; • 'condition-case' takes three arguments.
-       ;;    If the first argument is nil, as it is here,
-       ;;    information about the error signal is not
-       ;;    stored for use by another function.
+       ;; • 'condition-case' verwacht drie argumenten.
+       ;;    Wanneer het eerste argument nil is, zoals hier,
+       ;;    wordt information over het fout signaal niet
+       ;;    bewaard voor gebruik in een andere functie.
        (condition-case nil
 
-           ;; • The second argument to 'condition-case' tells the
-           ;;    Lisp interpreter what to do when all goes well.
+           ;; • Het tweede argument van 'condition-case' vertelt de
+           ;;    Lisp interpreter wat te doen als alles goed gaat.
 
-           ;;    It starts with a 'let' function that extracts the string
-           ;;    and tests whether it exists.  If so (that is what the
-           ;;    'when' checks), it calls an 'if' function that determines
-           ;;    whether the previous command was another call to
-           ;;    'kill-region'; if it was, then the new text is appended to
-           ;;    the previous text; if not, then a different function,
-           ;;    'kill-new', is called.
+           ;;    Het start met een 'let' functie die de string extraheert
+           ;;    en test of die bestaat. Zo ja (dat is wat de
+           ;;    'when' checkt), roept het een 'if' functie aan die vaststelt
+           ;;    of het vorige commando een andere aanroep was van
+           ;;    'kill-region'; zo ja, wordt de nieuwe tekst achter de
+           ;;    vorige tekst geplakt; zo niet dan wordt een andere functie,
+           ;;    'kill-new', aangeroepen.
 
-           ;;    The 'kill-append' function concatenates the new string and
-           ;;    the old.  The 'kill-new' function inserts text into a new
-           ;;    item in the kill ring.
+           ;;    De 'kill-append' functie plakken de nieuwe string en
+           ;;    de oude aan elkaar. De 'kill-new' functie voegt tekst in als een
+           ;;    nieuw item in de kill ring.
 
-           ;;    'when' is an 'if' without an else-part.  The second 'when'
-           ;;    again checks whether the current string exists; in
-           ;;    addition, it checks whether the previous command was
-           ;;    another call to 'kill-region'.  If one or the other
-           ;;    condition is true, then it sets the current command to
-           ;;    be 'kill-region'.
+           ;;    'when' is een 'if' zonder een dan-deel.  De tweede 'when'
+           ;;    controleert opnieuw of de bestaande string bestaat;
+           ;;    daarnaast, controleert het of het vorige commando een
+           ;;    andere aanroep van 'kill-region' was.  Wanneer een van beide
+           ;;    condities waar zijn, dan stelt het het huidige commando in
+           ;;    op 'kill-region'.
            (let ((string (filter-buffer-substring beg end t)))
              (when string                    ;STRING is nil if BEG = END
-               ;; Add that string to the kill ring, one way or another.
+               ;; Voeg die string op of andere manier aan de kill ring toe.
                (if (eq last-command 'kill-region)
-                   ;;    − 'yank-handler' is an optional argument to
-                   ;;    'kill-region' that tells the 'kill-append' and
-                   ;;    'kill-new' functions how deal with properties
-                   ;;    added to the text, such as 'bold' or 'italics'.
+                   ;;    − 'yank-handler' is een optional argument van
+                   ;;    'kill-region' dat aan de functies 'kill-append' en
+                   ;;    'kill-new' hoe om te gaan met eigenschappen toegevoegd
+                   ;;    aan de tekst, zoals 'bold' of 'italics'.
                    (kill-append string (< end beg) yank-handler)
                  (kill-new string nil yank-handler)))
              (when (or string (eq last-command 'kill-region))
                (setq this-command 'kill-region))
              nil)
 
-         ;;  • The third argument to 'condition-case' tells the interpreter
-         ;;    what to do with an error.
-         ;;    The third argument has a conditions part and a body part.
-         ;;    If the conditions are met (in this case,
-         ;;             if text or buffer are read-only)
-         ;;    then the body is executed.
+         ;;  • Het derde argument van 'condition-case' vertelt de interpreter
+         ;;    hoe om te gaan met een fout.
+         ;;    Het derde argument heeft een condities deel en een body deel.
+         ;;    Wanneer aan de condities is voldaan (in dit geval,
+         ;;             wanneer tekst of buffer read-only zijn)
+         ;;    dan wordt de body uitgevoerd.
          ;;    The first part of the third argument is the following:
          ((buffer-read-only text-read-only) ;; the if-part
           ;; ...  the then-part
           (copy-region-as-kill beg end)
-          ;;    Next, also as part of the then-part, set this-command, so
-          ;;    it will be set in an error
+          ;;    Vervolgens, dus als deel van het dan-deel, zet this-command, zodat
+          ;;    het wordt gebruikt in geval van een fout
           (setq this-command 'kill-region)
-          ;;    Finally, in the then-part, send a message if you may copy
-          ;;    the text to the kill ring without signaling an error, but
-          ;;    don't if you may not.
+          ;;    Tenslotte, in het dan-deel, stuur een boodschap wanneer je de
+          ;;    tekst niet naar de the kill ring kan kopiëren zonder een fout te signaleren
+          ;;    maar doe dat niet als je het niet mag.
           (if kill-read-only-ok
               (progn (message "Read only text copied to kill ring") nil)
             (barf-if-buffer-read-only)
-            ;; If the buffer isn't read-only, the text is.
+            ;; Als het buffer niet read-only is, is de tekst.
             (signal 'text-read-only (list (current-buffer)))))))
 
 
@@ -6929,60 +6933,61 @@ File: emacs-lisp-intro-nl.info,  Node: condition-case,  Next: Lisp macro,  Prev:
 8.2.1 ‘condition-case’
 ----------------------
 
-As we have seen earlier (*note Generate an Error Message: Making
-Errors.), when the Emacs Lisp interpreter has trouble evaluating an
-expression, it provides you with help; in the jargon, this is called
-"signaling an error".  Usually, the computer stops the program and shows
-you a message.
+Wanneer de Emacs Lisp interpreter problemen heeft met het evalueren van
+een expressie dat geeft het je hulp, zoals we eerder gezien hebben
+(*note Een foutboodschap genereren: Fouten maken.).  In het jargon heet
+dit "een fout signaleren".  Meestal stopt de computer het programma en
+toont je een boodschap.
 
-   However, some programs undertake complicated actions.  They should
-not simply stop on an error.  In the ‘kill-region’ function, the most
-likely error is that you will try to kill text that is read-only and
-cannot be removed.  So the ‘kill-region’ function contains code to
-handle this circumstance.  This code, which makes up the body of the
-‘kill-region’ function, is inside of a ‘condition-case’ special form.
+   Sommige programma's voeren echter gecompliceerde acties uit.  Zij
+moeten bij een fout niet stoppen.  In de functie ‘kill-region’ is de
+meest voor de hand liggende fout dat je probeert tekst te killen die
+read-only is en niet kan worden verwijderd.  De functie ‘kill-region’
+bevat daarom code om met deze situatie om te gaan.  Deze code in de body
+van de functie ‘kill-region’ bevindt zich in een speciale vorm
+‘condition-case’.
 
-   The template for ‘condition-case’ looks like this:
+   Het sjabloon voor ‘condition-case’ ziet er zo uit:
 
      (condition-case
        VAR
        BODYFORM
        ERROR-HANDLER...)
 
-   The second argument, BODYFORM, is straightforward.  The
-‘condition-case’ special form causes the Lisp interpreter to evaluate
-the code in BODYFORM.  If no error occurs, the special form returns the
-code's value and produces the side-effects, if any.
+   Het tweede argument, BODYFORM is eenvoudig.  De speciale vorm
+‘condition-case’ laat de Lisp interpreter de code in BODYFORM evalueren.
 
-   In short, the BODYFORM part of a ‘condition-case’ expression
-determines what should happen when everything works correctly.
+   Kort gezegd, het BODYFORM-deel van een ‘condition-case’ expressie
+bepaalt wat moet gebeuren wanneer alles correct werkt.
 
-   However, if an error occurs, among its other actions, the function
-generating the error signal will define one or more error condition
-names.
+   Echter, wanneer een fout optreedt, definieert de functie, die naast
+zijn andere activiteiten het foutsignaal genereert, een of meer
+conditienamen.
 
-   An error handler is the third argument to ‘condition-case’.  An error
-handler has two parts, a CONDITION-NAME and a BODY.  If the
-CONDITION-NAME part of an error handler matches a condition name
-generated by an error, then the BODY part of the error handler is run.
+   Een error-handler is het derde argument van ‘condition-case’.  Een
+error-handler heeft twee delen, een CONDITIENAAM en een BODY.  Wanneer
+het CONDITIENAAM-deel van de error-handler overeenkomt met de
+conditienaam gegeneerd door een fout, dan wordt het BODY-deel van de
+error-handler uitgevoerd.
 
-   As you will expect, the CONDITION-NAME part of an error handler may
-be either a single condition name or a list of condition names.
+   Zoals je zou verwachten kan het CONDITIENAAM-deel van de
+error-handler een enkele conditienaam zijn of een lijst met
+conditienamen.
 
-   Also, a complete ‘condition-case’ expression may contain more than
-one error handler.  When an error occurs, the first applicable handler
-is run.
+   Een complete ‘condition-case’ expressie kan dus meer dan één
+error-handler bevatten.  Wanneer een fout optreedt, wordt de eerst
+toepasbare handler uitgevoerd.
 
-   Lastly, the first argument to the ‘condition-case’ expression, the
-VAR argument, is sometimes bound to a variable that contains information
-about the error.  However, if that argument is ‘nil’, as is the case in
-‘kill-region’, that information is discarded.
+   Tenslotte, het eerste argument van de ‘condition-case’ expressie, het
+VAR argument is soms gebonden aan een variabele die informatie over de
+fout bevat.  Wanneer dat argument echter ‘nil’ is, zoals dat bij
+‘kill-region’ het geval is, wordt die informatie genegeerd.
 
-   In brief, in the ‘kill-region’ function, the code ‘condition-case’
-works like this:
+   In het kort, in de functie ‘kill-region’ werkt de code
+‘condition-case’ als volgt:
 
-     IF NO ERRORS, RUN ONLY THIS CODE
-         BUT, IF ERRORS, RUN THIS OTHER CODE.
+     IF GEEN ERRORS, VOER ALLEEN DEZE CODE UIT
+         MAAR, IF ERRORS, VOER DEZE ANDERE CODE UIT.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Lisp macro,  Prev: condition-case,  Up: kill-region
@@ -6990,55 +6995,60 @@ File: emacs-lisp-intro-nl.info,  Node: Lisp macro,  Prev: condition-case,  Up: k
 8.2.2 Lisp macro
 ----------------
 
-The part of the ‘condition-case’ expression that is evaluated in the
-expectation that all goes well has a ‘when’.  The code uses ‘when’ to
-determine whether the ‘string’ variable points to text that exists.
+Het deel van de ‘condition-case’ expressie die wordt geëvalueerd in de
+verwachting dat alles goed gaat heeft een ‘when’.  De code stelt met
+‘when’ of de variabele ‘string’ naar bestaande tekst wijst.
 
-   A ‘when’ expression is simply a programmers' convenience.  It is like
-an ‘if’ without the possibility of an else clause.  In your mind, you
-can replace ‘when’ with ‘if’ and understand what goes on.  That is what
-the Lisp interpreter does.
+   Een ‘when’-expressie maakt het de programmeur makkelijker.  Het is
+als een ‘if’, zonder de mogelijkheid van een anders-clausule.  In je
+gedachten kun je ‘when’ met ‘if’ vervangen om te begrijpen wat er
+gebeurt.  Dat is wat de Lisp interpreter doet.
 
-   Technically speaking, ‘when’ is a Lisp macro.  A Lisp macro enables
-you to define new control constructs and other language features.  It
-tells the interpreter how to compute another Lisp expression which will
-in turn compute the value.  In this case, the other expression is an
-‘if’ expression.
+   Technisch gesproken is ‘when’ een Lisp macro.  Een Lisp macro stelt
+je in staat nieuwe control-constructies en andere taaleigenschappen te
+definieren.  Het vertelt de interpreter hoe het een andere Lisp
+expressie te berekenen die op zijn beurt de waarde berekend.  In dit
+geval is de andere expressie een ‘if’ expressie.
 
-   The ‘kill-region’ function definition also has an ‘unless’ macro; it
-is the opposite of ‘when’.  The ‘unless’ macro is like an ‘if’ except
-that it has no then-clause, and it supplies an implicit ‘nil’ for that.
+   De ‘kill-region’ functiedefinitie heeft ook een ‘unless’ macro.  Dit
+is het tegenovergestelde van ‘when’.  De ‘unless’ macro is net als ‘if’,
+behalve dat het geen dan-clausule heeft, en het verstrekt daarvoor een
+impliciete ‘nil’.
 
-   For more about Lisp macros, see *note Macros: (elisp)Macros.  The C
-programming language also provides macros.  These are different, but
-also useful.
+   Voor meer over Lisp macro's, zie *note Macros: (elisp)Macros.  De
+programmeertaal C vertrekt ook macro's.  Deze zijn anders, maar ook
+nuttig.
 
-   Regarding the ‘when’ macro, in the ‘condition-case’ expression, when
-the string has content, then another conditional expression is executed.
-This is an ‘if’ with both a then-part and an else-part.
+   Ten aanzien van de ‘when’ macro, wanneer de string in de
+‘condition-case’ expressie een inhoud heeft, dat wordt een andere
+conditionele expressie uitgevoerd.  Dit is een ‘if’ met zowel een
+dan-deel en een anders-deel.
 
      (if (eq last-command 'kill-region)
          (kill-append string (< end beg) yank-handler)
        (kill-new string nil yank-handler))
 
-   The then-part is evaluated if the previous command was another call
-to ‘kill-region’; if not, the else-part is evaluated.
+   Het dan-deel wordt geëvalueerd wanneer het voorgaande commando een
+andere aanroep van ‘kill-region’ was.  Zo niet, dan wordt het
+anders-deel geëvalueerd.
 
-   ‘yank-handler’ is an optional argument to ‘kill-region’ that tells
-the ‘kill-append’ and ‘kill-new’ functions how deal with properties
-added to the text, such as bold or italics.
+   ‘yank-handler’ is een optioneel argument voor ‘kill-region’ dat aan
+de functies ‘kill-append’ en ‘kill-new’ vertelt hoe het met de
+eigenschappen moet omgaan die aan de tekst zijn gekoppeld, zoals bold of
+italics.
 
-   ‘last-command’ is a variable that comes with Emacs that we have not
-seen before.  Normally, whenever a function is executed, Emacs sets the
-value of ‘last-command’ to the previous command.
+   ‘last-command’ is een variabele in Emacs die we nog niet eerder
+gezien hebben.  Steeds wanneer een functie wordt uitgevoerd, stelt Emacs
+Normaal gesproken de waarde van ‘last-command’ in op het voorgaande
+commando.
 
-   In this segment of the definition, the ‘if’ expression checks whether
-the previous command was ‘kill-region’.  If it was,
+   In dit segment van de definitie controleert de ‘if’ expressie of het
+voorgaande commando ‘kill-region’ was.  Zo ja, plakt
 
      (kill-append string (< end beg) yank-handler)
 
-concatenates a copy of the newly clipped text to the just previously
-clipped text in the kill ring.
+een kopie van de nieuw geclipte tekst aan de voorgaande zojuist geclipte
+tekst in de kill ring.
 
 
 File: emacs-lisp-intro-nl.info,  Node: copy-region-as-kill,  Next: Uitwijding naar C,  Prev: kill-region,  Up: Knippen en opslaan van tekst
@@ -7046,16 +7056,16 @@ File: emacs-lisp-intro-nl.info,  Node: copy-region-as-kill,  Next: Uitwijding na
 8.3 ‘copy-region-as-kill’
 =========================
 
-The ‘copy-region-as-kill’ function copies a region of text from a buffer
-and (via either ‘kill-append’ or ‘kill-new’) saves it in the
+De functie ‘copy-region-as-kill’ kopieert een region met tekst van een
+buffer en (via hetzij ‘kill-append’ of ‘kill-new’) bewaart het in de
 ‘kill-ring’.
 
-   If you call ‘copy-region-as-kill’ immediately after a ‘kill-region’
-command, Emacs appends the newly copied text to the previously copied
-text.  This means that if you yank back the text, you get it all, from
-both this and the previous operation.  On the other hand, if some other
-command precedes the ‘copy-region-as-kill’, the function copies the text
-into a separate entry in the kill ring.
+   Wanneer je ‘copy-region-as-kill’ meteen na een ‘kill-region’ commando
+aanroept, plakt Emacs de nieuw gekopieerde tekst aan de voorgaande
+gekopieerde tekst.  Dit betekent dat als je de tekst terug-yankt, je
+alles krijgt, van zowel deze als de voorgaande operatie.  Anderzijds,
+wanneer een ander commando aan de ‘copy-region-as-kill’ voorafging, dan
+kopieert de functie de tekst in een separaat item in de kill ring.
 
 * Menu:
 
@@ -7065,11 +7075,11 @@ into a separate entry in the kill ring.
 
 File: emacs-lisp-intro-nl.info,  Node: Complete copy-region-as-kill,  Next: copy-region-as-kill body,  Up: copy-region-as-kill
 
-The complete ‘copy-region-as-kill’ function definition
-------------------------------------------------------
+De complete ‘copy-region-as-kill’ functiedefinitie
+--------------------------------------------------
 
-Here is the complete text of the version 22 ‘copy-region-as-kill’
-function:
+Hier is de complete tekst van de versie 22 ‘copy-region-as-kill’
+functie.
 
      (defun copy-region-as-kill (beg end)
        "Save the region as if killed, but don't kill it.
@@ -7084,47 +7094,44 @@ function:
            (setq deactivate-mark t))
        nil)
 
-   As usual, this function can be divided into its component parts:
+   Zoals gebruikelijk kan deze functie worden gedeeld in componenten:
 
      (defun copy-region-as-kill (ARGUMENT-LIST)
-       "DOCUMENTATION..."
+       "DOCUMENTATIE..."
        (interactive "r")
        BODY...)
 
-   The arguments are ‘beg’ and ‘end’ and the function is interactive
-with ‘"r"’, so the two arguments must refer to the beginning and end of
-the region.  If you have been reading through this document from the
-beginning, understanding these parts of a function is almost becoming
-routine.
+   De argumenten zijn ‘beg’ en ‘end’ en de functie is interactief met
+‘"r"’, dus de twee argumenten moeten refereren aan het begin en eind van
+de region.  Wanneer je dit document van het begin hebt gelezen, dan is
+het begrijpen van deze delen van een functie al bijna routine.
 
-   The documentation is somewhat confusing unless you remember that the
-word "kill" has a meaning different from usual.  The Transient Mark and
-‘interprogram-cut-function’ comments explain certain side-effects.
+   De documentatie is ietwat verwarrend tenzij je herinnert dat het
+woord "kill" een andere betekenis dan gebruikelijk heeft.  De Transient
+Mark en ‘interprogram-cut-function’ commentaren verhelderen bepaalde
+zij-effecten.
 
-   After you once set a mark, a buffer always contains a region.  If you
-wish, you can use Transient Mark mode to highlight the region
-temporarily.  (No one wants to highlight the region all the time, so
-Transient Mark mode highlights it only at appropriate times.  Many
-people turn off Transient Mark mode, so the region is never
-highlighted.)
+   Nadat je ooit een mark hebt gezet, bevat een buffer altijd een
+region.  Wanneer je dat wilt, kan je met Transient Mark de region
+tijdelijk highlighten.  (Niemand wil de region voortdurend gehighlight
+hebben, dus Transient Mark mode highlight het alleen op passende
+momenten.  Veel mensen zetten Transient Mark mode uit, waardoor de
+region nooit wordt gehighlight.)
 
-   Also, a windowing system allows you to copy, cut, and paste among
-different programs.  In the X windowing system, for example, the
-‘interprogram-cut-function’ function is ‘x-select-text’, which works
-with the windowing system's equivalent of the Emacs kill ring.
+   Ook kun je in windowing systemen tussen verschillende programma's
+kopiëren, snijden en plakken.  In het X windowing system bijvoorbeeld is
+de functie ‘interprogram-cut-function’ ‘x-select-text’, die met het
+equivalent voor de Emacs kill ring van het windowing systeem werkt.
 
-   The body of the ‘copy-region-as-kill’ function starts with an ‘if’
-clause.  What this clause does is distinguish between two different
-situations: whether or not this command is executed immediately after a
-previous ‘kill-region’ command.  In the first case, the new region is
-appended to the previously copied text.  Otherwise, it is inserted into
-the beginning of the kill ring as a separate piece of text from the
-previous piece.
+   De body van de ‘copy-region-as-kill’ functie start met een
+‘if’-clausule.  Deze clausule maakt onderscheid tussen twee
+verschillende situaties: of dit commando wel of niet inmiddelijk achter
+een voorgaand ‘kill-region’ commando is uitgevoerd.
 
-   The last two lines of the function prevent the region from lighting
-up if Transient Mark mode is turned on.
+   De laatste twee regels van de functie voorkomen highighting van de
+region wanneer Transient Mark mode aan staat.
 
-   The body of ‘copy-region-as-kill’ merits discussion in detail.
+   De body van ‘copy-region-as-kill’ is bespreking in detail waard.
 
 
 File: emacs-lisp-intro-nl.info,  Node: copy-region-as-kill body,  Prev: Complete copy-region-as-kill,  Up: copy-region-as-kill
@@ -7132,18 +7139,18 @@ File: emacs-lisp-intro-nl.info,  Node: copy-region-as-kill body,  Prev: Complete
 8.3.1 De body van ‘copy-region-as-kill’
 ---------------------------------------
 
-The ‘copy-region-as-kill’ function works in much the same way as the
-‘kill-region’ function.  Both are written so that two or more kills in a
-row combine their text into a single entry.  If you yank back the text
-from the kill ring, you get it all in one piece.  Moreover, kills that
-kill forward from the current position of the cursor are added to the
-end of the previously copied text and commands that copy text backwards
-add it to the beginning of the previously copied text.  This way, the
-words in the text stay in the proper order.
+De functie ‘copy-region-as-kill’ werkt op een vergelijkbare manier als
+de functie ‘kill-region’.  Beide zijn zo geschreven dat twee of meer
+kills op een rij de tekst in een enkele entry combineren.  Wanneer je de
+tekst van de kill ring terugyankt, dan krijg alles in een stuk.
+Bovendien, kills die voorwaarts vanaf de huidige cursorpositie bewegen
+worden toegevoegd aan het einde van de vorige gekopieerde tekst, en
+commando's die tekst achterwaarts kopiëren worden aan het begin van de
+vorige gekopieerde tekst toegevoegd.  Op deze manier blijven de woorden
+in tekst op de juiste volgorde.
 
-   Like ‘kill-region’, the ‘copy-region-as-kill’ function makes use of
-the ‘last-command’ variable that keeps track of the previous Emacs
-command.
+   Net als ‘kill-region’, maakt de functie ‘copy-region-as-kill’ gebruik
+van de variabele ‘last-command’ die het vorige Emacs commando bijhoudt.
 
 * Menu:
 
@@ -7154,57 +7161,56 @@ command.
 
 File: emacs-lisp-intro-nl.info,  Node: last-command en this-command,  Next: kill-append functie,  Up: copy-region-as-kill body
 
-‘last-command’ and ‘this-command’
-.................................
+‘last-command’ en ‘this-command’
+................................
 
-Normally, whenever a function is executed, Emacs sets the value of
-‘this-command’ to the function being executed (which in this case would
-be ‘copy-region-as-kill’).  At the same time, Emacs sets the value of
-‘last-command’ to the previous value of ‘this-command’.
+Wanneer een functie wordt uitgevoerd, stelt Emacs normaalgesproken de
+waarde van ‘this-command’ in op de functie die wordt uitgevoerd (wat in
+dit geval ‘copy-region-as-kill’ zou zijn).  Tegelijkertijd stelt Emacs
+de waarde van ‘last-command’ in op de vorige waarde van ‘this-command’.
 
-   In the first part of the body of the ‘copy-region-as-kill’ function,
-an ‘if’ expression determines whether the value of ‘last-command’ is
-‘kill-region’.  If so, the then-part of the ‘if’ expression is
-evaluated; it uses the ‘kill-append’ function to concatenate the text
-copied at this call to the function with the text already in the first
-element (the CAR) of the kill ring.  On the other hand, if the value of
-‘last-command’ is not ‘kill-region’, then the ‘copy-region-as-kill’
-function attaches a new element to the kill ring using the ‘kill-new’
-function.
+   In het eerste deel van de body van de functie ‘copy-region-as-kill’
+stelt een ‘if’ expressie vast of ‘kill-region’ de waarde van
+‘last-command’ is.  Zo ja, dan wordt het dan-deel van de ‘if’ expressie
+geëvalueerd.  Het gebruikt de functie ‘kill-append’ om de tekst die bij
+deze aanroep gekopieerd is te plakken aan de tekst die al in het eerste
+element (the CAR) van de kill ring staat.  Anders, wanneer de waarde van
+de ‘last-command’ niet ‘kill-region’ is, dan voegt de functie
+‘copy-region-as-kill’ met functie ‘kill-new’ een nieuw element aan de
+kill ring toe.
 
-   The ‘if’ expression reads as follows; it uses ‘eq’:
+   De ‘if’ expressie is als volgt, met ‘eq’:
 
        (if (eq last-command 'kill-region)
-           ;; then-part
+           ;; dan-deel
            (kill-append  (filter-buffer-substring beg end) (< end beg))
-         ;; else-part
+         ;; anders-deel
          (kill-new  (filter-buffer-substring beg end)))
 
-   (The ‘filter-buffer-substring’ function returns a filtered substring
-of the buffer, if any.  Optionally--the arguments are not here, so
-neither is done--the function may delete the initial text or return the
-text without its properties; this function is a replacement for the
-older ‘buffer-substring’ function, which came before text properties
-were implemented.)
+   (De functie ‘filter-buffer-substring’ geeft een gefilterde substring
+van het buffer, wanneer die er is.  Optioneel--de argumenten zijn hier
+niet, dus geen enkele wordt uitgevoerd--kan de functie de initiële tekst
+deleten of de tekst zonder eigenschappen teruggeven.  Deze functie is
+een vervanging voor de oudere functie ‘buffer-substring’ die al bestond
+voordat tekst-eigenschappen werden geïmplementeerd.)
 
-The ‘eq’ function tests whether its first argument is the same Lisp
-object as its second argument.  The ‘eq’ function is similar to the
-‘equal’ function in that it is used to test for equality, but differs in
-that it determines whether two representations are actually the same
-object inside the computer, but with different names.  ‘equal’
-determines whether the structure and contents of two expressions are the
-same.
+De functie ‘eq’ test of het eerste argument hetzelfde Lisp object is als
+het tweede argument.  De functie ‘eq’ test net als de functie ‘equal’
+voor gelijkheid, met het verschil dat deze vaststelt of twee
+representaties daadwerkelijk hetzelfde object in de computer zijn, maar
+met verschillende namen.  ‘equal’ stelt vast of de structuur en inhoud
+van twee expressies hetzelfde zijn.
 
-   If the previous command was ‘kill-region’, then the Emacs Lisp
-interpreter calls the ‘kill-append’ function
+   Wanneer ‘kill-region’ het voorgaande commando was, dan roept de Emacs
+Lisp interpreter de functie ‘kill-append’ aan.
 
 
 File: emacs-lisp-intro-nl.info,  Node: kill-append functie,  Next: kill-new functie,  Prev: last-command en this-command,  Up: copy-region-as-kill body
 
-The ‘kill-append’ function
-..........................
+De functie ‘kill-append’
+........................
 
-The ‘kill-append’ function looks like this:
+De functie ‘kill-append’ ziet er zo uit:
 
      (defun kill-append (string before-p &optional yank-handler)
        "Append STRING to the end of the latest kill in the kill ring.
@@ -7217,91 +7223,91 @@ The ‘kill-append’ function looks like this:
                               (get-text-property 0 'yank-handler cur)))
                    yank-handler)))
 
-The ‘kill-append’ function is fairly straightforward.  It uses the
-‘kill-new’ function, which we will discuss in more detail in a moment.
+De functie ‘kill-append’ is redelijk eenvoudig.  Het gebruikt de functie
+‘kill-new’, zie we straks in meer detail bespreken.
 
-   (Also, the function provides an optional argument called
-‘yank-handler’; when invoked, this argument tells the function how to
-deal with properties added to the text, such as bold or italics.)
+   (De functie verschaft ook een optioneel argument die ‘yank-handler’
+heet.  wanneer aangeroepen vertelt dit argument de functie hoe het met
+eigenschappen van de tekst moet omgaan, zoals bold of italics.)
 
-   It has a ‘let*’ function to set the value of the first element of the
-kill ring to ‘cur’.  (I do not know why the function does not use ‘let’
-instead; only one value is set in the expression.  Perhaps this is a bug
-that produces no problems?)
+   Het heeft een functie ‘let*’ om de waarde van het eerste element van
+de kill ring in te stellen op ‘cur’.  (Ik weet niet waarom de functie in
+plaats hiervan geen ‘let’ gebruikt, slechts één waarde wordt in de
+expressie ingesteld.  Misschien dat dit een bug is die geen problemen
+veroorzaakt?)
 
-   Consider the conditional that is one of the two arguments to
-‘kill-new’.  It uses ‘concat’ to concatenate the new text to the CAR of
-the kill ring.  Whether it prepends or appends the text depends on the
-results of an ‘if’ expression:
+   Bekijk de conditional die een van de twee argumenten van ‘kill-new’
+is.  Het gebruikt ‘concat’ om de nieuwe tekst aan de CAR van de kill
+ring te plakken.  Of het vooraan of achteraan de tekst plakt hangt af
+van het resultaat van een ‘if’ expressie:
 
-     (if before-p                            ; if-part
-         (concat string cur)                 ; then-part
-       (concat cur string))                  ; else-part
+     (if before-p                            ; if-deel
+         (concat string cur)                 ; dan-deel
+       (concat cur string))                  ; anders-deel
 
-If the region being killed is before the region that was killed in the
-last command, then it should be prepended before the material that was
-saved in the previous kill; and conversely, if the killed text follows
-what was just killed, it should be appended after the previous text.
-The ‘if’ expression depends on the predicate ‘before-p’ to decide
-whether the newly saved text should be put before or after the
-previously saved text.
+Wanneer de region die gekilled wordt vooraf gaat aan de region die in
+het vorige commando was gekilled, dan moet het vooraan het materiaal dat
+in de vorige kill was bewaard komen en, omgekeerd, wanneer de gekillde
+tekst volgt op wat zojuist was gekilled, dan moet het achter die
+voorgaande tekst komen.  De ‘if’ expressie is afhankelijk van het
+predikaat ‘before-p’ om te bepalen of het de nieuwe bewaarde tekst voor
+of achter de voorgaande bewaarde tekst moet plaatsen.
 
-   The symbol ‘before-p’ is the name of one of the arguments to
-‘kill-append’.  When the ‘kill-append’ function is evaluated, it is
-bound to the value returned by evaluating the actual argument.  In this
-case, this is the expression ‘(< end beg)’.  This expression does not
-directly determine whether the killed text in this command is located
-before or after the kill text of the last command; what it does is
-determine whether the value of the variable ‘end’ is less than the value
-of the variable ‘beg’.  If it is, it means that the user is most likely
-heading towards the beginning of the buffer.  Also, the result of
-evaluating the predicate expression, ‘(< end beg)’, will be true and the
-text will be prepended before the previous text.  On the other hand, if
-the value of the variable ‘end’ is greater than the value of the
-variable ‘beg’, the text will be appended after the previous text.
+   Het symbool ‘before-p’ is de naam van een van de argumenten van
+‘kill-append’.  Het evalueren van de functie ‘kill-append’ bindt die aan
+de waarde teruggegeven door de evaluatie van het argument.  In dit geval
+de expressie ‘(< end beg)’.  Deze expressie stelt niet direct vast of de
+gekillde tekst voor of na de kill-tekst van het vorige commando staat.
+Het stelt vast of de waarde van de variabele ‘end’ kleiner is dan de
+waarde van de variabele ‘beg’.  Wanneer dat zo is, betekent dit dat de
+gebruiker hoogstwaarschijnlijk richting het begin van het buffer
+beweegt.  Het resultaat van het evalueren van de predikaat-expressie,
+‘(< end beg)’, is daardoor waar, en de tekst wordt voor de voorgaande
+tekst geplakt.  Wanneer anderzijds de waarde van de variabele ‘end’
+groter is dan de waarde van de variabele ‘beg’, wordt de tekst aan het
+eind van de voorgaande tekst geplakt.
 
-   When the newly saved text will be prepended, then the string with the
-new text will be concatenated before the old text:
+   Wanneer de nieuw opgeslagen tekst aan de voorzijde komt, wordt de
+string met de nieuwe tekst voor de oude tekst geplakt.
 
      (concat string cur)
 
-But if the text will be appended, it will be concatenated after the old
-text:
+Maar als de tekst aan de achterzijde komt, wordt de string achter de
+oude tekst geplakt.
 
      (concat cur string))
 
-   To understand how this works, we first need to review the ‘concat’
-function.  The ‘concat’ function links together or unites two strings of
-text.  The result is a string.  For example:
+   Om te begrijpen hoe dit werkt, moeten we eerst de functie ‘concat’
+bekijken.  De functie ‘concat’ knoopt twee strings aan elkaar of
+verenigt die.  Het resultaat is een string.  Bijvoorbeeld:
 
      (concat "abc" "def")
           ⇒ "abcdef"
 
-     (concat "new "
-             (car '("first element" "second element")))
-          ⇒ "new first element"
+     (concat "nieuw "
+             (car '("eerste element" "tweede element")))
+          ⇒ "nieuw eerste element"
 
      (concat (car
-             '("first element" "second element")) " modified")
-          ⇒ "first element modified"
+             '("eerste element" "tweede element")) " aangepast")
+          ⇒ "eerste element aangepast"
 
-   We can now make sense of ‘kill-append’: it modifies the contents of
-the kill ring.  The kill ring is a list, each element of which is saved
-text.  The ‘kill-append’ function uses the ‘kill-new’ function which in
-turn uses the ‘setcar’ function.
+   We begrijpen nu ‘kill-append’: het past de inhoud van de kill ring
+aan.  De kill ring is een lijst, elk element daarvan is opgeslagen
+tekst.  De functie ‘kill-append’ gebruikt de functie ‘kill-new’ die op
+zijn beurt de functie ‘setcar’ gebruikt.
 
 
 File: emacs-lisp-intro-nl.info,  Node: kill-new functie,  Prev: kill-append functie,  Up: copy-region-as-kill body
 
-The ‘kill-new’ function
-.......................
+De functie ‘kill-new’
+.....................
 
-In version 22 the ‘kill-new’ function looks like this:
+In versie 22 ziet de functie ‘kill-new’ er zo uit:
 
      (defun kill-new (string &optional replace yank-handler)
        "Make STRING the latest kill in the kill ring.
      Set `kill-ring-yank-pointer' to point to it.
-
      If `interprogram-cut-function' is non-nil, apply it to STRING.
      Optional second argument REPLACE non-nil means that STRING will replace
      the front of the kill ring, rather than being added to the list.
@@ -7324,229 +7330,233 @@ In version 22 the ‘kill-new’ function looks like this:
        (if interprogram-cut-function
            (funcall interprogram-cut-function string (not replace))))
 
-   (Notice that the function is not interactive.)
+   (Merk op dat de functie niet interactief is.)
 
-   As usual, we can look at this function in parts.
+   Zoals gebruikelijk kijken we naar de functie in delen.
 
-   The function definition has an optional ‘yank-handler’ argument,
-which when invoked tells the function how to deal with properties added
-to the text, such as bold or italics.  We will skip that.
+   De functiedefinitie heeft een optioneel argument ‘yank-handler’, dat
+wanneer het aangeroepen wordt vertelt hoe het met de eigenschappen van
+de tekst moet omgaan, zoals bold of italics.  Dit slaan we over.
 
-   The first line of the documentation makes sense:
+   De eerste regel van de documentatie is logisch:
 
      Make STRING the latest kill in the kill ring.
 
-Let's skip over the rest of the documentation for the moment.
+Laten voor dit moment de rest van de documentatie overslaan.
 
-Also, let's skip over the initial ‘if’ expression and those lines of
-code involving ‘menu-bar-update-yank-menu’.  We will explain them below.
+Laten we ook de initiële ‘if’ expressie overslaan en die regels code met
+betrekking tot ‘menu-bar-update-yank-menu’.  Die leggen we hieronder
+uit.
 
-   The critical lines are these:
+   De kritische regels zijn deze:
 
        (if (and replace kill-ring)
-           ;; then
+           ;; dan
            (setcar kill-ring string)
-         ;; else
+         ;; anders
          (push string kill-ring)
          (if (> (length kill-ring) kill-ring-max)
-             ;; avoid overly long kill ring
+             ;; voorkom een te lange kill ring
              (setcdr (nthcdr (1- kill-ring-max) kill-ring) nil)))
        (setq kill-ring-yank-pointer kill-ring)
        (if interprogram-cut-function
            (funcall interprogram-cut-function string (not replace))))
 
-   The conditional test is ‘(and replace kill-ring)’.  This will be true
-when two conditions are met: the kill ring has something in it, and the
-‘replace’ variable is true.
+   De conditionele test is ‘(and replace kill-ring)’.  Deze is waar
+wanneer twee condities voldoen: de kill ring bevast iets en de variabele
+‘replace’ variable is waar.
 
-   When the ‘kill-append’ function sets ‘replace’ to be true and when
-the kill ring has at least one item in it, the ‘setcar’ expression is
-executed:
+   Wanneer de functie ‘kill-append’ ‘kill-append’ op waar instelt en
+wanneer de kill ring tenminste een element bevat, wordt de ‘setcar’
+expressie uitgevoerd:
 
      (setcar kill-ring string)
 
-   The ‘setcar’ function actually changes the first element of the
-‘kill-ring’ list to the value of ‘string’.  It replaces the first
+   De functie ‘setcar’ wijzigt daadwerkelijk het eerste element van de
+‘kill-ring’ lijst in de waarde van ‘string’.  Het vervangt het eerste
 element.
 
-   On the other hand, if the kill ring is empty, or replace is false,
-the else-part of the condition is executed:
+   Aan de andere kant, wanneer de kill ring leeg, of replace onwaar is,
+wordt het anders-deel van de conditie uitgevoerd:
 
      (push string kill-ring)
 
-   ‘push’ puts its first argument onto the second.  It is similar to the
-older
+   ‘push’ plaatst het eerste argument op het tweede.  Het is
+vergelijkbaar met het oudere
 
      (setq kill-ring (cons string kill-ring))
 
-   or the newer
+   of het nieuwere
 
      (add-to-list kill-ring string)
 
-When it is false, the expression first constructs a new version of the
-kill ring by prepending ‘string’ to the existing kill ring as a new
-element (that is what the ‘push’ does).  Then it executes a second ‘if’
-clause.  This second ‘if’ clause keeps the kill ring from growing too
-long.
+Wanneer het onwaar is, construeert de expressie eerst een nieuwe versie
+van de kill ring door ‘string’ vooraan als nieuw element aan de
+bestaande kill ring te plaatsen (dat is wat de ‘push’ doet.)  Daarna
+voert het een tweede ‘if’-clausule uit.  Deze tweede ‘if’-clausule
+voorkomt dat de kill ring te groot groeit.
 
-   Let's look at these two expressions in order.
+   Laten we in volgorde naar deze twee expressies kijken.
 
-   The ‘push’ line of the else-part sets the new value of the kill ring
-to what results from adding the string being killed to the old kill
-ring.
+   De ‘push’ regel in het anders-deel stelt de nieuwe waarde van de kill
+ring in op wat het resultaat is van het aan de oude kill ring toevoegen
+van de gekillde string.
 
-   We can see how this works with an example.
+   We zijn hoe dit werkt aan de hand van een voorbeeld.
 
-   First,
+   Eerst
 
-     (setq example-list '("here is a clause" "another clause"))
+     (setq voorbeeldlijst '("hier is een clausule" "andere clausule"))
 
-After evaluating this expression with ‘C-x C-e’, you can evaluate
-‘example-list’ and see what it returns:
+Na het evalueren van deze expressie met ‘C-x C-e’, evalueer je
+‘voorbeeldlijst’ en kijk naar wat die teruggeeft.
 
-     example-list
-          ⇒ ("here is a clause" "another clause")
+     voorbeeldlijst
+          ⇒ ("hier is een clausule" "andere clausule")
 
-Now, we can add a new element on to this list by evaluating the
-following expression:
+We voegen nu een nieuw element toe aan deze lijst door de volgende
+expressie te evalueren:
 
-     (push "a third clause" example-list)
+     (push "een derde clausule" voorbeeldlijst)
 
-When we evaluate ‘example-list’, we find its value is:
+Wanneer we ‘voorbeeldlijst’ evalueren, ontdekken we dat zijn waarde is:
 
-     example-list
-          ⇒ ("a third clause" "here is a clause" "another clause")
+     voorbeeldlijst
+          ⇒ ("een derde clausule" "hier is een clausule" "andere clausule")
 
-Thus, the third clause is added to the list by ‘push’.
+De derde clausule is dus door ‘push’ toegevoegd aan de lijst.
 
-   Now for the second part of the ‘if’ clause.  This expression keeps
-the kill ring from growing too long.  It looks like this:
+   Nu het tweede deel van de ‘if’ clausule.  Deze expressie voorkomt dat
+de kill ring te groot groeit.  Het ziet er zo uit:
 
      (if (> (length kill-ring) kill-ring-max)
          (setcdr (nthcdr (1- kill-ring-max) kill-ring) nil))
 
-   The code checks whether the length of the kill ring is greater than
-the maximum permitted length.  This is the value of ‘kill-ring-max’
-(which is 120, by default).  If the length of the kill ring is too long,
-then this code sets the last element of the kill ring to ‘nil’.  It does
-this by using two functions, ‘nthcdr’ and ‘setcdr’.
+   De code controleert of de lengte va de kill ring groter is dan de
+maximum toegestane lengte.  Dit is de waarde van ‘kill-ring-max’ (die
+standaard 120 is).  Wanneer de lengte van de kill ring te groot is, dan
+stelt deze code het laatste element van de kill ring in op ‘nil’.  Het
+doet dit met twee functies, ‘nthcdr’ and ‘setcdr’.
 
-   We looked at ‘setcdr’ earlier (*note ‘setcdr’: setcdr.).  It sets the
-CDR of a list, just as ‘setcar’ sets the CAR of a list.  In this case,
-however, ‘setcdr’ will not be setting the CDR of the whole kill ring;
-the ‘nthcdr’ function is used to cause it to set the CDR of the next to
-last element of the kill ring--this means that since the CDR of the next
-to last element is the last element of the kill ring, it will set the
-last element of the kill ring.
+   We keken eerder naar ‘setcdr’, (*note ‘setcdr’: setcdr.).  Het zet de
+CDR van een lijst, net als ‘setcar’ de CAR van de lijst zet.  In dit
+geval echter zet ‘setcdr’ niet de de CDR van de gehele kill ring, de
+functie ‘nthcdr’ zorgt dat het de CDR van het een-na-laatste element van
+de kill ring zet--dit betekent dat omdat de CDR van het een-na-laatste
+element het laatste element van de kill ring is, het het laatste element
+van de kill ring zal zetten.
 
-   The ‘nthcdr’ function works by repeatedly taking the CDR of a
-list--it takes the CDR of the CDR of the CDR ... It does this N times
-and returns the results.  (*Note ‘nthcdr’: nthcdr.)
+   De functie ‘nthcdr’ werkt door herhaaldelijk de CDR van een lijst te
+nemen--het neemt de CDR van de CDR van de CDR ... Het doet dit N keer en
+geeft dan het resultaat terug.  (*Note ‘nthcdr’: nthcdr.)
 
-   Thus, if we had a four element list that was supposed to be three
-elements long, we could set the CDR of the next to last element to
-‘nil’, and thereby shorten the list.  (If you set the last element to
-some other value than ‘nil’, which you could do, then you would not have
-shortened the list.  *Note ‘setcdr’: setcdr.)
+   Dus als we een lijst met vier elementen hebben die drie elementen
+lang behoort te zijn, kunnen we de CDR van het een-na-laatste element op
+‘nil’ zetten en daardoor de lijst korter maken.  (Wanneer je het laatste
+element op iets anders dan ‘nil’ zet, wat je kunt doen, dan zou je lijst
+niet korter gemaakt hebben.  *Note ‘setcdr’: setcdr.)
 
-   You can see shortening by evaluating the following three expressions
-in turn.  First set the value of ‘trees’ to ‘(maple oak pine birch)’,
-then set the CDR of its second CDR to ‘nil’ and then find the value of
-‘trees’:
+   Je kan dit inkorten zien door de volgende drie expressies beurtelings
+te evalueren.  Eerst zet je de waarde van ‘bomen’ op ‘esdoorn eik spar
+berk’, daarna zet je de CDR van zijn tweede CDR op ‘nil’ en vindt de
+waarde van ‘bomen’.
 
-     (setq trees (list 'maple 'oak 'pine 'birch))
-          ⇒ (maple oak pine birch)
+     (setq bomen (list 'esdoorn 'eik 'spar 'berk))
+           ⇒ (esdoorn eik spar berk)
 
-     (setcdr (nthcdr 2 trees) nil)
+     (setcdr (nthcdr 2 bomen) nil)
           ⇒ nil
 
-     trees
-          ⇒ (maple oak pine)
+     bomen
+           ⇒ (esdoorn eik spar)
 
-(The value returned by the ‘setcdr’ expression is ‘nil’ since that is
-what the CDR is set to.)
+(De waarde teruggeven door de ‘setcdr’ expressie is ‘nil’ omdat dat is
+waarop de CDR is gezet.)
 
-   To repeat, in ‘kill-new’, the ‘nthcdr’ function takes the CDR a
-number of times that is one less than the maximum permitted size of the
-kill ring and ‘setcdr’ sets the CDR of that element (which will be the
-rest of the elements in the kill ring) to ‘nil’.  This prevents the kill
-ring from growing too long.
+   Nogmaals, in ‘kill-new’, neemt de functie ‘nthcdr’ een aantal keer de
+CDR, één minder dan de maximaal toegestane grootte van de kill ring en
+de ‘setcdr’ zet de CDR van dat element (wat de rest van de elementen in
+de kill ring is) op ‘nil’.  Dit voorkomt dat de kill ring te groot
+groeit.
 
-   The next to last expression in the ‘kill-new’ function is
+   De een-na-laatste expressie in de kill ring is
 
      (setq kill-ring-yank-pointer kill-ring)
 
-   The ‘kill-ring-yank-pointer’ is a global variable that is set to be
-the ‘kill-ring’.
+   De ‘kill-ring-yank-pointer’ is een globale variabele die is ingesteld
+om de ‘kill-ring’ te zijn.
 
-   Even though the ‘kill-ring-yank-pointer’ is called a ‘pointer’, it is
-a variable just like the kill ring.  However, the name has been chosen
-to help humans understand how the variable is used.
+   Ondanks dat de ‘kill-ring-yank-pointer’ een ‘pointer’ heet, is het
+een variabele net als de kill ring.  De naam is echter gekozen om mensen
+te helpen begrijpen hoe de variabele wordt gebruikt.
 
-   Now, to return to an early expression in the body of the function:
+   Nu gaan we terug naar een expressie in het begin van de body van de
+functie:
 
        (if (fboundp 'menu-bar-update-yank-menu)
             (menu-bar-update-yank-menu string (and replace (car kill-ring))))
 
-It starts with an ‘if’ expression
+Het begint met een ‘if’ expressie
 
-   In this case, the expression tests first to see whether
-‘menu-bar-update-yank-menu’ exists as a function, and if so, calls it.
-The ‘fboundp’ function returns true if the symbol it is testing has a
-function definition that is not void.  If the symbol's function
-definition were void, we would receive an error message, as we did when
-we created errors intentionally (*note Generate an Error Message: Making
-Errors.).
+   In dit geval test de expressie eerst of de functie
+‘menu-bar-update-yank-menu’ bestaat en zo ja, roept die aan.  De functie
+‘fboundp’ geeft waar terug wanneer het symbool dat het test een
+functiedefinitie heeft die niet leeg is.  Wanneer de functiedefinitie
+van het symbool leeg is, krijgen we een foutmelding, zoals we die kregen
+toen we expres fouten maakten (*note Een foutboodschap genereren: Fouten
+maken.).
 
-The then-part contains an expression whose first element is the function
-‘and’.
+Het dan-deel bevat een expressie wiens eerste argument de functie ‘and’
+is.
 
-   The ‘and’ special form evaluates each of its arguments until one of
-the arguments returns a value of ‘nil’, in which case the ‘and’
-expression returns ‘nil’; however, if none of the arguments returns a
-value of ‘nil’, the value resulting from evaluating the last argument is
-returned.  (Since such a value is not ‘nil’, it is considered true in
-Emacs Lisp.)  In other words, an ‘and’ expression returns a true value
-only if all its arguments are true.  (*Note Second Buffer Related
-Review::.)
+   De speciale vorm ‘and’ evalueert elk van zijn argumenten totdat een
+van de argumenten de waarde ‘nil’ teruggeeft, in welk geval de ‘and’
+expressie ‘nil’ teruggeeft.  Wanneer echter geen van de argumenten een
+waarde ‘nil’ teruggeven, dan wordt de waarde afkomstig van de evaluatie
+van het laatste argument teruggegeven.  (Omdat zo'n waarde niet ‘nil’
+is, wordt het in Emacs Lisp beschouwd als waar.)  Met andere woorden,
+een ‘and’ expressie geeft alleen waar terug als al zijn argumenten waar
+zijn.  (*Note Tweede buffer gerelateerde terugblik::.)
 
-   The expression determines whether the second argument to
-‘menu-bar-update-yank-menu’ is true or not.
+   De expressie stelt vast of het tweede argument van
+‘'menu-bar-update-yank-menu’ waar is of niet.
 
-   ‘menu-bar-update-yank-menu’ is one of the functions that make it
-possible to use the "Select and Paste" menu in the Edit item of a menu
-bar; using a mouse, you can look at the various pieces of text you have
-saved and select one piece to paste.
+   ‘menu-bar-update-yank-menu’ is een van de functies die het mogelijk
+maken om het "Select and Paste" menu in het Edit-item in de menubar te
+gebruiken.  Met de muis kan je zien elke verschillende stukken tekst je
+hebt opgeslagen en een stuk selecteren om te pasten.
 
-   The last expression in the ‘kill-new’ function adds the newly copied
-string to whatever facility exists for copying and pasting among
-different programs running in a windowing system.  In the X Windowing
-system, for example, the ‘x-select-text’ function takes the string and
-stores it in memory operated by X.  You can paste the string in another
-program, such as an Xterm.
+   De laatste expressie in de functie ‘kill-new’ voegt de nieuw
+gekopieerde string toe aan wat voor faciliteit dan ook bestaat voor het
+kopiëren en plakken tussen de verschillende programma's die in het
+windowing systeem draaien.  In het X windowing systeem bijvoorbeeld,
+pakt de functie ‘x-select-text’ de string op en bewaart die in het
+geheugen dat X bewerkt.  Je kan de string in een andere programma
+pasten, zoals een Xterm.
 
    De expressie ziet er zo uit:
 
        (if interprogram-cut-function
            (funcall interprogram-cut-function string (not replace))))
 
-   If an ‘interprogram-cut-function’ exists, then Emacs executes
-‘funcall’, which in turn calls its first argument as a function and
-passes the remaining arguments to it.  (Incidentally, as far as I can
-see, this ‘if’ expression could be replaced by an ‘and’ expression
-similar to the one in the first part of the function.)
+   Wanneer een ‘interprogram-cut-function’ bestaat, dan voert Emacs
+‘funcall’ uit, die op zijn beurt het eerste argument als een functie
+aanroept en de resterende argumenten daar aan doorgeeft.  (Overigens,
+voor zover ik het kan zien, kan de ‘if’-expressie vervangen worden door
+een ‘and’ expressie vergelijkbaar met die in het eerste deel van de
+functie.)
 
-   We are not going to discuss windowing systems and other programs
-further, but merely note that this is a mechanism that enables GNU Emacs
-to work easily and well with other programs.
+   We bepreken verder geen windowing systems en andere programma's, maar
+merken slechts op dat dit een mechanisme is dat het GNU Emacs mogelijk
+maakt om makkelijk en goed met andere programma's samen te werken.
 
-   This code for placing text in the kill ring, either concatenated with
-an existing element or as a new element, leads us to the code for
-bringing back text that has been cut out of the buffer--the yank
-commands.  However, before discussing the yank commands, it is better to
-learn how lists are implemented in a computer.  This will make clear
-such mysteries as the use of the term "pointer".  But before that, we
-will digress into C.
+   De code voor het plaatsen van de tekst in de kill ring, hetzij
+geplakt aan een bestaand element hetzij als een nieuw element, leidt ons
+naar de code om de verwijderde tekst terug te halen--het yank commando.
+Voordat we het yank commando gaan bespreken, is het echter beter te
+ontdekken hoe lijsten in de computer zijn geïmplementeerd.  Dit
+verheldert mysteries zoals het gebruik van de term "pointer".  Maar voor
+we dat doen, weiden we uit naar C.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Uitwijding naar C,  Next: defvar,  Prev: copy-region-as-kill,  Up: Knippen en opslaan van tekst
@@ -7554,19 +7564,20 @@ File: emacs-lisp-intro-nl.info,  Node: Uitwijding naar C,  Next: defvar,  Prev: 
 8.4 Uitwijding naar C
 =====================
 
-The ‘copy-region-as-kill’ function (*note ‘copy-region-as-kill’:
-copy-region-as-kill.) uses the ‘filter-buffer-substring’ function, which
-in turn uses the ‘delete-and-extract-region’ function.  It removes the
-contents of a region and you cannot get them back.
+De functie ‘copy-region-as-kill’ function (*note ‘copy-region-as-kill’:
+copy-region-as-kill.) gebruikt de functie ‘filter-buffer-substring’, die
+op zijn beurt de functie ‘delete-and-extract-region’ gebruikt.  Het
+verwijdert de inhoud van een region en die kun je niet terugkrijgen.
 
-   Unlike the other code discussed here, the ‘delete-and-extract-region’
-function is not written in Emacs Lisp; it is written in C and is one of
-the primitives of the GNU Emacs system.  Since it is very simple, I will
-digress briefly from Lisp and describe it here.
+   In tegenstelling tot andere code die we hier besproken hebben, is de
+functie ‘delete-and-extract-region’ niet in Emacs Lisp geschreven, het
+is geschreven in C en is een van de primitieven van het GNU Emacs
+systeem.  Omdat het erg eenvoudig is, dwaal ik even af van Lisp en
+beschrijf het hier.
 
-   Like many of the other Emacs primitives, ‘delete-and-extract-region’
-is written as an instance of a C macro, a macro being a template for
-code.  The complete macro looks like this:
+   Net als veel van de andere Emacs primitieven, is
+‘delete-and-extract-region’ geschreven als een C macro, een macro die
+een sjabloon voor code is.  De complete macro ziet er zo uit:
 
      DEFUN ("delete-and-extract-region", Fdelete_and_extract_region,
             Sdelete_and_extract_region, 2, 2, 0,
@@ -7579,90 +7590,91 @@ code.  The complete macro looks like this:
        return del_range_1 (XFIXNUM (start), XFIXNUM (end), 1, 1);
      }
 
-   Without going into the details of the macro writing process, let me
-point out that this macro starts with the word ‘DEFUN’.  The word
-‘DEFUN’ was chosen since the code serves the same purpose as ‘defun’
-does in Lisp.  (The ‘DEFUN’ C macro is defined in ‘emacs/src/lisp.h’.)
+   Zonder verder op de details van het schrijven van macro's in te gaan,
+wil ik er op wijzen dat de macro start met het woord ‘DEFUN’.  Het woord
+‘DEFUN’ was gekozen omdat de code hetzelfde doel dient als ‘defun’ in
+Lisp.  (De C macro ‘DEFUN’ is gedefinieerd in ‘emacs/src/lisp.h’.)
 
-   The word ‘DEFUN’ is followed by seven parts inside of parentheses:
+   Het woord ‘DEFUN’ wordt gevolgd door zeven delen binnen haakjes:
 
-   • The first part is the name given to the function in Lisp,
+   • Het eerste deel is de naam die de functie in Lisp krijgt,
      ‘delete-and-extract-region’.
 
-   • The second part is the name of the function in C,
-     ‘Fdelete_and_extract_region’.  By convention, it starts with ‘F’.
-     Since C does not use hyphens in names, underscores are used
-     instead.
+   • Het tweede deel is de naam van de functie in C,
+     ‘Fdelete_and_extract_region’.  Volgens de conventie begint die met
+     een ‘F’.  Omdat C geen streepjes in namen gebruikt, zijn in plaats
+     daarvan underscores gebruikt.
 
-   • The third part is the name for the C constant structure that
-     records information on this function for internal use.  It is the
-     name of the function in C but begins with an ‘S’ instead of an ‘F’.
+   • Het derde deel is de naam van de C constant structure die
+     informatie over de deze functie opslaat voor intern gebruik.  Het
+     is de naam van de functie in C maar begint met een ‘S’ in plaats
+     van een ‘F’.
 
-   • The fourth and fifth parts specify the minimum and maximum number
-     of arguments the function can have.  This function demands exactly
-     2 arguments.
+   • Het vierde en vijfde deel specificeren het minimum en maximum
+     aantal argumenten dat de functie kan krijgen.  Deze functie vereist
+     precies 2 argumenten.
 
-   • The sixth part is nearly like the argument that follows the
-     ‘interactive’ declaration in a function written in Lisp: a letter
-     followed, perhaps, by a prompt.  The only difference from Lisp is
-     when the macro is called with no arguments.  Then you write a ‘0’
-     (which is a null string), as in this macro.
+   • Het zesde deel is bijna hetzelfde als het argument dat volgt op de
+     ‘interactive’ declaratie in een functie geschreven in Lisp: een
+     letter, misschien gevold door een prompt.  Het enige verschil met
+     Lisp is wanneer de macro zonder argumenten wordt aangeroepen.  Dan
+     schrijf je een ‘0’ (wat een null-string is) zoals in deze macro.
 
-     If you were to specify arguments, you would place them between
-     quotation marks.  The C macro for ‘goto-char’ includes ‘"NGoto
-     char: "’ in this position to indicate that the function expects a
-     raw prefix, in this case, a numerical location in a buffer, and
-     provides a prompt.
+     Wanneer je argumenten specificeert, dan zet je die tussen
+     aanhalingstekens.  De C macro voor ‘goto-char’ bevat ‘"NGoto char:
+     "’ op deze plek om aan te gevne dat de functie een raw prefix
+     verwacht, in dit geval een numerieke lokatie in het buffer, en een
+     prompt verschaft.
 
-   • The seventh part is a documentation string, just like the one for a
-     function written in Emacs Lisp.  This is written as a C comment.
-     (When you build Emacs, the program ‘lib-src/make-docfile’ extracts
-     these comments and uses them to make the documentation.)
+   • Het zevende deel is een documentatiestring, net zoals voor een
+     functie geschreven in Emacs Lisp.  Dit is geschreven als C
+     commentaar.  (Wanneer je Emacs bouwt extraheert het programma
+     ‘lib-src/make-docfile’ deze commentaren en gebruikt die om de
+     documentatie te maken.)
 
-   In a C macro, the formal parameters come next, with a statement of
-what kind of object they are, followed by the body of the macro.  For
-‘delete-and-extract-region’ the body consists of the following four
-lines:
+   In een C macro komen de formele parameters daarna, met een statement
+over het soort object dat ze zijn, gevolgd door de body van de macro.
+Voor ‘delete-and-extract-region’ bestaat de body uit de volgende vier
+regels:
 
      validate_region (&start, &end);
      if (XFIXNUM (start) == XFIXNUM (end))
        return empty_unibyte_string;
      return del_range_1 (XFIXNUM (start), XFIXNUM (end), 1, 1);
 
-   The ‘validate_region’ function checks whether the values passed as
-the beginning and end of the region are the proper type and are within
-range.  If the beginning and end positions are the same, then return an
-empty string.
+   De functie ‘validate_region’ controleert of de waarden die als begin
+en eind zijn doorgegeven, van het juiste type en binnen de range zijn.
 
-   The ‘del_range_1’ function actually deletes the text.  It is a
-complex function we will not look into.  It updates the buffer and does
-other things.  However, it is worth looking at the two arguments passed
-to ‘del_range_1’.  These are ‘XFIXNUM (start)’ and ‘XFIXNUM (end)’.
+   De functie ‘del_range_1’ verwijdert daadwerkelijk de tekst.  Het is
+een complexe functie waar we niet naar kijken.  Het update het buffer en
+doet andere dingen.  Echter het is het waard te kijken naar de twee
+argumenten die doorgeven worden aan ‘del_range_1’.  Dit zijn
+‘XFIXNUM (start)’ en ‘XFIXNUM (end)’.
 
-   As far as the C language is concerned, ‘start’ and ‘end’ are two
-opaque values that mark the beginning and end of the region to be
-deleted.  More precisely, and requiring more expert knowledge to
-understand, the two values are of type ‘Lisp_Object’, which might be a C
-pointer, a C integer, or a C ‘struct’; C code ordinarily should not care
-how ‘Lisp_Object’ is implemented.
+   Wat de C-taal betreft, zijn ‘start’ en ‘end’ twee vage waarden die
+het begin en eind van de te verwijderen region markeren.  Meer precies,
+en met meer expertise genodigd om te begrijpen, zijn de twee waarden van
+het type ‘Lisp_Object’, wat een C-pointer kan zijn, of een C-integer, of
+een C-‘struct’.  Het kan de C code normaalgesproken niet schelen hoe
+‘Lisp_Object’ is geïmplementeerd.
 
-   ‘Lisp_Object’ widths depend on the machine, and are typically 32 or
-64 bits.  A few of the bits are used to specify the type of information;
-the remaining bits are used as content.
+   De breedte van ‘Lisp_Object’ hangt af van de machine, en is typisch
+32 of 64 bits.  Enkele van de bits worden gebruikt om het type
+informatie te specificeren, de resterende bits voor de inhoud.
 
-   ‘XFIXNUM’ is a C macro that extracts the relevant integer from the
-longer collection of bits; the type bits are discarded.
+   ‘XFIXNUM’ is een C macro die de relevante integer uit de langere
+collectie bits extraheert.  De type-bits worden genegeerd.
 
-   The command in ‘delete-and-extract-region’ looks like this:
+   Het commando in ‘delete-and-extract-region’ ziet het zo uit:
 
      del_range_1 (XFIXNUM (start), XFIXNUM (end), 1, 1);
 
-It deletes the region between the beginning position, ‘start’, and the
-ending position, ‘end’.
+Het verwijdert de region tussen de beginpostitie, ‘start’, en de
+eindpositie, ‘end’.
 
-   From the point of view of the person writing Lisp, Emacs is all very
-simple; but hidden underneath is a great deal of complexity to make it
-all work.
+   Vanuit het gezichtspunt van de persoon die Lisp schrijft, is Emacs
+heel eenvoudig, maar eronder is een grote hoeveelheid compliciteit
+verborgen die het allemaal laat werken.
 
 
 File: emacs-lisp-intro-nl.info,  Node: defvar,  Next: cons en search-fwd terugblik,  Prev: Uitwijding naar C,  Up: Knippen en opslaan van tekst
@@ -7670,32 +7682,32 @@ File: emacs-lisp-intro-nl.info,  Node: defvar,  Next: cons en search-fwd terugbl
 8.5 Initialiseer een variabele met ‘defvar’
 ===========================================
 
-The ‘copy-region-as-kill’ function is written in Emacs Lisp.  Two
-functions within it, ‘kill-append’ and ‘kill-new’, copy a region in a
-buffer and save it in a variable called the ‘kill-ring’.  This section
-describes how the ‘kill-ring’ variable is created and initialized using
-the ‘defvar’ special form.
+De functie ‘copy-region-as-kill’ is in Emacs Lisp geschreven.  Twee
+functies in het, ‘kill-append’ en ‘kill-new’, kopiëren een region in een
+buffer en bewaren het in een variabele met de naam ‘kill-ring’.  Deze
+sectie beschijft hoe de ‘kill-ring’ met de speciale vorm ‘defvar’ is
+gecreëerd en geïnitialiseerd.
 
-   (Again we note that the term ‘kill-ring’ is a misnomer.  The text
-that is clipped out of the buffer can be brought back; it is not a ring
-of corpses, but a ring of resurrectable text.)
+   (Opnieuw merken we op dat de term ‘kill-ring’ een misleidende naam
+is.  De tekst die uit het buffer is geknipt kan teruggehaald worden.
+Het is niet een ring van lijken, maar een ring van herleefbare tekst.)
 
-   In Emacs Lisp, a variable such as the ‘kill-ring’ is created and
-given an initial value by using the ‘defvar’ special form.  The name
-comes from "define variable".
+   In Emacs Lisp wordt een variabele zoals ‘kill-ring’ met de speciale
+vorm gecreëerd en van een initiële waarde voorzien.  De naam komt van
+"define variable".
 
-   The ‘defvar’ special form is similar to ‘setq’ in that it sets the
-value of a variable.  It is unlike ‘setq’ in three ways: first, it marks
-the variable as "special" so that it is always dynamically bound, even
-when ‘lexical-binding’ is ‘t’ (*note How let Binds Variables::).
-Second, it only sets the value of the variable if the variable does not
-already have a value.  If the variable already has a value, ‘defvar’
-does not override the existing value.  Third, ‘defvar’ has a
-documentation string.
+   De speciale vorm ‘defvar’ stelt de waarde van een variabele in, net
+als ‘setq’.  Het verschilt van ‘setq’ op drie manieren: ten eerste
+markeert het de variabele als "speciaal" zodat het altijd dynamisch
+gebonden is, zelfs wanneer ‘lexcial-binding’ ‘t’ is (*note Variabelen:
+Hoe let variabelen bindt.).  Ten tweede, het stelt alleen de waarde van
+de variabele in wanneer de variabele nog geen waarde heeft.  Wanneer de
+variabele al een waarde heeft, overschrijft ‘defvar’ de bestaande waarde
+niet.  Ten derde, ‘defvar’ heeft een documentatiestring.
 
-   (There is a related macro, ‘defcustom’, designed for variables that
-people customize.  It has more features than ‘defvar’.  (*Note Setting
-Variables with ‘defcustom’: defcustom.)
+   (Er is een gerelateerde macro, ‘defcustom’, gemaakt voor variabelen
+die mensen customizen.  Het heeft meer eigenschappen dan ‘defvar’.
+(*Note Variabelen specificeren met ‘defcustom’: defcustom.)
 
 * Menu:
 
@@ -7705,16 +7717,16 @@ Variables with ‘defcustom’: defcustom.)
 
 File: emacs-lisp-intro-nl.info,  Node: Inzien huidige variabele waarde,  Next: defvar en asterisk,  Up: defvar
 
-Seeing the Current Value of a Variable
---------------------------------------
+De huidige waarde van een variabele zien
+----------------------------------------
 
-You can see the current value of a variable, any variable, by using the
-‘describe-variable’ function, which is usually invoked by typing ‘C-h
-v’.  If you type ‘C-h v’ and then ‘kill-ring’ (followed by <RET>) when
-prompted, you will see what is in your current kill ring--this may be
-quite a lot!  Conversely, if you have been doing nothing this Emacs
-session except read this document, you may have nothing in it.  Also,
-you will see the documentation for ‘kill-ring’:
+Je kunt de huidige waarde van een variabele, elke variabele, zien met de
+functie ‘describe-variable’, die meestal wordt aangeroepen met ‘C-h v’.
+Wanneer je ‘C-h v’ typt, en na de prompt ‘kill-ring’ (gevolgd door
+<RET>), krijg je de huidige inhoud van je kill ring te zien--dit kan
+best veel zijn!  Omgekeerd, wanneer je in deze Emacs sessie niets anders
+gedaan hebt dan dit document lezen, kan er helemaal niets in zijn.  Ook
+krijg je de documentatie voor ‘kill-ring’ te zien.
 
      Documentation:
      List of killed text sequences.
@@ -7726,58 +7738,60 @@ you will see the documentation for ‘kill-ring’:
      interaction; you may want to use them instead of manipulating the kill
      ring directly.
 
-   The kill ring is defined by a ‘defvar’ in the following way:
+   De kill ring is gedefinieerd door een ‘defvar’ op de volgende manier:
 
      (defvar kill-ring nil
        "List of killed text sequences.
      ...")
 
-In this variable definition, the variable is given an initial value of
-‘nil’, which makes sense, since if you have saved nothing, you want
-nothing back if you give a ‘yank’ command.  The documentation string is
-written just like the documentation string of a ‘defun’.  As with the
-documentation string of the ‘defun’, the first line of the documentation
-should be a complete sentence, since some commands, like ‘apropos’,
-print only the first line of documentation.  Succeeding lines should not
-be indented; otherwise they look odd when you use ‘C-h v’
-(‘describe-variable’).
+In deze variabele definitie krijgt de variabele de initiële waarde
+‘nil’, wat logisch is, omdat je nog niets hebt bewaard, wil je niets
+terughalen met een ‘yank’ commando.  De documentatiestring schrijf je op
+dezelfde manier als de documentatiestring van een ‘defun’.  Net als bij
+de documentatiestring van de ‘defun’, moet de eerste regel van de
+documentatie ene volledige zin zijn omdat sommige commando's, zoals
+‘apropos’ alleen de eerste documentatieregel tonen.  Opvolgende regels
+moeten niet ingesprongen worden, anders zien ze er raar uit als je ‘C-h
+v’ (‘describe-variable’) gebruikt.
 
 
 File: emacs-lisp-intro-nl.info,  Node: defvar en asterisk,  Prev: Inzien huidige variabele waarde,  Up: defvar
 
-8.5.1 ‘defvar’ and an asterisk
-------------------------------
+8.5.1 ‘defvar’ en een sterretje
+-------------------------------
 
-In the past, Emacs used the ‘defvar’ special form both for internal
-variables that you would not expect a user to change and for variables
-that you do expect a user to change.  Although you can still use
-‘defvar’ for user customizable variables, please use ‘defcustom’
-instead, since it provides a path into the Customization commands.
-(*Note Specifying Variables using ‘defcustom’: defcustom.)
+In het verleden gebruikte Emacs de speciale vorm ‘defvar’ voor zowel
+interne variabelen waarvan je niet verwacht dat een gebruiker die
+aanpast, als voor variabelen waarvan je wel verwacht dat een gebruiker
+die aanpast.  Hoewel je nog steeds ‘defvar’ voor door de gebruiker aan
+te passen variabelen kunt gebruiken, gebruik je alsjeblieft ‘defcustom’
+omdat dit een pad biedt naar de Customization commando's.  (*Note
+Variabelen specificeren met ‘defcustom’: defcustom.)
 
-   When you specified a variable using the ‘defvar’ special form, you
-could distinguish a variable that a user might want to change from
-others by typing an asterisk, ‘*’, in the first column of its
-documentation string.  For example:
+   Wanneer je een variabele met de speciale vorm ‘defvar’ gespecificeerd
+hebt, kon je onderscheid maken tussen een variabele die de gebruiker mag
+veranderen en de andere, door het typen van een sterretje, ‘*’, in de
+eerste kolom van de documentatiestring.  Bijvoorbeeld:
 
      (defvar shell-command-default-error-buffer nil
        "*Buffer name for `shell-command' ... error output.
      ... ")
 
-You could (and still can) use the ‘set-variable’ command to change the
-value of ‘shell-command-default-error-buffer’ temporarily.  However,
-options set using ‘set-variable’ are set only for the duration of your
-editing session.  The new values are not saved between sessions.  Each
-time Emacs starts, it reads the original value, unless you change the
-value within your ‘.emacs’ file, either by setting it manually or by
-using ‘customize’.  *Note Your ‘.emacs’ File: Emacs Initialization.
+Je kon (en kan nog steeds) het commando ‘set-variable’ gebruiken om de
+waarde van ‘shell-command-default-error-buffer’ tijdelijk te wijzigen.
+Echter, opties gezet met ‘set-variable’ zijn alleen voor de duur van je
+editing-sessie gezet.  De nieuwe waarden worden tussen sessies niet
+bewaard.  Steeds wanneer Emacs start, leest het de oorspronkelijke
+waarde, tenzij je de waarde in je ‘.emacs’ bestand aanpast, door het
+handmatig te zetten of met gebruik van ‘customize’.  *Note Jouw ‘.emacs’
+bestand: Initialisatie van Emacs.
 
-   For me, the major use of the ‘set-variable’ command is to suggest
-variables that I might want to set in my ‘.emacs’ file.  There are now
-more than 700 such variables, far too many to remember readily.
-Fortunately, you can press <TAB> after calling the ‘M-x set-variable’
-command to see the list of variables.  (*Note Examining and Setting
-Variables: (emacs)Examining.)
+   Het belangrijkste gebruik van het commando ‘set-variable’ voor mij is
+om variabelen voor te stellen die ik in mijn ‘.emacs’ bestand zou willen
+zetten.  Er zijn nu meer dan 700 van dat soort variabelen, veel te veel
+om makkelijk te herinneren.  Gelukkig kan je de <TAB> toets gebruiken na
+het commando ‘M-x set-variable’ om een lijst met variabelen te zien.
+(*Note Examining and Setting Variables: (emacs)Examining.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: cons en search-fwd terugblik,  Next: zoek oefening,  Prev: defvar,  Up: Knippen en opslaan van tekst
@@ -7785,12 +7799,13 @@ File: emacs-lisp-intro-nl.info,  Node: cons en search-fwd terugblik,  Next: zoek
 8.6 Terugblik
 =============
 
-Here is a brief summary of some recently introduced functions.
+Hier is een korte samenvatting van sommige recent geïntroduceerde
+functies.
 
 ‘car’
 ‘cdr’
-     ‘car’ returns the first element of a list; ‘cdr’ returns the second
-     and subsequent elements of a list.
+     ‘car’ geeft het eerste element van een lijst terug.  ‘cdr’ geeft
+     het tweede en volgende elementen van de lijst terug.
 
      Bijvoorbeeld:
 
@@ -7800,8 +7815,8 @@ Here is a brief summary of some recently introduced functions.
                ⇒ (2 3 4 5 6 7)
 
 ‘cons’
-     ‘cons’ constructs a list by prepending its first argument to its
-     second argument.
+     ‘cons’ construeer een lijst door het eerste element voor het tweede
+     te zetten.
 
      Bijvoorbeeld:
 
@@ -7809,12 +7824,12 @@ Here is a brief summary of some recently introduced functions.
                ⇒ (1 2 3 4)
 
 ‘funcall’
-     ‘funcall’ evaluates its first argument as a function.  It passes
-     its remaining arguments to its first argument.
+     ‘funcall’ evalueert het eerste argument als functie.  Het geeft de
+     resterende argumenten door aan het eerste argument.
 
 ‘nthcdr’
-     Return the result of taking CDR N times on a list.  The "rest of
-     the rest", as it were.
+     Geeft het resultaat van N keer CDR nemen van een lijst.  De "rest
+     van de rest" als het ware.
 
      Bijvoorbeeld:
 
@@ -7823,8 +7838,8 @@ Here is a brief summary of some recently introduced functions.
 
 ‘setcar’
 ‘setcdr’
-     ‘setcar’ changes the first element of a list; ‘setcdr’ changes the
-     second and subsequent elements of a list.
+     ‘setcar’ wijzigt het eerste element van een lijst, ‘setcdr’ wijzigt
+     het tweede en volgende elementen van een lijst.
 
      Bijvoorbeeld:
 
@@ -7834,15 +7849,14 @@ Here is a brief summary of some recently introduced functions.
 
           triple
                ⇒ (37 2 3)
-
           (setcdr triple '("foo" "bar"))
 
           triple
                ⇒ (37 "foo" "bar")
 
 ‘progn’
-     Evaluate each argument in sequence and then return the value of the
-     last.
+     Evalueer achtereenvolgens elk argument en geef de waarde van de
+     laatste terug.
 
      Bijvoorbeeld:
 
@@ -7850,62 +7864,64 @@ Here is a brief summary of some recently introduced functions.
                ⇒ 4
 
 ‘save-restriction’
-     Record whatever narrowing is in effect in the current buffer, if
-     any, and restore that narrowing after evaluating the arguments.
+     Bewaar de versmalling die eventueel actief is in het huidige buffer
+     en herstel die versmalling na het evalueren van de argumenten.
 
 ‘search-forward’
-     Search for a string, and if the string is found, move point.  With
-     a regular expression, use the similar ‘re-search-forward’.  (*Note
-     Regular Expression Searches: Regexp Search, for an explanation of
-     regular expression patterns and searches.)
+     Zoek voor een string, en wanneer die string gevonden is, verplaats
+     point.  Met een reguliere expressie gebruik de vergelijkbare
+     ‘re-search-forward’.  (*Note Reguliere expressie zoekopdrachten:
+     Regexp zoeken, voor een uitleg van reguliere expressies patronen en
+     zoekopdrachten.)
 
-     ‘search-forward’ and ‘re-search-forward’ take four arguments:
+     ‘search-forward’ en ‘re-search-forward’ hebben vier argumenten:
 
-       1. The string or regular expression to search for.
+       1. De string of reguliere expressie om naar te zoeken.
 
-       2. Optionally, the limit of the search.
+       2. Optioneel, de limiet van de zoekopdracht.
 
-       3. Optionally, what to do if the search fails, return ‘nil’ or an
-          error message.
+       3. Optioneel, wat te doen als de zoekopdracht mislukt, geef ‘nil’
+          terug of een fout.
 
-       4. Optionally, how many times to repeat the search; if negative,
-          the search goes backwards.
+       4. Optioneel, hoeveel keer de zoekopdracht te herhalen.  Wanneer
+          negatief, zoek achterwaarts.
 
 ‘kill-region’
 ‘delete-and-extract-region’
 ‘copy-region-as-kill’
 
-     ‘kill-region’ cuts the text between point and mark from the buffer
-     and stores that text in the kill ring, so you can get it back by
-     yanking.
+     ‘kill-region’ verwijdert de tekst tussen point en mark uit het
+     buffer en bewaart die tekst in de kill ring, zodat je die met
+     yanken terug kunt krijgen.
 
-     ‘copy-region-as-kill’ copies the text between point and mark into
-     the kill ring, from which you can get it by yanking.  The function
-     does not cut or remove the text from the buffer.
+     ‘copy-region-as-kill’ kopieert de tekst tussen point en mark naar
+     de kill ring, van waar je het met yanken terug kunt krijgen.  De
+     functie verwijdert de tekst niet uit het buffer.
 
-   ‘delete-and-extract-region’ removes the text between point and mark
-from the buffer and throws it away.  You cannot get it back.  (This is
-not an interactive command.)
+   ‘delete-and-extract-region’ verwijdert de tekst tussen point en mark
+uit het buffer en gooit het weg.  Je kunt het niet terug krijgen.  (Dit
+is geen interactief commando).
 
 
 File: emacs-lisp-intro-nl.info,  Node: zoek oefening,  Prev: cons en search-fwd terugblik,  Up: Knippen en opslaan van tekst
 
-8.7 Searching Exercises
-=======================
+8.7 Zoek-oefeningen
+===================
 
-   • Write an interactive function that searches for a string.  If the
-     search finds the string, leave point after it and display a message
-     that says "Found!".  (Do not use ‘search-forward’ for the name of
-     this function; if you do, you will overwrite the existing version
-     of ‘search-forward’ that comes with Emacs.  Use a name such as
-     ‘test-search’ instead.)
+   • Schrijf een interactieve functie die naar een string zoekt.
+     Wanneer de string gevonden is, plaats point er achter en toon een
+     boodschap die zegt "Gevonden!".  (Maak geen gebruik van
+     ‘search-forward’ als naam van deze functie, wanneer je dat doet
+     overschrijf je de bestaande versie van ‘search-forward’ die bij
+     Emacs hoort.  Gebruik in plaats daarvan een naam zoals
+     ‘test-zoeken’.)
 
-   • Write a function that prints the third element of the kill ring in
-     the echo area, if any; if the kill ring does not contain a third
-     element, print an appropriate message.
+   • Schrijf een functie die het derde element van de kill ring toont in
+     het echogebied als dat element er is.  Wanneer de kill ring geen
+     derde element heeft, toon dat een passende boodschap.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Implementatie van lijsten,  Next: Yanken,  Prev: Knippen en opslaan van tekst,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Implementatie van lijsten,  Next: Yanking,  Prev: Knippen en opslaan van tekst,  Up: Top
 
 9 Hoe lijsten zijn geïmplementeerd
 **********************************
@@ -7954,7 +7970,6 @@ diagram:
           |            |            |
            --> rose     --> violet   --> buttercup
 
-
 In the diagram, each box represents a word of computer memory that holds
 a Lisp object, usually in the form of a memory address.  The boxes,
 i.e., the addresses, are in pairs.  Each arrow points to what the
@@ -7981,7 +7996,6 @@ creates a situation like this:
                  |            |            |
                   --> rose     --> violet   --> buttercup
 
-
 In this example, the symbol ‘bouquet’ holds the address of the first
 pair of boxes.
 
@@ -7995,7 +8009,6 @@ like this:
        -->| rose  |   o------->| violet |   o------->| butter- |  nil |
           |       |      |     |        |      |     | cup     |      |
            --------------       ---------------       ----------------
-
 
    (Symbols consist of more than pairs of addresses, but the structure
 of a symbol is made up of addresses.  Indeed, the symbol ‘bouquet’
@@ -8025,8 +8038,6 @@ produces this:
               |              |            |
                --> rose       --> violet   --> buttercup
 
-
-
 The value of ‘flowers’ is ‘(violet buttercup)’, which is to say, the
 symbol ‘flowers’ holds the address of the pair of address-boxes, the
 first of which holds the address of ‘violet’, and the second of which
@@ -8054,8 +8065,6 @@ produces:
               |              |              |             |
               |              |              |             |
                --> lily      --> rose       --> violet    --> buttercup
-
-
 
 However, this does not change the value of the symbol ‘flowers’, as you
 can see by evaluating the following,
@@ -8129,8 +8138,6 @@ Property Lists: (elisp)Property Lists.)
              +---------------------+
              |/                   \|
 
-
-
 
 File: emacs-lisp-intro-nl.info,  Node: Lijst oefening,  Prev: Symbolen als ladekast,  Up: Implementatie van lijsten
 
@@ -8142,7 +8149,7 @@ this list and set this new list to ‘more-flowers’.  Set the CAR of
 ‘flowers’ to a fish.  What does the ‘more-flowers’ list now contain?
 
 
-File: emacs-lisp-intro-nl.info,  Node: Yanken,  Next: Loops en recursie,  Prev: Implementatie van lijsten,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Yanking,  Next: Loops en recursie,  Prev: Implementatie van lijsten,  Up: Top
 
 10 Tekst terug yanken
 *********************
@@ -8171,7 +8178,7 @@ how the list is handled as a ring.)
 * yank nthcdr oefeningen::   De ‘kill-ring-yank-pointer’ variabele.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Kill ring overzicht,  Next: kill-ring-yank-pointer,  Up: Yanken
+File: emacs-lisp-intro-nl.info,  Node: Kill ring overzicht,  Next: kill-ring-yank-pointer,  Up: Yanking
 
 10.1 Kill ring overzicht
 ========================
@@ -8210,7 +8217,7 @@ will stick with plain ‘insert’ since it is easier to understand.)
 necessary to look at the ‘kill-ring-yank-pointer’ variable.
 
 
-File: emacs-lisp-intro-nl.info,  Node: kill-ring-yank-pointer,  Next: yank nthcdr oefeningen,  Prev: Kill ring overzicht,  Up: Yanken
+File: emacs-lisp-intro-nl.info,  Node: kill-ring-yank-pointer,  Next: yank nthcdr oefeningen,  Prev: Kill ring overzicht,  Up: Yanking
 
 10.2 The ‘kill-ring-yank-pointer’ Variable
 ==========================================
@@ -8248,8 +8255,6 @@ text.  Here is a diagram:
                  |
                   --> "some text"
 
-
-
    Both the variable ‘kill-ring’ and the variable
 ‘kill-ring-yank-pointer’ are pointers.  But the kill ring itself is
 usually described as if it were actually what it is composed of.  The
@@ -8266,7 +8271,7 @@ to point to--that part of the kill ring of which the first element (the
 CAR) will be inserted.
 
 
-File: emacs-lisp-intro-nl.info,  Node: yank nthcdr oefeningen,  Prev: kill-ring-yank-pointer,  Up: Yanken
+File: emacs-lisp-intro-nl.info,  Node: yank nthcdr oefeningen,  Prev: kill-ring-yank-pointer,  Up: Yanking
 
 10.3 Exercises with ‘yank’ and ‘nthcdr’
 =======================================
@@ -8282,7 +8287,7 @@ File: emacs-lisp-intro-nl.info,  Node: yank nthcdr oefeningen,  Prev: kill-ring-
      return the first, second, third, and fourth elements of a list.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Loops en recursie,  Next: Rexexp zoeken,  Prev: Yanken,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Loops en recursie,  Next: Regexp zoeken,  Prev: Yanking,  Up: Top
 
 11 Loops en recursie
 ********************
@@ -9931,24 +9936,25 @@ File: emacs-lisp-intro-nl.info,  Node: Looping oefening,  Prev: Recursie,  Up: L
      (texinfo)Indicating.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Rexexp zoeken,  Next: Woorden tellen,  Prev: Loops en recursie,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Regexp zoeken,  Next: Woorden tellen,  Prev: Loops en recursie,  Up: Top
 
-12 Zoekopdrachten met reguliere expressies
-******************************************
+12 Reguliere expressie zoekopdrachten
+*************************************
 
 Regular expression searches are used extensively in GNU Emacs.  The two
 functions, ‘forward-sentence’ and ‘forward-paragraph’, illustrate these
 searches well.  They use regular expressions to find where to move
 point.  The phrase "regular expression" is often written as "regexp".
 
-   Regular expression searches are described in *note Regular Expression
-Search: (emacs)Regexp Search, as well as in *note (elisp)Regular
-Expressions::.  In writing this chapter, I am presuming that you have at
-least a mild acquaintance with them.  The major point to remember is
-that regular expressions permit you to search for patterns as well as
-for literal strings of characters.  For example, the code in
-‘forward-sentence’ searches for the pattern of possible characters that
-could mark the end of a sentence, and moves point to that spot.
+   Reguliere expressie zoekopdrachten zijn beschreven in *note Regular
+Expression Search: (emacs)Regexp Search, en ook in *note (elisp)Regular
+Expressions::.  Tijdens het schrijven van dit hoofdstuk ga ik er vanuit
+dat je tenminste een beetje met ze kennis gemaakt hebt.  Het
+belangrijkste punt om te onthouden is dat reguliere expressies je in
+staat stellen naar patronen te zoeken en ook naar letterlijke
+karakterstrings.  De code in ‘forward-sentence’ zoekt bijvoorbeeld naar
+patronen van mogelijke karakters die het einde van een zin kunnen
+markeren, en verplaatst point naar die plek.
 
    Before looking at the code for the ‘forward-sentence’ function, it is
 worth considering what the pattern that marks the end of a sentence must
@@ -9970,7 +9976,7 @@ complex function that introduces several new features.
 * re-search oefeningen::     re-search oefeningen
 
 
-File: emacs-lisp-intro-nl.info,  Node: sentence-end,  Next: re-search-forward,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: sentence-end,  Next: re-search-forward,  Up: Regexp zoeken
 
 12.1 The Regular Expression for ‘sentence-end’
 ==============================================
@@ -10058,7 +10064,7 @@ marks.  These have differing degrees of curliness.  The
 sentence may end without a period, such as text in Thai.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: re-search-forward,  Next: forward-sentence,  Prev: sentence-end,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: re-search-forward,  Next: forward-sentence,  Prev: sentence-end,  Up: Regexp zoeken
 
 12.2 The ‘re-search-forward’ Function
 =====================================
@@ -10117,7 +10123,7 @@ function will return ‘nil’; and the repeat count will be provided by the
 argument to the ‘forward-sentence’ function.
 
 
-File: emacs-lisp-intro-nl.info,  Node: forward-sentence,  Next: forward-paragraph,  Prev: re-search-forward,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: forward-sentence,  Next: forward-paragraph,  Prev: re-search-forward,  Up: Regexp zoeken
 
 12.3 ‘forward-sentence’
 =======================
@@ -10340,7 +10346,7 @@ an ‘if’ expression, is handy.  You will see or write code incorporating
 this pattern often.
 
 
-File: emacs-lisp-intro-nl.info,  Node: forward-paragraph,  Next: Regexp terugblik,  Prev: forward-sentence,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: forward-paragraph,  Next: Regexp terugblik,  Prev: forward-sentence,  Up: Regexp zoeken
 
 12.4 ‘forward-paragraph’: een goudmijn van functies
 ===================================================
@@ -10746,12 +10752,13 @@ to the source.  (Be sure to install your sources!  Without them, you are
 like a person who tries to drive a car with his eyes shut!)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Regexp terugblik,  Next: re-search oefeningen,  Prev: forward-paragraph,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: Regexp terugblik,  Next: re-search oefeningen,  Prev: forward-paragraph,  Up: Regexp zoeken
 
 12.5 Terugblik
 ==============
 
-Here is a brief summary of some recently introduced functions.
+Hier is een korte samenvatting van sommige recent geïntroduceerde
+functies.
 
 ‘while’
      Repeatedly evaluate the body of the expression so long as the first
@@ -10782,13 +10789,13 @@ Here is a brief summary of some recently introduced functions.
        1. A regular expression that specifies the pattern to search for.
           (Remember to put quotation marks around this argument!)
 
-       2. Optionally, the limit of the search.
+       2. Optioneel, de limiet van de zoekopdracht.
 
-       3. Optionally, what to do if the search fails, return ‘nil’ or an
-          error message.
+       3. Optioneel, wat te doen als de zoekopdracht mislukt, geef ‘nil’
+          terug of een fout.
 
-       4. Optionally, how many times to repeat the search; if negative,
-          the search goes backwards.
+       4. Optioneel, hoeveel keer de zoekopdracht te herhalen.  Wanneer
+          negatief, zoek achterwaarts.
 
 ‘let*’
      Bind some variables locally to particular values, and then evaluate
@@ -10818,7 +10825,7 @@ Here is a brief summary of some recently introduced functions.
      part if the buffer is narrowed.
 
 
-File: emacs-lisp-intro-nl.info,  Node: re-search oefeningen,  Prev: Regexp terugblik,  Up: Rexexp zoeken
+File: emacs-lisp-intro-nl.info,  Node: re-search oefeningen,  Prev: Regexp terugblik,  Up: Regexp zoeken
 
 12.6 Exercises with ‘re-search-forward’
 =======================================
@@ -10835,7 +10842,7 @@ File: emacs-lisp-intro-nl.info,  Node: re-search oefeningen,  Prev: Regexp terug
      *Note ‘the-the’ Duplicated Words Function: the-the.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Woorden tellen,  Next: Woorden in een defun,  Prev: Rexexp zoeken,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Woorden tellen,  Next: Woorden in een defun,  Prev: Regexp zoeken,  Up: Top
 
 13 Counting via Repetition and Regexps
 **************************************
@@ -12102,8 +12109,8 @@ version, you may have to evaluate the following:
 
      (custom-set-variables '(eval-expression-print-length nil))
 
-(*Note Specifying Variables using ‘defcustom’: defcustom.  Then evaluate
-the ‘lengths-list-file’ expression.)
+(*Note Variabelen specificeren met ‘defcustom’: defcustom.  Evalueer
+daarna de ‘lengths-list-file’ expressie.)
 
    The lengths' list for ‘debug.el’ takes less than a second to produce
 and looks like this in GNU Emacs 22:
@@ -13463,8 +13470,8 @@ file.
 
 File: emacs-lisp-intro-nl.info,  Node: defcustom,  Next: Een init bestand beginnen,  Prev: Site-wide init,  Up: Initialisatie van Emacs
 
-16.2 Specifying Variables using ‘defcustom’
-===========================================
+16.2 Variabelen specificeren met ‘defcustom’
+============================================
 
 You can specify variables using ‘defcustom’ so that you and others can
 then use Emacs's ‘customize’ feature to set their values.  (You cannot
@@ -16613,7 +16620,6 @@ If we want to multiply 3 by 7, we can write:
               |         |
            function  argument
 
-
 This expression returns 21.
 
 Similarly, we can write:
@@ -16623,14 +16629,12 @@ Similarly, we can write:
                     |                |
            anonymous function     argument
 
-
 If we want to divide 100 by 50, we can write:
 
      ((lambda (arg) (/ arg 50)) 100)
       \______________________/  \_/
                   |              |
          anonymous function   argument
-
 
 This expression returns 2.  The 100 is passed to the function, which
 divides that number by 50.
@@ -17504,7 +17508,7 @@ Index
                                                               (line  56)
 * Accumulate, type of recursive pattern: Accumulate.          (line   6)
 * add-hook:                              Tekst en auto-fill.  (line  54)
-* and:                                   kill-new functie.    (line 211)
+* and:                                   kill-new functie.    (line 212)
 * and <1>:                               fwd-para let.        (line  65)
 * Anonymous function:                    lambda.              (line   6)
 * apostrof om te quoten:                 Draai een programma. (line  13)
@@ -17553,13 +17557,11 @@ Index
 * Building robots:                       Robots bouwen.       (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
 * C-taal primitieven:                    Primitieve functies. (line   6)
-* C, a digression into:                  Uitwijding naar C.   (line   6)
+* C, een uitweiding naar:                Uitwijding naar C.   (line   6)
 * cancel-debug-on-entry:                 debug-on-entry.      (line  86)
 * car, introduced:                       car cdr en cons.     (line   6)
 * cdr, introduced:                       car cdr en cons.     (line   6)
 * Chest of Drawers, metaphor for a symbol: Symbolen als ladekast.
-                                                              (line   6)
-* Clipping text:                         Knippen en opslaan van tekst.
                                                               (line   6)
 * Code installtie:                       Permanent installeren.
                                                               (line   6)
@@ -17576,7 +17578,7 @@ Index
 * Conditional 'twixt two versions of Emacs: Eenvoudige uitbreiding.
                                                               (line  35)
 * Conditioneel met if:                   if.                  (line   6)
-* cons cell:                             Lijsten uitgetekend. (line 102)
+* cons cell:                             Lijsten uitgetekend. (line  97)
 * cons, geïntroduceerd:                  cons.                (line   6)
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
@@ -17589,15 +17591,9 @@ Index
                                                               (line   6)
 * Counting words in a defun <1>:         count-words-in-defun.
                                                               (line   6)
-* curly quotes:                          Complete zap-to-char.
-                                                              (line  43)
 * current-buffer:                        Buffers pakken.      (line   6)
 * current-kill:                          current-kill.        (line   6)
-* curved quotes:                         Complete zap-to-char.
-                                                              (line  43)
 * Customizing your .emacs file:          Initialisatie van Emacs.
-                                                              (line   6)
-* Cutting and storing text:              Knippen en opslaan van tekst.
                                                               (line   6)
 * dan-deel gedefinieerd:                 if in meer detail.   (line   6)
 * Data typen:                            Data typen.          (line   6)
@@ -17619,14 +17615,12 @@ Index
 * defsubst:                              defcustom.           (line 127)
 * defun:                                 defun.               (line   6)
 * defvar:                                defvar.              (line   6)
-* defvar for a user customizable variable: defvar en asterisk.
+* defvar met een sterretje:              defvar en asterisk.  (line   6)
+* defvar voor een user-customizable variabele: defvar en asterisk.
                                                               (line   6)
-* defvar with an asterisk:               defvar en asterisk.  (line   6)
 * Delen van een let expressie:           Delen van een let expressie.
                                                               (line   6)
 * delete-and-extract-region:             Uitwijding naar C.   (line   6)
-* Deleting text:                         Knippen en opslaan van tekst.
-                                                              (line   6)
 * Deling:                                In geval van een groot buffer.
                                                               (line  39)
 * describe-function:                     versimpelde-beginning-of-buffer.
@@ -17635,7 +17629,7 @@ Index
 * directory-files:                       Bestanden lijst.     (line  12)
 * dolist:                                dolist.              (line   6)
 * dotimes:                               dotimes.             (line   6)
-* dotted pair:                           Lijsten uitgetekend. (line 102)
+* dotted pair:                           Lijsten uitgetekend. (line  97)
 * Draai een programma:                   Draai een programma. (line   6)
 * Drawers, Chest of, metaphor for a symbol: Symbolen als ladekast.
                                                               (line   6)
@@ -17647,19 +17641,18 @@ Index
 * Een buffer krijgen:                    Buffers pakken.      (line   6)
 * Een functiedefinitie wijzigen:         Een defun wijzigen.  (line   6)
 * Een programma draaien:                 Draai een programma. (line   6)
+* Een variabele initialiseren:           defvar.              (line   6)
 * Eigenschappen, vermelding van buffer-substring-no-properties: versmal oefening.
                                                               (line  13)
 * Else:                                  else.                (line   6)
 * Emacs version, choosing:               Eenvoudige uitbreiding.
                                                               (line  35)
-* empty list gedefinieerd:               Lisp atoms.          (line  19)
+* empty list gedefinieerd:               Lisp atomen.         (line  19)
 * eobp:                                  fwd-para while.      (line  59)
 * eq:                                    Terugblik.           (line 127)
-* eq (example of use):                   last-command en this-command.
+* eq (voorbeeld van gebruik):            last-command en this-command.
                                                               (line  36)
 * equal:                                 Terugblik.           (line 127)
-* Erasing text:                          Knippen en opslaan van tekst.
-                                                              (line   6)
 * error:                                 Body van current-kill.
                                                               (line  40)
 * evaluate gedefinieerd:                 Draai een programma. (line   6)
@@ -17669,7 +17662,7 @@ Index
 * Evaluatiepraktijk:                     Oefenen van evaluatie.
                                                               (line   6)
 * Every, soort van recursief patroon:    Every.               (line   6)
-* expressie gedefinieerd:                Lisp atoms.          (line  27)
+* expressie gedefinieerd:                Lisp atomen.         (line  27)
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                               (line   6)
 * files-in-below-directory:              Bestanden lijst.     (line  25)
@@ -17691,6 +17684,10 @@ Index
 * Functiedefinitie schrijven:            Defuns schrijven.    (line   6)
 * Functiedefinitie, hoe te wijzigen:     Een defun wijzigen.  (line   6)
 * Functies, primitief:                   Primitieve functies. (line   6)
+* gebogen aanhalingstekens:              Complete zap-to-char.
+                                                              (line  39)
+* gebogen aanhalingstekens <1>:          Complete zap-to-char.
+                                                              (line  39)
 * Geen uitstel oplossing:                Geen uitstel oplossing.
                                                               (line   6)
 * Genereer een foutmelding:              Fouten maken.        (line   6)
@@ -17718,7 +17715,6 @@ Index
 * Informatie naar functies doorgeven:    Argumenten.          (line   6)
 * Initialization file:                   Initialisatie van Emacs.
                                                               (line   6)
-* Initializing a variable:               defvar.              (line   6)
 * insert-buffer:                         insert-buffer.       (line   6)
 * insert-buffer-substring:               append-to-buffer overzicht.
                                                               (line   6)
@@ -17727,8 +17723,7 @@ Index
 * Insidious type of bug:                 Een andere bug.      (line   6)
 * Installeer een functiedefinitie:       Installeer.          (line   6)
 * Interactieve functies:                 Interactief.         (line   6)
-* Interactieve opties:                   Interactieve operaties.
-                                                              (line   6)
+* Interactieve opties:                   Interactieve opties. (line   6)
 * interactive:                           Interactief.         (line   6)
 * interactive function gedefinieerd:     Hoe te evalueren.    (line  11)
 * interactive, voorbeeld gebruik van:    insert-buffer interactief.
@@ -17747,8 +17742,6 @@ Index
 * kill-append:                           kill-append functie. (line   6)
 * kill-new:                              kill-new functie.    (line   6)
 * kill-region:                           kill-region.         (line   6)
-* Killing text:                          Knippen en opslaan van tekst.
-                                                              (line   6)
 * lambda:                                lambda.              (line   6)
 * lege string gedefinieerd:              Terugblik.           (line 142)
 * length:                                length.              (line   6)
@@ -17767,9 +17760,11 @@ Index
 * let* <1>:                              fwd-para let.        (line   6)
 * Lexical binding:                       Lexical en dynamische binding verschillen.
                                                               (line   6)
+* Lijsten in een computer:               Implementatie van lijsten.
+                                                              (line   6)
 * line-to-top-of-window:                 Eenvoudige uitbreiding.
                                                               (line   6)
-* Lisp atoms:                            Lisp atoms.          (line   6)
+* Lisp atomen:                           Lisp atomen.         (line   6)
 * Lisp geschiedenis:                     Geschiedenis van Lisp.
                                                               (line   6)
 * Lisp interpreter, uitgelegd:           Draai een programma. (line  39)
@@ -17778,8 +17773,6 @@ Index
 * Lisp lijsten:                          Lisp lijsten.        (line   6)
 * Lisp macro:                            Lisp macro.          (line   6)
 * list-buffers, rebound:                 Key bindings.        (line  69)
-* Lists in a computer:                   Implementatie van lijsten.
-                                                              (line   6)
 * load-library:                          Bestanden laden.     (line  51)
 * load-path:                             Bestanden laden.     (line  35)
 * Loading files:                         Bestanden laden.     (line   6)
@@ -17809,7 +17802,7 @@ Index
 * Mode line format:                      Mode line.           (line   6)
 * Mode selection, automatic:             Tekst en auto-fill.  (line  22)
 * mode-line-format:                      Mode line.           (line   6)
-* Motion by sentence and paragraph:      Rexexp zoeken.       (line   6)
+* Motion by sentence and paragraph:      Regexp zoeken.       (line   6)
 * narrowing defined:                     Buffer grootte en locatie.
                                                               (line  43)
 * nieuwe versie body voor insert-buffer: Nieuwe insert-buffer.
@@ -17821,7 +17814,7 @@ Index
 * nth:                                   nth.                 (line   6)
 * nthcdr:                                nthcdr.              (line   6)
 * nthcdr <1>:                            copy-region-as-kill. (line   6)
-* nthcdr, example:                       kill-new functie.    (line 149)
+* nthcdr, voorbeeld:                     kill-new functie.    (line 149)
 * number-to-string:                      Y-as element.        (line  12)
 * occur:                                 Key bindings.        (line  52)
 * Ongeïnitialiseerde let variabelen:     Niet-geïnitialiseerde let variabelen.
@@ -17829,19 +17822,18 @@ Index
 * Onwaarheid en waar in Emacs Lisp:      Waar en onwaarheid.  (line   6)
 * Oplossing zonder uitstel:              Geen uitstel oplossing.
                                                               (line   6)
-* Opties voor interactive:               Interactieve operaties.
-                                                              (line   6)
+* Opties voor interactive:               Interactieve opties. (line   6)
 * optionall:                             Optionele argumenten.
                                                               (line  11)
 * Optionele argumenten:                  Optionele argumenten.
                                                               (line  11)
 * or:                                    Voeg or in.          (line  13)
 * other-buffer:                          Buffers pakken.      (line   6)
-* Paragraphs, movement by:               Rexexp zoeken.       (line   6)
+* Paragraphs, movement by:               Regexp zoeken.       (line   6)
 * Parts of a Recursive Definition:       Recursive definitie onderdelen.
                                                               (line   6)
-* Pasting text:                          Yanken.              (line   6)
-* Patterns, searching for:               Rexexp zoeken.       (line   6)
+* Pasting text:                          Yanking.             (line   6)
+* Patronen, zoeken naar:                 Regexp zoeken.       (line   6)
 * Per-buffer, local variables list:      Tekst en auto-fill.  (line  22)
 * Permanente code installatie:           Permanent installeren.
                                                               (line   6)
@@ -17872,7 +17864,7 @@ Index
 * Properties, in mode line example:      Mode line.           (line  64)
 * Prototype graph:                       Een grafiek klaarmaken.
                                                               (line   6)
-* push, example:                         kill-new functie.    (line 118)
+* push, voorbeeld:                       kill-new functie.    (line 118)
 * quote:                                 Draai een programma. (line  13)
 * quoten met de apostrof:                Draai een programma. (line  13)
 * re-search-forward:                     re-search-forward.   (line   6)
@@ -17899,12 +17891,12 @@ Index
                                                               (line   6)
 * regexp-quote:                          fwd-para let.        (line  93)
 * Region, wat is het:                    save-excursion.      (line   6)
-* Regular expression searches:           Rexexp zoeken.       (line   6)
 * Regular expressions for word counting: Woorden tellen.      (line   6)
+* Reguliere expressie zoekopdrachten:    Regexp zoeken.       (line   6)
 * Remainder function, %:                 Bereken het restant. (line   6)
 * Repetition (loops):                    Loops en recursie.   (line   6)
 * Repetition for word counting:          Woorden tellen.      (line   6)
-* Retrieving text:                       Yanken.              (line   6)
+* Retrieving text:                       Yanking.             (line   6)
 * reverse:                               Functiedefinities tellen.
                                                               (line 115)
 * Ring, making a list like a:            Killring.            (line   6)
@@ -17914,16 +17906,16 @@ Index
 * save-restriction:                      save-restriction.    (line   6)
 * Schrijven van een functiedefinitie:    Defuns schrijven.    (line   6)
 * search-forward:                        search-forward.      (line   6)
-* Searches, illustrating:                Rexexp zoeken.       (line   6)
+* Searches, illustrating:                Regexp zoeken.       (line   6)
 * sentence-end:                          sentence-end.        (line   6)
-* Sentences, movement by:                Rexexp zoeken.       (line   6)
+* Sentences, movement by:                Regexp zoeken.       (line   6)
 * set:                                   Setq gebruiken.      (line   6)
 * set-buffer:                            Van buffer verwisselen.
                                                               (line   6)
-* set-variable:                          defvar en asterisk.  (line  22)
+* set-variable:                          defvar en asterisk.  (line  23)
 * setcar:                                setcar.              (line   6)
 * setcdr:                                setcdr.              (line   6)
-* setcdr, example:                       kill-new functie.    (line 153)
+* setcdr, voorbeeld:                     kill-new functie.    (line 153)
 * Setting a key globally:                Key bindings.        (line  18)
 * Simple extension in .emacs file:       Eenvoudige uitbreiding.
                                                               (line   6)
@@ -17935,15 +17927,13 @@ Index
 * Source level debugger:                 edebug.              (line   6)
 * Speciale vorm:                         Complicaties.        (line  12)
 * Sterretje voor een read-only buffer:   Read-only buffer.    (line   6)
-* Storing and cutting text:              Knippen en opslaan van tekst.
-                                                              (line   6)
-* string gedefinieerd:                   Lisp atoms.          (line  67)
+* string gedefinieerd:                   Lisp atomen.         (line  67)
 * substring:                             Data typen.          (line  21)
 * switch-to-buffer:                      Van buffer verwisselen.
                                                               (line   6)
 * Switching to a buffer:                 Van buffer verwisselen.
                                                               (line   6)
-* Symbolische expressies, geïntroduceerd: Lisp atoms.         (line  27)
+* Symbolische expressies, geïntroduceerd: Lisp atomen.        (line  27)
 * Symbols as a Chest of Drawers:         Symbolen als ladekast.
                                                               (line   6)
 * Symbool zonder functie foutmelding:    Void functie.        (line   6)
@@ -17951,12 +17941,24 @@ Index
 * Symboolnamen:                          Namen en definities. (line   6)
 * Syntax categories and tables:          Syntax.              (line   6)
 * Tabs, preventing:                      Indent Tabs Mode.    (line   6)
-* Tekst tussen dubbele aanhalingstekens: Lisp atoms.          (line  63)
+* Tekst deleten:                         Knippen en opslaan van tekst.
+                                                              (line   6)
+* Tekst killen:                          Knippen en opslaan van tekst.
+                                                              (line   6)
+* Tekst knippen en opslaan:              Knippen en opslaan van tekst.
+                                                              (line   6)
+* Tekst opslaan en knippen:              Knippen en opslaan van tekst.
+                                                              (line   6)
+* Tekst tussen dubbele aanhalingstekens: Lisp atomen.         (line  63)
+* Tekst wissen:                          Knippen en opslaan van tekst.
+                                                              (line   6)
 * Tellen:                                Tellen.              (line   6)
 * teruggegeven waarde uitgelegd:         Hoe de interpreter werkt.
                                                               (line   6)
+* Text clippen:                          Knippen en opslaan van tekst.
+                                                              (line   6)
 * Text Mode turned on:                   Tekst en auto-fill.  (line  39)
-* Text retrieval:                        Yanken.              (line   6)
+* Text retrieval:                        Yanking.             (line   6)
 * top-of-ranges:                         Functiedefinities tellen.
                                                               (line  20)
 * triangle-bugged:                       debug.               (line  14)
@@ -17967,12 +17969,12 @@ Index
 * Unbinding key:                         Key bindings.        (line  58)
 * Variabel aantal argumenten:            Variabel aantal argumenten.
                                                               (line   6)
+* Variabele initialisatie:               defvar.              (line   6)
 * variabele, lokaal, gedefinieerd:       Voorkom verwarring.  (line   6)
 * Variabele, voorbeeld van, fill-column: fill-column voorbeeld.
                                                               (line   6)
 * Variabele, waarde zetten:              setq.                (line   6)
 * Variabelen:                            Variabelen.          (line   6)
-* Variable initialization:               defvar.              (line   6)
 * variable, global, defined:             Het element vaststellen.
                                                               (line  89)
 * varlist gedefinieerd:                  Delen van een let expressie.
@@ -17994,7 +17996,7 @@ Index
                                                               (line   6)
 * Voorbeeldvariabele, fill-column:       fill-column voorbeeld.
                                                               (line   6)
-* vorm gedefinieerd:                     Lisp atoms.          (line  27)
+* vorm gedefinieerd:                     Lisp atomen.         (line  27)
 * Waar en onwaarheid in Emacs Lisp:      Waar en onwaarheid.  (line   6)
 * wanneer-deel gedefinieerd:             if in meer detail.   (line   6)
 * what-line:                             what-line.           (line   6)
@@ -18016,7 +18018,7 @@ Index
 * Y-axis-column Final version.:          De finale versie.    (line  15)
 * Y-axis-label-spacing:                  Bereken het restant. (line  79)
 * Y-axis-tic:                            Y-as element.        (line  31)
-* yank:                                  Yanken.              (line   6)
+* yank:                                  Yanking.             (line   6)
 * yank <1>:                              yank.                (line   6)
 * yank-pop:                              yank-pop.            (line   6)
 * zap-to-char:                           zap-to-char.         (line   6)
@@ -18047,321 +18049,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24380
-Node: Waarom25843
-Node: Over het lezen van deze tekst26506
-Node: Doelgroep28846
-Node: Geschiedenis van Lisp31849
-Node: Opmerking voor beginners32753
-Node: Dank35504
-Node: Lijsten verwerken36099
-Ref: Lijsten verwerken-Footnote-137555
-Node: Lisp lijsten37711
-Node: Genummerde lijsten38641
-Node: Lisp atoms39809
-Node: Whitespace in lijsten43720
-Node: Typen van lijsten45071
-Node: Draai een programma46292
-Ref: Draai een programma-Footnote-148845
-Node: Fouten maken48989
-Node: Namen en definities54192
-Node: Lisp interpreter56148
-Node: Complicaties57372
-Node: Byte compiling59621
-Node: Evaluatie60750
-Node: Hoe de interpreter werkt61381
-Node: Geneste lijsten evalueren62754
-Node: Variabelen65442
-Node: fill-column voorbeeld67058
-Node: Void functie68745
-Node: Void variabele70028
-Node: Argumenten71954
-Ref: Argumenten-Footnote-173760
-Node: Data typen74632
-Node: Argumenten als variabele of als lijst76869
-Node: Variabel aantal argumenten78610
-Node: Verkeerde type argument79506
-Ref: Verkeerde type argument-Footnote-183299
-Node: message83374
-Ref: message-Footnote-187596
-Node: setq87801
-Node: Setq gebruiken88526
-Node: Tellen91760
-Node: Samenvatting93822
-Node: Foutmelding oefeningen95825
-Node: Oefenen van evaluatie96381
-Node: Hoe te evalueren97608
-Node: Buffer namen99202
-Node: Buffers pakken105273
-Ref: Buffers pakken-Footnote-1107962
-Node: Van buffer verwisselen108212
-Ref: Van buffer verwisselen-Footnote-1111803
-Ref: Van buffer verwisselen-Footnote-2112145
-Node: Buffer grootte en locatie112899
-Node: Evaluatie oefening115113
-Node: Defuns schrijven115397
-Node: Primitieve functies116690
-Node: defun117925
-Node: Installeer124774
-Node: Effect van installatie126210
-Node: Een defun wijzigen127128
-Node: Interactief129008
-Node: Interactieve vermenigvuldig-met-zeven130194
-Node: vermenigvuldig-met-zeven in detail132324
-Node: Interactieve operaties135177
-Node: Permanent installeren138542
-Node: let140856
-Node: Voorkom verwarring142445
-Ref: Voorkom verwarring-Footnote-1144713
-Node: Delen van een let expressie144857
-Node: Voorbeeld let expressie146572
-Ref: Voorbeeld let expressie-Footnote-1148394
-Node: Niet-geïnitialiseerde let variabelen148649
-Node: Hoe let variabelen bindt150423
-Node: Lexical en dynamische binding verschillen151761
-Node: Lexical vs dynamische binding voorbeeld153678
-Node: if155749
-Node: if in meer detail156695
-Node: type-dier in detail159508
-Node: else162158
-Node: Waar en onwaarheid165119
-Node: nil uitgelegd166128
-Node: save-excursion168325
-Node: Point en mark169101
-Node: Template voor save-excursion172218
-Node: Terugblik173503
-Node: defun oefeningen181437
-Node: Buffer rondleiding181910
-Node: Meer vinden183084
-Ref: Meer vinden-Footnote-1186089
-Node: versimpelde-beginning-of-buffer186281
-Node: mark-whole-buffer190772
-Node: mark-whole-buffer overzicht191646
-Node: Body van mark-whole-buffer193018
-Node: append-to-buffer196082
-Node: append-to-buffer overzicht196809
-Node: append interactief199608
-Node: append-to-buffer body202185
-Node: append save-excursion204373
-Ref: let* geïntroduceerd206165
-Node: Buffer gerelateerde terugblik209856
-Node: Buffer oefeningen212259
-Node: Meer complex212784
-Node: copy-to-buffer213883
-Ref: copy-to-buffer-Footnote-1216692
-Node: insert-buffer216911
-Node: insert-buffer code218370
-Node: insert-buffer interactief219379
-Node: Read-only buffer219929
-Node: b for interactief220573
-Node: insert-buffer body221699
-Node: if en or222918
-Node: Voeg or in226061
-Node: Voeg let in228396
-Node: Nieuwe insert-buffer232242
-Node: beginning-of-buffer233463
-Node: Optionele argumenten235113
-Node: beginning-of-buffer opt arg238756
-Node: Ontrafelen beginning-of-buffer239778
-Node: In geval van een groot buffer241134
-Node: In geval van een klein buffer243782
-Node: beginning-of-buffer compleet245560
-Node: Tweede buffer gerelateerde terugblik248602
-Node: optionele oefening250567
-Node: Versmallen en verbreden251091
-Node: Voordelen van versmallen251797
-Node: save-restriction253778
-Node: what-line255899
-Node: versmal oefening260350
-Node: car cdr en cons261398
-Node: Vreemde namen262584
-Node: car en cdr263306
-Node: cons268039
-Node: Bouw een lijst269128
-Ref: Bouw een lijst-Footnote-1270756
-Node: length270962
-Node: nthcdr272573
-Node: nth275683
-Node: setcar277204
-Node: setcdr280185
-Node: cons oefening281857
-Node: Knippen en opslaan van tekst282276
-Node: Tekst opslaan283647
-Node: zap-to-char285682
-Node: Complete zap-to-char286289
-Node: zap-to-char interactief288985
-Node: zap-to-char body290502
-Node: search-forward292077
-Node: progn295140
-Node: Samenvatting zap-to-char296886
-Node: kill-region298056
-Node: Complete kill-region299062
-Node: condition-case303300
-Node: Lisp macro305885
-Node: copy-region-as-kill308368
-Node: Complete copy-region-as-kill309285
-Node: copy-region-as-kill body312098
-Node: last-command en this-command313190
-Node: kill-append functie315499
-Node: kill-new functie319676
-Node: Uitwijding naar C330269
-Node: defvar335673
-Node: Inzien huidige variabele waarde337467
-Node: defvar en asterisk339392
-Node: cons en search-fwd terugblik341252
-Node: zoek oefening344312
-Node: Implementatie van lijsten345076
-Node: Lijsten uitgetekend346255
-Node: Symbolen als ladekast352478
-Node: Lijst oefening354511
-Node: Yanken354890
-Node: Kill ring overzicht356234
-Node: kill-ring-yank-pointer357946
-Node: yank nthcdr oefeningen360374
-Node: Loops en recursie361132
-Ref: Loops en recursie-Footnote-1362284
-Node: while362757
-Node: Looping met while364164
-Node: Loop voorbeeld365975
-Node: print-elements-of-list369430
-Node: Incrementele loop371975
-Node: Incrementele loop details372551
-Node: Incrementeel voorbeeld373946
-Node: Inc voorbeeld onderdelen376338
-Node: inc voorbeeld samengesteld380358
-Node: Decrementele loop383942
-Node: Decerementeel voorbeeld385408
-Node: Dec voorbeeld onderdelen386900
-Node: Dec voorbeeld samengesteld388959
-Node: dolist dotimes391213
-Node: dolist392045
-Node: dotimes395209
-Node: Recursie396723
-Node: Robots bouwen397935
-Node: Recursive definitie onderdelen399642
-Node: Recursie met lijst402080
-Node: Recursieve driehoek functie405673
-Node: Recursief voorbeeld arg van 1 of 2407049
-Node: Recursief voorbeeld arg van 3 of 4409329
-Node: Recursie met cond412375
-Node: Recursieve patronen414763
-Node: Every415256
-Node: Accumulate417710
-Node: Bewaar419003
-Node: Geen uitstel420913
-Node: Geen uitstel oplossing423617
-Ref: Geen uitstel oplossing-Footnote-1427590
-Ref: Geen uitstel oplossing-Footnote-2427696
-Node: Looping oefening428207
-Node: Rexexp zoeken429444
-Node: sentence-end431471
-Node: re-search-forward435388
-Node: forward-sentence437934
-Node: Complete forward-sentence438700
-Node: fwd-sentence while loops442252
-Node: fwd-sentence re-search445901
-Node: forward-paragraph448069
-Node: forward-paragraph in het kort449885
-Node: fwd-para let451355
-Node: fwd-para while458035
-Node: Regexp terugblik466617
-Node: re-search oefeningen469048
-Node: Woorden tellen469834
-Node: Waarom woorden tellen470592
-Node: count-words-example471638
-Node: Ontwerp count-words-example472922
-Node: Wiite ruimte bug479465
-Node: recursive-count-words489058
-Node: Tellen voorbeeld501139
-Node: Woorden in een defun501520
-Node: Verdeel en heers503261
-Node: Woorden en symbolen504492
-Node: Syntax506562
-Node: count-words-in-defun510198
-Node: Enkele defuns516495
-Node: Een bestand vinden518887
-Node: lengths-list-file521529
-Node: Enkele bestanden526804
-Node: lengths-list-many-files527565
-Node: append530357
-Node: Enkele bestanden recursief530994
-Node: De data voorbereiden533834
-Node: Data in detail te tonen534963
-Node: Sorteren535887
-Node: Bestanden lijst537565
-Ref: Bestanden lijst-Footnote-1545098
-Node: Functiedefinities tellen545315
-Node: Een grafiek klaarmaken554640
-Node: Kolommen van een grafiek555969
-Node: graph-body-print569608
-Node: recursive-graph-body-print574413
-Node: Afgedrukte assen577103
-Node: Lijngrafiek oefening577850
-Node: Initialisatie van Emacs578057
-Node: Default configuratie579551
-Ref: Default configuratie-Footnote-1581535
-Node: Site-wide init581851
-Node: defcustom583913
-Node: Een init bestand beginnen589796
-Node: Tekst en auto-fill592192
-Ref: Tekst en auto-fill-Footnote-1596208
-Ref: Tekst en auto-fill-Footnote-2596492
-Node: Mail aliasen596753
-Node: Indent Tabs Mode597679
-Node: Key bindings598624
-Node: Keymaps603398
-Node: Bestanden laden606058
-Node: Autoload609340
-Node: Eenvoudige uitbreiding612228
-Ref: Eenvoudige uitbreiding-Footnote-1614793
-Node: X11 kleuren615082
-Ref: X11 kleuren-Footnote-1616900
-Node: Diverse617054
-Node: Mode line621276
-Node: Debuggen.626812
-Node: debug627708
-Node: debug-on-entry630840
-Node: debug-on-quit634445
-Node: edebug635482
-Node: Debuggen oefeningen639604
-Node: Conclusie641369
-Node: de-de646727
-Node: Killring649517
-Node: Wat de killring doet650334
-Node: current-kill651852
-Node: Code voor current-kill652550
-Node: current-kill begrijpen655382
-Node: Body van current-kill656182
-Node: Uitwijding over fout659333
-Node: Het element vaststellen660508
-Node: yank664213
-Node: yank-pop667427
-Node: ring bestand669962
-Node: Volledige grafiek670339
-Node: Gelabeld voorbeeld671179
-Node: print-graph varlist673176
-Node: print-Y-axis674899
-Node: print-Y-axis in detail675752
-Node: Hoogte van label676562
-Node: Bereken het restant678579
-Node: Y-as element682445
-Node: Y-axis-column686208
-Node: print-Y-axis enalaatste687820
-Node: print-X-axis689805
-Node: Overeenkomsten verschillen691123
-Node: X-as tic marks691956
-Node: De gehele grafiek afdrukken698959
-Node: De finale versie700075
-Node: Test print-graph704330
-Node: Woorden in defuns grafisch weergeven706014
-Node: lambda708638
-Node: mapcar710322
-Node: Een andere bug712382
-Node: Finale afgedrukte grafiek717911
-Node: Vrije software en vrije handleidingen718862
-Node: GNU Free Documentation License725178
-Node: Index750367
-Node: Over de auteur789399
+Node: Voorwoord24382
+Node: Waarom25845
+Node: Over het lezen van deze tekst26508
+Node: Doelgroep28848
+Node: Geschiedenis van Lisp31851
+Node: Opmerking voor beginners32755
+Node: Dank35506
+Node: Lijsten verwerken36101
+Ref: Lijsten verwerken-Footnote-137557
+Node: Lisp lijsten37713
+Node: Genummerde lijsten38643
+Node: Lisp atomen39812
+Node: Whitespace in lijsten43726
+Node: Typen van lijsten45078
+Node: Draai een programma46299
+Ref: Draai een programma-Footnote-148852
+Node: Fouten maken48996
+Node: Namen en definities54199
+Node: Lisp interpreter56155
+Node: Complicaties57379
+Node: Byte compiling59628
+Node: Evaluatie60757
+Node: Hoe de interpreter werkt61388
+Node: Geneste lijsten evalueren62761
+Node: Variabelen65449
+Node: fill-column voorbeeld67065
+Node: Void functie68752
+Node: Void variabele70035
+Node: Argumenten71961
+Ref: Argumenten-Footnote-173767
+Node: Data typen74639
+Node: Argumenten als variabele of als lijst76876
+Node: Variabel aantal argumenten78617
+Node: Verkeerde type argument79513
+Ref: Verkeerde type argument-Footnote-183306
+Node: message83381
+Ref: message-Footnote-187603
+Node: setq87808
+Node: Setq gebruiken88533
+Node: Tellen91767
+Node: Samenvatting93829
+Node: Foutmelding oefeningen95832
+Node: Oefenen van evaluatie96388
+Node: Hoe te evalueren97615
+Node: Buffer namen99209
+Node: Buffers pakken105280
+Ref: Buffers pakken-Footnote-1107969
+Node: Van buffer verwisselen108219
+Ref: Van buffer verwisselen-Footnote-1111810
+Ref: Van buffer verwisselen-Footnote-2112152
+Node: Buffer grootte en locatie112906
+Node: Evaluatie oefening115120
+Node: Defuns schrijven115404
+Node: Primitieve functies116697
+Node: defun117932
+Node: Installeer124783
+Node: Effect van installatie126219
+Node: Een defun wijzigen127146
+Node: Interactief129026
+Node: Interactieve vermenigvuldig-met-zeven130209
+Node: vermenigvuldig-met-zeven in detail132339
+Node: Interactieve opties135192
+Node: Permanent installeren138554
+Node: let140865
+Node: Voorkom verwarring142454
+Ref: Voorkom verwarring-Footnote-1144722
+Node: Delen van een let expressie144866
+Node: Voorbeeld let expressie146581
+Ref: Voorbeeld let expressie-Footnote-1148403
+Node: Niet-geïnitialiseerde let variabelen148658
+Node: Hoe let variabelen bindt150432
+Node: Lexical en dynamische binding verschillen151770
+Node: Lexical vs dynamische binding voorbeeld153687
+Node: if155758
+Node: if in meer detail156704
+Node: type-dier in detail159517
+Node: else162167
+Node: Waar en onwaarheid165128
+Node: nil uitgelegd166137
+Node: save-excursion168334
+Node: Point en mark169110
+Node: Template voor save-excursion172227
+Node: Terugblik173512
+Node: defun oefeningen181541
+Node: Buffer rondleiding182014
+Node: Meer vinden183188
+Ref: Meer vinden-Footnote-1186202
+Node: versimpelde-beginning-of-buffer186419
+Node: mark-whole-buffer190916
+Node: mark-whole-buffer overzicht191790
+Node: Body van mark-whole-buffer193162
+Node: append-to-buffer196227
+Node: append-to-buffer overzicht196954
+Node: append interactief199753
+Node: append-to-buffer body202330
+Node: append save-excursion204518
+Ref: let* geïntroduceerd206312
+Node: Buffer gerelateerde terugblik210003
+Node: Buffer oefeningen212406
+Node: Meer complex212931
+Node: copy-to-buffer214030
+Ref: copy-to-buffer-Footnote-1216839
+Node: insert-buffer217058
+Node: insert-buffer code218517
+Node: insert-buffer interactief219526
+Node: Read-only buffer220076
+Node: b for interactief220720
+Node: insert-buffer body221846
+Node: if en or223065
+Node: Voeg or in226208
+Node: Voeg let in228543
+Node: Nieuwe insert-buffer232389
+Node: beginning-of-buffer233610
+Node: Optionele argumenten235260
+Node: beginning-of-buffer opt arg238903
+Node: Ontrafelen beginning-of-buffer239925
+Node: In geval van een groot buffer241281
+Node: In geval van een klein buffer243929
+Node: beginning-of-buffer compleet245707
+Node: Tweede buffer gerelateerde terugblik248751
+Node: optionele oefening250716
+Node: Versmallen en verbreden251240
+Node: Voordelen van versmallen251946
+Node: save-restriction253927
+Node: what-line256048
+Node: versmal oefening260499
+Node: car cdr en cons261547
+Node: Vreemde namen262733
+Node: car en cdr263455
+Node: cons268188
+Node: Bouw een lijst269277
+Ref: Bouw een lijst-Footnote-1270905
+Node: length271111
+Node: nthcdr272722
+Node: nth275832
+Node: setcar277353
+Node: setcdr280334
+Node: cons oefening282006
+Node: Knippen en opslaan van tekst282425
+Node: Tekst opslaan283841
+Node: zap-to-char285963
+Node: Complete zap-to-char286575
+Node: zap-to-char interactief288943
+Node: zap-to-char body290530
+Node: search-forward292079
+Node: progn295232
+Node: Samenvatting zap-to-char297047
+Node: kill-region298203
+Node: Complete kill-region299202
+Node: condition-case303616
+Node: Lisp macro306187
+Node: copy-region-as-kill308821
+Node: Complete copy-region-as-kill309765
+Node: copy-region-as-kill body312422
+Node: last-command en this-command313564
+Node: kill-append functie315904
+Node: kill-new functie320183
+Node: Uitwijding naar C331179
+Node: defvar336722
+Node: Inzien huidige variabele waarde338600
+Node: defvar en asterisk340564
+Node: cons en search-fwd terugblik342618
+Node: zoek oefening345799
+Node: Implementatie van lijsten346604
+Node: Lijsten uitgetekend347784
+Node: Symbolen als ladekast354000
+Node: Lijst oefening356031
+Node: Yanking356410
+Node: Kill ring overzicht357755
+Node: kill-ring-yank-pointer359468
+Node: yank nthcdr oefeningen361895
+Node: Loops en recursie362654
+Ref: Loops en recursie-Footnote-1363807
+Node: while364280
+Node: Looping met while365687
+Node: Loop voorbeeld367498
+Node: print-elements-of-list370953
+Node: Incrementele loop373498
+Node: Incrementele loop details374074
+Node: Incrementeel voorbeeld375469
+Node: Inc voorbeeld onderdelen377861
+Node: inc voorbeeld samengesteld381881
+Node: Decrementele loop385465
+Node: Decerementeel voorbeeld386931
+Node: Dec voorbeeld onderdelen388423
+Node: Dec voorbeeld samengesteld390482
+Node: dolist dotimes392736
+Node: dolist393568
+Node: dotimes396732
+Node: Recursie398246
+Node: Robots bouwen399458
+Node: Recursive definitie onderdelen401165
+Node: Recursie met lijst403603
+Node: Recursieve driehoek functie407196
+Node: Recursief voorbeeld arg van 1 of 2408572
+Node: Recursief voorbeeld arg van 3 of 4410852
+Node: Recursie met cond413898
+Node: Recursieve patronen416286
+Node: Every416779
+Node: Accumulate419233
+Node: Bewaar420526
+Node: Geen uitstel422436
+Node: Geen uitstel oplossing425140
+Ref: Geen uitstel oplossing-Footnote-1429113
+Ref: Geen uitstel oplossing-Footnote-2429219
+Node: Looping oefening429730
+Node: Regexp zoeken430967
+Node: sentence-end433027
+Node: re-search-forward436944
+Node: forward-sentence439490
+Node: Complete forward-sentence440256
+Node: fwd-sentence while loops443808
+Node: fwd-sentence re-search447457
+Node: forward-paragraph449625
+Node: forward-paragraph in het kort451441
+Node: fwd-para let452911
+Node: fwd-para while459591
+Node: Regexp terugblik468173
+Node: re-search oefeningen470629
+Node: Woorden tellen471415
+Node: Waarom woorden tellen472173
+Node: count-words-example473219
+Node: Ontwerp count-words-example474503
+Node: Wiite ruimte bug481046
+Node: recursive-count-words490639
+Node: Tellen voorbeeld502720
+Node: Woorden in een defun503101
+Node: Verdeel en heers504842
+Node: Woorden en symbolen506073
+Node: Syntax508143
+Node: count-words-in-defun511779
+Node: Enkele defuns518076
+Node: Een bestand vinden520468
+Node: lengths-list-file523110
+Node: Enkele bestanden528386
+Node: lengths-list-many-files529147
+Node: append531939
+Node: Enkele bestanden recursief532576
+Node: De data voorbereiden535416
+Node: Data in detail te tonen536545
+Node: Sorteren537469
+Node: Bestanden lijst539147
+Ref: Bestanden lijst-Footnote-1546680
+Node: Functiedefinities tellen546897
+Node: Een grafiek klaarmaken556222
+Node: Kolommen van een grafiek557551
+Node: graph-body-print571190
+Node: recursive-graph-body-print575995
+Node: Afgedrukte assen578685
+Node: Lijngrafiek oefening579432
+Node: Initialisatie van Emacs579639
+Node: Default configuratie581133
+Ref: Default configuratie-Footnote-1583117
+Node: Site-wide init583433
+Node: defcustom585495
+Node: Een init bestand beginnen591380
+Node: Tekst en auto-fill593776
+Ref: Tekst en auto-fill-Footnote-1597792
+Ref: Tekst en auto-fill-Footnote-2598076
+Node: Mail aliasen598337
+Node: Indent Tabs Mode599263
+Node: Key bindings600208
+Node: Keymaps604982
+Node: Bestanden laden607642
+Node: Autoload610924
+Node: Eenvoudige uitbreiding613812
+Ref: Eenvoudige uitbreiding-Footnote-1616377
+Node: X11 kleuren616666
+Ref: X11 kleuren-Footnote-1618484
+Node: Diverse618638
+Node: Mode line622860
+Node: Debuggen.628396
+Node: debug629292
+Node: debug-on-entry632424
+Node: debug-on-quit636029
+Node: edebug637066
+Node: Debuggen oefeningen641188
+Node: Conclusie642953
+Node: de-de648311
+Node: Killring651101
+Node: Wat de killring doet651918
+Node: current-kill653436
+Node: Code voor current-kill654134
+Node: current-kill begrijpen656966
+Node: Body van current-kill657766
+Node: Uitwijding over fout660917
+Node: Het element vaststellen662092
+Node: yank665797
+Node: yank-pop669011
+Node: ring bestand671546
+Node: Volledige grafiek671923
+Node: Gelabeld voorbeeld672763
+Node: print-graph varlist674760
+Node: print-Y-axis676483
+Node: print-Y-axis in detail677336
+Node: Hoogte van label678146
+Node: Bereken het restant680163
+Node: Y-as element684029
+Node: Y-axis-column687792
+Node: print-Y-axis enalaatste689404
+Node: print-X-axis691389
+Node: Overeenkomsten verschillen692707
+Node: X-as tic marks693540
+Node: De gehele grafiek afdrukken700543
+Node: De finale versie701659
+Node: Test print-graph705914
+Node: Woorden in defuns grafisch weergeven707598
+Node: lambda710222
+Node: mapcar711903
+Node: Een andere bug713963
+Node: Finale afgedrukte grafiek719492
+Node: Vrije software en vrije handleidingen720443
+Node: GNU Free Documentation License726759
+Node: Index751948
+Node: Over de auteur790854
 
 End Tag Table
 

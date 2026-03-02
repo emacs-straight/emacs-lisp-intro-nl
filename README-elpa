@@ -9,11 +9,11 @@
   document:
 
   ┌────
-  │ commit d705a86da451fa589e701b5b0400646375a0266d
-  │ Author: Eli Zaretskii <eliz@gnu.org>
-  │ Date:   Mon Feb 16 18:23:01 2026 +0200
+  │ commit 0068215e53905698833637edececee8a79a524c5
+  │ Author: Stefan Monnier <monnier@iro.umontreal.ca>
+  │ Date:   Wed Feb 25 23:44:07 2026 -0500
   │ 
-  │     Fix cross-reference in Emacs Lisp Intro
+  │     emacs-lisp-intro.texi: Eliminate duplicate ASCII art
   └────
 
 
