@@ -8299,20 +8299,20 @@ File: emacs-lisp-intro-nl.info,  Node: Loops en recursie,  Next: Regexp zoeken, 
 11 Loops en recursie
 ********************
 
-Emacs Lisp has two primary ways to cause an expression, or a series of
-expressions, to be evaluated repeatedly: one uses a ‘while’ loop, and
-the other uses “recursion”.
+Emacs Lisp heeft twee primaire manieren om een expressie of een reeks
+van expressies herhaaldelijk te laten evalueren: een met gebruik van een
+‘while’ loop en een met gebruik van “recursie”.
 
-   Repetition can be very valuable.  For example, to move forward four
-sentences, you need only write a program that will move forward one
-sentence and then repeat the process four times.  Since a computer does
-not get bored or tired, such repetitive action does not have the
-deleterious effects that excessive or the wrong kinds of repetition can
-have on humans.
+   Herhaling kan zeer waardevol zijn.  Bijvoorbeeld om vier zinnen naar
+voren te gaan, hoef je alleen een programma te schrijven dat een zin
+naar voren gaat, en dat dan vier keer te herhalen.  Omdat een computer
+niet verveeld of vermoeid raakt, heeft zo'n herhalende actie geen
+schadelijke effecten dat overdreven of verkeerde manier van herhalen op
+mensen kan hebben.
 
-   People mostly write Emacs Lisp functions using ‘while’ loops and
-their kin; but you can use recursion, which provides a very powerful way
-to think about and then to solve problems(1).
+   Men schrijft meestal Emacs Lisp functies met ‘while’ loops en hun
+soortgenoten.  maar je kunt ook recursie gebruiken, wat een erg
+krachtige manier biedt om over problemen te denken en op te lossen(1)
 
 * Menu:
 
@@ -8323,13 +8323,14 @@ to think about and then to solve problems(1).
 
    ---------- Footnotes ----------
 
-   (1) You can write recursive functions to be frugal or wasteful of
-mental or computer resources; as it happens, methods that people find
-easy--that are frugal of mental resources--sometimes use considerable
-computer resources.  Emacs was designed to run on machines that we now
-consider limited and its default settings are conservative.  You may
-want to increase the value of ‘max-lisp-eval-depth’.  In my ‘.emacs’
-file, I set it to 30 times its default value.
+   (1) Je kunt recursieve functies schrijven die zuinig of verspillend
+omgaan met mentale- of computermiddelen.  Methoden die mensen makkelijk
+vinden--die zuinig met mentale middelen omgaan--kunnen soms aanzienlijke
+computermiddelen gebruiken.  Emacs was ontworpen om op machines te
+draaien die we nu beperkt vinden en de standaard instellingen zijn
+terughoudend.  Je wilt misschien de instelling van ‘max-lisp-eval-depth’
+verhogen.  In mijn ‘.emacs’ bestand heb ik het op 30 keer de standaard
+waarde ingesteld.
 
 
 File: emacs-lisp-intro-nl.info,  Node: while,  Next: dolist dotimes,  Up: Loops en recursie
@@ -8337,23 +8338,23 @@ File: emacs-lisp-intro-nl.info,  Node: while,  Next: dolist dotimes,  Up: Loops 
 11.1 ‘while’
 ============
 
-The ‘while’ special form tests whether the value returned by evaluating
-its first argument is true or false.  This is similar to what the Lisp
-interpreter does with an ‘if’; what the interpreter does next, however,
-is different.
+De speciale vorm ‘while’ test of de waarde teruggeven door het eerste
+argument te evalueren waar of onwaar is.  Dit is vergelijkbaar met wat
+de Lisp interpreter doet met een ‘if’.  Wat de interpreter daarna doet
+is echter anders.
 
-   In a ‘while’ expression, if the value returned by evaluating the
-first argument is false, the Lisp interpreter skips the rest of the
-expression (the “body” of the expression) and does not evaluate it.
-However, if the value is true, the Lisp interpreter evaluates the body
-of the expression and then again tests whether the first argument to
-‘while’ is true or false.  If the value returned by evaluating the first
-argument is again true, the Lisp interpreter again evaluates the body of
-the expression.
+   Wanneer in een ‘while’ expressie de waarde teruggeven door het eerste
+argument te evalueren onwaar is, slaat de Lisp interpreter de rest van
+de expressie (de “body” van de expressie) over en evalueert die niet.
+Wanneer echter de waarde waar is, can evalueert de Lisp interpreter de
+body van de expressie en test opnieuw of het eerste argument van ‘while’
+waar is of onwaar.  Wanneer de waarde teruggegeven door het eerste
+argument te evalueren opnieuw waar is, evalueert de Lisp interpreter
+opnieuw de body van de expressie.
 
-   The template for a ‘while’ expression looks like this:
+   Het sjabloon voor een ‘while’ expressie ziet er zo uit:
 
-     (while TRUE-OR-FALSE-TEST
+     (while WAAR-OF-ONWAAR-TEST
        BODY...)
 
 * Menu:
@@ -8368,194 +8369,200 @@ the expression.
 
 File: emacs-lisp-intro-nl.info,  Node: Looping met while,  Next: Loop voorbeeld,  Up: while
 
-Looping with ‘while’
---------------------
+Looping met ‘while’
+-------------------
 
-So long as the true-or-false-test of the ‘while’ expression returns a
-true value when it is evaluated, the body is repeatedly evaluated.  This
-process is called a loop since the Lisp interpreter repeats the same
-thing again and again, like an airplane doing a loop.  When the result
-of evaluating the true-or-false-test is false, the Lisp interpreter does
-not evaluate the rest of the ‘while’ expression and exits the loop.
+Zolang de waar-of-onwaar-test van de ‘while’ expressie een waarde waar
+teruggeeft wanneer die wordt geëvalueerd, wordt de body herhaaldelijk
+geëvalueerd.  Dit proces wordt een loop genoemd, omdat de Lisp
+interpreter het zelfde ding opnieuw en opnieuw herhaalt, zoals een
+vliegtuig een looping maakt.  Wanneer het resultaat van het evalueren
+van de waar-of-onwaar-test onwaar is, evalueert de Lisp interpreter de
+rest van de ‘while’ expressie niet, en verlaat die de loop.
 
-   Clearly, if the value returned by evaluating the first argument to
-‘while’ is always true, the body following will be evaluated again and
-again ... and again ... forever.  Conversely, if the value returned is
-never true, the expressions in the body will never be evaluated.  The
-craft of writing a ‘while’ loop consists of choosing a mechanism such
-that the true-or-false-test returns true just the number of times that
-you want the subsequent expressions to be evaluated, and then have the
-test return false.
+   Het is duidelijk dat wanneer het evalueren van het eerst argument van
+de ‘while’ altijd waar teruggeeft, de daarop volgende body wordt
+opnieuw, opnieuw ... en opnieuw ... voor altijd herhaald.  Omgekeerd,
+wanneer de teruggegeven waarde nooit waar is, de expressies in de body
+nooit geëvalueerd zullen worden.  Het kunst van het schrijven van
+‘while’ loops bestaat uit het kiezen van zo'n mechanisme dat de
+waar-of-onwaar-test precies zo veel keer waar teruggeeft als je wilt dat
+de daaropvolgende expressies worden geëvalueerd en daarna de test onwaar
+laat teruggeven.
 
-   The value returned by evaluating a ‘while’ is the value of the
-true-or-false-test.  An interesting consequence of this is that a
-‘while’ loop that evaluates without error will return ‘nil’ or false
-regardless of whether it has looped 1 or 100 times or none at all.  A
-‘while’ expression that evaluates successfully never returns a true
-value!  What this means is that ‘while’ is always evaluated for its side
-effects, which is to say, the consequences of evaluating the expressions
-within the body of the ‘while’ loop.  This makes sense.  It is not the
-mere act of looping that is desired, but the consequences of what
-happens when the expressions in the loop are repeatedly evaluated.
+   De waarde die het evalueren van een ‘while’ teruggeeft, is de waarde
+van de waar-of-onwaar-test.  Een interessant gevolg hiervan is dat een
+‘while’ loop die zonder fouten evalueert een ‘nil’ of onwaar teruggeeft,
+ongeacht of het 1 of 100 keer heeft geloopt, of helemaal nooit.  Een
+‘while’ loop die succesvol evalueert geeft nooit een waarde waar terug!
+Dit betekent dat ‘while’ altijd geëvalueerd wordt voor zijn
+zij-effecten, met andere woorden, de consequenties van het evalueren van
+de expressies in de body van de ‘while’ loop.  Dat is logisch.  Het is
+niet slechts het loopen dat gewest is, maar de consequenties van wat
+gebeurt wanneer de expressies in de loop herhaaldelijk worden
+geëvalueerd.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Loop voorbeeld,  Next: print-elements-of-list,  Prev: Looping met while,  Up: while
 
-11.1.1 A ‘while’ Loop and a List
---------------------------------
+11.1.1 Een ‘while’ loop en een lijst
+------------------------------------
 
-A common way to control a ‘while’ loop is to test whether a list has any
-elements.  If it does, the loop is repeated; but if it does not, the
-repetition is ended.  Since this is an important technique, we will
-create a short example to illustrate it.
+Een gebruikelijke manier om een ‘while’ loop te beheersen is testen of
+een lijst elementen heeft.  Wanneer dat zo is, wordt de loop herhaald,
+maar wanneer dat niet zo is, wordt de herhaling beëindigd.  Omdat dit
+een belangrijke techniek is, maken we hier een klein voorbeeld om het te
+illustreren.
 
-   A simple way to test whether a list has elements is to evaluate the
-list: if it has no elements, it is an empty list and will return the
-empty list, ‘()’, which is a synonym for ‘nil’ or false.  On the other
-hand, a list with elements will return those elements when it is
-evaluated.  Since Emacs Lisp considers as true any value that is not
-‘nil’, a list that returns elements will test true in a ‘while’ loop.
+   Een simpele manier om te testen of een lijsten elementen heeft is de
+lijst te evalueren: wanneer die geen elementen heeft is het een lege
+lijst en geeft het een lege lijst terug, ‘()’, wat een synoniem is voor
+‘nil’ of onwaar.  Anderzijds geeft een lijst met elementen die elementen
+terug wanneer die wordt geëvalueerd.  Omdat Emacs Lisp elke waarde
+ongelijk aan ‘nil’ als waar beschouwt, en lijst die elementen teruggeeft
+zal als waar testen in een ‘while’ loop.
 
-   For example, you can set the variable ‘empty-list’ to ‘nil’ by
-evaluating the following ‘setq’ expression:
+   Als voorbeeld kun je de variabele ‘lege-lijst’ op ‘nil’ zetten met
+het evalueren van de volgende ‘setq’ expressie:
 
-     (setq empty-list ())
+     (setq lege-lijst ())
 
-After evaluating the ‘setq’ expression, you can evaluate the variable
-‘empty-list’ in the usual way, by placing the cursor after the symbol
-and typing ‘C-x C-e’; ‘nil’ will appear in your echo area:
+Na het evalueren van de ‘setq’ expressie, kan je de variabele
+‘lege-lijst’ op de gebruikelijke manier evalueren, door de cursor achter
+het symbool te plaatsen en ‘C-x C-e’ te typen.  In het echogebied
+verschijnt ‘nil’.
 
-     empty-list
+     lege-lijst
 
-   On the other hand, if you set a variable to be a list with elements,
-the list will appear when you evaluate the variable, as you can see by
-evaluating the following two expressions:
+   Anderzijds, als je een variabele instelt op een lijst met elementen,
+verschijnt de lijst wanneer je de variabele evalueert.  Dit kan je zien
+door de volgende expressies te evalueren:
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     animals
+     dieren
 
-   Thus, to create a ‘while’ loop that tests whether there are any items
-in the list ‘animals’, the first part of the loop will be written like
-this:
+   Dus om een ‘while’ loop te creëren die test of er elementen in de
+lijst ‘dieren’ zijn, is het eerste deel van de loop als volgt:
 
-     (while animals
+     (while dieren
             ...
 
-When the ‘while’ tests its first argument, the variable ‘animals’ is
-evaluated.  It returns a list.  So long as the list has elements, the
-‘while’ considers the results of the test to be true; but when the list
-is empty, it considers the results of the test to be false.
+Wanneer de ‘while’ het eerste argument test, wordt de variabele ‘dieren’
+geëvalueerd.  Dit geeft een lijst terug.  Zo lang de lijst elementen
+heeft, beschouwt de ‘while’ het resultaat van de test als waar, maar
+wanneer de lijst leeg is, dan beschouwt die het resultaat van de test
+als onwaar.
 
-   To prevent the ‘while’ loop from running forever, some mechanism
-needs to be provided to empty the list eventually.  An oft-used
-technique is to have one of the subsequent forms in the ‘while’
-expression set the value of the list to be the CDR of the list.  Each
-time the ‘cdr’ function is evaluated, the list will be made shorter,
-until eventually only the empty list will be left.  At this point, the
-test of the ‘while’ loop will return false, and the arguments to the
-‘while’ will no longer be evaluated.
+   Om te voorkomen dat de ‘while’ loop voor altijd blijft lopen, is een
+mechanisme nodig dat uiteindelijk een lege lijst geeft.  Een vaak
+gebruikte techniek is om een van de opvolgende vormen in de ‘while’
+expressie de waarde van de lijst op de CDR van de lijst te zetten.  Elke
+keer dat de functie CDR wordt geëvalueerd wordt de lijst korter, totdat
+uiteindelijk alleen de lege lijst overblijft.  Op dit punt geeft de test
+in de ‘while’ loop onwaar terug, en de argumenten van de ‘while’ worden
+niet langer meer geëvalueerd.
 
-   For example, the list of animals bound to the variable ‘animals’ can
-be set to be the CDR of the original list with the following expression:
+   De lijst van dieren bijvoorbeeld, gebonden aan de variabele ‘dieren’
+kan op de CDR van de oorspronkelijke lijst gezet worden met de volgende
+expressie:
 
-     (setq animals (cdr animals))
+     (setq dieren (cdr dieren))
 
-If you have evaluated the previous expressions and then evaluate this
-expression, you will see ‘(giraffe lion tiger)’ appear in the echo area.
-If you evaluate the expression again, ‘(lion tiger)’ will appear in the
-echo area.  If you evaluate it again and yet again, ‘(tiger)’ appears
-and then the empty list, shown by ‘nil’.
+Wanneer je de voorgaande expressies geëvalueerd hebt en vervolgens deze
+expressie, dan zie je ‘(giraf leeuw tijger)’ in het echogebied
+verschijnen.  Wanneer je de expressie nog een keer evalueert, dan
+verschijnt ‘(leeuw tijger)’ in het echogebied.  Wanneer je het nog een
+keer en daarna nog een keer evalueert, dan verschijnt ‘tijger’ en daarna
+de lege lijst, getoond met ‘nil’.
 
-   A template for a ‘while’ loop that uses the ‘cdr’ function repeatedly
-to cause the true-or-false-test eventually to test false looks like
-this:
+   Een sjabloon voor de ‘wile’ loop dat de functie ‘cdr’ herhaaldelijk
+gebruikt om de waar-of-onwaar-test uiteindelijk als onwaar te testen,
+ziet er zo uit:
 
-     (while TEST-WHETHER-LIST-IS-EMPTY
+     (while TEST-OF-LIJST-LEEG-IS
        BODY...
-       SET-LIST-TO-CDR-OF-LIST)
+       SET-LIJST-OP-CDR-VAN-LIJST)
 
-   This test and use of ‘cdr’ can be put together in a function that
-goes through a list and prints each element of the list on a line of its
-own.
+   Deze test en het gebruik van ‘cdr’ kunnen samengevoegd worden in een
+functie die door een lijst gaat en elk element van de lijst op een regel
+op een eigen regel toont.
 
 
 File: emacs-lisp-intro-nl.info,  Node: print-elements-of-list,  Next: Incrementele loop,  Prev: Loop voorbeeld,  Up: while
 
-11.1.2 An Example: ‘print-elements-of-list’
--------------------------------------------
+11.1.2 Een voorbeeld: ‘toon-elementen-van-lijst’
+------------------------------------------------
 
-The ‘print-elements-of-list’ function illustrates a ‘while’ loop with a
-list.
+De ‘toon-elementen-van-lijst’ functie illustreert een ‘while’ loop met
+een lijst.
 
-   The function requires several lines for its output.  If you are
-reading this in a recent instance of GNU Emacs, you can evaluate the
-following expression inside of Info, as usual.
+   Deze functie benodigd meerdere regels voor de output.  Wanneer je dit
+in een recente versie van GNU Emacs leest, kan je de volgende expressies
+in Info evalueren, zoals gebruikelijk.
 
-   If you are using an earlier version of Emacs, you need to copy the
-necessary expressions to your ‘*scratch*’ buffer and evaluate them
-there.  This is because the echo area had only one line in the earlier
-versions.
+   Wanneer je een eerdere versie van Emacs gebruikt, kan het nodig zijn
+eerst de expressies te kopiëren naar je ‘*scratch*’ buffer en ze daar te
+evalueren.  Dit is omdat het echogebied in eerdere versies meer een
+regel bevat.
 
-   You can copy the expressions by marking the beginning of the region
-with ‘C-<SPC>’ (‘set-mark-command’), moving the cursor to the end of the
-region and then copying the region using ‘M-w’ (‘kill-ring-save’, which
-calls ‘copy-region-as-kill’ and then provides visual feedback).  In the
-‘*scratch*’ buffer, you can yank the expressions back by typing ‘C-y’
-(‘yank’).
+   Je kunt de expressies kopiëren door het begin van de region te
+markeren met ‘C-<SPC>’ (‘set-mark-command’), vervolgens de cursor naar
+het eind van de region te verplaatsen en dan de region met ‘M-w’
+(‘kill-ring-save’ te kopiëren (die ‘copy-region-as-kill’ aanroept en
+visuele feedback geeft).  In het ‘*scratch*’ buffer krijg je de
+expressies terug door ‘C-y’ (‘yank’) te typen.
 
-   After you have copied the expressions to the ‘*scratch*’ buffer,
-evaluate each expression in turn.  Be sure to evaluate the last
-expression, ‘(print-elements-of-list animals)’, by typing ‘C-u C-x C-e’,
-that is, by giving an argument to ‘eval-last-sexp’.  This will cause the
-result of the evaluation to be printed in the ‘*scratch*’ buffer instead
-of being printed in the echo area.  (Otherwise you will see something
-like this in your echo area:
-‘^Jgazelle^J^Jgiraffe^J^Jlion^J^Jtiger^Jnil’, in which each ‘^J’ stands
-for a newline.)
+   Nadat je de expressies in het ‘*scratch*’ buffer gekopieerd hebt,
+evalueer je elke expressie op zijn beurt.  Zorg dat je de laatste
+expressie ‘toon-elementen-van-lijst dieren’ met ‘C-u C-x C-e’ evalueert,
+oftewel door een argument aan ‘eval-last-sexp’ te geven.  Hierdoor wordt
+het resultaat van de evaluatie in het ‘*scratch*’ buffer getoond, in
+plaats van in het echogebied.  (Anders zie je iets als dit in het
+echogebied: ‘^Jgazelle^J^Jgiraf^J^Jleeuw^J^Jtijger^Jnil’, waarbij elk
+‘^J’ voor een nieuwe regel staat.)
 
-   You can evaluate these expressions directly in the Info buffer, and
-the echo area will grow to show the results.
+   Je kunt de volgende expressie direct in het Info buffer evalueren en
+het echogebied groeit om de resultaten te tonen.
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     (defun print-elements-of-list (list)
-       "Print each element of LIST on a line of its own."
-       (while list
-         (print (car list))
-         (setq list (cdr list))))
+     (defun toon-elementen-van-lijst (lijst)
+       "Toon elk element van LIJST op een eigen regel."
+       (while lijst
+         (print (car lijst))
+         (setq lijst (cdr lijst))))
+     (toon-elementen-van-lijst dieren)
 
-     (print-elements-of-list animals)
-
-When you evaluate the three expressions in sequence, you will see this:
+Wanneer je de drie expressies achtereenvolgens evalueert, zie je dit:
 
      gazelle
 
-     giraffe
+     giraf
 
-     lion
+     leeuw
 
-     tiger
+     tijger
      nil
 
-   Each element of the list is printed on a line of its own (that is
-what the function ‘print’ does) and then the value returned by the
-function is printed.  Since the last expression in the function is the
-‘while’ loop, and since ‘while’ loops always return ‘nil’, a ‘nil’ is
-printed after the last element of the list.
+   Elk element van de lijst wordt op een eigen regel getoond (dat is wat
+de functie ‘print’ doet) en daarna wordt de waarde die de functie
+teruggeeft getoond .  Omdat de laatste expressie van de functie de
+‘while’ loop is, en omdat een ‘while’ loop altijd ‘nil’ teruggeeft,
+wordt ‘nil’ getoond na het laatste element van de lijst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Incrementele loop,  Next: Incrementele loop details,  Prev: print-elements-of-list,  Up: while
 
-11.1.3 A Loop with an Incrementing Counter
-------------------------------------------
+11.1.3 Een loop met een incrementele teller
+-------------------------------------------
 
-A loop is not useful unless it stops when it ought.  Besides controlling
-a loop with a list, a common way of stopping a loop is to write the
-first argument as a test that returns false when the correct number of
-repetitions are complete.  This means that the loop must have a
-counter--an expression that counts how many times the loop repeats
-itself.
+Een loop is niet bruikbaar tenzij die stopt wanneer dat moet.  Naast het
+beheersen van een loop met een lijst is een gebruikelijke manier om een
+loop te stoppen door het eerste argument te schrijven als een test die
+onwaar teruggeeft wanneer het juiste aantal herhalingen is uitgevoerd.
+Dat betekent dat de loop een teller moet hebben--een expressie die telt
+hoeveel maal de loop zichzelf herhaald heeft.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Incrementele loop details,  Next: Decrementele loop,  Prev: Incrementele loop,  Up: while
@@ -8563,26 +8570,26 @@ File: emacs-lisp-intro-nl.info,  Node: Incrementele loop details,  Next: Decreme
 Details van een incrementele loop
 ---------------------------------
 
-The test for a loop with an incrementing counter can be an expression
-such as ‘(< count desired-number)’ which returns ‘t’ for true if the
-value of ‘count’ is less than the ‘desired-number’ of repetitions and
-‘nil’ for false if the value of ‘count’ is equal to or is greater than
-the ‘desired-number’.  The expression that increments the count can be a
-simple ‘setq’ such as ‘(setq count (1+ count))’, where ‘1+’ is a
-built-in function in Emacs Lisp that adds 1 to its argument.  (The
-expression ‘(1+ count)’ has the same result as ‘(+ count 1)’, but is
-easier for a human to read.)
+De test voor een loop met een incrementele teller kan een expressie zijn
+zoals ‘(< telling gewenste-aantal)’ die ‘t’ voor waar teruggeeft wanneer
+de waarde van ‘telling’ kleiner is dan het ‘gewenste-aantal’
+herhalingen, en ‘nil’ voor onwaar wanneer de waarde van ‘telling’ groter
+of gelijk is aan het ‘gewenste-aantal’.  De expressie die de telling
+verhoogt kan een simpele ‘setq’ zijn, zoals ‘(setq telling (1+
+telling))’.  waar ‘1+’ een in Emacs Lisp een ingebouwde functie is die 1
+bij zijn argument optelt.  (De expressie ‘(1+ telling)’ heeft hetzelfde
+resultaat als ‘(+ telling 1)’ maar is voor mensen makkelijker te lezen.)
 
-   The template for a ‘while’ loop controlled by an incrementing counter
-looks like this:
+   Het sjabloon voor een ‘while’ loop beheerst met een incrementele
+teller ziet er zo uit:
 
-     SET-COUNT-TO-INITIAL-VALUE
-     (while (< count desired-number)         ; true-or-false-test
+     ZET-TELLING-OP-INITIELE-WAARDE
+     (while (< telling gewenste-aantal)         ; waar-of-onwaar-test
        BODY...
-       (setq count (1+ count)))              ; incrementer
+       (setq telling (1+ telling)))              ; incrementer
 
-Note that you need to set the initial value of ‘count’; usually it is
-set to 1.
+Merk op dat je de initiële waarde van ‘telling’ moet zetten,
+gebruikelijk is die op 1 te zetten.
 
 * Menu:
 
@@ -8593,12 +8600,12 @@ set to 1.
 
 File: emacs-lisp-intro-nl.info,  Node: Incrementeel voorbeeld,  Next: Inc voorbeeld onderdelen,  Up: Incrementele loop details
 
-Example with incrementing counter
-.................................
+Voorbeeld met een incrementele teller
+.....................................
 
-Suppose you are playing on the beach and decide to make a triangle of
-pebbles, putting one pebble in the first row, two in the second row,
-three in the third row and so on, like this:
+Stel je voor dat je op het strand aan spelen bent en besluit om een
+driehoek van steentjes te maken, met één steentje op de eerste rij, twee
+op de tweede rij, drie op de derde rij, enzovoorts, zoals dit:
 
 
                     *
@@ -8606,205 +8613,208 @@ three in the third row and so on, like this:
                   * * *
                  * * * *
 
-(About 2500 years ago, Pythagoras and others developed the beginnings of
-number theory by considering questions such as this.)
+(Ongeveer 2500 jaar geleden ontwikkelden Pythagoras en anderen het begin
+van getaltheorie door vragen zoals deze te beschouwen.)
 
-   Suppose you want to know how many pebbles you will need to make a
-triangle with 7 rows?
+   Stel je voor dat je wilt weten hoeveel steentjes je nodig hebt om een
+driehoek met 7 rijen te maken?
 
-   Clearly, what you need to do is add up the numbers from 1 to 7.
-There are two ways to do this; start with the smallest number, one, and
-add up the list in sequence, 1, 2, 3, 4 and so on; or start with the
-largest number and add the list going down: 7, 6, 5, 4 and so on.
-Because both mechanisms illustrate common ways of writing ‘while’ loops,
-we will create two examples, one counting up and the other counting
-down.  In this first example, we will start with 1 and add 2, 3, 4 and
-so on.
+   Het is duidelijk, wat we moeten doen is de getallen 1 tot en met 7 op
+te tellen.  Er zijn twee manieren om dit te doen: beginnen met het
+kleinste nummer, een, en dan de lijst opvolgend optellen, 1, 2, 3, 4,
+enzovoorts.  Of beginnen met het grootste getal en dan de lijst aflopend
+optellen, 7, 6, 5, 4 enzovoorts.  Omdat beide mechanismen gebruikelijke
+manieren om ‘while’ loops te schrijven illustreren, maken we twee
+voorbeelden, eentje oplopend tellen en eentje aflopend tellen.  In het
+eerste voorbeeld beginnen we met 1, en tellen dan 2, 3, 4 enzovoorts op.
 
-   If you are just adding up a short list of numbers, the easiest way to
-do it is to add up all the numbers at once.  However, if you do not know
-ahead of time how many numbers your list will have, or if you want to be
-prepared for a very long list, then you need to design your addition so
-that what you do is repeat a simple process many times instead of doing
-a more complex process once.
+   Wanneer je slechts een korte lijst getallen optelt, is de
+makkelijkste manier daarvoor om alle getallen in een keer op te tellen.
+Maar wanneer je van te voren niet weet hoeveel getallen de lijst bevat,
+of als je voorbereid wilt zijn op een erg lange lijst, dan moet je de
+optelling zo ontwerpen dat je een eenvoudig proces veel keren herhaalt,
+in plaats van het in een keer uitvoeren van een meer complex proces.
 
-   For example, instead of adding up all the pebbles all at once, what
-you can do is add the number of pebbles in the first row, 1, to the
-number in the second row, 2, and then add the total of those two rows to
-the third row, 3.  Then you can add the number in the fourth row, 4, to
-the total of the first three rows; and so on.
+   Bijvoorbeeld in plaats van alle steentjes in een keer bij elkaar op
+te tellen, kun je het aantal steentjes in de eerste rij, 1, optellen bij
+het aantal in de tweede rij, 2, daarna tel je het totaal van die twee
+rijen op bij de derde rij, 3.  Daarna tel je het aantal van de vierde
+rij, 4, bij het totaal van de eerste drie rijen, enzovoorts.
 
-   The critical characteristic of the process is that each repetitive
-action is simple.  In this case, at each step we add only two numbers,
-the number of pebbles in the row and the total already found.  This
-process of adding two numbers is repeated again and again until the last
-row has been added to the total of all the preceding rows.  In a more
-complex loop the repetitive action might not be so simple, but it will
-be simpler than doing everything all at once.
+   De kritieke eigenschap van het proces is dat elke terugkerende actie
+eenvoudig is.  In dit geval tellen we bij elke stap slechts twee
+getallen op, het aantal steentjes in de rij en het totaal dat we al
+hadden.  Dit proces van het optellen van twee getallen wordt opnieuw
+herhaald en opnieuw, totdat de laatste rij is opgeteld bij het totaal
+van de voorgaande rijen.  In een meer complexe loop kan de terugkerende
+actie minder eenvoudig zijn, maar het is eenvoudiger dan alles in een
+keer doen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Inc voorbeeld onderdelen,  Next: inc voorbeeld samengesteld,  Prev: Incrementeel voorbeeld,  Up: Incrementele loop details
 
-The parts of the function definition
-....................................
+De onderdelen van de functiedefinitie
+.....................................
 
-The preceding analysis gives us the bones of our function definition:
-first, we will need a variable that we can call ‘total’ that will be the
-total number of pebbles.  This will be the value returned by the
-function.
+De voorgaande analyse geeft ons het skelet van onze functiedefinitie:
+als eerste hebben we een variabele nodig die we ‘totaal’ noemen, dat het
+totaal van het aantal steentjes gaat worden.  Dit is de waarde de de
+functie gaat teruggeven.
 
-   Second, we know that the function will require an argument: this
-argument will be the total number of rows in the triangle.  It can be
-called ‘number-of-rows’.
+   Ten tweede weten we dat de functie een argument nodig heeft, dit
+argument wordt het totaal aantal rijen in de driehoek.  Het kan
+‘aantal-rijen’ heten.
 
-   Finally, we need a variable to use as a counter.  We could call this
-variable ‘counter’, but a better name is ‘row-number’.  That is because
-what the counter does in this function is count rows, and a program
-should be written to be as understandable as possible.
+   Tenslotte hebben we een variabele als teller nodig.  We kunnen deze
+variabele ‘teller’ noemen, maar een betere naam is ‘rij-nummer’.  Dat is
+omdat de teller in deze functie de rijen telt, en een programma moet zo
+begrijpelijk mogelijk worden geschreven.
 
-   When the Lisp interpreter first starts evaluating the expressions in
-the function, the value of ‘total’ should be set to zero, since we have
-not added anything to it.  Then the function should add the number of
-pebbles in the first row to the total, and then add the number of
-pebbles in the second to the total, and then add the number of pebbles
-in the third row to the total, and so on, until there are no more rows
-left to add.
+   Wanneer de Lisp interpreter voor het eerst start met het evalueren
+van de expressies in de functie moet de waarde van ‘totaal’ op nul
+staan, omdat we er nog niets bij opgeteld hebben.  Daarna moet de
+functie het aantal steentjes in de eerste rij bij het totaal optellen en
+daarna het aantal steentjes in de tweede rij bij het totaal optellen, en
+dan het aantal steentjes in de derde rij, enzovoorts, totdat er geen
+rijen meer over zijn om er bij te tellen.
 
-   Both ‘total’ and ‘row-number’ are used only inside the function, so
-they can be declared as local variables with ‘let’ and given initial
-values.  Clearly, the initial value for ‘total’ should be 0.  The
-initial value of ‘row-number’ should be 1, since we start with the first
-row.  This means that the ‘let’ statement will look like this:
+   ‘totaal’ en ‘rij-nummer’ worden beide alleen binnen de functie
+gebruikt, dus kan ‘let’ ze als lokale variabelen declareren en ze een
+initiële waarde geven.  Het is duidelijk dat de initiële waarde voor
+‘totaal’ 0 moet zijn.  De initiële waarde voor ‘rij-nummer’ moet 1 zijn,
+omdat we beginnen met de eerste rij.  Dit betekent dat de ‘let’
+statement er zo uit ziet:
 
-       (let ((total 0)
-             (row-number 1))
+       (let ((totaal 0)
+             (rij-nummer 1))
          BODY...)
 
-   After the internal variables are declared and bound to their initial
-values, we can begin the ‘while’ loop.  The expression that serves as
-the test should return a value of ‘t’ for true so long as the
-‘row-number’ is less than or equal to the ‘number-of-rows’.  (If the
-expression tests true only so long as the row number is less than the
-number of rows in the triangle, the last row will never be added to the
-total; hence the row number has to be either less than or equal to the
-number of rows.)
+   Nadat de interne variabelen zijn gedeclareerd en gebonden aan hun
+initiële waarden, kunnen we met de ‘while’ loop beginnen.  De expressie
+die dient als test moet een waarde van ‘t’ voor waar teruggeven zolang
+het ‘rij-nummer’ kleiner of gelijk is aan het ‘aantal-rijen’.  (Wanneer
+de expressie alleen waar test zolang als het rijnummer kleiner is dan
+het aantal rijen in de driehoek, dan wordt de laatste rij nooit bij het
+totaal aantal geteld, daarom moet het rijnummer kleiner of gelijk aan
+het aantal rijen zijn.)
 
-   Lisp provides the ‘<=’ function that returns true if the value of its
-first argument is less than or equal to the value of its second argument
-and false otherwise.  So the expression that the ‘while’ will evaluate
-as its test should look like this:
+   Lisp biedt de functie ‘<=’ die waar teruggeeft indien de waarde van
+het eerste argument is kleiner of gelijk aan de waarde van het tweede
+argument, zo niet dan geeft het onwaar terug.  De expressie die de
+‘while’ als test evalueert moet er zo uitzien:
 
-     (<= row-number number-of-rows)
+     (<= rij-nummer aantal-rijen)
 
-   The total number of pebbles can be found by repeatedly adding the
-number of pebbles in a row to the total already found.  Since the number
-of pebbles in the row is equal to the row number, the total can be found
-by adding the row number to the total.  (Clearly, in a more complex
-situation, the number of pebbles in the row might be related to the row
-number in a more complicated way; if this were the case, the row number
-would be replaced by the appropriate expression.)
+   Het totale aantal steentjes kan worden bepaald door herhaaldelijk het
+aantal steentjes in een rij op te tellen bij het reeds getelde totaal
+aantal.  Omdat het aantal steentjes in een rij gelijk is aan het
+rij-nummer, kan het totaal bepaald worden door het rij-nummer bij het
+totaal op te tellen.  (In een meer complexe situatie kan het aantal
+steentjes in een rij op een meer gecompliceerde manier gerelateerd zijn
+aan het rij-nummer.  Wanneer dat het geval is dan zou het rij-nummer
+vervangen worden door een passende expressie.)
 
-     (setq total (+ total row-number))
+     (setq totaal (+ totaal rij-nummer))
 
-What this does is set the new value of ‘total’ to be equal to the sum of
-adding the number of pebbles in the row to the previous total.
+Dit zet de nieuwe waarde van ‘totaal’ gelijk aan de som van het aantal
+steentjes in de rij en het vorige totaal.
 
-   After setting the value of ‘total’, the conditions need to be
-established for the next repetition of the loop, if there is one.  This
-is done by incrementing the value of the ‘row-number’ variable, which
-serves as a counter.  After the ‘row-number’ variable has been
-incremented, the true-or-false-test at the beginning of the ‘while’ loop
-tests whether its value is still less than or equal to the value of the
-‘number-of-rows’ and if it is, adds the new value of the ‘row-number’
-variable to the ‘total’ of the previous repetition of the loop.
+   Na het zetten van de waarde van ‘totaal’ moeten de condities worden
+ingesteld voor de volgende herhaling van de loop, als die er is.  Dit
+gebeurt door de waarde van de variabele ‘rij-nummer’ te verhogen, die
+als teller dient.  Nadat de variabele ‘rij-nummer’ is verhoogd, test de
+waar-of-onwaar-test aan het begin van de ‘while’ loop of de zijn waarde
+nog steeds kleiner of gelijk is aan de waarde van de ‘aantal-rijen’ en
+als dat zo is, telt het de nieuwe waarde van de variable ‘rij-nummer’
+bij de ‘totaal’ van de vorige herhaling van de loop.
 
-   The built-in Emacs Lisp function ‘1+’ adds 1 to a number, so the
-‘row-number’ variable can be incremented with this expression:
+   De in Emacs Lisp ingebouwde functie ‘1+’ telt 1 bij een getal op, dus
+de variabele ‘rij-nummer’ kan met deze expressie worden verhoogd:
 
-     (setq row-number (1+ row-number))
+     (setq rij-nummer (1+ rij-nummer))
 
 
 File: emacs-lisp-intro-nl.info,  Node: inc voorbeeld samengesteld,  Prev: Inc voorbeeld onderdelen,  Up: Incrementele loop details
 
-Putting the function definition together
-........................................
+De functiedefinitie samenstellen
+................................
 
-We have created the parts for the function definition; now we need to
-put them together.
+We hebben de onderdelen van de functiedefinitie gecreëerd, nu moeten we
+ze samenstellen.
 
-   First, the contents of the ‘while’ expression:
+   Ten eerste de inhoud vna de ‘while’ expressie:
 
-     (while (<= row-number number-of-rows)   ; true-or-false-test
-       (setq total (+ total row-number))
-       (setq row-number (1+ row-number)))    ; incrementer
+     (while (<= rij-nummer aantal-rijen)   ; waar-of-onwaar-test
+       (setq totaal (+ total rij-nummer))
+       (setq rij-nummer (1+ rij-nummer)))    ; incrementer
 
-   Along with the ‘let’ expression varlist, this very nearly completes
-the body of the function definition.  However, it requires one final
-element, the need for which is somewhat subtle.
+   Samen met de ‘let’ expressie varlist maakt dit de body van de functie
+bijna helemaal compleet.  Het heeft echter nog een laatste element
+nodig, waarvan de noodzaak wat subtiel is.
 
-   The final touch is to place the variable ‘total’ on a line by itself
-after the ‘while’ expression.  Otherwise, the value returned by the
-whole function is the value of the last expression that is evaluated in
-the body of the ‘let’, and this is the value returned by the ‘while’,
-which is always ‘nil’.
+   Het puntje op de i is om de variabele ‘totaal’ na de ‘while’
+expressie op een eigen regel te plaatsen.  Zo niet dan is de waarde die
+de hele functie terugggeeft de waarde van de laatste expressie die is
+geëvalueerd in de body van de ‘let’, dat is de waarde teruggeven door de
+‘while’ en die is altijd ‘nil’.
 
-   This may not be evident at first sight.  It almost looks as if the
-incrementing expression is the last expression of the whole function.
-But that expression is part of the body of the ‘while’; it is the last
-element of the list that starts with the symbol ‘while’.  Moreover, the
-whole of the ‘while’ loop is a list within the body of the ‘let’.
+   Dit kan op het eerste gezicht niet vanzelfsprekend zijn.  Het lijkt
+bijna of de verhogende expressie de laatste expressie van de hele
+functie is.  Maar die expressie is onderdeel van de body van de ‘while’.
+Bovendien is de hele ‘while’ loop een lijst binnen de body van de ‘let’.
 
-   In outline, the function will look like this:
+   Een overzicht van de functie ziet er zo uit:
 
-     (defun NAME-OF-FUNCTION (ARGUMENT-LIST)
-       "DOCUMENTATION..."
+     (defun NAAM-VAN-FUNCTIE (ARGUMENT-LIJST)
+       "DOCUMENTATIE..."
        (let (VARLIST)
-         (while (TRUE-OR-FALSE-TEST)
-           BODY-OF-WHILE... )
-         ... ))                    ; Need final expression here.
+         (while (WAAR-OF-ONWAAR-TEST)
+           BODY-VAN-WHILE... )
+         ... ))                    ; Hier is een laatste expressie nodig.
 
-   The result of evaluating the ‘let’ is what is going to be returned by
-the ‘defun’ since the ‘let’ is not embedded within any containing list,
-except for the ‘defun’ as a whole.  However, if the ‘while’ is the last
-element of the ‘let’ expression, the function will always return ‘nil’.
-This is not what we want!  Instead, what we want is the value of the
-variable ‘total’.  This is returned by simply placing the symbol as the
-last element of the list starting with ‘let’.  It gets evaluated after
-the preceding elements of the list are evaluated, which means it gets
-evaluated after it has been assigned the correct value for the total.
+   Het resultaat van het evalueren van de ‘let’ is wat de ‘defun’ gaat
+teruggeven, omdat de ‘let’ niet ingebed is een lijst, behalve binnen de
+‘defun’ als geheel.  Echter, als de ‘while’ het laatste element is van
+de ‘let’ expressie, geeft de functie altijd ‘nil’ terug.  Dit is niet
+wat we willen!  In plaats daarvan willen we dat de functie de waarde van
+de variabele ‘totaal’ teruggeeft.  Dit wordt teruggegeven door eenvoudig
+dat symbool als laatste element in de lijst te zetten die begint met
+‘let’.  Het wordt geëvalueerd nadat de voorgaande elementen van de lijst
+zijn geëvalueerd, wat betekent dat het wordt geëvalueerd nadat het de
+correcte waarde voor het totaal heeft gekregen.
 
-   It may be easier to see this by printing the list starting with ‘let’
-all on one line.  This format makes it evident that the VARLIST and
-‘while’ expressions are the second and third elements of the list
-starting with ‘let’, and the ‘total’ is the last element:
+   Het is eenvoudiger te zien wanneer we de lijst die begint met ‘let’
+in zijn geheel op een regel tonen.  Dit formaat maakt het
+vanzelfsprekend dat de varlist en de ‘while’ expressie het tweede en
+derde element van de lijst die begint met ‘let’ zijn, en dat ‘totaal’
+het laatste element is.
 
-     (let (VARLIST) (while (TRUE-OR-FALSE-TEST) BODY-OF-WHILE... ) total)
+     (let (VARLIST) (while (WAAR-OF-ONWAAR-TEST) BODY-OF-WHILE... ) totaal)
 
-   Putting everything together, the ‘triangle’ function definition looks
-like this:
+   Als we alles samenvoegen, ziet de functie ‘driehoek’ er zo uit:
 
-     (defun triangle (number-of-rows)    ; Version with
-                                         ;   incrementing counter.
-       "Add up the number of pebbles in a triangle.
-     The first row has one pebble, the second row two pebbles,
-     the third row three pebbles, and so on.
-     The argument is NUMBER-OF-ROWS."
-       (let ((total 0)
-             (row-number 1))
-         (while (<= row-number number-of-rows)
-           (setq total (+ total row-number))
-           (setq row-number (1+ row-number)))
-         total))
+     (defun driehoek (aantal-rijen)    ; Versie met
+                                       ;   oplopende teller.
+       "Tel het aantal steentjes in een driehoek op.
+     De eerste rij heeft een steentje, de tweede rij twee steentjes.
+     De derde rij heeft drie steentjes, enzovoorts.
+     Het argument is AANTAL-RIJEN."
+       (let ((totaal 0)
+             (rij-nummer 1))
+         (while (<= rij-nummer aantal-rijen)
+           (setq totaal (+ totaal rij-nummer))
+           (setq rij-nummer (1+ rij-nummer)))
+         totaal))
 
-   After you have installed ‘triangle’ by evaluating the function, you
-can try it out.  Here are two examples:
+   Wanneer je ‘driehoek’ hebt geïnstalleerd door het evalueren van de
+functie, kun je hem uitproberen.  Hier zijn twee voorbeelden:
 
-     (triangle 4)
+     (driehoek 4)
 
-     (triangle 7)
+     (driehoek 7)
 
-The sum of the first four numbers is 10 and the sum of the first seven
-numbers is 28.
+De som van de eerste vier getallen is 10 en de som van de eerste zeven
+getallen is 28.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Decrementele loop,  Prev: Incrementele loop details,  Up: while
@@ -8812,25 +8822,25 @@ File: emacs-lisp-intro-nl.info,  Node: Decrementele loop,  Prev: Incrementele lo
 11.1.4 Loop met een decrementele teller
 ---------------------------------------
 
-Another common way to write a ‘while’ loop is to write the test so that
-it determines whether a counter is greater than zero.  So long as the
-counter is greater than zero, the loop is repeated.  But when the
-counter is equal to or less than zero, the loop is stopped.  For this to
-work, the counter has to start out greater than zero and then be made
-smaller and smaller by a form that is evaluated repeatedly.
+Een andere gebruikelijke manier om een ‘while’ loop te schrijven is met
+een test die vaststelt of een teller groter dan nul is.  Zolang de
+teller groter dan nul is wordt de loop herhaald.  Maar wanneer de teller
+kleiner of gelijk is aan nul, wordt de loop gestopt.  Om dit zo te laten
+werken moet de teller groter dan nul starten en dan kleiner en kleiner
+gemaakt worden door een vorm die herhaaldelijk wordt geëvalueerd.
 
-   The test will be an expression such as ‘(> counter 0)’ which returns
-‘t’ for true if the value of ‘counter’ is greater than zero, and ‘nil’
-for false if the value of ‘counter’ is equal to or less than zero.  The
-expression that makes the number smaller and smaller can be a simple
-‘setq’ such as ‘(setq counter (1- counter))’, where ‘1-’ is a built-in
-function in Emacs Lisp that subtracts 1 from its argument.
+   De test is een expressie zoals ‘(> teller 0)’ die ‘t’ voor waar
+teruggeeft wanneer de waarde van ‘teller’ groter is dan nul, en ‘nil’
+voor onwaar wanneer de waarde van ‘teller’ kleiner of gelijk is aan nul.
+De expressie die het getal kleiner en kleiner makat kan een eenvoudige
+‘setq’ zijn zoals ‘(setq teller (1- teller))’, waar ‘1-’ een in Emacs
+Lisp ingebouwde functie die 1 van zijn argument aftrekt.
 
-   The template for a decrementing ‘while’ loop looks like this:
+   Het slabloon voor een decrementele ‘while’ loop ziet er zo uit:
 
-     (while (> counter 0)                    ; true-or-false-test
+     (while (> teller 0)                    ; waar-of-onwaar-test
        BODY...
-       (setq counter (1- counter)))          ; decrementer
+       (setq teller (1- teller)))          ; decrementer
 
 * Menu:
 
@@ -8841,139 +8851,139 @@ function in Emacs Lisp that subtracts 1 from its argument.
 
 File: emacs-lisp-intro-nl.info,  Node: Decerementeel voorbeeld,  Next: Dec voorbeeld onderdelen,  Up: Decrementele loop
 
-Example with decrementing counter
-.................................
+Voorbeeld met een aflopende teller
+..................................
 
-To illustrate a loop with a decrementing counter, we will rewrite the
-‘triangle’ function so the counter decreases to zero.
+Om een loop met een aflopende teller te laten zien, gaan we de functie
+‘driehoek’ zo herschrijven dat de teller naar nul vermindert.
 
-   This is the reverse of the earlier version of the function.  In this
-case, to find out how many pebbles are needed to make a triangle with 3
-rows, add the number of pebbles in the third row, 3, to the number in
-the preceding row, 2, and then add the total of those two rows to the
-row that precedes them, which is 1.
+   Dit is het omgekeerde van de eerdere versie van de functie.  In dit
+geval om te ontdekken hoeveel steentjes nodig zijn om een driehoek met 3
+rijen te maken, tel het aantal steentjes in de derde rij, 3, bij het
+aantal in de voorgaande rij, 2, en daarna tel het totaal van die rijen
+bij de rij die aan ze voorafgaat, die 1 is.
 
-   Likewise, to find the number of pebbles in a triangle with 7 rows,
-add the number of pebbles in the seventh row, 7, to the number in the
-preceding row, which is 6, and then add the total of those two rows to
-the row that precedes them, which is 5, and so on.  As in the previous
-example, each addition only involves adding two numbers, the total of
-the rows already added up and the number of pebbles in the row that is
-being added to the total.  This process of adding two numbers is
-repeated again and again until there are no more pebbles to add.
+   Om op dezelfde manier het aantal steentjes in een driehoek met 7
+rijen te ontdekken, tel het aantal steentjes in de zevende rij, 7, bij
+het aantal van de voorgaande rij, dat 6 is, en tel dan het totaal van
+deze twee rijen bij de rij die aan ze voorafgaat, dat 5 is, enzovoorts.
+Net als in het vorige voorbeeld betreft elke optelling twee getallen het
+totaal van de rijen die al geteld zijn en het aantal steentjes in de rij
+die wordt opgeteld bij het totaal.  Dit proces van twee getallen
+optellen wordt opnieuw en opnieuw herhaald totdat er geen steentjes meer
+zijn op op te tellen.
 
-   We know how many pebbles to start with: the number of pebbles in the
-last row is equal to the number of rows.  If the triangle has seven
-rows, the number of pebbles in the last row is 7.  Likewise, we know how
-many pebbles are in the preceding row: it is one less than the number in
-the row.
+   We weten met hoeveel steentjes we moeten beginnen: het aantal
+steentjes in de laatste rij is gelijk aan het aantal rijen.  Wanneer de
+driehoek zeven rijen heeft, dan is het aantal steentjes in de laatste
+rij 7.  Op dezelfde manier weten we hoeveel steentjes in de daaraan
+voorafgaande rij zijn: het is een minder dan het aantal in de rij.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Dec voorbeeld onderdelen,  Next: Dec voorbeeld samengesteld,  Prev: Decerementeel voorbeeld,  Up: Decrementele loop
 
-The parts of the function definition
-....................................
+De onderdelen van de functiedefinitie
+.....................................
 
-We start with three variables: the total number of rows in the triangle;
-the number of pebbles in a row; and the total number of pebbles, which
-is what we want to calculate.  These variables can be named
-‘number-of-rows’, ‘number-of-pebbles-in-row’, and ‘total’, respectively.
+We starten met drie variabelen: het totaal aantal rijen in de driehoek,
+het aantal steentjes in een rij en het totaal aantal steentjes, wat we
+gaan uitrekenen.  Deze variabelen noemen we resp.  ‘aantal-rijen’,
+‘aantal-steentjes-in-rij’ en ‘totaal’.
 
-   Both ‘total’ and ‘number-of-pebbles-in-row’ are used only inside the
-function and are declared with ‘let’.  The initial value of ‘total’
-should, of course, be zero.  However, the initial value of
-‘number-of-pebbles-in-row’ should be equal to the number of rows in the
-triangle, since the addition will start with the longest row.
+   Zowel ‘totaal’ als ‘aantal-steentjes-in-rij’ worden alleen binnen de
+functie gebruikt en worden gedeclareerd met ‘let’.  De initiële waarde
+van ‘totaal’ moet natuurlijk nul zijn.  De initiële waarde van
+‘aantal-steentjes-in-rij’ moet gelijk zijn aan het aantal rijen in de
+driehoek, omdat de optelling met de langste rij begint.
 
-   This means that the beginning of the ‘let’ expression will look like
-this:
+   Dit betekent dat we met een ‘let’ expressie beginnen die er zo uit
+ziet:
 
-     (let ((total 0)
-           (number-of-pebbles-in-row number-of-rows))
+     (let ((totaal 0)
+           (aantal-steentjes-in-rij aantal-rijen))
        BODY...)
 
-   The total number of pebbles can be found by repeatedly adding the
-number of pebbles in a row to the total already found, that is, by
-repeatedly evaluating the following expression:
+   Het totaal aantal steentjes kan worden gevonden door herhaaldelijk
+het aantal steentjes van een rij bij het totaal al gevonden op te
+tellen, dat wil zeggen herhaaldelijk de volgende expressie evalueren:
 
-     (setq total (+ total number-of-pebbles-in-row))
+     (setq totaal (+ totaal aantal-steentjes-in-rij))
 
-After the ‘number-of-pebbles-in-row’ is added to the ‘total’, the
-‘number-of-pebbles-in-row’ should be decremented by one, since the next
-time the loop repeats, the preceding row will be added to the total.
+Na het optellen van ‘aantal-steentjes-in-rij’ bij ‘totaal’, het
+‘aantal-steentjes-in-rij’ moet met een verminderd worden, omdat de
+volgende keer dat de loop herhaalt, de voorafgaande rij opgeteld wordt
+bij het totaal.
 
-   The number of pebbles in a preceding row is one less than the number
-of pebbles in a row, so the built-in Emacs Lisp function ‘1-’ can be
-used to compute the number of pebbles in the preceding row.  This can be
-done with the following expression:
+   Het aantal steentjes in een voorafgaande rij is een minder dan het
+aantal steentjes in een rij, waardoor de in Emacs Lisp ingebouwde
+functie ‘1-’ kan worden gebruikt om het aantal steentjes in de
+voorafgaand rij te berekenen.  Dit kan met de volgende expressie:
 
-     (setq number-of-pebbles-in-row
-           (1- number-of-pebbles-in-row))
+     (setq aantal-steentjes-in-rij      (1- aantal-steentjes-in-rij))
 
-   Finally, we know that the ‘while’ loop should stop making repeated
-additions when there are no pebbles in a row.  So the test for the
-‘while’ loop is simply:
+   Tenslotte weten we dat ‘while’ loop de herhalende optellingen moet
+stoppen wanneer er geen steentjes in een rij zijn.  Daarom is de test
+voor de ‘while’ loop eenvoudig:
 
-     (while (> number-of-pebbles-in-row 0)
+     (while (> aantal-steentjes-in-rij 0)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Dec voorbeeld samengesteld,  Prev: Dec voorbeeld onderdelen,  Up: Decrementele loop
 
-Putting the function definition together
-........................................
+De functiedefinitie samenstellen
+................................
 
-We can put these expressions together to create a function definition
-that works.  However, on examination, we find that one of the local
-variables is unneeded!
+We kunnen deze expressies samenvoegen om een functiedefinitie te creëren
+die werkt.  Bij onderzoek blijkt echter dat een van de lokale variabelen
+niet nodig is!
 
-   The function definition looks like this:
+   De functiedefinitie ziet er zo uit:
 
-     ;;; First subtractive version.
-     (defun triangle (number-of-rows)
-       "Add up the number of pebbles in a triangle."
-       (let ((total 0)
-             (number-of-pebbles-in-row number-of-rows))
-         (while (> number-of-pebbles-in-row 0)
-           (setq total (+ total number-of-pebbles-in-row))
-           (setq number-of-pebbles-in-row
-                 (1- number-of-pebbles-in-row)))
-         total))
+     ;;; Eerste aflopende versie.
+     (defun driehoek (aantal-rijen)
+       "Tel het aantal steentjes in een driehoek."
+       (let ((totaal 0)
+             (aantal-steentjes-in-rij aantal-rijen))
+         (while (> aantal-steentjes-in-rij 0)
+           (setq totaal (+ totaal aantal-steentjes-in-rij))
+           (setq aantal-steentjes-in-rij
+                 (1- aantal-steentjes-in-rij)))
+         totaal))
 
-   As written, this function works.
+   Zoals gezegd, deze functie werkt.
 
-   However, we do not need ‘number-of-pebbles-in-row’.
+   Maar we hebben ‘aantal-steentjes-in-rij’ niet nodig.
 
-   When the ‘triangle’ function is evaluated, the symbol
-‘number-of-rows’ will be bound to a number, giving it an initial value.
-That number can be changed in the body of the function as if it were a
-local variable, without any fear that such a change will effect the
-value of the variable outside of the function.  This is a very useful
-characteristic of Lisp; it means that the variable ‘number-of-rows’ can
-be used anywhere in the function where ‘number-of-pebbles-in-row’ is
-used.
+   Wanneer de functie ‘driehoek’ wordt geëvalueerd wordt het symbool
+‘aantal-rijen’ gebonden aan een getal, om het een initiële waarde te
+geven.  Dat getal kan in de body van de functie gewijzigd worden alsof
+het een lokale variabele is, zonder enige angst dat zo'n wijziging
+effect heeft op de waarde van de variabele buiten de functie.  Dit is
+een erg zinvolle karakteristiek van Lisp, het betekent dat de variabele
+‘aantal-rijen’ overal in de functie kan worden gebruikt waar
+‘aantal-steentjes-in-rij’ is gebruikt.
 
-   Here is a second version of the function written a bit more cleanly:
+   Hier is de tweede versie van de functie, die netter geschreven is.
 
-     (defun triangle (number)                ; Second version.
-       "Return sum of numbers 1 through NUMBER inclusive."
-       (let ((total 0))
-         (while (> number 0)
-           (setq total (+ total number))
-           (setq number (1- number)))
-         total))
+     (defun driehoek (getal)                ; Second version.
+       "Geef som van de getallen 1 tot en met GETAL."
+       (let ((totaal 0))
+         (while (> getal 0)
+           (setq totaal (+ totaal getal))
+           (setq getal (1- getal)))
+         totaal))
 
-   In brief, a properly written ‘while’ loop will consist of three
-parts:
+   In het kort, een goed geschreven ‘while’ loop bestaat uit drie delen:
 
-  1. A test that will return false after the loop has repeated itself
-     the correct number of times.
+  1. Een test die onwaar teruggeeft nadat de loop het juiste aantal keer
+     zichzelf herhaald heeft.
 
-  2. An expression the evaluation of which will return the value desired
-     after being repeatedly evaluated.
+  2. Een expressie waarvan de evaluatie de gewenste waarde teruggeeft
+     nadat die herhaaldelijk geëvalueerd is.
 
-  3. An expression to change the value passed to the true-or-false-test
-     so that the test returns false after the loop has repeated itself
-     the right number of times.
+  3. Een expressie die de waarde wijzigt die aan de waar-of-onwaar-test
+     wordt doorgegeven zodat de test onwaar teruggeeft nadat de loop
+     zichzelf het juiste aantal keren heeft herhaald.
 
 
 File: emacs-lisp-intro-nl.info,  Node: dolist dotimes,  Next: Recursie,  Prev: while,  Up: Loops en recursie
@@ -8981,16 +8991,17 @@ File: emacs-lisp-intro-nl.info,  Node: dolist dotimes,  Next: Recursie,  Prev: w
 11.2 Bespaar je tijd: ‘dolist’ en ‘dotimes’
 ===========================================
 
-In addition to ‘while’, both ‘dolist’ and ‘dotimes’ provide for looping.
-Sometimes these are quicker to write than the equivalent ‘while’ loop.
-Both are Lisp macros.  (*Note Macros: (elisp)Macros.  )
+Naast ‘while’ bieden ‘dolist’ en ‘dotimes’ looping.  Soms zijn ze
+sneller te schrijven dan een equivalente ‘while’ loop.  Beide zijn Lisp
+macros.  (*Note Macros: (elisp)Macros.  )
 
-   ‘dolist’ works like a ‘while’ loop that CDRs down a list: ‘dolist’
-automatically shortens the list each time it loops--takes the CDR of the
-list--and binds the CAR of each shorter version of the list to the first
-of its arguments.
+   ‘dolist’ werkt net als een ‘while’ loop die door een lijst CDRt:
+‘dolist’ verkort elke keer dat het loopt automatisch de lijst--neemt de
+CDR van de lijst--en bindt de CAR van elke kortere versie van de lijst
+aan het eerste van zijn argumenten.
 
-   ‘dotimes’ loops a specific number of times: you specify the number.
+   ‘dotimes’ loopt een specifiek aantal keren: je specificeert hoeveel
+keer.
 
 * Menu:
 
@@ -9000,123 +9011,125 @@ of its arguments.
 
 File: emacs-lisp-intro-nl.info,  Node: dolist,  Next: dotimes,  Up: dolist dotimes
 
-The ‘dolist’ Macro
-------------------
+De ‘dolist’ macro
+-----------------
 
-Suppose, for example, you want to reverse a list, so that "first"
-"second" "third" becomes "third" "second" "first".
+Stel bijvoorbeeld dat je een lijst wilt omdraaien, zodat "eerste"
+"tweede" "derde" wordt "derde" "tweede" "eerste".
 
-   In practice, you would use the ‘reverse’ function, like this:
+   In de praktijk gebruik je de functie ‘reverse’ zoals hier:
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     (reverse animals)
+     (reverse dieren)
 
-Here is how you could reverse the list using a ‘while’ loop:
+Hier is hoe je de lijst kan omdraaien met een ‘while’ loop:
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     (defun reverse-list-with-while (list)
-       "Using while, reverse the order of LIST."
-       (let (value)  ; make sure list starts empty
-         (while list
-           (setq value (cons (car list) value))
-           (setq list (cdr list)))
-         value))
+     (defun reverse-lijst-met-while (lijst)
+       "Met while, draai de volgorde van LIJST om."
+       (let (waarde)  ; zorg dat de lijst leeg begint
+         (while lijst
+           (setq waarde (cons (car lijst) waarde))
+           (setq lijst (cdr lijst)))
+         waarde))
 
-     (reverse-list-with-while animals)
+     (reverse-lijst-met-while dieren)
 
-And here is how you could use the ‘dolist’ macro:
+En hier is hoe je het met een ‘dolist’ macro kunt doen:
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     (defun reverse-list-with-dolist (list)
-       "Using dolist, reverse the order of LIST."
-       (let (value)  ; make sure list starts empty
-         (dolist (element list value)
-           (setq value (cons element value)))))
+     (defun reverse-lijst-met-dolist (lijst)
+       "Met dolist, draai de volgorde van LIJST om."
+       (let (waarde)  ; zorg dat de lijst leeg begint
+         (dolist (element lijst waarde)
+           (setq waarde (cons element waarde)))))
 
-     (reverse-list-with-dolist animals)
+     (reverse-lijst-met-dolist dieren)
 
-In Info, you can place your cursor after the closing parenthesis of each
-expression and type ‘C-x C-e’; in each case, you should see
+In Info plaats je de cursor achter het haakje sluiten van elke expressie
+en je typt ‘C-x C-e’.  In beide gevallen zou je het volgende moeten zien
 
-     (tiger lion giraffe gazelle)
+     (tijger leeuw giraf gazelle)
 
-in the echo area.
+in het echogebied
 
-   For this example, the existing ‘reverse’ function is obviously best.
-The ‘while’ loop is just like our first example (*note A ‘while’ Loop
-and a List: Loop Example.).  The ‘while’ first checks whether the list
-has elements; if so, it constructs a new list by adding the first
-element of the list to the existing list (which in the first iteration
-of the loop is ‘nil’).  Since the second element is prepended in front
-of the first element, and the third element is prepended in front of the
-second element, the list is reversed.
+   Voor dit voorbeeld is bestaande functie ‘reverse’ duidelijk het
+beste.  De ‘while’ loop is net als ons eerste voorbeeld (*note " "Een
+‘while’ loop en een lijst: Loop voorbeeld.).  De ‘while’ checkt eerst of
+de lijst elementen heeft.  Zo ja, dan construeert het een nieuwe lijst
+door het eerste element van de lijst aan de bestaande lijst toe te
+voegen (die in de eerste iteratie van de loop ‘nil’ is.)  Omdat het
+tweede element aan de voorkant het eerste element, en het derde element
+aan de voorkant van het tweede element wordt ingevoegd, wordt de lijst
+omgedraaid.
 
-   In the expression using a ‘while’ loop, the ‘(setq list (cdr list))’
-expression shortens the list, so the ‘while’ loop eventually stops.  In
-addition, it provides the ‘cons’ expression with a new first element by
-creating a new and shorter list at each repetition of the loop.
+   In de expressie met een ‘while’ loop maakt de
+‘(setq list (cdr list))’ de lijst korter, waardoor de ‘loop’
+uiteindelijk stopt.  Ook geeft die bij elke herhaling van de loop de
+‘cons’ expressie een nieuw eerste element en maakt het een nieuwe en
+kortere lijst.
 
-   The ‘dolist’ expression does very much the same as the ‘while’
-expression, except that the ‘dolist’ macro does some of the work you
-have to do when writing a ‘while’ expression.
+   De ‘dolist’ expresie doet vrijwel hetzelfde als de ‘while’ expressie,
+behalve dat de ‘dolist’ macro wat werk voor je doet wanneer je een
+‘while’ expressie schrijft.
 
-   Like a ‘while’ loop, a ‘dolist’ loops.  What is different is that it
-automatically shortens the list each time it loops--it CDRs down the
-list on its own--and it automatically binds the CAR of each shorter
-version of the list to the first of its arguments.
+   Net als een ‘while’ loop, voert een ‘dolist’ loopings uit.  Het
+verschil is dat het automatisch de lijst korter maakt elke dat het de
+loop herhaalt--het CDR-t zelf door de lijst--en het bindt automatisch de
+CAR van elke kortere versie van de lijst aan zijn eerste argument.
 
-   In the example, the CAR of each shorter version of the list is
-referred to using the symbol ‘element’, the list itself is called
-‘list’, and the value returned is called ‘value’.  The remainder of the
-‘dolist’ expression is the body.
+   In het voorbeeld wordt naar de CAR van elke kortere versie van de
+lijst verwezen met het symbool ‘element’, de lijst zelf wordt ‘lijst’
+genoemd.  De rest van de ‘dolist’ expressie staat in de body.
 
-   The ‘dolist’ expression binds the CAR of each shorter version of the
-list to ‘element’ and then evaluates the body of the expression; and
-repeats the loop.  The result is returned in ‘value’.
+   De ‘dolist’ expressie bindt de CAR van elke kortere versie van de
+lijst aan ‘element’ en evalueert de body van de expressie, en herhaalt
+de loop.  Het resultaat wordt teruggeven in ‘value’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: dotimes,  Prev: dolist,  Up: dolist dotimes
 
-The ‘dotimes’ Macro
--------------------
+De ‘dotimes’ macro
+------------------
 
-The ‘dotimes’ macro is similar to ‘dolist’, except that it loops a
-specific number of times.
+De ‘dotimes’ macro is vergelijkbaar met ‘dolist’, behalve dat het een
+specifiek aantal keer de loop uitvoert.
 
-   The first argument to ‘dotimes’ is assigned the numbers 0, 1, 2 and
-so forth each time around the loop.  You need to provide the value of
-the second argument, which is how many times the macro loops.
+   Het eerste argument van ‘dotimes’ krijgt rondom de loop elke keer de
+getallen 0, 1, 2 enzovoorts.  Je moet de waarde van het tweede argument
+opgeven, het aantal keer dat de macro een loop moet doen.
 
-   For example, the following binds the numbers from 0 up to, but not
-including, the number 3 to the first argument, NUMBER, and then
-constructs a list of the three numbers.  (The first number is 0, the
-second number is 1, and the third number is 2; this makes a total of
-three numbers in all, starting with zero as the first number.)
+   Bijvoorbeeld et volgende bindt de getallen vanaf 0 tot, maar niet tot
+en met, het getal 3 aan het eerste argument, GETAL, en maakt dan een
+lijst van de drie getallen.  (Het eerste getal is 0, het tweede getal is
+1 en het derde getal is 2, dit zijn drie getallen in totaal, beginnend
+met 0 als het eerste getal.)
 
-     (let (value)      ; otherwise a value is a void variable
-       (dotimes (number 3)
-         (setq value (cons number value)))
-       value)
+     (let (waarde)      ; anders is waarde een void variabele
+       (dotimes (getal 3)
+         (setq waarde (cons getal waarde)))
+       waarde)
 
      ⇒ (2 1 0)
 
-The way to use ‘dotimes’ is to operate on some expression NUMBER number
-of times and then return the result, either as a list or an atom.
+De manier om ‘dotimes’ te gebruiken is om een expressie een ‘aantal’
+aantal keer uit te voeren en dan het resultaat terug te geven, als een
+lijst of als een atoom.
 
-   Here is an example of a ‘defun’ that uses ‘dotimes’ to add up the
-number of pebbles in a triangle.
+   Hier is een voorbeeld van een ‘defun’ dat ‘dotimes’ gebruikt om het
+aantal steetjes in een driehoek op te tellen.
 
-     (defun triangle-using-dotimes (number-of-rows)
-       "Using `dotimes', add up the number of pebbles in a triangle."
-     (let ((total 0))  ; otherwise a total is a void variable
-       (dotimes (number number-of-rows)
-         (setq total (+ total (1+ number))))
-       total))
+     (defun driehoek-met-dotimes (aantal-rijen)
+       "Tel het aantal steentjes met `dotimes' in een driehoek op."
+     (let ((totaal 0))  ; anders is totaal een void variabele
+       (dotimes (aantal aantal-rijen)
+         (setq totaal (+ totaal (1+ aantal))))
+       totaal))
 
-     (triangle-using-dotimes 4)
+     (driehoek-met-dotimes 4)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursie,  Next: Looping oefening,  Prev: dolist dotimes,  Up: Loops en recursie
@@ -9265,7 +9278,7 @@ parenthesis of the ‘print-elements-recursively’ function, before the
 comment.  Otherwise, the Lisp interpreter will try to evaluate the
 comment.
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
      (defun print-elements-recursively (list)
        "Print each element of LIST on a line of its own.
@@ -9318,11 +9331,11 @@ animals)’ in the ‘*scratch*’ buffer, you see this result:
 
      gazelle
 
-     giraffe
+     giraf
 
-     lion
+     leeuw
 
-     tiger
+     tijger
      nil
 
 
@@ -12172,9 +12185,9 @@ is evaluated.
 
    The template looks like this:
 
-     (while TEST-WHETHER-LIST-IS-EMPTY
+     (while TEST-OF-LIJST-LEEG-IS
        BODY...
-       SET-LIST-TO-CDR-OF-LIST)
+       SET-LIJST-OP-CDR-VAN-LIJST)
 
    Also, we remember that a ‘while’ loop returns ‘nil’ (the result of
 evaluating the true-or-false-test), not the result of any evaluation
@@ -17506,8 +17519,8 @@ Index
 * / (deling):                            In geval van een groot buffer.
                                                               (line  39)
 * % (remainder function):                Bereken het restant. (line   6)
-* <= (less than or equal):               Inc voorbeeld onderdelen.
-                                                              (line  47)
+* <= (kleiner of gelijk):                Inc voorbeeld onderdelen.
+                                                              (line  48)
 * > (greater than):                      if in meer detail.   (line  32)
 * Aandacht richten (versmallen):         Versmallen en verbreden.
                                                               (line   6)
@@ -17524,7 +17537,7 @@ Index
                                                               (line 143)
 * apropos:                               Kolommen van een grafiek.
                                                               (line  33)
-* Argument as local variable:            Dec voorbeeld samengesteld.
+* Argument als lokale variabele:         Dec voorbeeld samengesteld.
                                                               (line  27)
 * argument gedefinieerd:                 Argumenten.          (line  16)
 * Argument, verkeerde type:              Verkeerde type argument.
@@ -18228,149 +18241,149 @@ Node: Killring overzicht358186
 Node: kill-ring-yank-pointer359998
 Node: yank nthcdr oefeningen362482
 Node: Loops en recursie363227
-Ref: Loops en recursie-Footnote-1364380
-Node: while364853
-Node: Looping met while366260
-Node: Loop voorbeeld368071
-Node: print-elements-of-list371526
-Node: Incrementele loop374071
-Node: Incrementele loop details374647
-Node: Incrementeel voorbeeld376042
-Node: Inc voorbeeld onderdelen378434
-Node: inc voorbeeld samengesteld382454
-Node: Decrementele loop386038
-Node: Decerementeel voorbeeld387504
-Node: Dec voorbeeld onderdelen388996
-Node: Dec voorbeeld samengesteld391055
-Node: dolist dotimes393309
-Node: dolist394141
-Node: dotimes397305
-Node: Recursie398819
-Node: Robots bouwen400031
-Node: Recursive definitie onderdelen401738
-Node: Recursie met lijst404176
-Node: Recursieve driehoek functie407769
-Node: Recursief voorbeeld arg van 1 of 2409145
-Node: Recursief voorbeeld arg van 3 of 4411425
-Node: Recursie met cond414471
-Node: Recursieve patronen416859
-Node: Every417352
-Node: Accumulate419806
-Node: Bewaar421099
-Node: Geen uitstel423009
-Node: Geen uitstel oplossing425713
-Ref: Geen uitstel oplossing-Footnote-1429686
-Ref: Geen uitstel oplossing-Footnote-2429792
-Node: Looping oefening430303
-Node: Regexp zoeken431540
-Node: sentence-end433600
-Node: re-search-forward437517
-Node: forward-sentence440063
-Node: Complete forward-sentence440829
-Node: fwd-sentence while loops444381
-Node: fwd-sentence re-search448030
-Node: forward-paragraph450198
-Node: forward-paragraph in het kort452014
-Node: fwd-para let453484
-Node: fwd-para while460164
-Node: Regexp terugblik468746
-Node: re-search oefeningen471202
-Node: Woorden tellen471988
-Node: Waarom woorden tellen472746
-Node: count-words-example473792
-Node: Ontwerp count-words-example475076
-Node: Wiite ruimte bug481619
-Node: recursive-count-words491212
-Node: Tellen voorbeeld503293
-Node: Woorden in een defun503674
-Node: Verdeel en heers505415
-Node: Woorden en symbolen506646
-Node: Syntax508716
-Node: count-words-in-defun512352
-Node: Enkele defuns518649
-Node: Een bestand vinden521041
-Node: lengths-list-file523683
-Node: Enkele bestanden528959
-Node: lengths-list-many-files529720
-Node: append532512
-Node: Enkele bestanden recursief533149
-Node: De data voorbereiden535989
-Node: Data in detail te tonen537118
-Node: Sorteren538042
-Node: Bestanden lijst539721
-Ref: Bestanden lijst-Footnote-1547254
-Node: Functiedefinities tellen547471
-Node: Een grafiek klaarmaken556798
-Node: Kolommen van een grafiek558127
-Node: graph-body-print571766
-Node: recursive-graph-body-print576571
-Node: Afgedrukte assen579261
-Node: Lijngrafiek oefening580008
-Node: Initialisatie van Emacs580215
-Node: Default configuratie581709
-Ref: Default configuratie-Footnote-1583693
-Node: Site-wide init584009
-Node: defcustom586071
-Node: Een init bestand beginnen591956
-Node: Tekst en auto-fill594352
-Ref: Tekst en auto-fill-Footnote-1598368
-Ref: Tekst en auto-fill-Footnote-2598652
-Node: Mail aliasen598913
-Node: Indent Tabs Mode599839
-Node: Key bindings600784
-Node: Keymaps605558
-Node: Bestanden laden608218
-Node: Autoload611500
-Node: Eenvoudige uitbreiding614388
-Ref: Eenvoudige uitbreiding-Footnote-1616953
-Node: X11 kleuren617242
-Ref: X11 kleuren-Footnote-1619060
-Node: Diverse619214
-Node: Mode line623436
-Node: Debuggen.628972
-Node: debug629868
-Node: debug-on-entry633000
-Node: debug-on-quit636605
-Node: edebug637642
-Node: Debuggen oefeningen641764
-Node: Conclusie643529
-Node: de-de648887
-Node: Killring651677
-Node: Wat de killring doet652494
-Node: current-kill654012
-Node: Code voor current-kill654710
-Node: current-kill begrijpen657542
-Node: Body van current-kill658342
-Node: Uitwijding over fout661493
-Node: Het element vaststellen662668
-Node: yank666373
-Node: yank-pop669587
-Node: ring bestand672122
-Node: Volledige grafiek672499
-Node: Gelabeld voorbeeld673339
-Node: print-graph varlist675336
-Node: print-Y-axis677059
-Node: print-Y-axis in detail677912
-Node: Hoogte van label678722
-Node: Bereken het restant680739
-Node: Y-as element684605
-Node: Y-axis-column688368
-Node: print-Y-axis enalaatste689980
-Node: print-X-axis691965
-Node: Overeenkomsten verschillen693283
-Node: X-as tic marks694116
-Node: De gehele grafiek afdrukken701119
-Node: De finale versie702235
-Node: Test print-graph706490
-Node: Woorden in defuns grafisch weergeven708174
-Node: lambda710798
-Node: mapcar712479
-Node: Een andere bug714539
-Node: Finale afgedrukte grafiek720068
-Node: Vrije software en vrije handleidingen721019
-Node: GNU Free Documentation License727335
-Node: Index752524
-Node: Over de auteur791427
+Ref: Loops en recursie-Footnote-1364423
+Node: while364944
+Node: Looping met while366376
+Node: Loop voorbeeld368314
+Node: print-elements-of-list372016
+Node: Incrementele loop374602
+Node: Incrementele loop details375234
+Node: Incrementeel voorbeeld376707
+Node: Inc voorbeeld onderdelen379283
+Node: inc voorbeeld samengesteld383423
+Node: Decrementele loop387025
+Node: Decerementeel voorbeeld388497
+Node: Dec voorbeeld onderdelen390089
+Node: Dec voorbeeld samengesteld392170
+Node: dolist dotimes394446
+Node: dolist395277
+Node: dotimes398456
+Node: Recursie400003
+Node: Robots bouwen401215
+Node: Recursive definitie onderdelen402922
+Node: Recursie met lijst405360
+Node: Recursieve driehoek functie408952
+Node: Recursief voorbeeld arg van 1 of 2410328
+Node: Recursief voorbeeld arg van 3 of 4412608
+Node: Recursie met cond415654
+Node: Recursieve patronen418042
+Node: Every418535
+Node: Accumulate420989
+Node: Bewaar422282
+Node: Geen uitstel424192
+Node: Geen uitstel oplossing426896
+Ref: Geen uitstel oplossing-Footnote-1430869
+Ref: Geen uitstel oplossing-Footnote-2430975
+Node: Looping oefening431486
+Node: Regexp zoeken432723
+Node: sentence-end434783
+Node: re-search-forward438700
+Node: forward-sentence441246
+Node: Complete forward-sentence442012
+Node: fwd-sentence while loops445564
+Node: fwd-sentence re-search449213
+Node: forward-paragraph451381
+Node: forward-paragraph in het kort453197
+Node: fwd-para let454667
+Node: fwd-para while461347
+Node: Regexp terugblik469929
+Node: re-search oefeningen472385
+Node: Woorden tellen473171
+Node: Waarom woorden tellen473929
+Node: count-words-example474975
+Node: Ontwerp count-words-example476259
+Node: Wiite ruimte bug482802
+Node: recursive-count-words492395
+Node: Tellen voorbeeld504476
+Node: Woorden in een defun504857
+Node: Verdeel en heers506598
+Node: Woorden en symbolen507829
+Node: Syntax509899
+Node: count-words-in-defun513535
+Node: Enkele defuns519832
+Node: Een bestand vinden522224
+Node: lengths-list-file524866
+Node: Enkele bestanden530142
+Node: lengths-list-many-files530903
+Node: append533693
+Node: Enkele bestanden recursief534330
+Node: De data voorbereiden537170
+Node: Data in detail te tonen538299
+Node: Sorteren539223
+Node: Bestanden lijst540902
+Ref: Bestanden lijst-Footnote-1548435
+Node: Functiedefinities tellen548652
+Node: Een grafiek klaarmaken557979
+Node: Kolommen van een grafiek559308
+Node: graph-body-print572947
+Node: recursive-graph-body-print577752
+Node: Afgedrukte assen580442
+Node: Lijngrafiek oefening581189
+Node: Initialisatie van Emacs581396
+Node: Default configuratie582890
+Ref: Default configuratie-Footnote-1584874
+Node: Site-wide init585190
+Node: defcustom587252
+Node: Een init bestand beginnen593137
+Node: Tekst en auto-fill595533
+Ref: Tekst en auto-fill-Footnote-1599549
+Ref: Tekst en auto-fill-Footnote-2599833
+Node: Mail aliasen600094
+Node: Indent Tabs Mode601020
+Node: Key bindings601965
+Node: Keymaps606739
+Node: Bestanden laden609399
+Node: Autoload612681
+Node: Eenvoudige uitbreiding615569
+Ref: Eenvoudige uitbreiding-Footnote-1618134
+Node: X11 kleuren618423
+Ref: X11 kleuren-Footnote-1620241
+Node: Diverse620395
+Node: Mode line624617
+Node: Debuggen.630153
+Node: debug631049
+Node: debug-on-entry634181
+Node: debug-on-quit637786
+Node: edebug638823
+Node: Debuggen oefeningen642945
+Node: Conclusie644710
+Node: de-de650068
+Node: Killring652858
+Node: Wat de killring doet653675
+Node: current-kill655193
+Node: Code voor current-kill655891
+Node: current-kill begrijpen658723
+Node: Body van current-kill659523
+Node: Uitwijding over fout662674
+Node: Het element vaststellen663849
+Node: yank667554
+Node: yank-pop670768
+Node: ring bestand673303
+Node: Volledige grafiek673680
+Node: Gelabeld voorbeeld674520
+Node: print-graph varlist676517
+Node: print-Y-axis678240
+Node: print-Y-axis in detail679093
+Node: Hoogte van label679903
+Node: Bereken het restant681920
+Node: Y-as element685786
+Node: Y-axis-column689549
+Node: print-Y-axis enalaatste691161
+Node: print-X-axis693146
+Node: Overeenkomsten verschillen694464
+Node: X-as tic marks695297
+Node: De gehele grafiek afdrukken702300
+Node: De finale versie703416
+Node: Test print-graph707671
+Node: Woorden in defuns grafisch weergeven709355
+Node: lambda711979
+Node: mapcar713660
+Node: Een andere bug715720
+Node: Finale afgedrukte grafiek721249
+Node: Vrije software en vrije handleidingen722200
+Node: GNU Free Documentation License728516
+Node: Index753705
+Node: Over de auteur792608
 
 End Tag Table
 

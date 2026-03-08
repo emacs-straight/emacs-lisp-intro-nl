@@ -10033,7 +10033,7 @@ hetzelfde stuk tekst. Hier is een diagram:
 @c cons-cell-diagram #5
 @ifset print-postscript-figures
 @sp 1
-@center @image{cons-5}
+@center @image{cons-5-nl}
 @sp 1
 @end ifset
 @ifclear print-postscript-figures
@@ -10134,26 +10134,26 @@ eerste, tweede, derde en vierde element van een lijst terug te geven.
 @cindex Recursie en loops
 @cindex Herhaling (loops)
 
-Emacs Lisp has two primary ways to cause an expression, or a series of
-expressions, to be evaluated repeatedly: one uses a @code{while} loop, and
-the other uses @dfn{recursion}.
+Emacs Lisp heeft twee primaire manieren om een expressie of een reeks van
+expressies herhaaldelijk te laten evalueren: een met gebruik van een
+@code{while} loop en een met gebruik van @dfn{recursie}.
 
-Repetition can be very valuable.  For example, to move forward four
-sentences, you need only write a program that will move forward one sentence
-and then repeat the process four times.  Since a computer does not get bored
-or tired, such repetitive action does not have the deleterious effects that
-excessive or the wrong kinds of repetition can have on humans.
+Herhaling kan zeer waardevol zijn. Bijvoorbeeld om vier zinnen naar voren te
+gaan, hoef je alleen een programma te schrijven dat een zin naar voren gaat,
+en dat dan vier keer te herhalen. Omdat een computer niet verveeld of
+vermoeid raakt, heeft zo'n herhalende actie geen schadelijke effecten dat
+overdreven of verkeerde manier van herhalen op mensen kan hebben.
 
-People mostly write Emacs Lisp functions using @code{while} loops and their
-kin; but you can use recursion, which provides a very powerful way to think
-about and then to solve problems@footnote{You can write recursive functions
-to be frugal or wasteful of mental or computer resources; as it happens,
-methods that people find easy---that are frugal of mental
-resources---sometimes use considerable computer resources.  Emacs was
-designed to run on machines that we now consider limited and its default
-settings are conservative.  You may want to increase the value of
-@code{max-lisp-eval-depth}.  In my @file{.emacs} file, I set it to 30 times
-its default value.}.
+Men schrijft meestal Emacs Lisp functies met @code{while} loops en hun
+soortgenoten. maar je kunt ook recursie gebruiken, wat een erg krachtige
+manier biedt om over problemen te denken en op te lossen@footnote{Je kunt
+recursieve functies schrijven die zuinig of verspillend omgaan met mentale-
+of computermiddelen. Methoden die mensen makkelijk vinden---die zuinig met
+mentale middelen omgaan---kunnen soms aanzienlijke computermiddelen
+gebruiken. Emacs was ontworpen om op machines te draaien die we nu beperkt
+vinden en de standaard instellingen zijn terughoudend. Je wilt misschien de
+instelling van @code{max-lisp-eval-depth} verhogen. In mijn @file{.emacs}
+bestand heb ik het op 30 keer de standaard waarde ingesteld.}
 
 @menu
 * while::                    Een stuk code zich laten herhalen.
@@ -10167,25 +10167,26 @@ its default value.}.
 @cindex Loops
 @findex while
 
-The @code{while} special form tests whether the value returned by evaluating
-its first argument is true or false.  This is similar to what the Lisp
-interpreter does with an @code{if}; what the interpreter does next, however,
-is different.
+De speciale vorm @code{while} test of de waarde teruggeven door het eerste
+argument te evalueren waar of onwaar is. Dit is vergelijkbaar met wat de
+Lisp interpreter doet met een @code{if}. Wat de interpreter daarna doet is
+echter anders.
 
-In a @code{while} expression, if the value returned by evaluating the first
-argument is false, the Lisp interpreter skips the rest of the expression
-(the @dfn{body} of the expression) and does not evaluate it.  However, if
-the value is true, the Lisp interpreter evaluates the body of the expression
-and then again tests whether the first argument to @code{while} is true or
-false.  If the value returned by evaluating the first argument is again
-true, the Lisp interpreter again evaluates the body of the expression.
+Wanneer in een @code{while} expressie de waarde teruggeven door het eerste
+argument te evalueren onwaar is, slaat de Lisp interpreter de rest van de
+expressie (de @dfn{body} van de expressie) over en evalueert die
+niet. Wanneer echter de waarde waar is, can evalueert de Lisp interpreter de
+body van de expressie en test opnieuw of het eerste argument van
+@code{while} waar is of onwaar. Wanneer de waarde teruggegeven door het
+eerste argument te evalueren opnieuw waar is, evalueert de Lisp interpreter
+opnieuw de body van de expressie.
 
 @need 1200
-The template for a @code{while} expression looks like this:
+Het sjabloon voor een @code{while} expressie ziet er zo uit:
 
 @smallexample
 @group
-(while @var{true-or-false-test}
+(while @var{waar-of-onwaar-test}
   @var{body}@dots{})
 @end group
 @end smallexample
@@ -10201,249 +10202,257 @@ The template for a @code{while} expression looks like this:
 
 @ifnottex
 @node Looping met while
-@unnumberedsubsec Looping with @code{while}
+@unnumberedsubsec Looping met @code{while}
 @end ifnottex
 
-So long as the true-or-false-test of the @code{while} expression returns a
-true value when it is evaluated, the body is repeatedly evaluated.  This
-process is called a loop since the Lisp interpreter repeats the same thing
-again and again, like an airplane doing a loop.  When the result of
-evaluating the true-or-false-test is false, the Lisp interpreter does not
-evaluate the rest of the @code{while} expression and exits the loop.
+Zolang de waar-of-onwaar-test van de @code{while} expressie een waarde waar
+teruggeeft wanneer die wordt geëvalueerd, wordt de body herhaaldelijk
+geëvalueerd. Dit proces wordt een loop genoemd, omdat de Lisp interpreter
+het zelfde ding opnieuw en opnieuw herhaalt, zoals een vliegtuig een looping
+maakt. Wanneer het resultaat van het evalueren van de waar-of-onwaar-test
+onwaar is, evalueert de Lisp interpreter de rest van de @code{while}
+expressie niet, en verlaat die de loop.
 
-Clearly, if the value returned by evaluating the first argument to
-@code{while} is always true, the body following will be evaluated again and
-again @dots{} and again @dots{} forever.  Conversely, if the value returned
-is never true, the expressions in the body will never be evaluated.  The
-craft of writing a @code{while} loop consists of choosing a mechanism such
-that the true-or-false-test returns true just the number of times that you
-want the subsequent expressions to be evaluated, and then have the test
-return false.
+Het is duidelijk dat wanneer het evalueren van het eerst argument van de
+@code{while} altijd waar teruggeeft, de daarop volgende body wordt opnieuw,
+opnieuw @dots{} en opnieuw @dots{} voor altijd herhaald. Omgekeerd, wanneer
+de teruggegeven waarde nooit waar is, de expressies in de body nooit
+geëvalueerd zullen worden. Het kunst van het schrijven van @code{while}
+loops bestaat uit het kiezen van zo'n mechanisme dat de waar-of-onwaar-test
+precies zo veel keer waar teruggeeft als je wilt dat de daaropvolgende
+expressies worden geëvalueerd en daarna de test onwaar laat teruggeven.
 
-The value returned by evaluating a @code{while} is the value of the
-true-or-false-test.  An interesting consequence of this is that a
-@code{while} loop that evaluates without error will return @code{nil} or
-false regardless of whether it has looped 1 or 100 times or none at all.  A
-@code{while} expression that evaluates successfully never returns a true
-value! What this means is that @code{while} is always evaluated for its side
-effects, which is to say, the consequences of evaluating the expressions
-within the body of the @code{while} loop.  This makes sense.  It is not the
-mere act of looping that is desired, but the consequences of what happens
-when the expressions in the loop are repeatedly evaluated.
+De waarde die het evalueren van een @code{while} teruggeeft, is de waarde
+van de waar-of-onwaar-test. Een interessant gevolg hiervan is dat een
+@code{while} loop die zonder fouten evalueert een @code{nil} of onwaar
+teruggeeft, ongeacht of het 1 of 100 keer heeft geloopt, of helemaal
+nooit. Een @code{while} loop die succesvol evalueert geeft nooit een waarde
+waar terug! Dit betekent dat @code{while} altijd geëvalueerd wordt voor zijn
+zij-effecten, met andere woorden, de consequenties van het evalueren van de
+expressies in de body van de @code{while} loop. Dat is logisch. Het is niet
+slechts het loopen dat gewest is, maar de consequenties van wat gebeurt
+wanneer de expressies in de loop herhaaldelijk worden geëvalueerd.
 
 @node Loop voorbeeld
-@subsection A @code{while} Loop and a List
+@subsection Een @code{while} loop en een lijst
 
-A common way to control a @code{while} loop is to test whether a list has
-any elements.  If it does, the loop is repeated; but if it does not, the
-repetition is ended.  Since this is an important technique, we will create a
-short example to illustrate it.
+Een gebruikelijke manier om een @code{while} loop te beheersen is testen of
+een lijst elementen heeft. Wanneer dat zo is, wordt de loop herhaald, maar
+wanneer dat niet zo is, wordt de herhaling beëindigd. Omdat dit een
+belangrijke techniek is, maken we hier een klein voorbeeld om het te
+illustreren.
 
-A simple way to test whether a list has elements is to evaluate the list: if
-it has no elements, it is an empty list and will return the empty list,
-@code{()}, which is a synonym for @code{nil} or false.  On the other hand, a
-list with elements will return those elements when it is evaluated.  Since
-Emacs Lisp considers as true any value that is not @code{nil}, a list that
-returns elements will test true in a @code{while} loop.
+Een simpele manier om te testen of een lijsten elementen heeft is de lijst
+te evalueren: wanneer die geen elementen heeft is het een lege lijst en
+geeft het een lege lijst terug, @code{()}, wat een synoniem is voor
+@code{nil} of onwaar. Anderzijds geeft een lijst met elementen die elementen
+terug wanneer die wordt geëvalueerd. Omdat Emacs Lisp elke waarde ongelijk
+aan @code{nil} als waar beschouwt, en lijst die elementen teruggeeft zal als
+waar testen in een @code{while} loop.
 
 @need 1200
-For example, you can set the variable @code{empty-list} to @code{nil} by
-evaluating the following @code{setq} expression:
+Als voorbeeld kun je de variabele @code{lege-lijst} op @code{nil} zetten met
+het evalueren van de volgende @code{setq} expressie: 
 
 @smallexample
-(setq empty-list ())
+(setq lege-lijst ())
 @end smallexample
 
 @noindent
-After evaluating the @code{setq} expression, you can evaluate the variable
-@code{empty-list} in the usual way, by placing the cursor after the symbol
-and typing @kbd{C-x C-e}; @code{nil} will appear in your echo area:
+Na het evalueren van de @code{setq} expressie, kan je de variabele
+@code{lege-lijst} op de gebruikelijke manier evalueren, door de cursor
+achter het symbool te plaatsen en @kbd{C-x C-e} te typen. In het echogebied
+verschijnt @code{nil}.
 
 @smallexample
-empty-list
+lege-lijst
 @end smallexample
 
-On the other hand, if you set a variable to be a list with elements, the
-list will appear when you evaluate the variable, as you can see by
-evaluating the following two expressions:
+Anderzijds, als je een variabele instelt op een lijst met elementen,
+verschijnt de lijst wanneer je de variabele evalueert. Dit kan je zien door
+de volgende expressies te evalueren:
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
-animals
+dieren
 @end group
 @end smallexample
 
-Thus, to create a @code{while} loop that tests whether there are any items
-in the list @code{animals}, the first part of the loop will be written like
-this:
+Dus om een @code{while} loop te creëren die test of er elementen in de lijst
+@code{dieren} zijn, is het eerste deel van de loop als volgt:
 
 @smallexample
 @group
-(while animals
+(while dieren
        @dots{}
 @end group
 @end smallexample
 
 @noindent
-When the @code{while} tests its first argument, the variable @code{animals}
-is evaluated.  It returns a list.  So long as the list has elements, the
-@code{while} considers the results of the test to be true; but when the list
-is empty, it considers the results of the test to be false.
+Wanneer de @code{while} het eerste argument test, wordt de variabele
+@code{dieren} geëvalueerd. Dit geeft een lijst terug. Zo lang de lijst
+elementen heeft, beschouwt de @code{while} het resultaat van de test als
+waar, maar wanneer de lijst leeg is, dan beschouwt die het resultaat van de
+test als onwaar.
 
-To prevent the @code{while} loop from running forever, some mechanism needs
-to be provided to empty the list eventually.  An oft-used technique is to
-have one of the subsequent forms in the @code{while} expression set the
-value of the list to be the @sc{cdr} of the list.  Each time the @code{cdr}
-function is evaluated, the list will be made shorter, until eventually only
-the empty list will be left.  At this point, the test of the @code{while}
-loop will return false, and the arguments to the @code{while} will no longer
-be evaluated.
+Om te voorkomen dat de @code{while} loop voor altijd blijft lopen, is een
+mechanisme nodig dat uiteindelijk een lege lijst geeft. Een vaak gebruikte
+techniek is om een van de opvolgende vormen in de @code{while} expressie de
+waarde van de lijst op de @sc{cdr} van de lijst te zetten. Elke keer dat de
+functie @sc{cdr} wordt geëvalueerd wordt de lijst korter, totdat
+uiteindelijk alleen de lege lijst overblijft. Op dit punt geeft de test in
+de @code{while} loop onwaar terug, en de argumenten van de @code{while}
+worden niet langer meer geëvalueerd.
 
-For example, the list of animals bound to the variable @code{animals} can be
-set to be the @sc{cdr} of the original list with the following expression:
+De lijst van dieren bijvoorbeeld, gebonden aan de variabele @code{dieren}
+kan op de @sc{cdr} van de oorspronkelijke lijst gezet worden met de volgende
+expressie:
 
 @smallexample
-(setq animals (cdr animals))
+(setq dieren (cdr dieren))
 @end smallexample
 
 @noindent
-If you have evaluated the previous expressions and then evaluate this
-expression, you will see @code{(giraffe lion tiger)} appear in the echo
-area.  If you evaluate the expression again, @code{(lion tiger)} will appear
-in the echo area.  If you evaluate it again and yet again, @code{(tiger)}
-appears and then the empty list, shown by @code{nil}.
+Wanneer je de voorgaande expressies geëvalueerd hebt en vervolgens deze
+expressie, dan zie je @code{(giraf leeuw tijger)} in het echogebied
+verschijnen. Wanneer je de expressie nog een keer evalueert, dan verschijnt
+@code{(leeuw tijger)} in het echogebied. Wanneer je het nog een keer en
+daarna nog een keer evalueert, dan verschijnt @code{tijger} en daarna de
+lege lijst, getoond met @code{nil}.
 
-A template for a @code{while} loop that uses the @code{cdr} function
-repeatedly to cause the true-or-false-test eventually to test false looks
-like this:
+Een sjabloon voor de @code{wile} loop dat de functie @code{cdr}
+herhaaldelijk gebruikt om de waar-of-onwaar-test uiteindelijk als onwaar te
+testen, ziet er zo uit:
 
 @smallexample
 @group
-(while @var{test-whether-list-is-empty}
+(while @var{test-of-lijst-leeg-is}
   @var{body}@dots{}
-  @var{set-list-to-cdr-of-list})
+  @var{set-lijst-op-cdr-van-lijst})
 @end group
 @end smallexample
 
-This test and use of @code{cdr} can be put together in a function that goes
-through a list and prints each element of the list on a line of its own.
+Deze test en het gebruik van @code{cdr} kunnen samengevoegd worden in een
+functie die door een lijst gaat en elk element van de lijst op een regel op
+een eigen regel toont.
 
 @node print-elements-of-list
-@subsection An Example: @code{print-elements-of-list}
+@subsection Een voorbeeld:  @code{toon-elementen-van-lijst}
 @findex print-elements-of-list
 
-The @code{print-elements-of-list} function illustrates a @code{while} loop
-with a list.
+De @code{toon-elementen-van-lijst} functie illustreert een @code{while} loop
+met een lijst.
 
 @cindex @file{*scratch*} buffer
-The function requires several lines for its output.  If you are reading this
-in a recent instance of GNU Emacs, you can evaluate the following expression
-inside of Info, as usual.
+Deze functie benodigd meerdere regels voor de output. Wanneer je dit in een
+recente versie van GNU Emacs leest, kan je de volgende expressies in Info
+evalueren, zoals gebruikelijk.
 
-If you are using an earlier version of Emacs, you need to copy the necessary
-expressions to your @file{*scratch*} buffer and evaluate them there.  This
-is because the echo area had only one line in the earlier versions.
+Wanneer je een eerdere versie van Emacs gebruikt, kan het nodig zijn eerst
+de expressies te kopiëren naar je @file{*scratch*} buffer en ze daar te
+evalueren. Dit is omdat het echogebied in eerdere versies meer een regel
+bevat.
 
-You can copy the expressions by marking the beginning of the region with
-@kbd{C-@key{SPC}} (@code{set-mark-command}), moving the cursor to the end of
-the region and then copying the region using @kbd{M-w}
-(@code{kill-ring-save}, which calls @code{copy-region-as-kill} and then
-provides visual feedback).  In the @file{*scratch*} buffer, you can yank the
-expressions back by typing @kbd{C-y} (@code{yank}).
+Je kunt de expressies kopiëren door het begin van de region te markeren met
+@kbd{C-@key{SPC}} (@code{set-mark-command}), vervolgens de cursor naar het
+eind van de region te verplaatsen en dan de region met @kbd{M-w}
+(@code{kill-ring-save} te kopiëren (die @code{copy-region-as-kill} aanroept
+en visuele feedback geeft). In het @file{*scratch*} buffer krijg je de
+expressies terug door @kbd{C-y} (@code{yank}) te typen.
 
-After you have copied the expressions to the @file{*scratch*} buffer,
-evaluate each expression in turn.  Be sure to evaluate the last expression,
-@code{(print-elements-of-list animals)}, by typing @kbd{C-u C-x C-e}, that
-is, by giving an argument to @code{eval-last-sexp}.  This will cause the
-result of the evaluation to be printed in the @file{*scratch*} buffer
-instead of being printed in the echo area.  (Otherwise you will see
-something like this in your echo area:
-@code{^Jgazelle^J^Jgiraffe^J^Jlion^J^Jtiger^Jnil}, in which each @samp{^J}
-stands for a newline.)
+Nadat je de expressies in het @file{*scratch*} buffer gekopieerd hebt,
+evalueer je elke expressie op zijn beurt. Zorg dat je de laatste expressie
+@code{toon-elementen-van-lijst dieren} met @kbd{C-u C-x C-e} evalueert,
+oftewel door een argument aan @code{eval-last-sexp} te geven. Hierdoor wordt
+het resultaat van de evaluatie in het @file{*scratch*} buffer getoond, in
+plaats van in het echogebied. (Anders zie je iets als dit in het echogebied:
+@code{^Jgazelle^J^Jgiraf^J^Jleeuw^J^Jtijger^Jnil}, waarbij elk @samp{^J}
+voor een nieuwe regel staat.)
 
 @need 1500
-You can evaluate these expressions directly in the Info buffer, and the echo
-area will grow to show the results.
+Je kunt de volgende expressie direct in het Info buffer evalueren en het
+echogebied groeit om de resultaten te tonen.
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
-(defun print-elements-of-list (list)
-  "Print each element of LIST on a line of its own."
-  (while list
-    (print (car list))
-    (setq list (cdr list))))
-
-(print-elements-of-list animals)
+(defun toon-elementen-van-lijst (lijst)
+  "Toon elk element van LIJST op een eigen regel."
+  (while lijst
+    (print (car lijst))
+    (setq lijst (cdr lijst))))
+(toon-elementen-van-lijst dieren)
 @end group
 @end smallexample
 
 @need 1200
 @noindent
-When you evaluate the three expressions in sequence, you will see this:
+Wanneer je de drie expressies achtereenvolgens evalueert, zie je dit:
 
 @smallexample
 @group
 gazelle
 
-giraffe
+giraf
 
-lion
+leeuw
 
-tiger
+tijger
 nil
 @end group
 @end smallexample
 
-Each element of the list is printed on a line of its own (that is what the
-function @code{print} does) and then the value returned by the function is
-printed.  Since the last expression in the function is the @code{while}
-loop, and since @code{while} loops always return @code{nil}, a @code{nil} is
-printed after the last element of the list.
+Elk element van de lijst wordt op een eigen regel getoond (dat is wat de
+functie @code{print} doet) en daarna wordt de waarde die de functie
+teruggeeft getoond . Omdat de laatste expressie van de functie de
+@code{while} loop is, en omdat een @code{while} loop altijd @code{nil}
+teruggeeft, wordt @code{nil} getoond na het laatste element van de lijst.
 
 @node Incrementele loop
-@subsection A Loop with an Incrementing Counter
+@subsection Een loop met een incrementele teller
 
-A loop is not useful unless it stops when it ought.  Besides controlling a
-loop with a list, a common way of stopping a loop is to write the first
-argument as a test that returns false when the correct number of repetitions
-are complete.  This means that the loop must have a counter---an expression
-that counts how many times the loop repeats itself.
+Een loop is niet bruikbaar tenzij die stopt wanneer dat moet. Naast het
+beheersen van een loop met een lijst is een gebruikelijke manier om een loop
+te stoppen door het eerste argument te schrijven als een test die onwaar
+teruggeeft wanneer het juiste aantal herhalingen is uitgevoerd. Dat betekent
+dat de loop een teller moet hebben---een expressie die telt hoeveel maal de
+loop zichzelf herhaald heeft.
 
 @ifnottex
 @node Incrementele loop details
 @unnumberedsubsec Details van een incrementele loop
 @end ifnottex
 
-The test for a loop with an incrementing counter can be an expression such
-as @code{(< count desired-number)} which returns @code{t} for true if the
-value of @code{count} is less than the @code{desired-number} of repetitions
-and @code{nil} for false if the value of @code{count} is equal to or is
-greater than the @code{desired-number}.  The expression that increments the
-count can be a simple @code{setq} such as @code{(setq count (1+ count))},
-where @code{1+} is a built-in function in Emacs Lisp that adds 1 to its
-argument.  (The expression @w{@code{(1+ count)}} has the same result as
-@w{@code{(+ count 1)}}, but is easier for a human to read.)
+De test voor een loop met een incrementele teller kan een expressie zijn
+zoals @code{(< telling gewenste-aantal)} die @code{t} voor waar teruggeeft
+wanneer de waarde van @code{telling} kleiner is dan het
+@code{gewenste-aantal} herhalingen, en @code{nil} voor onwaar wanneer de
+waarde van @code{telling} groter of gelijk is aan het
+@code{gewenste-aantal}. De expressie die de telling verhoogt kan een simpele
+@code{setq} zijn, zoals @code{(setq telling (1+ telling))}. waar @code{1+}
+een in Emacs Lisp een ingebouwde functie is die 1 bij zijn argument
+optelt. (De expressie @w{@code{(1+ telling)}} heeft hetzelfde resultaat als
+@w{@code{(+ telling 1)}} maar is voor mensen makkelijker te lezen.)
 
 @need 1250
-The template for a @code{while} loop controlled by an incrementing counter
-looks like this:
+Het sjabloon voor een @code{while} loop beheerst met een incrementele teller
+ziet er zo uit:
 
 @smallexample
 @group
-@var{set-count-to-initial-value}
-(while (< count desired-number)         ; @r{true-or-false-test}
+@var{zet-telling-op-initiele-waarde}
+(while (< telling gewenste-aantal)         ; @r{waar-of-onwaar-test}
   @var{body}@dots{}
-  (setq count (1+ count)))              ; @r{incrementer}
+  (setq telling (1+ telling)))              ; @r{incrementer}
 @end group
 @end smallexample
 
 @noindent
-Note that you need to set the initial value of @code{count}; usually it is
-set to 1.
+Merk op dat je de initiële waarde van @code{telling} moet zetten,
+gebruikelijk is die op 1 te zetten.
 
 @menu
 * Incrementeel voorbeeld::   Steentjes in een driehoek tellen.
@@ -10452,11 +10461,11 @@ set to 1.
 @end menu
 
 @node Incrementeel voorbeeld
-@unnumberedsubsubsec Example with incrementing counter
+@unnumberedsubsubsec Voorbeeld met een incrementele teller
 
-Suppose you are playing on the beach and decide to make a triangle of
-pebbles, putting one pebble in the first row, two in the second row, three
-in the third row and so on, like this:
+Stel je voor dat je op het strand aan spelen bent en besluit om een driehoek
+van steentjes te maken, met één steentje op de eerste rij, twee op de tweede
+rij, drie op de derde rij, enzovoorts, zoals dit:
 
 @sp 1
 @c pebble diagram
@@ -10483,265 +10492,269 @@ in the third row and so on, like this:
 @sp 1
 
 @noindent
-(About 2500 years ago, Pythagoras and others developed the beginnings of
-number theory by considering questions such as this.)
+(Ongeveer 2500 jaar geleden ontwikkelden Pythagoras en anderen het begin van
+getaltheorie door vragen zoals deze te beschouwen.)
 
-Suppose you want to know how many pebbles you will need to make a triangle
-with 7 rows?
+Stel je voor dat je wilt weten hoeveel steentjes je nodig hebt om een
+driehoek met 7 rijen te maken?
 
-Clearly, what you need to do is add up the numbers from 1 to 7.  There are
-two ways to do this; start with the smallest number, one, and add up the
-list in sequence, 1, 2, 3, 4 and so on; or start with the largest number and
-add the list going down: 7, 6, 5, 4 and so on.  Because both mechanisms
-illustrate common ways of writing @code{while} loops, we will create two
-examples, one counting up and the other counting down.  In this first
-example, we will start with 1 and add 2, 3, 4 and so on.
+Het is duidelijk, wat we moeten doen is de getallen 1 tot en met 7 op te
+tellen. Er zijn twee manieren om dit te doen: beginnen met het kleinste
+nummer, een, en dan de lijst opvolgend optellen, 1, 2, 3, 4, enzovoorts. Of
+beginnen met het grootste getal en dan de lijst aflopend optellen, 7, 6, 5,
+4 enzovoorts. Omdat beide mechanismen gebruikelijke manieren om @code{while}
+loops te schrijven illustreren, maken we twee voorbeelden, eentje oplopend
+tellen en eentje aflopend tellen. In het eerste voorbeeld beginnen we met 1,
+en tellen dan 2, 3, 4 enzovoorts op.
 
-If you are just adding up a short list of numbers, the easiest way to do it
-is to add up all the numbers at once.  However, if you do not know ahead of
-time how many numbers your list will have, or if you want to be prepared for
-a very long list, then you need to design your addition so that what you do
-is repeat a simple process many times instead of doing a more complex
-process once.
+Wanneer je slechts een korte lijst getallen optelt, is de makkelijkste
+manier daarvoor om alle getallen in een keer op te tellen. Maar wanneer je
+van te voren niet weet hoeveel getallen de lijst bevat, of als je voorbereid
+wilt zijn op een erg lange lijst, dan moet je de optelling zo ontwerpen dat
+je een eenvoudig proces veel keren herhaalt, in plaats van het in een keer
+uitvoeren van een meer complex proces.
 
-For example, instead of adding up all the pebbles all at once, what you can
-do is add the number of pebbles in the first row, 1, to the number in the
-second row, 2, and then add the total of those two rows to the third row,
-3.  Then you can add the number in the fourth row, 4, to the total of the
-first three rows; and so on.
+Bijvoorbeeld in plaats van alle steentjes in een keer bij elkaar op te
+tellen, kun je het aantal steentjes in de eerste rij, 1, optellen bij het
+aantal in de tweede rij, 2, daarna tel je het totaal van die twee rijen op
+bij de derde rij, 3. Daarna tel je het aantal van de vierde rij, 4, bij het
+totaal van de eerste drie rijen, enzovoorts.
 
-The critical characteristic of the process is that each repetitive action is
-simple.  In this case, at each step we add only two numbers, the number of
-pebbles in the row and the total already found.  This process of adding two
-numbers is repeated again and again until the last row has been added to the
-total of all the preceding rows.  In a more complex loop the repetitive
-action might not be so simple, but it will be simpler than doing everything
-all at once.
+De kritieke eigenschap van het proces is dat elke terugkerende actie
+eenvoudig is. In dit geval tellen we bij elke stap slechts twee getallen op,
+het aantal steentjes in de rij en het totaal dat we al hadden. Dit proces
+van het optellen van twee getallen wordt opnieuw herhaald en opnieuw, totdat
+de laatste rij is opgeteld bij het totaal van de voorgaande rijen. In een
+meer complexe loop kan de terugkerende actie minder eenvoudig zijn, maar het
+is eenvoudiger dan alles in een keer doen.
 
 @node Inc voorbeeld onderdelen
-@unnumberedsubsubsec The parts of the function definition
+@unnumberedsubsubsec De onderdelen van de functiedefinitie
 
-The preceding analysis gives us the bones of our function definition: first,
-we will need a variable that we can call @code{total} that will be the total
-number of pebbles.  This will be the value returned by the function.
+De voorgaande analyse geeft ons het skelet van onze functiedefinitie: als
+eerste hebben we een variabele nodig die we @code{totaal} noemen, dat het
+totaal van het aantal steentjes gaat worden. Dit is de waarde de de functie
+gaat teruggeven.
 
-Second, we know that the function will require an argument: this argument
-will be the total number of rows in the triangle.  It can be called
-@code{number-of-rows}.
+Ten tweede weten we dat de functie een argument nodig heeft, dit argument
+wordt het totaal aantal rijen in de driehoek. Het kan @code{aantal-rijen}
+heten.
 
-Finally, we need a variable to use as a counter.  We could call this
-variable @code{counter}, but a better name is @code{row-number}.  That is
-because what the counter does in this function is count rows, and a program
-should be written to be as understandable as possible.
+Tenslotte hebben we een variabele als teller nodig. We kunnen deze variabele
+@code{teller} noemen, maar een betere naam is @code{rij-nummer}. Dat is
+omdat de teller in deze functie de rijen telt, en een programma moet zo
+begrijpelijk mogelijk worden geschreven.
 
-When the Lisp interpreter first starts evaluating the expressions in the
-function, the value of @code{total} should be set to zero, since we have not
-added anything to it.  Then the function should add the number of pebbles in
-the first row to the total, and then add the number of pebbles in the second
-to the total, and then add the number of pebbles in the third row to the
-total, and so on, until there are no more rows left to add.
+Wanneer de Lisp interpreter voor het eerst start met het evalueren van de
+expressies in de functie moet de waarde van @code{totaal} op nul staan,
+omdat we er nog niets bij opgeteld hebben. Daarna moet de functie het aantal
+steentjes in de eerste rij bij het totaal optellen en daarna het aantal
+steentjes in de tweede rij bij het totaal optellen, en dan het aantal
+steentjes in de derde rij, enzovoorts, totdat er geen rijen meer over zijn
+om er bij te tellen.
 
-Both @code{total} and @code{row-number} are used only inside the function,
-so they can be declared as local variables with @code{let} and given initial
-values.  Clearly, the initial value for @code{total} should be 0.  The
-initial value of @code{row-number} should be 1, since we start with the
-first row.  This means that the @code{let} statement will look like this:
+@code{totaal} en @code{rij-nummer} worden beide alleen binnen de functie
+gebruikt, dus kan @code{let} ze als lokale variabelen declareren en ze een
+initiële waarde geven. Het is duidelijk dat de initiële waarde voor
+@code{totaal} 0 moet zijn. De initiële waarde voor @code{rij-nummer} moet 1
+zijn, omdat we beginnen met de eerste rij. Dit betekent dat de @code{let}
+statement er zo uit ziet:
 
 @smallexample
 @group
-  (let ((total 0)
-        (row-number 1))
+  (let ((totaal 0)
+        (rij-nummer 1))
     @var{body}@dots{})
 @end group
 @end smallexample
 
-After the internal variables are declared and bound to their initial values,
-we can begin the @code{while} loop.  The expression that serves as the test
-should return a value of @code{t} for true so long as the @code{row-number}
-is less than or equal to the @code{number-of-rows}.  (If the expression
-tests true only so long as the row number is less than the number of rows in
-the triangle, the last row will never be added to the total; hence the row
-number has to be either less than or equal to the number of rows.)
+Nadat de interne variabelen zijn gedeclareerd en gebonden aan hun initiële
+waarden, kunnen we met de @code{while} loop beginnen. De expressie die dient
+als test moet een waarde van @code{t} voor waar teruggeven zolang het
+@code{rij-nummer}  kleiner of gelijk is aan het
+@code{aantal-rijen}. (Wanneer de expressie alleen waar test zolang als het
+rijnummer kleiner is dan het aantal rijen in de driehoek, dan wordt de
+laatste rij nooit bij het totaal aantal geteld, daarom moet het rijnummer
+kleiner of gelijk aan het aantal rijen zijn.) 
 
 @need 1500
-@findex <= @r{(less than or equal)}
-Lisp provides the @code{<=} function that returns true if the value of its
-first argument is less than or equal to the value of its second argument and
-false otherwise.  So the expression that the @code{while} will evaluate as
-its test should look like this:
+@findex <= @r{(kleiner of gelijk)}
+Lisp biedt de functie @code{<=} die waar teruggeeft indien de waarde van het
+eerste argument is kleiner of gelijk aan de waarde van het tweede argument,
+zo niet dan geeft het onwaar terug. De expressie die de @code{while} als
+test evalueert moet er zo uitzien:
 
 @smallexample
-(<= row-number number-of-rows)
+(<= rij-nummer aantal-rijen)
 @end smallexample
 
-The total number of pebbles can be found by repeatedly adding the number of
-pebbles in a row to the total already found.  Since the number of pebbles in
-the row is equal to the row number, the total can be found by adding the row
-number to the total.  (Clearly, in a more complex situation, the number of
-pebbles in the row might be related to the row number in a more complicated
-way; if this were the case, the row number would be replaced by the
-appropriate expression.)
+Het totale aantal steentjes kan worden bepaald door herhaaldelijk het aantal
+steentjes in een rij op te tellen bij het reeds getelde totaal aantal. Omdat
+het aantal steentjes in een rij gelijk is aan het rij-nummer, kan het totaal
+bepaald worden door het rij-nummer bij het totaal op te tellen. (In een meer
+complexe situatie kan het aantal steentjes in een rij op een meer
+gecompliceerde manier gerelateerd zijn aan het rij-nummer. Wanneer dat het
+geval is dan zou het rij-nummer vervangen worden door een passende
+expressie.)
 
 @smallexample
-(setq total (+ total row-number))
+(setq totaal (+ totaal rij-nummer))
 @end smallexample
 
 @noindent
-What this does is set the new value of @code{total} to be equal to the sum
-of adding the number of pebbles in the row to the previous total.
+Dit zet de nieuwe waarde van @code{totaal} gelijk aan de som van het aantal
+steentjes in de rij en het vorige totaal.
 
-After setting the value of @code{total}, the conditions need to be
-established for the next repetition of the loop, if there is one.  This is
-done by incrementing the value of the @code{row-number} variable, which
-serves as a counter.  After the @code{row-number} variable has been
-incremented, the true-or-false-test at the beginning of the @code{while}
-loop tests whether its value is still less than or equal to the value of the
-@code{number-of-rows} and if it is, adds the new value of the
-@code{row-number} variable to the @code{total} of the previous repetition of
-the loop.
+Na het zetten van de waarde van @code{totaal} moeten de condities worden
+ingesteld voor de volgende herhaling van de loop, als die er is. Dit gebeurt
+door de waarde van de variabele @code{rij-nummer} te verhogen, die als
+teller dient. Nadat de variabele @code{rij-nummer} is verhoogd, test de
+waar-of-onwaar-test aan het begin van de @code{while} loop of de zijn waarde
+nog steeds kleiner of gelijk is aan de waarde van de @code{aantal-rijen} en
+als dat zo is, telt het de nieuwe waarde van de variable @code{rij-nummer}
+bij de @code{totaal} van de vorige herhaling van de loop.
 
 @need 1200
-The built-in Emacs Lisp function @code{1+} adds 1 to a number, so the
-@code{row-number} variable can be incremented with this expression:
+De in Emacs Lisp ingebouwde functie @code{1+} telt 1 bij een getal op, dus
+de variabele @code{rij-nummer} kan met deze expressie worden verhoogd:
 
 @smallexample
-(setq row-number (1+ row-number))
+(setq rij-nummer (1+ rij-nummer))
 @end smallexample
 
 @node inc voorbeeld samengesteld
-@unnumberedsubsubsec Putting the function definition together
+@unnumberedsubsubsec De functiedefinitie samenstellen
 
-We have created the parts for the function definition; now we need to put
-them together.
+We hebben de onderdelen van de functiedefinitie gecreëerd, nu moeten we ze
+samenstellen.
 
 @need 800
-First, the contents of the @code{while} expression:
+Ten eerste de inhoud vna de @code{while} expressie: 
 
 @smallexample
 @group
-(while (<= row-number number-of-rows)   ; @r{true-or-false-test}
-  (setq total (+ total row-number))
-  (setq row-number (1+ row-number)))    ; @r{incrementer}
+(while (<= rij-nummer aantal-rijen)   ; @r{waar-of-onwaar-test}
+  (setq totaal (+ total rij-nummer))
+  (setq rij-nummer (1+ rij-nummer)))    ; @r{incrementer}
 @end group
 @end smallexample
 
-Along with the @code{let} expression varlist, this very nearly completes the
-body of the function definition.  However, it requires one final element,
-the need for which is somewhat subtle.
+Samen met de @code{let} expressie varlist maakt dit de body van de functie
+bijna helemaal compleet. Het heeft echter nog een laatste element nodig,
+waarvan de noodzaak wat subtiel is.
 
-The final touch is to place the variable @code{total} on a line by itself
-after the @code{while} expression.  Otherwise, the value returned by the
-whole function is the value of the last expression that is evaluated in the
-body of the @code{let}, and this is the value returned by the @code{while},
-which is always @code{nil}.
+Het puntje op de i is om de variabele @code{totaal} na de @code{while}
+expressie op een eigen regel te plaatsen. Zo niet dan is de waarde die de
+hele functie terugggeeft de waarde van de laatste expressie die is
+geëvalueerd in de body van de @code{let}, dat is de waarde teruggeven door
+de @code{while} en die is altijd @code{nil}.
 
-This may not be evident at first sight.  It almost looks as if the
-incrementing expression is the last expression of the whole function.  But
-that expression is part of the body of the @code{while}; it is the last
-element of the list that starts with the symbol @code{while}.  Moreover, the
-whole of the @code{while} loop is a list within the body of the @code{let}.
+Dit kan op het eerste gezicht niet vanzelfsprekend zijn. Het lijkt bijna of
+de verhogende expressie de laatste expressie van de hele functie is. Maar
+die expressie is onderdeel van de body van de @code{while}. Bovendien is de
+hele @code{while} loop een lijst binnen de body van de @code{let}.
 
 @need 1250
-In outline, the function will look like this:
+Een overzicht van de functie ziet er zo uit:
 
 @smallexample
 @group
-(defun @var{name-of-function} (@var{argument-list})
-  "@var{documentation}@dots{}"
+(defun @var{naam-van-functie} (@var{argument-lijst})
+  "@var{documentatie}@dots{}"
   (let (@var{varlist})
-    (while (@var{true-or-false-test})
-      @var{body-of-while}@dots{} )
-    @dots{} ))                    ; @r{Need final expression here.}
+    (while (@var{waar-of-onwaar-test})
+      @var{body-van-while}@dots{} )
+    @dots{} ))                    ; @r{Hier is een laatste expressie nodig.}
 @end group
 @end smallexample
 
-The result of evaluating the @code{let} is what is going to be returned by
-the @code{defun} since the @code{let} is not embedded within any containing
-list, except for the @code{defun} as a whole.  However, if the @code{while}
-is the last element of the @code{let} expression, the function will always
-return @code{nil}.  This is not what we want! Instead, what we want is the
-value of the variable @code{total}.  This is returned by simply placing the
-symbol as the last element of the list starting with @code{let}.  It gets
-evaluated after the preceding elements of the list are evaluated, which
-means it gets evaluated after it has been assigned the correct value for the
-total.
+Het resultaat van het evalueren van de @code{let} is wat de @code{defun}
+gaat teruggeven, omdat de @code{let} niet ingebed is een lijst, behalve
+binnen de @code{defun} als geheel. Echter, als de @code{while} het laatste
+element is van de @code{let} expressie, geeft de functie altijd @code{nil}
+terug. Dit is niet wat we willen! In plaats daarvan willen we dat de functie
+de waarde van de variabele @code{totaal} teruggeeft. Dit wordt teruggegeven
+door eenvoudig dat symbool als laatste element in de lijst te zetten die
+begint met @code{let}. Het wordt geëvalueerd nadat de voorgaande elementen
+van de lijst zijn geëvalueerd, wat betekent dat het wordt geëvalueerd nadat
+het de correcte waarde voor het totaal heeft gekregen.
 
-It may be easier to see this by printing the list starting with @code{let}
-all on one line.  This format makes it evident that the @var{varlist} and
-@code{while} expressions are the second and third elements of the list
-starting with @code{let}, and the @code{total} is the last element:
-
-@smallexample
-@group
-(let (@var{varlist}) (while (@var{true-or-false-test}) @var{body-of-while}@dots{} ) total)
-@end group
-@end smallexample
-
-@need 1200
-Putting everything together, the @code{triangle} function definition looks
-like this:
+Het is eenvoudiger te zien wanneer we de lijst die begint met @code{let} in
+zijn geheel op een regel tonen. Dit formaat maakt het vanzelfsprekend dat de
+varlist en de @code{while} expressie het tweede en derde element van de
+lijst die begint met @code{let} zijn, en dat @code{totaal} het laatste
+element is.
 
 @smallexample
 @group
-(defun triangle (number-of-rows)    ; @r{Version with}
-                                    ; @r{  incrementing counter.}
-  "Add up the number of pebbles in a triangle.
-The first row has one pebble, the second row two pebbles,
-the third row three pebbles, and so on.
-The argument is NUMBER-OF-ROWS."
-@end group
-@group
-  (let ((total 0)
-        (row-number 1))
-    (while (<= row-number number-of-rows)
-      (setq total (+ total row-number))
-      (setq row-number (1+ row-number)))
-    total))
+(let (@var{varlist}) (while (@var{waar-of-onwaar-test}) @var{body-of-while}@dots{} ) totaal)
 @end group
 @end smallexample
 
 @need 1200
-After you have installed @code{triangle} by evaluating the function, you can
-try it out.  Here are two examples:
+Als we alles samenvoegen, ziet de functie @code{driehoek} er zo uit:
 
 @smallexample
 @group
-(triangle 4)
+(defun driehoek (aantal-rijen)    ; @r{Versie met}
+                                  ; @r{  oplopende teller.}
+  "Tel het aantal steentjes in een driehoek op.
+De eerste rij heeft een steentje, de tweede rij twee steentjes.
+De derde rij heeft drie steentjes, enzovoorts.
+Het argument is AANTAL-RIJEN."
+@end group
+@group
+  (let ((totaal 0)
+        (rij-nummer 1))
+    (while (<= rij-nummer aantal-rijen)
+      (setq totaal (+ totaal rij-nummer))
+      (setq rij-nummer (1+ rij-nummer)))
+    totaal))
+@end group
+@end smallexample
 
-(triangle 7)
+@need 1200
+Wanneer je @code{driehoek} hebt geïnstalleerd door het evalueren van de
+functie, kun je hem uitproberen. Hier zijn twee voorbeelden:
+
+@smallexample
+@group
+(driehoek 4)
+
+(driehoek 7)
 @end group
 @end smallexample
 
 @noindent
-The sum of the first four numbers is 10 and the sum of the first seven
-numbers is 28.
+De som van de eerste vier getallen is 10 en de som van de eerste zeven
+getallen is 28.
 
 @node Decrementele loop
 @subsection Loop met een decrementele teller
 
-Another common way to write a @code{while} loop is to write the test so that
-it determines whether a counter is greater than zero.  So long as the
-counter is greater than zero, the loop is repeated.  But when the counter is
-equal to or less than zero, the loop is stopped.  For this to work, the
-counter has to start out greater than zero and then be made smaller and
-smaller by a form that is evaluated repeatedly.
+Een andere gebruikelijke manier om een @code{while} loop te schrijven is met
+een test die vaststelt of een teller groter dan nul is. Zolang de teller
+groter dan nul is wordt de loop herhaald. Maar wanneer de teller kleiner of
+gelijk is aan nul, wordt de loop gestopt. Om dit zo te laten werken moet de
+teller groter dan nul starten en dan kleiner en kleiner gemaakt worden door
+een vorm die herhaaldelijk wordt geëvalueerd.
 
-The test will be an expression such as @code{(> counter 0)} which returns
-@code{t} for true if the value of @code{counter} is greater than zero, and
-@code{nil} for false if the value of @code{counter} is equal to or less than
-zero.  The expression that makes the number smaller and smaller can be a
-simple @code{setq} such as @code{(setq counter (1- counter))}, where
-@code{1-} is a built-in function in Emacs Lisp that subtracts 1 from its
-argument.
+De test is een expressie zoals @code{(> teller 0)} die @code{t} voor waar
+teruggeeft wanneer de waarde van @code{teller} groter is dan nul, en
+@code{nil} voor onwaar wanneer de waarde van @code{teller} kleiner of gelijk
+is aan nul. De expressie die het getal kleiner en kleiner makat kan een
+eenvoudige @code{setq} zijn zoals @code{(setq teller (1- teller))}, waar
+@code{1-} een in Emacs Lisp ingebouwde functie die 1 van zijn argument
+aftrekt.
 
 @need 1250
-The template for a decrementing @code{while} loop looks like this:
+Het slabloon voor een decrementele @code{while} loop ziet er zo uit:
 
 @smallexample
 @group
-(while (> counter 0)                    ; @r{true-or-false-test}
+(while (> teller 0)                    ; @r{waar-of-onwaar-test}
   @var{body}@dots{}
-  (setq counter (1- counter)))          ; @r{decrementer}
+  (setq teller (1- teller)))          ; @r{decrementer}
 @end group
 @end smallexample
 
@@ -10752,175 +10765,177 @@ The template for a decrementing @code{while} loop looks like this:
 @end menu
 
 @node Decerementeel voorbeeld
-@unnumberedsubsubsec Example with decrementing counter
+@unnumberedsubsubsec Voorbeeld met een aflopende teller
 
-To illustrate a loop with a decrementing counter, we will rewrite the
-@code{triangle} function so the counter decreases to zero.
+Om een loop met een aflopende teller te laten zien, gaan we de functie
+@code{driehoek} zo herschrijven dat de teller naar nul vermindert.
 
-This is the reverse of the earlier version of the function.  In this case,
-to find out how many pebbles are needed to make a triangle with 3 rows, add
-the number of pebbles in the third row, 3, to the number in the preceding
-row, 2, and then add the total of those two rows to the row that precedes
-them, which is 1.
+Dit is het omgekeerde van de eerdere versie van de functie. In dit geval om
+te ontdekken hoeveel steentjes nodig zijn om een driehoek met 3 rijen te
+maken, tel het aantal steentjes in de derde rij, 3, bij het aantal in de
+voorgaande rij, 2, en daarna tel het totaal van die rijen bij de rij die aan
+ze voorafgaat, die 1 is.
 
-Likewise, to find the number of pebbles in a triangle with 7 rows, add the
-number of pebbles in the seventh row, 7, to the number in the preceding row,
-which is 6, and then add the total of those two rows to the row that
-precedes them, which is 5, and so on.  As in the previous example, each
-addition only involves adding two numbers, the total of the rows already
-added up and the number of pebbles in the row that is being added to the
-total.  This process of adding two numbers is repeated again and again until
-there are no more pebbles to add.
+Om op dezelfde manier het aantal steentjes in een driehoek met 7 rijen te
+ontdekken, tel het aantal steentjes in de zevende rij, 7, bij het aantal van
+de voorgaande rij, dat 6 is, en tel dan het totaal van deze twee rijen bij
+de rij die aan ze voorafgaat, dat 5 is, enzovoorts. Net als in het vorige
+voorbeeld betreft elke optelling twee getallen het totaal van de rijen die
+al geteld zijn en het aantal steentjes in de rij die wordt opgeteld bij het
+totaal. Dit proces van twee getallen optellen wordt opnieuw en opnieuw
+herhaald totdat er geen steentjes meer zijn op op te tellen.
 
-We know how many pebbles to start with: the number of pebbles in the last
-row is equal to the number of rows.  If the triangle has seven rows, the
-number of pebbles in the last row is 7.  Likewise, we know how many pebbles
-are in the preceding row: it is one less than the number in the row.
+We weten met hoeveel steentjes we moeten beginnen: het aantal steentjes in
+de laatste rij is gelijk aan het aantal rijen. Wanneer de driehoek zeven
+rijen heeft, dan is het aantal steentjes in de laatste rij 7. Op dezelfde
+manier weten we hoeveel steentjes in de daaraan voorafgaande rij zijn: het
+is een minder dan het aantal in de rij.
 
 @node Dec voorbeeld onderdelen
-@unnumberedsubsubsec The parts of the function definition
+@unnumberedsubsubsec De onderdelen van de functiedefinitie
 
-We start with three variables: the total number of rows in the triangle; the
-number of pebbles in a row; and the total number of pebbles, which is what
-we want to calculate.  These variables can be named @code{number-of-rows},
-@code{number-of-pebbles-in-row}, and @code{total}, respectively.
+We starten met drie variabelen: het totaal aantal rijen in de driehoek, het
+aantal steentjes in een rij en het totaal aantal steentjes, wat we gaan
+uitrekenen. Deze variabelen noemen we resp. @code{aantal-rijen},
+@code{aantal-steentjes-in-rij} en @code{totaal}.
 
-Both @code{total} and @code{number-of-pebbles-in-row} are used only inside
-the function and are declared with @code{let}.  The initial value of
-@code{total} should, of course, be zero.  However, the initial value of
-@code{number-of-pebbles-in-row} should be equal to the number of rows in the
-triangle, since the addition will start with the longest row.
+Zowel @code{totaal} als @code{aantal-steentjes-in-rij} worden alleen binnen
+de functie gebruikt en worden gedeclareerd met @code{let}. De initiële
+waarde van @code{totaal} moet natuurlijk nul zijn. De initiële waarde van
+@code{aantal-steentjes-in-rij} moet gelijk zijn aan het aantal rijen in de
+driehoek, omdat de optelling met de langste rij begint.
 
 @need 1250
-This means that the beginning of the @code{let} expression will look like
-this:
+Dit betekent dat we met een @code{let} expressie beginnen die er zo uit
+ziet:
 
 @smallexample
 @group
-(let ((total 0)
-      (number-of-pebbles-in-row number-of-rows))
+(let ((totaal 0)
+      (aantal-steentjes-in-rij aantal-rijen))
   @var{body}@dots{})
 @end group
 @end smallexample
 
-The total number of pebbles can be found by repeatedly adding the number of
-pebbles in a row to the total already found, that is, by repeatedly
-evaluating the following expression:
+Het totaal aantal steentjes kan worden gevonden door herhaaldelijk het
+aantal steentjes van een rij bij het totaal al gevonden op te tellen, dat
+wil zeggen herhaaldelijk de volgende expressie evalueren:
 
 @smallexample
-(setq total (+ total number-of-pebbles-in-row))
+(setq totaal (+ totaal aantal-steentjes-in-rij))
 @end smallexample
 
 @noindent
-After the @code{number-of-pebbles-in-row} is added to the @code{total}, the
-@code{number-of-pebbles-in-row} should be decremented by one, since the next
-time the loop repeats, the preceding row will be added to the total.
+Na het optellen van @code{aantal-steentjes-in-rij} bij @code{totaal}, het
+@code{aantal-steentjes-in-rij} moet met een verminderd worden, omdat de
+volgende keer dat de loop herhaalt, de voorafgaande rij opgeteld wordt bij
+het totaal.
 
-The number of pebbles in a preceding row is one less than the number of
-pebbles in a row, so the built-in Emacs Lisp function @code{1-} can be used
-to compute the number of pebbles in the preceding row.  This can be done
-with the following expression:
+Het aantal steentjes in een voorafgaande rij is een minder dan het aantal
+steentjes in een rij, waardoor de in Emacs Lisp ingebouwde functie @code{1-}
+kan worden gebruikt om het aantal steentjes in de voorafgaand rij te
+berekenen. Dit kan met de volgende expressie:
 
 @smallexample
 @group
-(setq number-of-pebbles-in-row
-      (1- number-of-pebbles-in-row))
+(setq aantal-steentjes-in-rij      (1- aantal-steentjes-in-rij))
 @end group
 @end smallexample
 
-Finally, we know that the @code{while} loop should stop making repeated
-additions when there are no pebbles in a row.  So the test for the
-@code{while} loop is simply:
+Tenslotte weten we dat @code{while} loop de herhalende optellingen moet
+stoppen wanneer er geen steentjes in een rij zijn. Daarom is de test voor de
+@code{while} loop eenvoudig:
 
 @smallexample
-(while (> number-of-pebbles-in-row 0)
+(while (> aantal-steentjes-in-rij 0)
 @end smallexample
 
 @node Dec voorbeeld samengesteld
-@unnumberedsubsubsec Putting the function definition together
+@unnumberedsubsubsec De functiedefinitie samenstellen
 
-We can put these expressions together to create a function definition that
-works.  However, on examination, we find that one of the local variables is
-unneeded!
+We kunnen deze expressies samenvoegen om een functiedefinitie te creëren die
+werkt. Bij onderzoek blijkt echter dat een van de lokale variabelen niet
+nodig is!
 
 @need 1250
-The function definition looks like this:
+De functiedefinitie ziet er zo uit:
 
 @smallexample
 @group
-;;; @r{First subtractive version.}
-(defun triangle (number-of-rows)
-  "Add up the number of pebbles in a triangle."
-  (let ((total 0)
-        (number-of-pebbles-in-row number-of-rows))
-    (while (> number-of-pebbles-in-row 0)
-      (setq total (+ total number-of-pebbles-in-row))
-      (setq number-of-pebbles-in-row
-            (1- number-of-pebbles-in-row)))
-    total))
+;;; @r{Eerste aflopende versie.}
+(defun driehoek (aantal-rijen)
+  "Tel het aantal steentjes in een driehoek."
+  (let ((totaal 0)
+        (aantal-steentjes-in-rij aantal-rijen))
+    (while (> aantal-steentjes-in-rij 0)
+      (setq totaal (+ totaal aantal-steentjes-in-rij))
+      (setq aantal-steentjes-in-rij
+            (1- aantal-steentjes-in-rij)))
+    totaal))
 @end group
 @end smallexample
 
-As written, this function works.
+Zoals gezegd, deze functie werkt.
 
-However, we do not need @code{number-of-pebbles-in-row}.
+Maar we hebben @code{aantal-steentjes-in-rij} niet nodig. 
 
-@cindex Argument as local variable
-When the @code{triangle} function is evaluated, the symbol
-@code{number-of-rows} will be bound to a number, giving it an initial
-value.  That number can be changed in the body of the function as if it were
-a local variable, without any fear that such a change will effect the value
-of the variable outside of the function.  This is a very useful
-characteristic of Lisp; it means that the variable @code{number-of-rows} can
-be used anywhere in the function where @code{number-of-pebbles-in-row} is
-used.
+@cindex Argument als lokale variabele
+Wanneer de functie @code{driehoek} wordt geëvalueerd wordt het symbool
+@code{aantal-rijen} gebonden aan een getal, om het een initiële waarde te
+geven. Dat getal kan in de body van de functie gewijzigd worden alsof het
+een lokale variabele is, zonder enige angst dat zo'n wijziging effect heeft
+op de waarde van de variabele buiten de functie. Dit is een erg zinvolle
+karakteristiek van Lisp, het betekent dat de variabele @code{aantal-rijen}
+overal in de functie kan worden gebruikt waar @code{aantal-steentjes-in-rij}
+is gebruikt.
 
 @need 800
-Here is a second version of the function written a bit more cleanly:
+Hier is de tweede versie van de functie, die netter geschreven is.
 
 @smallexample
 @group
-(defun triangle (number)                ; @r{Second version.}
-  "Return sum of numbers 1 through NUMBER inclusive."
-  (let ((total 0))
-    (while (> number 0)
-      (setq total (+ total number))
-      (setq number (1- number)))
-    total))
+(defun driehoek (getal)                ; @r{Second version.}
+  "Geef som van de getallen 1 tot en met GETAL."
+  (let ((totaal 0))
+    (while (> getal 0)
+      (setq totaal (+ totaal getal))
+      (setq getal (1- getal)))
+    totaal))
 @end group
 @end smallexample
 
-In brief, a properly written @code{while} loop will consist of three parts:
+In het kort, een goed geschreven @code{while} loop bestaat uit drie delen:
 
 @enumerate
 @item
-A test that will return false after the loop has repeated itself the correct
-number of times.
+Een test die onwaar teruggeeft nadat de loop het juiste aantal keer zichzelf
+herhaald heeft.
 
 @item
-An expression the evaluation of which will return the value desired after
-being repeatedly evaluated.
+Een expressie waarvan de evaluatie de gewenste waarde teruggeeft nadat die
+herhaaldelijk geëvalueerd is.
 
 @item
-An expression to change the value passed to the true-or-false-test so that
-the test returns false after the loop has repeated itself the right number
-of times.
+Een expressie die de waarde wijzigt die aan de waar-of-onwaar-test wordt
+doorgegeven zodat de test onwaar teruggeeft nadat de loop zichzelf het
+juiste aantal keren heeft herhaald.
 @end enumerate
 
 @node dolist dotimes
 @section Bespaar je tijd: @code{dolist} en @code{dotimes}
 
-In addition to @code{while}, both @code{dolist} and @code{dotimes} provide
-for looping.  Sometimes these are quicker to write than the equivalent
-@code{while} loop.  Both are Lisp macros.  (@xref{Macros, , Macros, elisp,
-The GNU Emacs Lisp Reference Manual}. )
+Naast @code{while} bieden @code{dolist} en @code{dotimes} looping. Soms zijn
+ze sneller te schrijven dan een equivalente @code{while} loop. Beide zijn
+Lisp macros. (@xref{Macros, , Macros, elisp, The GNU Emacs Lisp Reference
+Manual}. )
 
-@code{dolist} works like a @code{while} loop that @sc{cdr}s down a list:
-@code{dolist} automatically shortens the list each time it loops---takes the
-@sc{cdr} of the list---and binds the @sc{car} of each shorter version of the
-list to the first of its arguments.
+@code{dolist} werkt net als een @code{while} loop die door een lijst
+@sc{cdr}t: @code{dolist} verkort elke keer dat het loopt automatisch de
+lijst---neemt de @sc{cdr} van de lijst---en bindt de @sc{car} van elke
+kortere versie van de lijst aan het eerste van zijn argumenten.
 
-@code{dotimes} loops a specific number of times: you specify the number.
+@code{dotimes} loopt een specifiek aantal keren: je specificeert hoeveel
+keer.
 
 @menu
 * dolist::                   dolist
@@ -10928,152 +10943,153 @@ list to the first of its arguments.
 @end menu
 
 @node dolist
-@unnumberedsubsec The @code{dolist} Macro
+@unnumberedsubsec De @code{dolist} macro
 @findex dolist
 
-Suppose, for example, you want to reverse a list, so that ``first''
-``second'' ``third'' becomes ``third'' ``second'' ``first''.
+Stel bijvoorbeeld dat je een lijst wilt omdraaien, zodat ``eerste''
+``tweede'' ``derde'' wordt ``derde'' ``tweede'' ``eerste''.
 
 @need 1250
-In practice, you would use the @code{reverse} function, like this:
+In de praktijk gebruik je de functie @code{reverse} zoals hier:
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
-(reverse animals)
+(reverse dieren)
 @end group
 @end smallexample
 
 @need 800
 @noindent
-Here is how you could reverse the list using a @code{while} loop:
+Hier is hoe je de lijst kan omdraaien met een @code{while} loop:
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
-(defun reverse-list-with-while (list)
-  "Using while, reverse the order of LIST."
-  (let (value)  ; make sure list starts empty
-    (while list
-      (setq value (cons (car list) value))
-      (setq list (cdr list)))
-    value))
+(defun reverse-lijst-met-while (lijst)
+  "Met while, draai de volgorde van LIJST om."
+  (let (waarde)  ; zorg dat de lijst leeg begint
+    (while lijst
+      (setq waarde (cons (car lijst) waarde))
+      (setq lijst (cdr lijst)))
+    waarde))
 
-(reverse-list-with-while animals)
+(reverse-lijst-met-while dieren)
 @end group
 @end smallexample
 
 @need 800
 @noindent
-And here is how you could use the @code{dolist} macro:
+En hier is hoe je het met een @code{dolist} macro kunt doen:
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
-(defun reverse-list-with-dolist (list)
-  "Using dolist, reverse the order of LIST."
-  (let (value)  ; make sure list starts empty
-    (dolist (element list value)
-      (setq value (cons element value)))))
+(defun reverse-lijst-met-dolist (lijst)
+  "Met dolist, draai de volgorde van LIJST om."
+  (let (waarde)  ; zorg dat de lijst leeg begint
+    (dolist (element lijst waarde)
+      (setq waarde (cons element waarde)))))
 
-(reverse-list-with-dolist animals)
+(reverse-lijst-met-dolist dieren)
 @end group
 @end smallexample
 
 @need 1250
 @noindent
-In Info, you can place your cursor after the closing parenthesis of each
-expression and type @kbd{C-x C-e}; in each case, you should see
+In Info plaats je de cursor achter het haakje sluiten van elke expressie en
+je typt @kbd{C-x C-e}. In beide gevallen zou je het volgende moeten zien
 
 @smallexample
-(tiger lion giraffe gazelle)
+(tijger leeuw giraf gazelle)
 @end smallexample
 
 @noindent
-in the echo area.
+in het echogebied
 
-For this example, the existing @code{reverse} function is obviously best.
-The @code{while} loop is just like our first example (@pxref{Loop Example, ,
-A @code{while} Loop and a List}).  The @code{while} first checks whether the
-list has elements; if so, it constructs a new list by adding the first
-element of the list to the existing list (which in the first iteration of
-the loop is @code{nil}).  Since the second element is prepended in front of
-the first element, and the third element is prepended in front of the second
-element, the list is reversed.
+Voor dit voorbeeld is bestaande functie @code{reverse} duidelijk het
+beste. De @code{while} loop is net als ons eerste voorbeeld (@pxref{Loop
+voorbeeld, , " "Een @code{while} loop en een lijst}). De @code{while} checkt
+eerst of de lijst elementen heeft. Zo ja, dan construeert het een nieuwe
+lijst door het eerste element van de lijst aan de bestaande lijst toe te
+voegen (die in de eerste iteratie van de loop @code{nil} is.) Omdat het
+tweede element aan de voorkant het eerste element, en het derde element aan
+de voorkant van het tweede element wordt ingevoegd, wordt de lijst
+omgedraaid.
 
-In the expression using a @code{while} loop, the @w{@code{(setq list (cdr
-list))}} expression shortens the list, so the @code{while} loop eventually
-stops.  In addition, it provides the @code{cons} expression with a new first
-element by creating a new and shorter list at each repetition of the loop.
+In de expressie met een @code{while} loop maakt de @w{@code{(setq list (cdr
+list))}} de lijst korter, waardoor de @code{loop} uiteindelijk stopt. Ook
+geeft die bij elke herhaling van de loop de @code{cons} expressie een nieuw
+eerste element en maakt het een nieuwe en kortere lijst.
 
-The @code{dolist} expression does very much the same as the @code{while}
-expression, except that the @code{dolist} macro does some of the work you
-have to do when writing a @code{while} expression.
+De @code{dolist} expresie doet vrijwel hetzelfde als de @code{while}
+expressie, behalve dat de @code{dolist} macro wat werk voor je doet wanneer
+je een @code{while} expressie schrijft.
 
-Like a @code{while} loop, a @code{dolist} loops.  What is different is that
-it automatically shortens the list each time it loops---it @sc{cdr}s down
-the list on its own---and it automatically binds the @sc{car} of each
-shorter version of the list to the first of its arguments.
+Net als een @code{while} loop, voert een @code{dolist} loopings uit. Het
+verschil is dat het automatisch de lijst korter maakt elke dat het de loop
+herhaalt---het @sc{cdr}-t zelf door de lijst---en het bindt automatisch de
+@sc{car} van elke kortere versie van de lijst aan zijn eerste argument.
 
-In the example, the @sc{car} of each shorter version of the list is referred
-to using the symbol @samp{element}, the list itself is called @samp{list},
-and the value returned is called @samp{value}.  The remainder of the
-@code{dolist} expression is the body.
+In het voorbeeld wordt naar de @sc{car} van elke kortere versie van de lijst
+verwezen met het symbool @samp{element}, de lijst zelf wordt @samp{lijst}
+genoemd. De rest van de @code{dolist} expressie staat in de body.
 
-The @code{dolist} expression binds the @sc{car} of each shorter version of
-the list to @code{element} and then evaluates the body of the expression;
-and repeats the loop.  The result is returned in @code{value}.
+De @code{dolist} expressie bindt de @sc{car} van elke kortere versie van de
+lijst aan @code{element} en evalueert de body van de expressie, en herhaalt
+de loop. Het resultaat wordt teruggeven in @code{value}.
 
 @node dotimes
-@unnumberedsubsec The @code{dotimes} Macro
+@unnumberedsubsec De @code{dotimes} macro
 @findex dotimes
 
-The @code{dotimes} macro is similar to @code{dolist}, except that it loops a
-specific number of times.
+De @code{dotimes} macro is vergelijkbaar met @code{dolist}, behalve dat het
+een specifiek aantal keer de loop uitvoert.
 
-The first argument to @code{dotimes} is assigned the numbers 0, 1, 2 and so
-forth each time around the loop.  You need to provide the value of the
-second argument, which is how many times the macro loops.
+Het eerste argument van @code{dotimes} krijgt rondom de loop elke keer de
+getallen 0, 1, 2 enzovoorts. Je moet de waarde van het tweede argument
+opgeven, het aantal keer dat de macro een loop moet doen.
 
 @need 1250
-For example, the following binds the numbers from 0 up to, but not
-including, the number 3 to the first argument, @var{number}, and then
-constructs a list of the three numbers.  (The first number is 0, the second
-number is 1, and the third number is 2; this makes a total of three numbers
-in all, starting with zero as the first number.)
+Bijvoorbeeld et volgende bindt de getallen vanaf 0 tot, maar niet tot en
+met, het getal 3 aan het eerste argument, @var{getal}, en maakt dan een
+lijst van de drie getallen. (Het eerste getal is 0, het tweede getal is 1 en
+het derde getal is 2, dit zijn drie getallen in totaal, beginnend met 0 als
+het eerste getal.)
 
 @smallexample
 @group
-(let (value)      ; otherwise a value is a void variable
-  (dotimes (number 3)
-    (setq value (cons number value)))
-  value)
+(let (waarde)      ; anders is waarde een void variabele
+  (dotimes (getal 3)
+    (setq waarde (cons getal waarde)))
+  waarde)
 
 @result{} (2 1 0)
 @end group
 @end smallexample
 
 @noindent
-The way to use @code{dotimes} is to operate on some expression @var{number}
-number of times and then return the result, either as a list or an atom.
+De manier om @code{dotimes} te gebruiken is om een expressie een
+@code{aantal} aantal keer uit te voeren en dan het resultaat terug te geven,
+als een lijst of als een atoom.
 
 @need 1250
-Here is an example of a @code{defun} that uses @code{dotimes} to add up the
-number of pebbles in a triangle.
+Hier is een voorbeeld van een @code{defun} dat @code{dotimes} gebruikt om
+het aantal steetjes in een driehoek op te tellen.
 
 @smallexample
 @group
-(defun triangle-using-dotimes (number-of-rows)
-  "Using `dotimes', add up the number of pebbles in a triangle."
-(let ((total 0))  ; otherwise a total is a void variable
-  (dotimes (number number-of-rows)
-    (setq total (+ total (1+ number))))
-  total))
+(defun driehoek-met-dotimes (aantal-rijen)
+  "Tel het aantal steentjes met `dotimes' in een driehoek op."
+(let ((totaal 0))  ; anders is totaal een void variabele
+  (dotimes (aantal aantal-rijen)
+    (setq totaal (+ totaal (1+ aantal))))
+  totaal))
 
-(triangle-using-dotimes 4)
+(driehoek-met-dotimes 4)
 @end group
 @end smallexample
 
@@ -11224,7 +11240,7 @@ Otherwise, the Lisp interpreter will try to evaluate the comment.
 @findex print-elements-recursively
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 
 (defun print-elements-recursively (list)
   "Print each element of LIST on a line of its own.
@@ -11281,11 +11297,11 @@ in the @file{*scratch*} buffer, you see this result:
 @group
 gazelle
 
-giraffe
+giraf
 
-lion
+leeuw
 
-tiger
+tijger
 nil
 @end group
 @end smallexample
@@ -14910,9 +14926,9 @@ The template looks like this:
 
 @smallexample
 @group
-(while @var{test-whether-list-is-empty}
+(while @var{test-of-lijst-leeg-is}
   @var{body}@dots{}
-  @var{set-list-to-cdr-of-list})
+  @var{set-lijst-op-cdr-van-lijst})
 @end group
 @end smallexample
 
