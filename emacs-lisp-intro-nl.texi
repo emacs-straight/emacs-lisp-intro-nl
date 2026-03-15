@@ -49,16 +49,6 @@
 @clear largebook
 @end ifset
 
-@c ================ Included Figures ================
-
-@c If you clear this, the figures will be printed as ASCII diagrams
-@c rather than PostScript/PDF.
-@c (This is not relevant to Info, since Info only handles ASCII.)
-@iftex
-@set print-postscript-figures
-@end iftex
-@c clear print-postscript-figures
-
 @comment %**end of header
 
 @c per rms and peterb, use 10pt fonts for the main text, mostly to
@@ -703,7 +693,7 @@ Recursie
 * Recursie met cond::        Recursie met cond
 * Recursieve patronen::      Veelgebruikte templates.
 * Geen uitstel::             Sla geen werk op ...
-* Geen uitstel oplossing::   Geen uitstel oplossing
+* Zonder uitstel oplossing::  Zonder uitstel oplossing
 
 Recursie in plaats van een teller
 
@@ -716,8 +706,8 @@ Recursieve patronen
 
 
 
-* Every::                    Every
-* Accumulate::               Accumulate
+* Elke::                     Elke
+* Accumuleren::              Accumuleren
 * Bewaar::                   Bewaar
 
 Reguliere expressie zoekopdrachten
@@ -798,7 +788,7 @@ De data voorbereiden om in een grafiek te tonen
 
 * Data in detail te tonen::  Data in detail te tonen
 * Sorteren::                 Lijsten sorteren
-* Bestanden lijst::          Een lijst van bestanden maken.
+* Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 
 Een grafiek klaarmaken
@@ -1092,35 +1082,35 @@ functionaliteiten aan Emacs Lisp toevoegt.)
 @unnumberedsec Een opmerking voor beginners
 
 Ook als je GNU Emacs niet kent heeft het lezen van dit document  veel
-nut. Ik raad je echter aan om Emacs te leren, al is het alleen  maar te
-leren hoe je over het scherm beweegt. Je kunt zelf  het gebruik van Emacs
-leren met de ingebouwde tutorial. Om die  te gebruiken, type je @kbd{C-h
-t}. (Dit betekent dat je  de toetsen @key{CTRL} @kbd{h} tegelijk indrukt en
-loslaat, en daarna  de toets @kbd{t} indrukt en loslaat.) 
+nut. Ik raad je echter aan om Emacs te leren, al is het alleen maar te leren
+hoe je over het scherm beweegt. Je kunt zelf het gebruik van Emacs leren met
+de ingebouwde tutorial. Om die  te gebruiken, type je @kbd{C-h t}. (Dit
+betekent dat je de toetsen @key{CTRL} @kbd{h} tegelijk indrukt en loslaat,
+en daarna de toets @kbd{t} indrukt en loslaat.) 
 
 Ook verwijs ik vaak naar Emacs's standaard commando's door de
-toetscombinaties te noemen die je gebruikt om het commando aan te roepen  en
-vervolgens de naam van het commando tussen haakjes, zoals dit:  @kbd{C-M-\}
-(@code{indent-region}). Wat dit betekent is dat  het @code{indent-region}
-commando gebruikelijk wordt aangeroepen door  @kbd{C-M-\} te typen. (Je
-kunt, als je dat wilt, de toetscombinaties  om commando's aan te roepen
-wijzigen, dit heet @dfn{rebinding}.  @xref{Keymaps, , Keymaps}.)  De
-afkorting @kbd{C-M-\} betekent dat je  de @key{CTRL}-toets, de
-@key{META}-toets en de @kbd{\}-toets  allemaal tegelijk indrukt. Soms wordt
-een toetscombinatie als dit  een keychord genoemd, omdat het vergelijkbaar
-is met de manier waarop je  een akkoord op een piano speelt. Wanneer je
-toetsenbord geen @key{META}-toets  heeft, dan gebruik je de @key{ESC}-toets
-als prefix. In dat geval  betekent @kbd{C-M-\} dat je eerst de  @key{ESC}
-indrukt en loslaat  en daarna tegelijkertijd de  @key{CTRL}-toets en de
-@kbd{\}-toets indrukt.  Maar meestal betekent @kbd{C-M-\} dat je de
-@key{CTRL}-toets samen met  de toets die als @key{ALT} is gelabeld indrukt
-en tegelijkertijd de  @kbd{\}-toets indrukt.
+toetscombinaties te noemen die je gebruikt om het commando aan te roepen en
+vervolgens de naam van het commando tussen haakjes, zoals dit:x @kbd{C-M-\}
+(@code{indent-region}). Wat dit betekent is dat het @code{indent-region}
+commando gebruikelijk wordt aangeroepen door @kbd{C-M-\} te typen. (Je kunt,
+als je dat wilt, de toetscombinaties  om commando's aan te roepen wijzigen,
+dit heet @dfn{rebinding}.  @xref{Keymaps, , Keymaps}.)  De afkorting
+@kbd{C-M-\} betekent dat je de @key{CTRL}-toets, de @key{META}-toets en de
+@kbd{\}-toets  allemaal tegelijk indrukt. Soms wordt een toetscombinatie als
+dit een keychord genoemd, omdat het vergelijkbaar is met de manier waarop je
+een akkoord op een piano speelt. Wanneer je toetsenbord geen
+@key{META}-toets heeft, dan gebruik je de @key{ESC}-toets als prefix. In dat
+geval betekent @kbd{C-M-\} dat je eerst de @key{ESC} indrukt en loslaat en
+daarna tegelijkertijd de @key{CTRL}-toets en de @kbd{\}-toets indrukt. Maar
+meestal betekent @kbd{C-M-\} dat je de @key{CTRL}-toets samen met de toets
+die als @key{ALT} is gelabeld indrukt en tegelijkertijd de @kbd{\}-toets
+indrukt.
 
 In aanvulling op het typen van een toetscombinatie, kan je wat je typt
 uitbreiden met de prefix @kbd{C-u}, wat het @dfn{universal argument}
-heet. De  @kbd{C-u}-toetscombinatie geeft een argument door aan het
+heet. De @kbd{C-u}-toetscombinatie geeft een argument door aan het
 eerstvolgende commando. Dus, om een gebied met gewone tekst 6 spaties te
-indenten, markeer je het gebied en vervolgens type je  @w{@kbd{C-u 6
+indenten, markeer je het gebied en vervolgens type je @w{@kbd{C-u 6
 C-M-\}}. (Wanneer je geen getal opgeeft, dan geeft Emacs hetzij het getal 4
 door aan het commando, of voert het commando anders uit). @xref{Arguments, ,
 Numeric Arguments, emacs, The GNU Emacs Manual}.
@@ -1351,7 +1341,7 @@ omgeven door haakjes, zonder enige non-Lisp leestekens.)
 
 @need 1250
 Tekst tussen dubbele aanhalingstekens ---zelfs zinnen en paragrafen--- is
-ook een atoom.  Hier is een voorbeeld:
+ook een atoom. Hier is een voorbeeld:
 @cindex Tekst tussen dubbele aanhalingstekens
 
 @smallexample
@@ -1467,12 +1457,12 @@ van de volgende lijst en typ vervolgens @kbd{C-x C-e}:
 
 @c use code for the number four, not samp.
 @noindent
-Je ziet het getal @code{4} verschijnen in het echogebied @footnote{  Emacs
-toont integer waardes in decimaal, in octaal en in hex en ook  als een
+Je ziet het getal @code{4} verschijnen in het echogebied @footnote{Emacs
+toont integer waardes in decimaal, in octaal en in hex en ook als een
 karakter, maar laten we deze gemaksfunctie nu even negeren.}. (Wat je
 zojuist gedaan hebt is het evalueren van de lijst. Het  echogebied is de
 regel aan de onderkant van het scherm dat de  echotekst toont.) Probeer nu
-hetzelfde met een gequote lijst: plaats  de cursor meteen achter de volgende
+hetzelfde met een gequote lijst: plaats de cursor meteen achter de volgende
 lijst en type @kbd{C-x C-e}:
 
 @smallexample
@@ -1567,7 +1557,7 @@ meest recente actie staat bovenaan. Het buffer heet het @file{*Backtrace*}
 buffer omdat het je in staat stelt Emacs achterwaarts te volgen.
 
 @need 800
-Bovenaan het  @file{*Backtrace*} buffer zie je de regel:
+Bovenaan het @file{*Backtrace*} buffer zie je de regel:
 
 @smallexample
 Debugger entered--Lisp error: (void-function dit)
@@ -3216,7 +3206,7 @@ die specifieke definitie. In die definitie refereert de naam naar een andere
 entiteit dan elk gebruik van de zelfde naam buiten de functiedefinitie. Stel
 je hebt de bijnaam ``Kleintje'' in je familie, dan refereren familieleden
 met ``Kleintje'' naar jou. Maar buiten jouw familie, bijvoorbeeld in een
-speelfilm, refereert  de naam ``Kleintje'' naar iemand anders. Omdat de naam
+speelfilm, refereert de naam ``Kleintje'' naar iemand anders. Omdat de naam
 in de argumentlijst privé is voor de functiedefinitie kan je de waarde van
 zo'n symbool binnen de body van de functie wijzigen zonder de waarde buiten
 de functie te wijzigen. Het effect is vergelijkbaar met dat geproduceerd
@@ -3496,7 +3486,7 @@ uitziet:
 @end smallexample
 
 In deze functie is de expressie  @code{(interactive "p")} een lijst met twee
-elementen. De  @code{"p"} vertelt Emacs om het prefix-argument door te geven
+elementen. De @code{"p"} vertelt Emacs om het prefix-argument door te geven
 aan de functie en zijn waarde te gebruiken voor het argument van de functie.
 
 @need 1000
@@ -4806,19 +4796,20 @@ bufers. Later kijken we naar andere functies.
 
 @findex describe-function@r{, geïntroduceerd}
 @cindex Vind functiedocumentatie
-In deze rondleiding beschrijf elke nieuwe functie die we behandelen. soms in
-detail en soms kort. Wanneer je geïnteresseerd bent vraag je op elk moment
-de volledige documentatie op van elke Emacs Lisp functie door @kbd{C-h f} te
-typen, en daarna de naam van de functie (gevolg met @key{RET}). Je kunt op
-ook de volledige documentatie van een variabele opvragen met het typen van
-@kbd{C-h v}, en daarna de naam van de variabele (gevolg met @key{RET}).
+In deze rondleiding beschrijf ik elke nieuwe functie die we behandelen. Soms
+in detail en soms kort. Wanneer je geïnteresseerd bent vraag je op elk
+moment de volledige documentatie op van elke Emacs Lisp functie door
+@kbd{C-h f} te typen, en daarna de naam van de functie (gevolg met
+@key{RET}). Je kunt op ook de volledige documentatie van een variabele
+opvragen met het typen van @kbd{C-h v}, en daarna de naam van de variabele
+(gevolg met @key{RET}).
 
 @cindex De source van een functie vinden
 @c In version 22, tells location both of C and of Emacs Lisp
 @code{describe-function} vertelt je ook de locatie van de functie.
 
 Plaats point in de naam van het bestand dat de functie bevat en druk op de
-@key{RET}-toets. In dit geval @key{RET} betekent @code{push-button} in
+@key{RET}-toets. In dit geval betekent @key{RET} @code{push-button} in
 plaats van ``return'' of ``enter''. Emacs neemt je meteen naar de
 functiedefinitie.
 
@@ -4842,11 +4833,11 @@ handleidingen de met Emacs komen hebt laten registeren @pxref{Create Tags
 Table,,, emacs, The GNU Emacs Manual}).
 
 Type @kbd{M-.} (dus druk op de punt-toet terwijl je de @key{META}-toets
-ingedrukt houdt, of type anders de @key{ESC} gevold door de punt-toets) om
+ingedrukt houdt, of typ anders de @key{ESC} gevold door de punt-toets) om
 het commando @code{xref-find-definitions} te gebruiken, en vervolgens, na de
 prompt, de naam van de functie wiens broncode je wilt zien, zoals
-@code{mark-whole-buffer} en type daarna @key{RET}. (Wanneer het commando
-geen prompt geeft, roep het dan met een argument: @kbd{C-u
+@code{mark-whole-buffer} en typ daarna @key{RET}. (Wanneer het commando geen
+prompt geeft, roep het dan met een argument: @kbd{C-u
 M-.}). @pxref{Interactieve opties}.) Emacs schakelt buffers en toont de
 broncode van de functie op je scherm@footnote{Wanneer Emacs, in plaats van
 het tonen van de broncode voor een Lisp functie, je vraagt welke tags tabel
@@ -4885,12 +4876,13 @@ code voor een complexe optie. In een andere sectie zullen we de volledige
 code bespreken. (@xref{beginning-of-buffer, , Complete definitie van
 @code{beginning-of-buffer}}.) 
 
-Voordat we naar de code kijken staan we stil bij de functiedefinitie moet
-bevatten: het moet een expressie bevatten die de functie interactief maakt
-zodat het kan worden afgeroepen met typen van @kbd{M-x beginning-of-buffer}
-of door het typen van een toetscombinatie zoals @kbd{M-<}. Het moet code
-bevatten om de mark op de originele positie te plaatsen en het moet code
-bevatten om de cursor naar het begin van het buffer te verplaatsen. 
+Voordat we naar de code kijken staan we stil bij wat de functiedefinitie
+moet bevatten: het moet een expressie bevatten die de functie interactief
+maakt zodat het kan worden aangeroepen met typen van @kbd{M-x
+beginning-of-buffer} of door het typen van een toetscombinatie zoals
+@kbd{M-<}. Het moet code bevatten om de mark op de originele positie te
+plaatsen en het moet code bevatten om de cursor naar het begin van het
+buffer te verplaatsen. 
 
 @need 1250
 Hier is de complete text van de verkorte versie van de functie:
@@ -4906,7 +4898,7 @@ plaats mark op de vorige positie."
 @end group
 @end smallexample
 
-Zoals alle functiedefinitie heeft deze definitie de vijf delen volgens de
+Zoals alle functiedefinities heeft deze definitie de vijf delen volgens de
 macro @code{defun}: 
 
 @enumerate
@@ -4948,7 +4940,7 @@ De body van de functie bestaat uit twee regels:
 @end smallexample
 
 De eerste van de twee regels is de expressie @code{(push-mark)}. Wanneer de
-Lisp interpreter deze expressie evalueert stel het de mark op de huidige
+Lisp interpreter deze expressie evalueert stelt het de mark op de huidige
 positie van de cursor in, wat die ook is. De positie van deze mark wordt
 bewaard in de mark-ring.
 
@@ -5193,7 +5185,7 @@ START en END specificeren het te kopiëren deel van het huidige buffer."
 @end group
 @end smallexample
 
-De functie kan begrepen worden door het bekijken als een serie ingevulde
+De functie kan begrepen worden door het te bekijken als een serie ingevulde
 sjablonen.
 
 Het buitenste sjabloon is voor de functiedefinitie. In deze functie ziet het
@@ -5225,7 +5217,7 @@ functie kan met beide overweg.)
 
 Omdat de @code{append-to-buffer} functie interactief gebruikt gaat worden,
 moet de functie een @code{interactive} expressie hebben. (Voor een terugblik
-op d@code{interactive}, zie @ref{Interactief, , Een functie interactief
+op @code{interactive}, zie @ref{Interactief, , Een functie interactief
 maken}. 
 
 De exressie is als volgt:
@@ -5295,9 +5287,9 @@ en mark te binden. Dat argument werkte prima.)
 De body van de functie @code{append-to-buffer} begint met @code{let}.
 
 Zoals we eerder zagen (@pxref{let, , @code{let}}), is het doel van een
-@code{let} expressie om een of meer variabelen te creëerden en een initiële
-waarde te geven die uitsluitend worden gebruikt binnen de body van de
-@code{let}. Dit betekent dat zo'n variabele niet verward wordt met een
+@code{let} expressie om een of meer variabelen die uitsluitend worden
+gebruikt binnen de body van de @code{let} te creëeren en een initiële waarde
+te geven. Dit betekent dat zo'n variabele niet verward wordt met een
 variabele met dezelfde naam buiten de @code{let} expressie.
 
 We kunnen zien hoe de @code{let}-expressie past in de functie als geheel,
@@ -5369,8 +5361,8 @@ een @code{save-excursion} expressie.
 De functie @code{save-excursion} bewaart de lokatie van point en herstelt
 point naar die positie na afloop van de uitvoering van de expressies in de
 body van @code{save-excursion}. Verder houdt @code{save-excursion} bij wat
-het oorspronkelijke buffer en herstelt die. Dit is hoe @code{save-excursion}
-wordt gebruikt in @code{append-to-buffer}.
+het oorspronkelijke buffer is en herstelt die. Dit is hoe
+@code{save-excursion} wordt gebruikt in @code{append-to-buffer}.
 
 @need 1500
 @cindex Indentie voor formatteren
@@ -5492,12 +5484,12 @@ De @code{insert-buffer-substring} expressie ziet er zo uit:
 @end smallexample
 
 @noindent
-The @code{insert-buffer-substring} function copies a string @emph{from} the
-buffer specified as its first argument and inserts the string into the
-present buffer.  In this case, the argument to
-@code{insert-buffer-substring} is the value of the variable created and
-bound by the @code{let}, namely the value of @code{oldbuf}, which was the
-current buffer when you gave the @code{append-to-buffer} command.
+De functie @code{insert-buffer-substring} kopieert een string @emph{van} het
+buffer gespecificeerd als eerste argument en voegt de string in het huidige
+buffer. In de geval is het argument van @code{insert-buffer-substring} de
+waarde van de variabele die de @code{let} creëerde en bond, namelijk de
+waarde van @code{oldbuf}, wat het huidige buffer was toen je het
+@code{append-to-buffer} commando gaf.
 
 Nadat @code{insert-buffer-substring} zijn werk gedaan heeft, herstelt
 @code{save-excursion} de actie naar het originele buffer en heeft
@@ -6221,7 +6213,7 @@ argument is dat geen cons-cel is.
 
 (Omdat ik een cons-cel pas een aantal hoofdstukken verderop uitleg, negeer
 alsjeblieft de functie @code{consp}. @xref{Implementatie van lijsten, , Hoe
-lijsten zijn geïmplementeerd} en @ref{Cons Cell Type, , Cons Cell and List
+lijsten zijn geïmplementeerd}, en @ref{Cons Cell Type, , Cons Cell and List
 Types, elisp, The GNU Emacs Lisp Reference Manual}.)
 
 De @code{"P"} in de @code{interactive} expressie vertelt Emacs om een
@@ -9636,27 +9628,12 @@ tweede cons-cel, wiens @sc{car} het atoom @samp{viool} is, en dat adres
 een derde cons-cel, die het adres voor het atoom @samp{boterbloem} bevat.
 
 @need 1200
+@c !!! cons-cell-diagram #1
 Dit klinkt gecompliceerder dan het is en is makkelijker te zien in een
 diagram:
-
-@c clear print-postscript-figures
-@c !!! cons-cell-diagram #1
-@ifset print-postscript-figures
 @sp 1
 @center @image{cons-1-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-    ___ ___      ___ ___      ___ ___
-   |___|___|--> |___|___|--> |___|___|--> nil
-     |            |            |
-     |            |            |
-      --> roos     --> viool    --> boterbloem
-@end group
-@end smallexample
-@end ifclear
 
 @noindent
 Elk vakje in het diagram representeert een computergeheugen woord dat een
@@ -9680,55 +9657,23 @@ van de expressie
 
 @need 1250
 @noindent
-creëert een situatie zoals dit:
-
 @c cons-cell-diagram #2
-@ifset print-postscript-figures
+creëert een situatie zoals dit:
 @sp 1
 @center @image{cons-2-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-boeket
-     |
-     |     ___ ___      ___ ___      ___ ___
-      --> |___|___|--> |___|___|--> |___|___|--> nil
-            |            |            |
-            |            |            |
-             --> roos     --> viool    --> boterbloem
-@end group
-@end smallexample
-@end ifclear
 
 @noindent
 In dit voorbeeld bevat het symbool @code{boeket} het adres van het eerste
 paar vakjes.
 
 @need 1200
+@c cons-cell-diagram #2a
 Dezelfde lijst kan met een ander soort vakjes-notatie worden geïllustreerd,
 zoals dit:
-
-@c cons-cell-diagram #2a
-@ifset print-postscript-figures
 @sp 1
 @center @image{cons-2a-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-bouquet
- |
- |    --------------       ---------------       ----------------
- |   | car   | cdr  |     | car    | cdr  |     | car     | cdr  |
-  -->| roos  |   o------->| viool  |   o------->| boter-  |  nil |
-     |       |      |     |        |      |     | bloem   |      |
-      --------------       ---------------       ----------------
-@end group
-@end smallexample
-@end ifclear
 
 (Symbolen bestaan uit meer dan paren van adressen, maar de structuur van een
 symbool is gemaakt van adressen. Het symbool @code{boeket} bestaat inderdaad
@@ -9750,30 +9695,11 @@ evaluatie van de volgende expressie
 
 @need 800
 @noindent
-produceert dit:
-
 @c cons-cell-diagram #3
-@ifset print-postscript-figures
+produceert dit:
 @sp 1
 @center @image{cons-3-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@sp 1
-@smallexample
-@group
-boeket         bloemen
-  |              |
-  |     ___ ___  |     ___ ___      ___ ___
-   --> |   |   |  --> |   |   |    |   |   |
-       |___|___|----> |___|___|--> |___|___|--> nil
-         |              |            |
-         |              |            |
-          --> roos       --> viool    --> boterbloem
-@end group
-@end smallexample
-@sp 1
-@end ifclear
 
 @noindent
 De waarde van @code{bloemen} is @code{(viool boterbloem)}, dat wil zeggen,
@@ -9800,30 +9726,11 @@ de expressie
 
 @need 1500
 @noindent
-produceert:
-
 @c cons-cell-diagram #4
-@ifset print-postscript-figures
+produceert:
 @sp 1
 @center @image{cons-4-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@sp 1
-@smallexample
-@group
-boeket                        bloemen
-  |                             |
-  |     ___ ___        ___ ___  |     ___ ___       ___ ___
-   --> |   |   |      |   |   |  --> |   |   |     |   |   |
-       |___|___|----> |___|___|----> |___|___|---->|___|___|--> nil
-         |              |              |             |
-         |              |              |             |
-          --> lelie     --> roos       --> viool      --> boterbloem
-@end group
-@end smallexample
-@sp 1
-@end ifclear
 
 @need 1200
 @noindent
@@ -9879,43 +9786,11 @@ informatie op te slaan. Property lists bespreken we hier niet, zie
 Manual}.)
 
 @need 1500
-Hier is een fantasierijke weergave:
-
 @c chest-of-drawers diagram
-@ifset print-postscript-figures
+Hier is een fantasierijke weergave:
 @sp 1
 @center @image{drawers-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@sp 1
-@smallexample
-@group
-              Ladekast                   Inhoud van de lade
-            __   o0O0o   __
-          /                 \
-         ---------------------
-        |  routebeschrijving  |            [wijst naar]
-        |     symbool naam    |             boeket
-        |                     |
-        +---------------------+
-        |  routebeschrijving  |
-        |  symbool definitie  |             [geen]
-        |                     |
-        +---------------------+
-        |  routebeschrijving  |            [wijst naar]
-        |   variabele waarde  |             (roos viool boterbloem)
-        |                     |
-        +---------------------+
-        |  routebeschrijving  |
-        |    property list    |             [hier niet beschreven]
-        |                     |
-        +---------------------+
-        |/                   \|
-@end group
-@end smallexample
-@sp 1
-@end ifclear
 
 @node Lijst oefening
 @section Oefening
@@ -10023,38 +9898,16 @@ waarde van @code{kill-ring-yank-pointer}:
 ("een ander stuk tekst" "nog meer tekst")
 @end smallexample
 
+@c cons-cell-diagram #5
 Zoals in het vorige hoofdstuk (@pxref{Implementatie van lijsten}) uitgelegd,
 bewaart de computer geen twee verschillende exemplaren van de tekst waar
 zowel de @code{kill-ring} als de @code{kill-ring-yank-pointer} naar
 wijzen. De woorden ``een ander stuk tekst'' en ``nog meer tekst'' worden
 niet gedupliceerd. In plaats daarvan wijzen de twee Lisp variabelen naar
 hetzelfde stuk tekst. Hier is een diagram:
-
-@c cons-cell-diagram #5
-@ifset print-postscript-figures
 @sp 1
 @center @image{cons-5-nl}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-kill-ring     kill-ring-yank-pointer
-    |               |
-    |      ___ ___  |     ___ ___      ___ ___
-     ---> |   |   |  --> |   |   |    |   |   |
-          |___|___|----> |___|___|--> |___|___|--> nil
-            |              |            |
-            |              |            |
-            |              |             --> "nog meer tekst"
-            |              |
-            |               --> "een ander stuk tekst"
-            |
-             --> "wat tekst"
-@end group
-@end smallexample
-@sp 1
-@end ifclear
 
 Zowel de variabele @code{kill-ring} als de variabele
 @code{kill-ring-yank-pointer} zijn pointers. Maar de killring zelf wordt
@@ -11012,7 +10865,7 @@ in het echogebied
 
 Voor dit voorbeeld is bestaande functie @code{reverse} duidelijk het
 beste. De @code{while} loop is net als ons eerste voorbeeld (@pxref{Loop
-voorbeeld, , " "Een @code{while} loop en een lijst}). De @code{while} checkt
+voorbeeld, , Een @code{while} loop en een lijst}). De @code{while} checkt
 eerst of de lijst elementen heeft. Zo ja, dan construeert het een nieuwe
 lijst door het eerste element van de lijst aan de bestaande lijst toe te
 voegen (die in de eerste iteratie van de loop @code{nil} is.) Omdat het
@@ -11097,15 +10950,16 @@ het aantal steetjes in een driehoek op te tellen.
 @section Recursie
 @cindex Recursie
 
-A recursive function contains code that tells the Lisp interpreter to call a
-program that runs exactly like itself, but with slightly different
-arguments.  The code runs exactly the same because it has the same name.
-However, even though the program has the same name, it is not the same
-entity.  It is different.  In the jargon, it is a different ``instance''.
+Een recursieve functie bevat code die de Lisp interpreter vertelt een
+programma aan te roepen dat exact hetzelfde als zichzelf loopt, maar met
+iets verschillende argumenten. De code loopt hetzelfde omdat het dezelfde
+naam heeft. Hoewel het programma dezelfde naam is, is het echter niet
+dezelfde entiteit. Het is verschillend. In het jargon heet het een andere
+``instantie''.
 
-Eventually, if the program is written correctly, the slightly different
-arguments will become sufficiently different from the first arguments that
-the final instance will stop.
+Als het programma correct geschreven is dan gaan de iets verschillende
+argumenten genoeg van het eerste argument verschillen dat de laatste
+instantie stopt.
 
 @menu
 * Robots bouwen::            Zelfde model, verschillend serienummer ...
@@ -11116,182 +10970,188 @@ the final instance will stop.
 * Recursie met cond::        Recursie met cond
 * Recursieve patronen::      Veelgebruikte templates.
 * Geen uitstel::             Sla geen werk op ...
-* Geen uitstel oplossing::   Geen uitstel oplossing
+* Zonder uitstel oplossing::  Zonder uitstel oplossing
 @end menu
 
 @node Robots bouwen
-@subsection Building Robots: Extending the Metaphor
-@cindex Building robots
-@cindex Robots, building
+@subsection Robots bouwen: de metafoor uitbreiden
+@cindex Robots bouwen
+@cindex Robots, bouwen
 
-It is sometimes helpful to think of a running program as a robot that does a
-job.  In doing its job, a recursive function calls on a second robot to help
-it.  The second robot is identical to the first in every way, except that
-the second robot helps the first and has been passed different arguments
-than the first.
+Soms is het nuttig om een draaiend programma te zien als een robot die zijn
+werk doet. Tijdens het uitvoeren van het werk vraagt een recursieve functie
+een tweede robot om te helpen. De tweede robot is op elke manier identiek
+aan de eerste, behalve dat de tweede robot de eerste helpt en dat het andere
+argumenten krijgt dan de eerste.
 
-In a recursive function, the second robot may call a third; and the third
-may call a fourth, and so on.  Each of these is a different entity; but all
-are clones.
+In een recursieve functie kan een tweede robot een derde roepen, en een
+derde een vierde, enzovoort. Elk van deze is een aparte entiteit, maar het
+zijn allemaal klonen.
 
-Since each robot has slightly different instructions---the arguments will
-differ from one robot to the next---the last robot should know when to stop.
+Omdat elke robot iets verschillende instructies heeft---de argumenten
+verschillen van de ene robot tot de volgende---moet de laatste robot weten
+wanneer te stoppen.
 
-Let's expand on the metaphor in which a computer program is a robot.
+Laten we de metafoor van een computerprogamma als robot uitbreiden.
 
-A function definition provides the blueprints for a robot.  When you install
-a function definition, that is, when you evaluate a @code{defun} macro, you
-install the necessary equipment to build robots.  It is as if you were in a
-factory, setting up an assembly line.  Robots with the same name are built
-according to the same blueprints.  So they have the same model number, but a
-different serial number.
+Een functiedefinitie bevat de blauwdruk voor de robot. Wanneer je een
+functiedefinitie installeert, dat wil zeggen, wanneer je een @code{defun}
+macro evalueert, installeer je de benodigde apparatuur om robots te
+bouwen. Het is net alsof je in een fabriek een assemblagelijn opzet. Robots
+met dezelfde naam worden volgens dezelfde blauwdruk gebouwd. Dus ze hebben
+hetzelfde modelnummer, maar een verschillend serienummer.
 
-We often say that a recursive function ``calls itself''.  What we mean is
-that the instructions in a recursive function cause the Lisp interpreter to
-run a different function that has the same name and does the same job as the
-first, but with different arguments.
+We zeggen vaak dat een recursieve functie ``zichzelf aanroept''. Wat we
+willen zeggen is dat de instructies in een recursieve functie de Lisp
+interpreter een andere functie laten aanroepen, die dezelfde naam heeft en
+hetzelfde werk doet als de eerste, maar met verschillende argumenten.
 
-It is important that the arguments differ from one instance to the next;
-otherwise, the process will never stop.
+Het is belangrijk dat de argumenten tussen de ene instantie en de volgende
+verschillend zijn, anders zal het proces nooit stoppen.
 
 @node Recursive definitie onderdelen
-@subsection The Parts of a Recursive Definition
-@cindex Parts of a Recursive Definition
+@subsection De onderdelen van een recursieve definitie
+@cindex Onderdelen van een recursieve definitie
 @cindex Recursive definitie onderdelen
 
-A recursive function typically contains a conditional expression which has
-three parts:
+Een recursieve functie bevat typisch een conditionele expressie die drie
+onderdelen heeft:
 
 @enumerate
 @item
-A true-or-false-test that determines whether the function is called again,
-here called the @dfn{do-again-test}.
+Een waar-of-onwaar-test die vaststelt of de functie opnieuw aangeroepen is,
+hier de @dfn{doe-opnieuw-test} genoemd.
 
 @item
-The name of the function.  When this name is called, a new instance of the
-function---a new robot, as it were---is created and told what to do.
+De naam van de functie. Wanneer de naam wordt aangeroepen, wordt een nieuwe
+instantie van de functie---een nieuwe robot als het ware---gecreëerd en
+verteld wat te doen.
 
 @item
-An expression that returns a different value each time the function is
-called, here called the @dfn{next-step-expression}.  Consequently, the
-argument (or arguments) passed to the new instance of the function will be
-different from that passed to the previous instance.  This causes the
-conditional expression, the @dfn{do-again-test}, to test false after the
-correct number of repetitions.
+Een expressie die elke keer dat de functie word aangeroepen een andere
+waarde teruggeeft, hier de @dfn{volgende-stap-expressie} genoemd. Daardoor
+zal het aan de nieuwe instantie doorgeven argument (of argumenten)
+verschillen van wat aan de vorige instantie was doorgegeven. Dit zorgt dat
+de conditionele expresie, de @dfn{doe-opnieuw-test}, na het correcte aantal
+herhalingen naar onwaar testen.
 @end enumerate
 
-Recursive functions can be much simpler than any other kind of function.
-Indeed, when people first start to use them, they often look so mysteriously
-simple as to be incomprehensible.  Like riding a bicycle, reading a
-recursive function definition takes a certain knack which is hard at first
-but then seems simple.
+Recursieve functies kunnen veel eenvoudiger zijn dan elk ander soort
+functie. Inderdaad, wanneer mensen ze beginnen te gebruiken, lijken ze vaak
+zo mysterieus eenvoudig dat ze onbegrijpelijk zijn Net als op een fiets
+rijden, vereist het lezen van een recursieve functie een bepaalde kundigheid
+die in het begin moeilijk is maar later eenvoudig lijkt.
 
 @need 1200
-There are several different common recursive patterns.  A very simple
-pattern looks like this:
+Er zijn verschillende gebruikelijke recursieve patronen. Een erg eenvoudig
+patroon ziet er zo uit:
 
 @smallexample
 @group
-(defun @var{name-of-recursive-function} (@var{argument-list})
-  "@var{documentation}@dots{}"
-  (if @var{do-again-test}
+(defun @var{naam-van-recursieve-functie} (@var{argument-list})
+  "@var{documentatie}@dots{}"
+  (if @var{doe-opnieuw-test}
     @var{body}@dots{}
-    (@var{name-of-recursive-function}
-         @var{next-step-expression})))
+    (@var{naam-van-recursieve-functie}
+         @var{volgende-stap-expressie})))
 @end group
 @end smallexample
 
-Each time a recursive function is evaluated, a new instance of it is created
-and told what to do.  The arguments tell the instance what to do.
+Elke keer dat een recursieve functie wordt geëvalueerd worden een nieuwe
+instantie er van gecreëerd en verteld wat te doen. De argumenten vertellen
+de instantie wat te doen.
 
-An argument is bound to the value of the next-step-expression.  Each
-instance runs with a different value of the next-step-expression.
+Een argument wordt gebonden aan de waarde van de
+volgende-stap-expressie. Elke instantie draait met een andere waarde van de
+volgende-stap-expressie. 
 
-The value in the next-step-expression is used in the do-again-test.
+De waarde van de volgende-stap-expressie wordt gebruik in de
+doe-opnieuw-test.
 
-The value returned by the next-step-expression is passed to the new instance
-of the function, which evaluates it (or some transmogrification of it) to
-determine whether to continue or stop.  The next-step-expression is designed
-so that the do-again-test returns false when the function should no longer
-be repeated.
+De waarde die de volgende-stap-expressie teruggeeft wordt doorgegeven aan de
+nieuwe instantie van de functie, die het evalueert (of een transformatie er
+van) om vast te stellen of het moet doorgaan of stoppen. De
+volgende-stap-expressie is zo ontworpen dat de doe-opnieuw-test onwaar
+teruggeeft wanneer de functie niet langer meer moet worden herhaald.
 
-The do-again-test is sometimes called the @dfn{stop condition}, since it
-stops the repetitions when it tests false.
+De doe-opnieuw-test wordt soms de @dfn{stop conditie} genoemd, omdat het de
+herhalingen stopt wanneer het als onwaar test.
 
 @node Recursie met lijst
-@subsection Recursion with a List
+@subsection Recursie met een lijst
 
-The example of a @code{while} loop that printed the elements of a list of
-numbers can be written recursively.  Here is the code, including an
-expression to set the value of the variable @code{animals} to a list.
+Het voorbeeld van een @code{while} loop dat de elementen van een lijst met
+getallen kan recursief geschreven worden. Hier is de code inclusief een
+expressie die de waarde van de variabele @code{dieren} naar een lijst zet.
 
-If you are reading this in Info in Emacs, you can evaluate this expression
-directly in Info.  Otherwise, you must copy the example to the
-@file{*scratch*} buffer and evaluate each expression there.  Use @kbd{C-u
-C-x C-e} to evaluate the @code{(print-elements-recursively animals)}
-expression so that the results are printed in the buffer; otherwise the Lisp
-interpreter will try to squeeze the results into the one line of the echo
-area.
+Wanneer je dit in Info in Emacs leest, kan je expressie direct in Info
+evalueren. Zo dan, dan moet je het voorbeeld kopiëren in het
+@file{*scratch*} buffer en het daar evalueren. Gebruik @kbd{C-u C-x C-e} om
+de @code{(print-elementen-recursief dieren)} te evalueren zodat de
+resultaten in het buffer getoond worden, zo niet dan probeert de Lisp
+interpreter de resultaten in een enkele regel in het echogebied samen te
+knijpen.
 
-Also, place your cursor immediately after the last closing parenthesis of
-the @code{print-elements-recursively} function, before the comment.
-Otherwise, the Lisp interpreter will try to evaluate the comment.
+Plaats de cursor direct achter het laatste haakje sluiten van de functie
+@code{print-elementen-recursief}, voor het commentaar. Anders probeert de
+Lisp interpreter het commentaar te evalueren.
 
-@findex print-elements-recursively
+@findex print-elementen-recursief
 @smallexample
 @group
 (setq dieren '(gazelle giraf leeuw tijger))
 
-(defun print-elements-recursively (list)
-  "Print each element of LIST on a line of its own.
-Uses recursion."
-  (when list                            ; @r{do-again-test}
-        (print (car list))              ; @r{body}
-        (print-elements-recursively     ; @r{recursive call}
-         (cdr list))))                  ; @r{next-step-expression}
+(defun print-elementen-recursief (lijst)
+  "Toon elk element van LIJST op een eigen regel.
+Gebruikt recursie."
+  (when lijst                            ; @r{doe-opnieuw-test}
+        (print (car lijst))              ; @r{body}
+        (print-elementen-recursief        ; @r{recursieve aanroep}
+         (cdr lijst))))                  ; @r{volgende-stap-expressie}
 
-(print-elements-recursively animals)
+(print-elementen-recursief dieren)
 @end group
 @end smallexample
 
-The @code{print-elements-recursively} function first tests whether there is
-any content in the list; if there is, the function prints the first element
-of the list, the @sc{car} of the list.  Then the function invokes itself,
-but gives itself as its argument, not the whole list, but the second and
-subsequent elements of the list, the @sc{cdr} of the list.
+De functie @code{print-elementen-recursief} test eerst of er inhoud in de
+lijst is. Wanneer dat zo is, toont de functie het eerste element van de
+lijst, de @sc{car} van de lijst. Vervolgens roept de functie zichzelf aan
+maar geeft zichzelf niet de hele lijst maar het tweede en volgende elementen
+van de lijst, de @sc{cdr} van de lijst.
 
-Put another way, if the list is not empty, the function invokes another
-instance of code that is similar to the initial code, but is a different
-thread of execution, with different arguments than the first instance.
+Anders gezegd, wanneer de lijst niet leeg is, start de functie een nieuwe
+instantie van code die vergelijkbaar is met de initiële code, maar is een
+andere uitvoerings-thread, met andere argumenten dan de eerste instantie.
 
-Put in yet another way, if the list is not empty, the first robot assembles
-a second robot and tells it what to do; the second robot is a different
-individual from the first, but is the same model.
+Weer anders gezegd, wanneer de lijst niet leeg is, bouwt de eerste robot een
+tweede robot en zegt die wat de doen. De tweede robot is een ander individu
+dan de eerste, maar is het zelfde model.
 
-When the second evaluation occurs, the @code{when} expression is evaluated
-and if true, prints the first element of the list it receives as its
-argument (which is the second element of the original list).  Then the
-function calls itself with the @sc{cdr} of the list it is invoked with,
-which (the second time around) is the @sc{cdr} of the @sc{cdr} of the
-original list.
+Wanneer de tweede evaluatie plaatsvindt wordt de @code{when} expressie
+geëvalueerd en als die waar is toont die het eerste element van de lijst die
+het als zijn argument had gekregen (die het tweede element is van de
+originele lijst is). Hierna roept de functie zichzelf aan met de @sc{cdr}
+van de lijst waarmee het aangeroepen is wat (de tweede ronde) de @sc{cdr}
+van de @sc{cdr} van de originele lijst is.
 
-Note that although we say that the function ``calls itself'', what we mean
-is that the Lisp interpreter assembles and instructs a new instance of the
-program.  The new instance is a clone of the first, but is a separate
-individual.
+Merk op dat hoewel we zeggen dat de functie ``zichzelf aanroept'' we
+bedoelen dat de Lisp interpreter een nieuwe instantie van het programma
+maakt en instrueert. De nieuwe instantie is een kloon van de eerste, maar is
+een separaat individu.
 
-Each time the function invokes itself, it does so on a shorter version of
-the original list.  It creates a new instance that works on a shorter list.
+Elke keer dat de functie zichzelf aanroept doet het dat met een kortere
+versie van de originele lijst. Het creëert een nieuwe instantie die werkt
+met een kortere lijst.
 
-Eventually, the function invokes itself on an empty list.  It creates a new
-instance whose argument is @code{nil}.  The conditional expression tests the
-value of @code{list}.  Since the value of @code{list} is @code{nil}, the
-@code{when} expression tests false so the then-part is not evaluated.  The
-function as a whole then returns @code{nil}.
+Uiteindelijk roept de functie zichzelf aan met een lege lijst. Dit creëert
+een nieuwe instantie wiens argument @code{nil} is. De conditionele expressie
+test de waarde van @code{lijst}. Omdat de waarde van @code{nil} @code{nil}
+is, test de @code{when} expressie onwaar en dus wordt het dan-deel niet
+geëvalueerd. De functie als geheel geeft @code{nil} terug.
 
 @need 1200
-When you evaluate the expression @code{(print-elements-recursively animals)}
-in the @file{*scratch*} buffer, you see this result:
+Wanneer je de expressie @code{(print-elementen-recursief dieren)} in het
+@file{*scratch*} buffer evalueert, zie je dit resultaat:
 
 @smallexample
 @group
@@ -11309,36 +11169,36 @@ nil
 @need 2000
 @node Recursieve driehoek functie
 @subsection Recursie in plaats van een teller
-@findex triangle-recursively
+@findex driehoek-recursief
 
 @need 1200
-The @code{triangle} function described in a previous section can also be
-written recursively.  It looks like this:
+De in een eerdere beschreven functie @code{driehoek} kan ook recursief
+worden geschreven. Dit ziet er zo uit:
 
 @smallexample
 @group
-(defun triangle-recursively (number)
-  "Return the sum of the numbers 1 through NUMBER inclusive.
-Uses recursion."
-  (if (= number 1)                    ; @r{do-again-test}
-      1                               ; @r{then-part}
-    (+ number                         ; @r{else-part}
-       (triangle-recursively          ; @r{recursive call}
-        (1- number)))))               ; @r{next-step-expression}
+(defun driehoek-recursief (aantal)
+  "Geef de som van de getallen 1 tot en met AANTAL terug.
+Met recursie."
+  (if (= aantal 1)                    ; @r{doe-opnieuw-test}
+      1                               ; @r{dan-deel}
+    (+ aantal                         ; @r{anders-deel}
+       (driehoek-recursief            ; @r{recursieve aanroep}
+        (1- aantal)))))               ; @r{volgende-stap-expressie}
 
-(triangle-recursively 7)
+(driehoek-recursief 7)
 @end group
 @end smallexample
 
 @noindent
-You can install this function by evaluating it and then try it by evaluating
-@code{(triangle-recursively 7)}.  (Remember to put your cursor immediately
-after the last parenthesis of the function definition, before the comment.)
-The function evaluates to 28.
+Je kunt deze functie installeren door het te evalueren en dan uitproberen
+door @code{(driehoek-recursief 7)} te evalueren. (Denk er aan de cursor
+direct achter het laatste haakje sluiten van de functiedefinitie te
+plaatsen, voor het commentaar.)
 
-To understand how this function works, let's consider what happens in the
-various cases when the function is passed 1, 2, 3, or 4 as the value of its
-argument.
+Om te begrijpen hoe deze functie werkt, beschouwen we wat gebeurt in de
+verschillende gevallen wanneer de functie 1, 2, 3 of 4 als waarde van zijn
+argument krijgt doorgegeven.
 
 @menu
 * Recursief voorbeeld arg van 1 of 2::  Recursief voorbeeld arg van 1 of 2
@@ -11347,165 +11207,167 @@ argument.
 
 @ifnottex
 @node Recursief voorbeeld arg van 1 of 2
-@unnumberedsubsubsec An argument of 1 or 2
+@unnumberedsubsubsec Een argument van 1 of 2
 @end ifnottex
 
-First, what happens if the value of the argument is 1?
+Ten eerste wat gebeurt als de waarde van het argument 1 is?
 
-The function has an @code{if} expression after the documentation string.  It
-tests whether the value of @code{number} is equal to 1; if so, Emacs
-evaluates the then-part of the @code{if} expression, which returns the
-number 1 as the value of the function.  (A triangle with one row has one
-pebble in it.)
+De functie heef een @code{if} expressie na de documentatiestring. Die test
+of de waarde van @code{aantal} gelijk is aan 1. Wanneer dat zo is, evalueert
+Emacs het dan-deel van de @code{if} exprissie, die 1 teruggeeft als waarde
+van de functie. (Een driehoek met één rij bevat één steentje.)
 
-Suppose, however, that the value of the argument is 2.  In this case, Emacs
-evaluates the else-part of the @code{if} expression.
+Stel echter dat de waarde van het argument 2 is. In dat geval evalueert
+Emacs het anders-deel van de @code{if} expressie.
 
 @need 1200
-The else-part consists of an addition, the recursive call to
-@code{triangle-recursively} and a decrementing action; and it looks like
-this:
+Het anders-deel bestaat uit een optelling, de recursieve aanroep van
+@code{driehoek-recursief} en een aflopende actie, en ziet er zo uit:
 
 @smallexample
-(+ number (triangle-recursively (1- number)))
+(+ aantal (driehoek-recursief (1- aantal)))
 @end smallexample
 
-When Emacs evaluates this expression, the innermost expression is evaluated
-first; then the other parts in sequence.  Here are the steps in detail:
+Wanneer Emacs deze expressie evalueert, wordt de binnenste expressie het
+eerste geëvalueerd, daarna de andere delen opvolgend. Hier zijn de stappen
+in detail:
 
 @table @i
-@item Step 1 @w{  } Evaluate the innermost expression.
+@item Stap 1 @w{  } Evalueer de binnenste expressie
 
-The innermost expression is @code{(1- number)} so Emacs decrements the value
-of @code{number} from 2 to 1.
+De binnenste expressie is @code{1- aantal}, dus Emacs verlaagt de waarde van
+@code{aantal} van 2 naar 1.
 
-@item Step 2 @w{  } Evaluate the @code{triangle-recursively} function.
+@item Stap 2 @w{  } Evalueer de functie @code{driehoek-recursief}.
 
-The Lisp interpreter creates an individual instance of
-@code{triangle-recursively}.  It does not matter that this function is
-contained within itself.  Emacs passes the result Step 1 as the argument
-used by this instance of the @code{triangle-recursively} function
+De Lisp interpreter creëert een individuele instantie van
+@code{driehoek-recursief}. Het maakt niet uit dat deze functie binnen
+zichzelf staat. Emacs geeft het resultaat Stap 1 als argument gebruikt door
+deze instantie van de functie @code{driehoek-recursief}.
 
-In this case, Emacs evaluates @code{triangle-recursively} with an argument
-of 1.  This means that this evaluation of @code{triangle-recursively}
-returns 1.
+In dit geval evalueert Emacs @code{driehoek-recursief} met een argument
+1. Dit betekent dat deze evaluatie van @code{driehoek-recursief} 1
+teruggeeft.
 
-@item Step 3 @w{  } Evaluate the value of @code{number}.
+@item Stap 3 @w{  } Evalueer de waarde van @code{aantal}.
 
-The variable @code{number} is the second element of the list that starts
-with @code{+}; its value is 2.
+De variabele @code{aantal} is het tweede element van de lijst die start met
+@code{+}. De waarde is 2.
 
-@item Step 4 @w{  } Evaluate the @code{+} expression.
+@item Stap 4 @w{  } Evalueer de @code{+} expressie.
 
-The @code{+} expression receives two arguments, the first from the
-evaluation of @code{number} (Step 3) and the second from the evaluation of
-@code{triangle-recursively} (Step 2).
+De @code{+} expressie ontvangt twee argumenten, de eerste van het evalueren
+van @code{aantal} (Stap 3) en het tweede van de evaluatie van
+@code{driehoek-recursief} (Stap 2).
 
-The result of the addition is the sum of 2 plus 1, and the number 3 is
-returned, which is correct.  A triangle with two rows has three pebbles in
-it.
+Het resultaat van de optelling is de som van 2 plus 1 en het getal 3 wordt
+teruggegeven. dit is correct. Een driehoek met twee rijen bevat drie
+steentjes.
 @end table
 
 @node Recursief voorbeeld arg van 3 of 4
-@unnumberedsubsubsec An argument of 3 or 4
+@unnumberedsubsubsec Een argument van 3 of 4
 
-Suppose that @code{triangle-recursively} is called with an argument of 3.
+Stel dat @code{driehoek-recursief} wordt aangeroepen met een argument van 3.
 
 @table @i
-@item Step 1 @w{  } Evaluate the do-again-test.
+@item Stap 1 @w{  } Evaluaeer de doe-opnieuw-test.
 
-The @code{if} expression is evaluated first.  This is the do-again test and
-returns false, so the else-part of the @code{if} expression is evaluated.
-(Note that in this example, the do-again-test causes the function to call
-itself when it tests false, not when it tests true.)
+De @code{if} expressie wordt eerst geëvalueerd. Dit is de doe-opnieuw-test
+en geeft onwaar terug, dus het anders-deel van de @code{if} expressie wordt
+geëvalueerd. (Merk op dat in dit voorbeeld de doe-opnieuw-test zorgt dat de
+functie zichzelf aanroept wanneer die onwaar test, en niet wanneer die waar
+test.)
 
-@item Step 2 @w{  } Evaluate the innermost expression of the else-part.
+@item Stap 2 @w{  } Evalueer de binnenste expressie van het anders-deel.
 
-The innermost expression of the else-part is evaluated, which decrements 3
-to 2.  This is the next-step-expression.
+De binnenste expressie van het anders-deel wordt geëvalueerd, die 3 verlaagt
+naar 2. Dit is de volgende-stap-expressie.
 
-@item Step 3 @w{  } Evaluate the @code{triangle-recursively} function.
+@item Stap 3 @w{  } Evalueer de functie @code{driehoek-recursief}.
 
-The number 2 is passed to the @code{triangle-recursively} function.
+Het getal 2 is doorgegeven aan de functie @code{driehoek-recursief}.
 
-We already know what happens when Emacs evaluates
-@code{triangle-recursively} with an argument of 2.  After going through the
-sequence of actions described earlier, it returns a value of 3.  So that is
-what will happen here.
+We weten al wat gebeurt wanneer Emacs de @code{driehoek-recursief} evalueert
+met een argument van 2. Nadat het door de eerder beschreven reeks acties
+heen is gegaan, geeft het een waarde 3 terug. Dus dat is wat hier gebeurt.
 
-@item Step 4 @w{  } Evaluate the addition.
+@item Stap 4 @w{  } Evalueer de optelling.
 
-3 will be passed as an argument to the addition and will be added to the
-number with which the function was called, which is 3.
+3 wordt doorgegeven als een argument van de optelling en wordt opgeteld bij
+het getal waarmee de functie was aangeroepen, dat 3 is.
 @end table
 
 @noindent
-The value returned by the function as a whole will be 6.
+De waarde teruggeven door de functie als geheel is 6.
 
-Now that we know what will happen when @code{triangle-recursively} is called
-with an argument of 3, it is evident what will happen if it is called with
-an argument of 4:
+Nu we weten wat gebeurt wanneer @code{driehoek-recursief} wordt aangeroepen
+met een argument van 3, ligt het voor de hand wat gebeurt als het wordt
+aangeroepen met een argument van 4.
 
 @quotation
 @need 800
-In the recursive call, the evaluation of
+In de recursieve aanroep, geeft de evaluatie van
 
 @smallexample
-(triangle-recursively (1- 4))
+(driehoek-recursief (1- 4)
 @end smallexample
 
 @need 800
 @noindent
-will return the value of evaluating
+de waarde van het evalueren van
 
 @smallexample
-(triangle-recursively 3)
+(driehoek-recursief 3)
 @end smallexample
 
 @noindent
-which is 6 and this value will be added to 4 by the addition in the third
-line.
+wat 6 is en deze waarde wordt opgeteld bij 4 door de optelling in de derde
+regel.
 @end quotation
 
 @noindent
-The value returned by the function as a whole will be 10.
+De waarde teruggeven door de functie als geheel is 10.
 
-Each time @code{triangle-recursively} is evaluated, it evaluates a version
-of itself---a different instance of itself---with a smaller argument, until
-the argument is small enough so that it does not evaluate itself.
+Elke keer dat @code{driehoek-recursief} wordt geëvalueerd, evalueert het een
+versie van zichzelf---een andere instantie van zichzelf---met een kleiner
+argument, totdat het argument klein genoeg is en het niet zichzelf
+evalueert.
 
-Note that this particular design for a recursive function requires that
-operations be deferred.
+Merk op dat dit specifieke ontwerp voor een recursieve functie vereist dat
+operaties kunnen worden uitgesteld.
 
-Before @code{(triangle-recursively 7)} can calculate its answer, it must
-call @code{(triangle-recursively 6)}; and before @code{(triangle-recursively
-6)} can calculate its answer, it must call @code{(triangle-recursively 5)};
-and so on.  That is to say, the calculation that @code{(triangle-recursively
-7)} makes must be deferred until @code{(triangle-recursively 6)} makes its
-calculation; and @code{(triangle-recursively 6)} must defer until
-@code{(triangle-recursively 5)} completes; and so on.
+Voordat @code{(driehoek-recursief 7)} een antwoord kan berekenen, moet het
+@code{(driehoek-recursief 6)} aanroepen, en voordat
+@code{(driehoek-recursief 6)} een antwoord kan berekenen, moet het
+@code{(driehoek-recursief 5)} aanroepen, enzovoorts. Met andere woorden, de
+berekening die @code{(driehoek-recursief 7)} maakt moet worden uitgesteld
+totdat @code{(driehoek-recursief 6)} een berekening gemaakt heeft, en
+@code{(driehoek-recursief 6)} moet worden uitgesteld totdat
+@code{(driehoek-recursief 5)} klaar is, enzovoorts.
 
-If each of these instances of @code{triangle-recursively} are thought of as
-different robots, the first robot must wait for the second to complete its
-job, which must wait until the third completes, and so on.
+Wanneer al deze instanties van @code{driehoek-recursief} beschouwd worden
+als verschillende robots, dan moet de eerste robot wachten tot de tweede
+robot zijn werk gedaan heeft, en die moet weer wachten tot de derde robot
+klaar is, enzovoorts.
 
-There is a way around this kind of waiting, which we will discuss in @ref{No
-Deferment, , Recursion without Deferments}.
+Er is een manier om dit soort uitstel te omzeilen, die we bespreken in
+@ref{Geen uitstel, , Recursie zonder uitstel}.
 
 @node Recursie met cond
-@subsection Recursion Example Using @code{cond}
+@subsection Recursie voorbeeld met @code{cond} 
 @findex cond
 
-The version of @code{triangle-recursively} described earlier is written with
-the @code{if} special form.  It can also be written using another special
-form called @code{cond}.  The name of the special form @code{cond} is an
-abbreviation of the word @samp{conditional}.
+De eerder beschreven versie van @code{driehoek-recursief} is geschreven met
+de speciale vorm @code{if}. Het kan ook worden geschreven met een andere
+speciale vorm met de naam @code{cond}. De naam van de speciale vorm
+@code{cond} is een afkorting van het woord @code{conditioneel}.
 
-Although the @code{cond} special form is not used as often in the Emacs Lisp
-sources as @code{if}, it is used often enough to justify explaining it.
+Alhoewel de speciale vorm @code{cond} niet zo vaak in de Emacs Lisp broncode
+als @code{if}, wordt het vaak genoeg gebruikt om het uit te leggen.
 
 @need 800
-The template for a @code{cond} expression looks like this:
+Het sjabloon voor een @code{cond} expressie ziet er zo uit: 
 
 @smallexample
 @group
@@ -11515,55 +11377,56 @@ The template for a @code{cond} expression looks like this:
 @end smallexample
 
 @noindent
-where the @var{body} is a series of lists.
+waar de @var{body} een reeks lijsten is.
 
 @need 800
-Written out more fully, the template looks like this:
+Meer volledig ziet het sjabloon er zo uit:
 
 @smallexample
 @group
 (cond
- (@var{first-true-or-false-test} @var{first-consequent})
- (@var{second-true-or-false-test} @var{second-consequent})
- (@var{third-true-or-false-test} @var{third-consequent})
+ (@var{eerste-waar-of-onwaar-test} @var{eerste-consequentie})
+ (@var{tweede-waar-of-onwaar-test} @var{tweede-consequentie})
+ (@var{derde-waar-of-onwaar-test} @var{derde-consequentie})
   @dots{})
 @end group
 @end smallexample
 
-When the Lisp interpreter evaluates the @code{cond} expression, it evaluates
-the first element (the @sc{car} or true-or-false-test) of the first
-expression in a series of expressions within the body of the @code{cond}.
+Wanneer de Lisp interpreter de @code{cond} expressie evalueert, evalueert
+die het eerste element (de @sc{car} van de waar-of-onwaar-test) van de
+expressie in een reeks van expressies binnen de body van de @code{cond}.
 
-If the true-or-false-test returns @code{nil} the rest of that expression,
-the consequent, is skipped and the true-or-false-test of the next expression
-is evaluated.  When an expression is found whose true-or-false-test returns
-a value that is not @code{nil}, the consequent of that expression is
-evaluated.  The consequent can be one or more expressions.  If the
-consequent consists of more than one expression, the expressions are
-evaluated in sequence and the value of the last one is returned.  If the
-expression does not have a consequent, the value of the true-or-false-test
-is returned.
+Wanneer de waar-of-onwaar-test @code{nil} teruggeeft, wordt de rest van de
+expressie, de consequentie, overgeslagen en wordt de volgende expressie
+geëvalueerd. Wanneer een expressie gevonden wordt wiens waar-of-onwaar-test
+een waarde ongelijk aan @code{nil} teruggeeft, wordt de consequentie van die
+expressie geëvalueerd. De consequentie kan een of meer expressies
+zijn. Wanneer de consequentie meer dan een expressie bevat worden de
+expressie achtereenvolgens geëvalueerd en de waarde van de laatste wordt
+teruggegeven. Wanneer de expressie geen consequentie heeft, dan wordt de
+waarde van de waar-of-onwaar-test teruggegeven.
 
-If none of the true-or-false-tests test true, the @code{cond} expression
-returns @code{nil}.
+Wanneer geen van de waar-of-onwaar-tests waar test, dan geeft de @code{cond}
+expressie @code{nil} terug.
 
 @need 1250
-Written using @code{cond}, the @code{triangle} function looks like this:
+De functie @code{driehoek} met een @code{cond} ziet er zo uit:
 
 @smallexample
 @group
-(defun triangle-using-cond (number)
-  (cond ((<= number 0) 0)
-        ((= number 1) 1)
-        ((> number 1)
-         (+ number (triangle-using-cond (1- number))))))
+(defun driehoek-met-cond (getal)
+  (cond ((<= getal 0) 0)
+        ((= getal 1) 1)
+        ((> getal 1)
+         (+ getal (driehoek-met-cond (1- getal))))))
 @end group
 @end smallexample
 
 @noindent
-In this example, the @code{cond} returns 0 if the number is less than or
-equal to 0, it returns 1 if the number is 1 and it evaluates @code{(+ number
-(triangle-using-cond (1- number)))} if the number is greater than 1.
+In dit voorbeeld geeft de @code{cond} 0 terug wanneer het getal kleiner of
+gelijk aan 0 is, het geeft 1 terug wanneer het getal 1 is, en het evalueert
+@code{(+ getal (driehoek-met-cond (1- getal)))} wanneer het getal groter dan
+1 is.
 
 @node Recursieve patronen
 @subsection Recursieve patronen
@@ -11574,25 +11437,25 @@ does not need to involve lists, but Lisp is designed for lists and this
 provides a sense of its primal capabilities.
 
 @menu
-* Every::                    Every
-* Accumulate::               Accumulate
+* Elke::                     Elke
+* Accumuleren::              Accumuleren
 * Bewaar::                   Bewaar
 @end menu
 
-@node Every
-@unnumberedsubsubsec Recursief patroon: @emph{every}
-@cindex Every, soort van recursief patroon
-@cindex Recursive pattern - every
+@node Elke
+@unnumberedsubsubsec Recursief patroon: @emph{elke}
+@cindex Elke, soort van recursief patroon
+@cindex Recursive pattern - elke
 
-In the @code{every} recursive pattern, an action is performed on every
-element of a list.
+In het @code{elke} recursieve patroon wordt een actie uitgevoerd op elk
+element van de lijst.
 
 @need 1500
-The basic pattern is:
+Het basispatroon is:
 
 @itemize @bullet
 @item
-If a list be empty, return @code{nil}.
+Als een lijst leeg is, geef @code{nil} terug.
 @item
 Else, act on the beginning of the list (the @sc{car} of the list)
     @itemize @minus
@@ -11606,67 +11469,67 @@ results of acting on the rest.
 @end itemize
 
 @need 1500
-Here is an example:
+Hier is een voorbeeld:
 
 @smallexample
 @group
-(defun square-each (numbers-list)
-  "Square each of a NUMBERS LIST, recursively."
-  (if (not numbers-list)                ; do-again-test
+(defun kwadrateer-elke (getallen-lijst)
+  "Kwadrateer elk van een GETALLEN Lijst, recursief."
+  (if (not getallen-lijst)                ; doe-opnieuw-test
       nil
     (cons
-     (* (car numbers-list) (car numbers-list))
-     (square-each (cdr numbers-list))))) ; next-step-expression
+     (* (car getallen-lijst) (car getallen-lijst))
+     (kwadrateer-elke (cdr getallen-lijst))))) ; volgende-stap-expressie
 @end group
 
 @group
-(square-each '(1 2 3))
+(kwadrateer-elke '(1 2 3))
     @result{} (1 4 9)
 @end group
 @end smallexample
 
 @need 1200
 @noindent
-If @code{numbers-list} is empty, do nothing.  But if it has content,
-construct a list combining the square of the first number in the list with
-the result of the recursive call.
+Wanneer @code{getallen-lijst} leeg is, doe niets. Maar als die inhoud heeft,
+construeer een lijst door het kwadraat van het eerste getal te combineren
+met een lijst met het resultaat van de recursieve aanroep.
 
-(The example follows the pattern exactly: @code{nil} is returned if the
-numbers' list is empty.  In practice, you would write the conditional so it
-carries out the action when the numbers' list is not empty.)
+(Het voorbeeld volgt exact dit patroon: @code{nil} wordt teruggeven wanneer
+de getallen-lijst leeg is. In de praktijk schrijf je conditional zo dat het
+de actie uitvoert wanneer de lijst met getallen niet leeg is.)
 
-The @code{print-elements-recursively} function (@pxref{Recursion with list,
-, Recursion with a List}) is another example of an @code{every} pattern,
-except in this case, rather than bring the results together using
-@code{cons}, we print each element of output.
+De functie @code{print-elementen-recursief} (@pxref{Recursie met lijst, ,
+Recursie met een lijst}) is een ander voorbeeld van een @code{elke} patroon,
+behalve vat in dit geval, in plaats van het samenbrengen van de resultaten
+met @code{cons}, we elk output-element tonen.
 
 @need 1250
-The @code{print-elements-recursively} function looks like this:
+De functie @code{print-elementen-recursief} ziet er zo uit:
 
 @smallexample
 @group
-(setq animals '(gazelle giraffe lion tiger))
+(setq dieren '(gazelle giraf leeuw tijger))
 @end group
 
 @group
-(defun print-elements-recursively (list)
-  "Print each element of LIST on a line of its own.
-Uses recursion."
-  (when list                            ; @r{do-again-test}
-        (print (car list))              ; @r{body}
-        (print-elements-recursively     ; @r{recursive call}
-         (cdr list))))                  ; @r{next-step-expression}
+(defun print-elementen-recursief (lijst)
+  "Toon elk element van LIJST op een eigen regel.
+Gebruikt recursie."
+  (when lijst                            ; @r{doe-opnieuw-test}
+        (print (car lijst))              ; @r{body}
+        (print-elementen-recursief        ; @r{recursieve aanroep}
+         (cdr lijst))))                  ; @r{volgende-stap-expressie}
 
-(print-elements-recursively animals)
+(print-elementen-recursief dieren)
 @end group
 @end smallexample
 
 @need 1500
-The pattern for @code{print-elements-recursively} is:
+Het patroon voor @code{print-elementen-recursief} is:
 
 @itemize @bullet
 @item
-When the list is empty, do nothing.
+Wanneer de lijst leeg is, doe niets.
 @item
 But when the list has at least one element,
     @itemize @minus
@@ -11677,18 +11540,18 @@ But when the list has at least one element,
     @end itemize
 @end itemize
 
-@node Accumulate
-@unnumberedsubsubsec Recursive Pattern: @emph{accumulate}
-@cindex Accumulate, type of recursive pattern
-@cindex Recursive pattern - accumulate
+@node Accumuleren
+@unnumberedsubsubsec Recursief patroon: @emph{accumuleren}
+@cindex Accumuleren, type recursief patroon
+@cindex Recursief patroon - accumuleren
 
-Another recursive pattern is called the @code{accumulate} pattern.  In the
-@code{accumulate} recursive pattern, an action is performed on every element
-of a list and the result of that action is accumulated with the results of
-performing the action on the other elements.
+Een ander recursief patroon heet het @code{accumuleren} patroon. In het
+@code{accumuleren} recursieve patroon wordt een actie uitgevoerd op elk
+element van een lijst en het resultaat van die actie wordt geaccumuleerd met
+de resultaten van het uitvoeren van die actie op de andere elementen.
 
-This is very like the @code{every} pattern using @code{cons}, except that
-@code{cons} is not used, but some other combiner.
+Dit lijkt erg op het @code{elke} patroon met @code{cons}, behalve dat
+@code{cons} niet wordt gebruikt, maar een andere combinerende functie.
 
 @need 1500
 Het patroon is:
@@ -11708,44 +11571,45 @@ function, with
 @end itemize
 
 @need 1500
-Here is an example:
+Hier is een voorbeeld:
 
 @smallexample
 @group
-(defun add-elements (numbers-list)
-  "Add the elements of NUMBERS-LIST together."
-  (if (not numbers-list)
+(defun sommeer-elementen (getallen-lijst)
+  "Tel de elementen van GETALLEN-LIJST bij elkaar op."
+  (if (not getallen-lijst)
       0
-    (+ (car numbers-list) (add-elements (cdr numbers-list)))))
+    (+ (car getallen-lijst) (sommeer-elementen (cdr getallen-lijst)))))
 @end group
 
 @group
-(add-elements '(1 2 3 4))
+(sommeer-elementen '(1 2 3 4))
     @result{} 10
 @end group
 @end smallexample
 
-@xref{Files List, , Making a List of Files}, for an example of the
-accumulate pattern.
+@xref{Bestandenlijst, , Een lijst met bestanden maken}, voor een uitleg van
+het accumuleren patroon.
 
 @node Bewaar
-@unnumberedsubsubsec Recursive Pattern: @emph{keep}
-@cindex Keep, type of recursive pattern
-@cindex Recursive pattern - keep
+@unnumberedsubsubsec Recursieve patronen: @emph{bewaren}
+@cindex Bewaren, type recursief patroon
+@cindex Recursieve patronen - bewaren
 
-A third recursive pattern is called the @code{keep} pattern.  In the
-@code{keep} recursive pattern, each element of a list is tested; the element
-is acted on and the results are kept only if the element meets a criterion.
+Een derde recursief patroon het het @code{bewaren} patroon. In het
+@code{bewaren} recursieve patroon wordt elk element van de lijst getest, het
+element wordt behandeld en de resultaten worden alleen bewaard wanneer het
+element aan een criterium voldoet.
 
-Again, this is very like the @code{every} pattern, except the element is
-skipped unless it meets a criterion.
+Opnieuw lijkt dit erg op het @code{elke} patroon, behalve dat elementen
+worden overgeslagen tenzij ze aan een criterium voldoen.
 
 @need 1500
 Het patroon heeft drie elementen:
 
 @itemize @bullet
 @item
-If a list be empty, return @code{nil}.
+Als een lijst leeg is, geef @code{nil} terug.
 @item
 Else, if the beginning of the list (the @sc{car} of the list) passes a test
     @itemize @minus
@@ -11766,192 +11630,193 @@ test
 @end itemize
 
 @need 1500
-Here is an example that uses @code{cond}:
+Hier is een voorbeeld met @code{cond}:
 
 @smallexample
 @group
-(defun keep-three-letter-words (word-list)
-  "Keep three letter words in WORD-LIST."
+(defun bewaar-drie-letter-woorden (woorden-lijst)
+  "Bewaar drie-letter woorden in WOORDEN-LIJST."
   (cond
-   ;; First do-again-test: stop-condition
-   ((not word-list) nil)
+   ;; Eerst doe-opnieuw-test: stop-conditie
+   ((not woorden-lijst) nil)
 
-   ;; Second do-again-test: when to act
-   ((eq 3 (length (symbol-name (car word-list))))
-    ;; combine acted-on element with recursive call on shorter list
-    (cons (car word-list) (keep-three-letter-words (cdr word-list))))
+   ;; Tweede doe-opnieuw-test: wanneer te behandelen
+   ((eq 3 (length (symbol-name (car woorden-lijst))))
+    ;; combineer behandelde elementen met recursieve aanroep op kortere lijst
+    (cons (car woorden-lijst) (bewaar-drie-letter-woorden (cdr woorden-lijst))))
 
-   ;; Third do-again-test: when to skip element;
-   ;;   recursively call shorter list with next-step expression
-   (t (keep-three-letter-words (cdr word-list)))))
+   ;; Derde doe-opnieuw-test: wanneer element over te slaan;
+   ;;   recursief aanroepen kortere lijst met volgende-stap-expressie
+   (t (bewaar-drie-letter-woorden (cdr woorden-lijst)))))
 @end group
 
 @group
-(keep-three-letter-words '(one two three four five six))
-    @result{} (one two six)
+(bewaar-drie-letter-woorden '(een twee drie vier vijf zes))
+    @result{} (een zes)
 @end group
 @end smallexample
 
-It goes without saying that you need not use @code{nil} as the test for when
-to stop; and you can, of course, combine these patterns.
+Het spreekt voor zich dat je @code{nil} als test voor wanneer te stoppen
+niet hoeft te gebruiken, je kunt natuurlijk deze patronen combineren.
 
 @node Geen uitstel
-@subsection Recursion without Deferments
-@cindex Deferment in recursion
-@cindex Recursion without Deferments
+@subsection Recursie zonder uitstel
+@cindex Uitstel in recursie
+@cindex Recursie zonder uitstel
 
-Let's consider again what happens with the @code{triangle-recursively}
-function.  We will find that the intermediate calculations are deferred
-until all can be done.
+Laten we nog een keer de functie @code{driehoek-recursief} beschouwen. We
+zullen zien dat de tussenliggende berekeningen worden uitgesteld tot ze
+allemaal uitgevoerd kunnen worden.
 
 @need 800
-Here is the function definition:
+Hier is de functiedefinitie:
 
 @smallexample
 @group
-(defun triangle-recursively (number)
-  "Return the sum of the numbers 1 through NUMBER inclusive.
-Uses recursion."
-  (if (= number 1)                    ; @r{do-again-test}
-      1                               ; @r{then-part}
-    (+ number                         ; @r{else-part}
-       (triangle-recursively          ; @r{recursive call}
-        (1- number)))))               ; @r{next-step-expression}
+(defun driehoek-recursief (aantal)
+  "Geef de som van de getallen 1 tot en met AANTAL terug.
+Met recursie."
+  (if (= aantal 1)                    ; @r{doe-opnieuw-test}
+      1                               ; @r{dan-deel}
+    (+ aantal                         ; @r{anders-deel}
+       (driehoek-recursief            ; @r{recursieve aanroep}
+        (1- aantal)))))               ; @r{volgende-stap-expressie}
+
 @end group
 @end smallexample
 
-What happens when we call this function with an argument of 7?
+Wat gebeurt er wanneer de deze functie met een argument van 7 aanroepen?
 
-The first instance of the @code{triangle-recursively} function adds the
-number 7 to the value returned by a second instance of
-@code{triangle-recursively}, an instance that has been passed an argument of
-6.  That is to say, the first calculation is:
+De eerste instantie van de functie @code{driehoek-recursief} telt het getal
+7 bij de waarde die de tweede instantie van @code{driehoek-recursief}
+teruggeeft, een instantie de een argument van 6 krijgt doorgestuurd. Dat wil
+zeggen dat de eerste berekening is:
 
 @smallexample
-(+ 7 (triangle-recursively 6))
+(+ 7 (driehoek-recursief 6))
 @end smallexample
 
 @noindent
-The first instance of @code{triangle-recursively}---you may want to think of
-it as a little robot---cannot complete its job.  It must hand off the
-calculation for @code{(triangle-recursively 6)} to a second instance of the
-program, to a second robot.  This second individual is completely different
-from the first one; it is, in the jargon, a ``different instantiation''.
-Or, put another way, it is a different robot.  It is the same model as the
-first; it calculates triangle numbers recursively; but it has a different
-serial number.
+De eerste instantie van @code{driehoek-recursief}---je kunt het zien als een
+kleine robot---kan zijn werk niet afmaken. Het moet de berekening voor
+@code{(driehoek-recursief 6)} overdragen aan een tweede instantie van het
+programma, aan een tweede robot. De tweede individu is compleet verschillend
+van het eerste, het is, in het jargon, een ``andere instantie''. Of, anders
+gezegd, een andere robot. Die is hetzelfde model als de eerste, maar met een
+verschillende serienummer.
 
-And what does @code{(triangle-recursively 6)} return? It returns the number
-6 added to the value returned by evaluating @code{triangle-recursively} with
-an argument of 5.  Using the robot metaphor, it asks yet another robot to
-help it.
+En wat geeft @code{(driehoek-recursief 6)} terug? Het geeft het getal 6
+opgeteld bij de waarde teruggeven door het evalueren van
+@code{driehoek-recursief} met een argument van 5. Met het robot metafoor,
+het vraagt een andere robot om hulp.
 
 @need 800
-Now the total is:
+Nu is het totaal:
 
 @smallexample
-(+ 7 6 (triangle-recursively 5))
+(+ 7 6 (driehoek-recursief 5))
 @end smallexample
 
 @need 800
-And what happens next?
+En wat gebeurt hierna?
 
 @smallexample
-(+ 7 6 5 (triangle-recursively 4))
+(+ 7 6 5 (driehoek-recursief 4))
 @end smallexample
 
-Each time @code{triangle-recursively} is called, except for the last time,
-it creates another instance of the program---another robot---and asks it to
-make a calculation.
+Elke keer dat @code{driehoek-recursief} wordt aangeroepen, behalve de
+laatste keer, maakt het een nieuwe instantie van het programma---een andere
+robot---en vraagt die een berekening te maken.
 
 @need 800
-Eventually, the full addition is set up and performed:
+Uiteindelijk is de volledige berekening opgezet en uitgevoerd:
 
 @smallexample
 (+ 7 6 5 4 3 2 1)
 @end smallexample
 
-This design for the function defers the calculation of the first step until
-the second can be done, and defers that until the third can be done, and so
-on.  Each deferment means the computer must remember what is being waited
-on.  This is not a problem when there are only a few steps, as in this
-example.  But it can be a problem when there are more steps.
+Dit ontwerp van de functie stelt de berekening van eerste uit tot de tweede
+kan worden gedaan, dan stelt die uit tot de derde kan worden gedaan,
+enzovoorts. Elk uitstel betekent dat de computer moet onthouden waarop
+gewacht wordt. Dat is geen probleem wanneer er maar een stappen zijn, zoals
+in dit voorbeeld. Maar het kan een probleem worden wanneer er meer stappen
+zijn.
 
-@node Geen uitstel oplossing
-@subsection Geen uitstel oplossing
-@cindex Geen uitstel oplossing
+@node Zonder uitstel oplossing
+@subsection Zonder uitstel oplossing
+@cindex Zonder uitstel oplossing
 @cindex Oplossing zonder uitstel
 
-The solution to the problem of deferred operations is to write in a manner
-that does not defer operations@footnote{The phrase @dfn{tail recursive} is
-used to describe such a process, one that uses constant space.}.  This
-requires writing to a different pattern, often one that involves writing two
-function definitions, an initialization function and a helper function.
+De oplossing van het probleem van de uitgestelde operaties is het op een
+manier te schrijven die de operaties niet uitstelt@footnote{De uitdrukking
+@dfn{tail-recursie} wordt gebruikt om zo'n proces te beschrijven, een die
+constante ruimte gebruikt.}. Dit vereist het schrijven volgens een ander
+patroon, een die vaak het schrijven van twee functiedefinities inhoudt, een
+initialisatiefunctie en een hulpfunctie.
 
-The initialization function sets up the job; the helper function does the
-work.
+De initialisatiefunctie zet de klus op, de hulpfunctie doet het werk.
 
 @need 1200
-Here are the two function definitions for adding up numbers.  They are so
-simple, I find them hard to understand.
+Hier zijn twee functiedefinities voor het optellen van getallen. Zij zijn zo
+eenvoudig dat ik moeilijk vind ze te begrijpen.
 
 @smallexample
 @group
-(defun triangle-initialization (number)
-  "Return the sum of the numbers 1 through NUMBER inclusive.
-This is the initialization component of a two function
-duo that uses recursion."
-  (triangle-recursive-helper 0 0 number))
+(defun driehoek-initialisatie (aantal)
+  "Geef de som van de getallen 1 tot en met AANTAL.
+Dit is the initialisatiecomponent van een duo van twee functies
+met recursie ."
+  (driehoek-recursieve-helper 0 0 aantal))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun triangle-recursive-helper (sum counter number)
-  "Return SUM, using COUNTER, through NUMBER inclusive.
-This is the helper component of a two function duo
-that uses recursion."
-  (if (> counter number)
-      sum
-    (triangle-recursive-helper (+ sum counter)  ; @r{sum}
-                               (1+ counter)     ; @r{counter}
-                               number)))        ; @r{number}
+(defun driehoek-recursieve-helper (som teller aantal)
+  "Geef SOM terug, met TELLER, tot en met AANTAL.
+Dit is de hulpcomponent van een duo van twee functies
+met recursie."
+  (if (> teller aantal)
+      som
+    (driehoek-recursieve-helper (+ som teller) ; @r{som}
+                               (1+ teller)     ; @r{teller}
+                               aantal)))       ; @r{aantal}
 @end group
 @end smallexample
 
 @need 1250
-Install both function definitions by evaluating them, then call
-@code{triangle-initialization} with 2 rows:
+Installeer beide functiedefinities door ze te evalueren en roep dan
+@code{driehoek-initialisatie} met twee rijen aan:
 
 @smallexample
 @group
-(triangle-initialization 2)
+(driehoek-initialisatie 2)
     @result{} 3
 @end group
 @end smallexample
 
-The initialization function calls the first instance of the helper function
-with three arguments: zero, zero, and a number which is the number of rows
-in the triangle.
+De initialisatiefunctie roept de eerste instantie van de hulpfunctie met
+drie argumenten aan: nul, nul, een getal dat het aantal rijen van de
+driehoek is.
 
-The first two arguments passed to the helper function are initialization
-values.  These values are changed when @code{triangle-recursive-helper}
-invokes new instances.@footnote{The jargon is mildly confusing:
-@code{triangle-recursive-helper} uses a process that is iterative in a
-procedure that is recursive.  The process is called iterative because the
-computer need only record the three values, @code{sum}, @code{counter}, and
-@code{number}; the procedure is recursive because the function calls
-itself.  On the other hand, both the process and the procedure used by
-@code{triangle-recursively} are called recursive.  The word ``recursive''
-has different meanings in the two contexts.}
+De eerste twee aan de hulpfunctie doorgegeven argumenten zijn
+initialisatie-waarden. Deze waarden worden aangepast wanneer
+@code{driehoek-recursieve-helper} nieuwe instanties aanroept.@footnote{Het
+jargon is lichtelijk verwarrend: @code{driehoek-recursieve-helper} gebruikt
+een proces dat iteratief is in een procedure die recursief is. Dit proces
+het iteratief omdat de computer maar die waarden hoeft bij te houden:
+@code{som}, @code{teller} en @code{aantal}. De procedure is recursief omdat
+de functie zichzelf aanroept. Anderzijds worden beide processen en de door
+@code{driehoek-recursief} gebruikte procedure recursief genoemd. Het woord
+``recursief'' heeft verschillende betekenissen in de twee contexten.}
 
-Let's see what happens when we have a triangle that has one row.  (This
-triangle will have one pebble in it!)
+Laten we kijken wat gebeurt wanneer we een driehoek met een rij
+hebben. (Deze driehoek bevat één steentje!)
 
 @need 1200
-@code{triangle-initialization} will call its helper with the arguments
-@w{@code{0 0 1}}.  That function will run the conditional test whether
-@code{(> counter number)}:
+@code{driehoek-initialisatie} roept zijn hulpfunctie aan met de argumenten
+@w{@code{0 0 1}}. Die functie voert de conditionele test uit of @code{(>
+teller aantal)}:
 
 @smallexample
 (> 0 1)
@@ -11959,120 +11824,122 @@ triangle will have one pebble in it!)
 
 @need 1200
 @noindent
-and find that the result is false, so it will invoke the else-part of the
-@code{if} clause:
+een ziet dat het resultaat onwaar is, en dus roept deze het anders-deel van
+de @code{if} clausule aan:
 
 @smallexample
 @group
-    (triangle-recursive-helper
-     (+ sum counter)  ; @r{sum plus counter} @result{} @r{sum}
-     (1+ counter)     ; @r{increment counter} @result{} @r{counter}
-     number)          ; @r{number stays the same}
+    (driehoek-recursieve-helper
+     (+ som teller)  ; @r{som plus teller} @result{} @r{som}
+     (1+ teller)     ; @r{verhoog teller} @result{} @r{teller}
+     aantal)         ; @r{aantal blijft hetzelfde}
 @end group
 @end smallexample
 
 @need 800
 @noindent
-which will first compute:
+wat eerst uitrekent:
 
 @smallexample
 @group
-(triangle-recursive-helper (+ 0 0)  ; @r{sum}
-                           (1+ 0)   ; @r{counter}
-                           1)       ; @r{number}
-@exdent which is:
+(driehoek-recursieve-helper (+ 0 0)  ; @r{som}
+                            (1+ 0)   ; @r{teller}
+                            1)       ; @r{aantal}
+@exdent wat is:
 
-(triangle-recursive-helper 0 1 1)
+driehoek-recursieve-helper 0 1 1
 @end group
 @end smallexample
 
-Again, @code{(> counter number)} will be false, so again, the Lisp
-interpreter will evaluate @code{triangle-recursive-helper}, creating a new
-instance with new arguments.
+Opnieuw wordt @code{(> teller aantal)} onwaar, en opnieuw gaat de Lisp
+interpreter de @code{driehoek-recursieve-helper} evalueren, en maakt een
+nieuwe instantie met nieuwe argumenten.
 
 @need 800
-This new instance will be;
+Deze nieuwe instantie is:
 
 @smallexample
 @group
-    (triangle-recursive-helper
-     (+ sum counter)  ; @r{sum plus counter} @result{} @r{sum}
-     (1+ counter)     ; @r{increment counter} @result{} @r{counter}
-     number)          ; @r{number stays the same}
+    (driehoek-recursieve-helper
+     (+ som teller)  ; @r{som plus teller} @result{} @r{som}
+     (1+ teller)     ; @r{verhoog teller} @result{} @r{teller}
+     aantal)         ; @r{aantal blijft hetzelfde}
 
-@exdent which is:
+@exdent wat is:
 
-(triangle-recursive-helper 1 2 1)
+(driehoek-recursieve-helper 1 2 1)
 @end group
 @end smallexample
 
-In this case, the @code{(> counter number)} test will be true! So the
-instance will return the value of the sum, which will be 1, as expected.
+In dit geval test de @code{(> teller aantal)} op waar! Dus geeft de
+instantie de waarde van de som terug, die 1 is, zoals verwacht.
 
-Now, let's pass @code{triangle-initialization} an argument of 2, to find out
-how many pebbles there are in a triangle with two rows.
+Laten we nu @code{driehoek-initialisatie} een argument van 2 geven, om te
+ontdekken hoeveel steentjes een driehoek met twee rijen bevat.
 
-That function calls @code{(triangle-recursive-helper 0 0 2)}.
+Die functie roept @code{(driehoek-recursieve-helper 0 0 2)} aan.
 
 @need 800
-In stages, the instances called will be:
+In stappen, zijn de aangeroepen instanties:
 
 @smallexample
 @group
-                          @r{sum counter number}
-(triangle-recursive-helper 0    1       2)
+(driehoek-recursieve-helper 0    1       2)
 
-(triangle-recursive-helper 1    2       2)
+(driehoek-recursieve-helper 1    2       2)
 
-(triangle-recursive-helper 3    3       2)
+(driehoek-recursieve-helper 3    3       2)
 @end group
 @end smallexample
 
-When the last instance is called, the @code{(> counter number)} test will be
-true, so the instance will return the value of @code{sum}, which will be 3.
+Wanneer de laatste instantie wordt aangeroepen, test de de @code{(> teller
+aantal)} op waar, dus de instantie geeft de waarde van @code{som} terug, die
+3 is.
 
-This kind of pattern helps when you are writing functions that can use many
-resources in a computer.
+Dit soort patronen helpt wanneer je functies schrijft die veel resources in
+de computer kunnen gebruiken.
 
 @need 1500
 @node Looping oefening
-@section Looping Exercise
+@section Looping oefening
 
 @itemize @bullet
 @item
-Write a function similar to @code{triangle} in which each row has a value
-which is the square of the row number.  Use a @code{while} loop.
+Schrijf een functie vergelijkbaar met @code{driehoek} waar elke rij een
+waarde heeft die het kwadraat is van het rijnummer. Gebruik een @code{while}
+loop.
 
 @item
-Write a function similar to @code{triangle} that multiplies instead of adds
-the values.
+Schrijf een functie vergelijkbaar met @code{driehoek} die de waarden
+vermenigvuldigt in plaats van optelt.
 
 @item
-Rewrite these two functions recursively.  Rewrite these functions using
+Herschrijf deze twee functies recursief. Herschrijf ze met gebruik van
 @code{cond}.
 
 @c comma in printed title causes problem in Info cross reference
 @item
-Write a function for Texinfo mode that creates an index entry at the
-beginning of a paragraph for every @samp{@@dfn} within the paragraph.  (In a
-Texinfo file, @samp{@@dfn} marks a definition.  This book is written in
-Texinfo.)
+Schrijf een functie voor Texinfo mode die een index-entry creëert aan het
+begin van een paragraaf voor elke @samp{@@dfn} in die paragraaf. (In een
+Texinfo bestand, markeert @samp{@@dfn} een definitie. Dit boek is geschreven
+in Texinfo.)
 
-Many of the functions you will need are described in two of the previous
-chapters, @ref{Cutting & Storing Text, , Cutting and Storing Text}, and
-@ref{Yanking, , Yanking Text Back}.  If you use @code{forward-paragraph} to
-put the index entry at the beginning of the paragraph, you will have to use
-@w{@kbd{C-h f}} (@code{describe-function}) to find out how to make the
-command go backwards.
+Veel van de functies die je nodig hebt zijn beschreven in twee voorgaande
+hoofdstukken, @ref{Knippen en opslaan van tekst, , Knippen en opslaan van
+tekst}, en @ref{Yanking, , Tekst terug yanken}. Wanneer je
+@code{forward-paragraph} gebruikt om de index-entry aan het begin van de
+paragraaf te plaatsten, kun je met @w{@kbd{C-h f}}
+(@code{describe-function}) ontdekken hoe je het commando achterwaarts laat
+werken.
 
-For more information, see
+Voor meer informatie, zie
 @ifinfo
-@ref{Indicating, , Indicating Definitions, texinfo}.
+@ref{Indicating, , Indicating Definitions, texinfo}
 @end ifinfo
 @ifhtml
-@ref{Indicating, , Indicating, texinfo, Texinfo Manual}, which goes to a
-Texinfo manual in the current directory.  Or, if you are on the Internet,
-see @uref{https://www.gnu.org/software/texinfo/manual/texinfo/}
+@ref{Indicating, , Indicating, texinfo, Texinfo Manual}, gaat naar een
+Texinfo manual in de huidige directory.  Of, als je op internet bent, zie
+@uref{https://www.gnu.org/software/texinfo/manual/texinfo/}
 @end ifhtml
 @iftex
 ``Indicating Definitions, Commands, etc.''@: in @cite{Texinfo, The GNU
@@ -15137,7 +15004,7 @@ defuns within each range of lengths, and produce a list of those numbers.
 @menu
 * Data in detail te tonen::  Data in detail te tonen
 * Sorteren::                 Lijsten sorteren
-* Bestanden lijst::          Een lijst van bestanden maken.
+* Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 @end menu
 
@@ -15221,7 +15088,7 @@ which produces:
 since the expression must be evaluated so as to produce the list that is
 passed to @code{sort}.)
 
-@node Bestanden lijst
+@node Bestandenlijst
 @subsection Making a List of Files
 
 The @code{recursive-lengths-list-many-files} function requires a list of
@@ -20515,70 +20382,30 @@ its argument by 50; and, it has no name.  The anonymous equivalent of
 
 @need 1250
 @noindent
-If we want to multiply 3 by 7, we can write:
-
-@c clear print-postscript-figures
 @c lambda example diagram #1
-@ifset print-postscript-figures
+If we want to multiply 3 by 7, we can write:
 @sp 1
 @center @image{lambda-1}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-(multiply-by-seven 3)
- \_______________/ ^
-         |         |
-      function  argument
-@end group
-@end smallexample
-@end ifclear
 
 @noindent
 This expression returns 21.
 
 @need 1250
 @noindent
-Similarly, we can write:
-
 @c lambda example diagram #2
-@ifset print-postscript-figures
+Similarly, we can write:
 @sp 1
 @center @image{lambda-2}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-((lambda (number) (* 7 number)) 3)
- \____________________________/ ^
-               |                |
-      anonymous function     argument
-@end group
-@end smallexample
-@end ifclear
 
 @need 1250
 @noindent
-If we want to divide 100 by 50, we can write:
-
 @c lambda example diagram #3
-@ifset print-postscript-figures
+If we want to divide 100 by 50, we can write:
 @sp 1
 @center @image{lambda-3}
 @sp 1
-@end ifset
-@ifclear print-postscript-figures
-@smallexample
-@group
-((lambda (arg) (/ arg 50)) 100)
- \______________________/  \_/
-             |              |
-    anonymous function   argument
-@end group
-@end smallexample
-@end ifclear
 
 @noindent
 This expression returns 2.  The 100 is passed to the function, which divides

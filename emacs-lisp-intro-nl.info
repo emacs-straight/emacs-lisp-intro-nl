@@ -507,7 +507,7 @@ Recursie
 * Recursie met cond::        Recursie met cond
 * Recursieve patronen::      Veelgebruikte templates.
 * Geen uitstel::             Sla geen werk op ...
-* Geen uitstel oplossing::   Geen uitstel oplossing
+* Zonder uitstel oplossing::  Zonder uitstel oplossing
 
 Recursie in plaats van een teller
 
@@ -520,8 +520,8 @@ Recursieve patronen
 
 
 
-* Every::                    Every
-* Accumulate::               Accumulate
+* Elke::                     Elke
+* Accumuleren::              Accumuleren
 * Bewaar::                   Bewaar
 
 Reguliere expressie zoekopdrachten
@@ -602,7 +602,7 @@ De data voorbereiden om in een grafiek te tonen
 
 * Data in detail te tonen::  Data in detail te tonen
 * Sorteren::                 Lijsten sorteren
-* Bestanden lijst::          Een lijst van bestanden maken.
+* Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 
 Een grafiek klaarmaken
@@ -899,7 +899,7 @@ loslaat, en daarna de toets ‘t’ indrukt en loslaat.)
 
    Ook verwijs ik vaak naar Emacs's standaard commando's door de
 toetscombinaties te noemen die je gebruikt om het commando aan te roepen
-en vervolgens de naam van het commando tussen haakjes, zoals dit:
+en vervolgens de naam van het commando tussen haakjes, zoals dit:x
 ‘C-M-\’ (‘indent-region’).  Wat dit betekent is dat het ‘indent-region’
 commando gebruikelijk wordt aangeroepen door ‘C-M-\’ te typen.  (Je
 kunt, als je dat wilt, de toetscombinaties om commando's aan te roepen
@@ -4180,8 +4180,8 @@ File: emacs-lisp-intro-nl.info,  Node: Meer vinden,  Next: versimpelde-beginning
 4.1 Meer informatie vinden
 ==========================
 
-In deze rondleiding beschrijf elke nieuwe functie die we behandelen.
-soms in detail en soms kort.  Wanneer je geïnteresseerd bent vraag je op
+In deze rondleiding beschrijf ik elke nieuwe functie die we behandelen.
+Soms in detail en soms kort.  Wanneer je geïnteresseerd bent vraag je op
 elk moment de volledige documentatie op van elke Emacs Lisp functie door
 ‘C-h f’ te typen, en daarna de naam van de functie (gevolg met <RET>).
 Je kunt op ook de volledige documentatie van een variabele opvragen met
@@ -4191,7 +4191,7 @@ het typen van ‘C-h v’, en daarna de naam van de variabele (gevolg met
    ‘describe-function’ vertelt je ook de locatie van de functie.
 
    Plaats point in de naam van het bestand dat de functie bevat en druk
-op de <RET>-toets.  In dit geval <RET> betekent ‘push-button’ in plaats
+op de <RET>-toets.  In dit geval betekent <RET> ‘push-button’ in plaats
 van "return" of "enter".  Emacs neemt je meteen naar de
 functiedefinitie.
 
@@ -4206,10 +4206,10 @@ handleidingen de met Emacs komen hebt laten registeren *note
 (emacs)Create Tags Table::).
 
    Type ‘M-.’ (dus druk op de punt-toet terwijl je de <META>-toets
-ingedrukt houdt, of type anders de <ESC> gevold door de punt-toets) om
+ingedrukt houdt, of typ anders de <ESC> gevold door de punt-toets) om
 het commando ‘xref-find-definitions’ te gebruiken, en vervolgens, na de
 prompt, de naam van de functie wiens broncode je wilt zien, zoals
-‘mark-whole-buffer’ en type daarna <RET>.  (Wanneer het commando geen
+‘mark-whole-buffer’ en typ daarna <RET>.  (Wanneer het commando geen
 prompt geeft, roep het dan met een argument: ‘C-u M-.’).  *note
 Interactieve opties::.)  Emacs schakelt buffers en toont de broncode van
 de functie op je scherm(1) Om naar je buffer terug te keren type je type
@@ -4253,13 +4253,13 @@ maar heeft geen code voor een complexe optie.  In een andere sectie
 zullen we de volledige code bespreken.  (*Note Complete definitie van
 ‘beginning-of-buffer’: beginning-of-buffer.)
 
-   Voordat we naar de code kijken staan we stil bij de functiedefinitie
-moet bevatten: het moet een expressie bevatten die de functie
-interactief maakt zodat het kan worden afgeroepen met typen van ‘M-x
-beginning-of-buffer’ of door het typen van een toetscombinatie zoals
-‘M-<’.  Het moet code bevatten om de mark op de originele positie te
-plaatsen en het moet code bevatten om de cursor naar het begin van het
-buffer te verplaatsen.
+   Voordat we naar de code kijken staan we stil bij wat de
+functiedefinitie moet bevatten: het moet een expressie bevatten die de
+functie interactief maakt zodat het kan worden aangeroepen met typen van
+‘M-x beginning-of-buffer’ of door het typen van een toetscombinatie
+zoals ‘M-<’.  Het moet code bevatten om de mark op de originele positie
+te plaatsen en het moet code bevatten om de cursor naar het begin van
+het buffer te verplaatsen.
 
    Hier is de complete text van de verkorte versie van de functie:
 
@@ -4270,7 +4270,7 @@ buffer te verplaatsen.
        (push-mark)
        (goto-char (point-min)))
 
-   Zoals alle functiedefinitie heeft deze definitie de vijf delen
+   Zoals alle functiedefinities heeft deze definitie de vijf delen
 volgens de macro ‘defun’:
 
   1. De naam: in dit voorbeeld ‘versimpelde-beginning-of-buffer’.
@@ -4298,7 +4298,7 @@ argumenten omdat ‘versimpelde-beginning-of-buffer’ die niet nodig heeft.
      (goto-char (point-min))
 
    De eerste van de twee regels is de expressie ‘(push-mark)’.  Wanneer
-de Lisp interpreter deze expressie evalueert stel het de mark op de
+de Lisp interpreter deze expressie evalueert stelt het de mark op de
 huidige positie van de cursor in, wat die ook is.  De positie van deze
 mark wordt bewaard in de mark-ring.
 
@@ -4515,7 +4515,7 @@ region die gekopieerd wordt.
                (when (= (window-point window) point)
                  (set-window-point window (point))))))))
 
-   De functie kan begrepen worden door het bekijken als een serie
+   De functie kan begrepen worden door het te bekijken als een serie
 ingevulde sjablonen.
 
    Het buitenste sjabloon is voor de functiedefinitie.  In deze functie
@@ -4546,7 +4546,7 @@ File: emacs-lisp-intro-nl.info,  Node: append interactief,  Next: append-to-buff
 
 Omdat de ‘append-to-buffer’ functie interactief gebruikt gaat worden,
 moet de functie een ‘interactive’ expressie hebben.  (Voor een terugblik
-op d‘interactive’, zie *note Een functie interactief maken: Interactief.
+op ‘interactive’, zie *note Een functie interactief maken: Interactief.
 
    De exressie is als volgt:
 
@@ -4607,8 +4607,8 @@ File: emacs-lisp-intro-nl.info,  Node: append-to-buffer body,  Next: append save
 De body van de functie ‘append-to-buffer’ begint met ‘let’.
 
    Zoals we eerder zagen (*note ‘let’: let.), is het doel van een ‘let’
-expressie om een of meer variabelen te creëerden en een initiële waarde
-te geven die uitsluitend worden gebruikt binnen de body van de ‘let’.
+expressie om een of meer variabelen die uitsluitend worden gebruikt
+binnen de body van de ‘let’ te creëeren en een initiële waarde te geven.
 Dit betekent dat zo'n variabele niet verward wordt met een variabele met
 dezelfde naam buiten de ‘let’ expressie.
 
@@ -4666,7 +4666,7 @@ De body van de ‘let’ expressie in ‘append-to-buffer’ bestaat uit een
    De functie ‘save-excursion’ bewaart de lokatie van point en herstelt
 point naar die positie na afloop van de uitvoering van de expressies in
 de body van ‘save-excursion’.  Verder houdt ‘save-excursion’ bij wat het
-oorspronkelijke buffer en herstelt die.  Dit is hoe ‘save-excursion’
+oorspronkelijke buffer is en herstelt die.  Dit is hoe ‘save-excursion’
 wordt gebruikt in ‘append-to-buffer’.
 
    Overigens is het waardevol hier op te merken dat een Lisp functie
@@ -4749,12 +4749,12 @@ een ander buffer naar het huidige buffer--en dat is waarom de
 
      (insert-buffer-substring oldbuf start end)
 
-The ‘insert-buffer-substring’ function copies a string _from_ the buffer
-specified as its first argument and inserts the string into the present
-buffer.  In this case, the argument to ‘insert-buffer-substring’ is the
-value of the variable created and bound by the ‘let’, namely the value
-of ‘oldbuf’, which was the current buffer when you gave the
-‘append-to-buffer’ command.
+De functie ‘insert-buffer-substring’ kopieert een string _van_ het
+buffer gespecificeerd als eerste argument en voegt de string in het
+huidige buffer.  In de geval is het argument van
+‘insert-buffer-substring’ de waarde van de variabele die de ‘let’
+creëerde en bond, namelijk de waarde van ‘oldbuf’, wat het huidige
+buffer was toen je het ‘append-to-buffer’ commando gaf.
 
    Nadat ‘insert-buffer-substring’ zijn werk gedaan heeft, herstelt
 ‘save-excursion’ de actie naar het originele buffer en heeft
@@ -5411,7 +5411,7 @@ argument is dat geen cons-cel is.
 
    (Omdat ik een cons-cel pas een aantal hoofdstukken verderop uitleg,
 negeer alsjeblieft de functie ‘consp’.  *Note Hoe lijsten zijn
-geïmplementeerd: Implementatie van lijsten. en *note Cons Cell and List
+geïmplementeerd: Implementatie van lijsten, en *note Cons Cell and List
 Types: (elisp)Cons Cell Type.)
 
    De ‘"P"’ in de ‘interactive’ expressie vertelt Emacs om een
@@ -7967,11 +7967,11 @@ het atoom ‘boterbloem’ bevat.
    Dit klinkt gecompliceerder dan het is en is makkelijker te zien in
 een diagram:
 
-         ___ ___      ___ ___      ___ ___
-        |___|___|--> |___|___|--> |___|___|--> nil
-          |            |            |
-          |            |            |
-           --> roos     --> viool    --> boterbloem
+                  ___ ___      ___ ___      ___ ___
+                 |___|___|--> |___|___|--> |___|___|--> nil
+                   |            |            |
+                   |            |            |
+                    --> roos     --> viool    --> boterbloem
 
 Elk vakje in het diagram representeert een computergeheugen woord dat
 een Lisp object bevat, meestal in de vorm van een geheugenadres.  De
@@ -7991,13 +7991,13 @@ evaluatie van de expressie
 
 creëert een situatie zoals dit:
 
-     boeket
-          |
-          |     ___ ___      ___ ___      ___ ___
-           --> |___|___|--> |___|___|--> |___|___|--> nil
-                 |            |            |
-                 |            |            |
-                  --> roos     --> viool    --> boterbloem
+             boeket
+              |
+              |     ___ ___      ___ ___      ___ ___
+               --> |___|___|--> |___|___|--> |___|___|--> nil
+                     |            |            |
+                     |            |            |
+                      --> roos     --> viool    --> boterbloem
 
 In dit voorbeeld bevat het symbool ‘boeket’ het adres van het eerste
 paar vakjes.
@@ -8005,7 +8005,7 @@ paar vakjes.
    Dezelfde lijst kan met een ander soort vakjes-notatie worden
 geïllustreerd, zoals dit:
 
-     bouquet
+     boeket
       |
       |    --------------       ---------------       ----------------
       |   | car   | cdr  |     | car    | cdr  |     | car     | cdr  |
@@ -8032,15 +8032,14 @@ evaluatie van de volgende expressie
 
 produceert dit:
 
-
-     boeket         bloemen
-       |              |
-       |     ___ ___  |     ___ ___      ___ ___
-        --> |   |   |  --> |   |   |    |   |   |
-            |___|___|----> |___|___|--> |___|___|--> nil
-              |              |            |
-              |              |            |
-               --> roos       --> viool    --> boterbloem
+           boeket         bloemen
+             |              |
+             |     ___ ___  |     ___ ___      ___ ___
+              --> |   |   |  --> |   |   |    |   |   |
+                  |___|___|----> |___|___|--> |___|___|--> nil
+                    |              |            |
+                    |              |            |
+                     --> roos       --> viool    --> boterbloem
 
 De waarde van ‘bloemen’ is ‘(viool boterbloem)’, dat wil zeggen, het
 symbool ‘bloemen’ bevat het adres van het paar adresvakjes, waarvan de
@@ -8060,7 +8059,6 @@ evalueren van de expressie
 
 produceert:
 
-
      boeket                        bloemen
        |                             |
        |     ___ ___        ___ ___  |     ___ ___       ___ ___
@@ -8068,7 +8066,7 @@ produceert:
             |___|___|----> |___|___|----> |___|___|---->|___|___|--> nil
               |              |              |             |
               |              |              |             |
-               --> lelie     --> roos       --> viool      --> boterbloem
+               --> lelie      --> roos       --> viool      --> boterbloem
 
 Dit verandert echter niet de waarde van het symbool ‘bloemen’, zoals je
 kunt zien door het volgende te evalueren:
@@ -8119,28 +8117,32 @@ zie *note Property Lists: (elisp)Property Lists.)
 
    Hier is een fantasierijke weergave:
 
-
-                   Ladekast                   Inhoud van de lade
-                 __   o0O0o   __
-               /                 \
-              ---------------------
-             |  routebeschrijving  |            [wijst naar]
-             |     symbool naam    |             boeket
-             |                     |
-             +---------------------+
-             |  routebeschrijving  |
-             |  symbool definitie  |             [geen]
-             |                     |
-             +---------------------+
-             |  routebeschrijving  |            [wijst naar]
-             |   variabele waarde  |             (roos viool boterbloem)
-             |                     |
-             +---------------------+
-             |  routebeschrijving  |
-             |    property list    |             [hier niet beschreven]
-             |                     |
-             +---------------------+
-             |/                   \|
+    		     Ladekast              Inhoud van de lade
+    
+    		 __   o0O0o   __
+    	       /                 \
+    	      ---------------------
+    	     |  routebeschrijving  |
+    	     |         naar        |           [wijst naar]
+                 |     symboolnaam     |              boeket
+    	     |                     |
+    	     +---------------------+
+    	     |  routebeschrijving  |
+    	     |         naar        |
+    	     |  symbooldefinitie   |              [geen]
+    	     |                     |
+    	     +---------------------+
+    	     |  routebeschrijving  |
+    	     |         naar        |           [wijst naar]
+    	     |    variabele naam   |            (roos viool boterbloom)
+    	     |                     |
+    	     +---------------------+
+    	     |  routebeschrijving  |
+    	     |         naar        |
+    	     |    property list    |           [hier niet beschreven]
+    	     |                     |
+    	     +---------------------+
+    	     |/                   \|
 
 
 File: emacs-lisp-intro-nl.info,  Node: Lijst oefening,  Prev: Symbolen als ladekast,  Up: Implementatie van lijsten
@@ -8248,18 +8250,18 @@ wijzen.  De woorden "een ander stuk tekst" en "nog meer tekst" worden
 niet gedupliceerd.  In plaats daarvan wijzen de twee Lisp variabelen
 naar hetzelfde stuk tekst.  Hier is een diagram:
 
-     kill-ring     kill-ring-yank-pointer
-         |               |
-         |      ___ ___  |     ___ ___      ___ ___
-          ---> |   |   |  --> |   |   |    |   |   |
-               |___|___|----> |___|___|--> |___|___|--> nil
-                 |              |            |
-                 |              |            |
-                 |              |             --> "nog meer tekst"
-                 |              |
-                 |               --> "een ander stuk tekst"
-                 |
-                  --> "wat tekst"
+       kill-ring     kill-ring-yank-pointer
+           |               |
+           |      ___ ___  |     ___ ___      ___ ___
+            ---> |   |   |  --> |   |   |    |   |   |
+                 |___|___|----> |___|___|--> |___|___|--> nil
+                   |              |            |
+                   |              |            |
+                   |              |             --> "nog meer tekst"
+                   |              |
+                   |               --> "een ander stuk tekst"
+                   |
+                    --> "wat tekst"
 
    Zowel de variabele ‘kill-ring’ als de variabele
 ‘kill-ring-yank-pointer’ zijn pointers.  Maar de killring zelf wordt
@@ -9057,7 +9059,7 @@ en je typt ‘C-x C-e’.  In beide gevallen zou je het volgende moeten zien
 in het echogebied
 
    Voor dit voorbeeld is bestaande functie ‘reverse’ duidelijk het
-beste.  De ‘while’ loop is net als ons eerste voorbeeld (*note " "Een
+beste.  De ‘while’ loop is net als ons eerste voorbeeld (*note Een
 ‘while’ loop en een lijst: Loop voorbeeld.).  De ‘while’ checkt eerst of
 de lijst elementen heeft.  Zo ja, dan construeert het een nieuwe lijst
 door het eerste element van de lijst aan de bestaande lijst toe te
@@ -9137,16 +9139,16 @@ File: emacs-lisp-intro-nl.info,  Node: Recursie,  Next: Looping oefening,  Prev:
 11.3 Recursie
 =============
 
-A recursive function contains code that tells the Lisp interpreter to
-call a program that runs exactly like itself, but with slightly
-different arguments.  The code runs exactly the same because it has the
-same name.  However, even though the program has the same name, it is
-not the same entity.  It is different.  In the jargon, it is a different
-"instance".
+Een recursieve functie bevat code die de Lisp interpreter vertelt een
+programma aan te roepen dat exact hetzelfde als zichzelf loopt, maar met
+iets verschillende argumenten.  De code loopt hetzelfde omdat het
+dezelfde naam heeft.  Hoewel het programma dezelfde naam is, is het
+echter niet dezelfde entiteit.  Het is verschillend.  In het jargon heet
+het een andere "instantie".
 
-   Eventually, if the program is written correctly, the slightly
-different arguments will become sufficiently different from the first
-arguments that the final instance will stop.
+   Als het programma correct geschreven is dan gaan de iets
+verschillende argumenten genoeg van het eerste argument verschillen dat
+de laatste instantie stopt.
 
 * Menu:
 
@@ -9158,176 +9160,178 @@ arguments that the final instance will stop.
 * Recursie met cond::        Recursie met cond
 * Recursieve patronen::      Veelgebruikte templates.
 * Geen uitstel::             Sla geen werk op ...
-* Geen uitstel oplossing::   Geen uitstel oplossing
+* Zonder uitstel oplossing::  Zonder uitstel oplossing
 
 
 File: emacs-lisp-intro-nl.info,  Node: Robots bouwen,  Next: Recursive definitie onderdelen,  Up: Recursie
 
-11.3.1 Building Robots: Extending the Metaphor
-----------------------------------------------
+11.3.1 Robots bouwen: de metafoor uitbreiden
+--------------------------------------------
 
-It is sometimes helpful to think of a running program as a robot that
-does a job.  In doing its job, a recursive function calls on a second
-robot to help it.  The second robot is identical to the first in every
-way, except that the second robot helps the first and has been passed
-different arguments than the first.
+Soms is het nuttig om een draaiend programma te zien als een robot die
+zijn werk doet.  Tijdens het uitvoeren van het werk vraagt een
+recursieve functie een tweede robot om te helpen.  De tweede robot is op
+elke manier identiek aan de eerste, behalve dat de tweede robot de
+eerste helpt en dat het andere argumenten krijgt dan de eerste.
 
-   In a recursive function, the second robot may call a third; and the
-third may call a fourth, and so on.  Each of these is a different
-entity; but all are clones.
+   In een recursieve functie kan een tweede robot een derde roepen, en
+een derde een vierde, enzovoort.  Elk van deze is een aparte entiteit,
+maar het zijn allemaal klonen.
 
-   Since each robot has slightly different instructions--the arguments
-will differ from one robot to the next--the last robot should know when
-to stop.
+   Omdat elke robot iets verschillende instructies heeft--de argumenten
+verschillen van de ene robot tot de volgende--moet de laatste robot
+weten wanneer te stoppen.
 
-   Let's expand on the metaphor in which a computer program is a robot.
+   Laten we de metafoor van een computerprogamma als robot uitbreiden.
 
-   A function definition provides the blueprints for a robot.  When you
-install a function definition, that is, when you evaluate a ‘defun’
-macro, you install the necessary equipment to build robots.  It is as if
-you were in a factory, setting up an assembly line.  Robots with the
-same name are built according to the same blueprints.  So they have the
-same model number, but a different serial number.
+   Een functiedefinitie bevat de blauwdruk voor de robot.  Wanneer je
+een functiedefinitie installeert, dat wil zeggen, wanneer je een ‘defun’
+macro evalueert, installeer je de benodigde apparatuur om robots te
+bouwen.  Het is net alsof je in een fabriek een assemblagelijn opzet.
+Robots met dezelfde naam worden volgens dezelfde blauwdruk gebouwd.  Dus
+ze hebben hetzelfde modelnummer, maar een verschillend serienummer.
 
-   We often say that a recursive function "calls itself".  What we mean
-is that the instructions in a recursive function cause the Lisp
-interpreter to run a different function that has the same name and does
-the same job as the first, but with different arguments.
+   We zeggen vaak dat een recursieve functie "zichzelf aanroept".  Wat
+we willen zeggen is dat de instructies in een recursieve functie de Lisp
+interpreter een andere functie laten aanroepen, die dezelfde naam heeft
+en hetzelfde werk doet als de eerste, maar met verschillende argumenten.
 
-   It is important that the arguments differ from one instance to the
-next; otherwise, the process will never stop.
+   Het is belangrijk dat de argumenten tussen de ene instantie en de
+volgende verschillend zijn, anders zal het proces nooit stoppen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursive definitie onderdelen,  Next: Recursie met lijst,  Prev: Robots bouwen,  Up: Recursie
 
-11.3.2 The Parts of a Recursive Definition
-------------------------------------------
+11.3.2 De onderdelen van een recursieve definitie
+-------------------------------------------------
 
-A recursive function typically contains a conditional expression which
-has three parts:
+Een recursieve functie bevat typisch een conditionele expressie die drie
+onderdelen heeft:
 
-  1. A true-or-false-test that determines whether the function is called
-     again, here called the “do-again-test”.
+  1. Een waar-of-onwaar-test die vaststelt of de functie opnieuw
+     aangeroepen is, hier de “doe-opnieuw-test” genoemd.
 
-  2. The name of the function.  When this name is called, a new instance
-     of the function--a new robot, as it were--is created and told what
-     to do.
+  2. De naam van de functie.  Wanneer de naam wordt aangeroepen, wordt
+     een nieuwe instantie van de functie--een nieuwe robot als het
+     ware--gecreëerd en verteld wat te doen.
 
-  3. An expression that returns a different value each time the function
-     is called, here called the “next-step-expression”.  Consequently,
-     the argument (or arguments) passed to the new instance of the
-     function will be different from that passed to the previous
-     instance.  This causes the conditional expression, the
-     “do-again-test”, to test false after the correct number of
-     repetitions.
+  3. Een expressie die elke keer dat de functie word aangeroepen een
+     andere waarde teruggeeft, hier de “volgende-stap-expressie”
+     genoemd.  Daardoor zal het aan de nieuwe instantie doorgeven
+     argument (of argumenten) verschillen van wat aan de vorige
+     instantie was doorgegeven.  Dit zorgt dat de conditionele expresie,
+     de “doe-opnieuw-test”, na het correcte aantal herhalingen naar
+     onwaar testen.
 
-   Recursive functions can be much simpler than any other kind of
-function.  Indeed, when people first start to use them, they often look
-so mysteriously simple as to be incomprehensible.  Like riding a
-bicycle, reading a recursive function definition takes a certain knack
-which is hard at first but then seems simple.
+   Recursieve functies kunnen veel eenvoudiger zijn dan elk ander soort
+functie.  Inderdaad, wanneer mensen ze beginnen te gebruiken, lijken ze
+vaak zo mysterieus eenvoudig dat ze onbegrijpelijk zijn Net als op een
+fiets rijden, vereist het lezen van een recursieve functie een bepaalde
+kundigheid die in het begin moeilijk is maar later eenvoudig lijkt.
 
-   There are several different common recursive patterns.  A very simple
-pattern looks like this:
+   Er zijn verschillende gebruikelijke recursieve patronen.  Een erg
+eenvoudig patroon ziet er zo uit:
 
-     (defun NAME-OF-RECURSIVE-FUNCTION (ARGUMENT-LIST)
-       "DOCUMENTATION..."
-       (if DO-AGAIN-TEST
+     (defun NAAM-VAN-RECURSIEVE-FUNCTIE (ARGUMENT-LIST)
+       "DOCUMENTATIE..."
+       (if DOE-OPNIEUW-TEST
          BODY...
-         (NAME-OF-RECURSIVE-FUNCTION
-              NEXT-STEP-EXPRESSION)))
+         (NAAM-VAN-RECURSIEVE-FUNCTIE
+              VOLGENDE-STAP-EXPRESSIE)))
 
-   Each time a recursive function is evaluated, a new instance of it is
-created and told what to do.  The arguments tell the instance what to
-do.
+   Elke keer dat een recursieve functie wordt geëvalueerd worden een
+nieuwe instantie er van gecreëerd en verteld wat te doen.  De argumenten
+vertellen de instantie wat te doen.
 
-   An argument is bound to the value of the next-step-expression.  Each
-instance runs with a different value of the next-step-expression.
+   Een argument wordt gebonden aan de waarde van de
+volgende-stap-expressie.  Elke instantie draait met een andere waarde
+van de volgende-stap-expressie.
 
-   The value in the next-step-expression is used in the do-again-test.
+   De waarde van de volgende-stap-expressie wordt gebruik in de
+doe-opnieuw-test.
 
-   The value returned by the next-step-expression is passed to the new
-instance of the function, which evaluates it (or some transmogrification
-of it) to determine whether to continue or stop.  The
-next-step-expression is designed so that the do-again-test returns false
-when the function should no longer be repeated.
+   De waarde die de volgende-stap-expressie teruggeeft wordt doorgegeven
+aan de nieuwe instantie van de functie, die het evalueert (of een
+transformatie er van) om vast te stellen of het moet doorgaan of
+stoppen.  De volgende-stap-expressie is zo ontworpen dat de
+doe-opnieuw-test onwaar teruggeeft wanneer de functie niet langer meer
+moet worden herhaald.
 
-   The do-again-test is sometimes called the “stop condition”, since it
-stops the repetitions when it tests false.
+   De doe-opnieuw-test wordt soms de “stop conditie” genoemd, omdat het
+de herhalingen stopt wanneer het als onwaar test.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursie met lijst,  Next: Recursieve driehoek functie,  Prev: Recursive definitie onderdelen,  Up: Recursie
 
-11.3.3 Recursion with a List
-----------------------------
+11.3.3 Recursie met een lijst
+-----------------------------
 
-The example of a ‘while’ loop that printed the elements of a list of
-numbers can be written recursively.  Here is the code, including an
-expression to set the value of the variable ‘animals’ to a list.
+Het voorbeeld van een ‘while’ loop dat de elementen van een lijst met
+getallen kan recursief geschreven worden.  Hier is de code inclusief een
+expressie die de waarde van de variabele ‘dieren’ naar een lijst zet.
 
-   If you are reading this in Info in Emacs, you can evaluate this
-expression directly in Info.  Otherwise, you must copy the example to
-the ‘*scratch*’ buffer and evaluate each expression there.  Use ‘C-u C-x
-C-e’ to evaluate the ‘(print-elements-recursively animals)’ expression
-so that the results are printed in the buffer; otherwise the Lisp
-interpreter will try to squeeze the results into the one line of the
-echo area.
+   Wanneer je dit in Info in Emacs leest, kan je expressie direct in
+Info evalueren.  Zo dan, dan moet je het voorbeeld kopiëren in het
+‘*scratch*’ buffer en het daar evalueren.  Gebruik ‘C-u C-x C-e’ om de
+‘(print-elementen-recursief dieren)’ te evalueren zodat de resultaten in
+het buffer getoond worden, zo niet dan probeert de Lisp interpreter de
+resultaten in een enkele regel in het echogebied samen te knijpen.
 
-   Also, place your cursor immediately after the last closing
-parenthesis of the ‘print-elements-recursively’ function, before the
-comment.  Otherwise, the Lisp interpreter will try to evaluate the
-comment.
+   Plaats de cursor direct achter het laatste haakje sluiten van de
+functie ‘print-elementen-recursief’, voor het commentaar.  Anders
+probeert de Lisp interpreter het commentaar te evalueren.
 
      (setq dieren '(gazelle giraf leeuw tijger))
 
-     (defun print-elements-recursively (list)
-       "Print each element of LIST on a line of its own.
-     Uses recursion."
-       (when list                            ; do-again-test
-             (print (car list))              ; body
-             (print-elements-recursively     ; recursive call
-              (cdr list))))                  ; next-step-expression
+     (defun print-elementen-recursief (lijst)
+       "Toon elk element van LIJST op een eigen regel.
+     Gebruikt recursie."
+       (when lijst                            ; doe-opnieuw-test
+             (print (car lijst))              ; body
+             (print-elementen-recursief        ; recursieve aanroep
+              (cdr lijst))))                  ; volgende-stap-expressie
 
-     (print-elements-recursively animals)
+     (print-elementen-recursief dieren)
 
-   The ‘print-elements-recursively’ function first tests whether there
-is any content in the list; if there is, the function prints the first
-element of the list, the CAR of the list.  Then the function invokes
-itself, but gives itself as its argument, not the whole list, but the
-second and subsequent elements of the list, the CDR of the list.
+   De functie ‘print-elementen-recursief’ test eerst of er inhoud in de
+lijst is.  Wanneer dat zo is, toont de functie het eerste element van de
+lijst, de CAR van de lijst.  Vervolgens roept de functie zichzelf aan
+maar geeft zichzelf niet de hele lijst maar het tweede en volgende
+elementen van de lijst, de CDR van de lijst.
 
-   Put another way, if the list is not empty, the function invokes
-another instance of code that is similar to the initial code, but is a
-different thread of execution, with different arguments than the first
-instance.
+   Anders gezegd, wanneer de lijst niet leeg is, start de functie een
+nieuwe instantie van code die vergelijkbaar is met de initiële code,
+maar is een andere uitvoerings-thread, met andere argumenten dan de
+eerste instantie.
 
-   Put in yet another way, if the list is not empty, the first robot
-assembles a second robot and tells it what to do; the second robot is a
-different individual from the first, but is the same model.
+   Weer anders gezegd, wanneer de lijst niet leeg is, bouwt de eerste
+robot een tweede robot en zegt die wat de doen.  De tweede robot is een
+ander individu dan de eerste, maar is het zelfde model.
 
-   When the second evaluation occurs, the ‘when’ expression is evaluated
-and if true, prints the first element of the list it receives as its
-argument (which is the second element of the original list).  Then the
-function calls itself with the CDR of the list it is invoked with, which
-(the second time around) is the CDR of the CDR of the original list.
+   Wanneer de tweede evaluatie plaatsvindt wordt de ‘when’ expressie
+geëvalueerd en als die waar is toont die het eerste element van de lijst
+die het als zijn argument had gekregen (die het tweede element is van de
+originele lijst is).  Hierna roept de functie zichzelf aan met de CDR
+van de lijst waarmee het aangeroepen is wat (de tweede ronde) de CDR van
+de CDR van de originele lijst is.
 
-   Note that although we say that the function "calls itself", what we
-mean is that the Lisp interpreter assembles and instructs a new instance
-of the program.  The new instance is a clone of the first, but is a
-separate individual.
+   Merk op dat hoewel we zeggen dat de functie "zichzelf aanroept" we
+bedoelen dat de Lisp interpreter een nieuwe instantie van het programma
+maakt en instrueert.  De nieuwe instantie is een kloon van de eerste,
+maar is een separaat individu.
 
-   Each time the function invokes itself, it does so on a shorter
-version of the original list.  It creates a new instance that works on a
-shorter list.
+   Elke keer dat de functie zichzelf aanroept doet het dat met een
+kortere versie van de originele lijst.  Het creëert een nieuwe instantie
+die werkt met een kortere lijst.
 
-   Eventually, the function invokes itself on an empty list.  It creates
-a new instance whose argument is ‘nil’.  The conditional expression
-tests the value of ‘list’.  Since the value of ‘list’ is ‘nil’, the
-‘when’ expression tests false so the then-part is not evaluated.  The
-function as a whole then returns ‘nil’.
+   Uiteindelijk roept de functie zichzelf aan met een lege lijst.  Dit
+creëert een nieuwe instantie wiens argument ‘nil’ is.  De conditionele
+expressie test de waarde van ‘lijst’.  Omdat de waarde van ‘nil’ ‘nil’
+is, test de ‘when’ expressie onwaar en dus wordt het dan-deel niet
+geëvalueerd.  De functie als geheel geeft ‘nil’ terug.
 
-   When you evaluate the expression ‘(print-elements-recursively
-animals)’ in the ‘*scratch*’ buffer, you see this result:
+   Wanneer je de expressie ‘(print-elementen-recursief dieren)’ in het
+‘*scratch*’ buffer evalueert, zie je dit resultaat:
 
      gazelle
 
@@ -9344,28 +9348,28 @@ File: emacs-lisp-intro-nl.info,  Node: Recursieve driehoek functie,  Next: Recur
 11.3.4 Recursie in plaats van een teller
 ----------------------------------------
 
-The ‘triangle’ function described in a previous section can also be
-written recursively.  It looks like this:
+De in een eerdere beschreven functie ‘driehoek’ kan ook recursief worden
+geschreven.  Dit ziet er zo uit:
 
-     (defun triangle-recursively (number)
-       "Return the sum of the numbers 1 through NUMBER inclusive.
-     Uses recursion."
-       (if (= number 1)                    ; do-again-test
-           1                               ; then-part
-         (+ number                         ; else-part
-            (triangle-recursively          ; recursive call
-             (1- number)))))               ; next-step-expression
+     (defun driehoek-recursief (aantal)
+       "Geef de som van de getallen 1 tot en met AANTAL terug.
+     Met recursie."
+       (if (= aantal 1)                    ; doe-opnieuw-test
+           1                               ; dan-deel
+         (+ aantal                         ; anders-deel
+            (driehoek-recursief            ; recursieve aanroep
+             (1- aantal)))))               ; volgende-stap-expressie
 
-     (triangle-recursively 7)
+     (driehoek-recursief 7)
 
-You can install this function by evaluating it and then try it by
-evaluating ‘(triangle-recursively 7)’.  (Remember to put your cursor
-immediately after the last parenthesis of the function definition,
-before the comment.)  The function evaluates to 28.
+Je kunt deze functie installeren door het te evalueren en dan
+uitproberen door ‘(driehoek-recursief 7)’ te evalueren.  (Denk er aan de
+cursor direct achter het laatste haakje sluiten van de functiedefinitie
+te plaatsen, voor het commentaar.)
 
-   To understand how this function works, let's consider what happens in
-the various cases when the function is passed 1, 2, 3, or 4 as the value
-of its argument.
+   Om te begrijpen hoe deze functie werkt, beschouwen we wat gebeurt in
+de verschillende gevallen wanneer de functie 1, 2, 3 of 4 als waarde van
+zijn argument krijgt doorgegeven.
 
 * Menu:
 
@@ -9375,195 +9379,196 @@ of its argument.
 
 File: emacs-lisp-intro-nl.info,  Node: Recursief voorbeeld arg van 1 of 2,  Next: Recursief voorbeeld arg van 3 of 4,  Up: Recursieve driehoek functie
 
-An argument of 1 or 2
-.....................
+Een argument van 1 of 2
+.......................
 
-First, what happens if the value of the argument is 1?
+Ten eerste wat gebeurt als de waarde van het argument 1 is?
 
-   The function has an ‘if’ expression after the documentation string.
-It tests whether the value of ‘number’ is equal to 1; if so, Emacs
-evaluates the then-part of the ‘if’ expression, which returns the number
-1 as the value of the function.  (A triangle with one row has one pebble
-in it.)
+   De functie heef een ‘if’ expressie na de documentatiestring.  Die
+test of de waarde van ‘aantal’ gelijk is aan 1.  Wanneer dat zo is,
+evalueert Emacs het dan-deel van de ‘if’ exprissie, die 1 teruggeeft als
+waarde van de functie.  (Een driehoek met één rij bevat één steentje.)
 
-   Suppose, however, that the value of the argument is 2.  In this case,
-Emacs evaluates the else-part of the ‘if’ expression.
+   Stel echter dat de waarde van het argument 2 is.  In dat geval
+evalueert Emacs het anders-deel van de ‘if’ expressie.
 
-   The else-part consists of an addition, the recursive call to
-‘triangle-recursively’ and a decrementing action; and it looks like
-this:
+   Het anders-deel bestaat uit een optelling, de recursieve aanroep van
+‘driehoek-recursief’ en een aflopende actie, en ziet er zo uit:
 
-     (+ number (triangle-recursively (1- number)))
+     (+ aantal (driehoek-recursief (1- aantal)))
 
-   When Emacs evaluates this expression, the innermost expression is
-evaluated first; then the other parts in sequence.  Here are the steps
-in detail:
+   Wanneer Emacs deze expressie evalueert, wordt de binnenste expressie
+het eerste geëvalueerd, daarna de andere delen opvolgend.  Hier zijn de
+stappen in detail:
 
-Step 1   Evaluate the innermost expression.
+Stap 1   Evalueer de binnenste expressie
 
-     The innermost expression is ‘(1- number)’ so Emacs decrements the
-     value of ‘number’ from 2 to 1.
+     De binnenste expressie is ‘1- aantal’, dus Emacs verlaagt de waarde
+     van ‘aantal’ van 2 naar 1.
 
-Step 2   Evaluate the ‘triangle-recursively’ function.
+Stap 2   Evalueer de functie ‘driehoek-recursief’.
 
-     The Lisp interpreter creates an individual instance of
-     ‘triangle-recursively’.  It does not matter that this function is
-     contained within itself.  Emacs passes the result Step 1 as the
-     argument used by this instance of the ‘triangle-recursively’
-     function
+     De Lisp interpreter creëert een individuele instantie van
+     ‘driehoek-recursief’.  Het maakt niet uit dat deze functie binnen
+     zichzelf staat.  Emacs geeft het resultaat Stap 1 als argument
+     gebruikt door deze instantie van de functie ‘driehoek-recursief’.
 
-     In this case, Emacs evaluates ‘triangle-recursively’ with an
-     argument of 1.  This means that this evaluation of
-     ‘triangle-recursively’ returns 1.
+     In dit geval evalueert Emacs ‘driehoek-recursief’ met een argument
+     1.  Dit betekent dat deze evaluatie van ‘driehoek-recursief’ 1
+     teruggeeft.
 
-Step 3   Evaluate the value of ‘number’.
+Stap 3   Evalueer de waarde van ‘aantal’.
 
-     The variable ‘number’ is the second element of the list that starts
-     with ‘+’; its value is 2.
+     De variabele ‘aantal’ is het tweede element van de lijst die start
+     met ‘+’.  De waarde is 2.
 
-Step 4   Evaluate the ‘+’ expression.
+Stap 4   Evalueer de ‘+’ expressie.
 
-     The ‘+’ expression receives two arguments, the first from the
-     evaluation of ‘number’ (Step 3) and the second from the evaluation
-     of ‘triangle-recursively’ (Step 2).
+     De ‘+’ expressie ontvangt twee argumenten, de eerste van het
+     evalueren van ‘aantal’ (Stap 3) en het tweede van de evaluatie van
+     ‘driehoek-recursief’ (Stap 2).
 
-     The result of the addition is the sum of 2 plus 1, and the number 3
-     is returned, which is correct.  A triangle with two rows has three
-     pebbles in it.
+     Het resultaat van de optelling is de som van 2 plus 1 en het getal
+     3 wordt teruggegeven.  dit is correct.  Een driehoek met twee rijen
+     bevat drie steentjes.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursief voorbeeld arg van 3 of 4,  Prev: Recursief voorbeeld arg van 1 of 2,  Up: Recursieve driehoek functie
 
-An argument of 3 or 4
-.....................
+Een argument van 3 of 4
+.......................
 
-Suppose that ‘triangle-recursively’ is called with an argument of 3.
+Stel dat ‘driehoek-recursief’ wordt aangeroepen met een argument van 3.
 
-Step 1   Evaluate the do-again-test.
+Stap 1   Evaluaeer de doe-opnieuw-test.
 
-     The ‘if’ expression is evaluated first.  This is the do-again test
-     and returns false, so the else-part of the ‘if’ expression is
-     evaluated.  (Note that in this example, the do-again-test causes
-     the function to call itself when it tests false, not when it tests
-     true.)
+     De ‘if’ expressie wordt eerst geëvalueerd.  Dit is de
+     doe-opnieuw-test en geeft onwaar terug, dus het anders-deel van de
+     ‘if’ expressie wordt geëvalueerd.  (Merk op dat in dit voorbeeld de
+     doe-opnieuw-test zorgt dat de functie zichzelf aanroept wanneer die
+     onwaar test, en niet wanneer die waar test.)
 
-Step 2   Evaluate the innermost expression of the else-part.
+Stap 2   Evalueer de binnenste expressie van het anders-deel.
 
-     The innermost expression of the else-part is evaluated, which
-     decrements 3 to 2.  This is the next-step-expression.
+     De binnenste expressie van het anders-deel wordt geëvalueerd, die 3
+     verlaagt naar 2.  Dit is de volgende-stap-expressie.
 
-Step 3   Evaluate the ‘triangle-recursively’ function.
+Stap 3   Evalueer de functie ‘driehoek-recursief’.
 
-     The number 2 is passed to the ‘triangle-recursively’ function.
+     Het getal 2 is doorgegeven aan de functie ‘driehoek-recursief’.
 
-     We already know what happens when Emacs evaluates
-     ‘triangle-recursively’ with an argument of 2.  After going through
-     the sequence of actions described earlier, it returns a value of 3.
-     So that is what will happen here.
+     We weten al wat gebeurt wanneer Emacs de ‘driehoek-recursief’
+     evalueert met een argument van 2.  Nadat het door de eerder
+     beschreven reeks acties heen is gegaan, geeft het een waarde 3
+     terug.  Dus dat is wat hier gebeurt.
 
-Step 4   Evaluate the addition.
+Stap 4   Evalueer de optelling.
 
-     3 will be passed as an argument to the addition and will be added
-     to the number with which the function was called, which is 3.
+     3 wordt doorgegeven als een argument van de optelling en wordt
+     opgeteld bij het getal waarmee de functie was aangeroepen, dat 3
+     is.
 
-The value returned by the function as a whole will be 6.
+De waarde teruggeven door de functie als geheel is 6.
 
-   Now that we know what will happen when ‘triangle-recursively’ is
-called with an argument of 3, it is evident what will happen if it is
-called with an argument of 4:
+   Nu we weten wat gebeurt wanneer ‘driehoek-recursief’ wordt
+aangeroepen met een argument van 3, ligt het voor de hand wat gebeurt
+als het wordt aangeroepen met een argument van 4.
 
-     In the recursive call, the evaluation of
+     In de recursieve aanroep, geeft de evaluatie van
 
-          (triangle-recursively (1- 4))
+          (driehoek-recursief (1- 4)
 
-     will return the value of evaluating
+     de waarde van het evalueren van
 
-          (triangle-recursively 3)
+          (driehoek-recursief 3)
 
-     which is 6 and this value will be added to 4 by the addition in the
-     third line.
+     wat 6 is en deze waarde wordt opgeteld bij 4 door de optelling in
+     de derde regel.
 
-The value returned by the function as a whole will be 10.
+De waarde teruggeven door de functie als geheel is 10.
 
-   Each time ‘triangle-recursively’ is evaluated, it evaluates a version
-of itself--a different instance of itself--with a smaller argument,
-until the argument is small enough so that it does not evaluate itself.
+   Elke keer dat ‘driehoek-recursief’ wordt geëvalueerd, evalueert het
+een versie van zichzelf--een andere instantie van zichzelf--met een
+kleiner argument, totdat het argument klein genoeg is en het niet
+zichzelf evalueert.
 
-   Note that this particular design for a recursive function requires
-that operations be deferred.
+   Merk op dat dit specifieke ontwerp voor een recursieve functie
+vereist dat operaties kunnen worden uitgesteld.
 
-   Before ‘(triangle-recursively 7)’ can calculate its answer, it must
-call ‘(triangle-recursively 6)’; and before ‘(triangle-recursively 6)’
-can calculate its answer, it must call ‘(triangle-recursively 5)’; and
-so on.  That is to say, the calculation that ‘(triangle-recursively 7)’
-makes must be deferred until ‘(triangle-recursively 6)’ makes its
-calculation; and ‘(triangle-recursively 6)’ must defer until
-‘(triangle-recursively 5)’ completes; and so on.
+   Voordat ‘(driehoek-recursief 7)’ een antwoord kan berekenen, moet het
+‘(driehoek-recursief 6)’ aanroepen, en voordat ‘(driehoek-recursief 6)’
+een antwoord kan berekenen, moet het ‘(driehoek-recursief 5)’ aanroepen,
+enzovoorts.  Met andere woorden, de berekening die ‘(driehoek-recursief
+7)’ maakt moet worden uitgesteld totdat ‘(driehoek-recursief 6)’ een
+berekening gemaakt heeft, en ‘(driehoek-recursief 6)’ moet worden
+uitgesteld totdat ‘(driehoek-recursief 5)’ klaar is, enzovoorts.
 
-   If each of these instances of ‘triangle-recursively’ are thought of
-as different robots, the first robot must wait for the second to
-complete its job, which must wait until the third completes, and so on.
+   Wanneer al deze instanties van ‘driehoek-recursief’ beschouwd worden
+als verschillende robots, dan moet de eerste robot wachten tot de tweede
+robot zijn werk gedaan heeft, en die moet weer wachten tot de derde
+robot klaar is, enzovoorts.
 
-   There is a way around this kind of waiting, which we will discuss in
-*note Recursion without Deferments: No Deferment.
+   Er is een manier om dit soort uitstel te omzeilen, die we bespreken
+in *note Recursie zonder uitstel: Geen uitstel.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursie met cond,  Next: Recursieve patronen,  Prev: Recursieve driehoek functie,  Up: Recursie
 
-11.3.5 Recursion Example Using ‘cond’
--------------------------------------
+11.3.5 Recursie voorbeeld met ‘cond’
+------------------------------------
 
-The version of ‘triangle-recursively’ described earlier is written with
-the ‘if’ special form.  It can also be written using another special
-form called ‘cond’.  The name of the special form ‘cond’ is an
-abbreviation of the word ‘conditional’.
+De eerder beschreven versie van ‘driehoek-recursief’ is geschreven met
+de speciale vorm ‘if’.  Het kan ook worden geschreven met een andere
+speciale vorm met de naam ‘cond’.  De naam van de speciale vorm ‘cond’
+is een afkorting van het woord ‘conditioneel’.
 
-   Although the ‘cond’ special form is not used as often in the Emacs
-Lisp sources as ‘if’, it is used often enough to justify explaining it.
+   Alhoewel de speciale vorm ‘cond’ niet zo vaak in de Emacs Lisp
+broncode als ‘if’, wordt het vaak genoeg gebruikt om het uit te leggen.
 
-   The template for a ‘cond’ expression looks like this:
+   Het sjabloon voor een ‘cond’ expressie ziet er zo uit:
 
      (cond
       BODY...)
 
-where the BODY is a series of lists.
+waar de BODY een reeks lijsten is.
 
-   Written out more fully, the template looks like this:
+   Meer volledig ziet het sjabloon er zo uit:
 
      (cond
-      (FIRST-TRUE-OR-FALSE-TEST FIRST-CONSEQUENT)
-      (SECOND-TRUE-OR-FALSE-TEST SECOND-CONSEQUENT)
-      (THIRD-TRUE-OR-FALSE-TEST THIRD-CONSEQUENT)
+      (EERSTE-WAAR-OF-ONWAAR-TEST EERSTE-CONSEQUENTIE)
+      (TWEEDE-WAAR-OF-ONWAAR-TEST TWEEDE-CONSEQUENTIE)
+      (DERDE-WAAR-OF-ONWAAR-TEST DERDE-CONSEQUENTIE)
        ...)
 
-   When the Lisp interpreter evaluates the ‘cond’ expression, it
-evaluates the first element (the CAR or true-or-false-test) of the first
-expression in a series of expressions within the body of the ‘cond’.
+   Wanneer de Lisp interpreter de ‘cond’ expressie evalueert, evalueert
+die het eerste element (de CAR van de waar-of-onwaar-test) van de
+expressie in een reeks van expressies binnen de body van de ‘cond’.
 
-   If the true-or-false-test returns ‘nil’ the rest of that expression,
-the consequent, is skipped and the true-or-false-test of the next
-expression is evaluated.  When an expression is found whose
-true-or-false-test returns a value that is not ‘nil’, the consequent of
-that expression is evaluated.  The consequent can be one or more
-expressions.  If the consequent consists of more than one expression,
-the expressions are evaluated in sequence and the value of the last one
-is returned.  If the expression does not have a consequent, the value of
-the true-or-false-test is returned.
+   Wanneer de waar-of-onwaar-test ‘nil’ teruggeeft, wordt de rest van de
+expressie, de consequentie, overgeslagen en wordt de volgende expressie
+geëvalueerd.  Wanneer een expressie gevonden wordt wiens
+waar-of-onwaar-test een waarde ongelijk aan ‘nil’ teruggeeft, wordt de
+consequentie van die expressie geëvalueerd.  De consequentie kan een of
+meer expressies zijn.  Wanneer de consequentie meer dan een expressie
+bevat worden de expressie achtereenvolgens geëvalueerd en de waarde van
+de laatste wordt teruggegeven.  Wanneer de expressie geen consequentie
+heeft, dan wordt de waarde van de waar-of-onwaar-test teruggegeven.
 
-   If none of the true-or-false-tests test true, the ‘cond’ expression
-returns ‘nil’.
+   Wanneer geen van de waar-of-onwaar-tests waar test, dan geeft de
+‘cond’ expressie ‘nil’ terug.
 
-   Written using ‘cond’, the ‘triangle’ function looks like this:
+   De functie ‘driehoek’ met een ‘cond’ ziet er zo uit:
 
-     (defun triangle-using-cond (number)
-       (cond ((<= number 0) 0)
-             ((= number 1) 1)
-             ((> number 1)
-              (+ number (triangle-using-cond (1- number))))))
+     (defun driehoek-met-cond (getal)
+       (cond ((<= getal 0) 0)
+             ((= getal 1) 1)
+             ((> getal 1)
+              (+ getal (driehoek-met-cond (1- getal))))))
 
-In this example, the ‘cond’ returns 0 if the number is less than or
-equal to 0, it returns 1 if the number is 1 and it evaluates ‘(+ number
-(triangle-using-cond (1- number)))’ if the number is greater than 1.
+In dit voorbeeld geeft de ‘cond’ 0 terug wanneer het getal kleiner of
+gelijk aan 0 is, het geeft 1 terug wanneer het getal 1 is, en het
+evalueert ‘(+ getal (driehoek-met-cond (1- getal)))’ wanneer het getal
+groter dan 1 is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Recursieve patronen,  Next: Geen uitstel,  Prev: Recursie met cond,  Up: Recursie
@@ -9577,88 +9582,90 @@ and this provides a sense of its primal capabilities.
 
 * Menu:
 
-* Every::                    Every
-* Accumulate::               Accumulate
+* Elke::                     Elke
+* Accumuleren::              Accumuleren
 * Bewaar::                   Bewaar
 
 
-File: emacs-lisp-intro-nl.info,  Node: Every,  Next: Accumulate,  Up: Recursieve patronen
+File: emacs-lisp-intro-nl.info,  Node: Elke,  Next: Accumuleren,  Up: Recursieve patronen
 
-Recursief patroon: _every_
-..........................
+Recursief patroon: _elke_
+.........................
 
-In the ‘every’ recursive pattern, an action is performed on every
-element of a list.
+In het ‘elke’ recursieve patroon wordt een actie uitgevoerd op elk
+element van de lijst.
 
-   The basic pattern is:
+   Het basispatroon is:
 
-   • If a list be empty, return ‘nil’.
+   • Als een lijst leeg is, geef ‘nil’ terug.
    • Else, act on the beginning of the list (the CAR of the list)
         − through a recursive call by the function on the rest (the CDR)
           of the list,
         − and, optionally, combine the acted-on element, using ‘cons’,
           with the results of acting on the rest.
 
-   Here is an example:
+   Hier is een voorbeeld:
 
-     (defun square-each (numbers-list)
-       "Square each of a NUMBERS LIST, recursively."
-       (if (not numbers-list)                ; do-again-test
+     (defun kwadrateer-elke (getallen-lijst)
+       "Kwadrateer elk van een GETALLEN Lijst, recursief."
+       (if (not getallen-lijst)                ; doe-opnieuw-test
            nil
          (cons
-          (* (car numbers-list) (car numbers-list))
-          (square-each (cdr numbers-list))))) ; next-step-expression
+          (* (car getallen-lijst) (car getallen-lijst))
+          (kwadrateer-elke (cdr getallen-lijst))))) ; volgende-stap-expressie
 
-     (square-each '(1 2 3))
+     (kwadrateer-elke '(1 2 3))
          ⇒ (1 4 9)
 
-If ‘numbers-list’ is empty, do nothing.  But if it has content,
-construct a list combining the square of the first number in the list
-with the result of the recursive call.
+Wanneer ‘getallen-lijst’ leeg is, doe niets.  Maar als die inhoud heeft,
+construeer een lijst door het kwadraat van het eerste getal te
+combineren met een lijst met het resultaat van de recursieve aanroep.
 
-   (The example follows the pattern exactly: ‘nil’ is returned if the
-numbers' list is empty.  In practice, you would write the conditional so
-it carries out the action when the numbers' list is not empty.)
+   (Het voorbeeld volgt exact dit patroon: ‘nil’ wordt teruggeven
+wanneer de getallen-lijst leeg is.  In de praktijk schrijf je
+conditional zo dat het de actie uitvoert wanneer de lijst met getallen
+niet leeg is.)
 
-   The ‘print-elements-recursively’ function (*note Recursion with a
-List: Recursion with list.) is another example of an ‘every’ pattern,
-except in this case, rather than bring the results together using
-‘cons’, we print each element of output.
+   De functie ‘print-elementen-recursief’ (*note Recursie met een lijst:
+Recursie met lijst.) is een ander voorbeeld van een ‘elke’ patroon,
+behalve vat in dit geval, in plaats van het samenbrengen van de
+resultaten met ‘cons’, we elk output-element tonen.
 
-   The ‘print-elements-recursively’ function looks like this:
+   De functie ‘print-elementen-recursief’ ziet er zo uit:
 
-     (setq animals '(gazelle giraffe lion tiger))
+     (setq dieren '(gazelle giraf leeuw tijger))
 
-     (defun print-elements-recursively (list)
-       "Print each element of LIST on a line of its own.
-     Uses recursion."
-       (when list                            ; do-again-test
-             (print (car list))              ; body
-             (print-elements-recursively     ; recursive call
-              (cdr list))))                  ; next-step-expression
+     (defun print-elementen-recursief (lijst)
+       "Toon elk element van LIJST op een eigen regel.
+     Gebruikt recursie."
+       (when lijst                            ; doe-opnieuw-test
+             (print (car lijst))              ; body
+             (print-elementen-recursief        ; recursieve aanroep
+              (cdr lijst))))                  ; volgende-stap-expressie
 
-     (print-elements-recursively animals)
+     (print-elementen-recursief dieren)
 
-   The pattern for ‘print-elements-recursively’ is:
+   Het patroon voor ‘print-elementen-recursief’ is:
 
-   • When the list is empty, do nothing.
+   • Wanneer de lijst leeg is, doe niets.
    • But when the list has at least one element,
         − act on the beginning of the list (the CAR of the list),
         − and make a recursive call on the rest (the CDR) of the list.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Accumulate,  Next: Bewaar,  Prev: Every,  Up: Recursieve patronen
+File: emacs-lisp-intro-nl.info,  Node: Accumuleren,  Next: Bewaar,  Prev: Elke,  Up: Recursieve patronen
 
-Recursive Pattern: _accumulate_
-...............................
+Recursief patroon: _accumuleren_
+................................
 
-Another recursive pattern is called the ‘accumulate’ pattern.  In the
-‘accumulate’ recursive pattern, an action is performed on every element
-of a list and the result of that action is accumulated with the results
-of performing the action on the other elements.
+Een ander recursief patroon heet het ‘accumuleren’ patroon.  In het
+‘accumuleren’ recursieve patroon wordt een actie uitgevoerd op elk
+element van een lijst en het resultaat van die actie wordt geaccumuleerd
+met de resultaten van het uitvoeren van die actie op de andere
+elementen.
 
-   This is very like the ‘every’ pattern using ‘cons’, except that
-‘cons’ is not used, but some other combiner.
+   Dit lijkt erg op het ‘elke’ patroon met ‘cons’, behalve dat ‘cons’
+niet wordt gebruikt, maar een andere combinerende functie.
 
    Het patroon is:
 
@@ -9669,36 +9676,37 @@ of performing the action on the other elements.
         − a recursive call by the function on the rest (the CDR) of the
           list.
 
-   Here is an example:
+   Hier is een voorbeeld:
 
-     (defun add-elements (numbers-list)
-       "Add the elements of NUMBERS-LIST together."
-       (if (not numbers-list)
+     (defun sommeer-elementen (getallen-lijst)
+       "Tel de elementen van GETALLEN-LIJST bij elkaar op."
+       (if (not getallen-lijst)
            0
-         (+ (car numbers-list) (add-elements (cdr numbers-list)))))
+         (+ (car getallen-lijst) (sommeer-elementen (cdr getallen-lijst)))))
 
-     (add-elements '(1 2 3 4))
+     (sommeer-elementen '(1 2 3 4))
          ⇒ 10
 
-   *Note Making a List of Files: Files List, for an example of the
-accumulate pattern.
+   *Note Een lijst met bestanden maken: Bestandenlijst, voor een uitleg
+van het accumuleren patroon.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Bewaar,  Prev: Accumulate,  Up: Recursieve patronen
+File: emacs-lisp-intro-nl.info,  Node: Bewaar,  Prev: Accumuleren,  Up: Recursieve patronen
 
-Recursive Pattern: _keep_
-.........................
+Recursieve patronen: _bewaren_
+..............................
 
-A third recursive pattern is called the ‘keep’ pattern.  In the ‘keep’
-recursive pattern, each element of a list is tested; the element is
-acted on and the results are kept only if the element meets a criterion.
+Een derde recursief patroon het het ‘bewaren’ patroon.  In het ‘bewaren’
+recursieve patroon wordt elk element van de lijst getest, het element
+wordt behandeld en de resultaten worden alleen bewaard wanneer het
+element aan een criterium voldoet.
 
-   Again, this is very like the ‘every’ pattern, except the element is
-skipped unless it meets a criterion.
+   Opnieuw lijkt dit erg op het ‘elke’ patroon, behalve dat elementen
+worden overgeslagen tenzij ze aan een criterium voldoen.
 
    Het patroon heeft drie elementen:
 
-   • If a list be empty, return ‘nil’.
+   • Als een lijst leeg is, geef ‘nil’ terug.
    • Else, if the beginning of the list (the CAR of the list) passes a
      test
         − act on that element and combine it, using ‘cons’ with
@@ -9710,249 +9718,249 @@ skipped unless it meets a criterion.
         − and, recursively call the function on the rest (the CDR) of
           the list.
 
-   Here is an example that uses ‘cond’:
+   Hier is een voorbeeld met ‘cond’:
 
-     (defun keep-three-letter-words (word-list)
-       "Keep three letter words in WORD-LIST."
+     (defun bewaar-drie-letter-woorden (woorden-lijst)
+       "Bewaar drie-letter woorden in WOORDEN-LIJST."
        (cond
-        ;; First do-again-test: stop-condition
-        ((not word-list) nil)
+        ;; Eerst doe-opnieuw-test: stop-conditie
+        ((not woorden-lijst) nil)
 
-        ;; Second do-again-test: when to act
-        ((eq 3 (length (symbol-name (car word-list))))
-         ;; combine acted-on element with recursive call on shorter list
-         (cons (car word-list) (keep-three-letter-words (cdr word-list))))
+        ;; Tweede doe-opnieuw-test: wanneer te behandelen
+        ((eq 3 (length (symbol-name (car woorden-lijst))))
+         ;; combineer behandelde elementen met recursieve aanroep op kortere lijst
+         (cons (car woorden-lijst) (bewaar-drie-letter-woorden (cdr woorden-lijst))))
 
-        ;; Third do-again-test: when to skip element;
-        ;;   recursively call shorter list with next-step expression
-        (t (keep-three-letter-words (cdr word-list)))))
+        ;; Derde doe-opnieuw-test: wanneer element over te slaan;
+        ;;   recursief aanroepen kortere lijst met volgende-stap-expressie
+        (t (bewaar-drie-letter-woorden (cdr woorden-lijst)))))
 
-     (keep-three-letter-words '(one two three four five six))
-         ⇒ (one two six)
+     (bewaar-drie-letter-woorden '(een twee drie vier vijf zes))
+         ⇒ (een zes)
 
-   It goes without saying that you need not use ‘nil’ as the test for
-when to stop; and you can, of course, combine these patterns.
+   Het spreekt voor zich dat je ‘nil’ als test voor wanneer te stoppen
+niet hoeft te gebruiken, je kunt natuurlijk deze patronen combineren.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Geen uitstel,  Next: Geen uitstel oplossing,  Prev: Recursieve patronen,  Up: Recursie
+File: emacs-lisp-intro-nl.info,  Node: Geen uitstel,  Next: Zonder uitstel oplossing,  Prev: Recursieve patronen,  Up: Recursie
 
-11.3.7 Recursion without Deferments
------------------------------------
+11.3.7 Recursie zonder uitstel
+------------------------------
 
-Let's consider again what happens with the ‘triangle-recursively’
-function.  We will find that the intermediate calculations are deferred
-until all can be done.
+Laten we nog een keer de functie ‘driehoek-recursief’ beschouwen.  We
+zullen zien dat de tussenliggende berekeningen worden uitgesteld tot ze
+allemaal uitgevoerd kunnen worden.
 
-   Here is the function definition:
+   Hier is de functiedefinitie:
 
-     (defun triangle-recursively (number)
-       "Return the sum of the numbers 1 through NUMBER inclusive.
-     Uses recursion."
-       (if (= number 1)                    ; do-again-test
-           1                               ; then-part
-         (+ number                         ; else-part
-            (triangle-recursively          ; recursive call
-             (1- number)))))               ; next-step-expression
+     (defun driehoek-recursief (aantal)
+       "Geef de som van de getallen 1 tot en met AANTAL terug.
+     Met recursie."
+       (if (= aantal 1)                    ; doe-opnieuw-test
+           1                               ; dan-deel
+         (+ aantal                         ; anders-deel
+            (driehoek-recursief            ; recursieve aanroep
+             (1- aantal)))))               ; volgende-stap-expressie
 
-   What happens when we call this function with an argument of 7?
+   Wat gebeurt er wanneer de deze functie met een argument van 7
+aanroepen?
 
-   The first instance of the ‘triangle-recursively’ function adds the
-number 7 to the value returned by a second instance of
-‘triangle-recursively’, an instance that has been passed an argument of
-6.  That is to say, the first calculation is:
+   De eerste instantie van de functie ‘driehoek-recursief’ telt het
+getal 7 bij de waarde die de tweede instantie van ‘driehoek-recursief’
+teruggeeft, een instantie de een argument van 6 krijgt doorgestuurd.
+Dat wil zeggen dat de eerste berekening is:
 
-     (+ 7 (triangle-recursively 6))
+     (+ 7 (driehoek-recursief 6))
 
-The first instance of ‘triangle-recursively’--you may want to think of
-it as a little robot--cannot complete its job.  It must hand off the
-calculation for ‘(triangle-recursively 6)’ to a second instance of the
-program, to a second robot.  This second individual is completely
-different from the first one; it is, in the jargon, a "different
-instantiation".  Or, put another way, it is a different robot.  It is
-the same model as the first; it calculates triangle numbers recursively;
-but it has a different serial number.
+De eerste instantie van ‘driehoek-recursief’--je kunt het zien als een
+kleine robot--kan zijn werk niet afmaken.  Het moet de berekening voor
+‘(driehoek-recursief 6)’ overdragen aan een tweede instantie van het
+programma, aan een tweede robot.  De tweede individu is compleet
+verschillend van het eerste, het is, in het jargon, een "andere
+instantie".  Of, anders gezegd, een andere robot.  Die is hetzelfde
+model als de eerste, maar met een verschillende serienummer.
 
-   And what does ‘(triangle-recursively 6)’ return?  It returns the
-number 6 added to the value returned by evaluating
-‘triangle-recursively’ with an argument of 5.  Using the robot metaphor,
-it asks yet another robot to help it.
+   En wat geeft ‘(driehoek-recursief 6)’ terug?  Het geeft het getal 6
+opgeteld bij de waarde teruggeven door het evalueren van
+‘driehoek-recursief’ met een argument van 5.  Met het robot metafoor,
+het vraagt een andere robot om hulp.
 
-   Now the total is:
+   Nu is het totaal:
 
-     (+ 7 6 (triangle-recursively 5))
+     (+ 7 6 (driehoek-recursief 5))
 
-   And what happens next?
+   En wat gebeurt hierna?
 
-     (+ 7 6 5 (triangle-recursively 4))
+     (+ 7 6 5 (driehoek-recursief 4))
 
-   Each time ‘triangle-recursively’ is called, except for the last time,
-it creates another instance of the program--another robot--and asks it
-to make a calculation.
+   Elke keer dat ‘driehoek-recursief’ wordt aangeroepen, behalve de
+laatste keer, maakt het een nieuwe instantie van het programma--een
+andere robot--en vraagt die een berekening te maken.
 
-   Eventually, the full addition is set up and performed:
+   Uiteindelijk is de volledige berekening opgezet en uitgevoerd:
 
      (+ 7 6 5 4 3 2 1)
 
-   This design for the function defers the calculation of the first step
-until the second can be done, and defers that until the third can be
-done, and so on.  Each deferment means the computer must remember what
-is being waited on.  This is not a problem when there are only a few
-steps, as in this example.  But it can be a problem when there are more
-steps.
+   Dit ontwerp van de functie stelt de berekening van eerste uit tot de
+tweede kan worden gedaan, dan stelt die uit tot de derde kan worden
+gedaan, enzovoorts.  Elk uitstel betekent dat de computer moet onthouden
+waarop gewacht wordt.  Dat is geen probleem wanneer er maar een stappen
+zijn, zoals in dit voorbeeld.  Maar het kan een probleem worden wanneer
+er meer stappen zijn.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Geen uitstel oplossing,  Prev: Geen uitstel,  Up: Recursie
+File: emacs-lisp-intro-nl.info,  Node: Zonder uitstel oplossing,  Prev: Geen uitstel,  Up: Recursie
 
-11.3.8 Geen uitstel oplossing
------------------------------
+11.3.8 Zonder uitstel oplossing
+-------------------------------
 
-The solution to the problem of deferred operations is to write in a
-manner that does not defer operations(1).  This requires writing to a
-different pattern, often one that involves writing two function
-definitions, an initialization function and a helper function.
+De oplossing van het probleem van de uitgestelde operaties is het op een
+manier te schrijven die de operaties niet uitstelt(1).  Dit vereist het
+schrijven volgens een ander patroon, een die vaak het schrijven van twee
+functiedefinities inhoudt, een initialisatiefunctie en een hulpfunctie.
 
-   The initialization function sets up the job; the helper function does
-the work.
+   De initialisatiefunctie zet de klus op, de hulpfunctie doet het werk.
 
-   Here are the two function definitions for adding up numbers.  They
-are so simple, I find them hard to understand.
+   Hier zijn twee functiedefinities voor het optellen van getallen.  Zij
+zijn zo eenvoudig dat ik moeilijk vind ze te begrijpen.
 
-     (defun triangle-initialization (number)
-       "Return the sum of the numbers 1 through NUMBER inclusive.
-     This is the initialization component of a two function
-     duo that uses recursion."
-       (triangle-recursive-helper 0 0 number))
+     (defun driehoek-initialisatie (aantal)
+       "Geef de som van de getallen 1 tot en met AANTAL.
+     Dit is the initialisatiecomponent van een duo van twee functies
+     met recursie ."
+       (driehoek-recursieve-helper 0 0 aantal))
 
-     (defun triangle-recursive-helper (sum counter number)
-       "Return SUM, using COUNTER, through NUMBER inclusive.
-     This is the helper component of a two function duo
-     that uses recursion."
-       (if (> counter number)
-           sum
-         (triangle-recursive-helper (+ sum counter)  ; sum
-                                    (1+ counter)     ; counter
-                                    number)))        ; number
+     (defun driehoek-recursieve-helper (som teller aantal)
+       "Geef SOM terug, met TELLER, tot en met AANTAL.
+     Dit is de hulpcomponent van een duo van twee functies
+     met recursie."
+       (if (> teller aantal)
+           som
+         (driehoek-recursieve-helper (+ som teller) ; som
+                                    (1+ teller)     ; teller
+                                    aantal)))       ; aantal
 
-   Install both function definitions by evaluating them, then call
-‘triangle-initialization’ with 2 rows:
+   Installeer beide functiedefinities door ze te evalueren en roep dan
+‘driehoek-initialisatie’ met twee rijen aan:
 
-     (triangle-initialization 2)
+     (driehoek-initialisatie 2)
          ⇒ 3
 
-   The initialization function calls the first instance of the helper
-function with three arguments: zero, zero, and a number which is the
-number of rows in the triangle.
+   De initialisatiefunctie roept de eerste instantie van de hulpfunctie
+met drie argumenten aan: nul, nul, een getal dat het aantal rijen van de
+driehoek is.
 
-   The first two arguments passed to the helper function are
-initialization values.  These values are changed when
-‘triangle-recursive-helper’ invokes new instances.(2)
+   De eerste twee aan de hulpfunctie doorgegeven argumenten zijn
+initialisatie-waarden.  Deze waarden worden aangepast wanneer
+‘driehoek-recursieve-helper’ nieuwe instanties aanroept.(2)
 
-   Let's see what happens when we have a triangle that has one row.
-(This triangle will have one pebble in it!)
+   Laten we kijken wat gebeurt wanneer we een driehoek met een rij
+hebben.  (Deze driehoek bevat één steentje!)
 
-   ‘triangle-initialization’ will call its helper with the arguments
-‘0 0 1’.  That function will run the conditional test whether ‘(>
-counter number)’:
+   ‘driehoek-initialisatie’ roept zijn hulpfunctie aan met de argumenten
+‘0 0 1’.  Die functie voert de conditionele test uit of ‘(> teller
+aantal)’:
 
      (> 0 1)
 
-and find that the result is false, so it will invoke the else-part of
-the ‘if’ clause:
+een ziet dat het resultaat onwaar is, en dus roept deze het anders-deel
+van de ‘if’ clausule aan:
 
-         (triangle-recursive-helper
-          (+ sum counter)  ; sum plus counter ⇒ sum
-          (1+ counter)     ; increment counter ⇒ counter
-          number)          ; number stays the same
+         (driehoek-recursieve-helper
+          (+ som teller)  ; som plus teller ⇒ som
+          (1+ teller)     ; verhoog teller ⇒ teller
+          aantal)         ; aantal blijft hetzelfde
 
-which will first compute:
+wat eerst uitrekent:
 
-     (triangle-recursive-helper (+ 0 0)  ; sum
-                                (1+ 0)   ; counter
-                                1)       ; number
-which is:
+     (driehoek-recursieve-helper (+ 0 0)  ; som
+                                 (1+ 0)   ; teller
+                                 1)       ; aantal
+wat is:
 
-     (triangle-recursive-helper 0 1 1)
+     driehoek-recursieve-helper 0 1 1
 
-   Again, ‘(> counter number)’ will be false, so again, the Lisp
-interpreter will evaluate ‘triangle-recursive-helper’, creating a new
-instance with new arguments.
+   Opnieuw wordt ‘(> teller aantal)’ onwaar, en opnieuw gaat de Lisp
+interpreter de ‘driehoek-recursieve-helper’ evalueren, en maakt een
+nieuwe instantie met nieuwe argumenten.
 
-   This new instance will be;
+   Deze nieuwe instantie is:
 
-         (triangle-recursive-helper
-          (+ sum counter)  ; sum plus counter ⇒ sum
-          (1+ counter)     ; increment counter ⇒ counter
-          number)          ; number stays the same
+         (driehoek-recursieve-helper
+          (+ som teller)  ; som plus teller ⇒ som
+          (1+ teller)     ; verhoog teller ⇒ teller
+          aantal)         ; aantal blijft hetzelfde
 
-which is:
+wat is:
 
-     (triangle-recursive-helper 1 2 1)
+     (driehoek-recursieve-helper 1 2 1)
 
-   In this case, the ‘(> counter number)’ test will be true!  So the
-instance will return the value of the sum, which will be 1, as expected.
+   In dit geval test de ‘(> teller aantal)’ op waar!  Dus geeft de
+instantie de waarde van de som terug, die 1 is, zoals verwacht.
 
-   Now, let's pass ‘triangle-initialization’ an argument of 2, to find
-out how many pebbles there are in a triangle with two rows.
+   Laten we nu ‘driehoek-initialisatie’ een argument van 2 geven, om te
+ontdekken hoeveel steentjes een driehoek met twee rijen bevat.
 
-   That function calls ‘(triangle-recursive-helper 0 0 2)’.
+   Die functie roept ‘(driehoek-recursieve-helper 0 0 2)’ aan.
 
-   In stages, the instances called will be:
+   In stappen, zijn de aangeroepen instanties:
 
-                               sum counter number
-     (triangle-recursive-helper 0    1       2)
+     (driehoek-recursieve-helper 0    1       2)
 
-     (triangle-recursive-helper 1    2       2)
+     (driehoek-recursieve-helper 1    2       2)
 
-     (triangle-recursive-helper 3    3       2)
+     (driehoek-recursieve-helper 3    3       2)
 
-   When the last instance is called, the ‘(> counter number)’ test will
-be true, so the instance will return the value of ‘sum’, which will be
-3.
+   Wanneer de laatste instantie wordt aangeroepen, test de de ‘(> teller
+aantal)’ op waar, dus de instantie geeft de waarde van ‘som’ terug, die
+3 is.
 
-   This kind of pattern helps when you are writing functions that can
-use many resources in a computer.
+   Dit soort patronen helpt wanneer je functies schrijft die veel
+resources in de computer kunnen gebruiken.
 
    ---------- Footnotes ----------
 
-   (1) The phrase “tail recursive” is used to describe such a process,
-one that uses constant space.
+   (1) De uitdrukking “tail-recursie” wordt gebruikt om zo'n proces te
+beschrijven, een die constante ruimte gebruikt.
 
-   (2) The jargon is mildly confusing: ‘triangle-recursive-helper’ uses
-a process that is iterative in a procedure that is recursive.  The
-process is called iterative because the computer need only record the
-three values, ‘sum’, ‘counter’, and ‘number’; the procedure is recursive
-because the function calls itself.  On the other hand, both the process
-and the procedure used by ‘triangle-recursively’ are called recursive.
-The word "recursive" has different meanings in the two contexts.
+   (2) Het jargon is lichtelijk verwarrend: ‘driehoek-recursieve-helper’
+gebruikt een proces dat iteratief is in een procedure die recursief is.
+Dit proces het iteratief omdat de computer maar die waarden hoeft bij te
+houden: ‘som’, ‘teller’ en ‘aantal’.  De procedure is recursief omdat de
+functie zichzelf aanroept.  Anderzijds worden beide processen en de door
+‘driehoek-recursief’ gebruikte procedure recursief genoemd.  Het woord
+"recursief" heeft verschillende betekenissen in de twee contexten.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Looping oefening,  Prev: Recursie,  Up: Loops en recursie
 
-11.4 Looping Exercise
+11.4 Looping oefening
 =====================
 
-   • Write a function similar to ‘triangle’ in which each row has a
-     value which is the square of the row number.  Use a ‘while’ loop.
+   • Schrijf een functie vergelijkbaar met ‘driehoek’ waar elke rij een
+     waarde heeft die het kwadraat is van het rijnummer.  Gebruik een
+     ‘while’ loop.
 
-   • Write a function similar to ‘triangle’ that multiplies instead of
-     adds the values.
+   • Schrijf een functie vergelijkbaar met ‘driehoek’ die de waarden
+     vermenigvuldigt in plaats van optelt.
 
-   • Rewrite these two functions recursively.  Rewrite these functions
-     using ‘cond’.
+   • Herschrijf deze twee functies recursief.  Herschrijf ze met gebruik
+     van ‘cond’.
 
-   • Write a function for Texinfo mode that creates an index entry at
-     the beginning of a paragraph for every ‘@dfn’ within the paragraph.
-     (In a Texinfo file, ‘@dfn’ marks a definition.  This book is
-     written in Texinfo.)
+   • Schrijf een functie voor Texinfo mode die een index-entry creëert
+     aan het begin van een paragraaf voor elke ‘@dfn’ in die paragraaf.
+     (In een Texinfo bestand, markeert ‘@dfn’ een definitie.  Dit boek
+     is geschreven in Texinfo.)
 
-     Many of the functions you will need are described in two of the
-     previous chapters, *note Cutting and Storing Text: Cutting &
-     Storing Text, and *note Yanking Text Back: Yanking.  If you use
-     ‘forward-paragraph’ to put the index entry at the beginning of the
-     paragraph, you will have to use ‘C-h f’ (‘describe-function’) to
-     find out how to make the command go backwards.
+     Veel van de functies die je nodig hebt zijn beschreven in twee
+     voorgaande hoofdstukken, *note Knippen en opslaan van tekst:
+     Knippen en opslaan van tekst, en *note Tekst terug yanken: Yanking.
+     Wanneer je ‘forward-paragraph’ gebruikt om de index-entry aan het
+     begin van de paragraaf te plaatsten, kun je met ‘C-h f’
+     (‘describe-function’) ontdekken hoe je het commando achterwaarts
+     laat werken.
 
-     For more information, see *note Indicating Definitions:
+     Voor meer informatie, zie *note Indicating Definitions:
      (texinfo)Indicating.
 
 
@@ -12355,7 +12363,7 @@ numbers.
 
 * Data in detail te tonen::  Data in detail te tonen
 * Sorteren::                 Lijsten sorteren
-* Bestanden lijst::          Een lijst van bestanden maken.
+* Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 
 
@@ -12379,7 +12387,7 @@ number, and thereby determine the largest and smallest length range that
 we will need.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Sorteren,  Next: Bestanden lijst,  Prev: Data in detail te tonen,  Up: De data voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Sorteren,  Next: Bestandenlijst,  Prev: Data in detail te tonen,  Up: De data voorbereiden
 
 14.9.1 Sorting Lists
 --------------------
@@ -12426,7 +12434,7 @@ since the expression must be evaluated so as to produce the list that is
 passed to ‘sort’.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Bestanden lijst,  Next: Functiedefinities tellen,  Prev: Sorteren,  Up: De data voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Bestandenlijst,  Next: Functiedefinities tellen,  Prev: Sorteren,  Up: De data voorbereiden
 
 14.9.2 Making a List of Files
 -----------------------------
@@ -12611,7 +12619,7 @@ this:
 1000000000)’, and ‘(1351050967734791805 . 1000000000)’, respectively.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Functiedefinities tellen,  Prev: Bestanden lijst,  Up: De data voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Functiedefinities tellen,  Prev: Bestandenlijst,  Up: De data voorbereiden
 
 14.9.3 Functiedefinities tellen
 -------------------------------
@@ -16635,26 +16643,26 @@ equivalent of ‘multiply-by-seven’ is:
 
 If we want to multiply 3 by 7, we can write:
 
-     (multiply-by-seven 3)
-      \_______________/ ^
-              |         |
-           function  argument
+                         (multiply-by-seven 3)
+                          \_______________/ ^
+                                  |         |
+                               function  argument
 
 This expression returns 21.
 
 Similarly, we can write:
 
-     ((lambda (number) (* 7 number)) 3)
-      \____________________________/ ^
-                    |                |
-           anonymous function     argument
+                   ((lambda (number) (* 7 number)) 3)
+                    \____________________________/ ^
+                                  |                |
+                         anonymous function     argument
 
 If we want to divide 100 by 50, we can write:
 
-     ((lambda (arg) (/ arg 50)) 100)
-      \______________________/  \_/
-                  |              |
-         anonymous function   argument
+                     ((lambda (arg) (/ arg 50)) 100)
+                      \______________________/  \_/
+                                  |              |
+                         anonymous function   argument
 
 This expression returns 2.  The 100 is passed to the function, which
 divides that number by 50.
@@ -17526,7 +17534,7 @@ Index
                                                               (line   6)
 * aanroepen gedefinieerd:                Van buffer verwisselen.
                                                               (line  56)
-* Accumulate, type of recursive pattern: Accumulate.          (line   6)
+* Accumuleren, type recursief patroon:   Accumuleren.         (line   6)
 * add-hook:                              Tekst en auto-fill.  (line  54)
 * and:                                   kill-new functie.    (line 211)
 * and <1>:                               fwd-para let.        (line  65)
@@ -17552,6 +17560,7 @@ Index
 * Axis, print horizontal:                print-X-axis.        (line   6)
 * Axis, print vertical:                  print-Y-axis.        (line   6)
 * beginning-of-buffer:                   beginning-of-buffer. (line   6)
+* Bewaren, type recursief patroon:       Bewaar.              (line   6)
 * Bibliotheek als term voor "bestand":   Meer vinden.         (line  42)
 * bind gedefinieerd:                     setq.                (line   6)
 * Binding, dynamisch:                    Lexical en dynamische binding verschillen.
@@ -17574,7 +17583,6 @@ Index
 * Buffergrootte <1>:                     Buffer grootte en locatie.
                                                               (line   6)
 * Bug, most insidious type:              Een andere bug.      (line   6)
-* Building robots:                       Robots bouwen.       (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
 * C-taal primitieven:                    Primitieve functies. (line   6)
 * C, een uitweiding naar:                Uitwijding naar C.   (line   6)
@@ -17596,7 +17604,7 @@ Index
 * Conditional 'twixt two versions of Emacs: Eenvoudige uitbreiding.
                                                               (line  35)
 * Conditioneel met if:                   if.                  (line   6)
-* cons-cel:                              Lijsten uitgetekend. (line  98)
+* cons-cel:                              Lijsten uitgetekend. (line  97)
 * cons, geïntroduceerd:                  cons.                (line   6)
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
@@ -17626,7 +17634,6 @@ Index
 * default.el init file:                  Site-wide init.      (line   6)
 * defconst:                              defcustom.           (line 127)
 * defcustom:                             defcustom.           (line   6)
-* Deferment in recursion:                Geen uitstel.        (line   6)
 * Definitie installatie:                 Installeer.          (line   6)
 * Definitie schrijven:                   Defuns schrijven.    (line   6)
 * Definitie, hoe te wijzigen:            Een defun wijzigen.  (line   6)
@@ -17644,11 +17651,13 @@ Index
 * describe-function:                     versimpelde-beginning-of-buffer.
                                                               (line  80)
 * describe-function, geïntroduceerd:     Meer vinden.         (line   6)
-* directory-files:                       Bestanden lijst.     (line  12)
+* directory-files:                       Bestandenlijst.      (line  12)
 * dolist:                                dolist.              (line   6)
 * dotimes:                               dotimes.             (line   6)
-* dotted pair:                           Lijsten uitgetekend. (line  98)
+* dotted pair:                           Lijsten uitgetekend. (line  97)
 * Draai een programma:                   Draai een programma. (line   6)
+* driehoek-recursief:                    Recursieve driehoek functie.
+                                                              (line   6)
 * Duplicated words function:             de-de.               (line   6)
 * Dynamische binding:                    Lexical en dynamische binding verschillen.
                                                               (line  16)
@@ -17660,6 +17669,7 @@ Index
 * Een variabele initialiseren:           defvar.              (line   6)
 * Eigenschappen, vermelding van buffer-substring-no-properties: versmal oefening.
                                                               (line  13)
+* Elke, soort van recursief patroon:     Elke.                (line   6)
 * Else:                                  else.                (line   6)
 * Emacs version, choosing:               Eenvoudige uitbreiding.
                                                               (line  35)
@@ -17677,11 +17687,10 @@ Index
                                                               (line   6)
 * Evaluatiepraktijk:                     Oefenen van evaluatie.
                                                               (line   6)
-* Every, soort van recursief patroon:    Every.               (line   6)
 * expressie gedefinieerd:                Lisp atomen.         (line  27)
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                               (line   6)
-* files-in-below-directory:              Bestanden lijst.     (line  25)
+* files-in-below-directory:              Bestandenlijst.      (line  25)
 * fill-column, een voorbeeldvariabele:   fill-column voorbeeld.
                                                               (line   6)
 * filter-buffer-substring:               last-command en this-command.
@@ -17704,8 +17713,6 @@ Index
                                                               (line  39)
 * gebogen aanhalingstekens <1>:          Complete zap-to-char.
                                                               (line  39)
-* Geen uitstel oplossing:                Geen uitstel oplossing.
-                                                              (line   6)
 * Genereer een foutmelding:              Fouten maken.        (line   6)
 * Global set key:                        Key bindings.        (line  82)
 * global variable defined:               Het element vaststellen.
@@ -17746,7 +17753,6 @@ Index
 * interactive, voorbeeld gebruik van:    insert-buffer interactief.
                                                               (line   6)
 * Interpreter, Lisp, uitgelegd:          Draai een programma. (line  39)
-* Keep, type of recursive pattern:       Bewaar.              (line   6)
 * Key bindings, fixing:                  Diverse.             (line  88)
 * Key setting globally:                  Key bindings.        (line  18)
 * Key unbinding:                         Key bindings.        (line  58)
@@ -17838,10 +17844,12 @@ Index
 * nthcdr, voorbeeld:                     kill-new functie.    (line 149)
 * number-to-string:                      Y-as element.        (line  12)
 * occur:                                 Key bindings.        (line  52)
+* Onderdelen van een recursieve definitie: Recursive definitie onderdelen.
+                                                              (line   6)
 * Ongeïnitialiseerde let variabelen:     Niet-geïnitialiseerde let variabelen.
                                                               (line   6)
 * Onwaarheid en waar in Emacs Lisp:      Waar en onwaarheid.  (line   6)
-* Oplossing zonder uitstel:              Geen uitstel oplossing.
+* Oplossing zonder uitstel:              Zonder uitstel oplossing.
                                                               (line   6)
 * Opties voor interactive:               Interactieve opties. (line   6)
 * optionall:                             Optionele argumenten.
@@ -17851,8 +17859,6 @@ Index
 * or:                                    Voeg or in.          (line  13)
 * other-buffer:                          Buffers pakken.      (line   6)
 * Paragraphs, movement by:               Regexp zoeken.       (line   6)
-* Parts of a Recursive Definition:       Recursive definitie onderdelen.
-                                                              (line   6)
 * Patronen, zoeken naar:                 Regexp zoeken.       (line   6)
 * Per-buffer, local variables list:      Tekst en auto-fill.  (line  22)
 * Permanente code installatie:           Permanent installeren.
@@ -17868,9 +17874,9 @@ Index
 * Primitieven geschreven in C:           Primitieve functies. (line   6)
 * Print horizontal axis:                 print-X-axis.        (line   6)
 * Print vertical axis:                   print-Y-axis.        (line   6)
+* print-elementen-recursief:             Recursie met lijst.  (line  21)
 * print-elements-of-list:                print-elements-of-list.
                                                               (line   6)
-* print-elements-recursively:            Recursie met lijst.  (line  23)
 * print-graph Final version.:            De finale versie.    (line  75)
 * print-graph varlist:                   print-graph varlist. (line   6)
 * print-X-axis:                          X-as tic marks.      (line 146)
@@ -17894,13 +17900,13 @@ Index
 * Rebinding keys:                        Keymaps.             (line   6)
 * Recursie:                              Recursie.            (line   6)
 * Recursie en loops:                     Loops en recursie.   (line   6)
+* Recursie zonder uitstel:               Geen uitstel.        (line   6)
+* Recursief patroon - accumuleren:       Accumuleren.         (line   6)
 * Recursieve patronen:                   Recursieve patronen. (line   6)
-* Recursion without Deferments:          Geen uitstel.        (line   6)
+* Recursieve patronen - bewaren:         Bewaar.              (line   6)
 * Recursive definitie onderdelen:        Recursive definitie onderdelen.
                                                               (line   6)
-* Recursive pattern - accumulate:        Accumulate.          (line   6)
-* Recursive pattern - every:             Every.               (line   6)
-* Recursive pattern - keep:              Bewaar.              (line   6)
+* Recursive pattern - elke:              Elke.                (line   6)
 * recursive-count-words:                 recursive-count-words.
                                                               (line 258)
 * recursive-graph-body-print:            recursive-graph-body-print.
@@ -17919,7 +17925,8 @@ Index
                                                               (line 115)
 * Ring, making a list like a:            Killring.            (line   6)
 * ring.el file:                          ring bestand.        (line   6)
-* Robots, building:                      Robots bouwen.       (line   6)
+* Robots bouwen:                         Robots bouwen.       (line   6)
+* Robots, bouwen:                        Robots bouwen.       (line   6)
 * save-excursion:                        save-excursion.      (line   6)
 * save-restriction:                      save-restriction.    (line   6)
 * Schrijven van een functiedefinitie:    Defuns schrijven.    (line   6)
@@ -17982,9 +17989,8 @@ Index
 * top-of-ranges:                         Functiedefinities tellen.
                                                               (line  20)
 * triangle-bugged:                       debug.               (line  14)
-* triangle-recursively:                  Recursieve driehoek functie.
-                                                              (line   6)
 * Typen van data:                        Data typen.          (line   6)
+* Uitstel in recursie:                   Geen uitstel.        (line   6)
 * Uitwijding naar C:                     Uitwijding naar C.   (line   6)
 * Unbinding key:                         Key bindings.        (line  58)
 * Variabel aantal argumenten:            Variabel aantal argumenten.
@@ -18046,6 +18052,8 @@ Index
                                                               (line  40)
 * zij-effect gedefinieerd:               Hoe de interpreter werkt.
                                                               (line  16)
+* Zonder uitstel oplossing:              Zonder uitstel oplossing.
+                                                              (line   6)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Over de auteur,  Prev: Index,  Up: Top
@@ -18069,321 +18077,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24381
-Node: Waarom25844
-Node: Over het lezen van deze tekst26507
-Node: Doelgroep28847
-Node: Geschiedenis van Lisp31850
-Node: Opmerking voor beginners32754
-Node: Dank35505
-Node: Lijsten verwerken36100
-Ref: Lijsten verwerken-Footnote-137556
-Node: Lisp lijsten37712
-Node: Genummerde lijsten38642
-Node: Lisp atomen39811
-Node: Whitespace in lijsten43725
-Node: Typen van lijsten45077
-Node: Draai een programma46298
-Ref: Draai een programma-Footnote-148851
-Node: Fouten maken48995
-Node: Namen en definities54198
-Node: Lisp interpreter56154
-Node: Complicaties57378
-Node: Byte compiling59627
-Node: Evaluatie60756
-Node: Hoe de interpreter werkt61387
-Node: Geneste lijsten evalueren62760
-Node: Variabelen65448
-Node: fill-column voorbeeld67064
-Node: Void functie68751
-Node: Void variabele70034
-Node: Argumenten71960
-Ref: Argumenten-Footnote-173766
-Node: Data typen74638
-Node: Argumenten als variabele of als lijst76875
-Node: Variabel aantal argumenten78616
-Node: Verkeerde type argument79512
-Ref: Verkeerde type argument-Footnote-183305
-Node: message83380
-Ref: message-Footnote-187602
-Node: setq87807
-Node: Setq gebruiken88532
-Node: Tellen91766
-Node: Samenvatting93828
-Node: Foutmelding oefeningen95831
-Node: Oefenen van evaluatie96387
-Node: Hoe te evalueren97614
-Node: Buffer namen99208
-Node: Buffers pakken105279
-Ref: Buffers pakken-Footnote-1107968
-Node: Van buffer verwisselen108218
-Ref: Van buffer verwisselen-Footnote-1111809
-Ref: Van buffer verwisselen-Footnote-2112151
-Node: Buffer grootte en locatie112905
-Node: Evaluatie oefening115119
-Node: Defuns schrijven115403
-Node: Primitieve functies116696
-Node: defun117931
-Node: Installeer124795
-Node: Effect van installatie126232
-Node: Een defun wijzigen127159
-Node: Interactief129039
-Node: Interactieve vermenigvuldig-met-zeven130222
-Node: vermenigvuldig-met-zeven in detail132352
-Node: Interactieve opties135205
-Node: Permanent installeren138567
-Node: let140878
-Node: Voorkom verwarring142470
-Ref: Voorkom verwarring-Footnote-1144735
-Node: Delen van een let expressie144879
-Node: Voorbeeld let expressie146594
-Ref: Voorbeeld let expressie-Footnote-1148416
-Node: Niet-geïnitialiseerde let variabelen148671
-Node: Hoe let variabelen bindt150445
-Node: Lexical en dynamische binding verschillen151783
-Node: Lexical vs dynamische binding voorbeeld153700
-Node: if155771
-Node: if in meer detail156717
-Node: type-dier in detail159530
-Node: else162180
-Node: Waar en onwaarheid165141
-Node: nil uitgelegd166150
-Node: save-excursion168347
-Node: Point en mark169123
-Node: Template voor save-excursion172232
-Node: Terugblik173520
-Node: defun oefeningen181563
-Node: Buffer rondleiding182036
-Node: Meer vinden183210
-Ref: Meer vinden-Footnote-1186224
-Node: versimpelde-beginning-of-buffer186441
-Node: mark-whole-buffer190938
-Node: mark-whole-buffer overzicht191812
-Node: Body van mark-whole-buffer193184
-Node: append-to-buffer196249
-Node: append-to-buffer overzicht196976
-Node: append interactief199775
-Node: append-to-buffer body202352
-Node: append save-excursion204540
-Ref: let* geïntroduceerd206334
-Node: Buffer gerelateerde terugblik210025
-Node: Buffer oefeningen212428
-Node: Meer complex212953
-Node: copy-to-buffer214052
-Ref: copy-to-buffer-Footnote-1216861
-Node: insert-buffer217080
-Node: insert-buffer code218539
-Node: insert-buffer interactief219548
-Node: Read-only buffer220098
-Node: b for interactief220742
-Node: insert-buffer body221868
-Node: if en or223087
-Node: Voeg or in226230
-Node: Voeg let in228565
-Node: Nieuwe insert-buffer232411
-Node: beginning-of-buffer233632
-Node: Optionele argumenten235282
-Node: beginning-of-buffer opt arg238925
-Node: Ontrafelen beginning-of-buffer239947
-Node: In geval van een groot buffer241303
-Node: In geval van een klein buffer243951
-Node: beginning-of-buffer compleet245729
-Node: Tweede buffer gerelateerde terugblik248773
-Node: optionele oefening250738
-Node: Versmallen en verbreden251262
-Node: Voordelen van versmallen251968
-Node: save-restriction253949
-Node: what-line256070
-Node: versmal oefening260521
-Node: car cdr en cons261569
-Node: Vreemde namen262755
-Node: car en cdr263477
-Node: cons268210
-Node: Bouw een lijst269299
-Ref: Bouw een lijst-Footnote-1270927
-Node: length271133
-Node: nthcdr272744
-Node: nth275854
-Node: setcar277375
-Node: setcdr280356
-Node: cons oefening282028
-Node: Knippen en opslaan van tekst282447
-Node: Tekst opslaan283863
-Node: zap-to-char285982
-Node: Complete zap-to-char286594
-Node: zap-to-char interactief288960
-Node: zap-to-char body290546
-Node: search-forward292095
-Node: progn295248
-Node: Samenvatting zap-to-char297063
-Node: kill-region298219
-Node: Complete kill-region299217
-Node: condition-case303628
-Node: Lisp macro306199
-Node: copy-region-as-kill308832
-Node: Complete copy-region-as-kill309775
-Node: copy-region-as-kill body312621
-Node: last-command en this-command313762
-Node: kill-append functie316100
-Node: kill-new functie320375
-Node: Uitwijding naar C331353
-Node: defvar336896
-Node: Inzien huidige variabele waarde338774
-Node: defvar en asterisk340736
-Node: cons en search-fwd terugblik342790
-Node: zoek oefening345969
-Node: Implementatie van lijsten346772
-Node: Lijsten uitgetekend348008
-Node: Symbolen als ladekast354374
-Node: Lijst oefening356425
-Node: Yanking356791
-Node: Killring overzicht358186
-Node: kill-ring-yank-pointer359998
-Node: yank nthcdr oefeningen362482
-Node: Loops en recursie363227
-Ref: Loops en recursie-Footnote-1364423
-Node: while364944
-Node: Looping met while366376
-Node: Loop voorbeeld368314
-Node: print-elements-of-list372016
-Node: Incrementele loop374602
-Node: Incrementele loop details375234
-Node: Incrementeel voorbeeld376707
-Node: Inc voorbeeld onderdelen379283
-Node: inc voorbeeld samengesteld383423
-Node: Decrementele loop387025
-Node: Decerementeel voorbeeld388497
-Node: Dec voorbeeld onderdelen390089
-Node: Dec voorbeeld samengesteld392170
-Node: dolist dotimes394446
-Node: dolist395277
-Node: dotimes398456
-Node: Recursie400003
-Node: Robots bouwen401215
-Node: Recursive definitie onderdelen402922
-Node: Recursie met lijst405360
-Node: Recursieve driehoek functie408952
-Node: Recursief voorbeeld arg van 1 of 2410328
-Node: Recursief voorbeeld arg van 3 of 4412608
-Node: Recursie met cond415654
-Node: Recursieve patronen418042
-Node: Every418535
-Node: Accumulate420989
-Node: Bewaar422282
-Node: Geen uitstel424192
-Node: Geen uitstel oplossing426896
-Ref: Geen uitstel oplossing-Footnote-1430869
-Ref: Geen uitstel oplossing-Footnote-2430975
-Node: Looping oefening431486
-Node: Regexp zoeken432723
-Node: sentence-end434783
-Node: re-search-forward438700
-Node: forward-sentence441246
-Node: Complete forward-sentence442012
-Node: fwd-sentence while loops445564
-Node: fwd-sentence re-search449213
-Node: forward-paragraph451381
-Node: forward-paragraph in het kort453197
-Node: fwd-para let454667
-Node: fwd-para while461347
-Node: Regexp terugblik469929
-Node: re-search oefeningen472385
-Node: Woorden tellen473171
-Node: Waarom woorden tellen473929
-Node: count-words-example474975
-Node: Ontwerp count-words-example476259
-Node: Wiite ruimte bug482802
-Node: recursive-count-words492395
-Node: Tellen voorbeeld504476
-Node: Woorden in een defun504857
-Node: Verdeel en heers506598
-Node: Woorden en symbolen507829
-Node: Syntax509899
-Node: count-words-in-defun513535
-Node: Enkele defuns519832
-Node: Een bestand vinden522224
-Node: lengths-list-file524866
-Node: Enkele bestanden530142
-Node: lengths-list-many-files530903
-Node: append533693
-Node: Enkele bestanden recursief534330
-Node: De data voorbereiden537170
-Node: Data in detail te tonen538299
-Node: Sorteren539223
-Node: Bestanden lijst540902
-Ref: Bestanden lijst-Footnote-1548435
-Node: Functiedefinities tellen548652
-Node: Een grafiek klaarmaken557979
-Node: Kolommen van een grafiek559308
-Node: graph-body-print572947
-Node: recursive-graph-body-print577752
-Node: Afgedrukte assen580442
-Node: Lijngrafiek oefening581189
-Node: Initialisatie van Emacs581396
-Node: Default configuratie582890
-Ref: Default configuratie-Footnote-1584874
-Node: Site-wide init585190
-Node: defcustom587252
-Node: Een init bestand beginnen593137
-Node: Tekst en auto-fill595533
-Ref: Tekst en auto-fill-Footnote-1599549
-Ref: Tekst en auto-fill-Footnote-2599833
-Node: Mail aliasen600094
-Node: Indent Tabs Mode601020
-Node: Key bindings601965
-Node: Keymaps606739
-Node: Bestanden laden609399
-Node: Autoload612681
-Node: Eenvoudige uitbreiding615569
-Ref: Eenvoudige uitbreiding-Footnote-1618134
-Node: X11 kleuren618423
-Ref: X11 kleuren-Footnote-1620241
-Node: Diverse620395
-Node: Mode line624617
-Node: Debuggen.630153
-Node: debug631049
-Node: debug-on-entry634181
-Node: debug-on-quit637786
-Node: edebug638823
-Node: Debuggen oefeningen642945
-Node: Conclusie644710
-Node: de-de650068
-Node: Killring652858
-Node: Wat de killring doet653675
-Node: current-kill655193
-Node: Code voor current-kill655891
-Node: current-kill begrijpen658723
-Node: Body van current-kill659523
-Node: Uitwijding over fout662674
-Node: Het element vaststellen663849
-Node: yank667554
-Node: yank-pop670768
-Node: ring bestand673303
-Node: Volledige grafiek673680
-Node: Gelabeld voorbeeld674520
-Node: print-graph varlist676517
-Node: print-Y-axis678240
-Node: print-Y-axis in detail679093
-Node: Hoogte van label679903
-Node: Bereken het restant681920
-Node: Y-as element685786
-Node: Y-axis-column689549
-Node: print-Y-axis enalaatste691161
-Node: print-X-axis693146
-Node: Overeenkomsten verschillen694464
-Node: X-as tic marks695297
-Node: De gehele grafiek afdrukken702300
-Node: De finale versie703416
-Node: Test print-graph707671
-Node: Woorden in defuns grafisch weergeven709355
-Node: lambda711979
-Node: mapcar713660
-Node: Een andere bug715720
-Node: Finale afgedrukte grafiek721249
-Node: Vrije software en vrije handleidingen722200
-Node: GNU Free Documentation License728516
-Node: Index753705
-Node: Over de auteur792608
+Node: Voorwoord24384
+Node: Waarom25847
+Node: Over het lezen van deze tekst26510
+Node: Doelgroep28850
+Node: Geschiedenis van Lisp31853
+Node: Opmerking voor beginners32757
+Node: Dank35509
+Node: Lijsten verwerken36104
+Ref: Lijsten verwerken-Footnote-137560
+Node: Lisp lijsten37716
+Node: Genummerde lijsten38646
+Node: Lisp atomen39815
+Node: Whitespace in lijsten43729
+Node: Typen van lijsten45081
+Node: Draai een programma46302
+Ref: Draai een programma-Footnote-148855
+Node: Fouten maken48999
+Node: Namen en definities54202
+Node: Lisp interpreter56158
+Node: Complicaties57382
+Node: Byte compiling59631
+Node: Evaluatie60760
+Node: Hoe de interpreter werkt61391
+Node: Geneste lijsten evalueren62764
+Node: Variabelen65452
+Node: fill-column voorbeeld67068
+Node: Void functie68755
+Node: Void variabele70038
+Node: Argumenten71964
+Ref: Argumenten-Footnote-173770
+Node: Data typen74642
+Node: Argumenten als variabele of als lijst76879
+Node: Variabel aantal argumenten78620
+Node: Verkeerde type argument79516
+Ref: Verkeerde type argument-Footnote-183309
+Node: message83384
+Ref: message-Footnote-187606
+Node: setq87811
+Node: Setq gebruiken88536
+Node: Tellen91770
+Node: Samenvatting93832
+Node: Foutmelding oefeningen95835
+Node: Oefenen van evaluatie96391
+Node: Hoe te evalueren97618
+Node: Buffer namen99212
+Node: Buffers pakken105283
+Ref: Buffers pakken-Footnote-1107972
+Node: Van buffer verwisselen108222
+Ref: Van buffer verwisselen-Footnote-1111813
+Ref: Van buffer verwisselen-Footnote-2112155
+Node: Buffer grootte en locatie112909
+Node: Evaluatie oefening115123
+Node: Defuns schrijven115407
+Node: Primitieve functies116700
+Node: defun117935
+Node: Installeer124799
+Node: Effect van installatie126236
+Node: Een defun wijzigen127163
+Node: Interactief129043
+Node: Interactieve vermenigvuldig-met-zeven130226
+Node: vermenigvuldig-met-zeven in detail132356
+Node: Interactieve opties135209
+Node: Permanent installeren138571
+Node: let140882
+Node: Voorkom verwarring142474
+Ref: Voorkom verwarring-Footnote-1144739
+Node: Delen van een let expressie144883
+Node: Voorbeeld let expressie146598
+Ref: Voorbeeld let expressie-Footnote-1148420
+Node: Niet-geïnitialiseerde let variabelen148675
+Node: Hoe let variabelen bindt150449
+Node: Lexical en dynamische binding verschillen151787
+Node: Lexical vs dynamische binding voorbeeld153704
+Node: if155775
+Node: if in meer detail156721
+Node: type-dier in detail159534
+Node: else162184
+Node: Waar en onwaarheid165145
+Node: nil uitgelegd166154
+Node: save-excursion168351
+Node: Point en mark169127
+Node: Template voor save-excursion172236
+Node: Terugblik173524
+Node: defun oefeningen181567
+Node: Buffer rondleiding182040
+Node: Meer vinden183214
+Ref: Meer vinden-Footnote-1186229
+Node: versimpelde-beginning-of-buffer186446
+Node: mark-whole-buffer190950
+Node: mark-whole-buffer overzicht191824
+Node: Body van mark-whole-buffer193196
+Node: append-to-buffer196261
+Node: append-to-buffer overzicht196988
+Node: append interactief199790
+Node: append-to-buffer body202366
+Node: append save-excursion204553
+Ref: let* geïntroduceerd206350
+Node: Buffer gerelateerde terugblik210039
+Node: Buffer oefeningen212442
+Node: Meer complex212967
+Node: copy-to-buffer214066
+Ref: copy-to-buffer-Footnote-1216875
+Node: insert-buffer217094
+Node: insert-buffer code218553
+Node: insert-buffer interactief219562
+Node: Read-only buffer220112
+Node: b for interactief220756
+Node: insert-buffer body221882
+Node: if en or223101
+Node: Voeg or in226244
+Node: Voeg let in228579
+Node: Nieuwe insert-buffer232425
+Node: beginning-of-buffer233646
+Node: Optionele argumenten235296
+Node: beginning-of-buffer opt arg238939
+Node: Ontrafelen beginning-of-buffer239961
+Node: In geval van een groot buffer241317
+Node: In geval van een klein buffer243965
+Node: beginning-of-buffer compleet245743
+Node: Tweede buffer gerelateerde terugblik248787
+Node: optionele oefening250752
+Node: Versmallen en verbreden251276
+Node: Voordelen van versmallen251982
+Node: save-restriction253963
+Node: what-line256084
+Node: versmal oefening260535
+Node: car cdr en cons261583
+Node: Vreemde namen262769
+Node: car en cdr263491
+Node: cons268224
+Node: Bouw een lijst269313
+Ref: Bouw een lijst-Footnote-1270941
+Node: length271147
+Node: nthcdr272758
+Node: nth275868
+Node: setcar277389
+Node: setcdr280370
+Node: cons oefening282042
+Node: Knippen en opslaan van tekst282461
+Node: Tekst opslaan283877
+Node: zap-to-char285996
+Node: Complete zap-to-char286608
+Node: zap-to-char interactief288974
+Node: zap-to-char body290560
+Node: search-forward292109
+Node: progn295262
+Node: Samenvatting zap-to-char297077
+Node: kill-region298233
+Node: Complete kill-region299231
+Node: condition-case303642
+Node: Lisp macro306213
+Node: copy-region-as-kill308846
+Node: Complete copy-region-as-kill309789
+Node: copy-region-as-kill body312635
+Node: last-command en this-command313776
+Node: kill-append functie316114
+Node: kill-new functie320389
+Node: Uitwijding naar C331367
+Node: defvar336910
+Node: Inzien huidige variabele waarde338788
+Node: defvar en asterisk340750
+Node: cons en search-fwd terugblik342804
+Node: zoek oefening345983
+Node: Implementatie van lijsten346786
+Node: Lijsten uitgetekend348022
+Node: Symbolen als ladekast354511
+Node: Lijst oefening356626
+Node: Yanking356992
+Node: Killring overzicht358387
+Node: kill-ring-yank-pointer360199
+Node: yank nthcdr oefeningen362707
+Node: Loops en recursie363452
+Ref: Loops en recursie-Footnote-1364648
+Node: while365169
+Node: Looping met while366601
+Node: Loop voorbeeld368539
+Node: print-elements-of-list372241
+Node: Incrementele loop374827
+Node: Incrementele loop details375459
+Node: Incrementeel voorbeeld376932
+Node: Inc voorbeeld onderdelen379508
+Node: inc voorbeeld samengesteld383648
+Node: Decrementele loop387250
+Node: Decerementeel voorbeeld388722
+Node: Dec voorbeeld onderdelen390314
+Node: Dec voorbeeld samengesteld392395
+Node: dolist dotimes394671
+Node: dolist395502
+Node: dotimes398678
+Node: Recursie400225
+Node: Robots bouwen401437
+Node: Recursive definitie onderdelen403242
+Node: Recursie met lijst405888
+Node: Recursieve driehoek functie409556
+Node: Recursief voorbeeld arg van 1 of 2410934
+Node: Recursief voorbeeld arg van 3 of 4413199
+Node: Recursie met cond416403
+Node: Recursieve patronen418847
+Node: Elke419340
+Node: Accumuleren421900
+Node: Bewaar423280
+Node: Geen uitstel425348
+Node: Zonder uitstel oplossing428072
+Ref: Zonder uitstel oplossing-Footnote-1432034
+Ref: Zonder uitstel oplossing-Footnote-2432158
+Node: Looping oefening432681
+Node: Regexp zoeken434000
+Node: sentence-end436060
+Node: re-search-forward439977
+Node: forward-sentence442523
+Node: Complete forward-sentence443289
+Node: fwd-sentence while loops446841
+Node: fwd-sentence re-search450490
+Node: forward-paragraph452658
+Node: forward-paragraph in het kort454474
+Node: fwd-para let455944
+Node: fwd-para while462624
+Node: Regexp terugblik471206
+Node: re-search oefeningen473662
+Node: Woorden tellen474448
+Node: Waarom woorden tellen475206
+Node: count-words-example476252
+Node: Ontwerp count-words-example477536
+Node: Wiite ruimte bug484079
+Node: recursive-count-words493672
+Node: Tellen voorbeeld505753
+Node: Woorden in een defun506134
+Node: Verdeel en heers507875
+Node: Woorden en symbolen509106
+Node: Syntax511176
+Node: count-words-in-defun514812
+Node: Enkele defuns521109
+Node: Een bestand vinden523501
+Node: lengths-list-file526143
+Node: Enkele bestanden531419
+Node: lengths-list-many-files532180
+Node: append534970
+Node: Enkele bestanden recursief535607
+Node: De data voorbereiden538447
+Node: Data in detail te tonen539576
+Node: Sorteren540500
+Node: Bestandenlijst542178
+Ref: Bestandenlijst-Footnote-1549710
+Node: Functiedefinities tellen549927
+Node: Een grafiek klaarmaken559253
+Node: Kolommen van een grafiek560582
+Node: graph-body-print574221
+Node: recursive-graph-body-print579026
+Node: Afgedrukte assen581716
+Node: Lijngrafiek oefening582463
+Node: Initialisatie van Emacs582670
+Node: Default configuratie584164
+Ref: Default configuratie-Footnote-1586148
+Node: Site-wide init586464
+Node: defcustom588526
+Node: Een init bestand beginnen594411
+Node: Tekst en auto-fill596807
+Ref: Tekst en auto-fill-Footnote-1600823
+Ref: Tekst en auto-fill-Footnote-2601107
+Node: Mail aliasen601368
+Node: Indent Tabs Mode602294
+Node: Key bindings603239
+Node: Keymaps608013
+Node: Bestanden laden610673
+Node: Autoload613955
+Node: Eenvoudige uitbreiding616843
+Ref: Eenvoudige uitbreiding-Footnote-1619408
+Node: X11 kleuren619697
+Ref: X11 kleuren-Footnote-1621515
+Node: Diverse621669
+Node: Mode line625891
+Node: Debuggen.631427
+Node: debug632323
+Node: debug-on-entry635455
+Node: debug-on-quit639060
+Node: edebug640097
+Node: Debuggen oefeningen644219
+Node: Conclusie645984
+Node: de-de651342
+Node: Killring654132
+Node: Wat de killring doet654949
+Node: current-kill656467
+Node: Code voor current-kill657165
+Node: current-kill begrijpen659997
+Node: Body van current-kill660797
+Node: Uitwijding over fout663948
+Node: Het element vaststellen665123
+Node: yank668828
+Node: yank-pop672042
+Node: ring bestand674577
+Node: Volledige grafiek674954
+Node: Gelabeld voorbeeld675794
+Node: print-graph varlist677791
+Node: print-Y-axis679514
+Node: print-Y-axis in detail680367
+Node: Hoogte van label681177
+Node: Bereken het restant683194
+Node: Y-as element687060
+Node: Y-axis-column690823
+Node: print-Y-axis enalaatste692435
+Node: print-X-axis694420
+Node: Overeenkomsten verschillen695738
+Node: X-as tic marks696571
+Node: De gehele grafiek afdrukken703574
+Node: De finale versie704690
+Node: Test print-graph708945
+Node: Woorden in defuns grafisch weergeven710629
+Node: lambda713253
+Node: mapcar715134
+Node: Een andere bug717194
+Node: Finale afgedrukte grafiek722723
+Node: Vrije software en vrije handleidingen723674
+Node: GNU Free Documentation License729990
+Node: Index755179
+Node: Over de auteur794088
 
 End Tag Table
 
