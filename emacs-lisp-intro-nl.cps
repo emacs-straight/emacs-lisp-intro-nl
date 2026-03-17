@@ -42,6 +42,7 @@
 @initial {B}
 @entry{@code {beginning-of-buffer}}{66}
 @entry{Bewaren, type recursief patroon}{137}
+@entry{Bewegen per zin en paragraaf}{143}
 @entry{Bibliotheek als term voor ``bestand''}{48}
 @entry{@samp {bind} gedefinieerd}{16}
 @entry{Binding, dynamisch}{36}
@@ -254,7 +255,6 @@
 @entry{Mode line format}{214}
 @entry{Mode selection, automatic}{202}
 @entry{@code {mode-line-format}}{214}
-@entry{Motion by sentence and paragraph}{143}
 @initial {N}
 @entry{@samp {narrowing} defined}{25}
 @entry{nieuwe versie body voor @code {insert-buffer}}{66}
@@ -277,7 +277,7 @@
 @entry{@code {or}}{64}
 @entry{@code {other-buffer}}{22}
 @initial {P}
-@entry{Paragraphs, movement by}{143}
+@entry{Paragrafen, bewegen per}{143}
 @entry{Patronen, zoeken naar}{143}
 @entry{Per-buffer, local variables list}{202}
 @entry{Permanente code installatie}{32}
@@ -306,7 +306,7 @@
 @entry{@code {quote}}{3}
 @entry{quoten met de apostrof}{3}
 @initial {R}
-@entry{@code {re-search-forward}}{144}
+@entry{@code {re-search-forward}}{145}
 @entry{Read-only buffer}{62}
 @entry{Readying a graph}{189}
 @entry{Rebinding keys}{206}
@@ -338,9 +338,7 @@
 @entry{@code {save-restriction}}{74}
 @entry{Schrijven van een functiedefinitie}{26}
 @entry{@code {search-forward}}{88}
-@entry{Searches, illustrating}{143}
 @entry{@code {sentence-end}}{143}
-@entry{Sentences, movement by}{143}
 @entry{@code {set}}{16}
 @entry{@code {set-buffer}}{23}
 @entry{@code {set-variable}}{105}
@@ -433,4 +431,6 @@
 @entry{@code {zap-to-char}}{86}
 @entry{@code {zerop}}{228}
 @entry{@samp {zij-effect} gedefinieerd}{8}
+@entry{Zinnen, bewegen per}{143}
+@entry{Zoeken, illustreren}{143}
 @entry{Zonder uitstel oplossing}{139}

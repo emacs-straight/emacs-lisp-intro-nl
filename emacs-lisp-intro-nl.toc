@@ -158,8 +158,8 @@
 @numsubsecentry{Zonder uitstel oplossing}{11.3.8}{Zonder uitstel oplossing}{139}
 @numsecentry{Looping oefening}{11.4}{Looping oefening}{141}
 @numchapentry{Reguliere expressie zoekopdrachten}{12}{Regexp zoeken}{143}
-@numsecentry{The Regular Expression for @code {sentence-end}}{12.1}{sentence-end}{143}
-@numsecentry{The @code {re-search-forward} Function}{12.2}{re-search-forward}{144}
+@numsecentry{De reguliere expressie for @code {sentence-end}}{12.1}{sentence-end}{143}
+@numsecentry{The @code {re-search-forward} Function}{12.2}{re-search-forward}{145}
 @numsecentry{@code {forward-sentence}}{12.3}{forward-sentence}{145}
 @unnsubsecentry{The @code {while} loops}{10027}{fwd-sentence while loops}{147}
 @unnsubsecentry{The regular expression search}{10028}{fwd-sentence re-search}{148}

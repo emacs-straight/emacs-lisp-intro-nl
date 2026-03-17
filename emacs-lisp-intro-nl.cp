@@ -259,14 +259,14 @@
 @entry{Recursie zonder uitstel}{138}{Recursie zonder uitstel}
 @entry{Zonder uitstel oplossing}{139}{Zonder uitstel oplossing}
 @entry{Oplossing zonder uitstel}{139}{Oplossing zonder uitstel}
-@entry{Searches, illustrating}{143}{Searches, illustrating}
+@entry{Zoeken, illustreren}{143}{Zoeken, illustreren}
 @entry{Reguliere expressie zoekopdrachten}{143}{Reguliere expressie zoekopdrachten}
 @entry{Patronen, zoeken naar}{143}{Patronen, zoeken naar}
-@entry{Motion by sentence and paragraph}{143}{Motion by sentence and paragraph}
-@entry{Sentences, movement by}{143}{Sentences, movement by}
-@entry{Paragraphs, movement by}{143}{Paragraphs, movement by}
+@entry{Bewegen per zin en paragraaf}{143}{Bewegen per zin en paragraaf}
+@entry{Zinnen, bewegen per}{143}{Zinnen, bewegen per}
+@entry{Paragrafen, bewegen per}{143}{Paragrafen, bewegen per}
 @entry{sentence-end}{143}{@code {sentence-end}}
-@entry{re-search-forward}{144}{@code {re-search-forward}}
+@entry{re-search-forward}{145}{@code {re-search-forward}}
 @entry{forward-sentence}{145}{@code {forward-sentence}}
 @entry{forward-paragraph}{149}{@code {forward-paragraph}}
 @entry{let*}{150}{@code {let*}}
