@@ -9075,9 +9075,9 @@ uiteindelijk stopt.  Ook geeft die bij elke herhaling van de loop de
 ‘cons’ expressie een nieuw eerste element en maakt het een nieuwe en
 kortere lijst.
 
-   De ‘dolist’ expresie doet vrijwel hetzelfde als de ‘while’ expressie,
-behalve dat de ‘dolist’ macro wat werk voor je doet wanneer je een
-‘while’ expressie schrijft.
+   De ‘dolist’ expressie doet vrijwel hetzelfde als de ‘while’
+expressie, behalve dat de ‘dolist’ macro wat werk voor je doet wanneer
+je een ‘while’ expressie schrijft.
 
    Net als een ‘while’ loop, voert een ‘dolist’ loopings uit.  Het
 verschil is dat het automatisch de lijst korter maakt elke dat het de
@@ -9220,9 +9220,9 @@ onderdelen heeft:
      andere waarde teruggeeft, hier de “volgende-stap-expressie”
      genoemd.  Daardoor zal het aan de nieuwe instantie doorgeven
      argument (of argumenten) verschillen van wat aan de vorige
-     instantie was doorgegeven.  Dit zorgt dat de conditionele expresie,
-     de “doe-opnieuw-test”, na het correcte aantal herhalingen naar
-     onwaar testen.
+     instantie was doorgegeven.  Dit zorgt dat de conditionele
+     expressie, de “doe-opnieuw-test”, na het correcte aantal
+     herhalingen naar onwaar testen.
 
    Recursieve functies kunnen veel eenvoudiger zijn dan elk ander soort
 functie.  Inderdaad, wanneer mensen ze beginnen te gebruiken, lijken ze
@@ -9974,7 +9974,7 @@ Zoekopdrachten met reguliere expressies worden uitgebreid gebruikt in
 Emacs.  De twee functies ‘forward-sentence’ en ‘forward-paragraph’
 illustreren deze zoekopdrachten goed.  Zij gebruiken reguliere
 expressies om uit te zoeken waarheen de point te bewegen.  De
-uitdrukking "reguliere expresie" wordt vaak geschreven als "regexp".
+uitdrukking "reguliere expressie" wordt vaak geschreven als "regexp".
 
    Reguliere expressie zoekopdrachten zijn beschreven in *note Regular
 Expression Search: (emacs)Regexp Search, en ook in *note (elisp)Regular
@@ -9989,7 +9989,7 @@ markeren, en verplaatst point naar die plek.
    Voordat we naar de code van de functie ‘forward-sentence’ kijken, is
 het waardevol te overwegen wat het patroon is dat het einde van een zin
 moet zijn.  Het patroon wordt in de volgende sectie besproken, daarop
-volgt een beschrijving van de reguliere expresie zoekfunctie,
+volgt een beschrijving van de reguliere expressie zoekfunctie,
 ‘re-search-forward’.  De functie ‘forward-sentence’ wordt in de
 daaropvolgende sectie besproken.  Tenslotte wordt de functie
 ‘forward-paragraph’ in de laatste sectie van dit hoofdstuk beschreven.
@@ -10099,61 +10099,63 @@ mag eindigen zonder punt, zoals Taise tekst.
 
 File: emacs-lisp-intro-nl.info,  Node: re-search-forward,  Next: forward-sentence,  Prev: sentence-end,  Up: Regexp zoeken
 
-12.2 The ‘re-search-forward’ Function
-=====================================
+12.2 De functie ‘re-search-forward’
+===================================
 
-The ‘re-search-forward’ function is very like the ‘search-forward’
-function.  (*Note The ‘search-forward’ Function: search-forward.)
+De functie ‘re-search-forward’ lijkt erg op de functie ‘search-forward’.
+(*Note De functie ‘search-forward’: search-forward.)
 
-   ‘re-search-forward’ searches for a regular expression.  If the search
-is successful, it leaves point immediately after the last character in
-the target.  If the search is backwards, it leaves point just before the
-first character in the target.  You may tell ‘re-search-forward’ to
-return ‘t’ for true.  (Moving point is therefore a side effect.)
+   ‘re-search-forward’ zoekt naar een reguliere expressie.  Wanneer de
+zoekopdracht geslaagd is, zet het point onmiddellijk achter het laatste
+karakter in het doel.  Wanneer de zoekopdracht achterwaarts is, dan zet
+het point direct voor het eerste karakter in het doel.  Je kunt
+‘re-search-forward’ zeggen dat het ‘t’ voor waar moet teruggeven.
+(Verplaatsen van point is daarom een zij-effect.)
 
-   Like ‘search-forward’, the ‘re-search-forward’ function takes four
-arguments:
+   Net als ‘search-forward’ heeft de functie ‘re-search-forward’ vier
+argumenten.
 
-  1. The first argument is the regular expression that the function
-     searches for.  The regular expression will be a string between
-     quotation marks.
+  1. Het eerste argument is de reguliere expressie waar de functie naar
+     zoekt.  De reguliere expressie is een string tussen
+     aanhalingstekens.
 
-  2. The optional second argument limits how far the function will
-     search; it is a bound, which is specified as a position in the
+  2. Het optionele tweede argument begrenst tot hoever de functie zoekt,
+     het is een grens, die gespecificeerd wordt als een positie in het
      buffer.
 
-  3. The optional third argument specifies how the function responds to
-     failure: ‘nil’ as the third argument causes the function to signal
-     an error (and print a message) when the search fails; any other
-     value causes it to return ‘nil’ if the search fails and ‘t’ if the
-     search succeeds.
+  3. Het optionele derde argument specificeert hoe de functie reageert
+     op falen: ‘nil’ als derde argument laat de functie een fout
+     signaleren (en een boodschap tonen) wanneer de zoekopdracht faalt,
+     een andere waarde zorgt dat die ‘nil’ teruggeeft wanneer de
+     zoekopdracht faalt en ‘t’ wanneer de zoekopdracht slaagt.
 
-  4. The optional fourth argument is the repeat count.  A negative
-     repeat count causes ‘re-search-forward’ to search backwards.
+  4. Het optionele vierde argument is de aantal-herhalingen.  Een
+     negatieve aantal-herhalingen laat ‘re-search-forward’ achterwaarts
+     zoeken.
 
-   The template for ‘re-search-forward’ looks like this:
+   Het slabloon voor ‘re-search-forward’ ziet er zo uit:
 
-     (re-search-forward "REGULAR-EXPRESSION"
-                     LIMIT-OF-SEARCH
-                     WHAT-TO-DO-IF-SEARCH-FAILS
-                     REPEAT-COUNT)
+     (re-search-forward "REGULIERE-EXPRESSIE"
+                     ZOEKLIMIET
+                     WAT-TE-DOEN-WANNEER-ZOEKEN-FAALT
+                     AANTAL-HERHALINGEN)
 
-   The second, third, and fourth arguments are optional.  However, if
-you want to pass a value to either or both of the last two arguments,
-you must also pass a value to all the preceding arguments.  Otherwise,
-the Lisp interpreter will mistake which argument you are passing the
-value to.
+   Het tweede, derde en vierde argument zijn optioneel.  Als je echter
+een waarde naar een of beide van de laatste twee argumenten wilt
+doorgeven, moet je ook een waarde aan alle voorgaande argumenten
+doorgeven.  Anders weet de Lisp interpreter niet aan welk argument je
+een waarde doorgeeft.
 
-   In the ‘forward-sentence’ function, the regular expression will be
-the value of the variable ‘sentence-end’.  In simple form, that is:
+   In de functie ‘forward-sentence’ is de reguliere expressie de waarde
+van de variabele ‘sentence-end’.  In een simpele vorm is die:
 
      "[.?!][]\"')}]*\\($\\|  \\|  \\)[
      ]*"
 
-The limit of the search will be the end of the paragraph (since a
-sentence cannot go beyond a paragraph).  If the search fails, the
-function will return ‘nil’; and the repeat count will be provided by the
-argument to the ‘forward-sentence’ function.
+De limiet van de zoekopdracht is het einde van de paragraaf (omdat een
+zin niet voorbij een paragraaf kan gaan).  Wanneer de zoekopdracht
+faalt, geeft de functie ‘nil’ terug en het aantal herhalingen wordt
+gegeven door het argument van de functie ‘forward-sentence’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: forward-sentence,  Next: forward-paragraph,  Prev: re-search-forward,  Up: Regexp zoeken
@@ -10161,12 +10163,12 @@ File: emacs-lisp-intro-nl.info,  Node: forward-sentence,  Next: forward-paragrap
 12.3 ‘forward-sentence’
 =======================
 
-The command to move the cursor forward a sentence is a straightforward
-illustration of how to use regular expression searches in Emacs Lisp.
-Indeed, the function looks longer and more complicated than it is; this
-is because the function is designed to go backwards as well as forwards;
-and, optionally, over more than one sentence.  The function is usually
-bound to the key command ‘M-e’.
+Het commando om de cursor een zin vooruit te verplaatsen is een
+eenvoudig voorbeeld van hoe zoekopdrachten met reguliere expressies in
+Emacs Lisp te gebruiken.  De functie ziet er langer en ingewikkelder uit
+dan die is, dit is omdat de functie gemaakt is om zowel achterwaarts als
+voorwaarts te gaan en, optioneel, meer dan één zin.  De functie is over
+het algemeen gebonden aan het toetscommando ‘M-e’.
 
 * Menu:
 
@@ -10177,10 +10179,10 @@ bound to the key command ‘M-e’.
 
 File: emacs-lisp-intro-nl.info,  Node: Complete forward-sentence,  Next: fwd-sentence while loops,  Up: forward-sentence
 
-Complete ‘forward-sentence’ function definition
------------------------------------------------
+Complete ‘forward-sentence’ functiedefinitie
+--------------------------------------------
 
-Here is the code for ‘forward-sentence’:
+Hier is de code van ‘forward-sentence’:
 
      (defun forward-sentence (&optional arg)
        "Move forward to next end of sentence.  With argument, repeat.
@@ -10209,87 +10211,89 @@ Here is the code for ‘forward-sentence’:
            (setq arg (1- arg)))
          (constrain-to-field nil opoint t)))
 
-   The function looks long at first sight and it is best to look at its
-skeleton first, and then its muscle.  The way to see the skeleton is to
-look at the expressions that start in the left-most columns:
+   De functie ziet er op het eerste gezicht lang uit en het is het beste
+om eerst naar zijn geraamte te kijken, en daarna naar zijn spieren.  De
+manier om het geraamte te zien is te kijken naar de expressies die aan
+de meest linkse kant beginnen:
 
      (defun forward-sentence (&optional arg)
-       "DOCUMENTATION..."
+       "DOCUMENTATIE..."
        (interactive "p")
        (or arg (setq arg 1))
        (let ((opoint (point)) (sentence-end (sentence-end)))
          (while (< arg 0)
            (let ((pos (point))
                  (par-beg (save-excursion (start-of-paragraph-text) (point))))
-            REST-OF-BODY-OF-WHILE-LOOP-WHEN-GOING-BACKWARDS
+            REST-VAN-DE-BODY-VAN-DE-WHILE-LOOP-BIJ-ACHTERWAARTS-BEWEGEN
          (while (> arg 0)
            (let ((par-end (save-excursion (end-of-paragraph-text) (point))))
-            REST-OF-BODY-OF-WHILE-LOOP-WHEN-GOING-FORWARDS
-         HANDLE-FORMS-AND-EQUIVALENT
+            REST-VAN-DE-BODY-VAN-DE-WHILE-LOOP-BIJ-VOORWAARTS-BEWEGEN
+         HANTEER-VORMEN-EN-EQUIVALENTEN
 
-   This looks much simpler!  The function definition consists of
-documentation, an ‘interactive’ expression, an ‘or’ expression, a ‘let’
-expression, and ‘while’ loops.
+   Dit ziet er veel eenvoudiger uit!  De functiedefinitie bestaat uit
+documentatie, een ‘interactive’ expressie, een ‘or’ expressie, een ‘let’
+expressie en een ‘while’ loop.
 
-   Let's look at each of these parts in turn.
+   Laten we elk van de delen beurtelings bekijken.
 
-   We note that the documentation is thorough and understandable.
+   We merken op dat de documentatie grondig en begrijpelijk is.
 
-   The function has an ‘interactive "p"’ declaration.  This means that
-the processed prefix argument, if any, is passed to the function as its
-argument.  (This will be a number.)  If the function is not passed an
-argument (it is optional) then the argument ‘arg’ will be bound to 1.
+   De functie heeft een ‘interactive "p"’ declaratie.  Dit betekent dat
+het verwerkte prefix argument, als die er is, doorgegeven wordt aan de
+functie als een argument.  (Dit is een getal.)  Wanneer de functie geen
+argument krijgt doorgegeven (dit is optioneel) dan wordt het argument
+‘arg’ gebonden aan 1.
 
-   When ‘forward-sentence’ is called non-interactively without an
-argument, ‘arg’ is bound to ‘nil’.  The ‘or’ expression handles this.
-What it does is either leave the value of ‘arg’ as it is, but only if
-‘arg’ is bound to a value; or it sets the value of ‘arg’ to 1, in the
-case when ‘arg’ is bound to ‘nil’.
+   Wanneer ‘forward-sentence’ non-interactief zonder argument wordt
+aangeroepen, wordt ‘arg’ gebonden aan ‘nil’.  De ‘or’ expressie handelt
+dit af.  Wat die doet is óf de waarde van ‘arg’ laten zoals die is, maar
+alleen als ‘arg’ aan een waarde gebonden is, óf het zet de waarde van
+‘arg’ op 1, in het geval dat ‘arg’ gebonden is aan ‘nil’.
 
-   Next is a ‘let’.  That specifies the values of two local variables,
-‘opoint’ and ‘sentence-end’.  The local value of point, from before the
-search, is used in the ‘constrain-to-field’ function which handles forms
-and equivalents.  The ‘sentence-end’ variable is set by the
-‘sentence-end’ function.
+   Hierna komt een ‘let’.  Die specificeert de waarden van twee lokale
+variabelen, ‘opoint’ en ‘sentence-end’.  De lokale waarde van point, van
+voor de zoekopdracht, wordt gebruikt in de functie ‘constrain-to-field’,
+die vormen en equivalenten afhandelt.  De variabele ‘sentence-end’ wordt
+gezet door de functie ‘sentence-end’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: fwd-sentence while loops,  Next: fwd-sentence re-search,  Prev: Complete forward-sentence,  Up: forward-sentence
 
-The ‘while’ loops
------------------
+De ‘while’ loops
+----------------
 
-Two ‘while’ loops follow.  The first ‘while’ has a true-or-false-test
-that tests true if the prefix argument for ‘forward-sentence’ is a
-negative number.  This is for going backwards.  The body of this loop is
-similar to the body of the second ‘while’ clause, but it is not exactly
-the same.  We will skip this ‘while’ loop and concentrate on the second
-‘while’ loop.
+Hierna volgen twee ‘while’ loops.  De eerste ‘while’ heeft een
+waar-of-onwaar-test dat waar test als het prefix argument voor
+‘forward-sentence’ een negatief getal is.  Dat is om achterwaarts te
+gaan.  De body van deze loop vergelijkbaar met de body van de tweede
+‘while’ clausule, maar is niet exact hetzelfde.  We slaan deze ‘while’
+loop over en concentreren ons de tweede ‘while’ loop.
 
-   The second ‘while’ loop is for moving point forward.  Its skeleton
-looks like this:
+   De tweede ‘while’ loop is voor het voorwaarts verplaatsen van point.
+Het geraamte ziet er zo uit:
 
-     (while (> arg 0)            ; true-or-false-test
+     (while (> arg 0)            ; waar-of-onwaar-test
        (let VARLIST
-         (if (TRUE-OR-FALSE-TEST)
-             THEN-PART
-           ELSE-PART
+         (if (WAAR-OF-ONWAAR-TEST)
+             DAN-DEEL
+           ANDERS-DEEL
        (setq arg (1- arg))))     ; while loop decrementer
 
-   The ‘while’ loop is of the decrementing kind.  (*Note A Loop with a
-Decrementing Counter: Decrementing Loop.)  It has a true-or-false-test
-that tests true so long as the counter (in this case, the variable
-‘arg’) is greater than zero; and it has a decrementer that subtracts 1
-from the value of the counter every time the loop repeats.
+   De ‘while’ loop is van het aflopende type.  (*Note Loop met een
+decrementele teller: Decrementele loop.)  Het heeft een
+waar-of-onwaar-test die waar test zolang de teller (in dit geval, de
+variabele ‘arg’) groter is dan nul.  En het heeft een decrementer die
+elke keer als de loop herhaalt 1 aftrekt van de waarde van de teller.
 
-   If no prefix argument is given to ‘forward-sentence’, which is the
-most common way the command is used, this ‘while’ loop will run once,
-since the value of ‘arg’ will be 1.
+   Wanneer geen prefix argument aan ‘forward-sentence’ wordt
+doorgegeven, wat de meest voorkomende manier is om dit commando te
+gebruiken, de ‘while’ loop draait maar een keer, omdat de waarde van
+‘arg’ dan 1 is.
 
-   The body of the ‘while’ loop consists of a ‘let’ expression, which
-creates and binds a local variable, and has, as its body, an ‘if’
-expression.
+   De body van de ‘while’ loop bestaat uit een ‘let’ expressie, die de
+lokale variabele creëert en bindt, en als body een ‘if’ expressie heeft.
 
-   The body of the ‘while’ loop looks like this:
+   De body van de ‘while’ loop ziet er zo uit:
 
      (let ((par-end
             (save-excursion (end-of-paragraph-text) (point))))
@@ -10297,86 +10301,87 @@ expression.
            (skip-chars-backward " \t\n")
          (goto-char par-end)))
 
-   The ‘let’ expression creates and binds the local variable ‘par-end’.
-As we shall see, this local variable is designed to provide a bound or
-limit to the regular expression search.  If the search fails to find a
-proper sentence ending in the paragraph, it will stop on reaching the
-end of the paragraph.
+   De ‘let’ expressie creëert en bindt de lokale variabele ‘par-end’.
+Zoals we zullen zien is deze lokale variabele gemaakt om een grens of
+limiet aan de reguliere zoekopdracht te geven.  Wanneer de zoekopdracht
+faalt in het vinden van een einde van een zin de in de paragraaf, stopt
+het bij het bereiken van het einde van de paragraaf.
 
-   But first, let us examine how ‘par-end’ is bound to the value of the
-end of the paragraph.  What happens is that the ‘let’ sets the value of
-‘par-end’ to the value returned when the Lisp interpreter evaluates the
-expression
+   Maar laten wij eerst onderzoeken hoe ‘par-end’ wordt gebonden aan de
+waarde van het einde van de paragraaf.  Wat gebeurt is dat de ‘let’ de
+waarde van ‘par-end’ zet op de waarde die de Lisp interpreter teruggeeft
+wanneer die de expressie evalueert.
 
      (save-excursion (end-of-paragraph-text) (point))
 
-In this expression, ‘(end-of-paragraph-text)’ moves point to the end of
-the paragraph, ‘(point)’ returns the value of point, and then
-‘save-excursion’ restores point to its original position.  Thus, the
-‘let’ binds ‘par-end’ to the value returned by the ‘save-excursion’
-expression, which is the position of the end of the paragraph.  (The
-‘end-of-paragraph-text’ function uses ‘forward-paragraph’, which we will
-discuss shortly.)
+In deze expressie verplaatst ‘(end-of-paragraph-text)’ point naar het
+einde van de paragraaf, ‘(point)’ geeft de waarde van point terug en
+vervolgens herstelt ‘save-excursion’ point naar zijn oorspronkelijke
+positie.  Dus bindt de ‘let’ expressie ‘par-end’ aan de waarde die de
+‘save-excursion’ teruggeeft.  wat de positie is van het einde van de
+paragraaf.  (De functie ‘end-of-paragraph-text’ gebruikt
+‘forward-paragraph’, die we straks bespreken.)
 
-   Emacs next evaluates the body of the ‘let’, which is an ‘if’
-expression that looks like this:
+   Vervolgens evalueert Emacs de body van de ‘let’, wat een ‘if’
+expressie is, die er zo uit ziet:
 
-     (if (re-search-forward sentence-end par-end t) ; if-part
-         (skip-chars-backward " \t\n")              ; then-part
-       (goto-char par-end)))                        ; else-part
+     (if (re-search-forward sentence-end par-end t) ; if-deel
+         (skip-chars-backward " \t\n")              ; dan-deel
+       (goto-char par-end)))                        ; anders-deel
 
-   The ‘if’ tests whether its first argument is true and if so,
-evaluates its then-part; otherwise, the Emacs Lisp interpreter evaluates
-the else-part.  The true-or-false-test of the ‘if’ expression is the
-regular expression search.
+   De ‘if’ test of het eerste argument waar is en zo ja, evalueert het
+dan-deel, anders evalueert de Emacs Lisp interpreter het anders-deel.
+De waar-of-onwaar-test van de ‘if’ expressie is de reguliere expressie
+zoekopdracht.
 
-   It may seem odd to have what looks like the real work of the
-‘forward-sentence’ function buried here, but this is a common way this
-kind of operation is carried out in Lisp.
+   Het mag vreemd lijken om wat er uit ziet als het echte werk van de
+functie ‘forward-sentence’ hier ingegraven is, maar dat is de
+gebruikelijke manier waarop dit soort operaties in Lisp worden
+uitgevoerd.
 
 
 File: emacs-lisp-intro-nl.info,  Node: fwd-sentence re-search,  Prev: fwd-sentence while loops,  Up: forward-sentence
 
-The regular expression search
------------------------------
+De reguliere expressie zoekopdracht
+-----------------------------------
 
-The ‘re-search-forward’ function searches for the end of the sentence,
-that is, for the pattern defined by the ‘sentence-end’ regular
-expression.  If the pattern is found--if the end of the sentence is
-found--then the ‘re-search-forward’ function does two things:
+De functie ‘re-search-forward’ zoekt naar het einde van de zin, dat wil
+zeggen, naar het patroon dat is gedefinieerd met de reguliere expressie
+‘sentence-end’.
 
-  1. The ‘re-search-forward’ function carries out a side effect, which
-     is to move point to the end of the occurrence found.
+  1. De functie ‘re-search-forward’ voert een zij-effect uit, dat is het
+     verplaatsen van point naar eind van de gevonden zin.
 
-  2. The ‘re-search-forward’ function returns a value of true.  This is
-     the value received by the ‘if’, and means that the search was
-     successful.
+  2. De functie ‘re-search-forward’ geeft een waarde waar terug.  Dit is
+     de waarde die de ‘if’ ontvangt, en betekent dat de zoekopdracht
+     succesvol was.
 
-The side effect, the movement of point, is completed before the ‘if’
-function is handed the value returned by the successful conclusion of
-the search.
+Het zij-effect, de verplaatsing van point, is afgerond voordat de ‘if’
+de waarde krijgt overhandigd die teruggegeven is door de succesvolle
+afronding van de zoekopdracht.
 
-   When the ‘if’ function receives the value of true from a successful
-call to ‘re-search-forward’, the ‘if’ evaluates the then-part, which is
-the expression ‘(skip-chars-backward " \t\n")’.  This expression moves
-backwards over any blank spaces, tabs or carriage returns until a
-printed character is found and then leaves point after the character.
-Since point has already been moved to the end of the pattern that marks
-the end of the sentence, this action leaves point right after the
-closing printed character of the sentence, which is usually a period.
+   Wanneer de ‘if’ functie de waarde waar ontvangt van een succesvolle
+aanroep van ‘re-search-forward’ evalueert de ‘if’ het dan-deel, dit is
+de expressie ‘(skip-chars-backward " \t\n")’.  Deze expressie beweegt
+achterwaarts over spaties, tabs of carriage returns totdat een karakter
+gevonden is en zet dan point achter dat karakter.  Omdat point al
+verplaatst was naar het eind van het patroon dat het einde van een zin
+markeert, zet deze actie point direct achter het afsluitende karakter
+van de zin, wat meestal een punt is.
 
-   On the other hand, if the ‘re-search-forward’ function fails to find
-a pattern marking the end of the sentence, the function returns false.
-The false then causes the ‘if’ to evaluate its third argument, which is
-‘(goto-char par-end)’: it moves point to the end of the paragraph.
+   Anderzijds, wanneer de functie ‘re-search-forward’ faalt in het
+vinden van het patroon dat het einde van een zin markeert, geeft de
+functie onwaar terug.  Deze onwaar zorgt dat de ‘if’ het derde argument
+evalueert, dit is ‘(goto-char par-end)’: het verplaatst point naar het
+einde van de paragraaf.
 
-   (And if the text is in a form or equivalent, and point may not move
-fully, then the ‘constrain-to-field’ function comes into play.)
+   (En wanneer de tekst een vorm of equivalent is en point kan niet
+volledig bewegen, dan komt de functie ‘constrain-to-field’ in het spel.)
 
-   Regular expression searches are exceptionally useful and the pattern
-illustrated by ‘re-search-forward’, in which the search is the test of
-an ‘if’ expression, is handy.  You will see or write code incorporating
-this pattern often.
+   Reguliere expressie zoekopdrachten zijn uiterst nuttig en het patroon
+geïllustreerd met ‘re-search-forward’ waarin de zoekopdrachten de test
+is van een ‘if’ expressie is handig.  Je ziet of schrijft vaak code dat
+die patroon incorporeert.
 
 
 File: emacs-lisp-intro-nl.info,  Node: forward-paragraph,  Next: Regexp terugblik,  Prev: forward-sentence,  Up: Regexp zoeken
@@ -10384,31 +10389,31 @@ File: emacs-lisp-intro-nl.info,  Node: forward-paragraph,  Next: Regexp terugbli
 12.4 ‘forward-paragraph’: een goudmijn van functies
 ===================================================
 
-The ‘forward-paragraph’ function moves point forward to the end of the
-paragraph.  It is usually bound to ‘M-}’ and makes use of a number of
-functions that are important in themselves, including ‘let*’,
-‘match-beginning’, and ‘looking-at’.
+De functie ‘forward-paragraph’ verplaatst point naar het einde van de
+paragraaf.  Die is meestal gebonden aan ‘M-}’ en maakt gebruik van een
+aantal functies die op zichzelf belangrijk zijn, waaronder ‘let*’,
+‘match-beginning’ en ‘looking-at’.
 
-   The function definition for ‘forward-paragraph’ is considerably
-longer than the function definition for ‘forward-sentence’ because it
-works with a paragraph, each line of which may begin with a fill prefix.
+   De functiedefinitie van ‘forward-paragraph’ is aanzienlijk langer dan
+de functiedefinitie van ‘forward-sentence’ omdat het met een paragraaf
+werkt, waarvan elke regel met een opvul-prefix kan beginnen.
 
-   A fill prefix consists of a string of characters that are repeated at
-the beginning of each line.  For example, in Lisp code, it is a
-convention to start each line of a paragraph-long comment with ‘;;; ’.
-In Text mode, four blank spaces make up another common fill prefix,
-creating an indented paragraph.  (*Note (emacs)Fill Prefix::, for more
-information about fill prefixes.)
+   Een opvul-prefix bestaat uit een string van karakters die herhaald
+wordt aan het begin van elke regel.  Bijvoorbeeld in Lisp code is het
+een conventie om elke regel van een paragraaf-lang commentaar te
+beginnen met ‘;;; ’.  In Text-mode bestaat een ander gebruikelijke
+opvul-prefix uit vier spaties, om een ingesprongen paragraaf te maken.
+(*Note (emacs)Fill Prefix::, voor meer informatie over opvul-prefixes.)
 
-   The existence of a fill prefix means that in addition to being able
-to find the end of a paragraph whose lines begin on the left-most
-column, the ‘forward-paragraph’ function must be able to find the end of
-a paragraph when all or many of the lines in the buffer begin with the
-fill prefix.
+   Het bestaan van een opvul-prefix betekent dat naast het kunnen vinden
+van het einde van de paragraaf wiens regels helemaal links beginnen, de
+functie ‘forward-paragraph’ ook in staat moet zijn het einde van de
+paragraaf te vinden wanneer alle of veel van de regels in het buffer met
+een opvul-prefix beginnen.
 
-   Moreover, it is sometimes practical to ignore a fill prefix that
-exists, especially when blank lines separate paragraphs.  This is an
-added complication.
+   Bovendien is het soms praktisch om een bestaand opvul-prefix te
+negeren, in het bijzonder wanneer lege regels paragrafen scheiden.  Dit
+is een extra complicatie.
 
 * Menu:
 
@@ -10420,50 +10425,52 @@ added complication.
 
 File: emacs-lisp-intro-nl.info,  Node: forward-paragraph in het kort,  Next: fwd-para let,  Up: forward-paragraph
 
-Shortened ‘forward-paragraph’ function definition
--------------------------------------------------
+Verkorte ‘forward-paragraph’ functiedefinitie
+---------------------------------------------
 
-Rather than print all of the ‘forward-paragraph’ function, we will only
-print parts of it.  Read without preparation, the function can be
-daunting!
+In plaats van alles van de functie ‘forward-paragraph’ te tonen, tonen
+we alleen delen er van.  Het kan ontmoedigend zijn de functie zonder
+voorbereiding te lezen.
 
-   In outline, the function looks like this:
+   Globaal ziet de functie er zo uit:
 
      (defun forward-paragraph (&optional arg)
-       "DOCUMENTATION..."
+       "DOCUMENTATIE..."
        (interactive "p")
        (or arg (setq arg 1))
        (let*
            VARLIST
-         (while (and (< arg 0) (not (bobp)))     ; backward-moving-code
+         (while (and (< arg 0) (not (bobp)))     ; achterwaarts-bewegende-code
            ...
-         (while (and (> arg 0) (not (eobp)))     ; forward-moving-code
+         (while (and (> arg 0) (not (eobp)))     ; voorwaarts-bewegende-code
            ...
 
-   The first parts of the function are routine: the function's argument
-list consists of one optional argument.  Documentation follows.
+   De eerste delen van de functie zijn routine: de argumentlist van de
+functie bestaat uit een optioneel argument.  Documentatie volgt daarna.
 
-   The lower case ‘p’ in the ‘interactive’ declaration means that the
-processed prefix argument, if any, is passed to the function.  This will
-be a number, and is the repeat count of how many paragraphs point will
-move.  The ‘or’ expression in the next line handles the common case when
-no argument is passed to the function, which occurs if the function is
-called from other code rather than interactively.  This case was
-described earlier.  (*Note The ‘forward-sentence’ function:
-forward-sentence.)  Now we reach the end of the familiar part of this
-function.
+   De kleine letter ‘p’ in de ‘interactive’ declaratie betekent dat het
+verwerkte prefix argument, als die er is, wordt doorgegeven aan de
+functie.  Dit is een getal, en is het aantal herhalingen van hoeveel
+paragrafen point wordt verplaatst.  De ‘or’ expressie in de volgende
+regel behandelt de gebruikelijke situatie wanneer geen argument aan de
+functie wordt doorgegeven, wat gebeurt wanneer de functie wordt
+aangeroepen vanuit andere code in plaats van interactief.  Deze situatie
+is eerder beschreven (*Note De functie ‘forward-sentence’:
+forward-sentence.)  Nu bereiken we het einde van het vertrouwde deel van
+deze functie.
 
 
 File: emacs-lisp-intro-nl.info,  Node: fwd-para let,  Next: fwd-para while,  Prev: forward-paragraph in het kort,  Up: forward-paragraph
 
-The ‘let*’ expression
----------------------
+De ‘let*’ expressie
+-------------------
 
-The next line of the ‘forward-paragraph’ function begins a ‘let*’
-expression (*note ‘let*’ introduced: let* introduced.), in which Emacs
-binds a total of seven variables: ‘opoint’, ‘fill-prefix-regexp’,
-‘parstart’, ‘parsep’, ‘sp-parstart’, ‘start’, and ‘found-start’.  The
-first part of the ‘let*’ expression looks like below:
+De volgende regel van de functie ‘forward-paragraph’ begint met een
+‘let*’ expressie (*note ‘let*’ geïntroduceerd: let* geïntroduceerd.),
+waarin Emacs een totaal van zeven variabelen bindt: ‘opoint’,
+‘fill-prefix-regexp’, ‘parstart’, ‘parsep’, ‘sp-parstart’, ‘start’ en
+‘found-start’.  Het eerste deel van de ‘let*’ expressie ziet er als
+volgt uit:
 
      (let* ((opoint (point))
             (fill-prefix-regexp
@@ -10493,22 +10500,22 @@ first part of the ‘let*’ expression looks like below:
             start found-start)
        ...)
 
-   The variable ‘parsep’ appears twice, first, to remove instances of
-‘^’, and second, to handle fill prefixes.
+   De variabele ‘parsep’ verschijnt twee keer, ten eerste om instanties
+van ‘^’ te verwijderen en ten tweede om opvul-prefixes te behandelen.
 
-   The variable ‘opoint’ is just the value of ‘point’.  As you can
-guess, it is used in a ‘constrain-to-field’ expression, just as in
-‘forward-sentence’.
+   De variabele ‘opoint’ is gewoon de waarde van ‘point’.  Zoals je kunt
+raden wordt het gebruikt in een ‘constrain-to-field’ expressie, net als
+in ‘forward-sentence’.
 
-   The variable ‘fill-prefix-regexp’ is set to the value returned by
-evaluating the following list:
+   De variabele ‘fill-prefix-regexp’ wordt gezet op de waarde teruggeven
+door de volgende lijst te evalueren:
 
      (and fill-prefix
           (not (equal fill-prefix ""))
           (not paragraph-ignore-fill-prefix)
           (regexp-quote fill-prefix))
 
-This is an expression whose first element is the ‘and’ special form.
+Dit is een expressie wiens eerste element de speciale vorm ‘and’ is.
 
    Zoals we eerder (*note De ‘kill-new’ functie: kill-new functie.)
 leerden, evalueert de speciale vorm ‘and’ elk van zijn argumenten tot
@@ -10520,102 +10527,106 @@ resultaaat van het evalueren van het laatste argument teruggegeven.
 Met andere woorden, een ‘and’ expressie geeft alleen een waarde waar
 terug wanneer al zijn argumenten waar zijn.
 
-   In this case, the variable ‘fill-prefix-regexp’ is bound to a
-non-‘nil’ value only if the following four expressions produce a true
-(i.e., a non-‘nil’) value when they are evaluated; otherwise,
-‘fill-prefix-regexp’ is bound to ‘nil’.
+   In dit geval wordt de variabele ‘fill-prefix-regexp’ uitsluitend
+gebonden aan een non-‘nil’ waarde wanneer de volgende vier expressies
+een waarde waar (dus non-‘nil’) produceren wanneer zij worden
+geëvalueerd.  Zo niet, dan wordt ‘fill-prefix-regexp’ gebonden aan
+‘nil’.
 
 ‘fill-prefix’
-     When this variable is evaluated, the value of the fill prefix, if
-     any, is returned.  If there is no fill prefix, this variable
-     returns ‘nil’.
+     Wanneer deze variabele wordt geëvalueerd wordt de waarde van de
+     fill prefix, als die er is, teruggegeven.  Wanneer er geen fill
+     prefix is, dan geeft de variabel ‘nil’ terug.
 
 ‘(not (equal fill-prefix "")’
-     This expression checks whether an existing fill prefix is an empty
-     string, that is, a string with no characters in it.  An empty
-     string is not a useful fill prefix.
+     Deze expressie kijkt of een bestaand fill prefix een lege string
+     is, oftewel een string zonder karakters er in.  Een lege string is
+     geen nuttige opvul-prefix.
 
 ‘(not paragraph-ignore-fill-prefix)’
-     This expression returns ‘nil’ if the variable
-     ‘paragraph-ignore-fill-prefix’ has been turned on by being set to a
-     true value such as ‘t’.
+     Deze expressie geeft ‘nil’ terug wanneer de variabele
+     ‘paragraph-ignore-fill-prefix’ aan staat, doordat het op de waarde
+     waar, zoals ‘t’, is gezet.
 
 ‘(regexp-quote fill-prefix)’
-     This is the last argument to the ‘and’ special form.  If all the
-     arguments to the ‘and’ are true, the value resulting from
-     evaluating this expression will be returned by the ‘and’ expression
-     and bound to the variable ‘fill-prefix-regexp’,
+     Dit is het laatste argument van de speciale vorm ‘and’.  Wanneer al
+     de argumenten van de ‘and’ waar zijn, wordt de waarde die
+     resulteert uit het evalueren van deze expressie teruggeven door de
+     ‘and’ expressie en gebonden aan de variabele ‘fill-prefix-regexp’.
 
-The result of evaluating this ‘and’ expression successfully is that
-‘fill-prefix-regexp’ will be bound to the value of ‘fill-prefix’ as
-modified by the ‘regexp-quote’ function.  What ‘regexp-quote’ does is
-read a string and return a regular expression that will exactly match
-the string and match nothing else.  This means that ‘fill-prefix-regexp’
-will be set to a value that will exactly match the fill prefix if the
-fill prefix exists.  Otherwise, the variable will be set to ‘nil’.
+Het resultaat van een succesvolle evaluatie van deze ‘and’ expressie is
+dat ‘fill-prefix-regexp’ wordt gebonden aan de waarde van ‘fill-prefix’,
+aangepast door de functie ‘regexp-quote’.  Wat ‘regexp-quote’ doet is
+het lezen van een string en een reguliere expressie teruggeven die exact
+de string matcht, en niets anders matcht.  Dit betekent dat de
+‘fill-prefix-regexp’ wordt gezet naar een waarde is exact het
+opvul-prefix matcht als die bestaat.  Zo niet, dan wordt de variabele
+gezet op ‘nil’.
 
-   The next two local variables in the ‘let*’ expression are designed to
-remove instances of ‘^’ from ‘parstart’ and ‘parsep’, the local
-variables which indicate the paragraph start and the paragraph
-separator.  The next expression sets ‘parsep’ again.  That is to handle
-fill prefixes.
+   De volgende twee lokale variabelen in de ‘let*’ expressie zijn
+ontworpen om instanties van ‘^’ te verwijderen uit ‘parstart’ en
+‘parsep’, de lokale variabelen die de start van de paragraaf en de
+paragraaf separator aanduiden.  De volgende expressie stelt ‘parsep’
+opnieuw.  Dit is om opvul-prefixes te behandelen.
 
-   This is the setting that requires the definition call ‘let*’ rather
-than ‘let’.  The true-or-false-test for the ‘if’ depends on whether the
-variable ‘fill-prefix-regexp’ evaluates to ‘nil’ or some other value.
+   Het is dit instellen dat vereist dat de definitie ‘let*’ aanroept in
+plaats van ‘let’.  De waar-of-onwaar-test van de ‘if’ hangt af van of de
+variabele ‘fill-prefix-regexp’ naar ‘nil’ evalueert, of naar een andere
+waarde.
 
-   If ‘fill-prefix-regexp’ does not have a value, Emacs evaluates the
-else-part of the ‘if’ expression and binds ‘parsep’ to its local value.
-(‘parsep’ is a regular expression that matches what separates
-paragraphs.)
+   Wanneer ‘fill-prefix-regexp’ geen waarde heeft dan evalueert Emacs
+het anders-deel van de ‘if’ expressie en bindt ‘parsep’ naar de lokale
+waarde.  (‘parsep’ is een reguliere expressie die matcht wat paragrafen
+scheidt.)
 
-   But if ‘fill-prefix-regexp’ does have a value, Emacs evaluates the
-then-part of the ‘if’ expression and binds ‘parsep’ to a regular
-expression that includes the ‘fill-prefix-regexp’ as part of the
-pattern.
+   Maar wanneer ‘fill-prefix-regexp’ een waarde heeft, evalueert Emacs
+het dan-deel van de ‘if’ expressie en bindt ‘parsep’ aan een reguliere
+expressie die de ‘fill-prefix-regexp’ als deel van het patroon bevat.
 
-   Specifically, ‘parsep’ is set to the original value of the paragraph
-separate regular expression concatenated with an alternative expression
-that consists of the ‘fill-prefix-regexp’ followed by optional
-whitespace to the end of the line.  The whitespace is defined by
-‘"[ \t]*$"’.)  The ‘\\|’ defines this portion of the regexp as an
-alternative to ‘parsep’.
+   Specifiek wordt ‘parsep’ gezet op de originele waarde van de
+paragraaf scheidende reguliere expressie samengevoegd met een
+alternatieve expressie die bestaat uit de ‘fill-prefix-regexp’ gevolgd
+door optionele witte ruimte als einde van de regel.  (De witte ruimte is
+gedefinieerd met ‘"[ \t]*$"’.)  De ‘\\|’ definieert die deel van de
+regexp als een alternatief van ‘parsep’.
 
-   According to a comment in the code, the next local variable,
-‘sp-parstart’, is used for searching, and then the final two, ‘start’
-and ‘found-start’, are set to ‘nil’.
+   Volgens het commentaar in de code wordt de volgende lokale variabele,
+‘sp-parstart’ gebruikt om te zoeken en de laatste twee, ‘start’ en
+‘found-start’ worden op ‘nil’ gezet.
 
-   Now we get into the body of the ‘let*’.  The first part of the body
-of the ‘let*’ deals with the case when the function is given a negative
-argument and is therefore moving backwards.  We will skip this section.
+   Nu komen we bij de body van de ‘let*’.  Het eerste deel van de body
+van de ‘let*’ behandelt het geval wanneer de functie een negatief
+argument krijgt en daarom achterwaarts beweegt.  We slaan dit stuk over.
 
 
 File: emacs-lisp-intro-nl.info,  Node: fwd-para while,  Prev: fwd-para let,  Up: forward-paragraph
 
-The forward motion ‘while’ loop
--------------------------------
+De voorwaarts bewegende ‘while’ loop
+------------------------------------
 
-The second part of the body of the ‘let*’ deals with forward motion.  It
-is a ‘while’ loop that repeats itself so long as the value of ‘arg’ is
-greater than zero.  In the most common use of the function, the value of
-the argument is 1, so the body of the ‘while’ loop is evaluated exactly
-once, and the cursor moves forward one paragraph.
+Het tweede deel van de body van de ‘let*’ behandelt de voorwaartse
+beweging.  Het is een ‘while’ loop dit zichzelf herhaalt zolang de waard
+van ‘arg’ groter is dan nul.  In de meest gebruikte manier van de
+functie is de waarde van het argument 1, en wordt de body van de ‘while’
+loop exact een keer geëvalueerd, en beweegt de cursor een paragraaf
+voorwaarts.
 
-   This part handles three situations: when point is between paragraphs,
-when there is a fill prefix and when there is no fill prefix.
+   Dit deel behandelt drie situaties: wanneer point tussen twee
+paragrafen is, wanneer er een opvul-prefix is en wanneer er geen
+opvul-prefix is.
 
-   The ‘while’ loop looks like this:
+   De ‘while’ loop ziet er zo uit:
 
-     ;; going forwards and not at the end of the buffer
+     ;; ga voorwaarts en niet aan het eind van het buffer
      (while (and (> arg 0) (not (eobp)))
 
-       ;; between paragraphs
+       ;; tussen paragrafen
        ;; Move forward over separator lines...
        (while (and (not (eobp))
                    (progn (move-to-left-margin) (not (eobp)))
                    (looking-at parsep))
          (forward-line 1))
-       ;;  This decrements the loop
+       ;;  Dit verlaagt de loop
        (unless (eobp) (setq arg (1- arg)))
        ;; ... and one more line.
        (forward-line 1)
@@ -10648,36 +10659,38 @@ when there is a fill prefix and when there is no fill prefix.
          (if (< (point) (point-max))
              (goto-char start))))
 
-   We can see that this is a decrementing counter ‘while’ loop, using
-the expression ‘(setq arg (1- arg))’ as the decrementer.  That
-expression is not far from the ‘while’, but is hidden in another Lisp
-macro, an ‘unless’ macro.  Unless we are at the end of the buffer--that
-is what the ‘eobp’ function determines; it is an abbreviation of ‘End Of
-Buffer P’--we decrease the value of ‘arg’ by one.
+   We kunnen zien dat dit een aflopende teller ‘while’ loop is, met de
+expressie ‘(setq arg (1- arg))’ als de decrementer.  Die expressie is
+niet ver van de ‘while’ loop, maar is verstopt in een andere Lisp macro,
+een ‘unless’ macro.  Tenzij we aan het eind van het buffer zijn--dat is
+wat de functie ‘eobp’ vaststelt, het is een afkorting van ‘End Of Buffer
+P’--verlagen we de waarde van ‘arg’ met één.
 
-   (If we are at the end of the buffer, we cannot go forward any more
-and the next loop of the ‘while’ expression will test false since the
-test is an ‘and’ with ‘(not (eobp))’.  The ‘not’ function means exactly
-as you expect; it is another name for ‘null’, a function that returns
-true when its argument is false.)
+   (Wanneer we aan het eind van het buffer zijn, kunnen we niet meer
+voorwaarts en test de volgende loop van de ‘while’ expressie onwaar
+omdat de test een ‘and’ met ‘(not (eobp))’ is.  De functie ‘not’
+betekent precies wat je verwacht, het is een andere naam voor ‘null’,
+een functie die waar teruggeeft wanneer zijn argument onwaar is.)
 
-   Interestingly, the loop count is not decremented until we leave the
-space between paragraphs, unless we come to the end of buffer or stop
-seeing the local value of the paragraph separator.
+   Interessant genoeg wordt de loop teller niet eerder verlaagd dan dat
+we de ruimte tussen paragrafen verlaten, tenzij we aan het eind van het
+buffer komen of de lokale variabele van de paragraaf separator niet meer
+zien.
 
-   That second ‘while’ also has a ‘(move-to-left-margin)’ expression.
-The function is self-explanatory.  It is inside a ‘progn’ expression and
-not the last element of its body, so it is only invoked for its side
-effect, which is to move point to the left margin of the current line.
+   De tweede ‘while’ heeft ook een ‘(move-to-left-margin)’ expressie.
+De functie spreekt voor zich.  Die bevindt zich binnen een ‘progn’
+expressie en is niet het laatste element van de body, dus die wordt
+alleen aangeroepen voor het zij-effect, het verplaatsten van point naar
+de linker kantlijn op de huidige regel.
 
-   The ‘looking-at’ function is also self-explanatory; it returns true
-if the text after point matches the regular expression given as its
-argument.
+   De functie ‘looking-at’ spreekt ook voor zich.  het geeft waar terug
+wanneer de tekst achter point matcht met de reguliere expressie die als
+zijn argument is doorgegeven.
 
-   The rest of the body of the loop looks difficult at first, but makes
-sense as you come to understand it.
+   De rest van de body van de loop ziet er op het eerste gezicht
+moeilijk uit, maar is logisch wanneer je die begint te begrijpen.
 
-   First consider what happens if there is a fill prefix:
+   Bedenk eerst wat gebeurt wanneer er een opvul-prefix is:
 
        (if fill-prefix-regexp
            ;; There is a fill prefix; it overrides parstart;
@@ -10688,24 +10701,24 @@ sense as you come to understand it.
                        (looking-at fill-prefix-regexp))
              (forward-line 1))
 
-This expression moves point forward line by line so long as four
-conditions are true:
+De expressie verplaatst point voorwaarts regel voor regel zolang vier
+condities waar zijn:
 
-  1. Point is not at the end of the buffer.
+  1. Point is niet aan het eind van het buffer.
 
-  2. We can move to the left margin of the text and are not at the end
-     of the buffer.
+  2. We kunnen naar de linker kantlijn van de tekst verplaatsen en zijn
+     niet aan het eind van het buffer.
 
-  3. The text following point does not separate paragraphs.
+  3. De tekst die volgt op point scheidt geen paragrafen.
 
-  4. The pattern following point is the fill prefix regular expression.
+  4. Het patroon volgend op point is de fill prefix reguliere expressie.
 
-   The last condition may be puzzling, until you remember that point was
-moved to the beginning of the line early in the ‘forward-paragraph’
-function.  This means that if the text has a fill prefix, the
-‘looking-at’ function will see it.
+   De laatste conditie kan verwarrend zijn, totdat je herinnert dat
+point naar het begin van de regel is verplaatst in het begin van de
+functie ‘forward-paragraph’.  Dat betekent dat wanneer de tekst een
+opvul-prefix heeft, de functie ‘looking-at’ het zal zien.
 
-   Consider what happens when there is no fill prefix.
+   Bedenk wat gebeurt wanneer er geen opvul-prefix is.
 
          (while (and (re-search-forward sp-parstart nil 1)
                      (progn (setq start (match-beginning 0))
@@ -10718,71 +10731,72 @@ function.  This means that if the text has a fill prefix, the
                               (not (get-text-property (1- start) 'hard)))))
            (forward-char 1))
 
-This ‘while’ loop has us searching forward for ‘sp-parstart’, which is
-the combination of possible whitespace with the local value of the start
-of a paragraph or of a paragraph separator.  (The latter two are within
-an expression starting ‘\(?:’ so that they are not referenced by the
-‘match-beginning’ function.)
+De ‘while’ loop laat ons voorwaarts zoeken naar ‘sp-parstart’, wat de
+combinatie is van mogelijke witte ruimte met de lokale waarde van de
+start van een paragraaf of van een paragraaf separator.
 
-   The two expressions,
+   De twee expressies,
 
      (setq start (match-beginning 0))
      (goto-char start)
 
-mean go to the start of the text matched by the regular expression
-search.
+betekenen ga naar de start van tekst gematcht door de reguliere
+expressie zoekopdracht.
 
-   The ‘(match-beginning 0)’ expression is new.  It returns a number
-specifying the location of the start of the text that was matched by the
-last search.
+   De ‘(match-beginning 0)’ expressie is nieuw.  Het geeft het getal dat
+de lokatie van de start van de tekst aangeeft die was gematcht door de
+laatste zoekopdracht.
 
-   The ‘match-beginning’ function is used here because of a
-characteristic of a forward search: a successful forward search,
-regardless of whether it is a plain search or a regular expression
-search, moves point to the end of the text that is found.  In this case,
-a successful search moves point to the end of the pattern for
-‘sp-parstart’.
+   De functie ‘match-beginning’ wordt hier gebruikt vanwege een
+karakteristiek van een voorwaartse zoekopdracht: een succesvolle
+zoekopdracht, ongeacht of het een gewone zoekopdracht of een reguliere
+expressie zoekopdracht is, verplaatst point naar het einde van de tekst
+die is gevonden.  In dit geval verplaatst een succesvolle zoekopdracht
+point naar het einde van het patroon voor ‘sp-parstart’.
 
-   However, we want to put point at the end of the current paragraph,
-not somewhere else.  Indeed, since the search possibly includes the
-paragraph separator, point may end up at the beginning of the next one
-unless we use an expression that includes ‘match-beginning’.
+   Wij willen echter point aan het einde van de huidige paragraaf
+zetten, niet ergens anders.  Omdat de zoekopdracht mogelijk de paragraaf
+separator bevat, kan point bij het begin van de volgende terecht komen
+tenzij we een expressie gebruiken die ‘match-beginning’ bevat.
 
-   When given an argument of 0, ‘match-beginning’ returns the position
-that is the start of the text matched by the most recent search.  In
-this case, the most recent search looks for ‘sp-parstart’.  The
-‘(match-beginning 0)’ expression returns the beginning position of that
-pattern, rather than the end position of that pattern.
+   Wanneer het een argument van 0 krijgt, geeft ‘match-beginning’ de
+positie terug die de start is van de tekst gematcht met de meest recente
+zoekopdracht.  In dit geval zoekt de meest recente zoekopdracht naar
+‘sp-parstart’.  De ‘(match-beginning 0)’ expressie geeft de
+beginposiitie van dat patroon, in plaats van de eindpositie van dat
+patroon.
 
-   (Incidentally, when passed a positive number as an argument, the
-‘match-beginning’ function returns the location of point at that
-parenthesized expression in the last search unless that parenthesized
-expression begins with ‘\(?:’.  I don't know why ‘\(?:’ appears here
-since the argument is 0.)
+   (Overigens, wanneer een positief getal als argument wordt
+doorgegeven, geeft de functie ‘match-beginning’ de lokatie van point bij
+die tussen haakjes geplaatste expressie in de laatste zoekopdracht,
+tenzij die tussen haakjes geplaatste expressie begint met ‘\(?:’.  Ik
+weet niet waarom ‘\(?:’ hier verschijnt, aangezien het argument 0 is.)
 
-   The last expression when there is no fill prefix is
+   De laatste expressie wanneer er geen opvul-prefix is
 
      (if (< (point) (point-max))
          (goto-char start))))
 
-(Note that this code snippet is copied verbatim from the original code,
-so the two extra ending parentheses are matching the previous ‘if’ and
-‘while’.)
+(Merk op dat dit stukje code ongewijzigd gekopieerd is van de originele
+code, waardoor de twee extra haakjes sluiten horen bij de voorafgaande
+‘if’ en ‘while’.)
 
-   This says that if there is no fill prefix and if we are not at the
-end, point should move to the beginning of whatever was found by the
-regular expression search for ‘sp-parstart’.
+   Dit vertelt dat wanneer er geen opvul-prefix is en wanneer wij niet
+aan het einde zijn, point naar het begin moet verplaatsen van wat
+gevonden was door de reguliere expressie zoekopdracht naar
+‘sp-parstart’.
 
-   The full definition for the ‘forward-paragraph’ function not only
-includes code for going forwards, but also code for going backwards.
+   De volledige definitie van de functie ‘forward-paragraph’ bevat niet
+alleen code om voorwaarts te gaan, maar ook code om achterwaarts te
+gaan.
 
-   If you are reading this inside of GNU Emacs and you want to see the
-whole function, you can type ‘C-h f’ (‘describe-function’) and the name
-of the function.  This gives you the function documentation and the name
-of the library containing the function's source.  Place point over the
-name of the library and press the <RET> key; you will be taken directly
-to the source.  (Be sure to install your sources!  Without them, you are
-like a person who tries to drive a car with his eyes shut!)
+   Wanneer je dit in GNU Emacs leest en je de gehele functie wilt zien,
+dan kan je ‘C-h f’ (‘describe-function’) typen, en daarna de naam van de
+functie.  Dit geeft je de functiedocumentatie en de naam van de library
+die de broncode bevat.  Plaats point op de naam van de library en druk
+op de <RET> toets.  Je brengt je direct naar de bron.  (Zorg dat je de
+broncodes installeert!  Zonder die ben je als iemand die probeert met de
+ogen dicht een auto te besturen.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Regexp terugblik,  Next: re-search oefeningen,  Prev: forward-paragraph,  Up: Regexp zoeken
@@ -10794,9 +10808,9 @@ Hier is een korte samenvatting van sommige recent geïntroduceerde
 functies.
 
 ‘while’
-     Repeatedly evaluate the body of the expression so long as the first
-     element of the body tests true.  Then return ‘nil’.  (The
-     expression is evaluated only for its side effects.)
+     Evalueer herhaaldelijk de body van de expressie zolang als het
+     eerste element van de body waar test.  Geef daarna ‘nil’ terug.
+     (De expressie wordt uitsluitend voor de zij-effecten geëvalueerd.)
 
      Bijvoorbeeld:
 
@@ -10809,18 +10823,20 @@ functies.
                        foo is 1.
                        nil
 
-     (The ‘insert’ function inserts its arguments at point; the ‘format’
-     function returns a string formatted from its arguments the way
-     ‘message’ formats its arguments; ‘\n’ produces a new line.)
+     (De functie ‘insert’ voegt het argument bij point in.  de functie
+     ‘format’ geeft een geformatteerde string terug op dezelfde manier
+     als ‘message’ de argumenten formatteert.  ‘\n’ produceert een
+     nieuwe regel.)
 
 ‘re-search-forward’
-     Search for a pattern, and if the pattern is found, move point to
-     rest just after it.
+     Zoek voor een patroon, en als het patroon is gevonden, verplaats
+     point direct er achter.
 
-     Takes four arguments, like ‘search-forward’:
+     Verwacht vier argumenten, zoals ‘search-forward’:
 
-       1. A regular expression that specifies the pattern to search for.
-          (Remember to put quotation marks around this argument!)
+       1. Een reguliere expressie die het zoekpatroon specificeert.
+          (Denk er aan om dubbele aanhalingstekens om dit argument te
+          zetten!)
 
        2. Optioneel, de limiet van de zoekopdracht.
 
@@ -10831,10 +10847,10 @@ functies.
           negatief, zoek achterwaarts.
 
 ‘let*’
-     Bind some variables locally to particular values, and then evaluate
-     the remaining arguments, returning the value of the last one.
-     While binding the local variables, use the local values of
-     variables bound earlier, if any.
+     Bind sommige variabelen lokaal aan bepaalde waardes en evalueer dan
+     de overige argumenten en geeft de waarde van de laatste terug.
+     Gebruik de lokale waarden van eerder gebonden variabelen bij het
+     binden van lokale variabelen.
 
      Bijvoorbeeld:
 
@@ -10844,35 +10860,36 @@ functies.
                ⇒ ‘bar’ is 21.
 
 ‘match-beginning’
-     Return the position of the start of the text found by the last
-     regular expression search.
+     Geef de positie van de start van de tekst gevonden door de laatste
+     reguliere expressie.
 
 ‘looking-at’
-     Return ‘t’ for true if the text after point matches the argument,
-     which should be a regular expression.
+     Geef ‘t’ voor waar terug wanneer de tekst achter point overeenkomt
+     met het argument, wat een reguliere expressie moet zijn.
 
 ‘eobp’
-     Return ‘t’ for true if point is at the end of the accessible part
-     of a buffer.  The end of the accessible part is the end of the
-     buffer if the buffer is not narrowed; it is the end of the narrowed
-     part if the buffer is narrowed.
+     Geef ‘t’ voor waar terug wanneer point aan het einde van het
+     bereikbare deel van een buffer is.  Het einde van het bereikbare
+     deel is het einde van het buffer wanneer het buffer niet versmald
+     is.  Het is het einde van het versmalde deel wanneer het buffer is
+     versmald.
 
 
 File: emacs-lisp-intro-nl.info,  Node: re-search oefeningen,  Prev: Regexp terugblik,  Up: Regexp zoeken
 
-12.6 Exercises with ‘re-search-forward’
+12.6 Oefeningen met ‘re-search-forward’
 =======================================
 
-   • Write a function to search for a regular expression that matches
-     two or more blank lines in sequence.
+   • Schrijf een functie om te zoeken met een reguliere expressie die
+     overeenkomt met twee of meer opeenvolgende lege regels.
 
-   • Write a function to search for duplicated words, such as "the the".
-     *Note Syntax of Regular Expressions: (emacs)Regexps, for
-     information on how to write a regexp (a regular expression) to
-     match a string that is composed of two identical halves.  You can
-     devise several regexps; some are better than others.  The function
-     I use is described in an appendix, along with several regexps.
-     *Note ‘the-the’ Duplicated Words Function: the-the.
+   • Schrijf een functie die zoekt naar gedupliceerde woorden, zoals "de
+     de".  *Note Syntax of Regular Expressions: (emacs)Regexps, voor
+     informatie hoe je een regexp schrijft (een reguliere expressie) om
+     een string te matchen die uit twee identieke helften bestaat.  De
+     functie die ik gebruik is beschreven in de appendix, samen met
+     verschillende regexps.  *note ‘de-de’ Gedupliceerde woorden
+     functie: de-de.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Woorden tellen,  Next: Woorden in een defun,  Prev: Regexp zoeken,  Up: Top
@@ -17542,7 +17559,7 @@ Index
 * Accumuleren, type recursief patroon:   Accumuleren.         (line   6)
 * add-hook:                              Tekst en auto-fill.  (line  54)
 * and:                                   kill-new functie.    (line 211)
-* and <1>:                               fwd-para let.        (line  65)
+* and <1>:                               fwd-para let.        (line  66)
 * Anonymous function:                    lambda.              (line   6)
 * apostrof om te quoten:                 Draai een programma. (line  13)
 * append-to-buffer:                      append-to-buffer.    (line   6)
@@ -17680,7 +17697,7 @@ Index
 * Emacs version, choosing:               Eenvoudige uitbreiding.
                                                               (line  35)
 * empty list gedefinieerd:               Lisp atomen.         (line  19)
-* eobp:                                  fwd-para while.      (line  59)
+* eobp:                                  fwd-para while.      (line  61)
 * eq:                                    Terugblik.           (line 127)
 * eq (voorbeeld van gebruik):            last-command en this-command.
                                                               (line  36)
@@ -17815,7 +17832,7 @@ Index
 * Locatie van point <1>:                 Buffer grootte en locatie.
                                                               (line   6)
 * lokale variabele gedefinieerd:         Voorkom verwarring.  (line   6)
-* looking-at:                            fwd-para while.      (line  81)
+* looking-at:                            fwd-para while.      (line  85)
 * Loops:                                 while.               (line   6)
 * Loops en recursie:                     Loops en recursie.   (line   6)
 * Maclisp:                               Geschiedenis van Lisp.
@@ -17826,7 +17843,7 @@ Index
 * mapcar:                                mapcar.              (line   6)
 * mark:                                  save-excursion.      (line   6)
 * mark-whole-buffer:                     mark-whole-buffer.   (line   6)
-* match-beginning:                       fwd-para while.      (line 159)
+* match-beginning:                       fwd-para while.      (line 161)
 * max:                                   Kolommen van een grafiek.
                                                               (line 131)
 * message:                               message.             (line   6)
@@ -17920,7 +17937,7 @@ Index
                                                               (line  17)
 * Recursively counting words:            recursive-count-words.
                                                               (line   6)
-* regexp-quote:                          fwd-para let.        (line  93)
+* regexp-quote:                          fwd-para let.        (line  95)
 * Region, wat is het:                    save-excursion.      (line   6)
 * Regular expressions for word counting: Woorden tellen.      (line   6)
 * Reguliere expressie zoekopdrachten:    Regexp zoeken.       (line   6)
@@ -18270,133 +18287,133 @@ Node: Dec voorbeeld onderdelen390429
 Node: Dec voorbeeld samengesteld392510
 Node: dolist dotimes394786
 Node: dolist395617
-Node: dotimes398793
-Node: Recursie400340
-Node: Robots bouwen401552
-Node: Recursive definitie onderdelen403357
-Node: Recursie met lijst406003
-Node: Recursieve driehoek functie409671
-Node: Recursief voorbeeld arg van 1 of 2411049
-Node: Recursief voorbeeld arg van 3 of 4413314
-Node: Recursie met cond416518
-Node: Recursieve patronen418962
-Node: Elke419455
-Node: Accumuleren422015
-Node: Bewaar423395
-Node: Geen uitstel425463
-Node: Zonder uitstel oplossing428187
-Ref: Zonder uitstel oplossing-Footnote-1432149
-Ref: Zonder uitstel oplossing-Footnote-2432273
-Node: Looping oefening432796
-Node: Regexp zoeken434115
-Node: sentence-end436255
-Node: re-search-forward440302
-Node: forward-sentence442848
-Node: Complete forward-sentence443614
-Node: fwd-sentence while loops447166
-Node: fwd-sentence re-search450815
-Node: forward-paragraph452983
-Node: forward-paragraph in het kort454799
-Node: fwd-para let456269
-Node: fwd-para while462949
-Node: Regexp terugblik471531
-Node: re-search oefeningen473987
-Node: Woorden tellen474773
-Node: Waarom woorden tellen475531
-Node: count-words-example476577
-Node: Ontwerp count-words-example477861
-Node: Wiite ruimte bug484404
-Node: recursive-count-words493997
-Node: Tellen voorbeeld506078
-Node: Woorden in een defun506459
-Node: Verdeel en heers508200
-Node: Woorden en symbolen509431
-Node: Syntax511501
-Node: count-words-in-defun515137
-Node: Enkele defuns521434
-Node: Een bestand vinden523826
-Node: lengths-list-file526468
-Node: Enkele bestanden531744
-Node: lengths-list-many-files532505
-Node: append535295
-Node: Enkele bestanden recursief535932
-Node: De data voorbereiden538772
-Node: Data in detail te tonen539901
-Node: Sorteren540825
-Node: Bestandenlijst542503
-Ref: Bestandenlijst-Footnote-1550035
-Node: Functiedefinities tellen550252
-Node: Een grafiek klaarmaken559578
-Node: Kolommen van een grafiek560907
-Node: graph-body-print574546
-Node: recursive-graph-body-print579351
-Node: Afgedrukte assen582041
-Node: Lijngrafiek oefening582788
-Node: Initialisatie van Emacs582995
-Node: Default configuratie584489
-Ref: Default configuratie-Footnote-1586473
-Node: Site-wide init586789
-Node: defcustom588851
-Node: Een init bestand beginnen594736
-Node: Tekst en auto-fill597132
-Ref: Tekst en auto-fill-Footnote-1601148
-Ref: Tekst en auto-fill-Footnote-2601432
-Node: Mail aliasen601693
-Node: Indent Tabs Mode602619
-Node: Key bindings603564
-Node: Keymaps608338
-Node: Bestanden laden610998
-Node: Autoload614280
-Node: Eenvoudige uitbreiding617168
-Ref: Eenvoudige uitbreiding-Footnote-1619733
-Node: X11 kleuren620022
-Ref: X11 kleuren-Footnote-1621840
-Node: Diverse621994
-Node: Mode line626216
-Node: Debuggen.631752
-Node: debug632648
-Node: debug-on-entry635780
-Node: debug-on-quit639385
-Node: edebug640422
-Node: Debuggen oefeningen644544
-Node: Conclusie646309
-Node: de-de651667
-Node: Killring654457
-Node: Wat de killring doet655274
-Node: current-kill656792
-Node: Code voor current-kill657490
-Node: current-kill begrijpen660322
-Node: Body van current-kill661122
-Node: Uitwijding over fout664273
-Node: Het element vaststellen665448
-Node: yank669153
-Node: yank-pop672367
-Node: ring bestand674902
-Node: Volledige grafiek675279
-Node: Gelabeld voorbeeld676119
-Node: print-graph varlist678116
-Node: print-Y-axis679839
-Node: print-Y-axis in detail680692
-Node: Hoogte van label681502
-Node: Bereken het restant683519
-Node: Y-as element687385
-Node: Y-axis-column691148
-Node: print-Y-axis enalaatste692760
-Node: print-X-axis694745
-Node: Overeenkomsten verschillen696063
-Node: X-as tic marks696896
-Node: De gehele grafiek afdrukken703899
-Node: De finale versie705015
-Node: Test print-graph709270
-Node: Woorden in defuns grafisch weergeven710954
-Node: lambda713578
-Node: mapcar715459
-Node: Een andere bug717519
-Node: Finale afgedrukte grafiek723048
-Node: Vrije software en vrije handleidingen723999
-Node: GNU Free Documentation License730315
-Node: Index755504
-Node: Over de auteur794413
+Node: dotimes398794
+Node: Recursie400341
+Node: Robots bouwen401553
+Node: Recursive definitie onderdelen403358
+Node: Recursie met lijst406005
+Node: Recursieve driehoek functie409673
+Node: Recursief voorbeeld arg van 1 of 2411051
+Node: Recursief voorbeeld arg van 3 of 4413316
+Node: Recursie met cond416520
+Node: Recursieve patronen418964
+Node: Elke419457
+Node: Accumuleren422017
+Node: Bewaar423397
+Node: Geen uitstel425465
+Node: Zonder uitstel oplossing428189
+Ref: Zonder uitstel oplossing-Footnote-1432151
+Ref: Zonder uitstel oplossing-Footnote-2432275
+Node: Looping oefening432798
+Node: Regexp zoeken434117
+Node: sentence-end436259
+Node: re-search-forward440306
+Node: forward-sentence442961
+Node: Complete forward-sentence443744
+Node: fwd-sentence while loops447448
+Node: fwd-sentence re-search451261
+Node: forward-paragraph453365
+Node: forward-paragraph in het kort455240
+Node: fwd-para let456798
+Node: fwd-para while463729
+Node: Regexp terugblik472582
+Node: re-search oefeningen475172
+Node: Woorden tellen475945
+Node: Waarom woorden tellen476703
+Node: count-words-example477749
+Node: Ontwerp count-words-example479033
+Node: Wiite ruimte bug485576
+Node: recursive-count-words495169
+Node: Tellen voorbeeld507250
+Node: Woorden in een defun507631
+Node: Verdeel en heers509372
+Node: Woorden en symbolen510603
+Node: Syntax512673
+Node: count-words-in-defun516309
+Node: Enkele defuns522606
+Node: Een bestand vinden524998
+Node: lengths-list-file527640
+Node: Enkele bestanden532916
+Node: lengths-list-many-files533677
+Node: append536467
+Node: Enkele bestanden recursief537104
+Node: De data voorbereiden539944
+Node: Data in detail te tonen541073
+Node: Sorteren541997
+Node: Bestandenlijst543675
+Ref: Bestandenlijst-Footnote-1551207
+Node: Functiedefinities tellen551424
+Node: Een grafiek klaarmaken560750
+Node: Kolommen van een grafiek562079
+Node: graph-body-print575718
+Node: recursive-graph-body-print580523
+Node: Afgedrukte assen583213
+Node: Lijngrafiek oefening583960
+Node: Initialisatie van Emacs584167
+Node: Default configuratie585661
+Ref: Default configuratie-Footnote-1587645
+Node: Site-wide init587961
+Node: defcustom590023
+Node: Een init bestand beginnen595908
+Node: Tekst en auto-fill598304
+Ref: Tekst en auto-fill-Footnote-1602320
+Ref: Tekst en auto-fill-Footnote-2602604
+Node: Mail aliasen602865
+Node: Indent Tabs Mode603791
+Node: Key bindings604736
+Node: Keymaps609510
+Node: Bestanden laden612170
+Node: Autoload615452
+Node: Eenvoudige uitbreiding618340
+Ref: Eenvoudige uitbreiding-Footnote-1620905
+Node: X11 kleuren621194
+Ref: X11 kleuren-Footnote-1623012
+Node: Diverse623166
+Node: Mode line627388
+Node: Debuggen.632924
+Node: debug633820
+Node: debug-on-entry636952
+Node: debug-on-quit640557
+Node: edebug641594
+Node: Debuggen oefeningen645716
+Node: Conclusie647481
+Node: de-de652839
+Node: Killring655629
+Node: Wat de killring doet656446
+Node: current-kill657964
+Node: Code voor current-kill658662
+Node: current-kill begrijpen661494
+Node: Body van current-kill662294
+Node: Uitwijding over fout665445
+Node: Het element vaststellen666620
+Node: yank670325
+Node: yank-pop673539
+Node: ring bestand676074
+Node: Volledige grafiek676451
+Node: Gelabeld voorbeeld677291
+Node: print-graph varlist679288
+Node: print-Y-axis681011
+Node: print-Y-axis in detail681864
+Node: Hoogte van label682674
+Node: Bereken het restant684691
+Node: Y-as element688557
+Node: Y-axis-column692320
+Node: print-Y-axis enalaatste693932
+Node: print-X-axis695917
+Node: Overeenkomsten verschillen697235
+Node: X-as tic marks698068
+Node: De gehele grafiek afdrukken705071
+Node: De finale versie706187
+Node: Test print-graph710442
+Node: Woorden in defuns grafisch weergeven712126
+Node: lambda714750
+Node: mapcar716631
+Node: Een andere bug718691
+Node: Finale afgedrukte grafiek724220
+Node: Vrije software en vrije handleidingen725171
+Node: GNU Free Documentation License731487
+Node: Index756676
+Node: Over de auteur795585
 
 End Tag Table
 

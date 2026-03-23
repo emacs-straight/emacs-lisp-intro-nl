@@ -274,143 +274,143 @@
 @entry{regexp-quote}{151}{@code {regexp-quote}}
 @entry{eobp}{153}{@code {eobp}}
 @entry{looking-at}{153}{@code {looking-at}}
-@entry{match-beginning}{154}{@code {match-beginning}}
-@entry{Repetition for word counting}{157}{Repetition for word counting}
-@entry{Regular expressions for word counting}{157}{Regular expressions for word counting}
-@entry{count-words-example}{157}{@code {count-words-example}}
-@entry{Count words recursively}{163}{Count words recursively}
-@entry{Recursively counting words}{163}{Recursively counting words}
-@entry{Words, counted recursively}{163}{Words, counted recursively}
-@entry{recursive-count-words}{168}{@code {recursive-count-words}}
-@entry{Counting words in a defun}{169}{Counting words in a @code {defun}}
-@entry{Word counting in a defun}{169}{Word counting in a @code {defun}}
-@entry{Words and symbols in defun}{169}{Words and symbols in defun}
-@entry{Syntax categories and tables}{170}{Syntax categories and tables}
-@entry{Counting words in a defun}{171}{Counting words in a @code {defun}}
-@entry{count-words-in-defun}{173}{@code {count-words-in-defun}}
-@entry{Een bestand vinden}{175}{Een bestand vinden}
-@entry{lengths-list-file}{176}{@code {lengths-list-file}}
-@entry{lengths-list-many-files}{178}{@code {lengths-list-many-files}}
-@entry{recursive-lengths-list-many-files}{179}{@code {recursive-lengths-list-many-files}}
-@entry{sort}{181}{@code {sort}}
-@entry{directory-files}{181}{@code {directory-files}}
-@entry{files-in-below-directory}{181}{@code {files-in-below-directory}}
-@entry{top-of-ranges}{185}{@code {top-of-ranges}}
-@entry{nreverse}{186}{@code {nreverse}}
-@entry{reverse}{186}{@code {reverse}}
-@entry{Readying a graph}{189}{Readying a graph}
-@entry{Graph prototype}{189}{Graph prototype}
-@entry{Prototype graph}{189}{Prototype graph}
-@entry{Body of graph}{189}{Body of graph}
-@entry{apropos}{189}{@code {apropos}}
-@entry{max}{191}{@code {max}}
-@entry{min}{191}{@code {min}}
-@entry{apply}{191}{@code {apply}}
-@entry{graph-body-print}{194}{@code {graph-body-print}}
-@entry{recursive-graph-body-print}{196}{@code {recursive-graph-body-print}}
-@entry{.emacs file}{198}{@file {.emacs} file}
-@entry{Customizing your .emacs file}{198}{Customizing your @file {.emacs} file}
-@entry{Initialization file}{198}{Initialization file}
-@entry{default.el init file}{198}{@file {default.el} init file}
-@entry{site-init.el init file}{198}{@file {site-init.el} init file}
-@entry{site-load.el init file}{198}{@file {site-load.el} init file}
-@entry{defcustom}{199}{@code {defcustom}}
-@entry{defsubst}{201}{@code {defsubst}}
-@entry{defconst}{201}{@code {defconst}}
-@entry{.emacs file, beginning of}{201}{@file {.emacs} file, beginning of}
-@entry{Per-buffer, local variables list}{202}{Per-buffer, local variables list}
-@entry{Local variables list, per-buffer,}{202}{Local variables list, per-buffer,}
-@entry{Automatic mode selection}{202}{Automatic mode selection}
-@entry{Mode selection, automatic}{202}{Mode selection, automatic}
-@entry{Text Mode turned on}{203}{Text Mode turned on}
-@entry{Auto Fill mode turned on}{203}{Auto Fill mode turned on}
-@entry{add-hook}{203}{@code {add-hook}}
-@entry{Mail aliases}{204}{Mail aliases}
-@entry{Tabs, preventing}{204}{Tabs, preventing}
-@entry{indent-tabs-mode}{204}{@code {indent-tabs-mode}}
-@entry{compare-windows}{205}{@code {compare-windows}}
-@entry{Setting a key globally}{205}{Setting a key globally}
-@entry{Keymap global set}{205}{Keymap global set}
-@entry{Key setting globally}{205}{Key setting globally}
-@entry{keymap-global-set}{205}{@code {keymap-global-set}}
-@entry{occur}{205}{@code {occur}}
-@entry{keymap-global-unset}{205}{@code {keymap-global-unset}}
-@entry{Unbinding key}{205}{Unbinding key}
-@entry{Key unbinding}{205}{Key unbinding}
-@entry{list-buffers, rebound}{206}{@code {list-buffers@r {, rebound}}}
-@entry{buffer-menu, bound to key}{206}{@code {buffer-menu@r {, bound to key}}}
-@entry{global-set-key}{206}{@code {global-set-key}}
-@entry{Global set key}{206}{Global set key}
-@entry{global-unset-key}{206}{@code {global-unset-key}}
-@entry{Keymaps}{206}{Keymaps}
-@entry{Rebinding keys}{206}{Rebinding keys}
-@entry{Loading files}{207}{Loading files}
-@entry{load-path}{208}{@code {load-path}}
-@entry{load-library}{208}{@code {load-library}}
-@entry{autoload}{208}{@code {autoload}}
-@entry{line-to-top-of-window}{209}{@code {line-to-top-of-window}}
-@entry{Simple extension in .emacs file}{209}{Simple extension in @file {.emacs} file}
-@entry{Conditional 'twixt two versions of Emacs}{210}{Conditional 'twixt two versions of Emacs}
-@entry{Version of Emacs, choosing}{210}{Version of Emacs, choosing}
-@entry{Emacs version, choosing}{210}{Emacs version, choosing}
-@entry{Key bindings, fixing}{213}{Key bindings, fixing}
-@entry{Bindings, key, fixing unpleasant}{213}{Bindings, key, fixing unpleasant}
-@entry{mode-line-format}{214}{@code {mode-line-format}}
-@entry{Mode line format}{214}{Mode line format}
-@entry{Properties, in mode line example}{214}{Properties, in mode line example}
-@entry{debugging}{216}{debugging}
-@entry{debug}{216}{@code {debug}}
-@entry{triangle-bugged}{216}{@code {triangle-bugged}}
-@entry{debug-on-entry}{217}{@code {debug-on-entry}}
-@entry{cancel-debug-on-entry}{219}{@code {cancel-debug-on-entry}}
-@entry{debug-on-quit}{219}{@code {debug-on-quit}}
-@entry{(debug) in code}{219}{@code {(debug)} in code}
-@entry{Source level debugger}{219}{Source level debugger}
-@entry{edebug}{219}{@code {edebug}}
-@entry{de-de}{224}{@code {de-de}}
-@entry{Duplicated words function}{224}{Duplicated words function}
-@entry{Words, duplicated}{224}{Words, duplicated}
-@entry{Kill ring handling}{226}{Kill ring handling}
-@entry{Handling the kill ring}{226}{Handling the kill ring}
-@entry{Ring, making a list like a}{226}{Ring, making a list like a}
-@entry{current-kill}{226}{@code {current-kill}}
-@entry{zerop}{228}{@code {zerop}}
-@entry{error}{228}{@code {error}}
-@entry{global variable defined}{230}{@samp {global variable} defined}
-@entry{variable, global, defined}{230}{@samp {variable, global}, defined}
-@entry{yank}{231}{@code {yank}}
-@entry{yank-pop}{232}{@code {yank-pop}}
-@entry{ring.el file}{233}{@file {ring.el} file}
-@entry{print-graph varlist}{235}{@code {print-graph} varlist}
-@entry{Axis, print vertical}{235}{Axis, print vertical}
-@entry{Y axis printing}{235}{Y axis printing}
-@entry{Vertical axis printing}{235}{Vertical axis printing}
-@entry{Print vertical axis}{235}{Print vertical axis}
-@entry{% (remainder function)}{236}{@code {% @r {(remainder function)}}}
-@entry{Remainder function, %}{236}{Remainder function, @code {%}}
-@entry{Y-axis-label-spacing}{238}{@code {Y-axis-label-spacing}}
-@entry{number-to-string}{238}{@code {number-to-string}}
-@entry{Y-axis-tic}{239}{@code {Y-axis-tic}}
-@entry{make-string}{239}{@code {make-string}}
-@entry{Y-axis-column}{240}{@code {Y-axis-column}}
-@entry{print-Y-axis}{241}{@code {print-Y-axis}}
-@entry{Axis, print horizontal}{242}{Axis, print horizontal}
-@entry{X axis printing}{242}{X axis printing}
-@entry{Print horizontal axis}{242}{Print horizontal axis}
-@entry{Horizontal axis printing}{242}{Horizontal axis printing}
-@entry{print-X-axis-tic-line}{244}{@code {print-X-axis-tic-line}}
-@entry{X-axis-element}{245}{@code {X-axis-element}}
-@entry{print-X-axis-numbered-line}{245}{@code {print-X-axis-numbered-line}}
-@entry{print-X-axis}{245}{@code {print-X-axis}}
-@entry{Printing the whole graph}{246}{Printing the whole graph}
-@entry{Whole graph printing}{246}{Whole graph printing}
-@entry{Graph, printing all}{246}{Graph, printing all}
-@entry{Y-axis-column Final version.}{247}{@code {Y-axis-column @r {Final version.}}}
-@entry{graph-body-print Final version.}{247}{@code {graph-body-print @r {Final version.}}}
-@entry{print-graph Final version.}{248}{@code {print-graph @r {Final version.}}}
-@entry{Anonymous function}{250}{Anonymous function}
-@entry{lambda}{250}{@code {lambda}}
-@entry{mapcar}{252}{@code {mapcar}}
-@entry{Bug, most insidious type}{253}{Bug, most insidious type}
-@entry{Insidious type of bug}{253}{Insidious type of bug}
-@entry{FDL, GNU Free Documentation License}{258}{FDL, GNU Free Documentation License}
+@entry{match-beginning}{155}{@code {match-beginning}}
+@entry{Repetition for word counting}{158}{Repetition for word counting}
+@entry{Regular expressions for word counting}{158}{Regular expressions for word counting}
+@entry{count-words-example}{158}{@code {count-words-example}}
+@entry{Count words recursively}{164}{Count words recursively}
+@entry{Recursively counting words}{164}{Recursively counting words}
+@entry{Words, counted recursively}{164}{Words, counted recursively}
+@entry{recursive-count-words}{169}{@code {recursive-count-words}}
+@entry{Counting words in a defun}{170}{Counting words in a @code {defun}}
+@entry{Word counting in a defun}{170}{Word counting in a @code {defun}}
+@entry{Words and symbols in defun}{170}{Words and symbols in defun}
+@entry{Syntax categories and tables}{171}{Syntax categories and tables}
+@entry{Counting words in a defun}{172}{Counting words in a @code {defun}}
+@entry{count-words-in-defun}{174}{@code {count-words-in-defun}}
+@entry{Een bestand vinden}{176}{Een bestand vinden}
+@entry{lengths-list-file}{177}{@code {lengths-list-file}}
+@entry{lengths-list-many-files}{179}{@code {lengths-list-many-files}}
+@entry{recursive-lengths-list-many-files}{180}{@code {recursive-lengths-list-many-files}}
+@entry{sort}{182}{@code {sort}}
+@entry{directory-files}{182}{@code {directory-files}}
+@entry{files-in-below-directory}{182}{@code {files-in-below-directory}}
+@entry{top-of-ranges}{186}{@code {top-of-ranges}}
+@entry{nreverse}{187}{@code {nreverse}}
+@entry{reverse}{187}{@code {reverse}}
+@entry{Readying a graph}{190}{Readying a graph}
+@entry{Graph prototype}{190}{Graph prototype}
+@entry{Prototype graph}{190}{Prototype graph}
+@entry{Body of graph}{190}{Body of graph}
+@entry{apropos}{190}{@code {apropos}}
+@entry{max}{192}{@code {max}}
+@entry{min}{192}{@code {min}}
+@entry{apply}{192}{@code {apply}}
+@entry{graph-body-print}{195}{@code {graph-body-print}}
+@entry{recursive-graph-body-print}{197}{@code {recursive-graph-body-print}}
+@entry{.emacs file}{199}{@file {.emacs} file}
+@entry{Customizing your .emacs file}{199}{Customizing your @file {.emacs} file}
+@entry{Initialization file}{199}{Initialization file}
+@entry{default.el init file}{199}{@file {default.el} init file}
+@entry{site-init.el init file}{199}{@file {site-init.el} init file}
+@entry{site-load.el init file}{199}{@file {site-load.el} init file}
+@entry{defcustom}{200}{@code {defcustom}}
+@entry{defsubst}{202}{@code {defsubst}}
+@entry{defconst}{202}{@code {defconst}}
+@entry{.emacs file, beginning of}{202}{@file {.emacs} file, beginning of}
+@entry{Per-buffer, local variables list}{203}{Per-buffer, local variables list}
+@entry{Local variables list, per-buffer,}{203}{Local variables list, per-buffer,}
+@entry{Automatic mode selection}{203}{Automatic mode selection}
+@entry{Mode selection, automatic}{203}{Mode selection, automatic}
+@entry{Text Mode turned on}{204}{Text Mode turned on}
+@entry{Auto Fill mode turned on}{204}{Auto Fill mode turned on}
+@entry{add-hook}{204}{@code {add-hook}}
+@entry{Mail aliases}{205}{Mail aliases}
+@entry{Tabs, preventing}{205}{Tabs, preventing}
+@entry{indent-tabs-mode}{205}{@code {indent-tabs-mode}}
+@entry{compare-windows}{206}{@code {compare-windows}}
+@entry{Setting a key globally}{206}{Setting a key globally}
+@entry{Keymap global set}{206}{Keymap global set}
+@entry{Key setting globally}{206}{Key setting globally}
+@entry{keymap-global-set}{206}{@code {keymap-global-set}}
+@entry{occur}{206}{@code {occur}}
+@entry{keymap-global-unset}{206}{@code {keymap-global-unset}}
+@entry{Unbinding key}{206}{Unbinding key}
+@entry{Key unbinding}{206}{Key unbinding}
+@entry{list-buffers, rebound}{207}{@code {list-buffers@r {, rebound}}}
+@entry{buffer-menu, bound to key}{207}{@code {buffer-menu@r {, bound to key}}}
+@entry{global-set-key}{207}{@code {global-set-key}}
+@entry{Global set key}{207}{Global set key}
+@entry{global-unset-key}{207}{@code {global-unset-key}}
+@entry{Keymaps}{207}{Keymaps}
+@entry{Rebinding keys}{207}{Rebinding keys}
+@entry{Loading files}{208}{Loading files}
+@entry{load-path}{209}{@code {load-path}}
+@entry{load-library}{209}{@code {load-library}}
+@entry{autoload}{209}{@code {autoload}}
+@entry{line-to-top-of-window}{210}{@code {line-to-top-of-window}}
+@entry{Simple extension in .emacs file}{210}{Simple extension in @file {.emacs} file}
+@entry{Conditional 'twixt two versions of Emacs}{211}{Conditional 'twixt two versions of Emacs}
+@entry{Version of Emacs, choosing}{211}{Version of Emacs, choosing}
+@entry{Emacs version, choosing}{211}{Emacs version, choosing}
+@entry{Key bindings, fixing}{214}{Key bindings, fixing}
+@entry{Bindings, key, fixing unpleasant}{214}{Bindings, key, fixing unpleasant}
+@entry{mode-line-format}{215}{@code {mode-line-format}}
+@entry{Mode line format}{215}{Mode line format}
+@entry{Properties, in mode line example}{215}{Properties, in mode line example}
+@entry{debugging}{217}{debugging}
+@entry{debug}{217}{@code {debug}}
+@entry{triangle-bugged}{217}{@code {triangle-bugged}}
+@entry{debug-on-entry}{218}{@code {debug-on-entry}}
+@entry{cancel-debug-on-entry}{220}{@code {cancel-debug-on-entry}}
+@entry{debug-on-quit}{220}{@code {debug-on-quit}}
+@entry{(debug) in code}{220}{@code {(debug)} in code}
+@entry{Source level debugger}{220}{Source level debugger}
+@entry{edebug}{220}{@code {edebug}}
+@entry{de-de}{225}{@code {de-de}}
+@entry{Duplicated words function}{225}{Duplicated words function}
+@entry{Words, duplicated}{225}{Words, duplicated}
+@entry{Kill ring handling}{227}{Kill ring handling}
+@entry{Handling the kill ring}{227}{Handling the kill ring}
+@entry{Ring, making a list like a}{227}{Ring, making a list like a}
+@entry{current-kill}{227}{@code {current-kill}}
+@entry{zerop}{229}{@code {zerop}}
+@entry{error}{229}{@code {error}}
+@entry{global variable defined}{231}{@samp {global variable} defined}
+@entry{variable, global, defined}{231}{@samp {variable, global}, defined}
+@entry{yank}{232}{@code {yank}}
+@entry{yank-pop}{233}{@code {yank-pop}}
+@entry{ring.el file}{234}{@file {ring.el} file}
+@entry{print-graph varlist}{236}{@code {print-graph} varlist}
+@entry{Axis, print vertical}{236}{Axis, print vertical}
+@entry{Y axis printing}{236}{Y axis printing}
+@entry{Vertical axis printing}{236}{Vertical axis printing}
+@entry{Print vertical axis}{236}{Print vertical axis}
+@entry{% (remainder function)}{237}{@code {% @r {(remainder function)}}}
+@entry{Remainder function, %}{237}{Remainder function, @code {%}}
+@entry{Y-axis-label-spacing}{239}{@code {Y-axis-label-spacing}}
+@entry{number-to-string}{239}{@code {number-to-string}}
+@entry{Y-axis-tic}{240}{@code {Y-axis-tic}}
+@entry{make-string}{240}{@code {make-string}}
+@entry{Y-axis-column}{241}{@code {Y-axis-column}}
+@entry{print-Y-axis}{242}{@code {print-Y-axis}}
+@entry{Axis, print horizontal}{243}{Axis, print horizontal}
+@entry{X axis printing}{243}{X axis printing}
+@entry{Print horizontal axis}{243}{Print horizontal axis}
+@entry{Horizontal axis printing}{243}{Horizontal axis printing}
+@entry{print-X-axis-tic-line}{245}{@code {print-X-axis-tic-line}}
+@entry{X-axis-element}{246}{@code {X-axis-element}}
+@entry{print-X-axis-numbered-line}{246}{@code {print-X-axis-numbered-line}}
+@entry{print-X-axis}{246}{@code {print-X-axis}}
+@entry{Printing the whole graph}{247}{Printing the whole graph}
+@entry{Whole graph printing}{247}{Whole graph printing}
+@entry{Graph, printing all}{247}{Graph, printing all}
+@entry{Y-axis-column Final version.}{248}{@code {Y-axis-column @r {Final version.}}}
+@entry{graph-body-print Final version.}{248}{@code {graph-body-print @r {Final version.}}}
+@entry{print-graph Final version.}{249}{@code {print-graph @r {Final version.}}}
+@entry{Anonymous function}{251}{Anonymous function}
+@entry{lambda}{251}{@code {lambda}}
+@entry{mapcar}{253}{@code {mapcar}}
+@entry{Bug, most insidious type}{254}{Bug, most insidious type}
+@entry{Insidious type of bug}{254}{Insidious type of bug}
+@entry{FDL, GNU Free Documentation License}{259}{FDL, GNU Free Documentation License}

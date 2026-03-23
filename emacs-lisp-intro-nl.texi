@@ -10878,7 +10878,7 @@ list))}} de lijst korter, waardoor de @code{loop} uiteindelijk stopt. Ook
 geeft die bij elke herhaling van de loop de @code{cons} expressie een nieuw
 eerste element en maakt het een nieuwe en kortere lijst.
 
-De @code{dolist} expresie doet vrijwel hetzelfde als de @code{while}
+De @code{dolist} expressie doet vrijwel hetzelfde als de @code{while}
 expressie, behalve dat de @code{dolist} macro wat werk voor je doet wanneer
 je een @code{while} expressie schrijft.
 
@@ -11032,7 +11032,7 @@ Een expressie die elke keer dat de functie word aangeroepen een andere
 waarde teruggeeft, hier de @dfn{volgende-stap-expressie} genoemd. Daardoor
 zal het aan de nieuwe instantie doorgeven argument (of argumenten)
 verschillen van wat aan de vorige instantie was doorgegeven. Dit zorgt dat
-de conditionele expresie, de @dfn{doe-opnieuw-test}, na het correcte aantal
+de conditionele expressie, de @dfn{doe-opnieuw-test}, na het correcte aantal
 herhalingen naar onwaar testen.
 @end enumerate
 
@@ -11960,7 +11960,7 @@ Zoekopdrachten met reguliere expressies worden uitgebreid gebruikt in
 Emacs. De twee functies @code{forward-sentence} en @code{forward-paragraph}
 illustreren deze zoekopdrachten goed. Zij gebruiken reguliere expressies om
 uit te zoeken waarheen de point te bewegen. De uitdrukking ``reguliere
-expresie'' wordt vaak geschreven als ``regexp''.
+expressie'' wordt vaak geschreven als ``regexp''.
 
 Reguliere expressie zoekopdrachten zijn beschreven in @ref{Regexp Search, ,
 Regular Expression Search, emacs, The GNU Emacs Manual}, en ook in
@@ -11976,7 +11976,7 @@ naar die plek.
 Voordat we naar de code van de functie @code{forward-sentence} kijken, is
 het waardevol te overwegen wat het patroon is dat het einde van een zin moet
 zijn. Het patroon wordt in de volgende sectie besproken, daarop volgt een
-beschrijving van de reguliere expresie zoekfunctie,
+beschrijving van de reguliere expressie zoekfunctie,
 @code{re-search-forward}. De functie @code{forward-sentence} wordt in de
 daaropvolgende sectie besproken. Tenslotte wordt de functie
 @code{forward-paragraph} in de laatste sectie van dit hoofdstuk
@@ -12110,96 +12110,80 @@ This regular expression can be deciphered as follows:
 
 @table @code
 @item [.?!]
-The first part of the pattern is the three characters, a period, a question
-mark and an exclamation mark, within square brackets.  The pattern must
-begin with one or other of these characters.
-
+Het eerste deel van het patroon zijn de drie karakters, een punt, een vraagteken en een uitroepteken, tussen vierkante haken. Het patroon met met een van deze karakters beginnen.
 @item []\"')@}]*
-The second part of the pattern is the group of closing braces and
-quotation marks, which can appear zero or more times.  These may follow
-the period, question mark or exclamation mark.  In a regular expression,
-the backslash, @samp{\}, followed by the double quotation mark,
-@samp{"}, indicates the class of string-quote characters.  Usually, the
-double quotation mark is the only character in this class.  The
-asterisk, @samp{*}, indicates that the items in the previous group (the
-group surrounded by square brackets, @samp{[]}) may be repeated zero or
-more times.
-
+Het tweede deel van het patroon is de groep van haakjes sluiten en vraagtekens, die nul of meer keer kunnen verschijnen. Deze mogen op de punt, vraagteken of uitroepteken volgen. Een backslash, @samp{\} gevold door de dubbele aanhalingstekens, @samp{"}, geven in een reguliere expressie de klasse string-quote karakters aan. Meestal is het dubbele aanhalingsteken het enige karakter in deze klasse. Het sterretje, @samp{*}, geeft aan dat de items in de voorgaande groep (de groep omgeven door de vierkante haken,@samp{[]}) nul of meer keer herhaald mag worden.
 @item \\($\\|   \\|  \\)
-The third part of the pattern is one or other of: either the end of a
-line, or two blank spaces, or a tab.  The double back-slashes are used
-to prevent Emacs from reading the parentheses and vertical bars as part
-of the search pattern; the parentheses are used to mark the group and
-the vertical bars are used to indicated that the patterns to either side
-of them are alternatives.  The dollar sign is used to indicate the end
-of a line and both the two spaces and the tab are each inserted as is to
-indicate what they are.
-
+Het derde deel van het patroon is een of meer van: of het einde van een regel, of twee spaties, of een tab. De dubbele backslashes worden gebruikt om te voorkomen dat Emacs de haakjes en het vertikale streepje @samp{} onderdeel van het zoekpatroon ziet, met de haakjes wordt de groep gemarkeerd en de vertikale streepjes geven aan dat de patronen aan weerzijden van het streepje alternatieven zijn. Het dollar-teken geeft het einde van een regel aan en zowel de twee spaties als de tab zijn ingevoegd om zich zelf aan te geven.
 @item [@key{RET}]*
-Finally, the last part of the pattern indicates that the end of the line
-or the whitespace following the period, question mark or exclamation
-mark may, but need not, be followed by one or more carriage returns.  In
-the pattern, the carriage return is inserted as an actual carriage
-return between square brackets but here it is shown as @key{RET}.
+Het laatste deel van het patroon tenslotte geeft aan dat het einde 
+van de regel of witte ruimte volgend op een punt, vraagteken of 
+uitroepteken mag, maar hoeft niet, gevold worden door een of meer 
+carriage returns. De carriage return wordt in het patroon patroon 
+ingevoegd als een carriage return tussen vierkante haken, maar wordt 
+hier getoond als @key{RET}.
 @end table
 @end ignore
 
 @node re-search-forward
-@section The @code{re-search-forward} Function
+@section De functie @code{re-search-forward}
 @findex re-search-forward
 
-The @code{re-search-forward} function is very like the @code{search-forward}
-function.  (@xref{search-forward, , The @code{search-forward} Function}.)
+De functie @code{re-search-forward} lijkt erg op de functie
+@code{search-forward}. (@xref{search-forward, , De functie
+@code{search-forward}}.)
 
-@code{re-search-forward} searches for a regular expression.  If the search
-is successful, it leaves point immediately after the last character in the
-target.  If the search is backwards, it leaves point just before the first
-character in the target.  You may tell @code{re-search-forward} to return
-@code{t} for true.  (Moving point is therefore a side effect.)
+@code{re-search-forward} zoekt naar een reguliere expressie. Wanneer de
+zoekopdracht geslaagd is, zet het point onmiddellijk achter het laatste
+karakter in het doel. Wanneer de zoekopdracht achterwaarts is, dan zet het
+point direct voor het eerste karakter in het doel. Je kunt
+@code{re-search-forward} zeggen dat het @code{t} voor waar moet
+teruggeven. (Verplaatsen van point is daarom een zij-effect.)
 
-Like @code{search-forward}, the @code{re-search-forward} function takes four
-arguments:
+Net als @code{search-forward} heeft de functie @code{re-search-forward} vier
+argumenten.
 
 @enumerate
 @item
-The first argument is the regular expression that the function searches
-for.  The regular expression will be a string between quotation marks.
+Het eerste argument is de reguliere expressie waar de functie naar zoekt. De
+reguliere expressie is een string tussen aanhalingstekens.
 
 @item
-The optional second argument limits how far the function will search; it is
-a bound, which is specified as a position in the buffer.
+Het optionele tweede argument begrenst tot hoever de functie zoekt, het is
+een grens, die gespecificeerd wordt als een positie in het buffer.
 
 @item
-The optional third argument specifies how the function responds to failure:
-@code{nil} as the third argument causes the function to signal an error (and
-print a message) when the search fails; any other value causes it to return
-@code{nil} if the search fails and @code{t} if the search succeeds.
+Het optionele derde argument specificeert hoe de functie reageert op falen:
+@code{nil} als derde argument laat de functie een fout signaleren (en een
+boodschap tonen) wanneer de zoekopdracht faalt, een andere waarde zorgt dat
+die @code{nil} teruggeeft wanneer de zoekopdracht faalt en @code{t} wanneer
+de zoekopdracht slaagt.
 
 @item
-The optional fourth argument is the repeat count.  A negative repeat count
-causes @code{re-search-forward} to search backwards.
+Het optionele vierde argument is de aantal-herhalingen. Een negatieve
+aantal-herhalingen laat @code{re-search-forward} achterwaarts zoeken.
 @end enumerate
 
 @need 800
-The template for @code{re-search-forward} looks like this:
+Het slabloon voor @code{re-search-forward} ziet er zo uit:
 
 @smallexample
 @group
-(re-search-forward "@var{regular-expression}"
-                @var{limit-of-search}
-                @var{what-to-do-if-search-fails}
-                @var{repeat-count})
+(re-search-forward "@var{reguliere-expressie}"
+                @var{zoeklimiet}
+                @var{wat-te-doen-wanneer-zoeken-faalt}
+                @var{aantal-herhalingen})
 @end group
 @end smallexample
 
-The second, third, and fourth arguments are optional.  However, if you want
-to pass a value to either or both of the last two arguments, you must also
-pass a value to all the preceding arguments.  Otherwise, the Lisp
-interpreter will mistake which argument you are passing the value to.
+Het tweede, derde en vierde argument zijn optioneel. Als je echter een
+waarde naar een of beide van de laatste twee argumenten wilt doorgeven, moet
+je ook een waarde aan alle voorgaande argumenten doorgeven. Anders weet de
+Lisp interpreter niet aan welk argument je een waarde doorgeeft.
 
 @need 1200
-In the @code{forward-sentence} function, the regular expression will be the
-value of the variable @code{sentence-end}.  In simple form, that is:
+In de functie @code{forward-sentence} is de reguliere expressie de waarde
+van de variabele @code{sentence-end}. In een simpele vorm is die:
 
 @smallexample
 @group
@@ -12209,21 +12193,21 @@ value of the variable @code{sentence-end}.  In simple form, that is:
 @end smallexample
 
 @noindent
-The limit of the search will be the end of the paragraph (since a sentence
-cannot go beyond a paragraph).  If the search fails, the function will
-return @code{nil}; and the repeat count will be provided by the argument to
-the @code{forward-sentence} function.
+De limiet van de zoekopdracht is het einde van de paragraaf (omdat een zin
+niet voorbij een paragraaf kan gaan). Wanneer de zoekopdracht faalt, geeft
+de functie @code{nil} terug en het aantal herhalingen wordt gegeven door het
+argument van de functie @code{forward-sentence}.
 
 @node forward-sentence
 @section @code{forward-sentence}
 @findex forward-sentence
 
-The command to move the cursor forward a sentence is a straightforward
-illustration of how to use regular expression searches in Emacs Lisp.
-Indeed, the function looks longer and more complicated than it is; this is
-because the function is designed to go backwards as well as forwards; and,
-optionally, over more than one sentence.  The function is usually bound to
-the key command @kbd{M-e}.
+Het commando om de cursor een zin vooruit te verplaatsen is een eenvoudig
+voorbeeld van hoe zoekopdrachten met reguliere expressies in Emacs Lisp te
+gebruiken. De functie ziet er langer en ingewikkelder uit dan die is, dit is
+omdat de functie gemaakt is om zowel achterwaarts als voorwaarts te gaan en,
+optioneel, meer dan één zin. De functie is over het algemeen gebonden aan
+het toetscommando @kbd{M-e}.
 
 @menu
 * Complete forward-sentence::  Complete forward-sentence
@@ -12233,11 +12217,11 @@ the key command @kbd{M-e}.
 
 @ifnottex
 @node Complete forward-sentence
-@unnumberedsubsec Complete @code{forward-sentence} function definition
+@unnumberedsubsec Complete @code{forward-sentence} functiedefinitie
 @end ifnottex
 
 @need 1250
-Here is the code for @code{forward-sentence}:
+Hier is de code van @code{forward-sentence}:
 
 @c in GNU Emacs 22
 @smallexample
@@ -12308,94 +12292,99 @@ terminates sentences as well."
 @end smallexample
 @end ignore
 
-The function looks long at first sight and it is best to look at its
-skeleton first, and then its muscle.  The way to see the skeleton is to look
-at the expressions that start in the left-most columns:
+De functie ziet er op het eerste gezicht lang uit en het is het beste om
+eerst naar zijn geraamte te kijken, en daarna naar zijn spieren. De manier
+om het geraamte te zien is te kijken naar de expressies die aan de meest
+linkse kant beginnen:
 
 @smallexample
 @group
 (defun forward-sentence (&optional arg)
-  "@var{documentation}@dots{}"
+  "@var{documentatie}@dots{}"
   (interactive "p")
   (or arg (setq arg 1))
   (let ((opoint (point)) (sentence-end (sentence-end)))
     (while (< arg 0)
       (let ((pos (point))
             (par-beg (save-excursion (start-of-paragraph-text) (point))))
-       @var{rest-of-body-of-while-loop-when-going-backwards}
+       @var{rest-van-de-body-van-de-while-loop-bij-achterwaarts-bewegen}
     (while (> arg 0)
       (let ((par-end (save-excursion (end-of-paragraph-text) (point))))
-       @var{rest-of-body-of-while-loop-when-going-forwards}
-    @var{handle-forms-and-equivalent}
+       @var{rest-van-de-body-van-de-while-loop-bij-voorwaarts-bewegen}
+    @var{hanteer-vormen-en-equivalenten}
 @end group
 @end smallexample
 
-This looks much simpler! The function definition consists of documentation,
-an @code{interactive} expression, an @code{or} expression, a @code{let}
-expression, and @code{while} loops.
+Dit ziet er veel eenvoudiger uit! De functiedefinitie bestaat uit
+documentatie, een @code{interactive} expressie, een @code{or} expressie, een
+@code{let} expressie en een @code{while} loop.
 
-Let's look at each of these parts in turn.
+Laten we elk van de delen beurtelings bekijken.
 
-We note that the documentation is thorough and understandable.
+We merken op dat de documentatie grondig en begrijpelijk is.
 
-The function has an @code{interactive "p"} declaration.  This means that the
-processed prefix argument, if any, is passed to the function as its
-argument.  (This will be a number.)  If the function is not passed an
-argument (it is optional) then the argument @code{arg} will be bound to 1.
+De functie heeft een @code{interactive "p"} declaratie. Dit betekent dat het
+verwerkte prefix argument, als die er is, doorgegeven wordt aan de functie
+als een argument. (Dit is een getal.) Wanneer de functie geen argument
+krijgt doorgegeven (dit is optioneel) dan wordt het argument @code{arg}
+gebonden aan 1.
 
-When @code{forward-sentence} is called non-interactively without an
-argument, @code{arg} is bound to @code{nil}.  The @code{or} expression
-handles this.  What it does is either leave the value of @code{arg} as it
-is, but only if @code{arg} is bound to a value; or it sets the value of
-@code{arg} to 1, in the case when @code{arg} is bound to @code{nil}.
+Wanneer @code{forward-sentence} non-interactief zonder argument wordt
+aangeroepen, wordt @code{arg} gebonden aan @code{nil}. De @code{or}
+expressie handelt dit af. Wat die doet is óf de waarde van @code{arg} laten
+zoals die is, maar alleen als @code{arg} aan een waarde gebonden is, óf het
+zet de waarde van @code{arg} op 1, in het geval dat @code{arg} gebonden is
+aan @code{nil}.
 
-Next is a @code{let}.  That specifies the values of two local variables,
-@code{opoint} and @code{sentence-end}.  The local value of point, from
-before the search, is used in the @code{constrain-to-field} function which
-handles forms and equivalents.  The @code{sentence-end} variable is set by
-the @code{sentence-end} function.
+Hierna komt een @code{let}. Die specificeert de waarden van twee lokale
+variabelen, @code{opoint} en @code{sentence-end}. De lokale waarde van
+point, van voor de zoekopdracht, wordt gebruikt in de functie
+@code{constrain-to-field}, die vormen en equivalenten afhandelt. De
+variabele @code{sentence-end} wordt gezet door de functie
+@code{sentence-end}.
 
 @node fwd-sentence while loops
-@unnumberedsubsec The @code{while} loops
+@unnumberedsubsec De @code{while} loops
 
-Two @code{while} loops follow.  The first @code{while} has a
-true-or-false-test that tests true if the prefix argument for
-@code{forward-sentence} is a negative number.  This is for going backwards.
-The body of this loop is similar to the body of the second @code{while}
-clause, but it is not exactly the same.  We will skip this @code{while} loop
-and concentrate on the second @code{while} loop.
+Hierna volgen twee @code{while} loops. De eerste @code{while} heeft een
+waar-of-onwaar-test dat waar test als het prefix argument voor
+@code{forward-sentence} een negatief getal is. Dat is om achterwaarts te
+gaan. De body van deze loop vergelijkbaar met de body van de tweede
+@code{while} clausule, maar is niet exact hetzelfde. We slaan deze
+@code{while} loop over en concentreren ons de tweede @code{while} loop.
 
 @need 1500
-The second @code{while} loop is for moving point forward.  Its skeleton
-looks like this:
+De tweede @code{while} loop is voor het voorwaarts verplaatsen van
+point. Het geraamte ziet er zo uit:
 
 @smallexample
 @group
-(while (> arg 0)            ; @r{true-or-false-test}
+(while (> arg 0)            ; @r{waar-of-onwaar-test}
   (let @var{varlist}
-    (if (@var{true-or-false-test})
-        @var{then-part}
-      @var{else-part}
+    (if (@var{waar-of-onwaar-test})
+        @var{dan-deel}
+      @var{anders-deel}
   (setq arg (1- arg))))     ; @code{while} @r{loop decrementer}
 @end group
 @end smallexample
 
-The @code{while} loop is of the decrementing kind.  (@xref{Decrementing
-Loop, , A Loop with a Decrementing Counter}.)  It has a true-or-false-test
-that tests true so long as the counter (in this case, the variable
-@code{arg}) is greater than zero; and it has a decrementer that subtracts 1
-from the value of the counter every time the loop repeats.
+De @code{while} loop is van het aflopende type. (@xref{Decrementele loop, ,
+Loop met een decrementele teller}.) Het heeft een waar-of-onwaar-test die
+waar test zolang de teller (in dit geval, de variabele @code{arg}) groter is
+dan nul. En het heeft een decrementer die elke keer als de loop herhaalt 1
+aftrekt van de waarde van de teller.
 
-If no prefix argument is given to @code{forward-sentence}, which is the most
-common way the command is used, this @code{while} loop will run once, since
-the value of @code{arg} will be 1.
+Wanneer geen prefix argument aan @code{forward-sentence} wordt doorgegeven,
+wat de meest voorkomende manier is om dit commando te gebruiken, de
+@code{while} loop draait maar een keer, omdat de waarde van @code{arg} dan 1
+is.
 
-The body of the @code{while} loop consists of a @code{let} expression, which
-creates and binds a local variable, and has, as its body, an @code{if}
-expression.
+De body van de @code{while} loop bestaat uit een @code{let} expressie, die
+de lokale variabele creëert en bindt, en als body een @code{if} expressie
+heeft.
 
 @need 1250
-The body of the @code{while} loop looks like this:
+De body van de @code{while} loop ziet er zo uit:
 
 @smallexample
 @group
@@ -12407,16 +12396,16 @@ The body of the @code{while} loop looks like this:
 @end group
 @end smallexample
 
-The @code{let} expression creates and binds the local variable
-@code{par-end}.  As we shall see, this local variable is designed to provide
-a bound or limit to the regular expression search.  If the search fails to
-find a proper sentence ending in the paragraph, it will stop on reaching the
-end of the paragraph.
+De @code{let} expressie creëert en bindt de lokale variabele
+@code{par-end}. Zoals we zullen zien is deze lokale variabele gemaakt om een
+grens of limiet aan de reguliere zoekopdracht te geven. Wanneer de
+zoekopdracht faalt in het vinden van een einde van een zin de in de
+paragraaf, stopt het bij het bereiken van het einde van de paragraaf.
 
-But first, let us examine how @code{par-end} is bound to the value of the
-end of the paragraph.  What happens is that the @code{let} sets the value of
-@code{par-end} to the value returned when the Lisp interpreter evaluates the
-expression
+Maar laten wij eerst onderzoeken hoe @code{par-end} wordt gebonden aan de
+waarde van het einde van de paragraaf. Wat gebeurt is dat de @code{let} de
+waarde van @code{par-end} zet op de waarde die de Lisp interpreter
+teruggeeft wanneer die de expressie evalueert. 
 
 @smallexample
 @group
@@ -12425,79 +12414,80 @@ expression
 @end smallexample
 
 @noindent
-In this expression, @code{(end-of-paragraph-text)} moves point to the end of
-the paragraph, @code{(point)} returns the value of point, and then
-@code{save-excursion} restores point to its original position.  Thus, the
-@code{let} binds @code{par-end} to the value returned by the
-@code{save-excursion} expression, which is the position of the end of the
-paragraph.  (The @code{end-of-paragraph-text} function uses
-@code{forward-paragraph}, which we will discuss shortly.)
+In deze expressie verplaatst @code{(end-of-paragraph-text)} point naar het
+einde van de paragraaf, @code{(point)} geeft de waarde van point terug en
+vervolgens herstelt @code{save-excursion} point naar zijn oorspronkelijke
+positie. Dus bindt de @code{let} expressie @code{par-end} aan de waarde die
+de @code{save-excursion} teruggeeft. wat de positie is van het einde van de
+paragraaf. (De functie @code{end-of-paragraph-text} gebruikt
+@code{forward-paragraph}, die we straks bespreken.)
 
 @need 1200
-Emacs next evaluates the body of the @code{let}, which is an @code{if}
-expression that looks like this:
+Vervolgens evalueert Emacs de body van de @code{let}, wat een @code{if}
+expressie is, die er zo uit ziet:
 
 @smallexample
 @group
-(if (re-search-forward sentence-end par-end t) ; @r{if-part}
-    (skip-chars-backward " \t\n")              ; @r{then-part}
-  (goto-char par-end)))                        ; @r{else-part}
+(if (re-search-forward sentence-end par-end t) ; @r{if-deel}
+    (skip-chars-backward " \t\n")              ; @r{dan-deel}
+  (goto-char par-end)))                        ; @r{anders-deel}
 @end group
 @end smallexample
 
-The @code{if} tests whether its first argument is true and if so, evaluates
-its then-part; otherwise, the Emacs Lisp interpreter evaluates the
-else-part.  The true-or-false-test of the @code{if} expression is the
-regular expression search.
+De @code{if} test of het eerste argument waar is en zo ja, evalueert het
+dan-deel, anders evalueert de Emacs Lisp interpreter het anders-deel. De
+waar-of-onwaar-test van de @code{if} expressie is de reguliere expressie
+zoekopdracht.
 
-It may seem odd to have what looks like the real work of the
-@code{forward-sentence} function buried here, but this is a common way this
-kind of operation is carried out in Lisp.
+Het mag vreemd lijken om wat er uit ziet als het echte werk van de functie
+@code{forward-sentence} hier ingegraven is, maar dat is de gebruikelijke
+manier waarop dit soort operaties in Lisp worden uitgevoerd.
 
 @node fwd-sentence re-search
-@unnumberedsubsec The regular expression search
+@unnumberedsubsec De reguliere expressie zoekopdracht
 
-The @code{re-search-forward} function searches for the end of the sentence,
-that is, for the pattern defined by the @code{sentence-end} regular
-expression.  If the pattern is found---if the end of the sentence is
-found---then the @code{re-search-forward} function does two things:
+De functie @code{re-search-forward} zoekt naar het einde van de zin, dat wil
+zeggen, naar het patroon dat is gedefinieerd met de reguliere expressie
+@code{sentence-end}.
 
 @enumerate
 @item
-The @code{re-search-forward} function carries out a side effect, which is to
-move point to the end of the occurrence found.
+De functie @code{re-search-forward} voert een zij-effect uit, dat is het
+verplaatsen van point naar eind van de gevonden zin.
 
 @item
-The @code{re-search-forward} function returns a value of true.  This is the
-value received by the @code{if}, and means that the search was successful.
+De functie @code{re-search-forward} geeft een waarde waar terug. Dit is de
+waarde die de @code{if} ontvangt, en betekent dat de zoekopdracht succesvol
+was.
 @end enumerate
 
 @noindent
-The side effect, the movement of point, is completed before the @code{if}
-function is handed the value returned by the successful conclusion of the
-search.
+Het zij-effect, de verplaatsing van point, is afgerond voordat de @code{if}
+de waarde krijgt overhandigd die teruggegeven is door de succesvolle
+afronding van de zoekopdracht.
 
-When the @code{if} function receives the value of true from a successful
-call to @code{re-search-forward}, the @code{if} evaluates the then-part,
-which is the expression @code{(skip-chars-backward " \t\n")}.  This
-expression moves backwards over any blank spaces, tabs or carriage returns
-until a printed character is found and then leaves point after the
-character.  Since point has already been moved to the end of the pattern
-that marks the end of the sentence, this action leaves point right after the
-closing printed character of the sentence, which is usually a period.
+Wanneer de @code{if} functie de waarde waar ontvangt van een succesvolle
+aanroep van @code{re-search-forward} evalueert de @code{if} het dan-deel,
+dit is de expressie @code{(skip-chars-backward " \t\n")}. Deze expressie
+beweegt achterwaarts over spaties, tabs of carriage returns totdat een
+karakter gevonden is en zet dan point achter dat karakter. Omdat point al
+verplaatst was naar het eind van het patroon dat het einde van een zin
+markeert, zet deze actie point direct achter het afsluitende karakter van de
+zin, wat meestal een punt is.
 
-On the other hand, if the @code{re-search-forward} function fails to find a
-pattern marking the end of the sentence, the function returns false.  The
-false then causes the @code{if} to evaluate its third argument, which is
-@code{(goto-char par-end)}: it moves point to the end of the paragraph.
+Anderzijds, wanneer de functie @code{re-search-forward} faalt in het vinden
+van het patroon dat het einde van een zin markeert, geeft de functie onwaar
+terug. Deze onwaar zorgt dat de @code{if} het derde argument evalueert, dit
+is @code{(goto-char par-end)}: het verplaatst point naar het einde van de
+paragraaf.
 
-(And if the text is in a form or equivalent, and point may not move fully,
-then the @code{constrain-to-field} function comes into play.)
+(En wanneer de tekst een vorm of equivalent is en point kan niet volledig
+bewegen, dan komt de functie @code{constrain-to-field} in het spel.)
 
-Regular expression searches are exceptionally useful and the pattern
-illustrated by @code{re-search-forward}, in which the search is the test of
-an @code{if} expression, is handy.  You will see or write code incorporating
-this pattern often.
+Reguliere expressie zoekopdrachten zijn uiterst nuttig en het patroon
+geïllustreerd met @code{re-search-forward} waarin de zoekopdrachten de test
+is van een @code{if} expressie is handig. Je ziet of schrijft vaak code dat
+die patroon incorporeert.
 
 @node forward-paragraph
 @section @code{forward-paragraph}: een goudmijn van functies
@@ -12648,31 +12638,31 @@ Returns the count of paragraphs left to move."
     arg))
 @end ignore
 
-The @code{forward-paragraph} function moves point forward to the end of the
-paragraph.  It is usually bound to @kbd{M-@}} and makes use of a number of
-functions that are important in themselves, including @code{let*},
-@code{match-beginning}, and @code{looking-at}.
+De functie @code{forward-paragraph} verplaatst point naar het einde van de
+paragraaf. Die is meestal gebonden aan @kbd{M-@}} en maakt gebruik van een
+aantal functies die op zichzelf belangrijk zijn, waaronder @code{let*},
+@code{match-beginning} en @code{looking-at}.
 
-The function definition for @code{forward-paragraph} is considerably longer
-than the function definition for @code{forward-sentence} because it works
-with a paragraph, each line of which may begin with a fill prefix.
+De functiedefinitie van @code{forward-paragraph} is aanzienlijk langer dan
+de functiedefinitie van @code{forward-sentence} omdat het met een paragraaf
+werkt, waarvan elke regel met een opvul-prefix kan beginnen.
 
-A fill prefix consists of a string of characters that are repeated at the
-beginning of each line.  For example, in Lisp code, it is a convention to
-start each line of a paragraph-long comment with @samp{;;; }.  In Text mode,
-four blank spaces make up another common fill prefix, creating an indented
-paragraph.  (@xref{Fill Prefix, , , emacs, The GNU Emacs Manual}, for more
-information about fill prefixes.)
+Een opvul-prefix bestaat uit een string van karakters die herhaald wordt aan
+het begin van elke regel. Bijvoorbeeld in Lisp code is het een conventie om
+elke regel van een paragraaf-lang commentaar te beginnen met @samp{;;; }. In
+Text-mode bestaat een ander gebruikelijke opvul-prefix uit vier spaties, om
+een ingesprongen paragraaf te maken. (@xref{Fill Prefix, , , emacs, The GNU
+Emacs Manual}, voor meer informatie over opvul-prefixes.)
 
-The existence of a fill prefix means that in addition to being able to find
-the end of a paragraph whose lines begin on the left-most column, the
-@code{forward-paragraph} function must be able to find the end of a
-paragraph when all or many of the lines in the buffer begin with the fill
-prefix.
+Het bestaan van een opvul-prefix betekent dat naast het kunnen vinden van
+het einde van de paragraaf wiens regels helemaal links beginnen, de functie
+@code{forward-paragraph} ook in staat moet zijn het einde van de paragraaf
+te vinden wanneer alle of veel van de regels in het buffer met een
+opvul-prefix beginnen.
 
-Moreover, it is sometimes practical to ignore a fill prefix that exists,
-especially when blank lines separate paragraphs.  This is an added
-complication.
+Bovendien is het soms praktisch om een bestaand opvul-prefix te negeren, in
+het bijzonder wanneer lege regels paragrafen scheiden. Dit is een extra
+complicatie.
 
 @menu
 * forward-paragraph in het kort::  Belangrijke onderdelen van de 
@@ -12683,52 +12673,54 @@ complication.
 
 @ifnottex
 @node forward-paragraph in het kort
-@unnumberedsubsec Shortened @code{forward-paragraph} function definition
+@unnumberedsubsec Verkorte @code{forward-paragraph} functiedefinitie
 @end ifnottex
 
-Rather than print all of the @code{forward-paragraph} function, we will only
-print parts of it.  Read without preparation, the function can be daunting!
+In plaats van alles van de functie @code{forward-paragraph} te tonen, tonen
+we alleen delen er van. Het kan ontmoedigend zijn de functie zonder
+voorbereiding te lezen.
 
 @need 800
-In outline, the function looks like this:
+Globaal ziet de functie er zo uit:
 
 @smallexample
 @group
 (defun forward-paragraph (&optional arg)
-  "@var{documentation}@dots{}"
+  "@var{documentatie}@dots{}"
   (interactive "p")
   (or arg (setq arg 1))
   (let*
       @var{varlist}
-    (while (and (< arg 0) (not (bobp)))     ; @r{backward-moving-code}
+    (while (and (< arg 0) (not (bobp)))     ; @r{achterwaarts-bewegende-code}
       @dots{}
-    (while (and (> arg 0) (not (eobp)))     ; @r{forward-moving-code}
+    (while (and (> arg 0) (not (eobp)))     ; @r{voorwaarts-bewegende-code}
       @dots{}
 @end group
 @end smallexample
 
-The first parts of the function are routine: the function's argument list
-consists of one optional argument.  Documentation follows.
+De eerste delen van de functie zijn routine: de argumentlist van de functie
+bestaat uit een optioneel argument. Documentatie volgt daarna.
 
-The lower case @samp{p} in the @code{interactive} declaration means that the
-processed prefix argument, if any, is passed to the function.  This will be
-a number, and is the repeat count of how many paragraphs point will move.
-The @code{or} expression in the next line handles the common case when no
-argument is passed to the function, which occurs if the function is called
-from other code rather than interactively.  This case was described
-earlier.  (@xref{forward-sentence, The @code{forward-sentence} function}.)
-Now we reach the end of the familiar part of this function.
+De kleine letter @samp{p} in de @code{interactive} declaratie betekent dat
+het verwerkte prefix argument, als die er is, wordt doorgegeven aan de
+functie. Dit is een getal, en is het aantal herhalingen van hoeveel
+paragrafen point wordt verplaatst. De @code{or} expressie in de volgende
+regel behandelt de gebruikelijke situatie wanneer geen argument aan de
+functie wordt doorgegeven, wat gebeurt wanneer de functie wordt aangeroepen
+vanuit andere code in plaats van interactief. Deze situatie is eerder
+beschreven (@xref{forward-sentence, De functie @code{forward-sentence}}.) Nu
+bereiken we het einde van het vertrouwde deel van deze functie.
 
 @node fwd-para let
-@unnumberedsubsec The @code{let*} expression
+@unnumberedsubsec De @code{let*} expressie
 
 @findex let*
-The next line of the @code{forward-paragraph} function begins a @code{let*}
-expression (@pxref{let* introduced,,@code{let*} introduced}), in which Emacs
-binds a total of seven variables: @code{opoint}, @code{fill-prefix-regexp},
-@code{parstart}, @code{parsep}, @code{sp-parstart}, @code{start}, and
-@code{found-start}.  The first part of the @code{let*} expression looks like
-below:
+De volgende regel van de functie @code{forward-paragraph} begint met een
+@code{let*} expressie (@pxref{let* geïntroduceerd,,@code{let*}
+geïntroduceerd}), waarin Emacs een totaal van zeven variabelen bindt:
+@code{opoint}, @code{fill-prefix-regexp}, @code{parstart}, @code{parsep},
+@code{sp-parstart}, @code{start} en @code{found-start}. Het eerste deel van
+de @code{let*} expressie ziet er als volgt uit:
 
 @smallexample
 @group
@@ -12762,15 +12754,15 @@ below:
 @end group
 @end smallexample
 
-The variable @code{parsep} appears twice, first, to remove instances of
-@samp{^}, and second, to handle fill prefixes.
+De variabele @code{parsep} verschijnt twee keer, ten eerste om instanties
+van @samp{^} te verwijderen en ten tweede om opvul-prefixes te behandelen.
 
-The variable @code{opoint} is just the value of @code{point}.  As you can
-guess, it is used in a @code{constrain-to-field} expression, just as in
-@code{forward-sentence}.
+De variabele @code{opoint} is gewoon de waarde van @code{point}. Zoals je
+kunt raden wordt het gebruikt in een @code{constrain-to-field} expressie,
+net als in @code{forward-sentence}.
 
-The variable @code{fill-prefix-regexp} is set to the value returned by
-evaluating the following list:
+De variabele @code{fill-prefix-regexp} wordt gezet op de waarde teruggeven
+door de volgende lijst te evalueren:
 
 @smallexample
 @group
@@ -12782,7 +12774,7 @@ evaluating the following list:
 @end smallexample
 
 @noindent
-This is an expression whose first element is the @code{and} special form.
+Dit is een expressie wiens eerste element de speciale vorm @code{and} is. 
 
 Zoals we eerder (@pxref{kill-new functie, , De @code{kill-new} functie})
 leerden, evalueert de speciale vorm @code{and} elk van zijn argumenten tot
@@ -12795,88 +12787,90 @@ andere woorden, een @code{and} expressie geeft alleen een waarde waar terug
 wanneer al zijn argumenten waar zijn.
 @findex and
 
-In this case, the variable @code{fill-prefix-regexp} is bound to a
-non-@code{nil} value only if the following four expressions produce a true
-(i.e., a non-@code{nil}) value when they are evaluated; otherwise,
-@code{fill-prefix-regexp} is bound to @code{nil}.
+In dit geval wordt de variabele @code{fill-prefix-regexp} uitsluitend
+gebonden aan een non-@code{nil} waarde wanneer de volgende vier expressies
+een waarde waar (dus non-@code{nil}) produceren wanneer zij worden
+geëvalueerd. Zo niet, dan wordt @code{fill-prefix-regexp} gebonden aan
+@code{nil}.
 
 @table @code
 @item fill-prefix
-When this variable is evaluated, the value of the fill prefix, if any, is
-returned.  If there is no fill prefix, this variable returns @code{nil}.
+Wanneer deze variabele wordt geëvalueerd wordt de waarde van de fill prefix,
+als die er is, teruggegeven. Wanneer er geen fill prefix is, dan geeft de
+variabel @code{nil} terug.
 
 @item (not (equal fill-prefix "")
-This expression checks whether an existing fill prefix is an empty string,
-that is, a string with no characters in it.  An empty string is not a useful
-fill prefix.
+Deze expressie kijkt of een bestaand fill prefix een lege string is, oftewel
+een string zonder karakters er in. Een lege string is geen nuttige
+opvul-prefix.
 
 @item (not paragraph-ignore-fill-prefix)
-This expression returns @code{nil} if the variable
-@code{paragraph-ignore-fill-prefix} has been turned on by being set to a
-true value such as @code{t}.
+Deze expressie geeft @code{nil} terug wanneer de variabele
+@code{paragraph-ignore-fill-prefix} aan staat, doordat het op de waarde
+waar, zoals @code{t}, is gezet.
 
 @item (regexp-quote fill-prefix)
-This is the last argument to the @code{and} special form.  If all the
-arguments to the @code{and} are true, the value resulting from evaluating
-this expression will be returned by the @code{and} expression and bound to
-the variable @code{fill-prefix-regexp},
+Dit is het laatste argument van de speciale vorm @code{and}. Wanneer al de
+argumenten van de @code{and} waar zijn, wordt de waarde die resulteert uit
+het evalueren van deze expressie teruggeven door de @code{and} expressie en
+gebonden aan de variabele @code{fill-prefix-regexp}.
 @end table
 
 @findex regexp-quote
 @noindent
-The result of evaluating this @code{and} expression successfully is that
-@code{fill-prefix-regexp} will be bound to the value of @code{fill-prefix}
-as modified by the @code{regexp-quote} function.  What @code{regexp-quote}
-does is read a string and return a regular expression that will exactly
-match the string and match nothing else.  This means that
-@code{fill-prefix-regexp} will be set to a value that will exactly match the
-fill prefix if the fill prefix exists.  Otherwise, the variable will be set
-to @code{nil}.
+Het resultaat van een succesvolle evaluatie van deze @code{and} expressie is
+dat @code{fill-prefix-regexp} wordt gebonden aan de waarde van
+@code{fill-prefix}, aangepast door de functie @code{regexp-quote}. Wat
+@code{regexp-quote} doet is het lezen van een string en een reguliere
+expressie teruggeven die exact de string matcht, en niets anders matcht. Dit
+betekent dat de @code{fill-prefix-regexp} wordt gezet naar een waarde is
+exact het opvul-prefix matcht als die bestaat. Zo niet, dan wordt de
+variabele gezet op @code{nil}.
 
-The next two local variables in the @code{let*} expression are designed to
-remove instances of @samp{^} from @code{parstart} and @code{parsep}, the
-local variables which indicate the paragraph start and the paragraph
-separator.  The next expression sets @code{parsep} again.  That is to handle
-fill prefixes.
+De volgende twee lokale variabelen in de @code{let*} expressie zijn
+ontworpen om instanties van @samp{^} te verwijderen uit @code{parstart} en
+@code{parsep}, de lokale variabelen die de start van de paragraaf en de
+paragraaf separator aanduiden. De volgende expressie stelt @code{parsep}
+opnieuw. Dit is om opvul-prefixes te behandelen.
 
-This is the setting that requires the definition call @code{let*} rather
-than @code{let}.  The true-or-false-test for the @code{if} depends on
-whether the variable @code{fill-prefix-regexp} evaluates to @code{nil} or
-some other value.
+Het is dit instellen dat vereist dat de definitie @code{let*} aanroept in
+plaats van @code{let}. De waar-of-onwaar-test van de @code{if} hangt af van
+of de variabele @code{fill-prefix-regexp} naar @code{nil} evalueert, of naar
+een andere waarde.
 
-If @code{fill-prefix-regexp} does not have a value, Emacs evaluates the
-else-part of the @code{if} expression and binds @code{parsep} to its local
-value.  (@code{parsep} is a regular expression that matches what separates
-paragraphs.)
+Wanneer @code{fill-prefix-regexp} geen waarde heeft dan evalueert Emacs het
+anders-deel van de @code{if} expressie en bindt @code{parsep} naar de lokale
+waarde. (@code{parsep} is een reguliere expressie die matcht wat paragrafen
+scheidt.)
 
-But if @code{fill-prefix-regexp} does have a value, Emacs evaluates the
-then-part of the @code{if} expression and binds @code{parsep} to a regular
-expression that includes the @code{fill-prefix-regexp} as part of the
-pattern.
+Maar wanneer @code{fill-prefix-regexp} een waarde heeft, evalueert Emacs het
+dan-deel van de @code{if} expressie en bindt @code{parsep} aan een reguliere
+expressie die de @code{fill-prefix-regexp} als deel van het patroon bevat.
 
-Specifically, @code{parsep} is set to the original value of the paragraph
-separate regular expression concatenated with an alternative expression that
-consists of the @code{fill-prefix-regexp} followed by optional whitespace to
-the end of the line.  The whitespace is defined by @w{@code{"[ \t]*$"}}.)
-The @samp{\\|} defines this portion of the regexp as an alternative to
-@code{parsep}.
+Specifiek wordt @code{parsep} gezet op de originele waarde van de paragraaf
+scheidende reguliere expressie samengevoegd met een alternatieve expressie
+die bestaat uit de @code{fill-prefix-regexp} gevolgd door optionele witte
+ruimte als einde van de regel. (De witte ruimte is gedefinieerd met
+@w{@code{"[ \t]*$"}}.) De @samp{\\|} definieert die deel van de regexp als
+een alternatief van @code{parsep}.
 
-According to a comment in the code, the next local variable,
-@code{sp-parstart}, is used for searching, and then the final two,
-@code{start} and @code{found-start}, are set to @code{nil}.
+Volgens het commentaar in de code wordt de volgende lokale variabele,
+@code{sp-parstart} gebruikt om te zoeken en de laatste twee, @code{start} en
+@code{found-start} worden op @code{nil} gezet.
 
-Now we get into the body of the @code{let*}.  The first part of the body of
-the @code{let*} deals with the case when the function is given a negative
-argument and is therefore moving backwards.  We will skip this section.
+Nu komen we bij de body van de @code{let*}. Het eerste deel van de body van
+de @code{let*} behandelt het geval wanneer de functie een negatief argument
+krijgt en daarom achterwaarts beweegt. We slaan dit stuk over.
 
 @node fwd-para while
-@unnumberedsubsec The forward motion @code{while} loop
+@unnumberedsubsec De voorwaarts bewegende @code{while} loop
 
-The second part of the body of the @code{let*} deals with forward motion.
-It is a @code{while} loop that repeats itself so long as the value of
-@code{arg} is greater than zero.  In the most common use of the function,
-the value of the argument is 1, so the body of the @code{while} loop is
-evaluated exactly once, and the cursor moves forward one paragraph.
+Het tweede deel van de body van de @code{let*} behandelt de voorwaartse
+beweging. Het is een @code{while} loop dit zichzelf herhaalt zolang de waard
+van @code{arg} groter is dan nul. In de meest gebruikte manier van de
+functie is de waarde van het argument 1, en wordt de body van de
+@code{while} loop exact een keer geëvalueerd, en beweegt de cursor een
+paragraaf voorwaarts.
 
 @ignore
 (while (and (> arg 0) (not (eobp)))
@@ -12913,24 +12907,24 @@ evaluated exactly once, and the cursor moves forward one paragraph.
         (goto-char start))))
 @end ignore
 
-This part handles three situations: when point is between paragraphs, when
-there is a fill prefix and when there is no fill prefix.
+Dit deel behandelt drie situaties: wanneer point tussen twee paragrafen is,
+wanneer er een opvul-prefix is en wanneer er geen opvul-prefix is.
 
 @need 800
-The @code{while} loop looks like this:
+De @code{while} loop ziet er zo uit:
 
 @smallexample
 @group
-;; @r{going forwards and not at the end of the buffer}
+;; @r{ga voorwaarts en niet aan het eind van het buffer}
 (while (and (> arg 0) (not (eobp)))
 
-  ;; @r{between paragraphs}
+  ;; @r{tussen paragrafen}
   ;; Move forward over separator lines...
   (while (and (not (eobp))
               (progn (move-to-left-margin) (not (eobp)))
               (looking-at parsep))
     (forward-line 1))
-  ;;  @r{This decrements the loop}
+  ;;  @r{Dit verlaagt de loop}
   (unless (eobp) (setq arg (1- arg)))
   ;; ... and one more line.
   (forward-line 1)
@@ -12972,38 +12966,39 @@ The @code{while} loop looks like this:
 @end smallexample
 
 @findex eobp
-We can see that this is a decrementing counter @code{while} loop, using the
-expression @code{(setq arg (1- arg))} as the decrementer.  That expression
-is not far from the @code{while}, but is hidden in another Lisp macro, an
-@code{unless} macro.  Unless we are at the end of the buffer---that is what
-the @code{eobp} function determines; it is an abbreviation of @samp{End Of
-Buffer P}---we decrease the value of @code{arg} by one.
+We kunnen zien dat dit een aflopende teller @code{while} loop is, met de
+expressie @code{(setq arg (1- arg))} als de decrementer. Die expressie is
+niet ver van de @code{while} loop, maar is verstopt in een andere Lisp
+macro, een @code{unless} macro. Tenzij we aan het eind van het buffer
+zijn---dat is wat de functie @code{eobp} vaststelt, het is een afkorting van
+@samp{End Of Buffer P}---verlagen we de waarde van @code{arg} met één.
 
-(If we are at the end of the buffer, we cannot go forward any more and the
-next loop of the @code{while} expression will test false since the test is
-an @code{and} with @code{(not (eobp))}.  The @code{not} function means
-exactly as you expect; it is another name for @code{null}, a function that
-returns true when its argument is false.)
+(Wanneer we aan het eind van het buffer zijn, kunnen we niet meer voorwaarts
+en test de volgende loop van de @code{while} expressie onwaar omdat de test
+een @code{and} met @code{(not (eobp))} is. De functie @code{not} betekent
+precies wat je verwacht, het is een andere naam voor @code{null}, een
+functie die waar teruggeeft wanneer zijn argument onwaar is.)
 
-Interestingly, the loop count is not decremented until we leave the space
-between paragraphs, unless we come to the end of buffer or stop seeing the
-local value of the paragraph separator.
+Interessant genoeg wordt de loop teller niet eerder verlaagd dan dat we de
+ruimte tussen paragrafen verlaten, tenzij we aan het eind van het buffer
+komen of de lokale variabele van de paragraaf separator niet meer zien.
 
-That second @code{while} also has a @code{(move-to-left-margin)}
-expression.  The function is self-explanatory.  It is inside a @code{progn}
-expression and not the last element of its body, so it is only invoked for
-its side effect, which is to move point to the left margin of the current
-line.
+De tweede @code{while} heeft ook een @code{(move-to-left-margin)}
+expressie. De functie spreekt voor zich. Die bevindt zich binnen een
+@code{progn} expressie en is niet het laatste element van de body, dus die
+wordt alleen aangeroepen voor het zij-effect, het verplaatsten van point
+naar de linker kantlijn op de huidige regel.
 
 @findex looking-at
-The @code{looking-at} function is also self-explanatory; it returns true if
-the text after point matches the regular expression given as its argument.
+De functie @code{looking-at} spreekt ook voor zich. het geeft waar terug
+wanneer de tekst achter point matcht met de reguliere expressie die als zijn
+argument is doorgegeven.
 
-The rest of the body of the loop looks difficult at first, but makes sense
-as you come to understand it.
+De rest van de body van de loop ziet er op het eerste gezicht moeilijk uit,
+maar is logisch wanneer je die begint te begrijpen.
 
 @need 800
-First consider what happens if there is a fill prefix:
+Bedenk eerst wat gebeurt wanneer er een opvul-prefix is:
 
 @smallexample
 @group
@@ -13019,31 +13014,31 @@ First consider what happens if there is a fill prefix:
 @end smallexample
 
 @noindent
-This expression moves point forward line by line so long as four conditions
-are true:
+De expressie verplaatst point voorwaarts regel voor regel zolang vier
+condities waar zijn:
 
 @enumerate
 @item
-Point is not at the end of the buffer.
+Point is niet aan het eind van het buffer.
 
 @item
-We can move to the left margin of the text and are not at the end of the
-buffer.
+We kunnen naar de linker kantlijn van de tekst verplaatsen en zijn niet aan
+het eind van het buffer.
 
 @item
-The text following point does not separate paragraphs.
+De tekst die volgt op point scheidt geen paragrafen.
 
 @item
-The pattern following point is the fill prefix regular expression.
+Het patroon volgend op point is de fill prefix reguliere expressie.
 @end enumerate
 
-The last condition may be puzzling, until you remember that point was moved
-to the beginning of the line early in the @code{forward-paragraph}
-function.  This means that if the text has a fill prefix, the
-@code{looking-at} function will see it.
+De laatste conditie kan verwarrend zijn, totdat je herinnert dat point naar
+het begin van de regel is verplaatst in het begin van de functie
+@code{forward-paragraph}. Dat betekent dat wanneer de tekst een opvul-prefix
+heeft, de functie @code{looking-at} het zal zien.
 
 @need 1250
-Consider what happens when there is no fill prefix.
+Bedenk wat gebeurt wanneer er geen opvul-prefix is.
 
 @smallexample
 @group
@@ -13061,14 +13056,12 @@ Consider what happens when there is no fill prefix.
 @end smallexample
 
 @noindent
-This @code{while} loop has us searching forward for @code{sp-parstart},
-which is the combination of possible whitespace with the local value of the
-start of a paragraph or of a paragraph separator.  (The latter two are
-within an expression starting @code{\(?:} so that they are not referenced by
-the @code{match-beginning} function.)
+De @code{while} loop laat ons voorwaarts zoeken naar @code{sp-parstart}, wat
+de combinatie is van mogelijke witte ruimte met de lokale waarde van de
+start van een paragraaf of van een paragraaf separator.
 
 @need 800
-The two expressions,
+De twee expressies,
 
 @smallexample
 @group
@@ -13078,38 +13071,40 @@ The two expressions,
 @end smallexample
 
 @noindent
-mean go to the start of the text matched by the regular expression search.
+betekenen ga naar de start van tekst gematcht door de reguliere expressie
+zoekopdracht.
 
-The @code{(match-beginning 0)} expression is new.  It returns a number
-specifying the location of the start of the text that was matched by the
-last search.
+De @code{(match-beginning 0)} expressie is nieuw. Het geeft het getal dat de
+lokatie van de start van de tekst aangeeft die was gematcht door de laatste
+zoekopdracht.
 
-The @code{match-beginning} function is used here because of a characteristic
-of a forward search: a successful forward search, regardless of whether it
-is a plain search or a regular expression search, moves point to the end of
-the text that is found.  In this case, a successful search moves point to
-the end of the pattern for @code{sp-parstart}.
+De functie @code{match-beginning} wordt hier gebruikt vanwege een
+karakteristiek van een voorwaartse zoekopdracht: een succesvolle
+zoekopdracht, ongeacht of het een gewone zoekopdracht of een reguliere
+expressie zoekopdracht is, verplaatst point naar het einde van de tekst die
+is gevonden. In dit geval verplaatst een succesvolle zoekopdracht point naar
+het einde van het patroon voor @code{sp-parstart}.
 
-However, we want to put point at the end of the current paragraph, not
-somewhere else.  Indeed, since the search possibly includes the paragraph
-separator, point may end up at the beginning of the next one unless we use
-an expression that includes @code{match-beginning}.
+Wij willen echter point aan het einde van de huidige paragraaf zetten, niet
+ergens anders. Omdat de zoekopdracht mogelijk de paragraaf separator bevat,
+kan point bij het begin van de volgende terecht komen tenzij we een
+expressie gebruiken die @code{match-beginning} bevat.
 
 @findex match-beginning
-When given an argument of 0, @code{match-beginning} returns the position
-that is the start of the text matched by the most recent search.  In this
-case, the most recent search looks for @code{sp-parstart}.  The
-@code{(match-beginning 0)} expression returns the beginning position of that
-pattern, rather than the end position of that pattern.
+Wanneer het een argument van 0 krijgt, geeft @code{match-beginning} de
+positie terug die de start is van de tekst gematcht met de meest recente
+zoekopdracht. In dit geval zoekt de meest recente zoekopdracht naar
+@code{sp-parstart}. De @code{(match-beginning 0)} expressie geeft de
+beginposiitie van dat patroon, in plaats van de eindpositie van dat patroon.
 
-(Incidentally, when passed a positive number as an argument, the
-@code{match-beginning} function returns the location of point at that
-parenthesized expression in the last search unless that parenthesized
-expression begins with @code{\(?:}.  I don't know why @code{\(?:} appears
-here since the argument is 0.)
+(Overigens, wanneer een positief getal als argument wordt doorgegeven, geeft
+de functie @code{match-beginning} de lokatie van point bij die tussen
+haakjes geplaatste expressie in de laatste zoekopdracht, tenzij die tussen
+haakjes geplaatste expressie begint met @code{\(?:}. Ik weet niet waarom
+@code{\(?:} hier verschijnt, aangezien het argument 0 is.)
 
 @need 1250
-The last expression when there is no fill prefix is
+De laatste expressie wanneer er geen opvul-prefix is
 
 @smallexample
 @group
@@ -13119,24 +13114,24 @@ The last expression when there is no fill prefix is
 @end smallexample
 
 @noindent
-(Note that this code snippet is copied verbatim from the original code, so
-the two extra ending parentheses are matching the previous @code{if} and
-@code{while}.)
+(Merk op dat dit stukje code ongewijzigd gekopieerd is van de originele
+code, waardoor de twee extra haakjes sluiten horen bij de voorafgaande
+@code{if} en @code{while}.)
 
-This says that if there is no fill prefix and if we are not at the end,
-point should move to the beginning of whatever was found by the regular
-expression search for @code{sp-parstart}.
+Dit vertelt dat wanneer er geen opvul-prefix is en wanneer wij niet aan het
+einde zijn, point naar het begin moet verplaatsen van wat gevonden was door
+de reguliere expressie zoekopdracht naar @code{sp-parstart}.
 
-The full definition for the @code{forward-paragraph} function not only
-includes code for going forwards, but also code for going backwards.
+De volledige definitie van de functie @code{forward-paragraph} bevat niet
+alleen code om voorwaarts te gaan, maar ook code om achterwaarts te gaan.
 
-If you are reading this inside of GNU Emacs and you want to see the whole
-function, you can type @kbd{C-h f} (@code{describe-function})  and the name
-of the function.  This gives you the function documentation and the name of
-the library containing the function's source.  Place point over the name of
-the library and press the @key{RET} key; you will be taken directly to the
-source.  (Be sure to install your sources! Without them, you are like a
-person who tries to drive a car with his eyes shut!)
+Wanneer je dit in GNU Emacs leest en je de gehele functie wilt zien, dan kan
+je @kbd{C-h f} (@code{describe-function}) typen, en daarna de naam van de
+functie. Dit geeft je de functiedocumentatie en de naam van de library die
+de broncode bevat. Plaats point op de naam van de library en druk op de
+@key{RET} toets. Je brengt je direct naar de bron. (Zorg dat je de broncodes
+installeert! Zonder die ben je als iemand die probeert met de ogen dicht een
+auto te besturen.)
 
 @node Regexp terugblik
 @section Terugblik
@@ -13145,9 +13140,9 @@ Hier is een korte samenvatting van sommige recent geïntroduceerde functies.
 
 @table @code
 @item while
-Repeatedly evaluate the body of the expression so long as the first element
-of the body tests true.  Then return @code{nil}.  (The expression is
-evaluated only for its side effects.)
+Evalueer herhaaldelijk de body van de expressie zolang als het eerste
+element van de body waar test. Geef daarna @code{nil} terug. (De expressie
+wordt uitsluitend voor de zij-effecten geëvalueerd.)
 
 @need 1250
 Bijvoorbeeld:
@@ -13166,21 +13161,22 @@ Bijvoorbeeld:
 @end smallexample
 
 @noindent
-(The @code{insert} function inserts its arguments at point; the
-@code{format} function returns a string formatted from its arguments the way
-@code{message} formats its arguments; @code{\n} produces a new line.)
+(De functie @code{insert} voegt het argument bij point in. de functie
+@code{format} geeft een geformatteerde string terug op dezelfde manier als
+@code{message} de argumenten formatteert. @code{\n} produceert een nieuwe
+regel.)
 
 @item re-search-forward
-Search for a pattern, and if the pattern is found, move point to rest just
-after it.
+Zoek voor een patroon, en als het patroon is gevonden, verplaats point
+direct er achter.
 
 @noindent
-Takes four arguments, like @code{search-forward}:
+Verwacht vier argumenten, zoals @code{search-forward}:
 
 @enumerate
 @item
-A regular expression that specifies the pattern to search for.  (Remember to
-put quotation marks around this argument!)
+Een reguliere expressie die het zoekpatroon specificeert. (Denk er aan om
+dubbele aanhalingstekens om dit argument te zetten!)
 
 @item
 Optioneel, de limiet van de zoekopdracht.
@@ -13195,9 +13191,10 @@ achterwaarts.
 @end enumerate
 
 @item let*
-Bind some variables locally to particular values, and then evaluate the
-remaining arguments, returning the value of the last one.  While binding the
-local variables, use the local values of variables bound earlier, if any.
+Bind sommige variabelen lokaal aan bepaalde waardes en evalueer dan de
+overige argumenten en geeft de waarde van de laatste terug. Gebruik de
+lokale waarden van eerder gebonden variabelen bij het binden van lokale
+variabelen.
 
 @need 1250
 Bijvoorbeeld:
@@ -13212,37 +13209,37 @@ Bijvoorbeeld:
 @end smallexample
 
 @item match-beginning
-Return the position of the start of the text found by the last regular
-expression search.
+Geef de positie van de start van de tekst gevonden door de laatste reguliere
+expressie.
 
 @item looking-at
-Return @code{t} for true if the text after point matches the argument, which
-should be a regular expression.
+Geef @code{t} voor waar terug wanneer de tekst achter point overeenkomt met
+het argument, wat een reguliere expressie moet zijn.
 
 @item eobp
-Return @code{t} for true if point is at the end of the accessible part of a
-buffer.  The end of the accessible part is the end of the buffer if the
-buffer is not narrowed; it is the end of the narrowed part if the buffer is
-narrowed.
+Geef @code{t} voor waar terug wanneer point aan het einde van het bereikbare
+deel van een buffer is. Het einde van het bereikbare deel is het einde van
+het buffer wanneer het buffer niet versmald is. Het is het einde van het
+versmalde deel wanneer het buffer is versmald.
 @end table
 
 @need 1500
 @node re-search oefeningen
-@section Exercises with @code{re-search-forward}
+@section Oefeningen met @code{re-search-forward}
 
 @itemize @bullet
 @item
-Write a function to search for a regular expression that matches two or more
-blank lines in sequence.
+Schrijf een functie om te zoeken met een reguliere expressie die overeenkomt
+met twee of meer opeenvolgende lege regels.
 
 @item
-Write a function to search for duplicated words, such as ``the the''.
-@xref{Regexps, , Syntax of Regular Expressions, emacs, The GNU Emacs
-Manual}, for information on how to write a regexp (a regular expression) to
-match a string that is composed of two identical halves.  You can devise
-several regexps; some are better than others.  The function I use is
-described in an appendix, along with several regexps.  @xref{the-the, ,
-@code{the-the} Duplicated Words Function}.
+Schrijf een functie die zoekt naar gedupliceerde woorden, zoals ``de
+de''. @xref{Regexps, , Syntax of Regular Expressions, emacs, The GNU Emacs
+Manual}, voor informatie hoe je een regexp schrijft (een reguliere
+expressie) om een string te matchen die uit twee identieke helften
+bestaat. De functie die ik gebruik is beschreven in de appendix, samen met
+verschillende regexps. @ref{de-de, , @code{de-de} Gedupliceerde woorden
+functie}.
 @end itemize
 
 @node Woorden tellen
