@@ -558,18 +558,18 @@ Tellen: repetitie en regexps
 
 
 * Waarom woorden tellen::    Waarom woorden tellen
-* count-words-example::      Gebruik een regexp, maar vindt een probleem.
+* tel-woorden-voorbeeld::      Gebruik een regexp, maar vindt een probleem.
 * recursive-count-words::    Start met het geval van geen woorden in de
                                region.
 * Tellen voorbeeld::         Tellen voorbeeld
 
-De ‘count-words-example’ functie
+De ‘tel-woorden-voorbeeld’ functie
 
 
 
-* Ontwerp count-words-example::  De definitie met ‘while’ loop.
-* Wiite ruimte bug::         De witte ruimte bug in
-                               ‘count-words-example’
+* Ontwerp tel-woorden-voorbeeld::  De definitie met ‘while’ loop.
+* Witte ruimte bug::         De witte ruimte bug in
+                               ‘tel-woorden-voorbeeld’
 
 Woorden tellen in een ‘defun’
 
@@ -579,7 +579,7 @@ Woorden tellen in een ‘defun’
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
 * count-words-in-defun::     Erg vergelijkbaar met
-                               ‘count-words-example’
+                               ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
 * lengths-list-file::        Een lijst met de lengtes van veel definities.
@@ -10894,727 +10894,745 @@ File: emacs-lisp-intro-nl.info,  Node: re-search oefeningen,  Prev: Regexp terug
 
 File: emacs-lisp-intro-nl.info,  Node: Woorden tellen,  Next: Woorden in een defun,  Prev: Regexp zoeken,  Up: Top
 
-13 Counting via Repetition and Regexps
-**************************************
+13 Tellen via repetitie en regexps
+**********************************
 
-Repetition and regular expression searches are powerful tools that you
-often use when you write code in Emacs Lisp.  This chapter illustrates
-the use of regular expression searches through the construction of word
-count commands using ‘while’ loops and recursion.
+Repetitie en reguliere expressie zoekopdrachten zijn krachtige
+instrumenten de je vaak gebruikt wanneer je code in Emacs Lisp schrijft.
+Dit hoofdstuk illustreert het gebruik van reguliere expressie
+zoekopdrachten bij de constructie van woorden telling commando's, met
+‘while’ loops en recursie.
 
 * Menu:
 
 * Waarom woorden tellen::    Waarom woorden tellen
-* count-words-example::      Gebruik een regexp, maar vindt een probleem.
+* tel-woorden-voorbeeld::      Gebruik een regexp, maar vindt een probleem.
 * recursive-count-words::    Start met het geval van geen woorden in de
                                region.
 * Tellen voorbeeld::         Tellen voorbeeld
 
 
-File: emacs-lisp-intro-nl.info,  Node: Waarom woorden tellen,  Next: count-words-example,  Up: Woorden tellen
+File: emacs-lisp-intro-nl.info,  Node: Waarom woorden tellen,  Next: tel-woorden-voorbeeld,  Up: Woorden tellen
 
-Counting words
+Woorden tellen
 ==============
 
-The standard Emacs distribution contains functions for counting the
-number of lines and words within a region.
+De standaard Emacs distributie bevat functies om het aantal regels en
+het het aantal woorden in een region te tellen.
 
-   Certain types of writing ask you to count words.  Thus, if you write
-an essay, you may be limited to 800 words; if you write a novel, you may
-discipline yourself to write 1000 words a day.  It seems odd, but for a
-long time, Emacs lacked a word count command.  Perhaps people used Emacs
-mostly for code or types of documentation that did not require word
-counts; or perhaps they restricted themselves to the operating system
-word count command, ‘wc’.  Alternatively, people may have followed the
-publishers' convention and computed a word count by dividing the number
-of characters in a document by five.
+   Sommige soorten schrijfwerk vragen je woorden te tellen.  Zoals
+wanneer je een essay schrijft kan dat gelimiteerd zijn op 800 woorden.
+Wanneer je een roman schrijft kan je je zelf opleggen om 1000 woorden
+per dag te schrijven.  Het klinkt raar, maar Emacs had heel lang geen
+woorden tel commando.  Misschien gebruikten mensen Emacs voornamelijk
+voor code of soorten documentatie die geen woordtelling vereisen, of
+misschien beperkte zij zich tot het woorden tel commando van het
+besturingsysteem zoals ‘wc’.  Misschien dat mensen de conventie onder
+uitgevers volgden en berekenden zij de woord telling door het aantal
+karaktrs in een document door vijf te delen.
 
-   There are many ways to implement a command to count words.  Here are
-some examples, which you may wish to compare with the standard Emacs
-command, ‘count-words-region’.
+   Een commando om woorden te tellen kan op veel verschillende manieren
+gecompleteerd worden.  Hier volgen sommige voorbeelden die je wellicht
+wilt vergelijken met het standaard Emacs commando ‘count-words-region’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: count-words-example,  Next: recursive-count-words,  Prev: Waarom woorden tellen,  Up: Woorden tellen
+File: emacs-lisp-intro-nl.info,  Node: tel-woorden-voorbeeld,  Next: recursive-count-words,  Prev: Waarom woorden tellen,  Up: Woorden tellen
 
-13.1 De ‘count-words-example’ functie
-=====================================
+13.1 De ‘tel-woorden-voorbeeld’ functie
+=======================================
 
-A word count command could count words in a line, paragraph, region, or
-buffer.  What should the command cover?  You could design the command to
-count the number of words in a complete buffer.  However, the Emacs
-tradition encourages flexibility--you may want to count words in just a
-section, rather than all of a buffer.  So it makes more sense to design
-the command to count the number of words in a region.  Once you have a
-command to count words in a region, you can, if you wish, count words in
-a whole buffer by marking it with ‘C-x h’ (‘mark-whole-buffer’).
+Een woorden tel commando kan woorden tellen in een regel, paragraaf,
+region of buffer.  Wat zou het commando moeten doen?  Je kunt een
+commando maken dat het aantal woorden telt in een volledig buffer.
+Echter, de Emacs traditie moedigt flexibiliteit aan--je wil misschien
+alleen de woorden in een sectie tellen in plaats van het hele buffer.
+Het is daarom verstandiger om het commando het aantal woorden in een
+region te laten tellen.  Wanneer je eenmaal een commando hebt dat
+woorden in een region telt, dan kan je als je dat wilt woorden in het
+hele buffer tellen door het te markeren met ‘C-x h’
+(‘mark-whole-buffer’).
 
-   Clearly, counting words is a repetitive act: starting from the
-beginning of the region, you count the first word, then the second word,
-then the third word, and so on, until you reach the end of the region.
-This means that word counting is ideally suited to recursion or to a
-‘while’ loop.
+   Woorden tellen is duidelijk een repeterende handeling: startend bij
+het begin van de region tel je het eerste woord, dan het tweede woord,
+dan het derde, enzovoorts., totdat je het einde van de region bereikt.
+Dit betekent dat het tellen van woorden uitstekend geschikt is voor
+recursie of voor een ‘while’ loop.
 
 * Menu:
 
-* Ontwerp count-words-example::  De definitie met ‘while’ loop.
-* Wiite ruimte bug::         De witte ruimte bug in
-                               ‘count-words-example’
+* Ontwerp tel-woorden-voorbeeld::  De definitie met ‘while’ loop.
+* Witte ruimte bug::         De witte ruimte bug in
+                               ‘tel-woorden-voorbeeld’
 
 
-File: emacs-lisp-intro-nl.info,  Node: Ontwerp count-words-example,  Next: Wiite ruimte bug,  Up: count-words-example
+File: emacs-lisp-intro-nl.info,  Node: Ontwerp tel-woorden-voorbeeld,  Next: Witte ruimte bug,  Up: tel-woorden-voorbeeld
 
-Designing ‘count-words-example’
+Ontwerp ‘tel-woorden-voorbeeld’
 -------------------------------
 
-First, we will implement the word count command with a ‘while’ loop,
-then with recursion.  The command will, of course, be interactive.
+Eerst gaan we een woord tel commando maken met een ‘while’ loop, daarna
+met recursie.  Het commando is uiteraard interactief.
 
-   The template for an interactive function definition is, as always:
+   Het sjabloon voor een interactieve functiedefinitie is, zoals altijd:
 
      (defun NAAM-VAN-DE-FUNCTIE (ARGUMENT-LIST)
        "DOCUMENTATIE..."
        (INTERACTIVE-EXPRESSION...)
        BODY...)
 
-   What we need to do is fill in the slots.
+   Wat we moeten doen is de slots invullen.
 
-   The name of the function should be self-explanatory and easy to
-remember.  ‘count-words-region’ is the obvious choice.  Since that name
-is used for the standard Emacs command to count words, we will name our
-implementation ‘count-words-example’.
+   De naam van def functie moet zelf verklarend en makkelijk te houden
+zijn.  ‘count-words-region’ is een voor de hand liggende keuze.  Maar
+omdat die naam gebruikt wordt door het standaard Emacs commando om
+woorden te tellen, noemen we onze implantatie ‘tel-woorden-voorbeeld’.
 
-   The function counts words within a region.  This means that the
-argument list must contain symbols that are bound to the two positions,
-the beginning and end of the region.  These two positions can be called
-‘beginning’ and ‘end’ respectively.  The first line of the documentation
-should be a single sentence, since that is all that is printed as
-documentation by a command such as ‘apropos’.  The interactive
-expression will be of the form ‘(interactive "r")’, since that will
-cause Emacs to pass the beginning and end of the region to the
-function's argument list.  All this is routine.
+   De functie telt woorden in een region.  Dat betekent dat de
+arugmentlist symbolen moet bevatten die gebonden worden aan de twee
+posities, het begin en einde van de region.  Deze twee posities noemen
+we respectievelijk ‘begin’ en ‘end’.  De eerste regel van de
+documentatie met een enkele zin zijn, omdat dit alles wat als
+documentatie getoond wordt door een commando zoals ‘apropos’.  De
+interactieve expressie heeft de vorm ‘(interactive "r")’, omdat die
+zorgt dat Emacs het begin en einde van de region doorgeven aan de
+arugmentlist van de functie.  Dit is allemaal routine.
 
-   The body of the function needs to be written to do three tasks:
-first, to set up conditions under which the ‘while’ loop can count
-words, second, to run the ‘while’ loop, and third, to send a message to
-the user.
+   De body van de functie moet drie taken doen: ten eerste de condities
+opzetten waaronder de ‘while’ loop de woorden kan tellen, ten tweede het
+runnen van de ‘while’ loop, en ten derde, de gebruiker een boodschap
+geven.
 
-   When a user calls ‘count-words-example’, point may be at the
-beginning or the end of the region.  However, the counting process must
-start at the beginning of the region.  This means we will want to put
-point there if it is not already there.  Executing ‘(goto-char
-beginning)’ ensures this.  Of course, we will want to return point to
-its expected position when the function finishes its work.  For this
-reason, the body must be enclosed in a ‘save-excursion’ expression.
+   Wanneer een gebruiker ‘tel-woorden-voorbeeld’ aanroept kan point aan
+het begin of aan het einde van de region staan.  Het tel-proces moet
+echter bij het begin van de region starten.  Dit betekent dat we point
+daar willen zetten wanneer die daar nog niet is.  Het uitvoeren van
+‘(goto-char beginning)’ verzekert dit.  We willen natuurlijk point terug
+zetten op zijn verwachte positie wanneer de functie zijn werk gedaan
+heeft.  Om deze reden moet de body ingevoegd zijn in een
+‘save-excursion’ expressie.
 
-   The central part of the body of the function consists of a ‘while’
-loop in which one expression jumps point forward word by word, and
-another expression counts those jumps.  The true-or-false-test of the
-‘while’ loop should test true so long as point should jump forward, and
-false when point is at the end of the region.
+   Het centrale deel van de body van de functie bestaat uit een ‘while’
+loop waarin een expressie point voorwaarts van woord naar woord laat
+springen, en een andere expressie deze sprongen telt.  De
+waar-of-onwaar-test van de ‘while’ loop moet naar waar testen zolang
+point voorwaarts moet springen, en onwaar wanneer point aan het einde
+van de region is.
 
-   We could use ‘(forward-word 1)’ as the expression for moving point
-forward word by word, but it is easier to see what Emacs identifies as a
-"word" if we use a regular expression search.
+   We zouden ‘(forward-word 1)’ kunnen gebruiken om point woord voor
+woord voorwaarts te bewegen, maar het is makkelijker om te kijken wat
+Emacs als "woord" identificeert, wanneer we een reguliere expressie
+zoekopdracht gebruiken.
 
-   A regular expression search that finds the pattern for which it is
-searching leaves point after the last character matched.  This means
-that a succession of successful word searches will move point forward
-word by word.
+   Een reguliere expressie zoekopdracht die het patroon vindt waarvoor
+het zoekt, zet point achter het laatst gematchte karakter.  Dit betekent
+dat opvolgende succesvolle zoekopdrachten point woord voor woord
+voorwaarts verplaatst.
 
-   As a practical matter, we want the regular expression search to jump
-over whitespace and punctuation between words as well as over the words
-themselves.  A regexp that refuses to jump over interword whitespace
-would never jump more than one word!  This means that the regexp should
-include the whitespace and punctuation that follows a word, if any, as
-well as the word itself.  (A word may end a buffer and not have any
-following whitespace or punctuation, so that part of the regexp must be
-optional.)
+   In de praktijk willen we dat de reguliere expressie zoekopdracht over
+witte ruimte en leestekens tussen woorden springt en ook over de woorden
+zelf.  Een regexp die weigert over witte ruimte tussen woorden te
+springen zou nooit over een meer dan een woord springen!  Dit betekent
+dat de regexp de witte ruimte en leestekens volgend op een woord moet
+bevatten, als die er is, zowel als het woord zelf.  (Een woord kan een
+buffer beëindigen en kan geen opvolgende witte ruimte of leestekens
+hebben, dus dat deel van de regexp moet optioneel zijn.)
 
-   Thus, what we want for the regexp is a pattern defining one or more
-word constituent characters followed, optionally, by one or more
-characters that are not word constituents.  The regular expression for
-this is:
+   Dus wat we willen is dat regexp een patroon is dat een of meer
+woord-vormende karakters, optioneel gevolgd door een or meer karakters
+die niet woord-vormend zijn, definieert.
 
      \w+\W*
 
-The buffer's syntax table determines which characters are and are not
-word constituents.  For more information about syntax, *note Syntax
+De syntax-table van het buffer stelt vast welke karakters woord-vormend
+zijn en welke niet.  Voor meer informatie over syntax, *note Syntax
 Tables: (elisp)Syntax Tables.
 
-   The search expression looks like this:
+   De zoek expressie ziet er zo uit:
 
      (re-search-forward "\\w+\\W*")
 
-(Note that paired backslashes precede the ‘w’ and ‘W’.  A single
-backslash has special meaning to the Emacs Lisp interpreter.  It
-indicates that the following character is interpreted differently than
-usual.  For example, the two characters, ‘\n’, stand for ‘newline’,
-rather than for a backslash followed by ‘n’.  Two backslashes in a row
-stand for an ordinary, unspecial backslash, so Emacs Lisp interpreter
-ends of seeing a single backslash followed by a letter.  So it discovers
-the letter is special.)
+(Merk op dat de paren backslashes aan de ‘w’ en ‘W’ voorafgaan.  Een
+enkele backslash heeft een speciale betekenis voor de Emacs Lisp
+interpreter.  Het geeft aan dat het er op volgende karakter anders
+geïnterpreteerd is dan gebruikelijk.  Bijvoorbeeld staan de twee
+karakters ‘\n’ voor ‘newline’ in plaats van een backslash gevolgd door
+‘n’.  Twee backslashes achter elkaar staan voor een gewone,
+niet-speciale backslash, waardoor de Emacs Lisp interpreter uiteindelijk
+een enkele backslash gevold door een letter ziet.  Daardoor weet het dat
+de letter speciaal is.)
 
-   We need a counter to count how many words there are; this variable
-must first be set to 0 and then incremented each time Emacs goes around
-the ‘while’ loop.  The incrementing expression is simply:
+   We hebben een teller nodig die telt hoeveel woorden er zijn.  Deze
+variabele moet eerst op 0 gezet worden en daarna elke keer dat Emacs
+door de ‘while’ loop gaat verhoogd worden.
 
      (setq count (1+ count))
 
-   Finally, we want to tell the user how many words there are in the
-region.  The ‘message’ function is intended for presenting this kind of
-information to the user.  The message has to be phrased so that it reads
-properly regardless of how many words there are in the region: we don't
-want to say that "there are 1 words in the region".  The conflict
-between singular and plural is ungrammatical.  We can solve this problem
-by using a conditional expression that evaluates different messages
-depending on the number of words in the region.  There are three
-possibilities: no words in the region, one word in the region, and more
-than one word.  This means that the ‘cond’ special form is appropriate.
+   Tenslotte willen we aan de gebruiker vertellen hoeveel woorden er in
+de region zijn.  De functie ‘message’ is bedoeld om dit soort informatie
+aan de gebruiker te presenteren.  De boodschap moet zo zijn geformuleerd
+dat die goed is ongeacht hoeveel woorden er in de region zijn: we willen
+niet zeggen "er zijn 1 woorden in de region".  Het conflict tussen
+enkelvoud en meervoud is grammaticaal onjuist.  Wij lossen dit op met
+een conditionele expressie die verschillende boodschappen evalueert,
+afhankelijk van het aantal woorden in de region.  Er zijn drie
+mogelijkheden: geen woorden in de region, één woord in de region, en
+meer dan een woord.  Dit betekent dat de speciale vorm ‘cond’ geschikt
+is.
 
-   All this leads to the following function definition:
+   Dit alles leidt tot de volgende functiedefinitie:
 
-     ;;; First version; has bugs!
-     (defun count-words-example (beginning end)
-       "Print number of words in the region.
-     Words are defined as at least one word-constituent
-     character followed by at least one character that
-     is not a word-constituent.  The buffer's syntax
-     table determines which characters these are."
+     ;;; Eerste versie; heeft bugs!
+     (defun tel-woorden-voorbeeld (beginning end)
+       "Toon aantal woorden in de region.
+     Woorden worden gedefinieerd als minstens een woord-vormend
+     karakter gevolgd door minstens een karakter dat
+     niet woord-vormend is. De syntax table van het buffer
+     bepaald welke karakters dat zijn."
        (interactive "r")
-       (message "Counting words in region ... ")
+       (message "Tel woorden in region ... ")
 
-     ;;; 1. Set up appropriate conditions.
+     ;;; 1. Opzetten geschikte condities.
        (save-excursion
          (goto-char beginning)
          (let ((count 0))
 
-     ;;; 2. Run the while loop.
+     ;;; 2. Run de while loop.
            (while (< (point) end)
              (re-search-forward "\\w+\\W*")
              (setq count (1+ count)))
 
-     ;;; 3. Send a message to the user.
+     ;;; 3. Toon een boodschap aan de gebruiker.
            (cond ((zerop count)
                   (message
-                   "The region does NOT have any words."))
+                   "De region heeft GEEN woorden."))
                  ((= 1 count)
                   (message
-                   "The region has 1 word."))
+                   "De region heeft 1 woord."))
                  (t
                   (message
-                   "The region has %d words." count))))))
+                   "The region heeft %d woorden." count))))))
 
-As written, the function works, but not in all circumstances.
+Zo geschreven werkt de functie, maar niet in alle omstandigheden.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Wiite ruimte bug,  Prev: Ontwerp count-words-example,  Up: count-words-example
+File: emacs-lisp-intro-nl.info,  Node: Witte ruimte bug,  Prev: Ontwerp tel-woorden-voorbeeld,  Up: tel-woorden-voorbeeld
 
-13.1.1 The Whitespace Bug in ‘count-words-example’
---------------------------------------------------
+13.1.1 De witte ruimte bug in ‘tel-woorden-voorbeeld’
+-----------------------------------------------------
 
-The ‘count-words-example’ command described in the preceding section has
-two bugs, or rather, one bug with two manifestations.  First, if you
-mark a region containing only whitespace in the middle of some text, the
-‘count-words-example’ command tells you that the region contains one
-word!  Second, if you mark a region containing only whitespace at the
-end of the buffer or the accessible portion of a narrowed buffer, the
-command displays an error message that looks like this:
+Het in de vorige sectie beschreven commando ‘tel-woorden-voorbeeld’
+heeft twee bugs, of eigenlijk een bug met twee manifestaties.  Ten
+eerste als je een region markeert die alleen witte ruimte heeft in het
+midden van tekst, zegt ‘tel-woorden-voorbeeld’ dat de region maar een
+woord heeft!  Ten tweede wanneer je een region markeert met alleen witte
+ruimte aan het einde van het buffer of het bereikbare deel van een
+versmald buffer, toont het een foutboodschap die er zo uit ziet:
 
      Search failed: "\\w+\\W*"
 
-   If you are reading this in Info in GNU Emacs, you can test for these
-bugs yourself.
+   Wanneer je dit leest in Info in GNU Emacs, kan je deze bugs zelf
+testen.
 
-   First, evaluate the function in the usual manner to install it.  Here
-is a copy of the definition.  Place your cursor after the closing
-parenthesis and type ‘C-x C-e’ to install it.
+   Evalueer eerst de functie op de gebruikelijke manier om die te
+installeren.  Hier volgt de functiedefinitie.  Plaats de cursor achter
+het afsluitende haakje sluiten en typ ‘C-x C-e’ om die te installeren.
 
-     ;; First version; has bugs!
-     (defun count-words-example (beginning end)
-       "Print number of words in the region.
-     Words are defined as at least one word-constituent character followed
-     by at least one character that is not a word-constituent.  The buffer's
-     syntax table determines which characters these are."
+     ;; Eerste versie; has bugs!
+     (defun tel-woorden-voorbeeld (beginning end)
+       "Toon aantal woorden in de region.
+     Woorden worden gedefinieerd als minstens een woord-vormend
+     karakter gevolgd door minstens een karakter dat
+     niet woord-vormend is. De syntax table van het buffer
+     bepaald welke karakters dat zijn."
        (interactive "r")
        (message "Counting words in region ... ")
 
-     ;;; 1. Set up appropriate conditions.
+     ;;; 1. Opzetten geschikte condities.
        (save-excursion
          (goto-char beginning)
          (let ((count 0))
 
-     ;;; 2. Run the while loop.
+     ;;; 2. Run de while loop.
            (while (< (point) end)
              (re-search-forward "\\w+\\W*")
              (setq count (1+ count)))
 
-     ;;; 3. Send a message to the user.
+     ;;; 3. Toon een boodschap aan de gebruiker.
            (cond ((zerop count)
-                  (message "The region does NOT have any words."))
-                 ((= 1 count) (message "The region has 1 word."))
-                 (t (message "The region has %d words." count))))))
+                  (message "De region heeft geen woorden."))
+                 ((= 1 count) (message "De region heeft 1 woord."))
+                 (t (message "De region heeft %d woorden." count))))))
 
-   If you wish, you can also install this key binding by evaluating it:
+   Wanneer je dat wilt, kan je ook deze key binding installeren door het
+te evalueren:
 
-     (keymap-global-set "C-c =" 'count-words-example)
+     (keymap-global-set "C-c =" 'tel-woorden-voorbeeld)
 
-   To conduct the first test, set mark and point to the beginning and
-end of the following line and then type ‘C-c =’ (or ‘M-x
-count-words-example’ if you have not bound ‘C-c =’):
+   Om de eerste test uit te voeren zet mark en point aan begin en eind
+van de volgende regel en typ dan ‘C-c =’ (of ‘M-x tel-woorden-voorbeeld’
+wanneer je ‘C-c =’ niet gebonden hebt.)
 
-         one   two  three
+         een   twee  drie
 
-Emacs will tell you, correctly, that the region has three words.
+Emacs toont je inderdaad dat de region drie woorden heeft.
 
-   Repeat the test, but place mark at the beginning of the line and
-place point just _before_ the word ‘one’.  Again type the command ‘C-c
-=’ (or ‘M-x count-words-example’).  Emacs should tell you that the
-region has no words, since it is composed only of the whitespace at the
-beginning of the line.  But instead Emacs tells you that the region has
-one word!
+   Herhaal de test, maar plaats de mark aan het begin van de regel en
+plaats point net _voor_ het woord ‘een’.  Typ opnieuw het commando ‘C-c
+=’ (of ‘M-x tel-woorden-voorbeeld’).  Emacs zou je moeten vertellen dat
+de region geen woorden heeft, omdat het alleen uit witte ruimte aan het
+begin van de regel bestaat.  Maar in plaats daarvan vertelt Emacs je dat
+de region één woord bevat!
 
-   For the third test, copy the sample line to the end of the
-‘*scratch*’ buffer and then type several spaces at the end of the line.
-Place mark right after the word ‘three’ and point at the end of line.
-(The end of the line will be the end of the buffer.)  Type ‘C-c =’ (or
-‘M-x count-words-example’) as you did before.  Again, Emacs should tell
-you that the region has no words, since it is composed only of the
-whitespace at the end of the line.  Instead, Emacs displays an error
-message saying ‘Search failed’.
+   Voor de derde test, kopieer de voorbeeldregel aan het eind van het
+‘*scratch*’ buffer en typ dan meerder spaties aan het einde van de
+regel.  Plaats mar direct achter het woord ‘drie’ en point aan het einde
+van de regel.  (Het einde van de regel is het einde van het buffer.)
+Typ ‘C-c =’ (of ‘M-x tel-woorden-voorbeeld’) net als je eerder deed.
+Opnieuw zou Emacs je moeten zeggen dat de region geen woorden heeft,
+omdat het bestaat uit witte ruimte aan het einde van de regel.  In
+plaats daarvan toont Emacs een foutboodschap die ‘Search failed’ zegt.
 
-   The two bugs stem from the same problem.
+   De twee bugs stammen van hetzelfde probleem.
 
-   Consider the first manifestation of the bug, in which the command
-tells you that the whitespace at the beginning of the line contains one
-word.  What happens is this: The ‘M-x count-words-example’ command moves
-point to the beginning of the region.  The ‘while’ tests whether the
-value of point is smaller than the value of ‘end’, which it is.
-Consequently, the regular expression search looks for and finds the
-first word.  It leaves point after the word.  ‘count’ is set to one.
-The ‘while’ loop repeats; but this time the value of point is larger
-than the value of ‘end’, the loop is exited; and the function displays a
-message saying the number of words in the region is one.  In brief, the
-regular expression search looks for and finds the word even though it is
-outside the marked region.
+   Bekijk de eerste manifestatie van de bug, waar het commando je zegt
+dat de witte ruimte aan het begin van de regel één woord bevat.  Dit is
+wat er gebeurt: Het commando ‘M-x tel-woorden-voorbeeld’ verplaatst
+point naar het begin van de region.  De ‘while’ test of point kleiner is
+dan de waarde van ‘end’, wat zo is.  Vervolgens zoekt en vindt de
+reguliere expressie zoekopdracht het eerste woord.  Het zet point achter
+het woord.  ‘count’ wordt op één gezet.  De ‘while’ loop herhaalt, maar
+deze keer is de waarde van point groter dan de waarde van ‘end’, de loop
+wordt verlaten en de functie toont een boodschap die zegt dat het aantal
+woorden in de region één is.  Kortom, de reguliere expressie
+zoekopdracht zoekt en vindt het woord ondanks dat het buiten de
+gemarkeerde region is.
 
-   In the second manifestation of the bug, the region is whitespace at
-the end of the buffer.  Emacs says ‘Search failed’.  What happens is
-that the true-or-false-test in the ‘while’ loop tests true, so the
-search expression is executed.  But since there are no more words in the
-buffer, the search fails.
+   In de tweede manifestatie van de bug is de region witte ruimte aan
+het einde van het buffer.  Emacs zegt ‘Search failed’.  Wat gebeurt is
+dat de waar-of-onwaar-test in de ‘while’ loop op waar test, dus de
+zoekopdracht wordt uitgevoerd.  Maar omdat er geen woorden meer zijn in
+het buffer, faalt de zoekopdracht.
 
-   In both manifestations of the bug, the search extends or attempts to
-extend outside of the region.
+   In beide manifestaties van de bug zoekt de zoekopdracht buiten de
+region of probeert dat te doen.
 
-   The solution is to limit the search to the region--this is a fairly
-simple action, but as you may have come to expect, it is not quite as
-simple as you might think.
+   De oplossing is om de zoekopdracht te limiteren tot de region--dat is
+een vrij makkelijke actie, maar zoals je inmiddels gewend bent, is het
+niet zo heel simpel als je zou denken.
 
-   As we have seen, the ‘re-search-forward’ function takes a search
-pattern as its first argument.  But in addition to this first, mandatory
-argument, it accepts three optional arguments.  The optional second
-argument bounds the search.  The optional third argument, if ‘t’, causes
-the function to return ‘nil’ rather than signal an error if the search
-fails.  The optional fourth argument is a repeat count.  (In Emacs, you
-can see a function's documentation by typing ‘C-h f’, the name of the
-function, and then <RET>.)
+   Zoals we hebben gezien neemt de functie ‘re-search-forward’ een
+zoekpatroon als eerste argument.  Maar naast die eerste, vereiste,
+argument, accepteert die drie optionele argumenten.  Het optionele
+tweede argument begrenst de zoekopdracht.  Het optionele argument,
+wanneer ‘t’, zorgt dat de functie ‘nil’ teruggeeft in plaats van een
+fout wanneer de zoekopdracht faalt.  Het optionele vierde argument is
+het aantal herhalingen.  (In Emacs kan je de documentatie van een
+functie bekijken door het typen van ‘C-h f’, de naam van de functie en
+dan <RET>.)
 
-   In the ‘count-words-example’ definition, the value of the end of the
-region is held by the variable ‘end’ which is passed as an argument to
-the function.  Thus, we can add ‘end’ as an argument to the regular
-expression search expression:
+   In de ‘tel-woorden-voorbeeld’ definitie wordt de waarde van het einde
+van de region bewaard in de variabele ‘end’, die doorgegeven wordt als
+een argument aan de functie.  We kunnen dus ‘end’ als argument aan de
+reguliere expressie zoekopdracht toevoegen.
 
      (re-search-forward "\\w+\\W*" end)
 
-   However, if you make only this change to the ‘count-words-example’
-definition and then test the new version of the definition on a stretch
-of whitespace, you will receive an error message saying ‘Search failed’.
+   Als je echter alleen deze wijziging in de ‘tel-woorden-voorbeeld’
+definitie maakt en daarna de nieuwe versie van de definitie test op een
+stuk witte ruimte, krijg je de foutboodschap die zegt ‘Search failed’.
 
-   What happens is this: the search is limited to the region, and fails
-as you expect because there are no word-constituent characters in the
-region.  Since it fails, we receive an error message.  But we do not
-want to receive an error message in this case; we want to receive the
-message "The region does NOT have any words."
+   Wat gebeurt is het dit: de zoekopdracht is begrensd tot de region, en
+faalt zoals je verwacht omdat er geen woord-vormende karakters in de
+region zijn.  Omdat die faalt, krijgen we een foutboodschap.  Maar we
+willen in dit geval geen foutboodschap krijgen, we willen de boodschap
+"De region heeft GEEN woorden" krijgen.
 
-   The solution to this problem is to provide ‘re-search-forward’ with a
-third argument of ‘t’, which causes the function to return ‘nil’ rather
-than signal an error if the search fails.
+   De oplossing voor dit probleem is om ‘re-search-forward’ een derde
+argument ‘t’ te geven, waardoor de functie ‘nil’ teruggeeft in plaats
+van een fout signaleren wanneer de zoekopdracht faalt.
 
-   However, if you make this change and try it, you will see the message
-"Counting words in region ...  "  and ... you will keep on seeing that
-message ..., until you type ‘C-g’ (‘keyboard-quit’).
+   Als je echter deze wijziging aanbrengt en probleert, dan zie je de
+boodschap "Tel woorden in de region ..."  en ... en je blijft die
+boodschap ... zien, totdat je ‘C-g’ (‘keyboard-quit’) typt.
 
-   Here is what happens: the search is limited to the region, as before,
-and it fails because there are no word-constituent characters in the
-region, as expected.  Consequently, the ‘re-search-forward’ expression
-returns ‘nil’.  It does nothing else.  In particular, it does not move
-point, which it does as a side effect if it finds the search target.
-After the ‘re-search-forward’ expression returns ‘nil’, the next
-expression in the ‘while’ loop is evaluated.  This expression increments
-the count.  Then the loop repeats.  The true-or-false-test tests true
-because the value of point is still less than the value of end, since
-the ‘re-search-forward’ expression did not move point.  ... and the
-cycle repeats ...
+   Dit is wat er gebeurt: de zoekopdracht is begrensd tot de region,
+zoals eerder, en faalt omdat er geen woord-vormende karakters in de
+region zijn, zoals verwacht.  Vervolgens geeft de ‘re-search-forward’
+expressie ‘nil’ terug.  Het doet niets anders.  In het bijzonder
+verplaatst het point niet, wat het doet als zij-effect wanneer het een
+zoekdoel vindt.  Nadat de ‘re-search-forward’ expressie ‘nil’
+teruggeeft, wordt de volgende expressie in de ‘while’ loop geëvalueerd.
+Deze expressie verhoogt de teller.  Daarna herhaalt de loop.  De
+waar-of-onwaar-test test op waar, omdat de waarde van point nog steeds
+kleiner is dan end, doordat de ‘re-search-forward’ point niet verplaatst
+heeft.  ... en de cyclus herhaalt ...
 
-   The ‘count-words-example’ definition requires yet another
-modification, to cause the true-or-false-test of the ‘while’ loop to
-test false if the search fails.  Put another way, there are two
-conditions that must be satisfied in the true-or-false-test before the
-word count variable is incremented: point must still be within the
-region and the search expression must have found a word to count.
+   De ‘tel-woorden-voorbeeld’ definitie vereist nog een andere
+modificatie, om de waar-of-onwaar-test van de ‘while’ loop naar onwaar
+te laten testen wanneer de zoekopdracht faalt.  Anders gezegd, er zijn
+twee condities waaraan voldoen moet worden in de waar-of-onwaar-test
+voordat de woordtelling variabele wordt verhoogd: point moet nog steeds
+in de region zijn en de zoek expressie moet een woord gevonden hebben om
+te tellen.
 
-   Since both the first condition and the second condition must be true
-together, the two expressions, the region test and the search
-expression, can be joined with an ‘and’ special form and embedded in the
-‘while’ loop as the true-or-false-test, like this:
+   Omdat zowel de eerste als de tweede conditie samen waar moeten zijn,
+kunnen de twee expressies, de region test en de zoekexpressie worden
+samengevoegd met een speciale vorm ‘and’ en ingebed in de ‘while’ loop,
+zoals dit:
 
      (and (< (point) end) (re-search-forward "\\w+\\W*" end t))
 
-(*Note The ‘kill-new’ function: kill-new function, for information about
+(*Note De ‘kill-new’ functie: kill-new functie, voor informatie over
 ‘and’.)
 
-   The ‘re-search-forward’ expression returns ‘t’ if the search succeeds
-and as a side effect moves point.  Consequently, as words are found,
-point is moved through the region.  When the search expression fails to
-find another word, or when point reaches the end of the region, the
-true-or-false-test tests false, the ‘while’ loop exits, and the
-‘count-words-example’ function displays one or other of its messages.
+   De ‘re-search-forward’ expressie geeft ‘t’ terug wanneer de
+zoekopdracht slaagt en als zij-effect verplaatst die point.  Vervolgens,
+wanneer woorden worden gevonden, wordt point door de region verplaatst.
+Wanneer de zoekexpressie faalt in het vinden van nog een woord, of
+wanneer point het einde van de region bereikt, test de
+waar-of-onwaar-test op onwaar, de ‘while’ loop eindigt en de
+‘tel-woorden-voorbeeld’ functie toont een van zijn boodschappen.
 
-   After incorporating these final changes, the ‘count-words-example’
-works without bugs (or at least, without bugs that I have found!).  Here
-is what it looks like:
+   Na het incorporeren van deze laatste wijzigingen, werkt
+‘tel-woorden-voorbeeld’ zonder bugs (tenminste, zonder bugs die ik heb
+gevonden!).  Hier is hoe die er uitziet:
 
-     ;;; Final version: while
-     (defun count-words-example (beginning end)
-       "Print number of words in the region."
+     ;;; Finale versie: while
+     (defun tel-woorden-voorbeeld (beginning end)
+       "Toon aantal woorden in de region."
        (interactive "r")
-       (message "Counting words in region ... ")
+       (message "Tel woorden in region ... ")
 
-     ;;; 1. Set up appropriate conditions.
+     ;;; 1. Opzetten geschikte condities.
        (save-excursion
          (let ((count 0))
            (goto-char beginning)
 
-     ;;; 2. Run the while loop.
+     ;;; 2. Run de while loop.
            (while (and (< (point) end)
                        (re-search-forward "\\w+\\W*" end t))
              (setq count (1+ count)))
 
-     ;;; 3. Send a message to the user.
+     ;;; 3. Toon een boodschap aan de gebruiker.
            (cond ((zerop count)
                   (message
-                   "The region does NOT have any words."))
+                   "De region heeft GEEN woorden."))
                  ((= 1 count)
                   (message
-                   "The region has 1 word."))
+                   "De region heeft 1 woord."))
                  (t
                   (message
-                   "The region has %d words." count))))))
+                   "The region heeft %d woorden." count))))))
 
 
-File: emacs-lisp-intro-nl.info,  Node: recursive-count-words,  Next: Tellen voorbeeld,  Prev: count-words-example,  Up: Woorden tellen
+File: emacs-lisp-intro-nl.info,  Node: recursive-count-words,  Next: Tellen voorbeeld,  Prev: tel-woorden-voorbeeld,  Up: Woorden tellen
 
-13.2 Count Words Recursively
-============================
+13.2 Recursief woorden tellen
+=============================
 
-You can write the function for counting words recursively as well as
-with a ‘while’ loop.  Let's see how this is done.
+Je kunt de functie om woorden te tellen zowel recursief als met een
+‘while’ loop schrijven.  Laten we zien hoe je dat doet.
 
-   First, we need to recognize that the ‘count-words-example’ function
-has three jobs: it sets up the appropriate conditions for counting to
-occur; it counts the words in the region; and it sends a message to the
-user telling how many words there are.
+   Eerst moeten we herkennen dat de functie ‘tel-woorden-voorbeeld’ drie
+taken heeft: het zet de geschikte condities op om de woorden die
+voorkomen te tellen, het telt de woorden in de region, and het geeft de
+gebruiker een boodschap die zegt hoeveel woorden er zijn.
 
-   If we write a single recursive function to do everything, we will
-receive a message for every recursive call.  If the region contains 13
-words, we will receive thirteen messages, one right after the other.  We
-don't want this!  Instead, we must write two functions to do the job,
-one of which (the recursive function) will be used inside of the other.
-One function will set up the conditions and display the message; the
-other will return the word count.
+   Wanneer we een enkele recursieve functie schrijven die alles doet,
+krijgen we een boodschap bij elke recursieve aanroep.  Wanneer de region
+13 woorden bevat, krijgen we dertien boodschappen, de een na de ander.
+Dat willen we niet!  In plaats daarvan moeten we twee functies schrijven
+om het werk te doen, waarvan eentje (de recursieve functie) wordt
+gebruikt binnen de ander.  Een functie zet de condities op en toont de
+boodschap, de ander geeft de woordtelling terug.
 
-   Let us start with the function that causes the message to be
-displayed.  We can continue to call this ‘count-words-example’.
+   Laten we starten met de functie die de boodschap laat zien.  We
+blijven deze functie ‘tel-woorden-voorbeeld’ noemen.
 
-   This is the function that the user will call.  It will be
-interactive.  Indeed, it will be similar to our previous versions of
-this function, except that it will call ‘recursive-count-words’ to
-determine how many words are in the region.
+   Dit is de functie die de gebruiker aanroept.  Die is interactief.
+Die is vergelijkbaar met de vorige versie van deze functie, behalve dat
+die ‘recursive-count-words’ aanroept om vast te stellen hoeveel woorden
+er in de region zijn.
 
-   We can readily construct a template for this function, based on our
-previous versions:
+   We kunnen gemakkelijk voor deze functie een sjabloon samenstellen,
+gebaseerd op onze voorgaande versies:
 
-     ;; Recursive version; uses regular expression search
-     (defun count-words-example (beginning end)
-       "DOCUMENTATION..."
-       (INTERACTIVE-EXPRESSION...)
+     ;; Recursieve versie; met reguliere expressie zoekopdracht
+     (defun tel-woorden-voorbeeld (beginning end)
+       "DOCUMENTATIE..."
+       (INTERACTIEVE-EXPRESSIE...)
 
-     ;;; 1. Set up appropriate conditions.
-       (EXPLANATORY MESSAGE)
-       (SET-UP FUNCTIONS...
+     ;;; 1. Opzetten geschikte condities.
+       (VERKLARENDE BOODSCHAP)
+       (SET-UP FUNCTIE...
 
-     ;;; 2. Count the words.
-         RECURSIVE CALL
+     ;;; 2. Tel de woorden.
+         RECURSIEVE AANROEP
 
-     ;;; 3. Send a message to the user.
-         MESSAGE PROVIDING WORD COUNT))
+     ;;; 3. Toon een boodschap aan de gebruiker.
+         BOODSCHAP MET DE WOORD TELLING))
 
-   The definition looks straightforward, except that somehow the count
-returned by the recursive call must be passed to the message displaying
-the word count.  A little thought suggests that this can be done by
-making use of a ‘let’ expression: we can bind a variable in the varlist
-of a ‘let’ expression to the number of words in the region, as returned
-by the recursive call; and then the ‘cond’ expression, using binding,
-can display the value to the user.
+   De definitie ziet er eenvoudig uit, behalve dat we op enige manier de
+telling teruggegeven door een recursieve aanroep moet worden doorgegeven
+aan de boodschap die de woord telling toont.  Een beetje nadenken
+suggereert dat dit kan met een ‘let’ expressie: we kunnen een variabele
+in de varlist van een ‘let’ expressie binden aan het aantal woorden in
+de region, die wordt teruggegeven door de recursieve aanroep.  Dan kan
+de ‘cond’ expressie met een binding de waarde aan de gebruiker tonen.
 
-   Often, one thinks of the binding within a ‘let’ expression as somehow
-secondary to the primary work of a function.  But in this case, what you
-might consider the primary job of the function, counting words, is done
-within the ‘let’ expression.
+   Vaak denkt met bij de binding binnen een ‘let’ expressie als iets
+ondergeschikt aan het primaire werk van een functie.  Maar in dit geval
+wordt dat wat je als primaire werk van de functie beschouwt, het tellen
+van woorden, gedaan binnen de ‘let’ expressie.
 
-   Using ‘let’, the function definition looks like this:
+   Met ‘let’ ziet de functiedefinitie er zo uit:
 
-     (defun count-words-example (beginning end)
+     (defun tel-woorden-voorbeeld (beginning end)
        "Print number of words in the region."
        (interactive "r")
 
-     ;;; 1. Set up appropriate conditions.
-       (message "Counting words in region ... ")
+     ;;; 1. Opzetten geschikte condities.
+       (message "Tel woorden in region ... ")
        (save-excursion
          (goto-char beginning)
 
-     ;;; 2. Count the words.
+     ;;; 2. Tel de woorden.
          (let ((count (recursive-count-words end)))
 
-     ;;; 3. Send a message to the user.
+     ;;; 3. Toon een boodschap aan de gebruiker.
            (cond ((zerop count)
                   (message
-                   "The region does NOT have any words."))
+                   "De region heeft GEEN woorden."))
                  ((= 1 count)
                   (message
-                   "The region has 1 word."))
+                   "De region heeft 1 woord."))
                  (t
                   (message
-                   "The region has %d words." count))))))
+                   "The region heeft %d woorden." count))))))
 
-   Next, we need to write the recursive counting function.
+   Vervolgens moeten we de recursieve telfunctie schrijven.
 
-   A recursive function has at least three parts: the do-again-test, the
-next-step-expression, and the recursive call.
+   Een recursieve functie heeft tenminste drie delen: de
+doe-opnieuw-test, de volgende-stap-expressie en de recursieve aanroep.
 
-   The do-again-test determines whether the function will or will not be
-called again.  Since we are counting words in a region and can use a
-function that moves point forward for every word, the do-again-test can
-check whether point is still within the region.  The do-again-test
-should find the value of point and determine whether point is before,
-at, or after the value of the end of the region.  We can use the ‘point’
-function to locate point.  Clearly, we must pass the value of the end of
-the region to the recursive counting function as an argument.
+   De doe-opnieuw-test stelt vast of de functie wel of niet opnieuw
+aangeroepen wordt.  Omdat we woorden in een region tellen en een functie
+kunnen gebruiken die voor elk woord point voorwaarts verplaatst, kan de
+doe-opnieuw-test controleren of point nog steeds binnen de region is.
+De doe-opnieuw-test moet de waarde van point ontdekken en vaststellen of
+point voor, op, of na de waarde van het einde van de region is.  We
+kunnen de functie ‘point’ gebruiken om point te lokaliseren.
+Vanzelfsprekend moeten we de waarde van het einde van de region als
+argument aan de recursieve telfunctie doorgeven.
 
-   In addition, the do-again-test should also test whether the search
-finds a word.  If it does not, the function should not call itself
-again.
+   Daarnaast moet de doe-opnieuw-test testen of de zoekopdracht een
+woord vindt.  Wanneer die dat niet doet, moet de functie niet langer
+zichzelf aanroepen.
 
-   The next-step-expression changes a value so that when the recursive
-function is supposed to stop calling itself, it stops.  More precisely,
-the next-step-expression changes a value so that at the right time, the
-do-again-test stops the recursive function from calling itself again.
-In this case, the next-step-expression can be the expression that moves
-point forward, word by word.
+   De volgende-stap-expressie verandert een waarde zodat wanneer de
+recursieve functie geacht wort te stoppen met zich zelf aan te roepen,
+die stopt.  Preciezer gezegd, de volgende-stap-expressie verandert een
+waarde zodat op het juiste moment de doe-opnieuw-test de recursieve
+functie stopt zichzelf aan te roepen.  In dit geval dan de
+volgende-stap-expressie de expressie zijn die point woord voor woord
+voorwaarts verplaatst.
 
-   The third part of a recursive function is the recursive call.
+   Het derde deel van een resursieve functie is de recursieve aanroep.
 
-   Somewhere, we also need a part that does the work of the function, a
-part that does the counting.  A vital part!
+   Ook moeten we ergens een deel hebben dat het werk van de functie
+doet, een deel dat de woorden telt.  Een vitaal deel!
 
-   But already, we have an outline of the recursive counting function:
+   Maar we hebben nu al een overzicht van de recursieve telfunctie:
 
-     (defun recursive-count-words (region-end)
-       "DOCUMENTATION..."
-        DO-AGAIN-TEST
-        NEXT-STEP-EXPRESSION
-        RECURSIVE CALL)
+     (defun recursieve-tel-woorden (region-end)
+       "DOCUMENTATIE..."
+        DOE-OPNIEUW-TEST
+        VOLGENDE-STAP-EXPRESSIE
+        RECURSIEVE AANROEP)
 
-   Now we need to fill in the slots.  Let's start with the simplest
-cases first: if point is at or beyond the end of the region, there
-cannot be any words in the region, so the function should return zero.
-Likewise, if the search fails, there are no words to count, so the
-function should return zero.
+   Nu moeten de slots invullen.  Laten we beginnen met de meest
+eenvoudige gevallen: wanneer point aan het einde of voorbij de region
+is, dan kunnen er geen woorden in de region zijn, en de functie moet nul
+teruggeven.  Ook als de zoekopdracht faalt zijn er geen woorden om te
+tellen, en moet de functie nul teruggeven.
 
-   On the other hand, if point is within the region and the search
-succeeds, the function should call itself again.
+   Anderzijds, wanneer point binnen de region is en de zoekopdracht is
+succesvol, moet de functie zichzelf opnieuw aanroepen.
 
-   Thus, the do-again-test should look like this:
+   Dus de doe-opnieuw-test zou er zo uit moeten zien:
 
      (and (< (point) region-end)
           (re-search-forward "\\w+\\W*" region-end t))
 
-   Note that the search expression is part of the do-again-test--the
-function returns ‘t’ if its search succeeds and ‘nil’ if it fails.
-(*Note The Whitespace Bug in ‘count-words-example’: Whitespace Bug, for
-an explanation of how ‘re-search-forward’ works.)
+   Merk op dat de zoek expressie onderdeel is van de
+doe-opnieuw-test--de functie geeft ‘t’ terug wanneer de zoekopdracht
+slaagt en ‘nil’ wanneer die faalt.  (*Note De witte ruimte bug in
+‘tel-woorden-voorbeeld’: Witte ruimte bug, voor een uitleg over hoe
+‘re-search-forward’ werkt.)
 
-   The do-again-test is the true-or-false test of an ‘if’ clause.
-Clearly, if the do-again-test succeeds, the then-part of the ‘if’ clause
-should call the function again; but if it fails, the else-part should
-return zero since either point is outside the region or the search
-failed because there were no words to find.
+   De doe-opnieuw-test is een waar-of-onwaar-test van een ‘if’ clausule.
+Wanneer de doe-opnieuw-test slaagt, moet het dan-deel van de ‘if’
+clausule de functie opnieuw aanroepen.  Maar wanneer die faalt, moet het
+anders-deel nul teruggeven, omdat of point buiten de region is, of de
+zoekopdracht faalde omdat er geen woorden waren om te vinden.
 
-   But before considering the recursive call, we need to consider the
-next-step-expression.  What is it?  Interestingly, it is the search part
-of the do-again-test.
+   Maar voordat we de recursieve aanroep bekijken, moeten we naar de
+volgende-stap-expressie kijken.  Wat is die?  Die is interessant genoeg
+het zoek-deel van de doe-opnieuw-test.
 
-   In addition to returning ‘t’ or ‘nil’ for the do-again-test,
-‘re-search-forward’ moves point forward as a side effect of a successful
-search.  This is the action that changes the value of point so that the
-recursive function stops calling itself when point completes its
-movement through the region.  Consequently, the ‘re-search-forward’
-expression is the next-step-expression.
+   Naast ‘t’ of ‘nil’ voor de doe-opnieuw-test teruggeven verplaatst
+‘re-search-forward’ point voorwaarts als zij-effect van een succesvolle
+zoekopdracht.  Dit is de actie die de waarde van point verandert, zodat
+de recursieve functie stopt met zichzelf aanroepen wanneer point de
+beweging door de region voltooit.  De ‘re-search-forward’ expressie is
+dus de volgende-stap-expressie.
 
-   In outline, then, the body of the ‘recursive-count-words’ function
-looks like this:
+   De body van ‘recursieve-tel-woorden’ ziet er in overzicht zo uit:
 
-     (if DO-AGAIN-TEST-AND-NEXT-STEP-COMBINED
+     (if DOE-OPNIEUW-TEST-EN-VOLGENDE-STAP-EXPRESSIE-GECOMBINEERD
          ;; then
-         RECURSIVE-CALL-RETURNING-COUNT
+         RECURSIEVE-AANROEP-DIE-TELLING-TERUGGEEFT
        ;; else
-       RETURN-ZERO)
+       GEEF-NUL-TERUG)
 
-   How to incorporate the mechanism that counts?
+   Hoe het mechanisme dat telt te incorporeren?
 
-   If you are not used to writing recursive functions, a question like
-this can be troublesome.  But it can and should be approached
-systematically.
+   Dit kan lastig zijn wanneer je niet gewend bent recursieve functies
+te schrijven.  Maar het kan en moet systematisch worden benaderd.
 
-   We know that the counting mechanism should be associated in some way
-with the recursive call.  Indeed, since the next-step-expression moves
-point forward by one word, and since a recursive call is made for each
-word, the counting mechanism must be an expression that adds one to the
-value returned by a call to ‘recursive-count-words’.
+   We weten dat het tel-mechanisme op de een of andere manier
+geassocieerd moet zijn met de recursieve aanroep.  Omdat de
+volgende-stap-expressie point een woord voorwaarts verplaatst, en omdat
+de recursieve aanroep voor elk woord plaatsvindt, moet het
+tel-mechanisme een expressie zijn die een optelt bij de waarde
+teruggegeven door een aanroep van ‘recursive-count-words’.
 
-   Consider several cases:
+   Beschouw verschillende gevallen:
 
-   • If there are two words in the region, the function should return a
-     value resulting from adding one to the value returned when it
-     counts the first word, plus the number returned when it counts the
-     remaining words in the region, which in this case is one.
+   • Wanneer er twee woorden in de region zijn, moet de functie een
+     waarde teruggeven die resulteert van het optellen van één bij de
+     waarde die wordt teruggegeven wanneer die het eerste woord telt,
+     plus het aantal teruggeven wanneer het de resterende woorden in de
+     region telt, wat in dit geval één is.
 
-   • If there is one word in the region, the function should return a
-     value resulting from adding one to the value returned when it
-     counts that word, plus the number returned when it counts the
-     remaining words in the region, which in this case is zero.
+   • Wanneer er één woord in de region is, moet de functie een waarde
+     teruggeven die resulteert van het optellen van één bij de waarde
+     teruggeven van het tellen van dat woord, plus het aantal teruggeven
+     wanneer het de resterende woorden in de region telt, wat in dit
+     geval nul is.
 
-   • If there are no words in the region, the function should return
-     zero.
+   • Wanneer er geen woorden in de region zijn moet de functie nul
+     teruggeven.
 
-   From the sketch we can see that the else-part of the ‘if’ returns
-zero for the case of no words.  This means that the then-part of the
-‘if’ must return a value resulting from adding one to the value returned
-from a count of the remaining words.
+   Van de schets kunnen we zien dat het anders-deel van de ‘if’ nul
+teruggeeft in het geval er geen woorden zijn.  Dat betekent dat het
+dan-deel van de ‘if’ een waarde moet teruggeven die resulteert van het
+optellen van een bij de waarde teruggegeven door het tellen van de
+resterende woorden.
 
-   The expression will look like this, where ‘1+’ is a function that
-adds one to its argument.
+   De expressie ziet er zo uit, waarbij ‘1+’ een functie is die één
+optelt bij zijn argument.
 
-     (1+ (recursive-count-words region-end))
+     (1+ (recursieve-tel-woorden region-end))
 
-   The whole ‘recursive-count-words’ function will then look like this:
+   De hele functie ‘recursieve-tel-woorden’ ziet er dan zo uit:
 
-     (defun recursive-count-words (region-end)
-       "DOCUMENTATION..."
+     (defun recursieve-tel-woorden (region-end))
+       "DOCUMENTATIE..."
 
-     ;;; 1. do-again-test
+     ;;; 1. doe-opnieuw-test
        (if (and (< (point) region-end)
                 (re-search-forward "\\w+\\W*" region-end t))
 
-     ;;; 2. then-part: the recursive call
-           (1+ (recursive-count-words region-end))
+     ;;; 2. dan-deel: de recursieve aanroep
+           (1+ (recursieve-tel-woorden region-end))
 
-     ;;; 3. else-part
+     ;;; 3. anders-deel
          0))
 
-   Let's examine how this works:
+   Laten we onderzoeken hoe dit werkt:
 
-   If there are no words in the region, the else part of the ‘if’
-expression is evaluated and consequently the function returns zero.
+   Wanneer er geen woorden in de region zijn, wordt het anders-deel van
+de ‘if’ expressie geëvalueerd en geeft de functie dus nul terug.
 
-   If there is one word in the region, the value of point is less than
-the value of ‘region-end’ and the search succeeds.  In this case, the
-true-or-false-test of the ‘if’ expression tests true, and the then-part
-of the ‘if’ expression is evaluated.  The counting expression is
-evaluated.  This expression returns a value (which will be the value
-returned by the whole function) that is the sum of one added to the
-value returned by a recursive call.
+   Wanneer er één woord in de region is, is de waarde van point kleiner
+dan de waarde van ‘region-end’ en de zoekopdracht slaagt.  In dit geval
+test de waar-of-onwaar-test van de ‘if’ expressie op waar, en wordt het
+dan-deel van de ‘if’ expressie geëvalueerd.  Deze expressie geeft een
+waarde terug (die wordt opgeteld bij de waarde teruggegeven door de hele
+functie) die de som is van één opgeteld bij de waarde teruggeven door
+een recursieve aanroep.
 
-   Meanwhile, the next-step-expression has caused point to jump over the
-first (and in this case only) word in the region.  This means that when
-‘(recursive-count-words region-end)’ is evaluated a second time, as a
-result of the recursive call, the value of point will be equal to or
-greater than the value of region end.  So this time,
-‘recursive-count-words’ will return zero.  The zero will be added to
-one, and the original evaluation of ‘recursive-count-words’ will return
-one plus zero, which is one, which is the correct amount.
+   Ondertussen heeft de volgende-stap-expressie point over het eerste
+(in in dit geval enige) woord laten springen.  Dit betekent dat wanneer
+‘(recursieve-tel-woorden region-end)’ een tweede keer wordt geëvalueerd,
+als gevolg van de recursieve aanroep, de waarde van point gelijk of
+groter is dan de waarde van het einde van de region.  Dus deze keer
+geeft ‘recursieve-tel-woorden’ nul terug.  De nul wordt opgeteld bij
+één, en de oorspronkelijke evaluatie van ‘recursieve-tel-woorden’ geeft
+een plus nul terug, wat één is, het correcte aantal.
 
-   Clearly, if there are two words in the region, the first call to
-‘recursive-count-words’ returns one added to the value returned by
-calling ‘recursive-count-words’ on a region containing the remaining
-word--that is, it adds one to one, producing two, which is the correct
-amount.
+   Wanneer er twee woorden in de region zijn, geeft de eerste aanroep
+van ‘recursieve-tel-woorden’ één opgeteld bij de waarde teruggeven door
+het aanroepen van ‘recursieve-tel-woorden’ op een region die de
+resterende woorden bevat--wat inhoudt dat het één bij één optelt, dat
+twee geeft, wat het correcte aantal is.
 
-   Similarly, if there are three words in the region, the first call to
-‘recursive-count-words’ returns one added to the value returned by
-calling ‘recursive-count-words’ on a region containing the remaining two
-words--and so on and so on.
+   Op dezelfde manier, wanneer er drie woorden in de region zijn, geeft
+de eerste aanroep van ‘recursieve-tel-woorden’ één opgeteld bij de
+waarde teruggegeven door het aanroepen van ‘recursieve-tel-woorden’ op
+een region die de resterende twee woorden bevat--enzovoorts.
 
-With full documentation the two functions look like this:
+Met de volledige documentatie zien de twee functies er zo uit:
 
-The recursive function:
+De recusieve functie:
 
-     (defun recursive-count-words (region-end)
-       "Number of words between point and REGION-END."
+     (defun recursieve-tel-woorden (region-end)
+       "Aantal woorden tussen point and REGION-END."
 
-     ;;; 1. do-again-test
+     ;;; 1. doe-opnieuw-test
        (if (and (< (point) region-end)
                 (re-search-forward "\\w+\\W*" region-end t))
 
-     ;;; 2. then-part: the recursive call
-           (1+ (recursive-count-words region-end))
+     ;;; 2. dan-deel: de recursieve aanroep
+           (1+ (recursieve-tel-woorden region-end))
 
-     ;;; 3. else-part
+     ;;; 3. anders-deel
          0))
 
-The wrapper:
+De omliggende functie:
 
-     ;;; Recursive version
-     (defun count-words-example (beginning end)
-       "Print number of words in the region.
+     ;;; Recursieve versie
+     (defun tel-woorden-voorbeeld (beginning end)
+       "Toon aantal woorden in de region.
 
-     Words are defined as at least one word-constituent
-     character followed by at least one character that is
-     not a word-constituent.  The buffer's syntax table
-     determines which characters these are."
+     Woorden worden gedefinieerd als minstens een woord-vormend
+     karakter gevolgd door minstens een karakter dat
+     niet woord-vormend is. De syntax table van het buffer
+     bepaald welke karakters dat zijn."
        (interactive "r")
-       (message "Counting words in region ... ")
+       (message "Tel woorden in region ... ")
        (save-excursion
          (goto-char beginning)
-         (let ((count (recursive-count-words end)))
+         (let ((count (recursieve-tel-woorden end)))
            (cond ((zerop count)
                   (message
-                   "The region does NOT have any words."))
+                   "De region heeft GEEN woorden."))
                  ((= 1 count)
-                  (message "The region has 1 word."))
+                  (message "De region heeft 1 woord."))
                  (t
                   (message
-                   "The region has %d words." count))))))
+                   "De region heeft %d woorden.." count))))))
 
 
 File: emacs-lisp-intro-nl.info,  Node: Tellen voorbeeld,  Prev: recursive-count-words,  Up: Woorden tellen
 
-13.3 Exercise: Counting Punctuation
-===================================
+13.3 Oefening: Leestekens tellen
+================================
 
-Using a ‘while’ loop, write a function to count the number of
-punctuation marks in a region--period, comma, semicolon, colon,
-exclamation mark, and question mark.  Do the same using recursion.
+Schrijf met een ‘while’ loop een functie die het aantal leestekens in
+een region telt--punt, komma, punt-komma, dubbele punt, uitroepteken en
+vraagteken.  Doe het nog een keer met recursie.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Woorden in een defun,  Next: Een grafiek klaarmaken,  Prev: Woorden tellen,  Up: Top
@@ -11642,7 +11660,7 @@ this will tell.
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
 * count-words-in-defun::     Erg vergelijkbaar met
-                               ‘count-words-example’
+                               ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
 * lengths-list-file::        Een lijst met de lengtes van veel definities.
@@ -12836,7 +12854,7 @@ the value of the ‘and’ expression.
 
    This way, we avoid an error.
 
-(*Note The ‘kill-new’ function: kill-new function, for information about
+(*Note De ‘kill-new’ functie: kill-new functie, voor informatie over
 ‘and’.)
 
    Here is a short test of the ‘defuns-per-range’ function.  First,
@@ -17631,9 +17649,6 @@ Index
 * cons, geïntroduceerd:                  cons.                (line   6)
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
-* Count words recursively:               recursive-count-words.
-                                                              (line   6)
-* count-words-example:                   count-words-example. (line   6)
 * count-words-in-defun:                  count-words-in-defun.
                                                               (line  98)
 * Counting words in a defun:             Woorden in een defun.
@@ -17924,25 +17939,26 @@ Index
 * Recursie en loops:                     Loops en recursie.   (line   6)
 * Recursie zonder uitstel:               Geen uitstel.        (line   6)
 * Recursief patroon - accumuleren:       Accumuleren.         (line   6)
+* Recursief woorden tellen:              recursive-count-words.
+                                                              (line   6)
 * Recursieve patronen:                   Recursieve patronen. (line   6)
 * Recursieve patronen - bewaren:         Bewaar.              (line   6)
 * Recursive definitie onderdelen:        Recursive definitie onderdelen.
                                                               (line   6)
 * Recursive pattern - elke:              Elke.                (line   6)
 * recursive-count-words:                 recursive-count-words.
-                                                              (line 258)
+                                                              (line 263)
 * recursive-graph-body-print:            recursive-graph-body-print.
                                                               (line   6)
 * recursive-lengths-list-many-files:     Enkele bestanden recursief.
                                                               (line  17)
-* Recursively counting words:            recursive-count-words.
-                                                              (line   6)
 * regexp-quote:                          fwd-para let.        (line  95)
 * Region, wat is het:                    save-excursion.      (line   6)
-* Regular expressions for word counting: Woorden tellen.      (line   6)
+* Reguliere expressie voor tellen van woorden: Woorden tellen.
+                                                              (line   6)
 * Reguliere expressie zoekopdrachten:    Regexp zoeken.       (line   6)
 * Remainder function, %:                 Bereken het restant. (line   6)
-* Repetition for word counting:          Woorden tellen.      (line   6)
+* Repetitie voor tellen van woorden:     Woorden tellen.      (line   6)
 * reverse:                               Functiedefinities tellen.
                                                               (line 115)
 * Ring, making a list like a:            Killring.            (line   6)
@@ -18000,6 +18016,10 @@ Index
 * Tekst tussen dubbele aanhalingstekens: Lisp atomen.         (line  63)
 * Tekst wissen:                          Knippen en opslaan van tekst.
                                                               (line   6)
+* Tel woorden recursief:                 recursive-count-words.
+                                                              (line   6)
+* tel-woorden-voorbeeld:                 tel-woorden-voorbeeld.
+                                                              (line   6)
 * Tellen:                                Tellen.              (line   6)
 * teruggegeven waarde uitgelegd:         Hoe de interpreter werkt.
                                                               (line   6)
@@ -18051,11 +18071,11 @@ Index
                                                               (line   6)
 * Witte ruimte in lijsten:               Whitespace in lijsten.
                                                               (line   6)
+* Woorden, recursief geteld:             recursive-count-words.
+                                                              (line   6)
 * Word counting in a defun:              Woorden in een defun.
                                                               (line   6)
 * Words and symbols in defun:            Woorden en symbolen. (line   6)
-* Words, counted recursively:            recursive-count-words.
-                                                              (line   6)
 * Words, duplicated:                     de-de.               (line   6)
 * X axis printing:                       print-X-axis.        (line   6)
 * X-axis-element:                        X-as tic marks.      (line 105)
@@ -18099,321 +18119,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24384
-Node: Waarom25847
-Node: Over het lezen van deze tekst26510
-Node: Doelgroep28850
-Node: Geschiedenis van Lisp31853
-Node: Opmerking voor beginners32757
-Node: Dank35509
-Node: Lijsten verwerken36104
-Ref: Lijsten verwerken-Footnote-137560
-Node: Lisp lijsten37716
-Node: Genummerde lijsten38646
-Node: Lisp atomen39815
-Node: Whitespace in lijsten43729
-Node: Typen van lijsten45081
-Node: Draai een programma46302
-Ref: Draai een programma-Footnote-148855
-Node: Fouten maken48999
-Node: Namen en definities54202
-Node: Lisp interpreter56158
-Node: Complicaties57382
-Node: Byte compiling59631
-Node: Evaluatie60760
-Node: Hoe de interpreter werkt61391
-Node: Geneste lijsten evalueren62764
-Node: Variabelen65452
-Node: fill-column voorbeeld67068
-Node: Void functie68755
-Node: Void variabele70038
-Node: Argumenten71964
-Ref: Argumenten-Footnote-173770
-Node: Data typen74642
-Node: Argumenten als variabele of als lijst76879
-Node: Variabel aantal argumenten78620
-Node: Verkeerde type argument79516
-Ref: Verkeerde type argument-Footnote-183309
-Node: message83384
-Ref: message-Footnote-187606
-Node: setq87811
-Node: Setq gebruiken88536
-Node: Tellen91770
-Node: Samenvatting93832
-Node: Foutmelding oefeningen95835
-Node: Oefenen van evaluatie96391
-Node: Hoe te evalueren97618
-Node: Buffer namen99212
-Node: Buffers pakken105283
-Ref: Buffers pakken-Footnote-1107972
-Node: Van buffer verwisselen108222
-Ref: Van buffer verwisselen-Footnote-1111813
-Ref: Van buffer verwisselen-Footnote-2112155
-Node: Buffer grootte en locatie112909
-Node: Evaluatie oefening115123
-Node: Defuns schrijven115407
-Node: Primitieve functies116700
-Node: defun117935
-Node: Installeer124799
-Node: Effect van installatie126236
-Node: Een defun wijzigen127163
-Node: Interactief129043
-Node: Interactieve vermenigvuldig-met-zeven130226
-Node: vermenigvuldig-met-zeven in detail132356
-Node: Interactieve opties135209
-Node: Permanent installeren138571
-Node: let140882
-Node: Voorkom verwarring142474
-Ref: Voorkom verwarring-Footnote-1144739
-Node: Delen van een let expressie144883
-Node: Voorbeeld let expressie146598
-Ref: Voorbeeld let expressie-Footnote-1148420
-Node: Niet-geïnitialiseerde let variabelen148675
-Node: Hoe let variabelen bindt150449
-Node: Lexical en dynamische binding verschillen151787
-Node: Lexical vs dynamische binding voorbeeld153704
-Node: if155775
-Node: if in meer detail156721
-Node: type-dier in detail159534
-Node: else162184
-Node: Waar en onwaarheid165145
-Node: nil uitgelegd166154
-Node: save-excursion168351
-Node: Point en mark169127
-Node: Template voor save-excursion172236
-Node: Terugblik173524
-Node: defun oefeningen181567
-Node: Buffer rondleiding182040
-Node: Meer vinden183214
-Ref: Meer vinden-Footnote-1186229
-Node: versimpelde-beginning-of-buffer186446
-Node: mark-whole-buffer190950
-Node: mark-whole-buffer overzicht191824
-Node: Body van mark-whole-buffer193196
-Node: append-to-buffer196261
-Node: append-to-buffer overzicht196988
-Node: append interactief199790
-Node: append-to-buffer body202366
-Node: append save-excursion204553
-Ref: let* geïntroduceerd206350
-Node: Buffer gerelateerde terugblik210039
-Node: Buffer oefeningen212442
-Node: Meer complex212967
-Node: copy-to-buffer214078
-Ref: copy-to-buffer-Footnote-1216961
-Node: insert-buffer217181
-Node: insert-buffer code218640
-Node: insert-buffer interactief219649
-Node: Read-only buffer220199
-Node: b for interactief220843
-Node: insert-buffer body221971
-Node: if en or223193
-Node: Voeg or in226346
-Node: Voeg let in228693
-Node: Nieuwe insert-buffer232542
-Node: beginning-of-buffer233763
-Node: Optionele argumenten235413
-Node: beginning-of-buffer opt arg239056
-Node: Ontrafelen beginning-of-buffer240078
-Node: In geval van een groot buffer241432
-Node: In geval van een klein buffer244080
-Node: beginning-of-buffer compleet245858
-Node: Tweede buffer gerelateerde terugblik248902
-Node: optionele oefening250867
-Node: Versmallen en verbreden251391
-Node: Voordelen van versmallen252097
-Node: save-restriction254078
-Node: what-line256199
-Node: versmal oefening260650
-Node: car cdr en cons261698
-Node: Vreemde namen262884
-Node: car en cdr263606
-Node: cons268339
-Node: Bouw een lijst269428
-Ref: Bouw een lijst-Footnote-1271056
-Node: length271262
-Node: nthcdr272873
-Node: nth275983
-Node: setcar277504
-Node: setcdr280485
-Node: cons oefening282157
-Node: Knippen en opslaan van tekst282576
-Node: Tekst opslaan283992
-Node: zap-to-char286111
-Node: Complete zap-to-char286723
-Node: zap-to-char interactief289089
-Node: zap-to-char body290675
-Node: search-forward292224
-Node: progn295377
-Node: Samenvatting zap-to-char297192
-Node: kill-region298348
-Node: Complete kill-region299346
-Node: condition-case303757
-Node: Lisp macro306328
-Node: copy-region-as-kill308961
-Node: Complete copy-region-as-kill309904
-Node: copy-region-as-kill body312750
-Node: last-command en this-command313891
-Node: kill-append functie316229
-Node: kill-new functie320504
-Node: Uitwijding naar C331482
-Node: defvar337025
-Node: Inzien huidige variabele waarde338903
-Node: defvar en asterisk340865
-Node: cons en search-fwd terugblik342919
-Node: zoek oefening346098
-Node: Implementatie van lijsten346901
-Node: Lijsten uitgetekend348137
-Node: Symbolen als ladekast354626
-Node: Lijst oefening356741
-Node: Yanking357107
-Node: Killring overzicht358502
-Node: kill-ring-yank-pointer360314
-Node: yank nthcdr oefeningen362822
-Node: Loops en recursie363567
-Ref: Loops en recursie-Footnote-1364763
-Node: while365284
-Node: Looping met while366716
-Node: Loop voorbeeld368654
-Node: print-elements-of-list372356
-Node: Incrementele loop374942
-Node: Incrementele loop details375574
-Node: Incrementeel voorbeeld377047
-Node: Inc voorbeeld onderdelen379623
-Node: inc voorbeeld samengesteld383763
-Node: Decrementele loop387365
-Node: Decerementeel voorbeeld388837
-Node: Dec voorbeeld onderdelen390429
-Node: Dec voorbeeld samengesteld392510
-Node: dolist dotimes394786
-Node: dolist395617
-Node: dotimes398794
-Node: Recursie400341
-Node: Robots bouwen401553
-Node: Recursive definitie onderdelen403358
-Node: Recursie met lijst406005
-Node: Recursieve driehoek functie409673
-Node: Recursief voorbeeld arg van 1 of 2411051
-Node: Recursief voorbeeld arg van 3 of 4413316
-Node: Recursie met cond416520
-Node: Recursieve patronen418964
-Node: Elke419457
-Node: Accumuleren422017
-Node: Bewaar423397
-Node: Geen uitstel425465
-Node: Zonder uitstel oplossing428189
-Ref: Zonder uitstel oplossing-Footnote-1432151
-Ref: Zonder uitstel oplossing-Footnote-2432275
-Node: Looping oefening432798
-Node: Regexp zoeken434117
-Node: sentence-end436259
-Node: re-search-forward440306
-Node: forward-sentence442961
-Node: Complete forward-sentence443744
-Node: fwd-sentence while loops447448
-Node: fwd-sentence re-search451261
-Node: forward-paragraph453365
-Node: forward-paragraph in het kort455240
-Node: fwd-para let456798
-Node: fwd-para while463729
-Node: Regexp terugblik472582
-Node: re-search oefeningen475172
-Node: Woorden tellen475945
-Node: Waarom woorden tellen476703
-Node: count-words-example477749
-Node: Ontwerp count-words-example479033
-Node: Wiite ruimte bug485576
-Node: recursive-count-words495169
-Node: Tellen voorbeeld507250
-Node: Woorden in een defun507631
-Node: Verdeel en heers509372
-Node: Woorden en symbolen510603
-Node: Syntax512673
-Node: count-words-in-defun516309
-Node: Enkele defuns522606
-Node: Een bestand vinden524998
-Node: lengths-list-file527640
-Node: Enkele bestanden532916
-Node: lengths-list-many-files533677
-Node: append536467
-Node: Enkele bestanden recursief537104
-Node: De data voorbereiden539944
-Node: Data in detail te tonen541073
-Node: Sorteren541997
-Node: Bestandenlijst543675
-Ref: Bestandenlijst-Footnote-1551207
-Node: Functiedefinities tellen551424
-Node: Een grafiek klaarmaken560750
-Node: Kolommen van een grafiek562079
-Node: graph-body-print575718
-Node: recursive-graph-body-print580523
-Node: Afgedrukte assen583213
-Node: Lijngrafiek oefening583960
-Node: Initialisatie van Emacs584167
-Node: Default configuratie585661
-Ref: Default configuratie-Footnote-1587645
-Node: Site-wide init587961
-Node: defcustom590023
-Node: Een init bestand beginnen595908
-Node: Tekst en auto-fill598304
-Ref: Tekst en auto-fill-Footnote-1602320
-Ref: Tekst en auto-fill-Footnote-2602604
-Node: Mail aliasen602865
-Node: Indent Tabs Mode603791
-Node: Key bindings604736
-Node: Keymaps609510
-Node: Bestanden laden612170
-Node: Autoload615452
-Node: Eenvoudige uitbreiding618340
-Ref: Eenvoudige uitbreiding-Footnote-1620905
-Node: X11 kleuren621194
-Ref: X11 kleuren-Footnote-1623012
-Node: Diverse623166
-Node: Mode line627388
-Node: Debuggen.632924
-Node: debug633820
-Node: debug-on-entry636952
-Node: debug-on-quit640557
-Node: edebug641594
-Node: Debuggen oefeningen645716
-Node: Conclusie647481
-Node: de-de652839
-Node: Killring655629
-Node: Wat de killring doet656446
-Node: current-kill657964
-Node: Code voor current-kill658662
-Node: current-kill begrijpen661494
-Node: Body van current-kill662294
-Node: Uitwijding over fout665445
-Node: Het element vaststellen666620
-Node: yank670325
-Node: yank-pop673539
-Node: ring bestand676074
-Node: Volledige grafiek676451
-Node: Gelabeld voorbeeld677291
-Node: print-graph varlist679288
-Node: print-Y-axis681011
-Node: print-Y-axis in detail681864
-Node: Hoogte van label682674
-Node: Bereken het restant684691
-Node: Y-as element688557
-Node: Y-axis-column692320
-Node: print-Y-axis enalaatste693932
-Node: print-X-axis695917
-Node: Overeenkomsten verschillen697235
-Node: X-as tic marks698068
-Node: De gehele grafiek afdrukken705071
-Node: De finale versie706187
-Node: Test print-graph710442
-Node: Woorden in defuns grafisch weergeven712126
-Node: lambda714750
-Node: mapcar716631
-Node: Een andere bug718691
-Node: Finale afgedrukte grafiek724220
-Node: Vrije software en vrije handleidingen725171
-Node: GNU Free Documentation License731487
-Node: Index756676
-Node: Over de auteur795585
+Node: Voorwoord24394
+Node: Waarom25857
+Node: Over het lezen van deze tekst26520
+Node: Doelgroep28860
+Node: Geschiedenis van Lisp31863
+Node: Opmerking voor beginners32767
+Node: Dank35519
+Node: Lijsten verwerken36114
+Ref: Lijsten verwerken-Footnote-137570
+Node: Lisp lijsten37726
+Node: Genummerde lijsten38656
+Node: Lisp atomen39825
+Node: Whitespace in lijsten43739
+Node: Typen van lijsten45091
+Node: Draai een programma46312
+Ref: Draai een programma-Footnote-148865
+Node: Fouten maken49009
+Node: Namen en definities54212
+Node: Lisp interpreter56168
+Node: Complicaties57392
+Node: Byte compiling59641
+Node: Evaluatie60770
+Node: Hoe de interpreter werkt61401
+Node: Geneste lijsten evalueren62774
+Node: Variabelen65462
+Node: fill-column voorbeeld67078
+Node: Void functie68765
+Node: Void variabele70048
+Node: Argumenten71974
+Ref: Argumenten-Footnote-173780
+Node: Data typen74652
+Node: Argumenten als variabele of als lijst76889
+Node: Variabel aantal argumenten78630
+Node: Verkeerde type argument79526
+Ref: Verkeerde type argument-Footnote-183319
+Node: message83394
+Ref: message-Footnote-187616
+Node: setq87821
+Node: Setq gebruiken88546
+Node: Tellen91780
+Node: Samenvatting93842
+Node: Foutmelding oefeningen95845
+Node: Oefenen van evaluatie96401
+Node: Hoe te evalueren97628
+Node: Buffer namen99222
+Node: Buffers pakken105293
+Ref: Buffers pakken-Footnote-1107982
+Node: Van buffer verwisselen108232
+Ref: Van buffer verwisselen-Footnote-1111823
+Ref: Van buffer verwisselen-Footnote-2112165
+Node: Buffer grootte en locatie112919
+Node: Evaluatie oefening115133
+Node: Defuns schrijven115417
+Node: Primitieve functies116710
+Node: defun117945
+Node: Installeer124809
+Node: Effect van installatie126246
+Node: Een defun wijzigen127173
+Node: Interactief129053
+Node: Interactieve vermenigvuldig-met-zeven130236
+Node: vermenigvuldig-met-zeven in detail132366
+Node: Interactieve opties135219
+Node: Permanent installeren138581
+Node: let140892
+Node: Voorkom verwarring142484
+Ref: Voorkom verwarring-Footnote-1144749
+Node: Delen van een let expressie144893
+Node: Voorbeeld let expressie146608
+Ref: Voorbeeld let expressie-Footnote-1148430
+Node: Niet-geïnitialiseerde let variabelen148685
+Node: Hoe let variabelen bindt150459
+Node: Lexical en dynamische binding verschillen151797
+Node: Lexical vs dynamische binding voorbeeld153714
+Node: if155785
+Node: if in meer detail156731
+Node: type-dier in detail159544
+Node: else162194
+Node: Waar en onwaarheid165155
+Node: nil uitgelegd166164
+Node: save-excursion168361
+Node: Point en mark169137
+Node: Template voor save-excursion172246
+Node: Terugblik173534
+Node: defun oefeningen181577
+Node: Buffer rondleiding182050
+Node: Meer vinden183224
+Ref: Meer vinden-Footnote-1186239
+Node: versimpelde-beginning-of-buffer186456
+Node: mark-whole-buffer190960
+Node: mark-whole-buffer overzicht191834
+Node: Body van mark-whole-buffer193206
+Node: append-to-buffer196271
+Node: append-to-buffer overzicht196998
+Node: append interactief199800
+Node: append-to-buffer body202376
+Node: append save-excursion204563
+Ref: let* geïntroduceerd206360
+Node: Buffer gerelateerde terugblik210049
+Node: Buffer oefeningen212452
+Node: Meer complex212977
+Node: copy-to-buffer214088
+Ref: copy-to-buffer-Footnote-1216971
+Node: insert-buffer217191
+Node: insert-buffer code218650
+Node: insert-buffer interactief219659
+Node: Read-only buffer220209
+Node: b for interactief220853
+Node: insert-buffer body221981
+Node: if en or223203
+Node: Voeg or in226356
+Node: Voeg let in228703
+Node: Nieuwe insert-buffer232552
+Node: beginning-of-buffer233773
+Node: Optionele argumenten235423
+Node: beginning-of-buffer opt arg239066
+Node: Ontrafelen beginning-of-buffer240088
+Node: In geval van een groot buffer241442
+Node: In geval van een klein buffer244090
+Node: beginning-of-buffer compleet245868
+Node: Tweede buffer gerelateerde terugblik248912
+Node: optionele oefening250877
+Node: Versmallen en verbreden251401
+Node: Voordelen van versmallen252107
+Node: save-restriction254088
+Node: what-line256209
+Node: versmal oefening260660
+Node: car cdr en cons261708
+Node: Vreemde namen262894
+Node: car en cdr263616
+Node: cons268349
+Node: Bouw een lijst269438
+Ref: Bouw een lijst-Footnote-1271066
+Node: length271272
+Node: nthcdr272883
+Node: nth275993
+Node: setcar277514
+Node: setcdr280495
+Node: cons oefening282167
+Node: Knippen en opslaan van tekst282586
+Node: Tekst opslaan284002
+Node: zap-to-char286121
+Node: Complete zap-to-char286733
+Node: zap-to-char interactief289099
+Node: zap-to-char body290685
+Node: search-forward292234
+Node: progn295387
+Node: Samenvatting zap-to-char297202
+Node: kill-region298358
+Node: Complete kill-region299356
+Node: condition-case303767
+Node: Lisp macro306338
+Node: copy-region-as-kill308971
+Node: Complete copy-region-as-kill309914
+Node: copy-region-as-kill body312760
+Node: last-command en this-command313901
+Node: kill-append functie316239
+Node: kill-new functie320514
+Node: Uitwijding naar C331492
+Node: defvar337035
+Node: Inzien huidige variabele waarde338913
+Node: defvar en asterisk340875
+Node: cons en search-fwd terugblik342929
+Node: zoek oefening346108
+Node: Implementatie van lijsten346911
+Node: Lijsten uitgetekend348147
+Node: Symbolen als ladekast354636
+Node: Lijst oefening356751
+Node: Yanking357117
+Node: Killring overzicht358512
+Node: kill-ring-yank-pointer360324
+Node: yank nthcdr oefeningen362832
+Node: Loops en recursie363577
+Ref: Loops en recursie-Footnote-1364773
+Node: while365294
+Node: Looping met while366726
+Node: Loop voorbeeld368664
+Node: print-elements-of-list372366
+Node: Incrementele loop374952
+Node: Incrementele loop details375584
+Node: Incrementeel voorbeeld377057
+Node: Inc voorbeeld onderdelen379633
+Node: inc voorbeeld samengesteld383773
+Node: Decrementele loop387375
+Node: Decerementeel voorbeeld388847
+Node: Dec voorbeeld onderdelen390439
+Node: Dec voorbeeld samengesteld392520
+Node: dolist dotimes394796
+Node: dolist395627
+Node: dotimes398804
+Node: Recursie400351
+Node: Robots bouwen401563
+Node: Recursive definitie onderdelen403368
+Node: Recursie met lijst406015
+Node: Recursieve driehoek functie409683
+Node: Recursief voorbeeld arg van 1 of 2411061
+Node: Recursief voorbeeld arg van 3 of 4413326
+Node: Recursie met cond416530
+Node: Recursieve patronen418974
+Node: Elke419467
+Node: Accumuleren422027
+Node: Bewaar423407
+Node: Geen uitstel425475
+Node: Zonder uitstel oplossing428199
+Ref: Zonder uitstel oplossing-Footnote-1432161
+Ref: Zonder uitstel oplossing-Footnote-2432285
+Node: Looping oefening432808
+Node: Regexp zoeken434127
+Node: sentence-end436269
+Node: re-search-forward440316
+Node: forward-sentence442971
+Node: Complete forward-sentence443754
+Node: fwd-sentence while loops447458
+Node: fwd-sentence re-search451271
+Node: forward-paragraph453375
+Node: forward-paragraph in het kort455250
+Node: fwd-para let456808
+Node: fwd-para while463739
+Node: Regexp terugblik472592
+Node: re-search oefeningen475182
+Node: Woorden tellen475955
+Node: Waarom woorden tellen476738
+Node: tel-woorden-voorbeeld477894
+Node: Ontwerp tel-woorden-voorbeeld479267
+Node: Witte ruimte bug485999
+Node: recursive-count-words495834
+Node: Tellen voorbeeld508565
+Node: Woorden in een defun508937
+Node: Verdeel en heers510680
+Node: Woorden en symbolen511911
+Node: Syntax513981
+Node: count-words-in-defun517617
+Node: Enkele defuns523914
+Node: Een bestand vinden526306
+Node: lengths-list-file528948
+Node: Enkele bestanden534224
+Node: lengths-list-many-files534985
+Node: append537775
+Node: Enkele bestanden recursief538412
+Node: De data voorbereiden541252
+Node: Data in detail te tonen542381
+Node: Sorteren543305
+Node: Bestandenlijst544983
+Ref: Bestandenlijst-Footnote-1552515
+Node: Functiedefinities tellen552732
+Node: Een grafiek klaarmaken562054
+Node: Kolommen van een grafiek563383
+Node: graph-body-print577022
+Node: recursive-graph-body-print581827
+Node: Afgedrukte assen584517
+Node: Lijngrafiek oefening585264
+Node: Initialisatie van Emacs585471
+Node: Default configuratie586965
+Ref: Default configuratie-Footnote-1588949
+Node: Site-wide init589265
+Node: defcustom591327
+Node: Een init bestand beginnen597212
+Node: Tekst en auto-fill599608
+Ref: Tekst en auto-fill-Footnote-1603624
+Ref: Tekst en auto-fill-Footnote-2603908
+Node: Mail aliasen604169
+Node: Indent Tabs Mode605095
+Node: Key bindings606040
+Node: Keymaps610814
+Node: Bestanden laden613474
+Node: Autoload616756
+Node: Eenvoudige uitbreiding619644
+Ref: Eenvoudige uitbreiding-Footnote-1622209
+Node: X11 kleuren622498
+Ref: X11 kleuren-Footnote-1624316
+Node: Diverse624470
+Node: Mode line628692
+Node: Debuggen.634228
+Node: debug635124
+Node: debug-on-entry638256
+Node: debug-on-quit641861
+Node: edebug642898
+Node: Debuggen oefeningen647020
+Node: Conclusie648785
+Node: de-de654143
+Node: Killring656933
+Node: Wat de killring doet657750
+Node: current-kill659268
+Node: Code voor current-kill659966
+Node: current-kill begrijpen662798
+Node: Body van current-kill663598
+Node: Uitwijding over fout666749
+Node: Het element vaststellen667924
+Node: yank671629
+Node: yank-pop674843
+Node: ring bestand677378
+Node: Volledige grafiek677755
+Node: Gelabeld voorbeeld678595
+Node: print-graph varlist680592
+Node: print-Y-axis682315
+Node: print-Y-axis in detail683168
+Node: Hoogte van label683978
+Node: Bereken het restant685995
+Node: Y-as element689861
+Node: Y-axis-column693624
+Node: print-Y-axis enalaatste695236
+Node: print-X-axis697221
+Node: Overeenkomsten verschillen698539
+Node: X-as tic marks699372
+Node: De gehele grafiek afdrukken706375
+Node: De finale versie707491
+Node: Test print-graph711746
+Node: Woorden in defuns grafisch weergeven713430
+Node: lambda716054
+Node: mapcar717935
+Node: Een andere bug719995
+Node: Finale afgedrukte grafiek725524
+Node: Vrije software en vrije handleidingen726475
+Node: GNU Free Documentation License732791
+Node: Index757980
+Node: Over de auteur797016
 
 End Tag Table
 

@@ -8,12 +8,12 @@
 @comment %**start of header
 @setfilename ../../info/eintr.info
 @settitle programmeren in Emacs Lisp
-@documentlanguage en
+@documentlanguage nl
 @include docstyle.texi
 @syncodeindex vr cp
 @syncodeindex fn cp
 @documentencoding UTF-8
-@documentlanguage nl
+@set TEL-WOORDEN tel-woorden-voorbeeld
 @finalout
 
 @include /dev/null
@@ -744,18 +744,18 @@ Tellen: repetitie en regexps
 
 
 * Waarom woorden tellen::    Waarom woorden tellen
-* @value{COUNT-WORDS}::      Gebruik een regexp, maar vindt een probleem.
+* @value{TEL-WOORDEN}::      Gebruik een regexp, maar vindt een probleem.
 * recursive-count-words::    Start met het geval van geen woorden in de 
                                region.
 * Tellen voorbeeld::         Tellen voorbeeld
 
-De @code{@value{COUNT-WORDS}} functie
+De @code{@value{TEL-WOORDEN}} functie
 
 
 
-* Ontwerp @value{COUNT-WORDS}::  De definitie met @code{while} loop.
-* Wiite ruimte bug::         De witte ruimte bug in 
-                               @code{@value{COUNT-WORDS}}
+* Ontwerp @value{TEL-WOORDEN}::  De definitie met @code{while} loop.
+* Witte ruimte bug::         De witte ruimte bug in 
+                               @code{@value{TEL-WOORDEN}}
 
 Woorden tellen in een @code{defun}
 
@@ -765,7 +765,7 @@ Woorden tellen in een @code{defun}
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
 * count-words-in-defun::     Erg vergelijkbaar met 
-                               @code{@value{COUNT-WORDS}}
+                               @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
 * lengths-list-file::        Een lijst met de lengtes van veel definities.
@@ -13243,18 +13243,19 @@ functie}.
 @end itemize
 
 @node Woorden tellen
-@chapter Counting via Repetition and Regexps
-@cindex Repetition for word counting
-@cindex Regular expressions for word counting
+@chapter Tellen via repetitie en regexps
+@cindex Repetitie voor tellen van woorden
+@cindex Reguliere expressie voor tellen van woorden
 
-Repetition and regular expression searches are powerful tools that you often
-use when you write code in Emacs Lisp.  This chapter illustrates the use of
-regular expression searches through the construction of word count commands
-using @code{while} loops and recursion.
+Repetitie en reguliere expressie zoekopdrachten zijn krachtige instrumenten
+de je vaak gebruikt wanneer je code in Emacs Lisp schrijft. Dit hoofdstuk
+illustreert het gebruik van reguliere expressie zoekopdrachten bij de
+constructie van woorden telling commando's, met @code{while} loops en
+recursie.
 
 @menu
 * Waarom woorden tellen::    Waarom woorden tellen
-* @value{COUNT-WORDS}::      Gebruik een regexp, maar vindt een probleem.
+* @value{TEL-WOORDEN}::      Gebruik een regexp, maar vindt een probleem.
 * recursive-count-words::    Start met het geval van geen woorden in de 
                                region.
 * Tellen voorbeeld::         Tellen voorbeeld
@@ -13262,60 +13263,63 @@ using @code{while} loops and recursion.
 
 @ifnottex
 @node Waarom woorden tellen
-@unnumberedsec Counting words
+@unnumberedsec Woorden tellen
 @end ifnottex
 
-The standard Emacs distribution contains functions for counting the number
-of lines and words within a region.
+De standaard Emacs distributie bevat functies om het aantal regels en het
+het aantal woorden in een region te tellen.
 
-Certain types of writing ask you to count words.  Thus, if you write an
-essay, you may be limited to 800 words; if you write a novel, you may
-discipline yourself to write 1000 words a day.  It seems odd, but for a long
-time, Emacs lacked a word count command.  Perhaps people used Emacs mostly
-for code or types of documentation that did not require word counts; or
-perhaps they restricted themselves to the operating system word count
-command, @code{wc}.  Alternatively, people may have followed the publishers'
-convention and computed a word count by dividing the number of characters in
-a document by five.
+Sommige soorten schrijfwerk vragen je woorden te tellen. Zoals wanneer je
+een essay schrijft kan dat gelimiteerd zijn op 800 woorden. Wanneer je een
+roman schrijft kan je je zelf opleggen om 1000 woorden per dag te
+schrijven. Het klinkt raar, maar Emacs had heel lang geen woorden tel
+commando. Misschien gebruikten mensen Emacs voornamelijk voor code of
+soorten documentatie die geen woordtelling vereisen, of misschien beperkte
+zij zich tot het woorden tel commando van het besturingsysteem zoals
+@code{wc}. Misschien dat mensen de conventie onder uitgevers volgden en
+berekenden zij de woord telling door het aantal karaktrs in een document
+door vijf te delen.
 
-There are many ways to implement a command to count words.  Here are some
-examples, which you may wish to compare with the standard Emacs command,
-@code{count-words-region}.
+Een commando om woorden te tellen kan op veel verschillende manieren
+gecompleteerd worden. Hier volgen sommige voorbeelden die je wellicht wilt
+vergelijken met het standaard Emacs commando @code{count-words-region}.
 
-@node @value{COUNT-WORDS}
-@section De @code{@value{COUNT-WORDS}} functie
-@findex @value{COUNT-WORDS}
+@node @value{TEL-WOORDEN}
+@section De @code{@value{TEL-WOORDEN}} functie
+@findex @value{TEL-WOORDEN}
 
-A word count command could count words in a line, paragraph, region, or
-buffer.  What should the command cover? You could design the command to
-count the number of words in a complete buffer.  However, the Emacs
-tradition encourages flexibility---you may want to count words in just a
-section, rather than all of a buffer.  So it makes more sense to design the
-command to count the number of words in a region.  Once you have a command
-to count words in a region, you can, if you wish, count words in a whole
-buffer by marking it with @w{@kbd{C-x h}} (@code{mark-whole-buffer}).
+Een woorden tel commando kan woorden tellen in een regel, paragraaf, region
+of buffer. Wat zou het commando moeten doen? Je kunt een commando maken dat
+het aantal woorden telt in een volledig buffer. Echter, de Emacs traditie
+moedigt flexibiliteit aan---je wil misschien alleen de woorden in een sectie
+tellen in plaats van het hele buffer. Het is daarom verstandiger om het
+commando het aantal woorden in een region te laten tellen. Wanneer je
+eenmaal een commando hebt dat woorden in een region telt, dan kan je als je
+dat wilt woorden in het hele buffer tellen door het te markeren met
+@w{@kbd{C-x h}} (@code{mark-whole-buffer}).
 
-Clearly, counting words is a repetitive act: starting from the beginning of
-the region, you count the first word, then the second word, then the third
-word, and so on, until you reach the end of the region.  This means that
-word counting is ideally suited to recursion or to a @code{while} loop.
+Woorden tellen is duidelijk een repeterende handeling: startend bij het
+begin van de region tel je het eerste woord, dan het tweede woord, dan het
+derde, enzovoorts., totdat je het einde van de region bereikt. Dit betekent
+dat het tellen van woorden uitstekend geschikt is voor recursie of voor een
+@code{while} loop.
 
 @menu
-* Ontwerp @value{COUNT-WORDS}::  De definitie met @code{while} loop.
-* Wiite ruimte bug::         De witte ruimte bug in 
-                               @code{@value{COUNT-WORDS}}
+* Ontwerp @value{TEL-WOORDEN}::  De definitie met @code{while} loop.
+* Witte ruimte bug::         De witte ruimte bug in 
+                               @code{@value{TEL-WOORDEN}}
 @end menu
 
 @ifnottex
-@node Ontwerp @value{COUNT-WORDS}
-@unnumberedsubsec Designing @code{@value{COUNT-WORDS}}
+@node Ontwerp @value{TEL-WOORDEN}
+@unnumberedsubsec Ontwerp @code{@value{TEL-WOORDEN}}
 @end ifnottex
 
-First, we will implement the word count command with a @code{while} loop,
-then with recursion.  The command will, of course, be interactive.
+Eerst gaan we een woord tel commando maken met een @code{while} loop, daarna
+met recursie. Het commando is uiteraard interactief.
 
 @need 800
-The template for an interactive function definition is, as always:
+Het sjabloon voor een interactieve functiedefinitie is, zoals altijd:
 
 @smallexample
 @group
@@ -13326,184 +13330,189 @@ The template for an interactive function definition is, as always:
 @end group
 @end smallexample
 
-What we need to do is fill in the slots.
+Wat we moeten doen is de slots invullen.
 
-The name of the function should be self-explanatory and easy to remember.
-@code{count-words-region} is the obvious choice.  Since that name is used
-for the standard Emacs command to count words, we will name our
-implementation @code{@value{COUNT-WORDS}}.
+De naam van def functie moet zelf verklarend en makkelijk te houden
+zijn. @code{count-words-region} is een voor de hand liggende keuze. Maar
+omdat die naam gebruikt wordt door het standaard Emacs commando om woorden
+te tellen, noemen we onze implantatie @code{@value{TEL-WOORDEN}}.
 
-The function counts words within a region.  This means that the argument
-list must contain symbols that are bound to the two positions, the beginning
-and end of the region.  These two positions can be called @samp{beginning}
-and @samp{end} respectively.  The first line of the documentation should be
-a single sentence, since that is all that is printed as documentation by a
-command such as @code{apropos}.  The interactive expression will be of the
-form @samp{(interactive "r")}, since that will cause Emacs to pass the
-beginning and end of the region to the function's argument list.  All this
-is routine.
+De functie telt woorden in een region. Dat betekent dat de arugmentlist
+symbolen moet bevatten die gebonden worden aan de twee posities, het begin
+en einde van de region. Deze twee posities noemen we respectievelijk
+@samp{begin} en @samp{end}. De eerste regel van de documentatie met een
+enkele zin zijn, omdat dit alles wat als documentatie getoond wordt door een
+commando zoals @code{apropos}. De interactieve expressie heeft de vorm
+@samp{(interactive "r")}, omdat die zorgt dat Emacs het begin en einde van
+de region doorgeven aan de arugmentlist van de functie. Dit is allemaal
+routine.
 
-The body of the function needs to be written to do three tasks: first, to
-set up conditions under which the @code{while} loop can count words, second,
-to run the @code{while} loop, and third, to send a message to the user.
+De body van de functie moet drie taken doen: ten eerste de condities
+opzetten waaronder de @code{while} loop de woorden kan tellen, ten tweede
+het runnen van de @samp{while} loop, en ten derde, de gebruiker een
+boodschap geven.
 
-When a user calls @code{@value{COUNT-WORDS}}, point may be at the beginning
-or the end of the region.  However, the counting process must start at the
-beginning of the region.  This means we will want to put point there if it
-is not already there.  Executing @code{(goto-char beginning)} ensures this.
-Of course, we will want to return point to its expected position when the
-function finishes its work.  For this reason, the body must be enclosed in a
-@code{save-excursion} expression.
+Wanneer een gebruiker @code{@value{TEL-WOORDEN}} aanroept kan point aan het
+begin of aan het einde van de region staan. Het tel-proces moet echter bij
+het begin van de region starten. Dit betekent dat we point daar willen
+zetten wanneer die daar nog niet is. Het uitvoeren van @code{(goto-char
+beginning)} verzekert dit. We willen natuurlijk point terug zetten op zijn
+verwachte positie wanneer de functie zijn werk gedaan heeft. Om deze reden
+moet de body ingevoegd zijn in een @code{save-excursion} expressie.
 
-The central part of the body of the function consists of a @code{while} loop
-in which one expression jumps point forward word by word, and another
-expression counts those jumps.  The true-or-false-test of the @code{while}
-loop should test true so long as point should jump forward, and false when
-point is at the end of the region.
+Het centrale deel van de body van de functie bestaat uit een @code{while}
+loop waarin een expressie point voorwaarts van woord naar woord laat
+springen, en een andere expressie deze sprongen telt. De waar-of-onwaar-test
+van de @code{while} loop moet naar waar testen zolang point voorwaarts moet
+springen, en onwaar wanneer point aan het einde van de region is.
 
-We could use @code{(forward-word 1)} as the expression for moving point
-forward word by word, but it is easier to see what Emacs identifies as a
-``word'' if we use a regular expression search.
+We zouden @code{(forward-word 1)} kunnen gebruiken om point woord voor woord
+voorwaarts te bewegen, maar het is makkelijker om te kijken wat Emacs als
+``woord'' identificeert, wanneer we een reguliere expressie zoekopdracht
+gebruiken.
 
-A regular expression search that finds the pattern for which it is searching
-leaves point after the last character matched.  This means that a succession
-of successful word searches will move point forward word by word.
+Een reguliere expressie zoekopdracht die het patroon vindt waarvoor het
+zoekt, zet point achter het laatst gematchte karakter. Dit betekent dat
+opvolgende succesvolle zoekopdrachten point woord voor woord voorwaarts
+verplaatst.
 
-As a practical matter, we want the regular expression search to jump over
-whitespace and punctuation between words as well as over the words
-themselves.  A regexp that refuses to jump over interword whitespace would
-never jump more than one word! This means that the regexp should include the
-whitespace and punctuation that follows a word, if any, as well as the word
-itself.  (A word may end a buffer and not have any following whitespace or
-punctuation, so that part of the regexp must be optional.)
+In de praktijk willen we dat de reguliere expressie zoekopdracht over witte
+ruimte en leestekens tussen woorden springt en ook over de woorden zelf. Een
+regexp die weigert over witte ruimte tussen woorden te springen zou nooit
+over een meer dan een woord springen! Dit betekent dat de regexp de witte
+ruimte en leestekens volgend op een woord moet bevatten, als die er is,
+zowel als het woord zelf. (Een woord kan een buffer beëindigen en kan geen
+opvolgende witte ruimte of leestekens hebben, dus dat deel van de regexp
+moet optioneel zijn.)
 
-Thus, what we want for the regexp is a pattern defining one or more word
-constituent characters followed, optionally, by one or more characters that
-are not word constituents.  The regular expression for this is:
+Dus wat we willen is dat regexp een patroon is dat een of meer
+woord-vormende karakters, optioneel gevolgd door een or meer karakters die
+niet woord-vormend zijn, definieert.
 
 @smallexample
 \w+\W*
 @end smallexample
 
 @noindent
-The buffer's syntax table determines which characters are and are not word
-constituents.  For more information about syntax, @pxref{Syntax Tables, ,
+De syntax-table van het buffer stelt vast welke karakters woord-vormend zijn
+en welke niet. Voor meer informatie over syntax, @pxref{Syntax Tables, ,
 Syntax Tables, elisp, The GNU Emacs Lisp Reference Manual}.
 
 @need 800
-The search expression looks like this:
+De zoek expressie ziet er zo uit:
 
 @smallexample
 (re-search-forward "\\w+\\W*")
 @end smallexample
 
 @noindent
-(Note that paired backslashes precede the @samp{w} and @samp{W}.  A single
-backslash has special meaning to the Emacs Lisp interpreter.  It indicates
-that the following character is interpreted differently than usual.  For
-example, the two characters, @samp{\n}, stand for @samp{newline}, rather
-than for a backslash followed by @samp{n}.  Two backslashes in a row stand
-for an ordinary, unspecial backslash, so Emacs Lisp interpreter ends of
-seeing a single backslash followed by a letter.  So it discovers the letter
-is special.)
+(Merk op dat de paren backslashes aan de @samp{w} en @samp{W}
+voorafgaan. Een enkele backslash heeft een speciale betekenis voor de Emacs
+Lisp interpreter. Het geeft aan dat het er op volgende karakter anders
+geïnterpreteerd is dan gebruikelijk. Bijvoorbeeld staan de twee karakters
+@samp{\n} voor @samp{newline} in plaats van een backslash gevolgd door
+@samp{n}. Twee backslashes achter elkaar staan voor een gewone,
+niet-speciale backslash, waardoor de Emacs Lisp interpreter uiteindelijk een
+enkele backslash gevold door een letter ziet. Daardoor weet het dat de
+letter speciaal is.)
 
-We need a counter to count how many words there are; this variable must
-first be set to 0 and then incremented each time Emacs goes around the
-@code{while} loop.  The incrementing expression is simply:
+We hebben een teller nodig die telt hoeveel woorden er zijn. Deze variabele
+moet eerst op 0 gezet worden en daarna elke keer dat Emacs door de
+@code{while} loop gaat verhoogd worden.
 
 @smallexample
 (setq count (1+ count))
 @end smallexample
 
-Finally, we want to tell the user how many words there are in the region.
-The @code{message} function is intended for presenting this kind of
-information to the user.  The message has to be phrased so that it reads
-properly regardless of how many words there are in the region: we don't want
-to say that ``there are 1 words in the region''.  The conflict between
-singular and plural is ungrammatical.  We can solve this problem by using a
-conditional expression that evaluates different messages depending on the
-number of words in the region.  There are three possibilities: no words in
-the region, one word in the region, and more than one word.  This means that
-the @code{cond} special form is appropriate.
+Tenslotte willen we aan de gebruiker vertellen hoeveel woorden er in de
+region zijn. De functie @code{message} is bedoeld om dit soort informatie
+aan de gebruiker te presenteren. De boodschap moet zo zijn geformuleerd dat
+die goed is ongeacht hoeveel woorden er in de region zijn: we willen niet
+zeggen ``er zijn 1 woorden in de region''. Het conflict tussen enkelvoud en
+meervoud is grammaticaal onjuist. Wij lossen dit op met een conditionele
+expressie die verschillende boodschappen evalueert, afhankelijk van het
+aantal woorden in de region. Er zijn drie mogelijkheden: geen woorden in de
+region, één woord in de region, en meer dan een woord. Dit betekent dat de
+speciale vorm @code{cond} geschikt is.
 
 @need 1500
-All this leads to the following function definition:
+Dit alles leidt tot de volgende functiedefinitie:
 
 @smallexample
 @group
-;;; @r{First version; has bugs!}
-(defun @value{COUNT-WORDS} (beginning end)
-  "Print number of words in the region.
-Words are defined as at least one word-constituent
-character followed by at least one character that
-is not a word-constituent.  The buffer's syntax
-table determines which characters these are."
+;;; @r{Eerste versie; heeft bugs!}
+(defun @value{TEL-WOORDEN} (beginning end)
+  "Toon aantal woorden in de region.
+Woorden worden gedefinieerd als minstens een woord-vormend
+karakter gevolgd door minstens een karakter dat
+niet woord-vormend is. De syntax table van het buffer
+bepaald welke karakters dat zijn."
   (interactive "r")
-  (message "Counting words in region ... ")
+  (message "Tel woorden in region ... ")
 @end group
 
 @group
-;;; @r{1. Set up appropriate conditions.}
+;;; @r{1. Opzetten geschikte condities.}
   (save-excursion
     (goto-char beginning)
     (let ((count 0))
 @end group
 
 @group
-;;; @r{2. Run the} while @r{loop.}
+;;; @r{2. Run de} while @r{loop.}
       (while (< (point) end)
         (re-search-forward "\\w+\\W*")
         (setq count (1+ count)))
 @end group
 
 @group
-;;; @r{3. Send a message to the user.}
+;;; @r{3. Toon een boodschap aan de gebruiker.}
       (cond ((zerop count)
              (message
-              "The region does NOT have any words."))
+              "De region heeft GEEN woorden."))
             ((= 1 count)
              (message
-              "The region has 1 word."))
+              "De region heeft 1 woord."))
             (t
              (message
-              "The region has %d words." count))))))
+              "The region heeft %d woorden." count))))))
 @end group
 @end smallexample
 
 @noindent
-As written, the function works, but not in all circumstances.
+Zo geschreven werkt de functie, maar niet in alle omstandigheden.
 
-@node Wiite ruimte bug
-@subsection The Whitespace Bug in @code{@value{COUNT-WORDS}}
+@node Witte ruimte bug
+@subsection De witte ruimte bug in @code{@value{TEL-WOORDEN}}
 
-The @code{@value{COUNT-WORDS}} command described in the preceding section
-has two bugs, or rather, one bug with two manifestations.  First, if you
-mark a region containing only whitespace in the middle of some text, the
-@code{@value{COUNT-WORDS}} command tells you that the region contains one
-word! Second, if you mark a region containing only whitespace at the end of
-the buffer or the accessible portion of a narrowed buffer, the command
-displays an error message that looks like this:
+Het in de vorige sectie beschreven commando @code{@value{TEL-WOORDEN}} heeft
+twee bugs, of eigenlijk een bug met twee manifestaties. Ten eerste als je
+een region markeert die alleen witte ruimte heeft in het midden van tekst,
+zegt @code{@value{TEL-WOORDEN}} dat de region maar een woord heeft! Ten
+tweede wanneer je een region markeert met alleen witte ruimte aan het einde
+van het buffer of het bereikbare deel van een versmald buffer, toont het een
+foutboodschap die er zo uit ziet:
 
 @smallexample
 Search failed: "\\w+\\W*"
 @end smallexample
 
-If you are reading this in Info in GNU Emacs, you can test for these bugs
-yourself.
+Wanneer je dit leest in Info in GNU Emacs, kan je deze bugs zelf testen.
 
-First, evaluate the function in the usual manner to install it.
+Evalueer eerst de functie op de gebruikelijke manier om die te installeren.
 @ifinfo
-Here is a copy of the definition.  Place your cursor after the closing
-parenthesis and type @kbd{C-x C-e} to install it.
+Hier volgt de functiedefinitie. Plaats de cursor achter het afsluitende
+haakje sluiten en typ @kbd{C-x C-e} om die te installeren.
 
 @smallexample
 @group
-;; @r{First version; has bugs!}
-(defun @value{COUNT-WORDS} (beginning end)
-  "Print number of words in the region.
-Words are defined as at least one word-constituent character followed
-by at least one character that is not a word-constituent.  The buffer's
-syntax table determines which characters these are."
+;; @r{Eerste versie; has bugs!}
+(defun @value{TEL-WOORDEN} (beginning end)
+  "Toon aantal woorden in de region.
+Woorden worden gedefinieerd als minstens een woord-vormend
+karakter gevolgd door minstens een karakter dat
+niet woord-vormend is. De syntax table van het buffer
+bepaald welke karakters dat zijn."
 @end group
 @group
   (interactive "r")
@@ -13511,149 +13520,151 @@ syntax table determines which characters these are."
 @end group
 
 @group
-;;; @r{1. Set up appropriate conditions.}
+;;; @r{1. Opzetten geschikte condities.}
   (save-excursion
     (goto-char beginning)
     (let ((count 0))
 @end group
 
 @group
-;;; @r{2. Run the} while @r{loop.}
+;;; @r{2. Run de} while @r{loop.}
       (while (< (point) end)
         (re-search-forward "\\w+\\W*")
         (setq count (1+ count)))
 @end group
 
 @group
-;;; @r{3. Send a message to the user.}
+;;; @r{3. Toon een boodschap aan de gebruiker.}
       (cond ((zerop count)
-             (message "The region does NOT have any words."))
-            ((= 1 count) (message "The region has 1 word."))
-            (t (message "The region has %d words." count))))))
+             (message "De region heeft geen woorden."))
+            ((= 1 count) (message "De region heeft 1 woord."))
+            (t (message "De region heeft %d woorden." count))))))
 @end group
 @end smallexample
 @end ifinfo
 
 @need 1000
-If you wish, you can also install this key binding by evaluating it:
+Wanneer je dat wilt, kan je ook deze key binding installeren door het te
+evalueren:
 
 @smallexample
-(keymap-global-set "C-c =" '@value{COUNT-WORDS})
+(keymap-global-set "C-c =" '@value{TEL-WOORDEN})
 @end smallexample
 
-To conduct the first test, set mark and point to the beginning and end of
-the following line and then type @kbd{C-c =} (or @kbd{M-x
-@value{COUNT-WORDS}} if you have not bound @kbd{C-c =}):
+Om de eerste test uit te voeren zet mark en point aan begin en eind van de
+volgende regel en typ dan @kbd{C-c =} (of @kbd{M-x @value{TEL-WOORDEN}}
+wanneer je @w{@kbd{C-c =}} niet gebonden hebt.)
 
 @smallexample
-    one   two  three
+    een   twee  drie
 @end smallexample
 
 @noindent
-Emacs will tell you, correctly, that the region has three words.
+Emacs toont je inderdaad dat de region drie woorden heeft.
 
-Repeat the test, but place mark at the beginning of the line and place point
-just @emph{before} the word @samp{one}.  Again type the command @kbd{C-c =}
-(or @kbd{M-x @value{COUNT-WORDS}}).  Emacs should tell you that the region
-has no words, since it is composed only of the whitespace at the beginning
-of the line.  But instead Emacs tells you that the region has one word!
+Herhaal de test, maar plaats de mark aan het begin van de regel en plaats
+point net @emph{voor} het woord @samp{een}. Typ opnieuw het commando
+@kbd{C-c =} (of @kbd{M-x @value{TEL-WOORDEN}}). Emacs zou je moeten
+vertellen dat de region geen woorden heeft, omdat het alleen uit witte
+ruimte aan het begin van de regel bestaat. Maar in plaats daarvan vertelt
+Emacs je dat de region één woord bevat!
 
-For the third test, copy the sample line to the end of the @file{*scratch*}
-buffer and then type several spaces at the end of the line.  Place mark
-right after the word @samp{three} and point at the end of line.  (The end of
-the line will be the end of the buffer.)  Type @kbd{C-c =} (or @kbd{M-x
-@value{COUNT-WORDS}}) as you did before.  Again, Emacs should tell you that
-the region has no words, since it is composed only of the whitespace at the
-end of the line.  Instead, Emacs displays an error message saying
-@samp{Search failed}.
+Voor de derde test, kopieer de voorbeeldregel aan het eind van het
+@file{*scratch*} buffer en typ dan meerder spaties aan het einde van de
+regel. Plaats mar direct achter het woord @samp{drie} en point aan het einde
+van de regel. (Het einde van de regel is het einde van het buffer.) Typ
+@kbd{C-c =} (of @kbd{M-x @value{TEL-WOORDEN}}) net als je eerder
+deed. Opnieuw zou Emacs je moeten zeggen dat de region geen woorden heeft,
+omdat het bestaat uit witte ruimte aan het einde van de regel. In plaats
+daarvan toont Emacs een foutboodschap die @samp{Search failed} zegt.
 
-The two bugs stem from the same problem.
+De twee bugs stammen van hetzelfde probleem.
 
-Consider the first manifestation of the bug, in which the command tells you
-that the whitespace at the beginning of the line contains one word.  What
-happens is this: The @code{M-x @value{COUNT-WORDS}} command moves point to
-the beginning of the region.  The @code{while} tests whether the value of
-point is smaller than the value of @code{end}, which it is.  Consequently,
-the regular expression search looks for and finds the first word.  It leaves
-point after the word.  @code{count} is set to one.  The @code{while} loop
-repeats; but this time the value of point is larger than the value of
-@code{end}, the loop is exited; and the function displays a message saying
-the number of words in the region is one.  In brief, the regular expression
-search looks for and finds the word even though it is outside the marked
-region.
+Bekijk de eerste manifestatie van de bug, waar het commando je zegt dat de
+witte ruimte aan het begin van de regel één woord bevat. Dit is wat er
+gebeurt: Het commando @code{M-x @value{TEL-WOORDEN}} verplaatst point naar
+het begin van de region. De @code{while} test of point kleiner is dan de
+waarde van @code{end}, wat zo is. Vervolgens zoekt en vindt de reguliere
+expressie zoekopdracht het eerste woord. Het zet point achter het
+woord. @code{count} wordt op één gezet. De @code{while} loop herhaalt, maar
+deze keer is de waarde van point groter dan de waarde van @code{end}, de
+loop wordt verlaten en de functie toont een boodschap die zegt dat het
+aantal woorden in de region één is. Kortom, de reguliere expressie
+zoekopdracht zoekt en vindt het woord ondanks dat het buiten de gemarkeerde
+region is.
 
-In the second manifestation of the bug, the region is whitespace at the end
-of the buffer.  Emacs says @samp{Search failed}.  What happens is that the
-true-or-false-test in the @code{while} loop tests true, so the search
-expression is executed.  But since there are no more words in the buffer,
-the search fails.
+In de tweede manifestatie van de bug is de region witte ruimte aan het einde
+van het buffer. Emacs zegt @samp{Search failed}. Wat gebeurt is dat de
+waar-of-onwaar-test in de @code{while} loop op waar test, dus de
+zoekopdracht wordt uitgevoerd. Maar omdat er geen woorden meer zijn in het
+buffer, faalt de zoekopdracht.
 
-In both manifestations of the bug, the search extends or attempts to extend
-outside of the region.
+In beide manifestaties van de bug zoekt de zoekopdracht buiten de region of
+probeert dat te doen.
 
-The solution is to limit the search to the region---this is a fairly simple
-action, but as you may have come to expect, it is not quite as simple as you
-might think.
+De oplossing is om de zoekopdracht te limiteren tot de region---dat is een
+vrij makkelijke actie, maar zoals je inmiddels gewend bent, is het niet zo
+heel simpel als je zou denken.
 
-As we have seen, the @code{re-search-forward} function takes a search
-pattern as its first argument.  But in addition to this first, mandatory
-argument, it accepts three optional arguments.  The optional second argument
-bounds the search.  The optional third argument, if @code{t}, causes the
-function to return @code{nil} rather than signal an error if the search
-fails.  The optional fourth argument is a repeat count.  (In Emacs, you can
-see a function's documentation by typing @kbd{C-h f}, the name of the
-function, and then @key{RET}.)
+Zoals we hebben gezien neemt de functie @code{re-search-forward} een
+zoekpatroon als eerste argument. Maar naast die eerste, vereiste, argument,
+accepteert die drie optionele argumenten. Het optionele tweede argument
+begrenst de zoekopdracht. Het optionele argument, wanneer @code{t}, zorgt
+dat de functie @code{nil} teruggeeft in plaats van een fout wanneer de
+zoekopdracht faalt. Het optionele vierde argument is het aantal
+herhalingen. (In Emacs kan je de documentatie van een functie bekijken door
+het typen van @kbd{C-h f}, de naam van de functie en dan @key{RET}.)
 
-In the @code{@value{COUNT-WORDS}} definition, the value of the end of the
-region is held by the variable @code{end} which is passed as an argument to
-the function.  Thus, we can add @code{end} as an argument to the regular
-expression search expression:
+In de @code{@value{TEL-WOORDEN}} definitie wordt de waarde van het einde van
+de region bewaard in de variabele @code{end}, die doorgegeven wordt als een
+argument aan de functie. We kunnen dus @code{end} als argument aan de
+reguliere expressie zoekopdracht toevoegen.
 
 @smallexample
 (re-search-forward "\\w+\\W*" end)
 @end smallexample
 
-However, if you make only this change to the @code{@value{COUNT-WORDS}}
-definition and then test the new version of the definition on a stretch of
-whitespace, you will receive an error message saying @samp{Search failed}.
+Als je echter alleen deze wijziging in de @code{@value{TEL-WOORDEN}}
+definitie maakt en daarna de nieuwe versie van de definitie test op een stuk
+witte ruimte, krijg je de foutboodschap die zegt @samp{Search failed}.
 
-What happens is this: the search is limited to the region, and fails as you
-expect because there are no word-constituent characters in the region.
-Since it fails, we receive an error message.  But we do not want to receive
-an error message in this case; we want to receive the message ``The region
-does NOT have any words.''
+Wat gebeurt is het dit: de zoekopdracht is begrensd tot de region, en faalt
+zoals je verwacht omdat er geen woord-vormende karakters in de region
+zijn. Omdat die faalt, krijgen we een foutboodschap. Maar we willen in dit
+geval geen foutboodschap krijgen, we willen de boodschap ``De region heeft
+GEEN woorden'' krijgen.
 
-The solution to this problem is to provide @code{re-search-forward} with a
-third argument of @code{t}, which causes the function to return @code{nil}
-rather than signal an error if the search fails.
+De oplossing voor dit probleem is om @code{re-search-forward} een derde
+argument @code{t} te geven, waardoor de functie @code{nil} teruggeeft in
+plaats van een fout signaleren wanneer de zoekopdracht faalt.
 
-However, if you make this change and try it, you will see the message
-``Counting words in region ... '' and @dots{} you will keep on seeing that
-message @dots{}, until you type @kbd{C-g} (@code{keyboard-quit}).
+Als je echter deze wijziging aanbrengt en probleert, dan zie je de boodschap
+``Tel woorden in de region ...'' en @dots{} en je blijft die boodschap
+@dots{} zien, totdat je @kbd{C-g} (@code{keyboard-quit}) typt.
 
-Here is what happens: the search is limited to the region, as before, and it
-fails because there are no word-constituent characters in the region, as
-expected.  Consequently, the @code{re-search-forward} expression returns
-@code{nil}.  It does nothing else.  In particular, it does not move point,
-which it does as a side effect if it finds the search target.  After the
-@code{re-search-forward} expression returns @code{nil}, the next expression
-in the @code{while} loop is evaluated.  This expression increments the
-count.  Then the loop repeats.  The true-or-false-test tests true because
-the value of point is still less than the value of end, since the
-@code{re-search-forward} expression did not move point. @dots{} and the
-cycle repeats @dots{}
+Dit is wat er gebeurt: de zoekopdracht is begrensd tot de region, zoals
+eerder, en faalt omdat er geen woord-vormende karakters in de region zijn,
+zoals verwacht. Vervolgens geeft de @code{re-search-forward} expressie
+@code{nil} terug. Het doet niets anders. In het bijzonder verplaatst het
+point niet, wat het doet als zij-effect wanneer het een zoekdoel
+vindt. Nadat de @code{re-search-forward} expressie @code{nil} teruggeeft,
+wordt de volgende expressie in de @code{while} loop geëvalueerd. Deze
+expressie verhoogt de teller. Daarna herhaalt de loop. De
+waar-of-onwaar-test test op waar, omdat de waarde van point nog steeds
+kleiner is dan end, doordat de @code{re-search-forward} point niet
+verplaatst heeft. @dots{} en de cyclus herhaalt @dots{}
 
-The @code{@value{COUNT-WORDS}} definition requires yet another modification,
-to cause the true-or-false-test of the @code{while} loop to test false if
-the search fails.  Put another way, there are two conditions that must be
-satisfied in the true-or-false-test before the word count variable is
-incremented: point must still be within the region and the search expression
-must have found a word to count.
+De @code{@value{TEL-WOORDEN}} definitie vereist nog een andere modificatie,
+om de waar-of-onwaar-test van de @code{while} loop naar onwaar te laten
+testen wanneer de zoekopdracht faalt. Anders gezegd, er zijn twee condities
+waaraan voldoen moet worden in de waar-of-onwaar-test voordat de
+woordtelling variabele wordt verhoogd: point moet nog steeds in de region
+zijn en de zoek expressie moet een woord gevonden hebben om te tellen.
 
-Since both the first condition and the second condition must be true
-together, the two expressions, the region test and the search expression,
-can be joined with an @code{and} special form and embedded in the
-@code{while} loop as the true-or-false-test, like this:
+Omdat zowel de eerste als de tweede conditie samen waar moeten zijn, kunnen
+de twee expressies, de region test en de zoekexpressie worden samengevoegd
+met een speciale vorm @code{and} en ingebed in de @code{while} loop, zoals
+dit:
 
 @smallexample
 (and (< (point) end) (re-search-forward "\\w+\\W*" end t))
@@ -13663,224 +13674,226 @@ can be joined with an @code{and} special form and embedded in the
 @c also trouble with an overfull hbox
 @iftex
 @noindent
-(For information about @code{and}, see @ref{kill-new function, , The
-@code{kill-new} function}.)
+Voor informatie over @code{and}, zie @ref{kill-new functie, , De
+@code{kill-new} functie}.)
 @end iftex
 @ifinfo
 @noindent
-(@xref{kill-new function, , The @code{kill-new} function}, for information
-about @code{and}.)
+(@xref{kill-new functie, , De @code{kill-new} functie}, voor informatie over
+@code{and}.)
 @end ifinfo
 
-The @code{re-search-forward} expression returns @code{t} if the search
-succeeds and as a side effect moves point.  Consequently, as words are
-found, point is moved through the region.  When the search expression fails
-to find another word, or when point reaches the end of the region, the
-true-or-false-test tests false, the @code{while} loop exits, and the
-@code{@value{COUNT-WORDS}} function displays one or other of its messages.
+De @code{re-search-forward} expressie geeft @code{t} terug wanneer de
+zoekopdracht slaagt en als zij-effect verplaatst die point. Vervolgens,
+wanneer woorden worden gevonden, wordt point door de region
+verplaatst. Wanneer de zoekexpressie faalt in het vinden van nog een woord,
+of wanneer point het einde van de region bereikt, test de
+waar-of-onwaar-test op onwaar, de @code{while} loop eindigt en de
+@code{@value{TEL-WOORDEN}} functie toont een van zijn boodschappen.
 
-After incorporating these final changes, the @code{@value{COUNT-WORDS}}
-works without bugs (or at least, without bugs that I have found!).  Here is
-what it looks like:
+Na het incorporeren van deze laatste wijzigingen, werkt
+@code{@value{TEL-WOORDEN}} zonder bugs (tenminste, zonder bugs die ik heb
+gevonden!). Hier is hoe die er uitziet:
 
 @smallexample
 @group
-;;; @r{Final version:} @code{while}
-(defun @value{COUNT-WORDS} (beginning end)
-  "Print number of words in the region."
+;;; @r{Finale versie:} @code{while}
+(defun @value{TEL-WOORDEN} (beginning end)
+  "Toon aantal woorden in de region."
   (interactive "r")
-  (message "Counting words in region ... ")
+  (message "Tel woorden in region ... ")
 @end group
 
 @group
-;;; @r{1. Set up appropriate conditions.}
+;;; @r{1. Opzetten geschikte condities.}
   (save-excursion
     (let ((count 0))
       (goto-char beginning)
 @end group
 
 @group
-;;; @r{2. Run the} while @r{loop.}
+;;; @r{2. Run de} while @r{loop.}
       (while (and (< (point) end)
                   (re-search-forward "\\w+\\W*" end t))
         (setq count (1+ count)))
 @end group
 
 @group
-;;; @r{3. Send a message to the user.}
+;;; @r{3. Toon een boodschap aan de gebruiker.}
       (cond ((zerop count)
              (message
-              "The region does NOT have any words."))
+              "De region heeft GEEN woorden."))
             ((= 1 count)
              (message
-              "The region has 1 word."))
+              "De region heeft 1 woord."))
             (t
              (message
-              "The region has %d words." count))))))
+              "The region heeft %d woorden." count))))))
 @end group
 @end smallexample
 
 @node recursive-count-words
-@section Count Words Recursively
-@cindex Count words recursively
-@cindex Recursively counting words
-@cindex Words, counted recursively
+@section Recursief woorden tellen
+@cindex Tel woorden recursief
+@cindex Recursief woorden tellen
+@cindex Woorden, recursief geteld
 
-You can write the function for counting words recursively as well as with a
-@code{while} loop.  Let's see how this is done.
+Je kunt de functie om woorden te tellen zowel recursief als met een
+@code{while} loop schrijven. Laten we zien hoe je dat doet.
 
-First, we need to recognize that the @code{@value{COUNT-WORDS}} function has
-three jobs: it sets up the appropriate conditions for counting to occur; it
-counts the words in the region; and it sends a message to the user telling
-how many words there are.
+Eerst moeten we herkennen dat de functie @code{@value{TEL-WOORDEN}} drie
+taken heeft: het zet de geschikte condities op om de woorden die voorkomen
+te tellen, het telt de woorden in de region, and het geeft de gebruiker een
+boodschap die zegt hoeveel woorden er zijn.
 
-If we write a single recursive function to do everything, we will receive a
-message for every recursive call.  If the region contains 13 words, we will
-receive thirteen messages, one right after the other.  We don't want this!
-Instead, we must write two functions to do the job, one of which (the
-recursive function) will be used inside of the other.  One function will set
-up the conditions and display the message; the other will return the word
-count.
+Wanneer we een enkele recursieve functie schrijven die alles doet, krijgen
+we een boodschap bij elke recursieve aanroep. Wanneer de region 13 woorden
+bevat, krijgen we dertien boodschappen, de een na de ander. Dat willen we
+niet! In plaats daarvan moeten we twee functies schrijven om het werk te
+doen, waarvan eentje (de recursieve functie) wordt gebruikt binnen de
+ander. Een functie zet de condities op en toont de boodschap, de ander geeft
+de woordtelling terug.
 
-Let us start with the function that causes the message to be displayed.  We
-can continue to call this @code{@value{COUNT-WORDS}}.
+Laten we starten met de functie die de boodschap laat zien. We blijven deze
+functie @code{@value{TEL-WOORDEN}} noemen.
 
-This is the function that the user will call.  It will be interactive.
-Indeed, it will be similar to our previous versions of this function, except
-that it will call @code{recursive-count-words} to determine how many words
-are in the region.
+Dit is de functie die de gebruiker aanroept. Die is interactief. Die is
+vergelijkbaar met de vorige versie van deze functie, behalve dat die
+@code{recursive-count-words} aanroept om vast te stellen hoeveel woorden er
+in de region zijn.
 
 @need 1250
-We can readily construct a template for this function, based on our previous
-versions:
+We kunnen gemakkelijk voor deze functie een sjabloon samenstellen, gebaseerd
+op onze voorgaande versies:
 
 @smallexample
 @group
-;; @r{Recursive version; uses regular expression search}
-(defun @value{COUNT-WORDS} (beginning end)
-  "@var{documentation}@dots{}"
-  (@var{interactive-expression}@dots{})
+;; @r{Recursieve versie; met reguliere expressie zoekopdracht}
+(defun @value{TEL-WOORDEN} (beginning end)
+  "@var{documentatie}@dots{}"
+  (@var{interactieve-expressie}@dots{})
 @end group
 @group
 
-;;; @r{1. Set up appropriate conditions.}
-  (@var{explanatory message})
-  (@var{set-up functions}@dots{}
+;;; @r{1. Opzetten geschikte condities.}
+  (@var{verklarende boodschap})
+  (@var{set-up functie}@dots{}
 @end group
 @group
 
-;;; @r{2. Count the words.}
-    @var{recursive call}
+;;; @r{2. Tel de woorden.}
+    @var{recursieve aanroep}
 @end group
 @group
 
-;;; @r{3. Send a message to the user.}
-    @var{message providing word count}))
+;;; @r{3. Toon een boodschap aan de gebruiker.}
+    @var{boodschap met de woord telling}))
 @end group
 @end smallexample
 
-The definition looks straightforward, except that somehow the count returned
-by the recursive call must be passed to the message displaying the word
-count.  A little thought suggests that this can be done by making use of a
-@code{let} expression: we can bind a variable in the varlist of a @code{let}
-expression to the number of words in the region, as returned by the
-recursive call; and then the @code{cond} expression, using binding, can
-display the value to the user.
+De definitie ziet er eenvoudig uit, behalve dat we op enige manier de
+telling teruggegeven door een recursieve aanroep moet worden doorgegeven aan
+de boodschap die de woord telling toont. Een beetje nadenken suggereert dat
+dit kan met een @code{let} expressie: we kunnen een variabele in de varlist
+van een @code{let} expressie binden aan het aantal woorden in de region, die
+wordt teruggegeven door de recursieve aanroep. Dan kan de @code{cond}
+expressie met een binding de waarde aan de gebruiker tonen.
 
-Often, one thinks of the binding within a @code{let} expression as somehow
-secondary to the primary work of a function.  But in this case, what you
-might consider the primary job of the function, counting words, is done
-within the @code{let} expression.
+Vaak denkt met bij de binding binnen een @code{let} expressie als iets
+ondergeschikt aan het primaire werk van een functie. Maar in dit geval wordt
+dat wat je als primaire werk van de functie beschouwt, het tellen van
+woorden, gedaan binnen de @code{let} expressie.
 
 @need 1250
-Using @code{let}, the function definition looks like this:
+Met @code{let} ziet de functiedefinitie er zo uit: 
 
 @smallexample
 @group
-(defun @value{COUNT-WORDS} (beginning end)
+(defun @value{TEL-WOORDEN} (beginning end)
   "Print number of words in the region."
   (interactive "r")
 @end group
 
 @group
-;;; @r{1. Set up appropriate conditions.}
-  (message "Counting words in region ... ")
+;;; @r{1. Opzetten geschikte condities.}
+  (message "Tel woorden in region ... ")
   (save-excursion
     (goto-char beginning)
 @end group
 
 @group
-;;; @r{2. Count the words.}
+;;; @r{2. Tel de woorden.}
     (let ((count (recursive-count-words end)))
 @end group
 
 @group
-;;; @r{3. Send a message to the user.}
+;;; @r{3. Toon een boodschap aan de gebruiker.}
       (cond ((zerop count)
              (message
-              "The region does NOT have any words."))
+              "De region heeft GEEN woorden."))
             ((= 1 count)
              (message
-              "The region has 1 word."))
+              "De region heeft 1 woord."))
             (t
              (message
-              "The region has %d words." count))))))
+              "The region heeft %d woorden." count))))))
 @end group
 @end smallexample
 
-Next, we need to write the recursive counting function.
+Vervolgens moeten we de recursieve telfunctie schrijven.
 
-A recursive function has at least three parts: the do-again-test, the
-next-step-expression, and the recursive call.
+Een recursieve functie heeft tenminste drie delen: de doe-opnieuw-test, de
+volgende-stap-expressie en de recursieve aanroep.
 
-The do-again-test determines whether the function will or will not be called
-again.  Since we are counting words in a region and can use a function that
-moves point forward for every word, the do-again-test can check whether
-point is still within the region.  The do-again-test should find the value
-of point and determine whether point is before, at, or after the value of
-the end of the region.  We can use the @code{point} function to locate
-point.  Clearly, we must pass the value of the end of the region to the
-recursive counting function as an argument.
+De doe-opnieuw-test stelt vast of de functie wel of niet opnieuw aangeroepen
+wordt. Omdat we woorden in een region tellen en een functie kunnen gebruiken
+die voor elk woord point voorwaarts verplaatst, kan de doe-opnieuw-test
+controleren of point nog steeds binnen de region is. De doe-opnieuw-test
+moet de waarde van point ontdekken en vaststellen of point voor, op, of na
+de waarde van het einde van de region is. We kunnen de functie @code{point}
+gebruiken om point te lokaliseren. Vanzelfsprekend moeten we de waarde van
+het einde van de region als argument aan de recursieve telfunctie doorgeven.
 
-In addition, the do-again-test should also test whether the search finds a
-word.  If it does not, the function should not call itself again.
+Daarnaast moet de doe-opnieuw-test testen of de zoekopdracht een woord
+vindt. Wanneer die dat niet doet, moet de functie niet langer zichzelf
+aanroepen.
 
-The next-step-expression changes a value so that when the recursive function
-is supposed to stop calling itself, it stops.  More precisely, the
-next-step-expression changes a value so that at the right time, the
-do-again-test stops the recursive function from calling itself again.  In
-this case, the next-step-expression can be the expression that moves point
-forward, word by word.
+De volgende-stap-expressie verandert een waarde zodat wanneer de recursieve
+functie geacht wort te stoppen met zich zelf aan te roepen, die
+stopt. Preciezer gezegd, de volgende-stap-expressie verandert een waarde
+zodat op het juiste moment de doe-opnieuw-test de recursieve functie stopt
+zichzelf aan te roepen. In dit geval dan de volgende-stap-expressie de
+expressie zijn die point woord voor woord voorwaarts verplaatst.
 
-The third part of a recursive function is the recursive call.
+Het derde deel van een resursieve functie is de recursieve aanroep.
 
-Somewhere, we also need a part that does the work of the function, a part
-that does the counting.  A vital part!
+Ook moeten we ergens een deel hebben dat het werk van de functie doet, een
+deel dat de woorden telt. Een vitaal deel!
 
 @need 1250
-But already, we have an outline of the recursive counting function:
+Maar we hebben nu al een overzicht van de recursieve telfunctie:
 
 @smallexample
 @group
-(defun recursive-count-words (region-end)
-  "@var{documentation}@dots{}"
-   @var{do-again-test}
-   @var{next-step-expression}
-   @var{recursive call})
+(defun recursieve-tel-woorden (region-end)
+  "@var{documentatie}@dots{}"
+   @var{doe-opnieuw-test}
+   @var{volgende-stap-expressie}
+   @var{recursieve aanroep})
 @end group
 @end smallexample
 
-Now we need to fill in the slots.  Let's start with the simplest cases
-first: if point is at or beyond the end of the region, there cannot be any
-words in the region, so the function should return zero.  Likewise, if the
-search fails, there are no words to count, so the function should return
-zero.
+Nu moeten de slots invullen. Laten we beginnen met de meest eenvoudige
+gevallen: wanneer point aan het einde of voorbij de region is, dan kunnen er
+geen woorden in de region zijn, en de functie moet nul teruggeven. Ook als
+de zoekopdracht faalt zijn er geen woorden om te tellen, en moet de functie
+nul teruggeven.
 
-On the other hand, if point is within the region and the search succeeds,
-the function should call itself again.
+Anderzijds, wanneer point binnen de region is en de zoekopdracht is
+succesvol, moet de functie zichzelf opnieuw aanroepen.
 
 @need 800
-Thus, the do-again-test should look like this:
+Dus de doe-opnieuw-test zou er zo uit moeten zien:
 
 @smallexample
 @group
@@ -13889,216 +13902,218 @@ Thus, the do-again-test should look like this:
 @end group
 @end smallexample
 
-Note that the search expression is part of the do-again-test---the function
-returns @code{t} if its search succeeds and @code{nil} if it fails.
-(@xref{Whitespace Bug, , The Whitespace Bug in @code{@value{COUNT-WORDS}}},
-for an explanation of how @code{re-search-forward} works.)
+Merk op dat de zoek expressie onderdeel is van de doe-opnieuw-test---de
+functie geeft @code{t} terug wanneer de zoekopdracht slaagt en @code{nil}
+wanneer die faalt. (@xref{Witte ruimte bug, , De witte ruimte bug in
+@code{@value{TEL-WOORDEN}}}, voor een uitleg over hoe
+@code{re-search-forward} werkt.)
 
-The do-again-test is the true-or-false test of an @code{if} clause.
-Clearly, if the do-again-test succeeds, the then-part of the @code{if}
-clause should call the function again; but if it fails, the else-part should
-return zero since either point is outside the region or the search failed
-because there were no words to find.
+De doe-opnieuw-test is een waar-of-onwaar-test van een @code{if}
+clausule. Wanneer de doe-opnieuw-test slaagt, moet het dan-deel van de
+@code{if} clausule de functie opnieuw aanroepen. Maar wanneer die faalt,
+moet het anders-deel nul teruggeven, omdat of point buiten de region is, of
+de zoekopdracht faalde omdat er geen woorden waren om te vinden.
 
-But before considering the recursive call, we need to consider the
-next-step-expression.  What is it? Interestingly, it is the search part of
-the do-again-test.
+Maar voordat we de recursieve aanroep bekijken, moeten we naar de
+volgende-stap-expressie kijken. Wat is die? Die is interessant genoeg het
+zoek-deel van de doe-opnieuw-test.
 
-In addition to returning @code{t} or @code{nil} for the do-again-test,
-@code{re-search-forward} moves point forward as a side effect of a
-successful search.  This is the action that changes the value of point so
-that the recursive function stops calling itself when point completes its
-movement through the region.  Consequently, the @code{re-search-forward}
-expression is the next-step-expression.
+Naast @code{t} of @code{nil} voor de doe-opnieuw-test teruggeven verplaatst
+@code{re-search-forward} point voorwaarts als zij-effect van een succesvolle
+zoekopdracht. Dit is de actie die de waarde van point verandert, zodat de
+recursieve functie stopt met zichzelf aanroepen wanneer point de beweging
+door de region voltooit. De @code{re-search-forward} expressie is dus de
+volgende-stap-expressie.
 
 @need 1200
-In outline, then, the body of the @code{recursive-count-words} function
-looks like this:
+De body van @code{recursieve-tel-woorden} ziet er in overzicht zo uit:
 
 @smallexample
 @group
-(if @var{do-again-test-and-next-step-combined}
+(if @var{doe-opnieuw-test-en-volgende-stap-expressie-gecombineerd}
     ;; @r{then}
-    @var{recursive-call-returning-count}
+    @var{recursieve-aanroep-die-telling-teruggeeft}
   ;; @r{else}
-  @var{return-zero})
+  @var{geef-nul-terug})
 @end group
 @end smallexample
 
-How to incorporate the mechanism that counts?
+Hoe het mechanisme dat telt te incorporeren?
 
-If you are not used to writing recursive functions, a question like this can
-be troublesome.  But it can and should be approached systematically.
+Dit kan lastig zijn wanneer je niet gewend bent recursieve functies te
+schrijven. Maar het kan en moet systematisch worden benaderd.
 
-We know that the counting mechanism should be associated in some way with
-the recursive call.  Indeed, since the next-step-expression moves point
-forward by one word, and since a recursive call is made for each word, the
-counting mechanism must be an expression that adds one to the value returned
-by a call to @code{recursive-count-words}.
+We weten dat het tel-mechanisme op de een of andere manier geassocieerd moet
+zijn met de recursieve aanroep. Omdat de volgende-stap-expressie point een
+woord voorwaarts verplaatst, en omdat de recursieve aanroep voor elk woord
+plaatsvindt, moet het tel-mechanisme een expressie zijn die een optelt bij
+de waarde teruggegeven door een aanroep van @code{recursive-count-words}.
 
 @need 800
-Consider several cases:
+Beschouw verschillende gevallen:
 
 @itemize @bullet
 @item
-If there are two words in the region, the function should return a value
-resulting from adding one to the value returned when it counts the first
-word, plus the number returned when it counts the remaining words in the
-region, which in this case is one.
+Wanneer er twee woorden in de region zijn, moet de functie een waarde
+teruggeven die resulteert van het optellen van één bij de waarde die wordt
+teruggegeven wanneer die het eerste woord telt, plus het aantal teruggeven
+wanneer het de resterende woorden in de region telt, wat in dit geval één
+is.
 
 @item
-If there is one word in the region, the function should return a value
-resulting from adding one to the value returned when it counts that word,
-plus the number returned when it counts the remaining words in the region,
-which in this case is zero.
+Wanneer er één woord in de region is, moet de functie een waarde teruggeven
+die resulteert van het optellen van één bij de waarde teruggeven van het
+tellen van dat woord, plus het aantal teruggeven wanneer het de resterende
+woorden in de region telt, wat in dit geval nul is.
 
 @item
-If there are no words in the region, the function should return zero.
+Wanneer er geen woorden  in de region zijn moet de functie nul teruggeven.
 @end itemize
 
-From the sketch we can see that the else-part of the @code{if} returns zero
-for the case of no words.  This means that the then-part of the @code{if}
-must return a value resulting from adding one to the value returned from a
-count of the remaining words.
+Van de schets kunnen we zien dat het anders-deel van de @code{if} nul
+teruggeeft in het geval er geen woorden zijn. Dat betekent dat het dan-deel
+van de @code{if} een waarde moet teruggeven die resulteert van het optellen
+van een bij de waarde teruggegeven door het tellen van de resterende
+woorden.
 
 @need 1200
-The expression will look like this, where @code{1+} is a function that adds
-one to its argument.
+De expressie ziet er zo uit, waarbij @code{1+} een functie is die één optelt
+bij zijn argument.
 
 @smallexample
-(1+ (recursive-count-words region-end))
+(1+ (recursieve-tel-woorden region-end))
 @end smallexample
 
 @need 1200
-The whole @code{recursive-count-words} function will then look like this:
+De hele functie @code{recursieve-tel-woorden} ziet er dan zo uit:
 
 @smallexample
 @group
-(defun recursive-count-words (region-end)
-  "@var{documentation}@dots{}"
+(defun recursieve-tel-woorden (region-end))
+  "@var{documentatie}@dots{}"
 
-;;; @r{1. do-again-test}
+;;; @r{1. doe-opnieuw-test}
   (if (and (< (point) region-end)
            (re-search-forward "\\w+\\W*" region-end t))
 @end group
 
 @group
-;;; @r{2. then-part: the recursive call}
-      (1+ (recursive-count-words region-end))
+;;; @r{2. dan-deel: de recursieve aanroep}
+      (1+ (recursieve-tel-woorden region-end))
 
-;;; @r{3. else-part}
+;;; @r{3. anders-deel}
     0))
 @end group
 @end smallexample
 
 @need 1250
-Let's examine how this works:
+Laten we onderzoeken hoe dit werkt:
 
-If there are no words in the region, the else part of the @code{if}
-expression is evaluated and consequently the function returns zero.
+Wanneer er geen woorden in de region zijn, wordt het anders-deel van de
+@code{if} expressie geëvalueerd en geeft de functie dus nul terug.
 
-If there is one word in the region, the value of point is less than the
-value of @code{region-end} and the search succeeds.  In this case, the
-true-or-false-test of the @code{if} expression tests true, and the then-part
-of the @code{if} expression is evaluated.  The counting expression is
-evaluated.  This expression returns a value (which will be the value
-returned by the whole function) that is the sum of one added to the value
-returned by a recursive call.
+Wanneer er één woord in de region is, is de waarde van point kleiner dan de
+waarde van @code{region-end} en de zoekopdracht slaagt. In dit geval test de
+waar-of-onwaar-test van de @code{if} expressie op waar, en wordt het
+dan-deel van de @code{if} expressie geëvalueerd. Deze expressie geeft een
+waarde terug (die wordt opgeteld bij de waarde teruggegeven door de hele
+functie) die de som is van één opgeteld bij de waarde teruggeven door een
+recursieve aanroep. 
 
-Meanwhile, the next-step-expression has caused point to jump over the first
-(and in this case only) word in the region.  This means that when
-@code{(recursive-count-words region-end)} is evaluated a second time, as a
-result of the recursive call, the value of point will be equal to or greater
-than the value of region end.  So this time, @code{recursive-count-words}
-will return zero.  The zero will be added to one, and the original
-evaluation of @code{recursive-count-words} will return one plus zero, which
-is one, which is the correct amount.
+Ondertussen heeft de volgende-stap-expressie point over het eerste (in in
+dit geval enige) woord laten springen. Dit betekent dat wanneer
+@code{(recursieve-tel-woorden region-end)} een tweede keer wordt
+geëvalueerd, als gevolg van de recursieve aanroep, de waarde van point
+gelijk of groter is dan de waarde van het einde van de region. Dus deze keer
+geeft @code{recursieve-tel-woorden} nul terug. De nul wordt opgeteld bij
+één, en de oorspronkelijke evaluatie van @code{recursieve-tel-woorden} geeft
+een plus nul terug, wat één is, het correcte aantal.
 
-Clearly, if there are two words in the region, the first call to
-@code{recursive-count-words} returns one added to the value returned by
-calling @code{recursive-count-words} on a region containing the remaining
-word---that is, it adds one to one, producing two, which is the correct
-amount.
+Wanneer er twee woorden in de region zijn, geeft de eerste aanroep van
+@code{recursieve-tel-woorden} één opgeteld bij de waarde teruggeven door het
+aanroepen van @code{recursieve-tel-woorden} op een region die de resterende
+woorden bevat---wat inhoudt dat het één bij één optelt, dat twee geeft, wat
+het correcte aantal is.
 
-Similarly, if there are three words in the region, the first call to
-@code{recursive-count-words} returns one added to the value returned by
-calling @code{recursive-count-words} on a region containing the remaining
-two words---and so on and so on.
-
-@need 1250
-@noindent
-With full documentation the two functions look like this:
+Op dezelfde manier, wanneer er drie woorden in de region zijn, geeft de
+eerste aanroep van @code{recursieve-tel-woorden} één opgeteld bij de waarde
+teruggegeven door het aanroepen van @code{recursieve-tel-woorden} op een
+region die de resterende twee woorden bevat---enzovoorts.
 
 @need 1250
 @noindent
-The recursive function:
+Met de volledige documentatie zien de twee functies er zo uit:
+
+@need 1250
+@noindent
+De recusieve functie:
 
 @findex recursive-count-words
 @smallexample
 @group
-(defun recursive-count-words (region-end)
-  "Number of words between point and REGION-END."
+(defun recursieve-tel-woorden (region-end)
+  "Aantal woorden tussen point and REGION-END."
 @end group
 
 @group
-;;; @r{1. do-again-test}
+;;; @r{1. doe-opnieuw-test}
   (if (and (< (point) region-end)
            (re-search-forward "\\w+\\W*" region-end t))
 @end group
 
 @group
-;;; @r{2. then-part: the recursive call}
-      (1+ (recursive-count-words region-end))
+;;; @r{2. dan-deel: de recursieve aanroep}
+      (1+ (recursieve-tel-woorden region-end))
 
-;;; @r{3. else-part}
+;;; @r{3. anders-deel}
     0))
 @end group
 @end smallexample
 
 @need 800
 @noindent
-The wrapper:
+De omliggende functie:
 
 @smallexample
 @group
-;;; @r{Recursive version}
-(defun @value{COUNT-WORDS} (beginning end)
-  "Print number of words in the region.
+;;; @r{Recursieve versie}
+(defun @value{TEL-WOORDEN} (beginning end)
+  "Toon aantal woorden in de region.
 @end group
 
 @group
-Words are defined as at least one word-constituent
-character followed by at least one character that is
-not a word-constituent.  The buffer's syntax table
-determines which characters these are."
+Woorden worden gedefinieerd als minstens een woord-vormend
+karakter gevolgd door minstens een karakter dat
+niet woord-vormend is. De syntax table van het buffer
+bepaald welke karakters dat zijn."
 @end group
 @group
   (interactive "r")
-  (message "Counting words in region ... ")
+  (message "Tel woorden in region ... ")
   (save-excursion
     (goto-char beginning)
-    (let ((count (recursive-count-words end)))
+    (let ((count (recursieve-tel-woorden end)))
 @end group
 @group
       (cond ((zerop count)
              (message
-              "The region does NOT have any words."))
+              "De region heeft GEEN woorden."))
 @end group
 @group
             ((= 1 count)
-             (message "The region has 1 word."))
+             (message "De region heeft 1 woord."))
             (t
              (message
-              "The region has %d words." count))))))
+              "De region heeft %d woorden.." count))))))
 @end group
 @end smallexample
 
 @node Tellen voorbeeld
-@section Exercise: Counting Punctuation
+@section Oefening: Leestekens tellen
 
-Using a @code{while} loop, write a function to count the number of
-punctuation marks in a region---period, comma, semicolon, colon, exclamation
-mark, and question mark.  Do the same using recursion.
+Schrijf met een @code{while} loop een functie die het aantal leestekens in
+een region telt---punt, komma, punt-komma, dubbele punt, uitroepteken en
+vraagteken. Doe het nog een keer met recursie.
 
 @node Woorden in een defun
 @chapter Woorden tellen in een @code{defun}
@@ -14123,7 +14138,7 @@ often been curious how long a typical function is, and this will tell.
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
 * count-words-in-defun::     Erg vergelijkbaar met 
-                               @code{@value{COUNT-WORDS}}
+                               @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
 * lengths-list-file::        Een lijst met de lengtes van veel definities.
@@ -15600,13 +15615,13 @@ This way, we avoid an error.
 
 @iftex
 @noindent
-(For information about @code{and}, see @ref{kill-new function, , The
-@code{kill-new} function}.)
+Voor informatie over @code{and}, zie @ref{kill-new functie, , De
+@code{kill-new} functie}.)
 @end iftex
 @ifinfo
 @noindent
-(@xref{kill-new function, , The @code{kill-new} function}, for information
-about @code{and}.)
+(@xref{kill-new functie, , De @code{kill-new} functie}, voor informatie over
+@code{and}.)
 @end ifinfo
 
 Here is a short test of the @code{defuns-per-range} function.  First,
