@@ -284,7 +284,7 @@ van elk hoofdstuk.
 * Regexp zoeken::            Reguliere expressie zoekopdrachten
 * Woorden tellen::           Een terugblik op herhaling en regexps.
 * Woorden in een defun::     Woorden tellen in een @code{defun}.
-* Een grafiek klaarmaken::   Een prototype grafiek print functie.
+* Een grafiek voorbereiden::  Een prototype grafiek print functie.
 * Initialisatie van Emacs::  Hoe een @file{.emacs} bestand te schrijven.
 * Debuggen.::                Hoe Emacs Lisp debuggers te draaien.
 * Conclusie::                Nu heb je de basis.
@@ -768,7 +768,7 @@ Woorden tellen in een @code{defun}
                                @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
-* lengths-list-file::        Een lijst met de lengtes van veel definities.
+* lengte-lijst-bestand::     Een lijst met de lengtes van veel definities.
 * Enkele bestanden::         Tellen in definities in verschillende 
                                bestanden.
 * Enkele bestanden recursief::  Recursief tellen in verschillende bestanden.
@@ -791,7 +791,7 @@ De data voorbereiden om in een grafiek te tonen
 * Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 
-Een grafiek klaarmaken
+Een grafiek voorbereiden
 
 
 
@@ -10183,7 +10183,7 @@ testen, ziet er zo uit:
 @group
 (while @var{test-of-lijst-leeg-is}
   @var{body}@dots{}
-  @var{set-lijst-op-cdr-van-lijst})
+  @var{zet-lijst-op-cdr-van-lijst})
 @end group
 @end smallexample
 
@@ -11959,7 +11959,7 @@ Documentation Format}.
 Zoekopdrachten met reguliere expressies worden uitgebreid gebruikt in
 Emacs. De twee functies @code{forward-sentence} en @code{forward-paragraph}
 illustreren deze zoekopdrachten goed. Zij gebruiken reguliere expressies om
-uit te zoeken waarheen de point te bewegen. De uitdrukking ``reguliere
+uit te zoeken waarheen de point te verplaatsen. De uitdrukking ``reguliere
 expressie'' wordt vaak geschreven als ``regexp''.
 
 Reguliere expressie zoekopdrachten zijn beschreven in @ref{Regexp Search, ,
@@ -12869,7 +12869,7 @@ Het tweede deel van de body van de @code{let*} behandelt de voorwaartse
 beweging. Het is een @code{while} loop dit zichzelf herhaalt zolang de waard
 van @code{arg} groter is dan nul. In de meest gebruikte manier van de
 functie is de waarde van het argument 1, en wordt de body van de
-@code{while} loop exact een keer geëvalueerd, en beweegt de cursor een
+@code{while} loop exact een keer geëvalueerd, en verplaatst de cursor een
 paragraaf voorwaarts.
 
 @ignore
@@ -13367,8 +13367,8 @@ van de @code{while} loop moet naar waar testen zolang point voorwaarts moet
 springen, en onwaar wanneer point aan het einde van de region is.
 
 We zouden @code{(forward-word 1)} kunnen gebruiken om point woord voor woord
-voorwaarts te bewegen, maar het is makkelijker om te kijken wat Emacs als
-``woord'' identificeert, wanneer we een reguliere expressie zoekopdracht
+voorwaarts te verplaatsen, maar het is makkelijker om te kijken wat Emacs
+als ``woord'' identificeert, wanneer we een reguliere expressie zoekopdracht
 gebruiken.
 
 Een reguliere expressie zoekopdracht die het patroon vindt waarvoor het
@@ -14117,21 +14117,22 @@ vraagteken. Doe het nog een keer met recursie.
 
 @node Woorden in een defun
 @chapter Woorden tellen in een @code{defun}
-@cindex Counting words in a @code{defun}
-@cindex Word counting in a @code{defun}
+@cindex Woorden tellen in een @code{defun}
+@cindex Woorden tellen in een @code{defun}
 
-Our next project is to count the number of words in a function definition.
-Clearly, this can be done using some variant of @code{@value{COUNT-WORDS}}.
-@xref{Counting Words, , Counting via Repetition and Regexps}.  If we are
-just going to count the words in one definition, it is easy enough to mark
-the definition with the @kbd{C-M-h} (@code{mark-defun}) command, and then
-call @code{@value{COUNT-WORDS}}.
+Ons volgende project is het tellen van het aantal woorden in een
+functiedefinitie. Het is duidelijk dat dit kan met een variant van
+@code{@value{TEL-WOORDEN}}. @xref{Woorden tellen, , Tellen via repetitie en
+regexps}. Wanneer we de woorden gaan tellen in éénn definitie, is het
+makkelijk genoeg om de definitie met het commando @kbd{C-M-h}
+(@code{mark-defun}) te markeren en dan @code{@value{TEL-WOORDEN}} aan te
+roepen.
 
-However, I am more ambitious: I want to count the words and symbols in every
-definition in the Emacs sources and then print a graph that shows how many
-functions there are of each length: how many contain 40 to 49 words or
-symbols, how many contain 50 to 59 words or symbols, and so on.  I have
-often been curious how long a typical function is, and this will tell.
+Ik ben echter meer ambitieus: ik wil de woorden en symbolen tellen in elke
+definitie in de Emacs broncode en dan een grafiek tonen die laat zien
+hoeveel functies er zijn van elke lengte: hoeveel bevatten 40 tot 49 woorden
+of symbolen, hoeveel bevatten 50 tot 59 symbolen, enzovoorts. Ik ben vaak
+nieuwsgierig hoe lang een typische functie is, en dit gaat het vertellen.
 
 @menu
 * Verdeel en heers::         Verdeel en heers
@@ -14141,7 +14142,7 @@ often been curious how long a typical function is, and this will tell.
                                @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
-* lengths-list-file::        Een lijst met de lengtes van veel definities.
+* lengte-lijst-bestand::     Een lijst met de lengtes van veel definities.
 * Enkele bestanden::         Tellen in definities in verschillende 
                                bestanden.
 * Enkele bestanden recursief::  Recursief tellen in verschillende bestanden.
@@ -14154,49 +14155,51 @@ often been curious how long a typical function is, and this will tell.
 @unnumberedsec Verdeel en heers
 @end ifnottex
 
-Described in one phrase, the histogram project is daunting; but divided into
-numerous small steps, each of which we can take one at a time, the project
-becomes less fearsome.  Let us consider what the steps must be:
+In één zin beschreven lijkt dit histogram project ontmoedigend, maar
+opgedeeld in talrijke kleine stappen, die we een voor een kunnen zetten
+wordt dit project minder angstaanjagend. Laten we overwegen wat de stappen
+moeten zijn:
 
 @itemize @bullet
 @item
-First, write a function to count the words in one definition.  This includes
-the problem of handling symbols as well as words.
+Ten eerste schrijf een functie die de woorden in één definitie telt. Dit
+bevat het probleem om zowel symbolen als woorden te behandelen.
 
 @item
-Second, write a function to list the number of words in each function in a
-file.  This function can use the @code{count-words-in-defun} function.
+Ten tweede schrijf een functie die het aantal woorden in elke functie in een
+bestand opsomt. Deze functie kan de functie @code{tel-woorden-in-defun}
+gebruiken.
 
 @item
-Third, write a function to list the number of words in each function in each
-of several files.  This entails automatically finding the various files,
-switching to them, and counting the words in the definitions within them.
+Ten derde, schrijf een functie die het aantal woorden in elke functie in elk
+van een aantal bestanden opsomt. Dit bevat automatisch vinden van diverse
+bestanden, naar ze schakelen en de woorden in de definities in ze tellen.
 
 @item
-Fourth, write a function to convert the list of numbers that we created in
-step three to a form that will be suitable for printing as a graph.
+Ten vierde, schrijf een functie die de lijst met getallen die we in stap 3
+hebben gemaakt omzet in een vorm die geschikt is om als grafiek te tonen.
 
 @item
-Fifth, write a function to print the results as a graph.
+Ten vijfde, schrijf een functie die de resultaten als grafiek toont.
 @end itemize
 
-This is quite a project! But if we take each step slowly, it will not be
-difficult.
+Dit is een behoorlijk project! Maar als we elke stap langzaam doen, is het
+niet moeilijk.
 
 @node Woorden en symbolen
-@section What to Count?
-@cindex Words and symbols in defun
+@section Wat te tellen?
+@cindex Woorden en symbolen in defun
 
-When we first start thinking about how to count the words in a function
-definition, the first question is (or ought to be) what are we going to
-count? When we speak of ``words'' with respect to a Lisp function
-definition, we are actually speaking, in large part, of symbols.  For
-example, the following @code{multiply-by-seven} function contains the five
-symbols @code{defun}, @code{multiply-by-seven}, @code{number}, @code{*}, and
-@code{7}.  In addition, in the documentation string, it contains the four
-words @samp{Multiply}, @samp{NUMBER}, @samp{by}, and @samp{seven}.  The
-symbol @samp{number} is repeated, so the definition contains a total of ten
-words and symbols.
+Wanneer we beginnen met nadenken over hoe de woorden in een functiedefinitie
+te tellen, is de eerste vraag (of zou dat moeten zijn) wat gaan we tellen?
+Wanneer we over ``woorden'' spreken met betrekking tot een Lisp
+functiedefinitie, dan spreken we feitelijk grotendeels over
+symbolen. Bijvoorbeeld de volgende @code{vermenigvuldig-met-zeven} functie
+bevat vijf de symbolen @code{defun}, @code{vermenigvuldig-met-zeven},
+@code{getal}, @code{*} en @code{7}. Daarnaast bevat het in de
+documentatiestring de vier woorden @samp{Vermenigvuldig}, @samp{GETAL},
+@samp{met} en @samp{zeven}. Het woord @samp{getal} wordt herhaald, zodat de
+definitie in totaal tien woorden en symbolen bevat.
 
 @smallexample
 @group
@@ -14207,178 +14210,185 @@ words and symbols.
 @end smallexample
 
 @noindent
-However, if we mark the @code{multiply-by-seven} definition with @kbd{C-M-h}
-(@code{mark-defun}), and then call @code{@value{COUNT-WORDS}} on it, we will
-find that @code{@value{COUNT-WORDS}} claims the definition has eleven words,
-not ten! Something is wrong!
+Als we echter de @code{vermenigvuldig-met-zeven} definitie met @kbd{C-M-h}
+(@code{mark-defun}) markeren en dan @code{@value{TEL-WOORDEN}} er op
+aanroepen, dan zien we dat @code{@value{TEL-WOORDEN}} zegt dat de definitie
+elf woorden bevat, niet tien! Er is duidelijk iets fout.
 
-The problem is twofold: @code{@value{COUNT-WORDS}} does not count the
-@samp{*} as a word, and it counts the single symbol,
-@code{multiply-by-seven}, as containing three words.  The hyphens are
-treated as if they were interword spaces rather than intraword connectors:
-@samp{multiply-by-seven} is counted as if it were written @samp{multiply by
-seven}.
+Het probleem is tweevoudig: @code{@value{TEL-WOORDEN}} telt niet de @samp{*}
+als woord en het telt het enkele symbool @code{vermenigvuldig-met-zeven} als
+drie woorden. De koppeltekens worden behandeld alsof het spaties tussen de
+woorden zijn in plaats van een verbinding tussen de woorden:
+@samp{vermenigvuldig-met-zeven} wordt geteld alsof er @samp{vermenigvuldig
+met zeven} staat.
 
-The cause of this confusion is the regular expression search within the
-@code{@value{COUNT-WORDS}} definition that moves point forward word by
-word.  In the canonical version of @code{@value{COUNT-WORDS}}, the regexp
-is:
+De oorzaak van deze verwarring is de reguliere expressie zoekopdracht in de
+@code{@value{TEL-WOORDEN}} definitie die point woord voor woord voorwaarts
+verpaatst. In de oorspronkelijke versie van @code{@value{TEL-WOORDEN}} is de
+regexp: 
 
 @smallexample
 "\\w+\\W*"
 @end smallexample
 
 @noindent
-This regular expression is a pattern defining one or more word constituent
-characters possibly followed by one or more characters that are not word
-constituents.  What is meant by ``word constituent characters'' brings us to
-the issue of syntax, which is worth a section of its own.
+Deze reguliere expressie is een patroon dat een of meer woord-vormende
+letters mogelijk gevolgd door een of meer niet woord-vormende letters
+definieert. Wat bedoeld wordt met ``woord-vormende letters'' brengt ons bij
+het probleem van de syntax, wat een aparte sectie waard is.
 
 @node Syntax
-@section What Constitutes a Word or Symbol?
-@cindex Syntax categories and tables
+@section Wat vormt een woord of symbool?
+@cindex Syntax categorieën en tabellen
 
-Emacs treats different characters as belonging to different @dfn{syntax
-categories}.  For example, the regular expression, @samp{\\w+}, is a pattern
-specifying one or more @emph{word constituent} characters.  Word constituent
-characters are members of one syntax category.  Other syntax categories
-include the class of punctuation characters, such as the period and the
-comma, and the class of whitespace characters, such as the blank space and
-the tab character.  (For more information, @pxref{Syntax Tables, , Syntax
-Tables, elisp, The GNU Emacs Lisp Reference Manual}.)
+Emacs behandelt verschillende karakters als behorend bij verschillende
+@dfn{syntax categorieën}. De reguliere expressie @samp{\\w+} bijvoorbeeld is
+ene patroon dat een of meer woord-vormende karakters
+specificeert. Woord-vormende karakters zijn leden van een syntax
+categorie. Andere syntax categorieën bevatten de klasse van leestekens,
+zoals de punt en komma, en de klasse witte ruimte karakters zoals de spatie
+en het tab-karakter. (Voor meer informatie @pxref{Syntax Tables, , Syntax
+Tables, elisp, The GNU Emacs Lisp Reference Manual}.))
 
-Syntax tables specify which characters belong to which categories.  Usually,
-a hyphen is not specified as a word constituent character.  Instead, it is
-specified as being in the class of characters that are part of symbol names
-but not words.  This means that the @code{@value{COUNT-WORDS}} function
-treats it in the same way it treats an interword white space, which is why
-@code{@value{COUNT-WORDS}} counts @samp{multiply-by-seven} as three words.
+Syntax tabellen specificeren welke karakters tot welke categorie
+behoren. Meestal is een koppelteken niet gespecificeerd als een
+woord-vormend karakter. In plaats daarvan is het gespecificeerd als
+onderdeel van de klasse van karakters die deel zijn van symboolnamen maar
+niet woorden. Dit betekent dat de functie @code{@value{TEL-WOORDEN}} het op
+dezelfde manier behandelt als het spaties tussen woorden behandelt en dat is
+waarom @code{@value{TEL-WOORDEN}} @samp{vermenigvuldig-met-zeven} als drie
+woorden telt.
 
-There are two ways to cause Emacs to count @samp{multiply-by-seven} as one
-symbol: modify the syntax table or modify the regular expression.
+Er zijn twee manieren die zorgen dat @samp{vermenigvuldig-met-zeven} als één
+symbool telt: de syntax tabel aanpassen of de reguliere expressie aanpassen.
 
-We could redefine a hyphen as a word constituent character by modifying the
-syntax table that Emacs keeps for each mode.  This action would serve our
-purpose, except that a hyphen is merely the most common character within
-symbols that is not typically a word constituent character; there are
-others, too.
+We kunnen een koppelteken als woord-vormend karakter herdefiniëren door de
+syntax tabel aan te passen die Emacs voor elke mode bijhoudt. Deze actie zou
+ons doel dienen, behalve dat een koppelteken slechts een veel gebruikt
+karakter binnen symbolen is dat niet typisch een woord-vormend karakter is,
+er zijn er ook andere.
 
-Alternatively, we can redefine the regexp used in the
-@code{@value{COUNT-WORDS}} definition so as to include symbols.  This
-procedure has the merit of clarity, but the task is a little tricky.
+We kunnen ook de regexp herdefiniëren die wordt gebruikt in de
+@code{@value{TEL-WOORDEN}} zodat die ook symbolen bevat. Deze methode heeft
+de waarde van duidelijkheid maar die taak is een beetje lastig.
 
 @need 1200
-The first part is simple enough: the pattern must match at least one
-character that is a word or symbol constituent.  Thus:
+Het eerste deel eenvoudig genoeg: het patroon moet minstens één karakter
+matchen dat een woord of symbool vormt. Dus:
 
 @smallexample
 "\\(\\w\\|\\s_\\)+"
 @end smallexample
 
 @noindent
-The @samp{\\(} is the first part of the grouping construct that includes the
-@samp{\\w} and the @samp{\\s_} as alternatives, separated by the
-@samp{\\|}.  The @samp{\\w} matches any word-constituent character and the
-@samp{\\s_} matches any character that is part of a symbol name but not a
-word-constituent character.  The @samp{+} following the group indicates that
-the word or symbol constituent characters must be matched at least once.
+De @samp{\\(} is het eerste van de groeperende constructie  die de
+@samp{\\w} en de @samp{\\s_} als alternatieven bevat, geschieden door de
+@samp{\\|}. De @samp{\\w} matcht elk woord-vormend karakter en e @samp{\\s_}
+matcht elke karakter dat onderdeel is van een symboolnaam maar geen
+woord-vormend karakter is. De @samp{+} die op de groep volgt geeft aan dat
+het woord- of symboolvormend karakter tenminste eenmaal moet worden
+gematcht.x
 
-However, the second part of the regexp is more difficult to design.  What we
-want is to follow the first part with optionally one or more characters that
-are not constituents of a word or symbol.  At first, I thought I could
-define this with the following:
+Het tweede van de regexp is echter moeilijker te maken. Wat we willen is het
+eerste deel op te volgen met optioneel een of meer karakters die geen woord
+of symbool vormen. In eerste instantie dacht ik dat ik dit met het volgende
+kon doen: 
 
 @smallexample
 "\\(\\W\\|\\S_\\)*"
 @end smallexample
 
 @noindent
-The upper case @samp{W} and @samp{S} match characters that are @emph{not}
-word or symbol constituents.  Unfortunately, this expression matches any
-character that is either not a word constituent or not a symbol
-constituent.  This matches any character!
+De hoofdletters @samp{W} en @samp{S} matchen karakters die GEEN woord- of
+symbool vormen. Helaas matcht deze expressie elke karakter dat of niet
+woord-vormend of niet symbool-vormend is. Het matcht elk karakter!
 
-I then noticed that every word or symbol in my test region was followed by
-white space (blank space, tab, or newline).  So I tried placing a pattern to
-match one or more blank spaces after the pattern for one or more word or
-symbol constituents.  This failed, too.  Words and symbols are often
-separated by whitespace, but in actual code parentheses may follow symbols
-and punctuation may follow words.  So finally, I designed a pattern in which
-the word or symbol constituents are followed optionally by characters that
-are not white space and then followed optionally by white space.
+Daarna merkte ik op dat elk woord of symbool in mijn test-region wordt
+gevold door witte ruimte (spatie, tab of nieuwe regel). Daarom probeerde een
+patroon dat een of meer spaties matcht achter het patroon voor een of meer
+woord- of symboolvormende karakters te plaatsten. Dit mislukte ook. Woorden
+en symbolen zijn vaak gescheiden door witte ruimte, maar in de code mogen
+haakjes op symbolen volgen en leestekens op woorden. Daarom maakte
+uiteindelijk ene patroon waarin woord- of symboolvormende karakters worden
+gevolgd door optionele karakters die geen witten ruimte zijn en dan
+optioneel gevold door witte ruimte.
 
 @need 800
-Here is the full regular expression:
+Hier is de volledige reguliere expressie:
 
 @smallexample
 "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
 @end smallexample
 
 @node count-words-in-defun
-@section The @code{count-words-in-defun} Function
-@cindex Counting words in a @code{defun}
+@section De @code{tel-woorden-in-defun} functie
+@cindex Woorden tellen in een @code{defun}
 
-We have seen that there are several ways to write a
-@code{count-words-region} function.  To write a @code{count-words-in-defun},
-we need merely adapt one of these versions.
+We hebben gezien dat er verschillende manieren zijn om een functie
+@code{tel-woorden-region} te schrijven. Om een @code{tel-woorden-in-defun}
+te schrijven, hoeven we slechts een van die versies aan te passen.
 
-The version that uses a @code{while} loop is easy to understand, so I am
-going to adapt that.  Because @code{count-words-in-defun} will be part of a
-more complex program, it need not be interactive and it need not display a
-message but just return the count.  These considerations simplify the
-definition a little.
+De versie die een @code{while} loop gebruikt is makkelijk te begrijpen,
+daarom ga ik die aanpassen. Omdat @code{tel-woorden-in-defun} onderdeel
+wordt van een meer complex programma, hoeft het niet interactief te zijn en
+hoeft het geen boodschap te tonen, maar slecht de telling teruggeven. Deze
+overwegingen vereenvoudigen de definitie een beetje.
 
-On the other hand, @code{count-words-in-defun} will be used within a buffer
-that contains function definitions.  Consequently, it is reasonable to ask
-that the function determine whether it is called when point is within a
-function definition, and if it is, to return the count for that definition.
-This adds complexity to the definition, but saves us from needing to pass
-arguments to the function.
+Anderzijds, @code{tel-woorden-in-defun} wordt gebruikt in een buffer dat
+functiedefinities bevat. Daarom is het redelijk te vragen dat de functie
+vaststelt of het wordt aangeroepen met point binnen een functiedefinitie, en
+zo ja, de telling voor die definitie terug te geven. Dit voegt complexiteit
+toe aan de definitie, maar redt ons van de noodzaak om argumenten aan de
+functie door te geven.
 
 @need 1250
-These considerations lead us to prepare the following template:
+Deze overwegingen leiden ons tot het voorbereiden van het volgende sjabloon:
 
 @smallexample
 @group
-(defun count-words-in-defun ()
-  "@var{documentation}@dots{}"
-  (@var{set up}@dots{}
+(defun tel-woorden-in-defun ()
+  "@var{documentatie}@dots{}"
+  (@var{opzetten}@dots{}
      (@var{while loop}@dots{})
-   @var{return count})
+   @var{geef telling terug})
 @end group
 @end smallexample
 
 @noindent
-As usual, our job is to fill in the slots.
+Zoals gebruikelijk is het onze taak de slots in te vullen.
 
-First, the set up.
+Eerst het opzetten
 
-We are presuming that this function will be called within a buffer
-containing function definitions.  Point will either be within a function
-definition or not.  For @code{count-words-in-defun} to work, point must move
-to the beginning of the definition, a counter must start at zero, and the
-counting loop must stop when point reaches the end of the definition.
+Wij gaan er van uit dat deze functie wordt aangeroepen binnen een buffer dat
+functiedefinities bevat. Point is in een functiedefinitie of niet. Om
+@code{tel-woorden-in-defun} te laten werken moet point naar het begin van de
+definitie verplaatsen, een teller moet bij nul beginnen en de tellende loop
+moet stoppen wanneer point het einde van de definitie bereikt.
 
-The @code{beginning-of-defun} function searches backwards for an opening
-delimiter such as a @samp{(} at the beginning of a line, and moves point to
-that position, or else to the limit of the search.  In practice, this means
-that @code{beginning-of-defun} moves point to the beginning of an enclosing
-or preceding function definition, or else to the beginning of the buffer.
-We can use @code{beginning-of-defun} to place point where we wish to start.
+De functie @code{beginning-of-defun} zoekt achterwaarts naar een
+openingsscheidingsteken zoals een @samp{(} aan het begin van de regel en
+verplaatst point naar die positie of anders naar de begrenzing van de
+zoekopdracht. In de praktijk betekent dit dat @code{beginning-of-defun} pint
+naar het begin van een buitenliggende of voorgaande functiedefinitie
+verplaatst, of anders naar het begin van het buffer. De kunnen
+@code{beginning-of-defun} gebruiken om de point daar neer te zetten waar wij
+willen beginnen.
 
-The @code{while} loop requires a counter to keep track of the words or
-symbols being counted.  A @code{let} expression can be used to create a
-local variable for this purpose, and bind it to an initial value of zero.
+De @code{while} loop vereist een teller om het aantal getelde woorden of
+symbolen bij te houden. Een @code{let} expressie kan worden gebruikt om een
+lokale variabele voor dit doel te maken en te binnen aan een initiële waarde
+van nul.
 
-The @code{end-of-defun} function works like @code{beginning-of-defun} except
-that it moves point to the end of the definition.  @code{end-of-defun} can
-be used as part of an expression that determines the position of the end of
-the definition.
+De functie @code{end-of-defun} werkt net als de @code{beginning-of-defun}
+behalve dat het point naar het einde van de definitie
+verplaatst. @code{end-of-defun} kan worden gebruikt als onderdeel van een
+expressie die de positie van het einde van de definitie vaststelt.
 
-The set up for @code{count-words-in-defun} takes shape rapidly: first we
-move point to the beginning of the definition, then we create a local
-variable to hold the count, and finally, we record the position of the end
-of the definition so the @code{while} loop will know when to stop looping.
+Het opzetten van de @code{tel-woorden-in-defun} begint al snel vorm te
+krijgen: eerst verplaatsten we point naar het begin van de definitie,
+vervolgens maken we een lokale variable die telling bewaart en tenslotte
+registeren we de positie van het einde van de definitie zodat de
+@code{while} loop weet wanneer te stoppen met loopen.
 
 @need 1250
 De code ziet er zo uit:
@@ -14386,185 +14396,191 @@ De code ziet er zo uit:
 @smallexample
 @group
 (beginning-of-defun)
-(let ((count 0)
-      (end (save-excursion (end-of-defun) (point))))
+(let ((telling 0)
+      (einde (save-excursion (end-of-defun) (point))))
 @end group
 @end smallexample
 
 @noindent
-The code is simple.  The only slight complication is likely to concern
-@code{end}: it is bound to the position of the end of the definition by a
-@code{save-excursion} expression that returns the value of point after
-@code{end-of-defun} temporarily moves it to the end of the definition.
+De code is eenvoudig. De enige kleine complicatie zal waarschijnlijk
+betrekking hebben op @code{einde}: het is gebonden aan de positie van het
+einde van de definitie door een @code{save-excursion} expressie die de
+waarde van point na @code{end-of-defun} tijdelijk verplaatst naar het einde
+van de definitie.
 
-The second part of the @code{count-words-in-defun}, after the set up, is the
+Het tweede deel van de @code{tel-woorden-in-defun}, na het opzetten, is de
 @code{while} loop.
 
-The loop must contain an expression that jumps point forward word by word
-and symbol by symbol, and another expression that counts the jumps.  The
-true-or-false-test for the @code{while} loop should test true so long as
-point should jump forward, and false when point is at the end of the
-definition.  We have already redefined the regular expression for this, so
-the loop is straightforward:
+De loop moet een expressie bevatten die point woord voor woord en symbool
+voor symbool voorwaarts laat springen, en een andere expressie die de
+sprongen telt. De waar-of-onwaar-test voor de @code{while} loop moet op waar
+testen zolang als point voorwaarts moet springen, en op onwaar wanneer point
+aan het einde van de definitie is. We hebben hiervoor al een reguliere
+expressie aangepast, zodat de loop makkelijk is.
 
 @smallexample
 @group
-(while (and (< (point) end)
+(while (and (< (point) einde)
             (re-search-forward
-             "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*" end t))
-  (setq count (1+ count)))
+             "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*" einde t))
+  (setq telling (1+ telling)))
 @end group
 @end smallexample
 
-The third part of the function definition returns the count of words and
-symbols.  This part is the last expression within the body of the @code{let}
-expression, and can be, very simply, the local variable @code{count}, which
-when evaluated returns the count.
+Het derde deel van de functiedefinitie geeft de telling van de woorden en
+symbolen terug. Dit deel is de laatste expressie in de body van de
+@code{let} en kan eenvoudigweg de lokale variabele @code{telling} zijn, die
+geëvalueerd de telling teruggeeft.
 
 @need 1250
-Put together, the @code{count-words-in-defun} definition looks like this:
+Samengevoegd ziet de @code{tel-woorden-in-defun} er zo uit:
 
 @findex count-words-in-defun
 @smallexample
 @group
-(defun count-words-in-defun ()
-  "Return the number of words and symbols in a defun."
+(defun tel-woorden-in-defun ()
+  "Geef het aantal woorden en symbolen in een defun terug."
   (beginning-of-defun)
-  (let ((count 0)
-        (end (save-excursion (end-of-defun) (point))))
+  (let ((telling 0)
+        (einde (save-excursion (end-of-defun) (point))))
 @end group
 @group
     (while
-        (and (< (point) end)
+        (and (< (point) einde)
              (re-search-forward
               "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
-              end t))
-      (setq count (1+ count)))
-    count))
+              einde t))
+      (setq telling (1+ telling)))
+    telling))
 @end group
 @end smallexample
 
-How to test this? The function is not interactive, but it is easy to put a
-wrapper around the function to make it interactive; we can use almost the
-same code as for the recursive version of @code{@value{COUNT-WORDS}}:
+Hoe dit te testen? De functie is niet interactief, maar het is makkelijk om
+een wrapper om de de functie te zetten die het interactief maakt. Wij kunnen
+bijna dezelfde code gebruiken als voor de recursieve versie van
+@code{@value{TEL-WOORDEN}}:
 
 @smallexample
 @group
-;;; @r{Interactive version.}
-(defun count-words-defun ()
-  "Number of words and symbols in a function definition."
+;;; @r{Interactieve versie.}
+(defun tel-woorden-defun ()
+  "Aantal woorden en symbolen in een functiedefinitie."
   (interactive)
   (message
-   "Counting words and symbols in function definition ... ")
+   "Tel woorden en symbolen in functiedefinitie ... ")
 @end group
 @group
-  (let ((count (count-words-in-defun)))
+  (let ((telling (tel-woorden-in-defun)))
     (cond
-     ((zerop count)
+     ((zerop telling)
       (message
-       "The definition does NOT have any words or symbols."))
+       "The definitie heeft GEEN woorden of symbolen."))
 @end group
 @group
-     ((= 1 count)
+     ((= 1 telling)
       (message
-       "The definition has 1 word or symbol."))
+       "De definitie heeft 1 woord of symbool."))
      (t
       (message
-       "The definition has %d words or symbols." count)))))
+       "The definitie heeft %d woorden of symbolen." telling)))))
 @end group
 @end smallexample
 
 @need 800
 @noindent
-Let's reuse @kbd{C-c =} as a convenient key binding:
+Laten we @kbd{C-c =} hergebruiken als een handige keybinding:
 
 @smallexample
-(keymap-global-set "C-c =" 'count-words-defun)
+(keymap-global-set "C-c =" 'tel-woorden-defun)
 @end smallexample
 
-Now we can try out @code{count-words-defun}: install both
-@code{count-words-in-defun} and @code{count-words-defun}, and set the key
-binding.  Then copy the following to an Emacs Lisp buffer (like, for
-instance, @file{*scratch*}), place the cursor within the definition, and use
-the @kbd{C-c =} command.
+Nu kunnen we @code{tel-woorden-defun} uitproberen: installeer zowel
+@code{tel-woorden-in-defun} als @code{tel-woorden-defun} en zet de
+keybinding. Kopieer dat het volgende naar een Emacs Lisp buffer (zoals
+bijvoorbeeld @file{*scratch*}), plaats de cursor in de functie en gebruik
+het @kbd{C-c =} commando.
 
 @smallexample
 @group
-(defun multiply-by-seven (number)
-  "Multiply NUMBER by seven."
-  (* 7 number))
+(defun vermenigvuldig-met-zeven (getal)
+  "Vermenigvuldig GETAL met zeven."
+  (* 7 getal))
      @result{} 10
 @end group
 @end smallexample
 
 @noindent
-Success! The definition has 10 words and symbols.
+Succes! De definitie heeft 10 woorden en symbolen.
 
-The next problem is to count the numbers of words and symbols in several
-definitions within a single file.
+Het volgende probleem is om het aantal woorden en symbolen in meerdere
+definities in een enkel bestand te tellen.
 
 @node Enkele defuns
-@section Count Several @code{defuns} Within a File
+@section Tel verschillende @code{defuns} in een bestand
 
-A file such as @file{simple.el} may have a hundred or more function
-definitions within it.  Our long term goal is to collect statistics on many
-files, but as a first step, our immediate goal is to collect statistics on
-one file.
+Een bestand zoals @file{simple.el} kan honderd of meer functiedefinities
+bevatten. Ons langetermijndoel is om statistieken over veel bestanden de
+verzamelen, maar als eerste stap is ons huidige doel om de statistieken over
+een bestand te verzamelen.
 
-The information will be a series of numbers, each number being the length of
-a function definition.  We can store the numbers in a list.
+De informatie bestaat uit een reeks getallen, elk getal is de lengte van een
+functiedefinitie.
 
-We know that we will want to incorporate the information regarding one file
-with information about many other files; this means that the function for
-counting definition lengths within one file need only return the list of
-lengths.  It need not and should not display any messages.
+We weten dat we de informatie met betrekking tot een bestand willen
+incorporeren in de informatie van veel andere bestanden. Dit betekent dat de
+functie voor het tellen van definitie-lengtes binnen een bestand alleen een
+lijst met de lengtes hoeft terug te geven. Het hoeft geen boodschappen te
+tonen en moet dat ook niet doen.
 
-The word count commands contain one expression to jump point forward word by
-word and another expression to count the jumps.  The function to return the
-lengths of definitions can be designed to work the same way, with one
-expression to jump point forward definition by definition and another
-expression to construct the lengths' list.
+Het woord-tel commando bevat een expressie die point woord voor woord
+voorwaarts laat springen en een andere die de sprongen telt. De functie die
+de lengtes van de definities teruggeeft kan op een vergelijkbare manier
+gemaakt worden, met een expressie die point definitie voor definitie
+voorwaarts springt en een andere expressie die de lijst met lengtes
+construeert.
 
-This statement of the problem makes it elementary to write the function
-definition.  Clearly, we will start the count at the beginning of the file,
-so the first command will be @code{(goto-char (point-min))}.  Next, we start
-the @code{while} loop; and the true-or-false test of the loop can be a
-regular expression search for the next function definition---so long as the
-search succeeds, point is moved forward and then the body of the loop is
-evaluated.  The body needs an expression that constructs the lengths' list.
-@code{cons}, the list construction command, can be used to create the list.
-That is almost all there is to it.
+Deze formulering van het probleem maakt het eenvoudig om de functiedefinitie
+te schrijven. We beginnen de telling aan het begin van het bestand, dus het
+eerste commando wordt @code{(goto-char (point-min))}. Vervolgens starten we
+de @code{while} loop. De waar-of-onwaar-test van de loop kan een reguliere
+expressie zijn die zoekt naar de volgende functiedefinitie---zolang de
+zoekopdracht slaagt, wordt point voorwaarts verplaatst en de body van de
+loop geëvalueerd. De body heeft een expressie nodig die de lijst met lengtes
+maakt. @code{cons}, het lijst-constructie commando kan gebruikt worden om de
+lijst te maken. Dat is bijna alles wat er te zeggen is.
 
 @need 800
-Here is what this fragment of code looks like:
+Hier is hoe dit codefragment er uit ziet:
 
 @smallexample
 @group
 (goto-char (point-min))
 (while (re-search-forward "^(defun" nil t)
-  (setq lengths-list
-        (cons (count-words-in-defun) lengths-list)))
+  (setq lengtes-lijst
+        (cons (count-words-in-defun) lengtes-lijst)))
 @end group
 @end smallexample
 
-What we have left out is the mechanism for finding the file that contains
-the function definitions.
+Wat we overgeslagen hebben is het mechanisme om het bestanden te vinden dat
+de functiedefinities bevat.
 
-In previous examples, we either used this, the Info file, or we switched
-back and forth to some other buffer, such as the @file{*scratch*} buffer.
+In de voorgaande voorbeelden gebruikten we of dit, het Info bestand, of we
+schakelden heen en weer naar een ander buffer, zoals het @file{*scratch*}
+buffer.
 
-Finding a file is a new process that we have not yet discussed.
+Een bestand vinden is een nieuw proces dat we nog niet eerder besproken
+hebben.
 
 @node Een bestand vinden
 @section Een bestand vinden
 @cindex Een bestand vinden
 
-To find a file in Emacs, you use the @kbd{C-x C-f} (@code{find-file})
-command.  This command is almost, but not quite right for the lengths
-problem.
+Om in Emacs een bestand te vinden, gebruik je het @kbd{C-x C-f}
+(@code{find-file}) commando. Dit commando is bijna, maar niet helemaal
+geschikt voor het lengte probleem.
 
 @need 1200
-Let's look at the source for @code{find-file}:
+Laten we naar de broncode van @code{find-file} kijken:
 
 @smallexample
 @group
@@ -14578,10 +14594,10 @@ creating one if none already exists."
 @end smallexample
 
 @noindent
-(The most recent version of the @code{find-file} function definition permits
-you to specify optional wildcards to visit multiple files; that makes the
-definition more complex and we will not discuss it here, since it is not
-relevant.  You can see its source using either @kbd{M-.}
+(De meest recente versie van de @code{find-file} functiedefinitie staat je
+toe dat je optionele wildcards specificeert om meerder files te
+bezoeken. Dat maakt de definitie meer complex en dat bespreken we hier niet,
+omdat het niet relevant is. Je kunt de broncode zien met hetzij @kbd{M-.}
 (@code{xref-find-definitions}) or @kbd{C-h f} (@code{describe-function}).)
 
 @ignore
@@ -14607,141 +14623,146 @@ automatically choosing a major mode, use \\[find-file-literally]."
       (switch-to-buffer value))))
 @end ignore
 
-The definition I am showing possesses short but complete documentation and
-an interactive specification that prompts you for a file name when you use
-the command interactively.  The body of the definition contains two
-functions, @code{find-file-noselect} and @code{switch-to-buffer}.
+De definitie die ik laat zien bevat een korte maar complete documentatie en
+een interactieve specificatie die je naar een bestandsnaam vraagt wanneer je
+het commando interactief gebruikt. De body van de definitie bevat twee
+functies, @code{find-file-noselect} en @code{switch-to-buffer}.
 
-According to its documentation as shown by @kbd{C-h f} (the
-@code{describe-function} command), the @code{find-file-noselect} function
-reads the named file into a buffer and returns the buffer.  (Its most recent
-version includes an optional @var{wildcards} argument, too, as well as
-another to read a file literally and another to suppress warning messages.
-These optional arguments are irrelevant.)
+Volgens de documentatiestring die getoond wordt met @kbd{C-h f} (het
+@code{describe-function} commando), leest de functie
+@code{find-file-noselect} het genoemde bestand in in een buffer en geeft het
+buffer terug. (De meest recente versie bevat eveneens een optioneel
+@var{wildcards} argument, naast een ander om het bestand letterlijk te lezen
+en een ander om foutmeldingen te onderdrukken. Deze optionele argumenten
+zijn irrelevant.)
 
-However, the @code{find-file-noselect} function does not select the buffer
-in which it puts the file.  Emacs does not switch its attention (or yours if
-you are using @code{find-file-noselect}) to the selected buffer.  That is
-what @code{switch-to-buffer} does: it switches the buffer to which Emacs
-attention is directed; and it switches the buffer displayed in the window to
-the new buffer.  We have discussed buffer switching elsewhere.
-(@xref{Switching Buffers}.)
+De functie @code{find-file-noselect} selecteert echter geen buffer om het
+bestand in te stoppen. Emacs schakelt zijn aandacht (of de jouwe als je met
+@code{find-file-noselect}) niet naar het geselecteerde buffer. Dat is wat
+@code{switch-to-buffer} doet: het schakelt het buffer naar waar Emacs
+aandacht is gericht, en het schakelt het getoonde buffer in het window naar
+het nieuwe buffer. We hebben schakelen van buffers eerder besproken
+(@xref{Van buffer verwisselen}.)
 
-In this histogram project, we do not need to display each file on the screen
-as the program determines the length of each definition within it.  Instead
-of employing @code{switch-to-buffer}, we can work with @code{set-buffer},
-which redirects the attention of the computer program to a different buffer
-but does not redisplay it on the screen.  So instead of calling on
-@code{find-file} to do the job, we must write our own expression.
+In het histogram-project hoeven we niet elk bestand op het scherm te tonen
+wanneer het programma de lengte van elke defintie er in vaststelt. In plaats
+van @code{switch-to-buffer} te gebruiken kunnen we werken met
+@code{set-buffer}, wat de aandacht van het computerprogramma naar een ander
+buffer herleidt maar vervangt niet het scherm. Daarom moeten we in plaats
+van @code{find-file} aan te roepen om het werk te doen onze expressie zelf
+schrijven.
 
-The task is easy: use @code{find-file-noselect} and @code{set-buffer}.
+De taak is makkelijk: gebruik  @code{find-file-noselect} en
+@code{set-buffer}.
 
-@node lengths-list-file
-@section @code{lengths-list-file} in Detail
+@node lengte-lijst-bestand
+@section @code{lengte-lijst-bestand} in detail
 
-The core of the @code{lengths-list-file} function is a @code{while} loop
-containing a function to move point forward defun by defun, and a function
-to count the number of words and symbols in each defun.  This core must be
-surrounded by functions that do various other tasks, including finding the
-file, and ensuring that point starts out at the beginning of the file.  The
-function definition looks like this:
-@findex lengths-list-file
+De kern van de functie @code{lengte-lijst-bestand} is een @code{while} loop
+dat een functie bevat om point defun voor defun voorwaarts te verplaatsen en
+een functie om het aantal woorden en symbolen in elke defun te tellen. Deze
+kern moet worden omgeven door functie die verschillende andere taken doen,
+waaronder het bestand vinden en zorgen dat point start vanaf het begin van
+het bestand. De functiedefinitie ziet er zo uit:
+@findex lengte-lijst-bestand
 
 @smallexample
 @group
-(defun lengths-list-file (filename)
-  "Return list of definitions' lengths within FILE.
-The returned list is a list of numbers.
-Each number is the number of words or
-symbols in one function definition."
+(defun lengte-lijst-bestand (bestandsnaam)
+  "Geef een lijst terug met definitielengtes in BESTANDSNAAM.
+De teruggeven lijst is een lijst van getallen.
+Elk getal is een het aahtal woorden of symbolen
+in een functiedefinitie."
 @end group
 @group
-  (message "Working on `%s' ... " filename)
+  (message "Werkt aan `%s' ... " bestandsnaam)
   (save-excursion
-    (let ((buffer (find-file-noselect filename))
-          (lengths-list))
+    (let ((buffer (find-file-noselect bestandsnaam))
+          (lengte-lijst))
       (set-buffer buffer)
       (setq buffer-read-only t)
       (widen)
       (goto-char (point-min))
       (while (re-search-forward "^(defun" nil t)
-        (setq lengths-list
-              (cons (count-words-in-defun) lengths-list)))
+        (setq lengte-lijst
+              (cons (tel-woorden-in-defun) lengte-lijst)))
       (kill-buffer buffer)
-      lengths-list)))
+      lengte-lijst)))
 @end group
 @end smallexample
 
 @noindent
-The function is passed one argument, the name of the file on which it will
-work.  It has four lines of documentation, but no interactive
-specification.  Since people worry that a computer is broken if they don't
-see anything going on, the first line of the body is a message.
+De functie krijgt één argument doorgegeven, de naam van het bestand waarop
+het gaat werken. Het heeft vier regels documentatie maar geen interactieve
+specificatie. Omdat mensen bang zijn dat de computer kapot is wanneer ze
+niets zien gebeuren, bevat de eerste regel van de body een boodschap.
 
-The next line contains a @code{save-excursion} that returns Emacs's
-attention to the current buffer when the function completes.  This is useful
-in case you embed this function in another function that presumes point is
-restored to the original buffer.
+De volgende regel bevat een @code{save-excursion} die Emacs aandacht
+terugbrengt bij het huidige buffer wanneer de functie klaar is. Dit is
+nuttig wanneer je de functie in een andere functie inbed, die verwacht dat
+point wordt hersteld naar het oorspronkelijke buffer.
 
-In the varlist of the @code{let} expression, Emacs finds the file and binds
-the local variable @code{buffer} to the buffer containing the file.  At the
-same time, Emacs creates @code{lengths-list} as a local variable.
+In de varlist van de @code{let} expressie vindt Emacs het bestand en bindt
+de lokale variabele @code{buffer} aan het buffer dat het bestand
+bevat. Tegelijkertijd maakt Emacs @code{lengte-lijst} als lokale variabele.
 
-Next, Emacs switches its attention to the buffer.
+Vervolgens schakelt Emacs de aandacht naar het buffer.
 
-In the following line, Emacs makes the buffer read-only.  Ideally, this line
-is not necessary.  None of the functions for counting words and symbols in a
-function definition should change the buffer.  Besides, the buffer is not
-going to be saved, even if it were changed.  This line is entirely the
-consequence of great, perhaps excessive, caution.  The reason for the
-caution is that this function and those it calls work on the sources for
-Emacs and it is inconvenient if they are inadvertently modified.  It goes
-without saying that I did not realize a need for this line until an
-experiment went awry and started to modify my Emacs source files @dots{}
+In de volgende regel maakt Emacs het buffer read-only. In het ideale geval
+is deze regel niet nodig. Geen van de functies om woorden en symbolen te
+tellen zou het buffer moeten veranderen. En daarnaast wordt het buffer niet
+gesaved zelf wanneer het is gewijzigd. Deze regel is geheel het gevolg van
+de een grote, misschien overdreven, voorzichtigheid. De reden voor deze
+voorzichtigheid is dat de functie en de functies die het aanroept werken op
+de broncode van Emacs en het is ongemakkelijk wanneer die per ongeluk worden
+gewijzigd. Het spreekt voor zich dat ik de noodzaak voor deze regel niet
+realiseerde totdat een experiment misging en mijn Emacs broncode begon te
+wijzigen @dots{}
 
-Next comes a call to widen the buffer if it is narrowed.  This function is
-usually not needed---Emacs creates a fresh buffer if none already exists;
-but if a buffer visiting the file already exists Emacs returns that one.  In
-this case, the buffer may be narrowed and must be widened.  If we wanted to
-be fully user-friendly, we would arrange to save the restriction and the
-location of point, but we won't.
+Hierna komt de aanroep om het buffer te verbreden wanneer het is
+versmald. Deze functie is meestal niet nodig---Emacs maakt een vers buffer
+wanneer er niet al een bestaat, maar wanneer er al een buffer het bestand
+bezoekt kan het versmald zijn en moet het worden verbreed. Wanneer we
+volledig gebruikersvriendelijk willen zijn zouden we de restrictie en de
+lokatie van point opslaan, maar dat doen we niet.
 
-The @code{(goto-char (point-min))} expression moves point to the beginning
-of the buffer.
+De @code{(goto-char (point-min))} expressie verplaatst point naar het begin
+van het buffer.
 
-Then comes a @code{while} loop in which the work of the function is carried
-out.  In the loop, Emacs determines the length of each definition and
-constructs a lengths' list containing the information.
+Dan komt de @code{while} loop waarin het werk van de functie wordt
+uitgevoerd. In de loop stelt Emacs de lengte van elke definitie vast en
+construeert een lengte-lijst die de informatie bevat.
 
-Emacs kills the buffer after working through it.  This is to save space
-inside of Emacs.  My version of GNU Emacs 19 contained over 300 source files
-of interest; GNU Emacs 22 contains over a thousand source files.  Another
-function will apply @code{lengths-list-file} to each of the files.
+Na er doorheen gewerkt te hebben killt Emacs het buffer. Dit is om binnen
+Emacs ruimte te sparen. Mijn versie van GNU Emacs 19 bevat over 300
+bronbestanden die interessant zijn. GNU Emacs 22 bevat meer dan duizend
+bronbestanden. Een andere functie past @code{lengte-lijst-bestand} op elk
+bestand toe.
 
-Finally, the last expression within the @code{let} expression is the
-@code{lengths-list} variable; its value is returned as the value of the
-whole function.
+De laatste expressie in de @code{let} expressie tenslotte is de lengte-lijst
+variabele, wiens waarde wordt teruggegeven als de waarde van de gehele
+functie.
 
-You can try this function by installing it in the usual fashion.  Then place
-your cursor after the following expression and type @kbd{C-x C-e}
-(@code{eval-last-sexp}).
+Dit kun je uitproberen door het op de gebruikelijke manier te
+installeren. Plaats daarna de cursor achter de volgende expressie en typ
+@kbd{C-x C-e} (@code{eval-last-sexp}).
 
 @c !!! 22.1.1 lisp sources location here
 @smallexample
-(lengths-list-file
+(lengte-lijst-bestand
  "/usr/local/share/emacs/22.1/lisp/emacs-lisp/debug.el")
 @end smallexample
 
 @noindent
-You may need to change the pathname of the file; the one here is for GNU
-Emacs version 22.1.  To change the expression, copy it to the
-@file{*scratch*} buffer and edit it.
+Misschien moet je de padnaam van het bestand aanpassen, deze hier is voor
+GNU Emacs versie 22.1. Om de expressie te wijzigen, kopieer je die naar het
+@file{*scratch*} buffer en wijzig het.
 
 @need 1200
 @noindent
 @c We do not want to insert, so do not mention the zero prefix argument.
-Also, to see the full length of the list, rather than a truncated version,
-you may have to evaluate the following:
+En om de volledige lengte van de lijst te zien, in plaats van een ingekorte
+versie, moet je misschien het volgende evalueren:
 
 @smallexample
 (custom-set-variables '(eval-expression-print-length nil))
@@ -14749,40 +14770,42 @@ you may have to evaluate the following:
 
 @noindent
 (@xref{defcustom, , Variabelen specificeren met @code{defcustom}}. Evalueer
-daarna de @code{lengths-list-file} expressie.)
+daarna de @code{lengte-lijst-bestand
+} expressie.)
 
 @need 1200
-The lengths' list for @file{debug.el} takes less than a second to produce
-and looks like this in GNU Emacs 22:
+Het maken van de lengte-lijst voor @file{debug.el} duurt minder dan een
+seconde en ziet er zo uit in GNU Emacs 22:
 
 @smallexample
 (83 113 105 144 289 22 30 97 48 89 25 52 52 88 28 29 77 49 43 290 232 587)
 @end smallexample
 
 @need 1500
-(Using my old machine, the version 19 lengths' list for @file{debug.el} took
-seven seconds to produce and looked like this:
+(Op mijn oude machine duurde het maken van de versie 19 lengte-lijst van
+@file{debug.el} zeven seconden en ziet er zo uit:
 
 @smallexample
 (75 41 80 62 20 45 44 68 45 12 34 235)
 @end smallexample
 
 @noindent
-The newer version of @file{debug.el} contains more defuns than the earlier
-one; and my new machine is much faster than the old one.)
+De nieuwe versie van @file{debug.el} bevat meer defuns dan de eerdere, en
+mijn nieuwe machine is veel sneller dan de oude.)
 
-Note that the length of the last definition in the file is first in the
-list.
+Merk op dat de lengte van de laatste definitie in het bestand de eerste in
+de lijst is.
 
 @node Enkele bestanden
 @section Woorden tellen in  @code{defuns} in verschillende bestanden
 
-In the previous section, we created a function that returns a list of the
-lengths of each definition in a file.  Now, we want to define a function to
-return a master list of the lengths of the definitions in a list of files.
+In de vorige sectie hebben we een functie gemaakt die een lijst teruggeeft
+met de lengte van elke definitie in een bestand. Nu willen we een functie
+definieren de een hoofdlijst teruggeeft met de lengte van de definities in
+een lijst van bestanden.
 
-Working on each of a list of files is a repetitious act, so we can use
-either a @code{while} loop or recursion.
+Werken op elk bestand van een bestandenlijst is een herhalende actie, dus we
+kunnen een @code{while} loop of recursie gebruiken.
 
 @menu
 * lengths-list-many-files::  Een lijst met de lengte van defuns teruggeven.
@@ -14791,81 +14814,83 @@ either a @code{while} loop or recursion.
 
 @ifnottex
 @node lengths-list-many-files
-@unnumberedsubsec Determine the lengths of @code{defuns}
+@unnumberedsubsec De lengte van @code{defuns} vaststellen
 @end ifnottex
 
-The design using a @code{while} loop is routine.  The argument passed to the
-function is a list of files.  As we saw earlier (@pxref{Loop Example}), you
-can write a @code{while} loop so that the body of the loop is evaluated if
-such a list contains elements, but to exit the loop if the list is empty.
-For this design to work, the body of the loop must contain an expression
-that shortens the list each time the body is evaluated, so that eventually
-the list is empty.  The usual technique is to set the value of the list to
-the value of the @sc{cdr} of the list each time the body is evaluated.
+Het ontwerp met een @code{while} loop is routine. Het aan de functie
+doorgegeven argument is een lijst van bestanden. Zoals we eerder zagen
+(@pxref{Loop voorbeeld}), kan je een @code{while} loop zo schijven dat de
+body van de loop wordt geëvalueerd zo'n lijst elementen bevat, maar de loop
+verlaat wanneer de lijst leeg is. Om dit te laten werken moet de body van de
+loop een expressie bevatten die elke keer dat de body wordt geëvalueerd de
+lijst korter maakt, zodat uiteindelijk de lijst leeg is. De gebruikelijke
+techniek is om elke keer dat de body wordt geëvalueerd de waarde van de
+lijst op de waarde van de @sc{cdr} van de lijst te zetten.
 
 @need 800
-The template looks like this:
+Het sjabloon ziet er zo uit:
 
 @smallexample
 @group
 (while @var{test-of-lijst-leeg-is}
   @var{body}@dots{}
-  @var{set-lijst-op-cdr-van-lijst})
+  @var{zet-lijst-op-cdr-van-lijst})
 @end group
 @end smallexample
 
-Also, we remember that a @code{while} loop returns @code{nil} (the result of
-evaluating the true-or-false-test), not the result of any evaluation within
-its body.  (The evaluations within the body of the loop are done for their
-side effects.)  However, the expression that sets the lengths' list is part
-of the body---and that is the value that we want returned by the function as
-a whole.  To do this, we enclose the @code{while} loop within a @code{let}
-expression, and arrange that the last element of the @code{let} expression
-contains the value of the lengths' list.  (@xref{Incrementing Example, ,
-Loop Example with an Incrementing Counter}.)
+We herinneren ons ook dat een @code{while} loop @code{nil} teruggeeft (het
+resultaat van het evalueren van de waar-of-onwaar-test) en niet het
+resultaat van een evaluatie in de body. (De evaluaties in de body van de
+loop worden gedaan voor hun zij-effecten.) Echter de expressie die de
+lengte-lijst zet is onderdeel van de body---en dat is de waarde waarvan we
+willen dat de gehele functie teruggeeft. Om dit te doen plaatsen we de
+@code{while} loop binnen een @code{let} expressie, en zorgen dat het laatste
+element van de @code{let} expressie de waarde van de lengte-lijst
+bevat. (@xref{Incrementeel voorbeeld, , Loop voorbeeld met een ophogende
+teller.}.)
 
 @findex lengths-list-many-files
 @need 1250
-These considerations lead us directly to the function itself:
+Deze overwegingen leiden on direct naar de functie zelf:
 
 @smallexample
 @group
-;;; @r{Use @code{while} loop.}
-(defun lengths-list-many-files (list-of-files)
-  "Return list of lengths of defuns in LIST-OF-FILES."
+;;; @r{Gebruik @code{while} loop.}
+(defun lengte-lijst-veel-bestanden (lijst-met-bestanden)
+  "Return list of lengths of defuns in LIJST-MET-BESTANDEN."
 @end group
 @group
-  (let (lengths-list)
+  (let (lengte-lijst)
 
-;;; @r{true-or-false-test}
-    (while list-of-files
-      (setq lengths-list
+;;; @r{waar-of-onwaar-test}
+    (while lijst-met-bestanden
+      (setq lengtes-lijst
             (append
-             lengths-list
+             lengtes-lijst
 
-;;; @r{Generate a lengths' list.}
-             (lengths-list-file
-              (expand-file-name (car list-of-files)))))
+;;; @r{Genereer een lengte-ljist.}
+             (lengtes-lijst-bestand
+              (expand-file-name (car lijst-met-bestanden)))))
 @end group
 
 @group
-;;; @r{Make files' list shorter.}
-      (setq list-of-files (cdr list-of-files)))
+;;; @r{Maak bestandenlijst korter.}
+      (setq lijst-met-bestanden (cdr lijst-met-bestanden)))
 
-;;; @r{Return final value of lengths' list.}
-    lengths-list))
+;;; @r{Geef finale waarde lengtes-lijst terug.}
+    lengtes-lijst))
 @end group
 @end smallexample
 
-@code{expand-file-name} is a built-in function that converts a file name to
-the absolute, long, path name form.  The function employs the name of the
-directory in which the function is called.
+@code{expand-file-name} is een ingebouwde functie die een bestandsnaam omzet
+naar de absolute lange padnaam vorm. De functie gebruikt de naam van de
+directory waarin de functie is aangeroepen.
 
 @c !!! 22.1.1 lisp sources location here
 @need 1500
-Thus, if @code{expand-file-name} is called on @code{debug.el} when Emacs is
-visiting the @file{/usr/local/share/emacs/22.1.1/lisp/emacs-lisp/}
-directory,
+Dus wanneer @code{expand-file-name} wordt aangeroepen op @code{debug.el}
+terwijl Emacs de directory
+@file{/usr/local/share/emacs/22.1.1/lisp/emacs-lisp/} bezoekt,
 
 @smallexample
 debug.el
@@ -14873,21 +14898,22 @@ debug.el
 
 @need 800
 @noindent
-becomes
+wordt
 
 @c !!! 22.1.1 lisp sources location here
 @smallexample
 /usr/local/share/emacs/22.1.1/lisp/emacs-lisp/debug.el
 @end smallexample
 
-The only other new element of this function definition is the as yet
-unstudied function @code{append}, which merits a short section for itself.
+Het enige andere nieuwe element van deze functie is de tot nu toe niet
+bestudeerde functie @code{append}, die op zichzelf een korte sectie waard
+is.
 
 @node append
-@subsection The @code{append} Function
+@subsection De functie @code{append}
 
 @need 800
-The @code{append} function attaches one list to another.  Thus,
+De functie @code{append} maakt een lijst aan een andere vast. Dus,
 
 @smallexample
 (append '(1 2 3 4) '(5 6 7 8))
@@ -14895,15 +14921,15 @@ The @code{append} function attaches one list to another.  Thus,
 
 @need 800
 @noindent
-produces the list
+produceert de lijst
 
 @smallexample
 (1 2 3 4 5 6 7 8)
 @end smallexample
 
-This is exactly how we want to attach two lengths' lists produced by
-@code{lengths-list-file} to each other.  The results contrast with
-@code{cons},
+Dit is exact hoe we twee door @code{lengte-lijst-bestand} gemaakte
+lengte-lijsten aan elkaar willen vastmaken. Het resultaat contrasteert met
+@code{cons}, 
 
 @smallexample
 (cons '(1 2 3 4) '(5 6 7 8))
@@ -14911,84 +14937,84 @@ This is exactly how we want to attach two lengths' lists produced by
 
 @need 1250
 @noindent
-which constructs a new list in which the first argument to @code{cons}
-becomes the first element of the new list:
+die een nieuwe lijst construeert waarin het eerste argument van @code{cons}
+het eerste element van de nieuwe lijst wordt:
 
 @smallexample
 ((1 2 3 4) 5 6 7 8)
 @end smallexample
 
 @node Enkele bestanden recursief
-@section Recursively Count Words in Different Files
+@section Recursief woorden tellen in verschillende bestanden
 
-Besides a @code{while} loop, you can work on each of a list of files with
-recursion.  A recursive version of @code{lengths-list-many-files} is short
-and simple.
+Behalve met een @code{while} loop kan je met recursie werken op elk bestand
+in een lijst van bestanden. Een recursieve versie van
+@code{}(lengte-lijst-veel-bestanden) is kort en simpel.
 
-The recursive function has the usual parts: the do-again-test, the
-next-step-expression, and the recursive call.  The do-again-test determines
-whether the function should call itself again, which it will do if the
-@code{list-of-files} contains any remaining elements; the
-next-step-expression resets the @code{list-of-files} to the @sc{cdr} of
-itself, so eventually the list will be empty; and the recursive call calls
-itself on the shorter list.  The complete function is shorter than this
-description!
-@findex recursive-lengths-list-many-files
+De recursieve functie heeft de gebruikelijke delen: de doe-opnieuw-test, de
+volgende-stap-expressie en de recursieve aanroep. De doe-opnieuw-test stelt
+vat of de functie zichzelf opnieuw moet aanroepen, wat die doet wanneer de
+@code{lijst-met-bestanden} resterende elementen bevat. De
+volgende-stap-expressie zet de @code{lijst-met-bestanden} op de @sc{cdr} van
+zichzelf, zodat uiteindelijk de lijst leeg wordt. en de recursieve aanroep
+roept zichzelf met de kortere lijst. De complete functie is korter dan deze
+beschrijving!
+@findex recursieve-lengte-lijst-veel-bestanden
 
 @smallexample
 @group
-(defun recursive-lengths-list-many-files (list-of-files)
-  "Return list of lengths of each defun in LIST-OF-FILES."
-  (if list-of-files                     ; @r{do-again-test}
+(defun recursieve-lengte-lijst-veel-bestanden (lijst-met-bestanden)
+  "Geeft lijst met lengtes terug van elke defun in LIJST-MET-BESTANDEN."
+  (if lijst-met-bestanden                     ; @r{doe-opnieuw-test}
       (append
-       (lengths-list-file
-        (expand-file-name (car list-of-files)))
-       (recursive-lengths-list-many-files
-        (cdr list-of-files)))))
+       (lengte-lijst-bestand
+        (expand-file-name (car lijst-met-bestanden)))
+       (recursieve-lengte-lijst-veel-bestanden
+        (cdr lijst-met-bestanden)))))
 @end group
 @end smallexample
 
 @noindent
-In a sentence, the function returns the lengths' list for the first of the
-@code{list-of-files} appended to the result of calling itself on the rest of
-the @code{list-of-files}.
+In één zin, de functie geeft de lengte-lijst terug voor de eerste van de
+@code{lijst-met-bestanden} vastgemaakt aan het resultaat van zichzelf
+aanroepen op de rest van de @code{lijst-met-bestanden}.
 
-Here is a test of @code{recursive-lengths-list-many-files}, along with the
-results of running @code{lengths-list-file} on each of the files
-individually.
+Hier is een test van @code{recursieve-lengte-lijst-veel-bestanden}, samen
+met de resultaten van het draaien van @code{lengte-lijst-bestand} op elk
+individueel bestand.
 
-Install @code{recursive-lengths-list-many-files} and
-@code{lengths-list-file}, if necessary, and then evaluate the following
-expressions.  You may need to change the files' pathnames; those here work
-when this Info file and the Emacs sources are located in their customary
-places.  To change the expressions, copy them to the @file{*scratch*}
-buffer, edit them, and then evaluate them.
+Installeer @code{recursieve-lengte-lijst-veel-bestanden} en indien nodig
+@code{lengte-lijst-bestand} en evalueer de volgende expressies. Je moet
+misschien de padnamen van bestanden aanpassen, deze werken hier wanneer dit
+Infobestand and de Emacs bronbestanden op hun gebruikelijke plaats staan. Om
+de expressies aan te passen kopieer je ze in het @file{*scratch*} buffer,
+pas je ze aan en evalueer je ze.
 
-The results are shown after the @samp{@result{}}.  (These results are for
-files from Emacs version 22.1.1; files from other versions of Emacs may
-produce different results.)
+De resultaten worden getoond achter de  @samp{@result{}}. (Deze resultaten
+zijn voor bestanden van Emacs versie 22.1.1. Bestanden van andere versies
+van Emacs kunnen andere resultaten produceren.)
 
 @c !!! 22.1.1 lisp sources location here
 @smallexample
 @group
 (cd "/usr/local/share/emacs/22.1.1/")
 
-(lengths-list-file "./lisp/macros.el")
+(lengte-lijst-bestand "./lisp/macros.el")
      @result{} (283 263 480 90)
 @end group
 
 @group
-(lengths-list-file "./lisp/mail/mailalias.el")
+(lengte-lijst-bestand "./lisp/mail/mailalias.el")
      @result{} (38 32 29 95 178 180 321 218 324)
 @end group
 
 @group
-(lengths-list-file "./lisp/hex-util.el")
+(lengte-lijst-bestand "./lisp/hex-util.el")
      @result{} (82 71)
 @end group
 
 @group
-  (recursive-lengths-list-many-files
+  (recursieve-lengte-lijst-veel-bestanden
    '("./lisp/macros.el"
      "./lisp/mail/mailalias.el"
      "./lisp/hex-util.el"))
@@ -14996,25 +15022,26 @@ produce different results.)
 @end group
 @end smallexample
 
-The @code{recursive-lengths-list-many-files} function produces the output we
-want.
+De functie @code{recursieve-lengte-lijst-veel-bestanden} produceert de
+output die we willen.
 
-The next step is to prepare the data in the list for display in a graph.
+De volgende stap is het voorbereiden van de data in de lijst om in een
+grafiek te tonen.
 
 @node De data voorbereiden
 @section De data voorbereiden om in een grafiek te tonen
 
-The @code{recursive-lengths-list-many-files} function returns a list of
-numbers.  Each number records the length of a function definition.  What we
-need to do now is transform this data into a list of numbers suitable for
-generating a graph.  The new list will tell how many functions definitions
-contain less than 10 words and symbols, how many contain between 10 and 19
-words and symbols, how many contain between 20 and 29 words and symbols, and
-so on.
+De functie @code{recursieve-lengte-lijst-veel-bestanden} geeft een lijst met
+getallen terug. Elk getal staat voor de lengte van een functiedefinitie. Wat
+we nu moeten doen is deze data omzetten in een lijst van getallen die
+geschikt is om een grafiek mee te genereren. De nieuwe lijst vertelt hoeveel
+functiedefinities bevatten minder dan 10 woorden en symbolen, hoeveel
+bevatten tussen 10 en 19 symbolen. enzovoorts.
 
-In brief, we need to go through the lengths' list produced by the
-@code{recursive-lengths-list-many-files} function and count the number of
-defuns within each range of lengths, and produce a list of those numbers.
+In het kort, we moeten door de lengte-lijst heen gaan, die de functie
+@code{recursieve-lengte-lijst-veel-bestanden} heeft geproduceerd, en het
+aantal defuns in elke range van lengtes tellen, en een lijst van deze
+aantallen produceren.
 
 @menu
 * Data in detail te tonen::  Data in detail te tonen
@@ -15028,37 +15055,40 @@ defuns within each range of lengths, and produce a list of those numbers.
 @unnumberedsubsec De data om in detail te tonen
 @end ifnottex
 
-Based on what we have done before, we can readily foresee that it should not
-be too hard to write a function that @sc{cdr}s down the lengths' list, looks
-at each element, determines which length range it is in, and increments a
-counter for that range.
+Gebaseerd op wat we eerder gedaan hebben, kunnen we makkelijk voorzien dat
+het niet al te moeilijk moet zijn een functie te schrijven die @sc{crd}-t de
+lengte-lijst afloopt, vaststelt in welke lengte-range die in is, en een
+teller verhoogt voor die range.
 
-However, before beginning to write such a function, we should consider the
-advantages of sorting the lengths' list first, so the numbers are ordered
-from smallest to largest.  First, sorting will make it easier to count the
-numbers in each range, since two adjacent numbers will either be in the same
-length range or in adjacent ranges.  Second, by inspecting a sorted list, we
-can discover the highest and lowest number, and thereby determine the
-largest and smallest length range that we will need.
+Voordat we echter beginnen met het schrijven van zo'n functie, moeten we de
+voordelen van het sorteren van de lengte-lijst in ogenschouw nemen, zodat de
+getallen zijn gesorteerd van de kleinste tot de grootste. Ten eerste maakt
+het sorteren het eenvoudiger de getallen in elke range te tellen, omdat twee
+opeenvolgende getallen in dezelfde range of aangrenzende ranges zijn. Ten
+tweede door de gesorteerde lijst te inspecteren kunnen we ontdekken wat het
+hoogste en het laagste getal zijn, en daarmee vaststellen welke grootste en
+kleinste lengte-range we nodig hebben.
 
 @node Sorteren
-@subsection Sorting Lists
-@findex sort
+@subsection Lijsten sorteren
+@findex sorteren
 
-Emacs contains a function to sort lists, called (as you might guess)
-@code{sort}.  The @code{sort} function takes two arguments, the list to be
-sorted, and a predicate that determines whether the first of two list
-elements is less than the second.
+Emacs heeft een functie om lijsten te sorteren, met de naam (zoals je kunt
+raden) @code{sort}. De functie @code{sort} vereist twee argumenten, de lijst
+om te sorteren, en een predicaat dat vaststelt of het eerste van twee
+lijst-elementen kleiner is dan de tweede.
 
-As we saw earlier (@pxref{Wrong Type of Argument, , Using the Wrong Type
-Object as an Argument}), a predicate is a function that determines whether
-some property is true or false.  The @code{sort} function will reorder a
-list according to whatever property the predicate uses; this means that
-@code{sort} can be used to sort non-numeric lists by non-numeric
-criteria---it can, for example, alphabetize a list.
+Zoals we eerder zagen (@pxref{Verkeerde type argument, , Gebruik van het
+verkeerde objecttype als argument}), is een predicaat een functie die
+vaststelt of een bepaalde eigenschap waar of onwaar is. De functie
+@code{sort} herordent een lijst in overeenstemming met de eigenschap die het
+predicaat gebruikt. Dit betekent dat @code{sort} kan worden gebruikt om een
+niet-numerieke lijst te sorteren op niet-numerieke criteria---het kan
+bijvoorbeeld een lijst op alfabetische volgorde zetten.
 
 @need 1250
-The @code{<} function is used when sorting a numeric list.  For example,
+De functie @code{<} wordt gebruikt om een numerieke lijst te
+sorteren. Bijvoorbeeld,
 
 @smallexample
 (sort '(4 8 21 17 33 7 21 7) '<)
@@ -15073,16 +15103,18 @@ produceert dit:
 @end smallexample
 
 @noindent
-(Note that in this example, both the arguments are quoted so that the
-symbols are not evaluated before being passed to @code{sort} as arguments.)
+(Merk op dat in dit voorbeeld beide argumenten zijn gequote zodat de
+symbolen niet worden geëvalueerd voordat ze als argumenten aan de
+@code{sort} worden doorgegeven.)
 
-Sorting the list returned by the @code{recursive-lengths-list-many-files}
-function is straightforward; it uses the @code{<} function:
+Het sorteren van de lijst die teruggeven is door de functie
+@code{recursieve-lengte-lijst-veel-bestanden} is eenvoudig, het gebruikt de
+functie @code{<}:
 
 @smallexample
 @group
 (sort
- (recursive-lengths-list-many-files
+ (recursieve-lengte-lijst-veel-bestanden
   '("./lisp/macros.el"
     "./lisp/mailalias.el"
     "./lisp/hex-util.el"))
@@ -15092,51 +15124,52 @@ function is straightforward; it uses the @code{<} function:
 
 @need 800
 @noindent
-which produces:
+produceert:
 
 @smallexample
 (29 32 38 71 82 90 95 178 180 218 263 283 321 324 480)
 @end smallexample
 
 @noindent
-(Note that in this example, the first argument to @code{sort} is not quoted,
-since the expression must be evaluated so as to produce the list that is
-passed to @code{sort}.)
+(Merk op dat in dit voorbeeld het eerste argument van @code{sort} is niet
+gequote omdat de expressie moet worden geëvalueerd om de lijst te produceren
+die wordt doorgegeven aan @code{sort}.)
 
 @node Bestandenlijst
-@subsection Making a List of Files
+@subsection Een lijst van bestanden maken
 
-The @code{recursive-lengths-list-many-files} function requires a list of
-files as its argument.  For our test examples, we constructed such a list by
-hand; but the Emacs Lisp source directory is too large for us to do for
-that.  Instead, we will write a function to do the job for us.  In this
-function, we will use both a @code{while} loop and a recursive call.
+De functie @code{recursieve-lengte-lijst-veel-bestanden} vereist een lijst
+van bestanden als argument. Voor onze testvoorbeelden construeerden we
+handmatig zo'n lijst, maar de Emacs brondirectory is te groot voor ons om
+dat te doen. In plaats daarvan schrijven we een functie die dat werk voor
+ons doet. In deze functie gebruiken we zowel een @code{while} loop en een
+recursieve aanroep.
 
 @findex directory-files
-We did not have to write a function like this for older versions of GNU
-Emacs, since they placed all the @samp{.el} files in one directory.
-Instead, we were able to use the @code{directory-files} function, which
-lists the names of files that match a specified pattern within a single
-directory.
+Voor oudere versies van GNU Emacs hoefden we zo'n functie niet te schrijven,
+omdat zij alle @samp{.el} bestanden in één directory plaatsten. In plaats
+daarvan konden we de functie @code{directory-files} gebruiken, die de namen
+van de bestanden in een enkele directory vermeldt die aan een specifiek
+patroon voldoen. 
 
-However, recent versions of Emacs place Emacs Lisp files in sub-directories
-of the top level @file{lisp} directory.  This re-arrangement eases
-navigation.  For example, all the mail related files are in a @file{lisp}
-sub-directory called @file{mail}.  But at the same time, this arrangement
-forces us to create a file listing function that descends into the
-sub-directories.
+Recente versies van Emacs echter plaatsen Emacs Lisp bestanden in
+subdirectories van de top-level @file{lisp} directory. Deze herschikking
+maakt de navigatie makkelijker. Alle mail gerelateerde bestanden
+bijvoorbeeld staan in een @code{lisp} subdirectory met de naam
+@file{mail}. Maar tegelijkertijd forceert deze schikking ons om een
+bestandslisting functie te maken die afdaalt in de subdirectories.
 
-@findex files-in-below-directory
-We can create this function, called @code{files-in-below-directory}, using
-familiar functions such as @code{car}, @code{nthcdr}, and @code{substring}
-in conjunction with an existing function called
-@code{directory-files-and-attributes}.  This latter function not only lists
-all the filenames in a directory, including the names of sub-directories,
-but also their attributes.
+@findex bestanden-in-onderliggende-directory
+We kunnen deze functie met de naam
+@code{bestanden-in-onderiggende-directory} maken met bekende functies zoals
+@code{car}, @code{nthcdr} en @code{substring} samen met een bestaande
+functie met de naam @code{directory-files-and-atributes}. Deze laatste
+functie vermeldt niet alleen de bestandsnamen in een directory inclusief de
+namen van de subdirectories, maar ook hun attributen.
 
-To restate our goal: to create a function that will enable us to feed
-filenames to @code{recursive-lengths-list-many-files} as a list that looks
-like this (but with more elements):
+Om ons doel opnieuw te formuleren: maak een functie die ons in staat stelt
+@code{recursieve-lengte-lijst-veel-bestanden} te voeden met de bestandsnamen
+als een lijst die er zo iut ziet (maar met meer elementen):
 
 @smallexample
 @group
@@ -15146,22 +15179,22 @@ like this (but with more elements):
 @end group
 @end smallexample
 
-The @code{directory-files-and-attributes} function returns a list of lists.
-Each of the lists within the main list consists of 13 elements.  The first
-element is a string that contains the name of the file---which, in
-GNU/Linux, may be a @dfn{directory file}, that is to say, a file with the
-special attributes of a directory.  The second element of the list is
-@code{t} for a directory, a string for symbolic link (the string is the name
-linked to), or @code{nil}.
+De functie @code{directory-files-and-atributes} geeft een lijst van lijsten
+terug. Elk van deze lijsten in de hoofdlijst bestaat uit 13 elementen. Het
+eerste element is een string die de bestandsnaam bevat---welke, in
+GNU/Linux, een @dfn{dicectory file} kan zijn, met andere woorden een bestand
+met de speciale attributen van een directory. Het tweede element van de
+lijst is @code{t} voor een directory, een string voor een symbolische link
+(de string is de naam waar naartoe gelinkt), or @code{nil}.
 
-For example, the first @samp{.el} file in the @file{lisp/} directory is
-@file{abbrev.el}.  Its name is
-@file{/usr/local/share/emacs/22.1.1/lisp/abbrev.el} and it is not a
-directory or a symbolic link.
+Bijvoorbeeld het eerste @samp{.el} bestand in de @file{lisp/} directory is
+@file{abbrev.el}. Zijn naam is
+@file{/usr/local/share/emacs/22.1.1/lisp/abbrev.el} en het is niet een
+directory of een symbolische link.
 
 @need 1000
-This is how @code{directory-files-and-attributes} lists that file and its
-attributes:
+Dit is hoe @code{directory-files-and-attributes} het bestand en zijn
+atributen vermeldt:
 
 @smallexample
 @group
@@ -15174,10 +15207,10 @@ nil
 @group
 (20615 27034 579989 697000)
 (17905 55681 0 0)
-(20615 26327 734791 805000)@footnote{If @code{current-time-list} is
-@code{nil} the three timestamps are @code{(1351051674579989697
-. 1000000000)}, @code{(1173477761000000000 . 1000000000)}, and
-@code{(1351050967734791805 . 1000000000)}, respectively.}
+(20615 26327 734791 805000)@footnote{Wanneer @code{current-time-list} @code{nil} is,
+zijn de drie timestamps respectievelijk @code{(1351051674579989697
+. 1000000000)}, @code{(1173477761000000000 . 1000000000)} en
+@code{(1351050967734791805 . 1000000000)}.}
 13188
 "-rw-r--r--"
 @end group
@@ -15189,8 +15222,8 @@ t
 @end smallexample
 
 @need 1200
-On the other hand, @file{mail/} is a directory within the @file{lisp/}
-directory.  The beginning of its listing looks like this:
+Anderzijds, @file{mail/} is een directory in de @file{lisp/} directory. Het
+begin van de listing ziet er zo uit:
 
 @smallexample
 @group
@@ -15201,55 +15234,58 @@ t
 @end group
 @end smallexample
 
-(To learn about the different attributes, look at the documentation of
-@code{file-attributes}.  Bear in mind that the @code{file-attributes}
-function does not list the filename, so its first element is
-@code{directory-files-and-attributes}'s second element.)
+(Zie de documentatie van @code{file-attributes} om meer te leren over de
+verschillende atributen. Hou er rekening mee dat de functie
+@code{file-attributes} de bestandsnaam niet vermeldt, zodat het eerste
+element is het tweede element in @code{directory-files-and-atributes}.)
 
-We will want our new function, @code{files-in-below-directory}, to list the
-@samp{.el} files in the directory it is told to check, and in any
-directories below that directory.
+Wij willen dat onze nieuwe functie,
+@code{bestanden-in-onderiggende-directory} de @samp{.el} bestanden vermeldt
+in de directory die het verteld is te bekijken, en in elke daar
+onderliggende directory.
 
-This gives us a hint on how to construct @code{files-in-below-directory}:
-within a directory, the function should add @samp{.el} filenames to a list;
-and if, within a directory, the function comes upon a sub-directory, it
-should go into that sub-directory and repeat its actions.
+Dit geeft ons een hint hoe de @code{bestanden-in-onderiggende-directory}
+binnen een directory te construeren, de functie zou @samp{.el} bestandsnamen
+aan een lijst moeten toevoegen. En wanneer de functie binnen een directory
+op een subdirectory stuit, moet die de subdirectory ingaan en daar de acties
+herhalen.
 
-However, we should note that every directory contains a name that refers to
-itself, called @file{.} (``dot''), and a name that refers to its parent
-directory, called @file{..} (``dot dot'').  (In @file{/}, the root
-directory, @file{..} refers to itself, since @file{/} has no parent.)
-Clearly, we do not want our @code{files-in-below-directory} function to
-enter those directories, since they always lead us, directly or indirectly,
-to the current directory.
+We moeten echter opmerken dat elke directory een naam die naar zichzelf
+referereert bevat, @file{.} (``dot'') genaamd, en een naam die refereert
+naar de bovenliggende directory, @file{..} (``dot dot'') genaamd. (In
+@file{/}, de root-directory, refereert @file{..} aan zichzelf, omdat
+@file{/} geen bovenliggende directory heeft.) We willen natuurlijk niet dat
+onze functie @code{bestanden-in-onderiggende-directory} deze directories
+ingaat, omdat die ons altijd, direct of indirect, naar de huidige directory
+leiden.
 
-Consequently, our @code{files-in-below-directory} function must do several
-tasks:
+Dus moet onze functie @code{bestanden-in-onderiggende-directory}
+verschillende taken doen:
 
 @itemize @bullet
 @item
-Check to see whether it is looking at a filename that ends in @samp{.el};
-and if so, add its name to a list.
+Controleer of het naar een bestandsnaam kijkt die eindigt in @samp{.el} en
+zo ja, voeg thet aan de lijst toe.
 
 @item
-Check to see whether it is looking at a filename that is the name of a
-directory; and if so,
+Controleer of het naar een bestandsnaam kijkt die de naam van een directory
+is, en zo ja, 
 
 @itemize @minus
 @item
-Check to see whether it is looking at @file{.} or @file{..}; and if so skip
-it.
+Controleer of het kijkt naar @file{.} of @file{..}, en zo ja, sla die over.
 
 @item
-Or else, go into that directory and repeat the process.
+Zo niet, ga dan in de directory en herhaal het proces.
 @end itemize
 @end itemize
 
-Let's write a function definition to do these tasks.  We will use a
-@code{while} loop to move from one filename to another within a directory,
-checking what needs to be done; and we will use a recursive call to repeat
-the actions on each sub-directory.  The recursive pattern is Accumulate
-(@pxref{Accumulate}), using @code{append} as the combiner.
+Laten we een functiedefinitie schrijven die deze taken uitvoert. We
+gebruiken een @code{while} loop om binnen de directory van de ene
+bestandsnaam naar de ander te gaan en controleren wat moet worden gedaan. En
+we gebruiken een recursieve aanroep om de acties in elke subdirectory te
+herhalen. Het resursieve patroon is Accumuleren (@pxref{Accumuleren}), met
+@code{append} als de combinerende functie.
 
 @ignore
 (directory-files "/usr/local/src/emacs/lisp/" t "\\.el$")
@@ -15262,67 +15298,67 @@ the actions on each sub-directory.  The recursive pattern is Accumulate
 @c  /usr/local/share/emacs/22.1.1/lisp/
 
 @need 800
-Here is the function:
+Hier is de functie:
 
 @smallexample
 @group
-(defun files-in-below-directory (directory)
-  "List the .el files in DIRECTORY and in its sub-directories."
-  ;; Although the function will be used non-interactively,
-  ;; it will be easier to test if we make it interactive.
-  ;; The directory will have a name such as
+(defun bestanden-in-onderiggende-directory (directory)
+  "Vermeldt de .el files in DIRECTORY en onderliggende subdirectories."
+  ;; Hoewel de functie niet interactief gebruikt wordt,
+  ;; is het makkelijker te testen wanneer we het interactief maken.
+  ;; De directory zal een naam hebben zoals
   ;;  "/usr/local/share/emacs/22.1.1/lisp/"
-  (interactive "DDirectory name: ")
+  (interactive "DDirectory naam: ")
 @end group
 @group
-  (let (el-files-list
-        (current-directory-list
+  (let (el-bestanden-lijst
+        (huidige-directory-lijst
          (directory-files-and-attributes directory t)))
-    ;; while we are in the current directory
-    (while current-directory-list
+    ;; zoals we in de huidige directory zijn
+    (while huidige-directory-lijst
 @end group
 @group
       (cond
-       ;; check to see whether filename ends in '.el'
-       ;; and if so, add its name to a list.
-       ((equal ".el" (substring (car (car current-directory-list)) -3))
-        (setq el-files-list
-              (cons (car (car current-directory-list)) el-files-list)))
+       ;; check of de bestandsnaam eindigt met '.el'
+       ;; en zo ja, voeg die toe aan de lijst.
+       ((equal ".el" (substring (car (car huidige-directory-lijst)) -3))
+        (setq el-bestanden-lijst
+              (cons (car (car huidige-directory-lijst)) el-bestanden-lijst)))
 @end group
 @group
-       ;; check whether filename is that of a directory
-       ((eq t (car (cdr (car current-directory-list))))
-        ;; decide whether to skip or recurse
+       ;; check of bestandsnaam die van een directory is
+       ((eq t (car (cdr (car huidige-directory-lijst))))
+        ;; beslis tussen skippen of afdalen
         (if
             (equal "."
-                   (substring (car (car current-directory-list)) -1))
-            ;; then do nothing since filename is that of
-            ;;   current directory or parent, "." or ".."
+                   (substring (car (car huidige-directory-lijst)) -1))
+            ;; dan doe niets omdat de bestandnaam die is van
+            ;;   huidige directory of parent, "." or ".."
             ()
 @end group
 @group
-          ;; else descend into the directory and repeat the process
-          (setq el-files-list
+          ;; anders daal af in de directory en herhaalt het proces
+          (setq el-bestanden-lijst
                 (append
-                 (files-in-below-directory
-                  (car (car current-directory-list)))
-                 el-files-list)))))
-      ;; move to the next filename in the list; this also
-      ;; shortens the list so the while loop eventually comes to an end
-      (setq current-directory-list (cdr current-directory-list)))
-    ;; return the filenames
-    el-files-list))
+                 (bestanden-in-onderiggende-directory
+                  (car (car huidige-directory-lijst)))
+                 el-bestanden-lijst)))))
+      ;; ga naar volgende bestandnaam in de lijst; dit verkort ook
+      ;; de lijst zodat de while loop uiteindelijk aan zijn eind komt
+      (setq huidige-directory-lijst (cdr huidige-directory-lijst)))
+    ;; geef de bestandsnamen terug
+    el-bestanden-lijst))
 @end group
 @end smallexample
 
 @c (files-in-below-directory "/usr/local/src/emacs/lisp/")
 @c (files-in-below-directory "/usr/local/share/emacs/22.1.1/lisp/")
 
-The @code{files-in-below-directory} @code{directory-files} function takes
-one argument, the name of a directory.
+De functie @code{bestanden-in-onderiggende-directory} vereist een argument,
+de naam van een directory.
 
 @need 1250
-Thus, on my system,
+Dus, op mijn systeem,
 
 @c (length (files-in-below-directory "/usr/local/src/emacs/lisp/"))
 
@@ -15330,22 +15366,22 @@ Thus, on my system,
 @smallexample
 @group
 (length
- (files-in-below-directory "/usr/local/share/emacs/22.1.1/lisp/"))
+ (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.1.1/lisp/"))
 @end group
 @end smallexample
 
 @noindent
-tells me that in and below my Lisp sources directory are 1031 @samp{.el}
-files.
+vertelt me dat er in en onder mijn Lisp brondirectory 1031 @samp{.el}
+bestanden zijn.
 
-@code{files-in-below-directory} returns a list in reverse alphabetical
-order.  An expression to sort the list in alphabetical order looks like
-this:
+@code{bestanden-in-onderiggende-directory} geeft een lijst terug in
+omgekeerde alfabetische volgorde. Een expressie om de lijst in alfabetische
+volgorde te sorteren ziet er zo uit:
 
 @smallexample
 @group
 (sort
- (files-in-below-directory "/usr/local/share/emacs/22.1.1/lisp/")
+ (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.1.1/lisp/")
  'string-lessp)
 @end group
 @end smallexample
@@ -15365,119 +15401,121 @@ this:
 @node Functiedefinities tellen
 @subsection Functiedefinities tellen
 
-Our immediate goal is to generate a list that tells us how many function
-definitions contain fewer than 10 words and symbols, how many contain
-between 10 and 19 words and symbols, how many contain between 20 and 29
-words and symbols, and so on.
+Ons doel is een lijst te genereren die vertelt hoeveel functiedefinities
+minder dan 10 woorden en symbolen bevatten, hoeveel tussen de 10 en 19
+woorden en symbolen bevatten, hoeveel tussen de 20 en 29 woorden en
+symbolen, enzovoorts.
 
-With a sorted list of numbers, this is easy: count how many elements of the
-list are smaller than 10, then, after moving past the numbers just counted,
-count how many are smaller than 20, then, after moving past the numbers just
-counted, count how many are smaller than 30, and so on.  Each of the
-numbers, 10, 20, 30, 40, and the like, is one larger than the top of that
-range.  We can call the list of such numbers the @code{top-of-ranges} list.
+Met een gesorteerde lijst met getallen is dit makkelijk. Tel hoeveel
+elementen in de lijst kleiner dan 10 zijn, dan na voorbij de net getelde
+getallen te gaan, tel hoeveel er kleiner dan 20 zijn, dan na voorbij de net
+getelde getallen te gaan, hoeveel kleiner zijn dan 30, enzovoorts. Elk van
+de getallen 10, 20, 30, 40 en dergelijke is een groter dan de hoogste van
+die range. We kunnen de lijst met zulke getallen de
+@code{hoogste-van-ranges} lijst noemen.
 
 @need 1200
-If we wished, we could generate this list automatically, but it is simpler
-to write a list manually.  Here it is:
-@vindex top-of-ranges
+Als we dat willen kunnen we zo'n lijst automatisch genereren, maar het is
+simpeler de lijst handmatig te schrijven. Hier is die:
+@vindex hoogste-van-ranges
 
 @smallexample
 @group
-(defvar top-of-ranges
+(defvar hoogste-van-ranges
  '(10  20  30  40  50
    60  70  80  90 100
   110 120 130 140 150
   160 170 180 190 200
   210 220 230 240 250
   260 270 280 290 300)
- "List specifying ranges for `defuns-per-range'.")
+ "Lijst met ranges for `defuns-hoogste-per-range'.")
 @end group
 @end smallexample
 
-To change the ranges, we edit this list.
+Om de ranges aan te passen, kunnen we deze lijst wijzigen.
 
-Next, we need to write the function that creates the list of the number of
-definitions within each range.  Clearly, this function must take the
-@code{sorted-lengths} and the @code{top-of-ranges} lists as arguments.
+Vervolgens moeten we een functie schrijven die een lijst maakt van de
+getallen van de definities binnen een range. Deze functie moet
+@code{gesorteerde-lengtes} en @code{hoogste-van-ranges} als argument
+gebruiken.
 
-The @code{defuns-per-range} function must do two things again and again: it
-must count the number of definitions within a range specified by the current
-top-of-range value; and it must shift to the next higher value in the
-@code{top-of-ranges} list after counting the number of definitions in the
-current range.  Since each of these actions is repetitive, we can use
-@code{while} loops for the job.  One loop counts the number of definitions
-in the range defined by the current top-of-range value, and the other loop
-selects each of the top-of-range values in turn.
+De functie @code{defuns-per-range} moet twee dingen steeds opnieuw doen: het
+moet het nummer van definities binnen een range tellen, gespecificeerd door
+de huidge @code{hoogste-van-ranges} waarde en het moet naar de eerstvolgende
+hogere waarde n de @code{hoogste-van-ranges} lijst opschuiven nadat het de
+definities in de huidige range geteld heeft. Omdat deze acties repeterend
+zijn, kunnen we een @code{while} loop voor de taak gebruiken. Een loop telt
+het aantal definities in de range gespecificeerd door de huidge
+hoogste-van-ranges waarde, en de andere loop selecteert elk van de
+hoogste-van-ranges op hun beurt.
 
-Several entries of the @code{sorted-lengths} list are counted for each
-range; this means that the loop for the @code{sorted-lengths} list will be
-inside the loop for the @code{top-of-ranges} list, like a small gear inside
-a big gear.
+Verschillende entries van de @code{gesorteerde-lengtes} lijst worden geteld
+voor elke range. Dit betekent dat de loop voor de @code{gesorteerde-lengtes}
+lijst binnen de loop voor de @code{hoogste-van-ranges} lijst staat, zoals
+een klein tandwiel in een groot tandwiel.
 
-The inner loop counts the number of definitions within the range.  It is a
-simple counting loop of the type we have seen before.  (@xref{Incrementing
-Loop, , A loop with an incrementing counter}.)  The true-or-false test of
-the loop tests whether the value from the @code{sorted-lengths} list is
-smaller than the current value of the top of the range.  If it is, the
-function increments the counter and tests the next value from the
-@code{sorted-lengths} list.
+De binnenste loop telt het aantal definities binnen een range. Het is een
+eenvoudige tellende loop van het type zoals we eerder
+zagen. (@xref{Incrementele loop, , Een loop met een incrementele teller}.)
+De waar-of-onwaar-test van de loop test of de waarde van de
+@code{gesorteerde-lengtes} lijst kleiner is dan de huidige waarde van de
+hoogste-van-ranges. Indien dat zo is, dan verhoogt de functie de teller en
+test de volgende waarde van de @code{gesorteerde-lengtes} lijst.
 
 @need 1250
-The inner loop looks like this:
+De binnenste loop ziet er zo uit:
 
 @smallexample
 @group
-(while @var{length-element-smaller-than-top-of-range}
-  (setq number-within-range (1+ number-within-range))
-  (setq sorted-lengths (cdr sorted-lengths)))
+(while @var{lengte-element-kleiner-dan-hoogste-van-range}
+  (setq getal-in-range (1+ getal-in-range))
+  (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 @end group
 @end smallexample
 
-The outer loop must start with the lowest value of the @code{top-of-ranges}
-list, and then be set to each of the succeeding higher values in turn.  This
-can be done with a loop like this:
+De buitenste loop moet starten met de laagste waarde in de
+@code{hoogste-van-ranges} lijst en daarna per keer steeds op de opvolgende
+hogere waarde gezet worden. Dit kan met een loop zoals deze:
 
 @smallexample
 @group
-(while top-of-ranges
-  @var{body-of-loop}@dots{}
-  (setq top-of-ranges (cdr top-of-ranges)))
+(while hoogste-van-ranges
+  @var{body-van-loop}@dots{}
+  (setq hoogste-van-ranges (cdr hoogste-van-ranges)))
 @end group
 @end smallexample
 
 @need 1200
-Put together, the two loops look like this:
+Samengevoegd zien de twee loops er zo uit:
 
 @smallexample
 @group
-(while top-of-ranges
+(while hoogste-van-ranges
 
-  ;; @r{Count the number of elements within the current range.}
-  (while @var{length-element-smaller-than-top-of-range}
-    (setq number-within-range (1+ number-within-range))
-    (setq sorted-lengths (cdr sorted-lengths)))
+  ;; @r{Tel het aantal elementen binnen de huidige range.}
+  (while @var{lengte-element-kleiner-dan-hoogste-van-range}
+    (setq getal-in-range (1+ getal-in-range))
+    (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 
-  ;; @r{Move to next range.}
-  (setq top-of-ranges (cdr top-of-ranges)))
+  ;; @r{Ga naar volgende range.}
+  (setq hoogste-van-ranges (cdr hoogste-van-ranges)))
 @end group
 @end smallexample
 
-In addition, in each circuit of the outer loop, Emacs should record the
-number of definitions within that range (the value of
-@code{number-within-range}) in a list.  We can use @code{cons} for this
-purpose.  (@xref{cons, , @code{cons}}.)
+Daarnaast moet Emacs in elk circuit van de buitenste loop het aantal
+definities binnen die range (de waarde van @code{getal-in-range}) in een
+lijst vastleggen. We kunnen @code{cons} voor dit doel
+gebruiken. (@xref{cons, , @code{cons}}.)
 
-The @code{cons} function works fine, except that the list it constructs will
-contain the number of definitions for the highest range at its beginning and
-the number of definitions for the lowest range at its end.  This is because
-@code{cons} attaches new elements of the list to the beginning of the list,
-and since the two loops are working their way through the lengths' list from
-the lower end first, the @code{defuns-per-range-list} will end up largest
-number first.  But we will want to print our graph with smallest values
-first and the larger later.  The solution is to reverse the order of the
-@code{defuns-per-range-list}.  We can do this using the @code{nreverse}
-function, which reverses the order of a list.
+De functie @code{cons} werkt prima, behalve dat de lijst die het maakt het
+aantal definities voor de hoogste range aan het begin en het aantal
+definities voor de laagste range aan het einde bevat. Dit komt omdat
+@code{cons} nieuwe elementen aan het begin van de lijst vastmaakt en omdat
+de twee loops hun werk door de lengtes-lijst van laag tot hoog doen, zal
+@code{defuns-per-range-list} eindigen met het grootste getal aan het
+begin. Maar wij willen onze grafiek tonen met eerst de kleinste waarden en
+de grotere daarna. We kunnen dit doen met de functie @code{nreverse} die de
+volgorde van een lijst omdraait.
 @findex nreverse
 
 @need 800
@@ -15495,123 +15533,128 @@ produceert:
 (4 3 2 1)
 @end smallexample
 
-Note that the @code{nreverse} function is destructive---that is, it changes
-the list to which it is applied; this contrasts with the @code{car} and
-@code{cdr} functions, which are non-destructive.  In this case, we do not
-want the original @code{defuns-per-range-list}, so it does not matter that
-it is destroyed.  (The @code{reverse} function provides a reversed copy of a
-list, leaving the original list as is.)
+Merk op dat de functie @code{nreverse} destructief is---dat wil zeggen, het
+verandert de lijst waarop het wordt toegepast. Dit contrasteert met de
+functies @code{car} en @code{cdr}, die niet-destructief zijn. In dit geval
+willen we de originele @code{defuns-per-range-lijst} niet, dus het maakt
+niet uit dat de lijst wordt vernietigd. (De functie @code{reverse} maakt een
+omgedraaide kopie van een lijst, en laat de originele lijst intact.)
 @findex reverse
 
 @need 1250
-Put all together, the @code{defuns-per-range} looks like this:
+Alles bij elkaar ziet de @code{defuns-per-range} er zo uit:
 
 @smallexample
 @group
-(defun defuns-per-range (sorted-lengths top-of-ranges)
-  "SORTED-LENGTHS defuns in each TOP-OF-RANGES range."
-  (let ((top-of-range (car top-of-ranges))
-        (number-within-range 0)
-        defuns-per-range-list)
+(defun defuns-per-range (gesorteerde-lengtes hoogste-van-ranges)
+  "GESORTEERDE-LENGTES defuns in elke HOOGSTE-VAN-RANGES range."
+  (let ((hoogste-van-range (car hoogste-van-ranges))
+        (getal-in-range 0)
+        defuns-per-range-lijst)
 @end group
 
 @group
-    ;; @r{Outer loop.}
-    (while top-of-ranges
+    ;; @r{Buitenste loop.}
+    (while hoogste-van-ranges
 @end group
 
 @group
-      ;; @r{Inner loop.}
+      ;; @r{Binnenste loop.}
       (while (and
-              ;; @r{Need number for numeric test.}
-              (car sorted-lengths)
-              (< (car sorted-lengths) top-of-range))
+              ;; @r{Getal nodig voor numerieke test.}
+              (car gesorteerde-lengtes)
+              (< (car gesorteerde-lengtes) hoogste-van-range))
+
 @end group
 
 @group
-        ;; @r{Count number of definitions within current range.}
-        (setq number-within-range (1+ number-within-range))
-        (setq sorted-lengths (cdr sorted-lengths)))
+        ;; @r{Tel aantal definities in huidige range.}
+        (setq getal-in-range (1+ getal-in-range))
+        (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 
-      ;; @r{Exit inner loop but remain within outer loop.}
+      ;; @r{Verlaat binnenste loop maar blijf in buitenste loop.}
+
 @end group
 
 @group
-      (setq defuns-per-range-list
-            (cons number-within-range defuns-per-range-list))
-      (setq number-within-range 0)      ; @r{Reset count to zero.}
+      (setq defuns-per-range-lijst
+            (cons getal-in-range defuns-per-range-lijst))
+      (setq getal-in-range 0)      ; @r{Reset telling op nul.}
 @end group
 
 @group
-      ;; @r{Move to next range.}
-      (setq top-of-ranges (cdr top-of-ranges))
+      ;; @r{Ga naar volgende range.}
+      (setq hoogste-van-ranges (cdr hoogste-van-ranges))
       ;; @r{Specify next top of range value.}
-      (setq top-of-range (car top-of-ranges)))
+      (setq hoogste-van-range (car hoogste-van-ranges)))
 @end group
 
 @group
-    ;; @r{Exit outer loop and count the number of defuns larger than}
-    ;; @r{  the largest top-of-range value.}
-    (setq defuns-per-range-list
+    ;; @r{Verlaat buitenste loop en tel het aantal defuns groter dan}
+    ;; @r{  de grootste top-of-range value.}
+    (setq defuns-per-range-lijst
           (cons
-           (length sorted-lengths)
-           defuns-per-range-list))
+           (length gesorteerde-lengtes)
+           defuns-per-range-lijst))
+
 @end group
 
 @group
-    ;; @r{Return a list of the number of definitions within each range,}
-    ;; @r{  smallest to largest.}
-    (nreverse defuns-per-range-list)))
+    ;; @r{Geef een lijst terug met het aantal definities in elke range,}
+    ;; @r{  van klein naar groot.}
+    (nreverse defuns-per-range-lijst)))
 @end group
 @end smallexample
 
 @need 1200
 @noindent
-The function is straightforward except for one subtle feature.  The
-true-or-false test of the inner loop looks like this:
+De functie is eenvoudig behalve een subtiele eigenschap. De
+waar-of-onwaar-test van de binnenste loop ziet er zo uit:
 
 @smallexample
 @group
-(and (car sorted-lengths)
-     (< (car sorted-lengths) top-of-range))
+(and (car gesorteerde-lengtes)
+     (< (car gesorteerde-lengtes) hogste-van-range))
 @end group
 @end smallexample
 
 @need 800
 @noindent
-instead of like this:
+in plaats van dit:
 
 @smallexample
-(< (car sorted-lengths) top-of-range)
+(< (car gesorteerde-lengtes) hoogste-van-range)
 @end smallexample
 
-The purpose of the test is to determine whether the first item in the
-@code{sorted-lengths} list is less than the value of the top of the range.
+Het doel van deze test is vast te stellen of het eerste item in de
+@code{gesorteerde-lengtes} lijst kleiner is dan de waarde van de hoogste van
+de range.
 
-The simple version of the test works fine unless the @code{sorted-lengths}
-list has a @code{nil} value.  In that case, the @code{(car sorted-lengths)}
-expression function returns @code{nil}.  The @code{<} function cannot
-compare a number to @code{nil}, which is an empty list, so Emacs signals an
-error and stops the function from attempting to continue to execute.
+De simpele versie van de tekst werkt prima tenzij de
+@code{gesorteerde-lengtes} lijst een waarde @code{nil} heeft. In dat geval
+geeft de @code{(car gesorteerde-lengtes)} expressie @code{nil} terug. De
+functie @code{<} kan geen getal vergelijken met @code{nil}, wat een lege
+lijst is, zodat Emacs een fout signaleert en de verdere uitvoering van de
+functie stopt.
 
-The @code{sorted-lengths} list always becomes @code{nil} when the counter
-reaches the end of the list.  This means that any attempt to use the
-@code{defuns-per-range} function with the simple version of the test will
-fail.
+De @code{gesorteerde-lengtes} lijst wordt altijd @code{nil} wanneer de
+teller het einde van de lijst bereikt. Dit betekent dat elke poging om de
+functie @code{defuns-per-range} met de simpele versie te gebruiken zal
+falen.
 
-We solve the problem by using the @code{(car sorted-lengths)} expression in
-conjunction with the @code{and} expression.  The @code{(car sorted-lengths)}
-expression returns a non-@code{nil} value so long as the list has at least
-one number within it, but returns @code{nil} if the list is empty.  The
-@code{and} expression first evaluates the @code{(car sorted-lengths)}
-expression, and if it is @code{nil}, returns false @emph{without} evaluating
-the @code{<} expression.  But if the @code{(car sorted-lengths)} expression
-returns a non-@code{nil} value, the @code{and} expression evaluates the
-@code{<} expression, and returns that value as the value of the @code{and}
-expression.
+Wij lossen het probleem op met de @code{(car gesorteerde-lengtes)} expressie
+in combinatie met de @code{and} expressie. De @code{(car
+gesorteerde-lengtes)} expressie geeft een niet-@code{nil} waarde zolang de
+lijst tenminste een getal bevat, maar geeft @code{nil} terug als de lijst
+leeg is. De @code{and} expressie evalueert eerst de @code{(car
+gesorteerde-lengtes)} expressie, and als die @code{nil} is, geeft die onwaar
+terug @emph{zonder} de @code{<} expressie te evalueren. Maar wanneer de
+@code{(car gesorteerde-lengtes)} expressie een non-@code{nil} waarde
+teruggeeft, evalueert de @code{and} expressie de @code{<} expressie en geeft
+die waarde terug als de waarde van de @code{and} expressie.
 
 @c colon in printed section title causes problem in Info cross reference
-This way, we avoid an error.
+Op deze manier voorkomen we een fout.
 
 @iftex
 @noindent
@@ -15624,62 +15667,62 @@ Voor informatie over @code{and}, zie @ref{kill-new functie, , De
 @code{and}.)
 @end ifinfo
 
-Here is a short test of the @code{defuns-per-range} function.  First,
-evaluate the expression that binds (a shortened)  @code{top-of-ranges} list
-to the list of values, then evaluate the expression for binding the
-@code{sorted-lengths} list, and then evaluate the @code{defuns-per-range}
-function.
+Hier is een korte test van de functie @code{defuns-per-range}. Evalueer de
+expressie die een (verkorte) @code{hoogste-van-ranges} lijst bindt aan de
+lijst van waardes, en evalueer dan de expressie om de
+@code{gesorteerde-lengtes} lijst te binden, en evalueer daarna de functie
+@code{defuns-per-range}.
 
 @smallexample
 @group
-;; @r{(Shorter list than we will use later.)}
-(setq top-of-ranges
+;; @r{(Kortere lijst dan we later gaan gebruiken.)}
+(setq hoogste-van-ranges
  '(110 120 130 140 150
    160 170 180 190 200))
 
-(setq sorted-lengths
+(setq gesorteerde-lengtes
       '(85 86 110 116 122 129 154 176 179 200 265 300 300))
 
-(defuns-per-range sorted-lengths top-of-ranges)
+(defuns-per-range gesorteerde-lengtes hoogste-van-ranges)
 @end group
 @end smallexample
 
 @need 800
 @noindent
-The list returned looks like this:
+De teruggeven lijst ziet er zo uit:
 
 @smallexample
 (2 2 2 0 0 1 0 2 0 0 4)
 @end smallexample
 
 @noindent
-Indeed, there are two elements of the @code{sorted-lengths} list smaller
-than 110, two elements between 110 and 119, two elements between 120 and
-129, and so on.  There are four elements with a value of 200 or larger.
+Er zijn inderdaad twee elementen van de @code{gesorteerde-lengtes} lijst
+kleiner dan 110, twee elemten tussen 110 en 119, twee elementen tussen 120
+en 129, enzovoorts. Er zijn vier elementen met een waarde van 200 of groter.
 
 @c The next step is to turn this numbers' list into a graph.
-@node Een grafiek klaarmaken
-@chapter Een grafiek klaarmaken
-@cindex Readying a graph
-@cindex Graph prototype
-@cindex Prototype graph
-@cindex Body of graph
+@node Een grafiek voorbereiden
+@chapter Een grafiek voorbereiden
+@cindex Een grafiek voorbereiden
+@cindex Grafiek prototype
+@cindex Prototype grafiek
+@cindex Body van grafiek
 
-Our goal is to construct a graph showing the numbers of function definitions
-of various lengths in the Emacs lisp sources.
+Ons doel is een grafiek te construeren die de getallen toont van de
+functiedefinities van diverse lengtes in de Emacs lisp bronbestanden.
 
-As a practical matter, if you were creating a graph, you would probably use
-a program such as @code{gnuplot} to do the job.  (@code{gnuplot} is nicely
-integrated into GNU Emacs.)  In this case, however, we create one from
-scratch, and in the process we will re-acquaint ourselves with some of what
-we learned before and learn more.
+Als je in de praktijk een grafiek zou maken, zou je daarvoor waarschijnlijk
+een programma zoals @code{gnuplot} gebruiken. (@code{gnuplot} is mooi
+geïntegreerd en GNU Emacs.) In dit geval echter maken we er een helemaal
+zelf en in het proces maken wij ons weer vertrouwd met sommige dingen die we
+eerder geleerd hebben en meer leren.
 
-In this chapter, we will first write a simple graph printing function.  This
-first definition will be a @dfn{prototype}, a rapidly written function that
-enables us to reconnoiter this unknown graph-making territory.  We will
-discover dragons, or find that they are myth.  After scouting the terrain,
-we will feel more confident and enhance the function to label the axes
-automatically.
+In dit hoofdstuk schrijven we eerste een simpele functie om een grafiek te
+tonen. Deze eerste definitie wordt een @dfn{prototype}, een snel geschreven
+functie om het onbekende terrein van grafiek maken te verkennen. We
+ontdekken draken of ontdekken dat ze een mythe zijn. Na het terrein verkend
+te hebben voelen we ons meer zelfverzekerd en breiden de functie uit met
+automatische labeling van de assen.
 
 @menu
 * Kolommen van een grafiek::  Kolommen van een grafiek
@@ -15691,49 +15734,52 @@ automatically.
 
 @ifnottex
 @node Kolommen van een grafiek
-@unnumberedsec Printing the Columns of a Graph
+@unnumberedsec De kolommen van een grafiek tonen
 @end ifnottex
 
-Since Emacs is designed to be flexible and work with all kinds of terminals,
-including character-only terminals, the graph will need to be made from one
-of the typewriter symbols.  An asterisk will do; as we enhance the
-graph-printing function, we can make the choice of symbol a user option.
+Omdat Emacs gemaakt is om flexibel te zijn en met allerlei soorten terminals
+te werken, waaronder alleen-tekst terminals, moet de grafiek gemaakt worden
+met een typemachine-symbool. Een sterretje is goed genoeg. Wanneer we de
+functie om de grafiek te tonen uitbreiden, kunnen we van de keuze van het
+symbool een gebruikersoptie maken.
 
-We can call this function @code{graph-body-print}; it will take a
-@code{numbers-list} as its only argument.  At this stage, we will not label
-the graph, but only print its body.
+We kunnen deze functie @code{grafiek-body-tonen} noemen, het neemt de
+@code{numbers-list} als enige argument. Op dit moment geven we nog geen
+labels aan de grafiek, maar tonen alleen de body.
 
-The @code{graph-body-print} function inserts a vertical column of asterisks
-for each element in the @code{numbers-list}.  The height of each line is
-determined by the value of that element of the @code{numbers-list}.
+De functie @code{grafiek-body-tonen} voegt een verticale kolom van
+sterretjes in voor elk element van de @code{getallen-lijst}. De hoogte van
+elke lijn wordt bepaald door de waarde van dat element in de
+@code{getallen-lijst}.
 
-Inserting columns is a repetitive act; that means that this function can be
-written either with a @code{while} loop or recursively.
+Kolommen invoegen is een reperterende actie wat betekent dat deze functie
+met een @code{while} loop dan wel recursief geschreven kan worden.
 
-Our first challenge is to discover how to print a column of asterisks.
-Usually, in Emacs, we print characters onto a screen horizontally, line by
-line, by typing.  We have two routes we can follow: write our own
-column-insertion function or discover whether one exists in Emacs.
+Onze eerste uitdaging is om te ontdekken hoe een kolom van sterretjes te
+tonen. Meestal tonen we in Emacs horizontaal karakters op het scherm, regel
+voor regel, door te typen. We kunnen twee routes volgen: we schrijven onze
+eigen kolom-invoeg-functie of ontdekken of er al een in Emacs bestaat.
 
-To see whether there is one in Emacs, we can use the @kbd{M-x apropos}
-command.  This command is like the @kbd{C-h a} (@code{command-apropos})
-command, except that the latter finds only those functions that are
-commands.  The @kbd{M-x apropos} command lists all symbols that match a
-regular expression, including functions that are not interactive.
+Om te ontdekken of er al een in Emacs is, gebruiken we het commando @kbd{M-x
+apropos}. Dit commando is vergelijkbaar met het commando @kbd{C-h a}
+(@code{command-apropos}), behalve dat de laatste alleen functies vindt dat
+commando's zijn. Het commando @kbd{M-x apropos} vermeldt alle symbolen die
+een reguliere expressie matchen, inclusief functies die niet interactief
+zijn.
 @findex apropos
 
-What we want to look for is some command that prints or inserts columns.
-Very likely, the name of the function will contain either the word ``print''
-or the word ``insert'' or the word ``column''.  Therefore, we can simply
-type @kbd{M-x apropos @key{RET} print\|insert\|column @key{RET}} and look at
-the result.  On my system, this command once took quite some time, and then
-produced a list of 79 functions and variables.  Now it does not take much
-time at all and produces a list of 211 functions and variables.  Scanning
-down the list, the only function that looks as if it might do the job is
-@code{insert-rectangle}.
+Waar we naar zoeken is een commando dat kolommen toont of invoegt. Zeer
+waarschijnlijk bevat de naam van de functie het woord ``print'', het woord
+``insert'' of het woord 11column''. Daarom kunnen we eenvoudigweg @kbd{M-x
+apropos @key{RET} print\|insert\|column @key{RET}} typen en naar het
+resultaat kijken. Op mijn systeem kostte dit commando ooit behoorlijk wat
+tijd en produceerde een lijst met 79 functies en variabelen. Nu kost het
+amper tijd en produceert een lijst met 211 functies en variabelen. Bij het
+bekijken van de lijst is de enige functie die lijkt alsof die het werk kan
+doen is @code{insert-rectangle}.
 
 @need 1200
-Indeed, this is the function we want; its documentation says:
+Inderdaad, dit is de functie die we willen, de documentatie zegt:
 
 @smallexample
 @group
@@ -20758,31 +20804,31 @@ as graph-symbol.")
 
 @smallexample
 @group
-(defun count-words-in-defun ()
-  "Return the number of words and symbols in a defun."
+(defun tel-woorden-in-defun ()
+  "Geef het aantal woorden en symbolen in een defun terug."
   (beginning-of-defun)
-  (let ((count 0)
-        (end (save-excursion (end-of-defun) (point))))
+  (let ((telling 0)
+        (einde (save-excursion (end-of-defun) (point))))
 @end group
 
 @group
     (while
-        (and (< (point) end)
+        (and (< (point) einde)
              (re-search-forward
               "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
-              end t))
-      (setq count (1+ count)))
-    count))
+              einde t))
+      (setq telling (1+ telling)))
+    telling))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun lengths-list-file (filename)
-  "Return list of definitions' lengths within FILE.
-The returned list is a list of numbers.
-Each number is the number of words or
-symbols in one function definition."
+(defun lengte-lijst-bestand (bestandsnaam)
+  "Geef een lijst terug met definitielengtes in BESTANDSNAAM.
+De teruggeven lijst is een lijst van getallen.
+Elk getal is een het aahtal woorden of symbolen
+in een functiedefinitie."
 @end group
 
 @group
@@ -20829,11 +20875,11 @@ symbols in one function definition."
 
 @smallexample
 @group
-(defun defuns-per-range (sorted-lengths top-of-ranges)
-  "SORTED-LENGTHS defuns in each TOP-OF-RANGES range."
-  (let ((top-of-range (car top-of-ranges))
-        (number-within-range 0)
-        defuns-per-range-list)
+(defun defuns-per-range (gesorteerde-lengtes hoogste-van-ranges)
+  "GESORTEERDE-LENGTES defuns in elke HOOGSTE-VAN-RANGES range."
+  (let ((hoogste-van-range (car hoogste-van-ranges))
+        (getal-in-range 0)
+        defuns-per-range-lijst)
 @end group
 
 @group
@@ -20846,35 +20892,34 @@ symbols in one function definition."
               (car sorted-lengths)
               (< (car sorted-lengths) top-of-range))
 
-        ;; @r{Count number of definitions within current range.}
-        (setq number-within-range (1+ number-within-range))
-        (setq sorted-lengths (cdr sorted-lengths)))
+        ;; @r{Tel aantal definities in huidige range.}
+        (setq getal-in-range (1+ getal-in-range))
+        (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 @end group
 
 @group
-      ;; @r{Exit inner loop but remain within outer loop.}
+      ;; @r{Verlaat binnenste loop maar blijf in buitenste loop.}
 
-      (setq defuns-per-range-list
-            (cons number-within-range defuns-per-range-list))
-      (setq number-within-range 0)      ; @r{Reset count to zero.}
-
-      ;; @r{Move to next range.}
-      (setq top-of-ranges (cdr top-of-ranges))
+      (setq defuns-per-range-lijst
+            (cons getal-in-range defuns-per-range-list))
+      (setq getal-in-range 0)      ; @r{Reset telling op nul.}
+      ;; @r{Ga naar volgende range.}
+      (setq hoogste-van-ranges (cdr hoogste-van-ranges))
       ;; @r{Specify next top of range value.}
-      (setq top-of-range (car top-of-ranges)))
+      (setq hoogste-van-range (car hoogste-van-ranges)))
 @end group
 
 @group
-    ;; @r{Exit outer loop and count the number of defuns larger than}
-    ;; @r{  the largest top-of-range value.}
-    (setq defuns-per-range-list
+    ;; @r{Verlaat buitenste loop en tel het aantal defuns groter dan}
+    ;; @r{  de grootste top-of-range value.}
+    (setq defuns-per-range-lijst
           (cons
-           (length sorted-lengths)
-           defuns-per-range-list))
+           (length gesorteerde-lengtes)
+           defuns-per-range-lijst))
 
-    ;; @r{Return a list of the number of definitions within each range,}
-    ;; @r{  smallest to largest.}
-    (nreverse defuns-per-range-list)))
+    ;; @r{Geef een lijst terug met het aantal definities in elke range,}
+    ;; @r{  van klein naar groot.}
+    (nreverse defuns-per-range-lijst)))
 @end group
 @end smallexample
 

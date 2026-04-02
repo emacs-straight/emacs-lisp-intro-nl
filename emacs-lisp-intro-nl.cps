@@ -41,6 +41,7 @@
 @entry{Axis, print vertical}{237}
 @initial {B}
 @entry{@code {beginning-of-buffer}}{66}
+@entry{@code {bestanden-in-onderliggende-directory}}{183}
 @entry{Bewaren, type recursief patroon}{137}
 @entry{Bewegen per zin en paragraaf}{143}
 @entry{Bibliotheek als term voor ``bestand''}{48}
@@ -51,7 +52,7 @@
 @entry{Binnenste lijst evaluatie}{8}
 @entry{Bloemen in een veld}{1}
 @entry{@samp {body} gedefinieerd}{27}
-@entry{Body of graph}{191}
+@entry{Body van grafiek}{191}
 @entry{Buffer, geschiedenis van woord}{21}
 @entry{@code {buffer-file-name}}{20}
 @entry{@code {buffer-menu@r {, bound to key}}}{208}
@@ -81,7 +82,6 @@
 @entry{@code {copy-region-as-kill}}{94}
 @entry{@code {copy-to-buffer}}{60}
 @entry{@code {count-words-in-defun}}{175}
-@entry{Counting words in a @code {defun}}{171, 173}
 @entry{@code {current-buffer}}{22}
 @entry{@code {current-kill}}{228}
 @entry{Customizing your @file {.emacs} file}{200}
@@ -122,9 +122,10 @@
 @entry{Dynamische binding}{36}
 @initial {E}
 @entry{@code {edebug}}{221}
-@entry{Een bestand vinden}{177}
+@entry{Een bestand vinden}{176}
 @entry{Een buffer krijgen}{22}
 @entry{Een functiedefinitie wijzigen}{29}
+@entry{Een grafiek voorbereiden}{191}
 @entry{Een programma draaien}{3}
 @entry{Een variabele initialiseren}{104}
 @entry{Eigenschappen, vermelding van @code {buffer-substring-no-properties}}{77}
@@ -144,7 +145,6 @@
 @entry{@samp {expressie} gedefinieerd}{2}
 @initial {F}
 @entry{FDL, GNU Free Documentation License}{260}
-@entry{@code {files-in-below-directory}}{183}
 @entry{@code {fill-column@r {, een voorbeeldvariabele}}}{9}
 @entry{@code {filter-buffer-substring}}{96}
 @entry{Formattering conventie}{56}
@@ -166,7 +166,7 @@
 @entry{@samp {global variable} defined}{232}
 @entry{@code {global-set-key}}{208}
 @entry{@code {global-unset-key}}{208}
-@entry{Graph prototype}{191}
+@entry{Grafiek prototype}{191}
 @entry{Graph, printing all}{248}
 @entry{@code {graph-body-print}}{196}
 @entry{@code {graph-body-print @r {Final version.}}}{249}
@@ -174,6 +174,7 @@
 @entry{Handling the kill ring}{228}
 @entry{Herhaling (loops)}{116}
 @entry{Het evalueren van een binnenste lijst}{8}
+@entry{@code {hoogste-van-ranges}}{187}
 @entry{Horizontal axis printing}{244}
 @entry{Hulp bij formatteren}{3}
 @entry{Hulp bij lijsten typen}{3}
@@ -211,8 +212,8 @@
 @entry{Ladekast, metafoor voor een symbool}{111}
 @entry{@code {lambda}}{252}
 @entry{@samp {lege string} gedefinieerd}{46}
+@entry{@code {lengte-lijst-bestand}}{177}
 @entry{@code {length}}{81}
-@entry{@code {lengths-list-file}}{178}
 @entry{@code {lengths-list-many-files}}{180}
 @entry{@code {let}}{33}
 @entry{@code {let} expressie voorbeeld}{35}
@@ -298,7 +299,7 @@
 @entry{Printing the whole graph}{248}
 @entry{@code {progn}}{89}
 @entry{Properties, in mode line example}{216}
-@entry{Prototype graph}{191}
+@entry{Prototype grafiek}{191}
 @entry{@code {push@r {, voorbeeld}}}{100}
 @initial {Q}
 @entry{@code {quote}}{3}
@@ -306,7 +307,6 @@
 @initial {R}
 @entry{@code {re-search-forward}}{145}
 @entry{Read-only buffer}{62}
-@entry{Readying a graph}{191}
 @entry{Rebinding keys}{208}
 @entry{Recursie}{129}
 @entry{Recursie en loops}{116}
@@ -315,11 +315,11 @@
 @entry{Recursief woorden tellen}{164}
 @entry{Recursieve patronen}{135}
 @entry{Recursieve patronen - bewaren}{137}
+@entry{@code {recursieve-lengte-lijst-veel-bestanden}}{181}
 @entry{Recursive definitie onderdelen}{130}
 @entry{Recursive pattern - elke}{135}
 @entry{@code {recursive-count-words}}{169}
 @entry{@code {recursive-graph-body-print}}{198}
-@entry{@code {recursive-lengths-list-many-files}}{181}
 @entry{@code {regexp-quote}}{151}
 @entry{Region, wat is het}{42}
 @entry{Reguliere expressie voor tellen van woorden}{158}
@@ -348,7 +348,7 @@
 @entry{@file {site-init.el} init file}{200}
 @entry{@file {site-load.el} init file}{200}
 @entry{Sleutelwoord}{67}
-@entry{@code {sort}}{183}
+@entry{@code {sorteren}}{182}
 @entry{Source level debugger}{221}
 @entry{Speciale vorm}{7}
 @entry{Sterretje voor een read-only buffer}{62}
@@ -361,7 +361,7 @@
 @entry{Symbool zonder functie foutmelding}{10}
 @entry{Symbool zonder waarde fout}{10}
 @entry{Symboolnamen}{6}
-@entry{Syntax categories and tables}{172}
+@entry{Syntax categorieën en tabellen}{172}
 @initial {T}
 @entry{Tabs, preventing}{206}
 @entry{Tekst deleten}{86}
@@ -378,7 +378,6 @@
 @entry{@samp {teruggegeven waarde} uitgelegd}{8}
 @entry{Text clippen}{86}
 @entry{Text Mode turned on}{205}
-@entry{@code {top-of-ranges}}{187}
 @entry{@code {triangle-bugged}}{218}
 @entry{Typen van data}{12}
 @initial {U}
@@ -412,9 +411,9 @@
 @entry{@code {while}}{116}
 @entry{Whole graph printing}{248}
 @entry{Witte ruimte in lijsten}{2}
+@entry{Woorden en symbolen in defun}{171}
+@entry{Woorden tellen in een @code {defun}}{171, 173}
 @entry{Woorden, recursief geteld}{164}
-@entry{Word counting in a @code {defun}}{171}
-@entry{Words and symbols in defun}{171}
 @entry{Words, duplicated}{226}
 @initial {X}
 @entry{X axis printing}{244}

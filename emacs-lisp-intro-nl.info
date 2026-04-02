@@ -99,7 +99,7 @@ onderdeel van elk hoofdstuk.
 * Regexp zoeken::            Reguliere expressie zoekopdrachten
 * Woorden tellen::           Een terugblik op herhaling en regexps.
 * Woorden in een defun::     Woorden tellen in een ‘defun’.
-* Een grafiek klaarmaken::   Een prototype grafiek print functie.
+* Een grafiek voorbereiden::  Een prototype grafiek print functie.
 * Initialisatie van Emacs::  Hoe een ‘.emacs’ bestand te schrijven.
 * Debuggen.::                Hoe Emacs Lisp debuggers te draaien.
 * Conclusie::                Nu heb je de basis.
@@ -582,7 +582,7 @@ Woorden tellen in een ‘defun’
                                ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
-* lengths-list-file::        Een lijst met de lengtes van veel definities.
+* lengte-lijst-bestand::     Een lijst met de lengtes van veel definities.
 * Enkele bestanden::         Tellen in definities in verschillende
                                bestanden.
 * Enkele bestanden recursief::  Recursief tellen in verschillende bestanden.
@@ -605,7 +605,7 @@ De data voorbereiden om in een grafiek te tonen
 * Bestandenlijst::           Een lijst van bestanden maken.
 * Functiedefinities tellen::  Functiedefinities tellen
 
-Een grafiek klaarmaken
+Een grafiek voorbereiden
 
 
 
@@ -8485,7 +8485,7 @@ ziet er zo uit:
 
      (while TEST-OF-LIJST-LEEG-IS
        BODY...
-       SET-LIJST-OP-CDR-VAN-LIJST)
+       ZET-LIJST-OP-CDR-VAN-LIJST)
 
    Deze test en het gebruik van ‘cdr’ kunnen samengevoegd worden in een
 functie die door een lijst gaat en elk element van de lijst op een regel
@@ -9973,7 +9973,7 @@ File: emacs-lisp-intro-nl.info,  Node: Regexp zoeken,  Next: Woorden tellen,  Pr
 Zoekopdrachten met reguliere expressies worden uitgebreid gebruikt in
 Emacs.  De twee functies ‘forward-sentence’ en ‘forward-paragraph’
 illustreren deze zoekopdrachten goed.  Zij gebruiken reguliere
-expressies om uit te zoeken waarheen de point te bewegen.  De
+expressies om uit te zoeken waarheen de point te verplaatsen.  De
 uitdrukking "reguliere expressie" wordt vaak geschreven als "regexp".
 
    Reguliere expressie zoekopdrachten zijn beschreven in *note Regular
@@ -10608,7 +10608,7 @@ Het tweede deel van de body van de ‘let*’ behandelt de voorwaartse
 beweging.  Het is een ‘while’ loop dit zichzelf herhaalt zolang de waard
 van ‘arg’ groter is dan nul.  In de meest gebruikte manier van de
 functie is de waarde van het argument 1, en wordt de body van de ‘while’
-loop exact een keer geëvalueerd, en beweegt de cursor een paragraaf
+loop exact een keer geëvalueerd, en verplaatst de cursor een paragraaf
 voorwaarts.
 
    Dit deel behandelt drie situaties: wanneer point tussen twee
@@ -11019,8 +11019,8 @@ point voorwaarts moet springen, en onwaar wanneer point aan het einde
 van de region is.
 
    We zouden ‘(forward-word 1)’ kunnen gebruiken om point woord voor
-woord voorwaarts te bewegen, maar het is makkelijker om te kijken wat
-Emacs als "woord" identificeert, wanneer we een reguliere expressie
+woord voorwaarts te verplaatsen, maar het is makkelijker om te kijken
+wat Emacs als "woord" identificeert, wanneer we een reguliere expressie
 zoekopdracht gebruiken.
 
    Een reguliere expressie zoekopdracht die het patroon vindt waarvoor
@@ -11635,24 +11635,24 @@ een region telt--punt, komma, punt-komma, dubbele punt, uitroepteken en
 vraagteken.  Doe het nog een keer met recursie.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Woorden in een defun,  Next: Een grafiek klaarmaken,  Prev: Woorden tellen,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Woorden in een defun,  Next: Een grafiek voorbereiden,  Prev: Woorden tellen,  Up: Top
 
 14 Woorden tellen in een ‘defun’
 ********************************
 
-Our next project is to count the number of words in a function
-definition.  Clearly, this can be done using some variant of
-‘count-words-example’.  *Note Counting via Repetition and Regexps:
-Counting Words.  If we are just going to count the words in one
-definition, it is easy enough to mark the definition with the ‘C-M-h’
-(‘mark-defun’) command, and then call ‘count-words-example’.
+Ons volgende project is het tellen van het aantal woorden in een
+functiedefinitie.  Het is duidelijk dat dit kan met een variant van
+‘tel-woorden-voorbeeld’.  *Note Tellen via repetitie en regexps: Woorden
+tellen.  Wanneer we de woorden gaan tellen in éénn definitie, is het
+makkelijk genoeg om de definitie met het commando ‘C-M-h’ (‘mark-defun’)
+te markeren en dan ‘tel-woorden-voorbeeld’ aan te roepen.
 
-   However, I am more ambitious: I want to count the words and symbols
-in every definition in the Emacs sources and then print a graph that
-shows how many functions there are of each length: how many contain 40
-to 49 words or symbols, how many contain 50 to 59 words or symbols, and
-so on.  I have often been curious how long a typical function is, and
-this will tell.
+   Ik ben echter meer ambitieus: ik wil de woorden en symbolen tellen in
+elke definitie in de Emacs broncode en dan een grafiek tonen die laat
+zien hoeveel functies er zijn van elke lengte: hoeveel bevatten 40 tot
+49 woorden of symbolen, hoeveel bevatten 50 tot 59 symbolen, enzovoorts.
+Ik ben vaak nieuwsgierig hoe lang een typische functie is, en dit gaat
+het vertellen.
 
 * Menu:
 
@@ -11663,7 +11663,7 @@ this will tell.
                                ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
-* lengths-list-file::        Een lijst met de lengtes van veel definities.
+* lengte-lijst-bestand::     Een lijst met de lengtes van veel definities.
 * Enkele bestanden::         Tellen in definities in verschillende
                                bestanden.
 * Enkele bestanden recursief::  Recursief tellen in verschillende bestanden.
@@ -11676,364 +11676,377 @@ File: emacs-lisp-intro-nl.info,  Node: Verdeel en heers,  Next: Woorden en symbo
 Verdeel en heers
 ================
 
-Described in one phrase, the histogram project is daunting; but divided
-into numerous small steps, each of which we can take one at a time, the
-project becomes less fearsome.  Let us consider what the steps must be:
+In één zin beschreven lijkt dit histogram project ontmoedigend, maar
+opgedeeld in talrijke kleine stappen, die we een voor een kunnen zetten
+wordt dit project minder angstaanjagend.  Laten we overwegen wat de
+stappen moeten zijn:
 
-   • First, write a function to count the words in one definition.  This
-     includes the problem of handling symbols as well as words.
+   • Ten eerste schrijf een functie die de woorden in één definitie
+     telt.  Dit bevat het probleem om zowel symbolen als woorden te
+     behandelen.
 
-   • Second, write a function to list the number of words in each
-     function in a file.  This function can use the
-     ‘count-words-in-defun’ function.
+   • Ten tweede schrijf een functie die het aantal woorden in elke
+     functie in een bestand opsomt.  Deze functie kan de functie
+     ‘tel-woorden-in-defun’ gebruiken.
 
-   • Third, write a function to list the number of words in each
-     function in each of several files.  This entails automatically
-     finding the various files, switching to them, and counting the
-     words in the definitions within them.
+   • Ten derde, schrijf een functie die het aantal woorden in elke
+     functie in elk van een aantal bestanden opsomt.  Dit bevat
+     automatisch vinden van diverse bestanden, naar ze schakelen en de
+     woorden in de definities in ze tellen.
 
-   • Fourth, write a function to convert the list of numbers that we
-     created in step three to a form that will be suitable for printing
-     as a graph.
+   • Ten vierde, schrijf een functie die de lijst met getallen die we in
+     stap 3 hebben gemaakt omzet in een vorm die geschikt is om als
+     grafiek te tonen.
 
-   • Fifth, write a function to print the results as a graph.
+   • Ten vijfde, schrijf een functie die de resultaten als grafiek
+     toont.
 
-   This is quite a project!  But if we take each step slowly, it will
-not be difficult.
+   Dit is een behoorlijk project!  Maar als we elke stap langzaam doen,
+is het niet moeilijk.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Woorden en symbolen,  Next: Syntax,  Prev: Verdeel en heers,  Up: Woorden in een defun
 
-14.1 What to Count?
+14.1 Wat te tellen?
 ===================
 
-When we first start thinking about how to count the words in a function
-definition, the first question is (or ought to be) what are we going to
-count?  When we speak of "words" with respect to a Lisp function
-definition, we are actually speaking, in large part, of symbols.  For
-example, the following ‘multiply-by-seven’ function contains the five
-symbols ‘defun’, ‘multiply-by-seven’, ‘number’, ‘*’, and ‘7’.  In
-addition, in the documentation string, it contains the four words
-‘Multiply’, ‘NUMBER’, ‘by’, and ‘seven’.  The symbol ‘number’ is
-repeated, so the definition contains a total of ten words and symbols.
+Wanneer we beginnen met nadenken over hoe de woorden in een
+functiedefinitie te tellen, is de eerste vraag (of zou dat moeten zijn)
+wat gaan we tellen?  Wanneer we over "woorden" spreken met betrekking
+tot een Lisp functiedefinitie, dan spreken we feitelijk grotendeels over
+symbolen.  Bijvoorbeeld de volgende ‘vermenigvuldig-met-zeven’ functie
+bevat vijf de symbolen ‘defun’, ‘vermenigvuldig-met-zeven’, ‘getal’, ‘*’
+en ‘7’.  Daarnaast bevat het in de documentatiestring de vier woorden
+‘Vermenigvuldig’, ‘GETAL’, ‘met’ en ‘zeven’.  Het woord ‘getal’ wordt
+herhaald, zodat de definitie in totaal tien woorden en symbolen bevat.
 
      (defun vermenigvuldig-met-zeven (getal)
        "Vermenigvuldig GETAL met zeven."
        (* 7 getal))
 
-However, if we mark the ‘multiply-by-seven’ definition with ‘C-M-h’
-(‘mark-defun’), and then call ‘count-words-example’ on it, we will find
-that ‘count-words-example’ claims the definition has eleven words, not
-ten!  Something is wrong!
+Als we echter de ‘vermenigvuldig-met-zeven’ definitie met ‘C-M-h’
+(‘mark-defun’) markeren en dan ‘tel-woorden-voorbeeld’ er op aanroepen,
+dan zien we dat ‘tel-woorden-voorbeeld’ zegt dat de definitie elf
+woorden bevat, niet tien!  Er is duidelijk iets fout.
 
-   The problem is twofold: ‘count-words-example’ does not count the ‘*’
-as a word, and it counts the single symbol, ‘multiply-by-seven’, as
-containing three words.  The hyphens are treated as if they were
-interword spaces rather than intraword connectors: ‘multiply-by-seven’
-is counted as if it were written ‘multiply by seven’.
+   Het probleem is tweevoudig: ‘tel-woorden-voorbeeld’ telt niet de ‘*’
+als woord en het telt het enkele symbool ‘vermenigvuldig-met-zeven’ als
+drie woorden.  De koppeltekens worden behandeld alsof het spaties tussen
+de woorden zijn in plaats van een verbinding tussen de woorden:
+‘vermenigvuldig-met-zeven’ wordt geteld alsof er ‘vermenigvuldig met
+zeven’ staat.
 
-   The cause of this confusion is the regular expression search within
-the ‘count-words-example’ definition that moves point forward word by
-word.  In the canonical version of ‘count-words-example’, the regexp is:
+   De oorzaak van deze verwarring is de reguliere expressie zoekopdracht
+in de ‘tel-woorden-voorbeeld’ definitie die point woord voor woord
+voorwaarts verpaatst.  In de oorspronkelijke versie van
+‘tel-woorden-voorbeeld’ is de regexp:
 
      "\\w+\\W*"
 
-This regular expression is a pattern defining one or more word
-constituent characters possibly followed by one or more characters that
-are not word constituents.  What is meant by "word constituent
-characters" brings us to the issue of syntax, which is worth a section
-of its own.
+Deze reguliere expressie is een patroon dat een of meer woord-vormende
+letters mogelijk gevolgd door een of meer niet woord-vormende letters
+definieert.  Wat bedoeld wordt met "woord-vormende letters" brengt ons
+bij het probleem van de syntax, wat een aparte sectie waard is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Syntax,  Next: count-words-in-defun,  Prev: Woorden en symbolen,  Up: Woorden in een defun
 
-14.2 What Constitutes a Word or Symbol?
-=======================================
+14.2 Wat vormt een woord of symbool?
+====================================
 
-Emacs treats different characters as belonging to different “syntax
-categories”.  For example, the regular expression, ‘\\w+’, is a pattern
-specifying one or more _word constituent_ characters.  Word constituent
-characters are members of one syntax category.  Other syntax categories
-include the class of punctuation characters, such as the period and the
-comma, and the class of whitespace characters, such as the blank space
-and the tab character.  (For more information, *note Syntax Tables:
-(elisp)Syntax Tables.)
+Emacs behandelt verschillende karakters als behorend bij verschillende
+“syntax categorieën”.  De reguliere expressie ‘\\w+’ bijvoorbeeld is ene
+patroon dat een of meer woord-vormende karakters specificeert.
+Woord-vormende karakters zijn leden van een syntax categorie.  Andere
+syntax categorieën bevatten de klasse van leestekens, zoals de punt en
+komma, en de klasse witte ruimte karakters zoals de spatie en het
+tab-karakter.  (Voor meer informatie *note Syntax Tables: (elisp)Syntax
+Tables.))
 
-   Syntax tables specify which characters belong to which categories.
-Usually, a hyphen is not specified as a word constituent character.
-Instead, it is specified as being in the class of characters that are
-part of symbol names but not words.  This means that the
-‘count-words-example’ function treats it in the same way it treats an
-interword white space, which is why ‘count-words-example’ counts
-‘multiply-by-seven’ as three words.
+   Syntax tabellen specificeren welke karakters tot welke categorie
+behoren.  Meestal is een koppelteken niet gespecificeerd als een
+woord-vormend karakter.  In plaats daarvan is het gespecificeerd als
+onderdeel van de klasse van karakters die deel zijn van symboolnamen
+maar niet woorden.  Dit betekent dat de functie ‘tel-woorden-voorbeeld’
+het op dezelfde manier behandelt als het spaties tussen woorden
+behandelt en dat is waarom ‘tel-woorden-voorbeeld’
+‘vermenigvuldig-met-zeven’ als drie woorden telt.
 
-   There are two ways to cause Emacs to count ‘multiply-by-seven’ as one
-symbol: modify the syntax table or modify the regular expression.
+   Er zijn twee manieren die zorgen dat ‘vermenigvuldig-met-zeven’ als
+één symbool telt: de syntax tabel aanpassen of de reguliere expressie
+aanpassen.
 
-   We could redefine a hyphen as a word constituent character by
-modifying the syntax table that Emacs keeps for each mode.  This action
-would serve our purpose, except that a hyphen is merely the most common
-character within symbols that is not typically a word constituent
-character; there are others, too.
+   We kunnen een koppelteken als woord-vormend karakter herdefiniëren
+door de syntax tabel aan te passen die Emacs voor elke mode bijhoudt.
+Deze actie zou ons doel dienen, behalve dat een koppelteken slechts een
+veel gebruikt karakter binnen symbolen is dat niet typisch een
+woord-vormend karakter is, er zijn er ook andere.
 
-   Alternatively, we can redefine the regexp used in the
-‘count-words-example’ definition so as to include symbols.  This
-procedure has the merit of clarity, but the task is a little tricky.
+   We kunnen ook de regexp herdefiniëren die wordt gebruikt in de
+‘tel-woorden-voorbeeld’ zodat die ook symbolen bevat.  Deze methode
+heeft de waarde van duidelijkheid maar die taak is een beetje lastig.
 
-   The first part is simple enough: the pattern must match at least one
-character that is a word or symbol constituent.  Thus:
+   Het eerste deel eenvoudig genoeg: het patroon moet minstens één
+karakter matchen dat een woord of symbool vormt.  Dus:
 
      "\\(\\w\\|\\s_\\)+"
 
-The ‘\\(’ is the first part of the grouping construct that includes the
-‘\\w’ and the ‘\\s_’ as alternatives, separated by the ‘\\|’.  The ‘\\w’
-matches any word-constituent character and the ‘\\s_’ matches any
-character that is part of a symbol name but not a word-constituent
-character.  The ‘+’ following the group indicates that the word or
-symbol constituent characters must be matched at least once.
+De ‘\\(’ is het eerste van de groeperende constructie die de ‘\\w’ en de
+‘\\s_’ als alternatieven bevat, geschieden door de ‘\\|’.  De ‘\\w’
+matcht elk woord-vormend karakter en e ‘\\s_’ matcht elke karakter dat
+onderdeel is van een symboolnaam maar geen woord-vormend karakter is.
+De ‘+’ die op de groep volgt geeft aan dat het woord- of symboolvormend
+karakter tenminste eenmaal moet worden gematcht.x
 
-   However, the second part of the regexp is more difficult to design.
-What we want is to follow the first part with optionally one or more
-characters that are not constituents of a word or symbol.  At first, I
-thought I could define this with the following:
+   Het tweede van de regexp is echter moeilijker te maken.  Wat we
+willen is het eerste deel op te volgen met optioneel een of meer
+karakters die geen woord of symbool vormen.  In eerste instantie dacht
+ik dat ik dit met het volgende kon doen:
 
      "\\(\\W\\|\\S_\\)*"
 
-The upper case ‘W’ and ‘S’ match characters that are _not_ word or
-symbol constituents.  Unfortunately, this expression matches any
-character that is either not a word constituent or not a symbol
-constituent.  This matches any character!
+De hoofdletters ‘W’ en ‘S’ matchen karakters die GEEN woord- of symbool
+vormen.  Helaas matcht deze expressie elke karakter dat of niet
+woord-vormend of niet symbool-vormend is.  Het matcht elk karakter!
 
-   I then noticed that every word or symbol in my test region was
-followed by white space (blank space, tab, or newline).  So I tried
-placing a pattern to match one or more blank spaces after the pattern
-for one or more word or symbol constituents.  This failed, too.  Words
-and symbols are often separated by whitespace, but in actual code
-parentheses may follow symbols and punctuation may follow words.  So
-finally, I designed a pattern in which the word or symbol constituents
-are followed optionally by characters that are not white space and then
-followed optionally by white space.
+   Daarna merkte ik op dat elk woord of symbool in mijn test-region
+wordt gevold door witte ruimte (spatie, tab of nieuwe regel).  Daarom
+probeerde een patroon dat een of meer spaties matcht achter het patroon
+voor een of meer woord- of symboolvormende karakters te plaatsten.  Dit
+mislukte ook.  Woorden en symbolen zijn vaak gescheiden door witte
+ruimte, maar in de code mogen haakjes op symbolen volgen en leestekens
+op woorden.  Daarom maakte uiteindelijk ene patroon waarin woord- of
+symboolvormende karakters worden gevolgd door optionele karakters die
+geen witten ruimte zijn en dan optioneel gevold door witte ruimte.
 
-   Here is the full regular expression:
+   Hier is de volledige reguliere expressie:
 
      "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
 
 
 File: emacs-lisp-intro-nl.info,  Node: count-words-in-defun,  Next: Enkele defuns,  Prev: Syntax,  Up: Woorden in een defun
 
-14.3 The ‘count-words-in-defun’ Function
-========================================
+14.3 De ‘tel-woorden-in-defun’ functie
+======================================
 
-We have seen that there are several ways to write a ‘count-words-region’
-function.  To write a ‘count-words-in-defun’, we need merely adapt one
-of these versions.
+We hebben gezien dat er verschillende manieren zijn om een functie
+‘tel-woorden-region’ te schrijven.  Om een ‘tel-woorden-in-defun’ te
+schrijven, hoeven we slechts een van die versies aan te passen.
 
-   The version that uses a ‘while’ loop is easy to understand, so I am
-going to adapt that.  Because ‘count-words-in-defun’ will be part of a
-more complex program, it need not be interactive and it need not display
-a message but just return the count.  These considerations simplify the
-definition a little.
+   De versie die een ‘while’ loop gebruikt is makkelijk te begrijpen,
+daarom ga ik die aanpassen.  Omdat ‘tel-woorden-in-defun’ onderdeel
+wordt van een meer complex programma, hoeft het niet interactief te zijn
+en hoeft het geen boodschap te tonen, maar slecht de telling teruggeven.
+Deze overwegingen vereenvoudigen de definitie een beetje.
 
-   On the other hand, ‘count-words-in-defun’ will be used within a
-buffer that contains function definitions.  Consequently, it is
-reasonable to ask that the function determine whether it is called when
-point is within a function definition, and if it is, to return the count
-for that definition.  This adds complexity to the definition, but saves
-us from needing to pass arguments to the function.
+   Anderzijds, ‘tel-woorden-in-defun’ wordt gebruikt in een buffer dat
+functiedefinities bevat.  Daarom is het redelijk te vragen dat de
+functie vaststelt of het wordt aangeroepen met point binnen een
+functiedefinitie, en zo ja, de telling voor die definitie terug te
+geven.  Dit voegt complexiteit toe aan de definitie, maar redt ons van
+de noodzaak om argumenten aan de functie door te geven.
 
-   These considerations lead us to prepare the following template:
+   Deze overwegingen leiden ons tot het voorbereiden van het volgende
+sjabloon:
 
-     (defun count-words-in-defun ()
-       "DOCUMENTATION..."
-       (SET UP...
+     (defun tel-woorden-in-defun ()
+       "DOCUMENTATIE..."
+       (OPZETTEN...
           (WHILE LOOP...)
-        RETURN COUNT)
+        GEEF TELLING TERUG)
 
-As usual, our job is to fill in the slots.
+Zoals gebruikelijk is het onze taak de slots in te vullen.
 
-   First, the set up.
+   Eerst het opzetten
 
-   We are presuming that this function will be called within a buffer
-containing function definitions.  Point will either be within a function
-definition or not.  For ‘count-words-in-defun’ to work, point must move
-to the beginning of the definition, a counter must start at zero, and
-the counting loop must stop when point reaches the end of the
-definition.
+   Wij gaan er van uit dat deze functie wordt aangeroepen binnen een
+buffer dat functiedefinities bevat.  Point is in een functiedefinitie of
+niet.  Om ‘tel-woorden-in-defun’ te laten werken moet point naar het
+begin van de definitie verplaatsen, een teller moet bij nul beginnen en
+de tellende loop moet stoppen wanneer point het einde van de definitie
+bereikt.
 
-   The ‘beginning-of-defun’ function searches backwards for an opening
-delimiter such as a ‘(’ at the beginning of a line, and moves point to
-that position, or else to the limit of the search.  In practice, this
-means that ‘beginning-of-defun’ moves point to the beginning of an
-enclosing or preceding function definition, or else to the beginning of
-the buffer.  We can use ‘beginning-of-defun’ to place point where we
-wish to start.
+   De functie ‘beginning-of-defun’ zoekt achterwaarts naar een
+openingsscheidingsteken zoals een ‘(’ aan het begin van de regel en
+verplaatst point naar die positie of anders naar de begrenzing van de
+zoekopdracht.  In de praktijk betekent dit dat ‘beginning-of-defun’ pint
+naar het begin van een buitenliggende of voorgaande functiedefinitie
+verplaatst, of anders naar het begin van het buffer.  De kunnen
+‘beginning-of-defun’ gebruiken om de point daar neer te zetten waar wij
+willen beginnen.
 
-   The ‘while’ loop requires a counter to keep track of the words or
-symbols being counted.  A ‘let’ expression can be used to create a local
-variable for this purpose, and bind it to an initial value of zero.
+   De ‘while’ loop vereist een teller om het aantal getelde woorden of
+symbolen bij te houden.  Een ‘let’ expressie kan worden gebruikt om een
+lokale variabele voor dit doel te maken en te binnen aan een initiële
+waarde van nul.
 
-   The ‘end-of-defun’ function works like ‘beginning-of-defun’ except
-that it moves point to the end of the definition.  ‘end-of-defun’ can be
-used as part of an expression that determines the position of the end of
-the definition.
+   De functie ‘end-of-defun’ werkt net als de ‘beginning-of-defun’
+behalve dat het point naar het einde van de definitie verplaatst.
+‘end-of-defun’ kan worden gebruikt als onderdeel van een expressie die
+de positie van het einde van de definitie vaststelt.
 
-   The set up for ‘count-words-in-defun’ takes shape rapidly: first we
-move point to the beginning of the definition, then we create a local
-variable to hold the count, and finally, we record the position of the
-end of the definition so the ‘while’ loop will know when to stop
-looping.
+   Het opzetten van de ‘tel-woorden-in-defun’ begint al snel vorm te
+krijgen: eerst verplaatsten we point naar het begin van de definitie,
+vervolgens maken we een lokale variable die telling bewaart en tenslotte
+registeren we de positie van het einde van de definitie zodat de ‘while’
+loop weet wanneer te stoppen met loopen.
 
    De code ziet er zo uit:
 
      (beginning-of-defun)
-     (let ((count 0)
-           (end (save-excursion (end-of-defun) (point))))
+     (let ((telling 0)
+           (einde (save-excursion (end-of-defun) (point))))
 
-The code is simple.  The only slight complication is likely to concern
-‘end’: it is bound to the position of the end of the definition by a
-‘save-excursion’ expression that returns the value of point after
-‘end-of-defun’ temporarily moves it to the end of the definition.
+De code is eenvoudig.  De enige kleine complicatie zal waarschijnlijk
+betrekking hebben op ‘einde’: het is gebonden aan de positie van het
+einde van de definitie door een ‘save-excursion’ expressie die de waarde
+van point na ‘end-of-defun’ tijdelijk verplaatst naar het einde van de
+definitie.
 
-   The second part of the ‘count-words-in-defun’, after the set up, is
-the ‘while’ loop.
+   Het tweede deel van de ‘tel-woorden-in-defun’, na het opzetten, is de
+‘while’ loop.
 
-   The loop must contain an expression that jumps point forward word by
-word and symbol by symbol, and another expression that counts the jumps.
-The true-or-false-test for the ‘while’ loop should test true so long as
-point should jump forward, and false when point is at the end of the
-definition.  We have already redefined the regular expression for this,
-so the loop is straightforward:
+   De loop moet een expressie bevatten die point woord voor woord en
+symbool voor symbool voorwaarts laat springen, en een andere expressie
+die de sprongen telt.  De waar-of-onwaar-test voor de ‘while’ loop moet
+op waar testen zolang als point voorwaarts moet springen, en op onwaar
+wanneer point aan het einde van de definitie is.  We hebben hiervoor al
+een reguliere expressie aangepast, zodat de loop makkelijk is.
 
-     (while (and (< (point) end)
+     (while (and (< (point) einde)
                  (re-search-forward
-                  "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*" end t))
-       (setq count (1+ count)))
+                  "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*" einde t))
+       (setq telling (1+ telling)))
 
-   The third part of the function definition returns the count of words
-and symbols.  This part is the last expression within the body of the
-‘let’ expression, and can be, very simply, the local variable ‘count’,
-which when evaluated returns the count.
+   Het derde deel van de functiedefinitie geeft de telling van de
+woorden en symbolen terug.  Dit deel is de laatste expressie in de body
+van de ‘let’ en kan eenvoudigweg de lokale variabele ‘telling’ zijn, die
+geëvalueerd de telling teruggeeft.
 
-   Put together, the ‘count-words-in-defun’ definition looks like this:
+   Samengevoegd ziet de ‘tel-woorden-in-defun’ er zo uit:
 
-     (defun count-words-in-defun ()
-       "Return the number of words and symbols in a defun."
+     (defun tel-woorden-in-defun ()
+       "Geef het aantal woorden en symbolen in een defun terug."
        (beginning-of-defun)
-       (let ((count 0)
-             (end (save-excursion (end-of-defun) (point))))
+       (let ((telling 0)
+             (einde (save-excursion (end-of-defun) (point))))
          (while
-             (and (< (point) end)
+             (and (< (point) einde)
                   (re-search-forward
                    "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
-                   end t))
-           (setq count (1+ count)))
-         count))
+                   einde t))
+           (setq telling (1+ telling)))
+         telling))
 
-   How to test this?  The function is not interactive, but it is easy to
-put a wrapper around the function to make it interactive; we can use
-almost the same code as for the recursive version of
-‘count-words-example’:
+   Hoe dit te testen?  De functie is niet interactief, maar het is
+makkelijk om een wrapper om de de functie te zetten die het interactief
+maakt.  Wij kunnen bijna dezelfde code gebruiken als voor de recursieve
+versie van ‘tel-woorden-voorbeeld’:
 
-     ;;; Interactive version.
-     (defun count-words-defun ()
-       "Number of words and symbols in a function definition."
+     ;;; Interactieve versie.
+     (defun tel-woorden-defun ()
+       "Aantal woorden en symbolen in een functiedefinitie."
        (interactive)
        (message
-        "Counting words and symbols in function definition ... ")
-       (let ((count (count-words-in-defun)))
+        "Tel woorden en symbolen in functiedefinitie ... ")
+       (let ((telling (tel-woorden-in-defun)))
          (cond
-          ((zerop count)
+          ((zerop telling)
            (message
-            "The definition does NOT have any words or symbols."))
-          ((= 1 count)
+            "The definitie heeft GEEN woorden of symbolen."))
+          ((= 1 telling)
            (message
-            "The definition has 1 word or symbol."))
+            "De definitie heeft 1 woord of symbool."))
           (t
            (message
-            "The definition has %d words or symbols." count)))))
+            "The definitie heeft %d woorden of symbolen." telling)))))
 
-Let's reuse ‘C-c =’ as a convenient key binding:
+Laten we ‘C-c =’ hergebruiken als een handige keybinding:
 
-     (keymap-global-set "C-c =" 'count-words-defun)
+     (keymap-global-set "C-c =" 'tel-woorden-defun)
 
-   Now we can try out ‘count-words-defun’: install both
-‘count-words-in-defun’ and ‘count-words-defun’, and set the key binding.
-Then copy the following to an Emacs Lisp buffer (like, for instance,
-‘*scratch*’), place the cursor within the definition, and use the ‘C-c
-=’ command.
+   Nu kunnen we ‘tel-woorden-defun’ uitproberen: installeer zowel
+‘tel-woorden-in-defun’ als ‘tel-woorden-defun’ en zet de keybinding.
+Kopieer dat het volgende naar een Emacs Lisp buffer (zoals bijvoorbeeld
+‘*scratch*’), plaats de cursor in de functie en gebruik het ‘C-c =’
+commando.
 
-     (defun multiply-by-seven (number)
-       "Multiply NUMBER by seven."
-       (* 7 number))
+     (defun vermenigvuldig-met-zeven (getal)
+       "Vermenigvuldig GETAL met zeven."
+       (* 7 getal))
           ⇒ 10
 
-Success!  The definition has 10 words and symbols.
+Succes!  De definitie heeft 10 woorden en symbolen.
 
-   The next problem is to count the numbers of words and symbols in
-several definitions within a single file.
+   Het volgende probleem is om het aantal woorden en symbolen in
+meerdere definities in een enkel bestand te tellen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Enkele defuns,  Next: Een bestand vinden,  Prev: count-words-in-defun,  Up: Woorden in een defun
 
-14.4 Count Several ‘defuns’ Within a File
-=========================================
+14.4 Tel verschillende ‘defuns’ in een bestand
+==============================================
 
-A file such as ‘simple.el’ may have a hundred or more function
-definitions within it.  Our long term goal is to collect statistics on
-many files, but as a first step, our immediate goal is to collect
-statistics on one file.
+Een bestand zoals ‘simple.el’ kan honderd of meer functiedefinities
+bevatten.  Ons langetermijndoel is om statistieken over veel bestanden
+de verzamelen, maar als eerste stap is ons huidige doel om de
+statistieken over een bestand te verzamelen.
 
-   The information will be a series of numbers, each number being the
-length of a function definition.  We can store the numbers in a list.
+   De informatie bestaat uit een reeks getallen, elk getal is de lengte
+van een functiedefinitie.
 
-   We know that we will want to incorporate the information regarding
-one file with information about many other files; this means that the
-function for counting definition lengths within one file need only
-return the list of lengths.  It need not and should not display any
-messages.
+   We weten dat we de informatie met betrekking tot een bestand willen
+incorporeren in de informatie van veel andere bestanden.  Dit betekent
+dat de functie voor het tellen van definitie-lengtes binnen een bestand
+alleen een lijst met de lengtes hoeft terug te geven.  Het hoeft geen
+boodschappen te tonen en moet dat ook niet doen.
 
-   The word count commands contain one expression to jump point forward
-word by word and another expression to count the jumps.  The function to
-return the lengths of definitions can be designed to work the same way,
-with one expression to jump point forward definition by definition and
-another expression to construct the lengths' list.
+   Het woord-tel commando bevat een expressie die point woord voor woord
+voorwaarts laat springen en een andere die de sprongen telt.  De functie
+die de lengtes van de definities teruggeeft kan op een vergelijkbare
+manier gemaakt worden, met een expressie die point definitie voor
+definitie voorwaarts springt en een andere expressie die de lijst met
+lengtes construeert.
 
-   This statement of the problem makes it elementary to write the
-function definition.  Clearly, we will start the count at the beginning
-of the file, so the first command will be ‘(goto-char (point-min))’.
-Next, we start the ‘while’ loop; and the true-or-false test of the loop
-can be a regular expression search for the next function definition--so
-long as the search succeeds, point is moved forward and then the body of
-the loop is evaluated.  The body needs an expression that constructs the
-lengths' list.  ‘cons’, the list construction command, can be used to
-create the list.  That is almost all there is to it.
+   Deze formulering van het probleem maakt het eenvoudig om de
+functiedefinitie te schrijven.  We beginnen de telling aan het begin van
+het bestand, dus het eerste commando wordt ‘(goto-char (point-min))’.
+Vervolgens starten we de ‘while’ loop.  De waar-of-onwaar-test van de
+loop kan een reguliere expressie zijn die zoekt naar de volgende
+functiedefinitie--zolang de zoekopdracht slaagt, wordt point voorwaarts
+verplaatst en de body van de loop geëvalueerd.  De body heeft een
+expressie nodig die de lijst met lengtes maakt.  ‘cons’, het
+lijst-constructie commando kan gebruikt worden om de lijst te maken.
+Dat is bijna alles wat er te zeggen is.
 
-   Here is what this fragment of code looks like:
+   Hier is hoe dit codefragment er uit ziet:
 
      (goto-char (point-min))
      (while (re-search-forward "^(defun" nil t)
-       (setq lengths-list
-             (cons (count-words-in-defun) lengths-list)))
+       (setq lengtes-lijst
+             (cons (count-words-in-defun) lengtes-lijst)))
 
-   What we have left out is the mechanism for finding the file that
-contains the function definitions.
+   Wat we overgeslagen hebben is het mechanisme om het bestanden te
+vinden dat de functiedefinities bevat.
 
-   In previous examples, we either used this, the Info file, or we
-switched back and forth to some other buffer, such as the ‘*scratch*’
-buffer.
+   In de voorgaande voorbeelden gebruikten we of dit, het Info bestand,
+of we schakelden heen en weer naar een ander buffer, zoals het
+‘*scratch*’ buffer.
 
-   Finding a file is a new process that we have not yet discussed.
+   Een bestand vinden is een nieuw proces dat we nog niet eerder
+besproken hebben.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Een bestand vinden,  Next: lengths-list-file,  Prev: Enkele defuns,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: Een bestand vinden,  Next: lengte-lijst-bestand,  Prev: Enkele defuns,  Up: Woorden in een defun
 
 14.5 Een bestand vinden
 =======================
 
-To find a file in Emacs, you use the ‘C-x C-f’ (‘find-file’) command.
-This command is almost, but not quite right for the lengths problem.
+Om in Emacs een bestand te vinden, gebruik je het ‘C-x C-f’
+(‘find-file’) commando.  Dit commando is bijna, maar niet helemaal
+geschikt voor het lengte probleem.
 
-   Let's look at the source for ‘find-file’:
+   Laten we naar de broncode van ‘find-file’ kijken:
 
      (defun find-file (filename)
        "Edit file FILENAME.
@@ -12042,173 +12055,176 @@ This command is almost, but not quite right for the lengths problem.
        (interactive "FFind file: ")
        (switch-to-buffer (find-file-noselect filename)))
 
-(The most recent version of the ‘find-file’ function definition permits
-you to specify optional wildcards to visit multiple files; that makes
-the definition more complex and we will not discuss it here, since it is
-not relevant.  You can see its source using either ‘M-.’
-(‘xref-find-definitions’) or ‘C-h f’ (‘describe-function’).)
+(De meest recente versie van de ‘find-file’ functiedefinitie staat je
+toe dat je optionele wildcards specificeert om meerder files te
+bezoeken.  Dat maakt de definitie meer complex en dat bespreken we hier
+niet, omdat het niet relevant is.  Je kunt de broncode zien met hetzij
+‘M-.’ (‘xref-find-definitions’) or ‘C-h f’ (‘describe-function’).)
 
-   The definition I am showing possesses short but complete
-documentation and an interactive specification that prompts you for a
-file name when you use the command interactively.  The body of the
-definition contains two functions, ‘find-file-noselect’ and
+   De definitie die ik laat zien bevat een korte maar complete
+documentatie en een interactieve specificatie die je naar een
+bestandsnaam vraagt wanneer je het commando interactief gebruikt.  De
+body van de definitie bevat twee functies, ‘find-file-noselect’ en
 ‘switch-to-buffer’.
 
-   According to its documentation as shown by ‘C-h f’ (the
-‘describe-function’ command), the ‘find-file-noselect’ function reads
-the named file into a buffer and returns the buffer.  (Its most recent
-version includes an optional WILDCARDS argument, too, as well as another
-to read a file literally and another to suppress warning messages.
-These optional arguments are irrelevant.)
+   Volgens de documentatiestring die getoond wordt met ‘C-h f’ (het
+‘describe-function’ commando), leest de functie ‘find-file-noselect’ het
+genoemde bestand in in een buffer en geeft het buffer terug.  (De meest
+recente versie bevat eveneens een optioneel WILDCARDS argument, naast
+een ander om het bestand letterlijk te lezen en een ander om
+foutmeldingen te onderdrukken.  Deze optionele argumenten zijn
+irrelevant.)
 
-   However, the ‘find-file-noselect’ function does not select the buffer
-in which it puts the file.  Emacs does not switch its attention (or
-yours if you are using ‘find-file-noselect’) to the selected buffer.
-That is what ‘switch-to-buffer’ does: it switches the buffer to which
-Emacs attention is directed; and it switches the buffer displayed in the
-window to the new buffer.  We have discussed buffer switching elsewhere.
-(*Note Switching Buffers::.)
+   De functie ‘find-file-noselect’ selecteert echter geen buffer om het
+bestand in te stoppen.  Emacs schakelt zijn aandacht (of de jouwe als je
+met ‘find-file-noselect’) niet naar het geselecteerde buffer.  Dat is
+wat ‘switch-to-buffer’ doet: het schakelt het buffer naar waar Emacs
+aandacht is gericht, en het schakelt het getoonde buffer in het window
+naar het nieuwe buffer.  We hebben schakelen van buffers eerder
+besproken (*Note Van buffer verwisselen::.)
 
-   In this histogram project, we do not need to display each file on the
-screen as the program determines the length of each definition within
-it.  Instead of employing ‘switch-to-buffer’, we can work with
-‘set-buffer’, which redirects the attention of the computer program to a
-different buffer but does not redisplay it on the screen.  So instead of
-calling on ‘find-file’ to do the job, we must write our own expression.
+   In het histogram-project hoeven we niet elk bestand op het scherm te
+tonen wanneer het programma de lengte van elke defintie er in vaststelt.
+In plaats van ‘switch-to-buffer’ te gebruiken kunnen we werken met
+‘set-buffer’, wat de aandacht van het computerprogramma naar een ander
+buffer herleidt maar vervangt niet het scherm.  Daarom moeten we in
+plaats van ‘find-file’ aan te roepen om het werk te doen onze expressie
+zelf schrijven.
 
-   The task is easy: use ‘find-file-noselect’ and ‘set-buffer’.
+   De taak is makkelijk: gebruik ‘find-file-noselect’ en ‘set-buffer’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: lengths-list-file,  Next: Enkele bestanden,  Prev: Een bestand vinden,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: lengte-lijst-bestand,  Next: Enkele bestanden,  Prev: Een bestand vinden,  Up: Woorden in een defun
 
-14.6 ‘lengths-list-file’ in Detail
-==================================
+14.6 ‘lengte-lijst-bestand’ in detail
+=====================================
 
-The core of the ‘lengths-list-file’ function is a ‘while’ loop
-containing a function to move point forward defun by defun, and a
-function to count the number of words and symbols in each defun.  This
-core must be surrounded by functions that do various other tasks,
-including finding the file, and ensuring that point starts out at the
-beginning of the file.  The function definition looks like this:
+De kern van de functie ‘lengte-lijst-bestand’ is een ‘while’ loop dat
+een functie bevat om point defun voor defun voorwaarts te verplaatsen en
+een functie om het aantal woorden en symbolen in elke defun te tellen.
+Deze kern moet worden omgeven door functie die verschillende andere
+taken doen, waaronder het bestand vinden en zorgen dat point start vanaf
+het begin van het bestand.  De functiedefinitie ziet er zo uit:
 
-     (defun lengths-list-file (filename)
-       "Return list of definitions' lengths within FILE.
-     The returned list is a list of numbers.
-     Each number is the number of words or
-     symbols in one function definition."
-       (message "Working on `%s' ... " filename)
+     (defun lengte-lijst-bestand (bestandsnaam)
+       "Geef een lijst terug met definitielengtes in BESTANDSNAAM.
+     De teruggeven lijst is een lijst van getallen.
+     Elk getal is een het aahtal woorden of symbolen
+     in een functiedefinitie."
+       (message "Werkt aan `%s' ... " bestandsnaam)
        (save-excursion
-         (let ((buffer (find-file-noselect filename))
-               (lengths-list))
+         (let ((buffer (find-file-noselect bestandsnaam))
+               (lengte-lijst))
            (set-buffer buffer)
            (setq buffer-read-only t)
            (widen)
            (goto-char (point-min))
            (while (re-search-forward "^(defun" nil t)
-             (setq lengths-list
-                   (cons (count-words-in-defun) lengths-list)))
+             (setq lengte-lijst
+                   (cons (tel-woorden-in-defun) lengte-lijst)))
            (kill-buffer buffer)
-           lengths-list)))
+           lengte-lijst)))
 
-The function is passed one argument, the name of the file on which it
-will work.  It has four lines of documentation, but no interactive
-specification.  Since people worry that a computer is broken if they
-don't see anything going on, the first line of the body is a message.
+De functie krijgt één argument doorgegeven, de naam van het bestand
+waarop het gaat werken.  Het heeft vier regels documentatie maar geen
+interactieve specificatie.  Omdat mensen bang zijn dat de computer kapot
+is wanneer ze niets zien gebeuren, bevat de eerste regel van de body een
+boodschap.
 
-   The next line contains a ‘save-excursion’ that returns Emacs's
-attention to the current buffer when the function completes.  This is
-useful in case you embed this function in another function that presumes
-point is restored to the original buffer.
+   De volgende regel bevat een ‘save-excursion’ die Emacs aandacht
+terugbrengt bij het huidige buffer wanneer de functie klaar is.  Dit is
+nuttig wanneer je de functie in een andere functie inbed, die verwacht
+dat point wordt hersteld naar het oorspronkelijke buffer.
 
-   In the varlist of the ‘let’ expression, Emacs finds the file and
-binds the local variable ‘buffer’ to the buffer containing the file.  At
-the same time, Emacs creates ‘lengths-list’ as a local variable.
+   In de varlist van de ‘let’ expressie vindt Emacs het bestand en bindt
+de lokale variabele ‘buffer’ aan het buffer dat het bestand bevat.
+Tegelijkertijd maakt Emacs ‘lengte-lijst’ als lokale variabele.
 
-   Next, Emacs switches its attention to the buffer.
+   Vervolgens schakelt Emacs de aandacht naar het buffer.
 
-   In the following line, Emacs makes the buffer read-only.  Ideally,
-this line is not necessary.  None of the functions for counting words
-and symbols in a function definition should change the buffer.  Besides,
-the buffer is not going to be saved, even if it were changed.  This line
-is entirely the consequence of great, perhaps excessive, caution.  The
-reason for the caution is that this function and those it calls work on
-the sources for Emacs and it is inconvenient if they are inadvertently
-modified.  It goes without saying that I did not realize a need for this
-line until an experiment went awry and started to modify my Emacs source
-files ...
+   In de volgende regel maakt Emacs het buffer read-only.  In het ideale
+geval is deze regel niet nodig.  Geen van de functies om woorden en
+symbolen te tellen zou het buffer moeten veranderen.  En daarnaast wordt
+het buffer niet gesaved zelf wanneer het is gewijzigd.  Deze regel is
+geheel het gevolg van de een grote, misschien overdreven,
+voorzichtigheid.  De reden voor deze voorzichtigheid is dat de functie
+en de functies die het aanroept werken op de broncode van Emacs en het
+is ongemakkelijk wanneer die per ongeluk worden gewijzigd.  Het spreekt
+voor zich dat ik de noodzaak voor deze regel niet realiseerde totdat een
+experiment misging en mijn Emacs broncode begon te wijzigen ...
 
-   Next comes a call to widen the buffer if it is narrowed.  This
-function is usually not needed--Emacs creates a fresh buffer if none
-already exists; but if a buffer visiting the file already exists Emacs
-returns that one.  In this case, the buffer may be narrowed and must be
-widened.  If we wanted to be fully user-friendly, we would arrange to
-save the restriction and the location of point, but we won't.
+   Hierna komt de aanroep om het buffer te verbreden wanneer het is
+versmald.  Deze functie is meestal niet nodig--Emacs maakt een vers
+buffer wanneer er niet al een bestaat, maar wanneer er al een buffer het
+bestand bezoekt kan het versmald zijn en moet het worden verbreed.
+Wanneer we volledig gebruikersvriendelijk willen zijn zouden we de
+restrictie en de lokatie van point opslaan, maar dat doen we niet.
 
-   The ‘(goto-char (point-min))’ expression moves point to the beginning
-of the buffer.
+   De ‘(goto-char (point-min))’ expressie verplaatst point naar het
+begin van het buffer.
 
-   Then comes a ‘while’ loop in which the work of the function is
-carried out.  In the loop, Emacs determines the length of each
-definition and constructs a lengths' list containing the information.
+   Dan komt de ‘while’ loop waarin het werk van de functie wordt
+uitgevoerd.  In de loop stelt Emacs de lengte van elke definitie vast en
+construeert een lengte-lijst die de informatie bevat.
 
-   Emacs kills the buffer after working through it.  This is to save
-space inside of Emacs.  My version of GNU Emacs 19 contained over 300
-source files of interest; GNU Emacs 22 contains over a thousand source
-files.  Another function will apply ‘lengths-list-file’ to each of the
-files.
+   Na er doorheen gewerkt te hebben killt Emacs het buffer.  Dit is om
+binnen Emacs ruimte te sparen.  Mijn versie van GNU Emacs 19 bevat over
+300 bronbestanden die interessant zijn.  GNU Emacs 22 bevat meer dan
+duizend bronbestanden.  Een andere functie past ‘lengte-lijst-bestand’
+op elk bestand toe.
 
-   Finally, the last expression within the ‘let’ expression is the
-‘lengths-list’ variable; its value is returned as the value of the whole
-function.
+   De laatste expressie in de ‘let’ expressie tenslotte is de
+lengte-lijst variabele, wiens waarde wordt teruggegeven als de waarde
+van de gehele functie.
 
-   You can try this function by installing it in the usual fashion.
-Then place your cursor after the following expression and type ‘C-x C-e’
-(‘eval-last-sexp’).
+   Dit kun je uitproberen door het op de gebruikelijke manier te
+installeren.  Plaats daarna de cursor achter de volgende expressie en
+typ ‘C-x C-e’ (‘eval-last-sexp’).
 
-     (lengths-list-file
+     (lengte-lijst-bestand
       "/usr/local/share/emacs/22.1/lisp/emacs-lisp/debug.el")
 
-You may need to change the pathname of the file; the one here is for GNU
-Emacs version 22.1.  To change the expression, copy it to the
-‘*scratch*’ buffer and edit it.
+Misschien moet je de padnaam van het bestand aanpassen, deze hier is
+voor GNU Emacs versie 22.1.  Om de expressie te wijzigen, kopieer je die
+naar het ‘*scratch*’ buffer en wijzig het.
 
-Also, to see the full length of the list, rather than a truncated
-version, you may have to evaluate the following:
+En om de volledige lengte van de lijst te zien, in plaats van een
+ingekorte versie, moet je misschien het volgende evalueren:
 
      (custom-set-variables '(eval-expression-print-length nil))
 
 (*Note Variabelen specificeren met ‘defcustom’: defcustom.  Evalueer
-daarna de ‘lengths-list-file’ expressie.)
+daarna de ‘lengte-lijst-bestand ’ expressie.)
 
-   The lengths' list for ‘debug.el’ takes less than a second to produce
-and looks like this in GNU Emacs 22:
+   Het maken van de lengte-lijst voor ‘debug.el’ duurt minder dan een
+seconde en ziet er zo uit in GNU Emacs 22:
 
      (83 113 105 144 289 22 30 97 48 89 25 52 52 88 28 29 77 49 43 290 232 587)
 
-   (Using my old machine, the version 19 lengths' list for ‘debug.el’
-took seven seconds to produce and looked like this:
+   (Op mijn oude machine duurde het maken van de versie 19 lengte-lijst
+van ‘debug.el’ zeven seconden en ziet er zo uit:
 
      (75 41 80 62 20 45 44 68 45 12 34 235)
 
-The newer version of ‘debug.el’ contains more defuns than the earlier
-one; and my new machine is much faster than the old one.)
+De nieuwe versie van ‘debug.el’ bevat meer defuns dan de eerdere, en
+mijn nieuwe machine is veel sneller dan de oude.)
 
-   Note that the length of the last definition in the file is first in
-the list.
+   Merk op dat de lengte van de laatste definitie in het bestand de
+eerste in de lijst is.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Enkele bestanden,  Next: Enkele bestanden recursief,  Prev: lengths-list-file,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: Enkele bestanden,  Next: Enkele bestanden recursief,  Prev: lengte-lijst-bestand,  Up: Woorden in een defun
 
 14.7 Woorden tellen in ‘defuns’ in verschillende bestanden
 ==========================================================
 
-In the previous section, we created a function that returns a list of
-the lengths of each definition in a file.  Now, we want to define a
-function to return a master list of the lengths of the definitions in a
-list of files.
+In de vorige sectie hebben we een functie gemaakt die een lijst
+teruggeeft met de lengte van elke definitie in een bestand.  Nu willen
+we een functie definieren de een hoofdlijst teruggeeft met de lengte van
+de definities in een lijst van bestanden.
 
-   Working on each of a list of files is a repetitious act, so we can
-use either a ‘while’ loop or recursion.
+   Werken op elk bestand van een bestandenlijst is een herhalende actie,
+dus we kunnen een ‘while’ loop of recursie gebruiken.
 
 * Menu:
 
@@ -12218,167 +12234,171 @@ use either a ‘while’ loop or recursion.
 
 File: emacs-lisp-intro-nl.info,  Node: lengths-list-many-files,  Next: append,  Up: Enkele bestanden
 
-Determine the lengths of ‘defuns’
----------------------------------
+De lengte van ‘defuns’ vaststellen
+----------------------------------
 
-The design using a ‘while’ loop is routine.  The argument passed to the
-function is a list of files.  As we saw earlier (*note Loop Example::),
-you can write a ‘while’ loop so that the body of the loop is evaluated
-if such a list contains elements, but to exit the loop if the list is
-empty.  For this design to work, the body of the loop must contain an
-expression that shortens the list each time the body is evaluated, so
-that eventually the list is empty.  The usual technique is to set the
-value of the list to the value of the CDR of the list each time the body
-is evaluated.
+Het ontwerp met een ‘while’ loop is routine.  Het aan de functie
+doorgegeven argument is een lijst van bestanden.  Zoals we eerder zagen
+(*note Loop voorbeeld::), kan je een ‘while’ loop zo schijven dat de
+body van de loop wordt geëvalueerd zo'n lijst elementen bevat, maar de
+loop verlaat wanneer de lijst leeg is.  Om dit te laten werken moet de
+body van de loop een expressie bevatten die elke keer dat de body wordt
+geëvalueerd de lijst korter maakt, zodat uiteindelijk de lijst leeg is.
+De gebruikelijke techniek is om elke keer dat de body wordt geëvalueerd
+de waarde van de lijst op de waarde van de CDR van de lijst te zetten.
 
-   The template looks like this:
+   Het sjabloon ziet er zo uit:
 
      (while TEST-OF-LIJST-LEEG-IS
        BODY...
-       SET-LIJST-OP-CDR-VAN-LIJST)
+       ZET-LIJST-OP-CDR-VAN-LIJST)
 
-   Also, we remember that a ‘while’ loop returns ‘nil’ (the result of
-evaluating the true-or-false-test), not the result of any evaluation
-within its body.  (The evaluations within the body of the loop are done
-for their side effects.)  However, the expression that sets the lengths'
-list is part of the body--and that is the value that we want returned by
-the function as a whole.  To do this, we enclose the ‘while’ loop within
-a ‘let’ expression, and arrange that the last element of the ‘let’
-expression contains the value of the lengths' list.  (*Note Loop Example
-with an Incrementing Counter: Incrementing Example.)
+   We herinneren ons ook dat een ‘while’ loop ‘nil’ teruggeeft (het
+resultaat van het evalueren van de waar-of-onwaar-test) en niet het
+resultaat van een evaluatie in de body.  (De evaluaties in de body van
+de loop worden gedaan voor hun zij-effecten.)  Echter de expressie die
+de lengte-lijst zet is onderdeel van de body--en dat is de waarde
+waarvan we willen dat de gehele functie teruggeeft.  Om dit te doen
+plaatsen we de ‘while’ loop binnen een ‘let’ expressie, en zorgen dat
+het laatste element van de ‘let’ expressie de waarde van de lengte-lijst
+bevat.  (*Note Loop voorbeeld met een ophogende teller.: Incrementeel
+voorbeeld.)
 
-   These considerations lead us directly to the function itself:
+   Deze overwegingen leiden on direct naar de functie zelf:
 
-     ;;; Use ‘while’ loop.
-     (defun lengths-list-many-files (list-of-files)
-       "Return list of lengths of defuns in LIST-OF-FILES."
-       (let (lengths-list)
+     ;;; Gebruik ‘while’ loop.
+     (defun lengte-lijst-veel-bestanden (lijst-met-bestanden)
+       "Return list of lengths of defuns in LIJST-MET-BESTANDEN."
+       (let (lengte-lijst)
 
-     ;;; true-or-false-test
-         (while list-of-files
-           (setq lengths-list
+     ;;; waar-of-onwaar-test
+         (while lijst-met-bestanden
+           (setq lengtes-lijst
                  (append
-                  lengths-list
+                  lengtes-lijst
 
-     ;;; Generate a lengths' list.
-                  (lengths-list-file
-                   (expand-file-name (car list-of-files)))))
+     ;;; Genereer een lengte-ljist.
+                  (lengtes-lijst-bestand
+                   (expand-file-name (car lijst-met-bestanden)))))
 
-     ;;; Make files' list shorter.
-           (setq list-of-files (cdr list-of-files)))
+     ;;; Maak bestandenlijst korter.
+           (setq lijst-met-bestanden (cdr lijst-met-bestanden)))
 
-     ;;; Return final value of lengths' list.
-         lengths-list))
+     ;;; Geef finale waarde lengtes-lijst terug.
+         lengtes-lijst))
 
-   ‘expand-file-name’ is a built-in function that converts a file name
-to the absolute, long, path name form.  The function employs the name of
-the directory in which the function is called.
+   ‘expand-file-name’ is een ingebouwde functie die een bestandsnaam
+omzet naar de absolute lange padnaam vorm.  De functie gebruikt de naam
+van de directory waarin de functie is aangeroepen.
 
-   Thus, if ‘expand-file-name’ is called on ‘debug.el’ when Emacs is
-visiting the ‘/usr/local/share/emacs/22.1.1/lisp/emacs-lisp/’ directory,
+   Dus wanneer ‘expand-file-name’ wordt aangeroepen op ‘debug.el’
+terwijl Emacs de directory
+‘/usr/local/share/emacs/22.1.1/lisp/emacs-lisp/’ bezoekt,
 
      debug.el
 
-becomes
+wordt
 
      /usr/local/share/emacs/22.1.1/lisp/emacs-lisp/debug.el
 
-   The only other new element of this function definition is the as yet
-unstudied function ‘append’, which merits a short section for itself.
+   Het enige andere nieuwe element van deze functie is de tot nu toe
+niet bestudeerde functie ‘append’, die op zichzelf een korte sectie
+waard is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: append,  Prev: lengths-list-many-files,  Up: Enkele bestanden
 
-14.7.1 The ‘append’ Function
-----------------------------
+14.7.1 De functie ‘append’
+--------------------------
 
-The ‘append’ function attaches one list to another.  Thus,
+De functie ‘append’ maakt een lijst aan een andere vast.  Dus,
 
      (append '(1 2 3 4) '(5 6 7 8))
 
-produces the list
+produceert de lijst
 
      (1 2 3 4 5 6 7 8)
 
-   This is exactly how we want to attach two lengths' lists produced by
-‘lengths-list-file’ to each other.  The results contrast with ‘cons’,
+   Dit is exact hoe we twee door ‘lengte-lijst-bestand’ gemaakte
+lengte-lijsten aan elkaar willen vastmaken.  Het resultaat contrasteert
+met ‘cons’,
 
      (cons '(1 2 3 4) '(5 6 7 8))
 
-which constructs a new list in which the first argument to ‘cons’
-becomes the first element of the new list:
+die een nieuwe lijst construeert waarin het eerste argument van ‘cons’
+het eerste element van de nieuwe lijst wordt:
 
      ((1 2 3 4) 5 6 7 8)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Enkele bestanden recursief,  Next: De data voorbereiden,  Prev: Enkele bestanden,  Up: Woorden in een defun
 
-14.8 Recursively Count Words in Different Files
-===============================================
+14.8 Recursief woorden tellen in verschillende bestanden
+========================================================
 
-Besides a ‘while’ loop, you can work on each of a list of files with
-recursion.  A recursive version of ‘lengths-list-many-files’ is short
-and simple.
+Behalve met een ‘while’ loop kan je met recursie werken op elk bestand
+in een lijst van bestanden.  Een recursieve versie van
+‘’(lengte-lijst-veel-bestanden) is kort en simpel.
 
-   The recursive function has the usual parts: the do-again-test, the
-next-step-expression, and the recursive call.  The do-again-test
-determines whether the function should call itself again, which it will
-do if the ‘list-of-files’ contains any remaining elements; the
-next-step-expression resets the ‘list-of-files’ to the CDR of itself, so
-eventually the list will be empty; and the recursive call calls itself
-on the shorter list.  The complete function is shorter than this
-description!
+   De recursieve functie heeft de gebruikelijke delen: de
+doe-opnieuw-test, de volgende-stap-expressie en de recursieve aanroep.
+De doe-opnieuw-test stelt vat of de functie zichzelf opnieuw moet
+aanroepen, wat die doet wanneer de ‘lijst-met-bestanden’ resterende
+elementen bevat.  De volgende-stap-expressie zet de
+‘lijst-met-bestanden’ op de CDR van zichzelf, zodat uiteindelijk de
+lijst leeg wordt.  en de recursieve aanroep roept zichzelf met de
+kortere lijst.  De complete functie is korter dan deze beschrijving!
 
-     (defun recursive-lengths-list-many-files (list-of-files)
-       "Return list of lengths of each defun in LIST-OF-FILES."
-       (if list-of-files                     ; do-again-test
+     (defun recursieve-lengte-lijst-veel-bestanden (lijst-met-bestanden)
+       "Geeft lijst met lengtes terug van elke defun in LIJST-MET-BESTANDEN."
+       (if lijst-met-bestanden                     ; doe-opnieuw-test
            (append
-            (lengths-list-file
-             (expand-file-name (car list-of-files)))
-            (recursive-lengths-list-many-files
-             (cdr list-of-files)))))
+            (lengte-lijst-bestand
+             (expand-file-name (car lijst-met-bestanden)))
+            (recursieve-lengte-lijst-veel-bestanden
+             (cdr lijst-met-bestanden)))))
 
-In a sentence, the function returns the lengths' list for the first of
-the ‘list-of-files’ appended to the result of calling itself on the rest
-of the ‘list-of-files’.
+In één zin, de functie geeft de lengte-lijst terug voor de eerste van de
+‘lijst-met-bestanden’ vastgemaakt aan het resultaat van zichzelf
+aanroepen op de rest van de ‘lijst-met-bestanden’.
 
-   Here is a test of ‘recursive-lengths-list-many-files’, along with the
-results of running ‘lengths-list-file’ on each of the files
-individually.
+   Hier is een test van ‘recursieve-lengte-lijst-veel-bestanden’, samen
+met de resultaten van het draaien van ‘lengte-lijst-bestand’ op elk
+individueel bestand.
 
-   Install ‘recursive-lengths-list-many-files’ and ‘lengths-list-file’,
-if necessary, and then evaluate the following expressions.  You may need
-to change the files' pathnames; those here work when this Info file and
-the Emacs sources are located in their customary places.  To change the
-expressions, copy them to the ‘*scratch*’ buffer, edit them, and then
-evaluate them.
+   Installeer ‘recursieve-lengte-lijst-veel-bestanden’ en indien nodig
+‘lengte-lijst-bestand’ en evalueer de volgende expressies.  Je moet
+misschien de padnamen van bestanden aanpassen, deze werken hier wanneer
+dit Infobestand and de Emacs bronbestanden op hun gebruikelijke plaats
+staan.  Om de expressies aan te passen kopieer je ze in het ‘*scratch*’
+buffer, pas je ze aan en evalueer je ze.
 
-   The results are shown after the ‘⇒’.  (These results are for files
-from Emacs version 22.1.1; files from other versions of Emacs may
-produce different results.)
+   De resultaten worden getoond achter de ‘⇒’.  (Deze resultaten zijn
+voor bestanden van Emacs versie 22.1.1.  Bestanden van andere versies
+van Emacs kunnen andere resultaten produceren.)
 
      (cd "/usr/local/share/emacs/22.1.1/")
 
-     (lengths-list-file "./lisp/macros.el")
+     (lengte-lijst-bestand "./lisp/macros.el")
           ⇒ (283 263 480 90)
 
-     (lengths-list-file "./lisp/mail/mailalias.el")
+     (lengte-lijst-bestand "./lisp/mail/mailalias.el")
           ⇒ (38 32 29 95 178 180 321 218 324)
 
-     (lengths-list-file "./lisp/hex-util.el")
+     (lengte-lijst-bestand "./lisp/hex-util.el")
           ⇒ (82 71)
 
-       (recursive-lengths-list-many-files
+       (recursieve-lengte-lijst-veel-bestanden
         '("./lisp/macros.el"
           "./lisp/mail/mailalias.el"
           "./lisp/hex-util.el"))
             ⇒ (283 263 480 90 38 32 29 95 178 180 321 218 324 82 71)
 
-   The ‘recursive-lengths-list-many-files’ function produces the output
-we want.
+   De functie ‘recursieve-lengte-lijst-veel-bestanden’ produceert de
+output die we willen.
 
-   The next step is to prepare the data in the list for display in a
-graph.
+   De volgende stap is het voorbereiden van de data in de lijst om in
+een grafiek te tonen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: De data voorbereiden,  Prev: Enkele bestanden recursief,  Up: Woorden in een defun
@@ -12386,18 +12406,18 @@ File: emacs-lisp-intro-nl.info,  Node: De data voorbereiden,  Prev: Enkele besta
 14.9 De data voorbereiden om in een grafiek te tonen
 ====================================================
 
-The ‘recursive-lengths-list-many-files’ function returns a list of
-numbers.  Each number records the length of a function definition.  What
-we need to do now is transform this data into a list of numbers suitable
-for generating a graph.  The new list will tell how many functions
-definitions contain less than 10 words and symbols, how many contain
-between 10 and 19 words and symbols, how many contain between 20 and 29
-words and symbols, and so on.
+De functie ‘recursieve-lengte-lijst-veel-bestanden’ geeft een lijst met
+getallen terug.  Elk getal staat voor de lengte van een
+functiedefinitie.  Wat we nu moeten doen is deze data omzetten in een
+lijst van getallen die geschikt is om een grafiek mee te genereren.  De
+nieuwe lijst vertelt hoeveel functiedefinities bevatten minder dan 10
+woorden en symbolen, hoeveel bevatten tussen 10 en 19 symbolen.
+enzovoorts.
 
-   In brief, we need to go through the lengths' list produced by the
-‘recursive-lengths-list-many-files’ function and count the number of
-defuns within each range of lengths, and produce a list of those
-numbers.
+   In het kort, we moeten door de lengte-lijst heen gaan, die de functie
+‘recursieve-lengte-lijst-veel-bestanden’ heeft geproduceerd, en het
+aantal defuns in elke range van lengtes tellen, en een lijst van deze
+aantallen produceren.
 
 * Menu:
 
@@ -12412,39 +12432,42 @@ File: emacs-lisp-intro-nl.info,  Node: Data in detail te tonen,  Next: Sorteren,
 De data om in detail te tonen
 -----------------------------
 
-Based on what we have done before, we can readily foresee that it should
-not be too hard to write a function that CDRs down the lengths' list,
-looks at each element, determines which length range it is in, and
-increments a counter for that range.
+Gebaseerd op wat we eerder gedaan hebben, kunnen we makkelijk voorzien
+dat het niet al te moeilijk moet zijn een functie te schrijven die CRD-t
+de lengte-lijst afloopt, vaststelt in welke lengte-range die in is, en
+een teller verhoogt voor die range.
 
-   However, before beginning to write such a function, we should
-consider the advantages of sorting the lengths' list first, so the
-numbers are ordered from smallest to largest.  First, sorting will make
-it easier to count the numbers in each range, since two adjacent numbers
-will either be in the same length range or in adjacent ranges.  Second,
-by inspecting a sorted list, we can discover the highest and lowest
-number, and thereby determine the largest and smallest length range that
-we will need.
+   Voordat we echter beginnen met het schrijven van zo'n functie, moeten
+we de voordelen van het sorteren van de lengte-lijst in ogenschouw
+nemen, zodat de getallen zijn gesorteerd van de kleinste tot de
+grootste.  Ten eerste maakt het sorteren het eenvoudiger de getallen in
+elke range te tellen, omdat twee opeenvolgende getallen in dezelfde
+range of aangrenzende ranges zijn.  Ten tweede door de gesorteerde lijst
+te inspecteren kunnen we ontdekken wat het hoogste en het laagste getal
+zijn, en daarmee vaststellen welke grootste en kleinste lengte-range we
+nodig hebben.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Sorteren,  Next: Bestandenlijst,  Prev: Data in detail te tonen,  Up: De data voorbereiden
 
-14.9.1 Sorting Lists
---------------------
+14.9.1 Lijsten sorteren
+-----------------------
 
-Emacs contains a function to sort lists, called (as you might guess)
-‘sort’.  The ‘sort’ function takes two arguments, the list to be sorted,
-and a predicate that determines whether the first of two list elements
-is less than the second.
+Emacs heeft een functie om lijsten te sorteren, met de naam (zoals je
+kunt raden) ‘sort’.  De functie ‘sort’ vereist twee argumenten, de lijst
+om te sorteren, en een predicaat dat vaststelt of het eerste van twee
+lijst-elementen kleiner is dan de tweede.
 
-   As we saw earlier (*note Using the Wrong Type Object as an Argument:
-Wrong Type of Argument.), a predicate is a function that determines
-whether some property is true or false.  The ‘sort’ function will
-reorder a list according to whatever property the predicate uses; this
-means that ‘sort’ can be used to sort non-numeric lists by non-numeric
-criteria--it can, for example, alphabetize a list.
+   Zoals we eerder zagen (*note Gebruik van het verkeerde objecttype als
+argument: Verkeerde type argument.), is een predicaat een functie die
+vaststelt of een bepaalde eigenschap waar of onwaar is.  De functie
+‘sort’ herordent een lijst in overeenstemming met de eigenschap die het
+predicaat gebruikt.  Dit betekent dat ‘sort’ kan worden gebruikt om een
+niet-numerieke lijst te sorteren op niet-numerieke criteria--het kan
+bijvoorbeeld een lijst op alfabetische volgorde zetten.
 
-   The ‘<’ function is used when sorting a numeric list.  For example,
+   De functie ‘<’ wordt gebruikt om een numerieke lijst te sorteren.
+Bijvoorbeeld,
 
      (sort '(4 8 21 17 33 7 21 7) '<)
 
@@ -12452,81 +12475,87 @@ produceert dit:
 
      (4 7 7 8 17 21 21 33)
 
-(Note that in this example, both the arguments are quoted so that the
-symbols are not evaluated before being passed to ‘sort’ as arguments.)
+(Merk op dat in dit voorbeeld beide argumenten zijn gequote zodat de
+symbolen niet worden geëvalueerd voordat ze als argumenten aan de ‘sort’
+worden doorgegeven.)
 
-   Sorting the list returned by the ‘recursive-lengths-list-many-files’
-function is straightforward; it uses the ‘<’ function:
+   Het sorteren van de lijst die teruggeven is door de functie
+‘recursieve-lengte-lijst-veel-bestanden’ is eenvoudig, het gebruikt de
+functie ‘<’:
 
      (sort
-      (recursive-lengths-list-many-files
+      (recursieve-lengte-lijst-veel-bestanden
        '("./lisp/macros.el"
          "./lisp/mailalias.el"
          "./lisp/hex-util.el"))
       '<)
 
-which produces:
+produceert:
 
      (29 32 38 71 82 90 95 178 180 218 263 283 321 324 480)
 
-(Note that in this example, the first argument to ‘sort’ is not quoted,
-since the expression must be evaluated so as to produce the list that is
-passed to ‘sort’.)
+(Merk op dat in dit voorbeeld het eerste argument van ‘sort’ is niet
+gequote omdat de expressie moet worden geëvalueerd om de lijst te
+produceren die wordt doorgegeven aan ‘sort’.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Bestandenlijst,  Next: Functiedefinities tellen,  Prev: Sorteren,  Up: De data voorbereiden
 
-14.9.2 Making a List of Files
------------------------------
+14.9.2 Een lijst van bestanden maken
+------------------------------------
 
-The ‘recursive-lengths-list-many-files’ function requires a list of
-files as its argument.  For our test examples, we constructed such a
-list by hand; but the Emacs Lisp source directory is too large for us to
-do for that.  Instead, we will write a function to do the job for us.
-In this function, we will use both a ‘while’ loop and a recursive call.
+De functie ‘recursieve-lengte-lijst-veel-bestanden’ vereist een lijst
+van bestanden als argument.  Voor onze testvoorbeelden construeerden we
+handmatig zo'n lijst, maar de Emacs brondirectory is te groot voor ons
+om dat te doen.  In plaats daarvan schrijven we een functie die dat werk
+voor ons doet.  In deze functie gebruiken we zowel een ‘while’ loop en
+een recursieve aanroep.
 
-   We did not have to write a function like this for older versions of
-GNU Emacs, since they placed all the ‘.el’ files in one directory.
-Instead, we were able to use the ‘directory-files’ function, which lists
-the names of files that match a specified pattern within a single
-directory.
+   Voor oudere versies van GNU Emacs hoefden we zo'n functie niet te
+schrijven, omdat zij alle ‘.el’ bestanden in één directory plaatsten.
+In plaats daarvan konden we de functie ‘directory-files’ gebruiken, die
+de namen van de bestanden in een enkele directory vermeldt die aan een
+specifiek patroon voldoen.
 
-   However, recent versions of Emacs place Emacs Lisp files in
-sub-directories of the top level ‘lisp’ directory.  This re-arrangement
-eases navigation.  For example, all the mail related files are in a
-‘lisp’ sub-directory called ‘mail’.  But at the same time, this
-arrangement forces us to create a file listing function that descends
-into the sub-directories.
+   Recente versies van Emacs echter plaatsen Emacs Lisp bestanden in
+subdirectories van de top-level ‘lisp’ directory.  Deze herschikking
+maakt de navigatie makkelijker.  Alle mail gerelateerde bestanden
+bijvoorbeeld staan in een ‘lisp’ subdirectory met de naam ‘mail’.  Maar
+tegelijkertijd forceert deze schikking ons om een bestandslisting
+functie te maken die afdaalt in de subdirectories.
 
-   We can create this function, called ‘files-in-below-directory’, using
-familiar functions such as ‘car’, ‘nthcdr’, and ‘substring’ in
-conjunction with an existing function called
-‘directory-files-and-attributes’.  This latter function not only lists
-all the filenames in a directory, including the names of
-sub-directories, but also their attributes.
+   We kunnen deze functie met de naam
+‘bestanden-in-onderiggende-directory’ maken met bekende functies zoals
+‘car’, ‘nthcdr’ en ‘substring’ samen met een bestaande functie met de
+naam ‘directory-files-and-atributes’.  Deze laatste functie vermeldt
+niet alleen de bestandsnamen in een directory inclusief de namen van de
+subdirectories, maar ook hun attributen.
 
-   To restate our goal: to create a function that will enable us to feed
-filenames to ‘recursive-lengths-list-many-files’ as a list that looks
-like this (but with more elements):
+   Om ons doel opnieuw te formuleren: maak een functie die ons in staat
+stelt ‘recursieve-lengte-lijst-veel-bestanden’ te voeden met de
+bestandsnamen als een lijst die er zo iut ziet (maar met meer
+elementen):
 
      ("./lisp/macros.el"
       "./lisp/mail/rmail.el"
       "./lisp/hex-util.el")
 
-   The ‘directory-files-and-attributes’ function returns a list of
-lists.  Each of the lists within the main list consists of 13 elements.
-The first element is a string that contains the name of the file--which,
-in GNU/Linux, may be a “directory file”, that is to say, a file with the
-special attributes of a directory.  The second element of the list is
-‘t’ for a directory, a string for symbolic link (the string is the name
-linked to), or ‘nil’.
+   De functie ‘directory-files-and-atributes’ geeft een lijst van
+lijsten terug.  Elk van deze lijsten in de hoofdlijst bestaat uit 13
+elementen.  Het eerste element is een string die de bestandsnaam
+bevat--welke, in GNU/Linux, een “dicectory file” kan zijn, met andere
+woorden een bestand met de speciale attributen van een directory.  Het
+tweede element van de lijst is ‘t’ voor een directory, een string voor
+een symbolische link (de string is de naam waar naartoe gelinkt), or
+‘nil’.
 
-   For example, the first ‘.el’ file in the ‘lisp/’ directory is
-‘abbrev.el’.  Its name is ‘/usr/local/share/emacs/22.1.1/lisp/abbrev.el’
-and it is not a directory or a symbolic link.
+   Bijvoorbeeld het eerste ‘.el’ bestand in de ‘lisp/’ directory is
+‘abbrev.el’.  Zijn naam is
+‘/usr/local/share/emacs/22.1.1/lisp/abbrev.el’ en het is niet een
+directory of een symbolische link.
 
-   This is how ‘directory-files-and-attributes’ lists that file and its
-attributes:
+   Dit is hoe ‘directory-files-and-attributes’ het bestand en zijn
+atributen vermeldt:
 
      ("abbrev.el"
      nil
@@ -12542,121 +12571,126 @@ attributes:
      2971624
      773)
 
-   On the other hand, ‘mail/’ is a directory within the ‘lisp/’
-directory.  The beginning of its listing looks like this:
+   Anderzijds, ‘mail/’ is een directory in de ‘lisp/’ directory.  Het
+begin van de listing ziet er zo uit:
 
      ("mail"
      t
      ...
      )
 
-   (To learn about the different attributes, look at the documentation
-of ‘file-attributes’.  Bear in mind that the ‘file-attributes’ function
-does not list the filename, so its first element is
-‘directory-files-and-attributes’'s second element.)
+   (Zie de documentatie van ‘file-attributes’ om meer te leren over de
+verschillende atributen.  Hou er rekening mee dat de functie
+‘file-attributes’ de bestandsnaam niet vermeldt, zodat het eerste
+element is het tweede element in ‘directory-files-and-atributes’.)
 
-   We will want our new function, ‘files-in-below-directory’, to list
-the ‘.el’ files in the directory it is told to check, and in any
-directories below that directory.
-
-   This gives us a hint on how to construct ‘files-in-below-directory’:
-within a directory, the function should add ‘.el’ filenames to a list;
-and if, within a directory, the function comes upon a sub-directory, it
-should go into that sub-directory and repeat its actions.
-
-   However, we should note that every directory contains a name that
-refers to itself, called ‘.’ ("dot"), and a name that refers to its
-parent directory, called ‘..’ ("dot dot").  (In ‘/’, the root directory,
-‘..’ refers to itself, since ‘/’ has no parent.)  Clearly, we do not
-want our ‘files-in-below-directory’ function to enter those directories,
-since they always lead us, directly or indirectly, to the current
+   Wij willen dat onze nieuwe functie,
+‘bestanden-in-onderiggende-directory’ de ‘.el’ bestanden vermeldt in de
+directory die het verteld is te bekijken, en in elke daar onderliggende
 directory.
 
-   Consequently, our ‘files-in-below-directory’ function must do several
-tasks:
+   Dit geeft ons een hint hoe de ‘bestanden-in-onderiggende-directory’
+binnen een directory te construeren, de functie zou ‘.el’ bestandsnamen
+aan een lijst moeten toevoegen.  En wanneer de functie binnen een
+directory op een subdirectory stuit, moet die de subdirectory ingaan en
+daar de acties herhalen.
 
-   • Check to see whether it is looking at a filename that ends in
-     ‘.el’; and if so, add its name to a list.
+   We moeten echter opmerken dat elke directory een naam die naar
+zichzelf referereert bevat, ‘.’ ("dot") genaamd, en een naam die
+refereert naar de bovenliggende directory, ‘..’ ("dot dot") genaamd.
+(In ‘/’, de root-directory, refereert ‘..’ aan zichzelf, omdat ‘/’ geen
+bovenliggende directory heeft.)  We willen natuurlijk niet dat onze
+functie ‘bestanden-in-onderiggende-directory’ deze directories ingaat,
+omdat die ons altijd, direct of indirect, naar de huidige directory
+leiden.
 
-   • Check to see whether it is looking at a filename that is the name
-     of a directory; and if so,
+   Dus moet onze functie ‘bestanden-in-onderiggende-directory’
+verschillende taken doen:
 
-        − Check to see whether it is looking at ‘.’ or ‘..’; and if so
-          skip it.
+   • Controleer of het naar een bestandsnaam kijkt die eindigt in ‘.el’
+     en zo ja, voeg thet aan de lijst toe.
 
-        − Or else, go into that directory and repeat the process.
+   • Controleer of het naar een bestandsnaam kijkt die de naam van een
+     directory is, en zo ja,
 
-   Let's write a function definition to do these tasks.  We will use a
-‘while’ loop to move from one filename to another within a directory,
-checking what needs to be done; and we will use a recursive call to
-repeat the actions on each sub-directory.  The recursive pattern is
-Accumulate (*note Accumulate::), using ‘append’ as the combiner.
+        − Controleer of het kijkt naar ‘.’ of ‘..’, en zo ja, sla die
+          over.
 
-   Here is the function:
+        − Zo niet, ga dan in de directory en herhaal het proces.
 
-     (defun files-in-below-directory (directory)
-       "List the .el files in DIRECTORY and in its sub-directories."
-       ;; Although the function will be used non-interactively,
-       ;; it will be easier to test if we make it interactive.
-       ;; The directory will have a name such as
+   Laten we een functiedefinitie schrijven die deze taken uitvoert.  We
+gebruiken een ‘while’ loop om binnen de directory van de ene
+bestandsnaam naar de ander te gaan en controleren wat moet worden
+gedaan.  En we gebruiken een recursieve aanroep om de acties in elke
+subdirectory te herhalen.  Het resursieve patroon is Accumuleren (*note
+Accumuleren::), met ‘append’ als de combinerende functie.
+
+   Hier is de functie:
+
+     (defun bestanden-in-onderiggende-directory (directory)
+       "Vermeldt de .el files in DIRECTORY en onderliggende subdirectories."
+       ;; Hoewel de functie niet interactief gebruikt wordt,
+       ;; is het makkelijker te testen wanneer we het interactief maken.
+       ;; De directory zal een naam hebben zoals
        ;;  "/usr/local/share/emacs/22.1.1/lisp/"
-       (interactive "DDirectory name: ")
-       (let (el-files-list
-             (current-directory-list
+       (interactive "DDirectory naam: ")
+       (let (el-bestanden-lijst
+             (huidige-directory-lijst
               (directory-files-and-attributes directory t)))
-         ;; while we are in the current directory
-         (while current-directory-list
+         ;; zoals we in de huidige directory zijn
+         (while huidige-directory-lijst
            (cond
-            ;; check to see whether filename ends in '.el'
-            ;; and if so, add its name to a list.
-            ((equal ".el" (substring (car (car current-directory-list)) -3))
-             (setq el-files-list
-                   (cons (car (car current-directory-list)) el-files-list)))
-            ;; check whether filename is that of a directory
-            ((eq t (car (cdr (car current-directory-list))))
-             ;; decide whether to skip or recurse
+            ;; check of de bestandsnaam eindigt met '.el'
+            ;; en zo ja, voeg die toe aan de lijst.
+            ((equal ".el" (substring (car (car huidige-directory-lijst)) -3))
+             (setq el-bestanden-lijst
+                   (cons (car (car huidige-directory-lijst)) el-bestanden-lijst)))
+            ;; check of bestandsnaam die van een directory is
+            ((eq t (car (cdr (car huidige-directory-lijst))))
+             ;; beslis tussen skippen of afdalen
              (if
                  (equal "."
-                        (substring (car (car current-directory-list)) -1))
-                 ;; then do nothing since filename is that of
-                 ;;   current directory or parent, "." or ".."
+                        (substring (car (car huidige-directory-lijst)) -1))
+                 ;; dan doe niets omdat de bestandnaam die is van
+                 ;;   huidige directory of parent, "." or ".."
                  ()
-               ;; else descend into the directory and repeat the process
-               (setq el-files-list
+               ;; anders daal af in de directory en herhaalt het proces
+               (setq el-bestanden-lijst
                      (append
-                      (files-in-below-directory
-                       (car (car current-directory-list)))
-                      el-files-list)))))
-           ;; move to the next filename in the list; this also
-           ;; shortens the list so the while loop eventually comes to an end
-           (setq current-directory-list (cdr current-directory-list)))
-         ;; return the filenames
-         el-files-list))
+                      (bestanden-in-onderiggende-directory
+                       (car (car huidige-directory-lijst)))
+                      el-bestanden-lijst)))))
+           ;; ga naar volgende bestandnaam in de lijst; dit verkort ook
+           ;; de lijst zodat de while loop uiteindelijk aan zijn eind komt
+           (setq huidige-directory-lijst (cdr huidige-directory-lijst)))
+         ;; geef de bestandsnamen terug
+         el-bestanden-lijst))
 
-   The ‘files-in-below-directory’ ‘directory-files’ function takes one
-argument, the name of a directory.
+   De functie ‘bestanden-in-onderiggende-directory’ vereist een
+argument, de naam van een directory.
 
-   Thus, on my system,
+   Dus, op mijn systeem,
 
      (length
-      (files-in-below-directory "/usr/local/share/emacs/22.1.1/lisp/"))
+      (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.1.1/lisp/"))
 
-tells me that in and below my Lisp sources directory are 1031 ‘.el’
-files.
+vertelt me dat er in en onder mijn Lisp brondirectory 1031 ‘.el’
+bestanden zijn.
 
-   ‘files-in-below-directory’ returns a list in reverse alphabetical
-order.  An expression to sort the list in alphabetical order looks like
-this:
+   ‘bestanden-in-onderiggende-directory’ geeft een lijst terug in
+omgekeerde alfabetische volgorde.  Een expressie om de lijst in
+alfabetische volgorde te sorteren ziet er zo uit:
 
      (sort
-      (files-in-below-directory "/usr/local/share/emacs/22.1.1/lisp/")
+      (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.1.1/lisp/")
       'string-lessp)
 
    ---------- Footnotes ----------
 
-   (1) If ‘current-time-list’ is ‘nil’ the three timestamps are
-‘(1351051674579989697 . 1000000000)’, ‘(1173477761000000000 .
-1000000000)’, and ‘(1351050967734791805 . 1000000000)’, respectively.
+   (1) Wanneer ‘current-time-list’ ‘nil’ is, zijn de drie timestamps
+respectievelijk ‘(1351051674579989697 . 1000000000)’,
+‘(1173477761000000000 . 1000000000)’ en ‘(1351050967734791805 .
+1000000000)’.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Functiedefinities tellen,  Prev: Bestandenlijst,  Up: De data voorbereiden
@@ -12664,101 +12698,100 @@ File: emacs-lisp-intro-nl.info,  Node: Functiedefinities tellen,  Prev: Bestande
 14.9.3 Functiedefinities tellen
 -------------------------------
 
-Our immediate goal is to generate a list that tells us how many function
-definitions contain fewer than 10 words and symbols, how many contain
-between 10 and 19 words and symbols, how many contain between 20 and 29
-words and symbols, and so on.
+Ons doel is een lijst te genereren die vertelt hoeveel functiedefinities
+minder dan 10 woorden en symbolen bevatten, hoeveel tussen de 10 en 19
+woorden en symbolen bevatten, hoeveel tussen de 20 en 29 woorden en
+symbolen, enzovoorts.
 
-   With a sorted list of numbers, this is easy: count how many elements
-of the list are smaller than 10, then, after moving past the numbers
-just counted, count how many are smaller than 20, then, after moving
-past the numbers just counted, count how many are smaller than 30, and
-so on.  Each of the numbers, 10, 20, 30, 40, and the like, is one larger
-than the top of that range.  We can call the list of such numbers the
-‘top-of-ranges’ list.
+   Met een gesorteerde lijst met getallen is dit makkelijk.  Tel hoeveel
+elementen in de lijst kleiner dan 10 zijn, dan na voorbij de net getelde
+getallen te gaan, tel hoeveel er kleiner dan 20 zijn, dan na voorbij de
+net getelde getallen te gaan, hoeveel kleiner zijn dan 30, enzovoorts.
+Elk van de getallen 10, 20, 30, 40 en dergelijke is een groter dan de
+hoogste van die range.  We kunnen de lijst met zulke getallen de
+‘hoogste-van-ranges’ lijst noemen.
 
-   If we wished, we could generate this list automatically, but it is
-simpler to write a list manually.  Here it is:
+   Als we dat willen kunnen we zo'n lijst automatisch genereren, maar
+het is simpeler de lijst handmatig te schrijven.  Hier is die:
 
-     (defvar top-of-ranges
+     (defvar hoogste-van-ranges
       '(10  20  30  40  50
         60  70  80  90 100
        110 120 130 140 150
        160 170 180 190 200
        210 220 230 240 250
        260 270 280 290 300)
-      "List specifying ranges for `defuns-per-range'.")
+      "Lijst met ranges for `defuns-hoogste-per-range'.")
 
-   To change the ranges, we edit this list.
+   Om de ranges aan te passen, kunnen we deze lijst wijzigen.
 
-   Next, we need to write the function that creates the list of the
-number of definitions within each range.  Clearly, this function must
-take the ‘sorted-lengths’ and the ‘top-of-ranges’ lists as arguments.
+   Vervolgens moeten we een functie schrijven die een lijst maakt van de
+getallen van de definities binnen een range.  Deze functie moet
+‘gesorteerde-lengtes’ en ‘hoogste-van-ranges’ als argument gebruiken.
 
-   The ‘defuns-per-range’ function must do two things again and again:
-it must count the number of definitions within a range specified by the
-current top-of-range value; and it must shift to the next higher value
-in the ‘top-of-ranges’ list after counting the number of definitions in
-the current range.  Since each of these actions is repetitive, we can
-use ‘while’ loops for the job.  One loop counts the number of
-definitions in the range defined by the current top-of-range value, and
-the other loop selects each of the top-of-range values in turn.
+   De functie ‘defuns-per-range’ moet twee dingen steeds opnieuw doen:
+het moet het nummer van definities binnen een range tellen,
+gespecificeerd door de huidge ‘hoogste-van-ranges’ waarde en het moet
+naar de eerstvolgende hogere waarde n de ‘hoogste-van-ranges’ lijst
+opschuiven nadat het de definities in de huidige range geteld heeft.
+Omdat deze acties repeterend zijn, kunnen we een ‘while’ loop voor de
+taak gebruiken.  Een loop telt het aantal definities in de range
+gespecificeerd door de huidge hoogste-van-ranges waarde, en de andere
+loop selecteert elk van de hoogste-van-ranges op hun beurt.
 
-   Several entries of the ‘sorted-lengths’ list are counted for each
-range; this means that the loop for the ‘sorted-lengths’ list will be
-inside the loop for the ‘top-of-ranges’ list, like a small gear inside a
-big gear.
+   Verschillende entries van de ‘gesorteerde-lengtes’ lijst worden
+geteld voor elke range.  Dit betekent dat de loop voor de
+‘gesorteerde-lengtes’ lijst binnen de loop voor de ‘hoogste-van-ranges’
+lijst staat, zoals een klein tandwiel in een groot tandwiel.
 
-   The inner loop counts the number of definitions within the range.  It
-is a simple counting loop of the type we have seen before.  (*Note A
-loop with an incrementing counter: Incrementing Loop.)  The
-true-or-false test of the loop tests whether the value from the
-‘sorted-lengths’ list is smaller than the current value of the top of
-the range.  If it is, the function increments the counter and tests the
-next value from the ‘sorted-lengths’ list.
+   De binnenste loop telt het aantal definities binnen een range.  Het
+is een eenvoudige tellende loop van het type zoals we eerder zagen.
+(*Note Een loop met een incrementele teller: Incrementele loop.)  De
+waar-of-onwaar-test van de loop test of de waarde van de
+‘gesorteerde-lengtes’ lijst kleiner is dan de huidige waarde van de
+hoogste-van-ranges.  Indien dat zo is, dan verhoogt de functie de teller
+en test de volgende waarde van de ‘gesorteerde-lengtes’ lijst.
 
-   The inner loop looks like this:
+   De binnenste loop ziet er zo uit:
 
-     (while LENGTH-ELEMENT-SMALLER-THAN-TOP-OF-RANGE
-       (setq number-within-range (1+ number-within-range))
-       (setq sorted-lengths (cdr sorted-lengths)))
+     (while LENGTE-ELEMENT-KLEINER-DAN-HOOGSTE-VAN-RANGE
+       (setq getal-in-range (1+ getal-in-range))
+       (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 
-   The outer loop must start with the lowest value of the
-‘top-of-ranges’ list, and then be set to each of the succeeding higher
-values in turn.  This can be done with a loop like this:
+   De buitenste loop moet starten met de laagste waarde in de
+‘hoogste-van-ranges’ lijst en daarna per keer steeds op de opvolgende
+hogere waarde gezet worden.  Dit kan met een loop zoals deze:
 
-     (while top-of-ranges
-       BODY-OF-LOOP...
-       (setq top-of-ranges (cdr top-of-ranges)))
+     (while hoogste-van-ranges
+       BODY-VAN-LOOP...
+       (setq hoogste-van-ranges (cdr hoogste-van-ranges)))
 
-   Put together, the two loops look like this:
+   Samengevoegd zien de twee loops er zo uit:
 
-     (while top-of-ranges
+     (while hoogste-van-ranges
 
-       ;; Count the number of elements within the current range.
-       (while LENGTH-ELEMENT-SMALLER-THAN-TOP-OF-RANGE
-         (setq number-within-range (1+ number-within-range))
-         (setq sorted-lengths (cdr sorted-lengths)))
+       ;; Tel het aantal elementen binnen de huidige range.
+       (while LENGTE-ELEMENT-KLEINER-DAN-HOOGSTE-VAN-RANGE
+         (setq getal-in-range (1+ getal-in-range))
+         (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 
-       ;; Move to next range.
-       (setq top-of-ranges (cdr top-of-ranges)))
+       ;; Ga naar volgende range.
+       (setq hoogste-van-ranges (cdr hoogste-van-ranges)))
 
-   In addition, in each circuit of the outer loop, Emacs should record
-the number of definitions within that range (the value of
-‘number-within-range’) in a list.  We can use ‘cons’ for this purpose.
-(*Note ‘cons’: cons.)
+   Daarnaast moet Emacs in elk circuit van de buitenste loop het aantal
+definities binnen die range (de waarde van ‘getal-in-range’) in een
+lijst vastleggen.  We kunnen ‘cons’ voor dit doel gebruiken.  (*Note
+‘cons’: cons.)
 
-   The ‘cons’ function works fine, except that the list it constructs
-will contain the number of definitions for the highest range at its
-beginning and the number of definitions for the lowest range at its end.
-This is because ‘cons’ attaches new elements of the list to the
-beginning of the list, and since the two loops are working their way
-through the lengths' list from the lower end first, the
-‘defuns-per-range-list’ will end up largest number first.  But we will
-want to print our graph with smallest values first and the larger later.
-The solution is to reverse the order of the ‘defuns-per-range-list’.  We
-can do this using the ‘nreverse’ function, which reverses the order of a
-list.
+   De functie ‘cons’ werkt prima, behalve dat de lijst die het maakt het
+aantal definities voor de hoogste range aan het begin en het aantal
+definities voor de laagste range aan het einde bevat.  Dit komt omdat
+‘cons’ nieuwe elementen aan het begin van de lijst vastmaakt en omdat de
+twee loops hun werk door de lengtes-lijst van laag tot hoog doen, zal
+‘defuns-per-range-list’ eindigen met het grootste getal aan het begin.
+Maar wij willen onze grafiek tonen met eerst de kleinste waarden en de
+grotere daarna.  We kunnen dit doen met de functie ‘nreverse’ die de
+volgorde van een lijst omdraait.
 
    Bijvoorbeeld,
 
@@ -12768,140 +12801,145 @@ produceert:
 
      (4 3 2 1)
 
-   Note that the ‘nreverse’ function is destructive--that is, it changes
-the list to which it is applied; this contrasts with the ‘car’ and ‘cdr’
-functions, which are non-destructive.  In this case, we do not want the
-original ‘defuns-per-range-list’, so it does not matter that it is
-destroyed.  (The ‘reverse’ function provides a reversed copy of a list,
-leaving the original list as is.)
+   Merk op dat de functie ‘nreverse’ destructief is--dat wil zeggen, het
+verandert de lijst waarop het wordt toegepast.  Dit contrasteert met de
+functies ‘car’ en ‘cdr’, die niet-destructief zijn.  In dit geval willen
+we de originele ‘defuns-per-range-lijst’ niet, dus het maakt niet uit
+dat de lijst wordt vernietigd.  (De functie ‘reverse’ maakt een
+omgedraaide kopie van een lijst, en laat de originele lijst intact.)
 
-   Put all together, the ‘defuns-per-range’ looks like this:
+   Alles bij elkaar ziet de ‘defuns-per-range’ er zo uit:
 
-     (defun defuns-per-range (sorted-lengths top-of-ranges)
-       "SORTED-LENGTHS defuns in each TOP-OF-RANGES range."
-       (let ((top-of-range (car top-of-ranges))
-             (number-within-range 0)
-             defuns-per-range-list)
+     (defun defuns-per-range (gesorteerde-lengtes hoogste-van-ranges)
+       "GESORTEERDE-LENGTES defuns in elke HOOGSTE-VAN-RANGES range."
+       (let ((hoogste-van-range (car hoogste-van-ranges))
+             (getal-in-range 0)
+             defuns-per-range-lijst)
 
-         ;; Outer loop.
-         (while top-of-ranges
+         ;; Buitenste loop.
+         (while hoogste-van-ranges
 
-           ;; Inner loop.
+           ;; Binnenste loop.
            (while (and
-                   ;; Need number for numeric test.
-                   (car sorted-lengths)
-                   (< (car sorted-lengths) top-of-range))
+                   ;; Getal nodig voor numerieke test.
+                   (car gesorteerde-lengtes)
+                   (< (car gesorteerde-lengtes) hoogste-van-range))
 
-             ;; Count number of definitions within current range.
-             (setq number-within-range (1+ number-within-range))
-             (setq sorted-lengths (cdr sorted-lengths)))
 
-           ;; Exit inner loop but remain within outer loop.
+             ;; Tel aantal definities in huidige range.
+             (setq getal-in-range (1+ getal-in-range))
+             (setq gesorteerde-lengtes (cdr gesorteerde-lengtes)))
 
-           (setq defuns-per-range-list
-                 (cons number-within-range defuns-per-range-list))
-           (setq number-within-range 0)      ; Reset count to zero.
+           ;; Verlaat binnenste loop maar blijf in buitenste loop.
 
-           ;; Move to next range.
-           (setq top-of-ranges (cdr top-of-ranges))
+
+           (setq defuns-per-range-lijst
+                 (cons getal-in-range defuns-per-range-lijst))
+           (setq getal-in-range 0)      ; Reset telling op nul.
+
+           ;; Ga naar volgende range.
+           (setq hoogste-van-ranges (cdr hoogste-van-ranges))
            ;; Specify next top of range value.
-           (setq top-of-range (car top-of-ranges)))
+           (setq hoogste-van-range (car hoogste-van-ranges)))
 
-         ;; Exit outer loop and count the number of defuns larger than
-         ;;   the largest top-of-range value.
-         (setq defuns-per-range-list
+         ;; Verlaat buitenste loop en tel het aantal defuns groter dan
+         ;;   de grootste top-of-range value.
+         (setq defuns-per-range-lijst
                (cons
-                (length sorted-lengths)
-                defuns-per-range-list))
+                (length gesorteerde-lengtes)
+                defuns-per-range-lijst))
 
-         ;; Return a list of the number of definitions within each range,
-         ;;   smallest to largest.
-         (nreverse defuns-per-range-list)))
 
-The function is straightforward except for one subtle feature.  The
-true-or-false test of the inner loop looks like this:
+         ;; Geef een lijst terug met het aantal definities in elke range,
+         ;;   van klein naar groot.
+         (nreverse defuns-per-range-lijst)))
 
-     (and (car sorted-lengths)
-          (< (car sorted-lengths) top-of-range))
+De functie is eenvoudig behalve een subtiele eigenschap.  De
+waar-of-onwaar-test van de binnenste loop ziet er zo uit:
 
-instead of like this:
+     (and (car gesorteerde-lengtes)
+          (< (car gesorteerde-lengtes) hogste-van-range))
 
-     (< (car sorted-lengths) top-of-range)
+in plaats van dit:
 
-   The purpose of the test is to determine whether the first item in the
-‘sorted-lengths’ list is less than the value of the top of the range.
+     (< (car gesorteerde-lengtes) hoogste-van-range)
 
-   The simple version of the test works fine unless the ‘sorted-lengths’
-list has a ‘nil’ value.  In that case, the ‘(car sorted-lengths)’
-expression function returns ‘nil’.  The ‘<’ function cannot compare a
-number to ‘nil’, which is an empty list, so Emacs signals an error and
-stops the function from attempting to continue to execute.
+   Het doel van deze test is vast te stellen of het eerste item in de
+‘gesorteerde-lengtes’ lijst kleiner is dan de waarde van de hoogste van
+de range.
 
-   The ‘sorted-lengths’ list always becomes ‘nil’ when the counter
-reaches the end of the list.  This means that any attempt to use the
-‘defuns-per-range’ function with the simple version of the test will
-fail.
+   De simpele versie van de tekst werkt prima tenzij de
+‘gesorteerde-lengtes’ lijst een waarde ‘nil’ heeft.  In dat geval geeft
+de ‘(car gesorteerde-lengtes)’ expressie ‘nil’ terug.  De functie ‘<’
+kan geen getal vergelijken met ‘nil’, wat een lege lijst is, zodat Emacs
+een fout signaleert en de verdere uitvoering van de functie stopt.
 
-   We solve the problem by using the ‘(car sorted-lengths)’ expression
-in conjunction with the ‘and’ expression.  The ‘(car sorted-lengths)’
-expression returns a non-‘nil’ value so long as the list has at least
-one number within it, but returns ‘nil’ if the list is empty.  The ‘and’
-expression first evaluates the ‘(car sorted-lengths)’ expression, and if
-it is ‘nil’, returns false _without_ evaluating the ‘<’ expression.  But
-if the ‘(car sorted-lengths)’ expression returns a non-‘nil’ value, the
-‘and’ expression evaluates the ‘<’ expression, and returns that value as
-the value of the ‘and’ expression.
+   De ‘gesorteerde-lengtes’ lijst wordt altijd ‘nil’ wanneer de teller
+het einde van de lijst bereikt.  Dit betekent dat elke poging om de
+functie ‘defuns-per-range’ met de simpele versie te gebruiken zal falen.
 
-   This way, we avoid an error.
+   Wij lossen het probleem op met de ‘(car gesorteerde-lengtes)’
+expressie in combinatie met de ‘and’ expressie.  De ‘(car
+gesorteerde-lengtes)’ expressie geeft een niet-‘nil’ waarde zolang de
+lijst tenminste een getal bevat, maar geeft ‘nil’ terug als de lijst
+leeg is.  De ‘and’ expressie evalueert eerst de ‘(car
+gesorteerde-lengtes)’ expressie, and als die ‘nil’ is, geeft die onwaar
+terug _zonder_ de ‘<’ expressie te evalueren.  Maar wanneer de ‘(car
+gesorteerde-lengtes)’ expressie een non-‘nil’ waarde teruggeeft,
+evalueert de ‘and’ expressie de ‘<’ expressie en geeft die waarde terug
+als de waarde van de ‘and’ expressie.
+
+   Op deze manier voorkomen we een fout.
 
 (*Note De ‘kill-new’ functie: kill-new functie, voor informatie over
 ‘and’.)
 
-   Here is a short test of the ‘defuns-per-range’ function.  First,
-evaluate the expression that binds (a shortened) ‘top-of-ranges’ list to
-the list of values, then evaluate the expression for binding the
-‘sorted-lengths’ list, and then evaluate the ‘defuns-per-range’
-function.
+   Hier is een korte test van de functie ‘defuns-per-range’.  Evalueer
+de expressie die een (verkorte) ‘hoogste-van-ranges’ lijst bindt aan de
+lijst van waardes, en evalueer dan de expressie om de
+‘gesorteerde-lengtes’ lijst te binden, en evalueer daarna de functie
+‘defuns-per-range’.
 
-     ;; (Shorter list than we will use later.)
-     (setq top-of-ranges
+     ;; (Kortere lijst dan we later gaan gebruiken.)
+     (setq hoogste-van-ranges
       '(110 120 130 140 150
         160 170 180 190 200))
 
-     (setq sorted-lengths
+     (setq gesorteerde-lengtes
            '(85 86 110 116 122 129 154 176 179 200 265 300 300))
 
-     (defuns-per-range sorted-lengths top-of-ranges)
+     (defuns-per-range gesorteerde-lengtes hoogste-van-ranges)
 
-The list returned looks like this:
+De teruggeven lijst ziet er zo uit:
 
      (2 2 2 0 0 1 0 2 0 0 4)
 
-Indeed, there are two elements of the ‘sorted-lengths’ list smaller than
-110, two elements between 110 and 119, two elements between 120 and 129,
-and so on.  There are four elements with a value of 200 or larger.
+Er zijn inderdaad twee elementen van de ‘gesorteerde-lengtes’ lijst
+kleiner dan 110, twee elemten tussen 110 en 119, twee elementen tussen
+120 en 129, enzovoorts.  Er zijn vier elementen met een waarde van 200
+of groter.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Een grafiek klaarmaken,  Next: Initialisatie van Emacs,  Prev: Woorden in een defun,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Een grafiek voorbereiden,  Next: Initialisatie van Emacs,  Prev: Woorden in een defun,  Up: Top
 
-15 Een grafiek klaarmaken
-*************************
+15 Een grafiek voorbereiden
+***************************
 
-Our goal is to construct a graph showing the numbers of function
-definitions of various lengths in the Emacs lisp sources.
+Ons doel is een grafiek te construeren die de getallen toont van de
+functiedefinities van diverse lengtes in de Emacs lisp bronbestanden.
 
-   As a practical matter, if you were creating a graph, you would
-probably use a program such as ‘gnuplot’ to do the job.  (‘gnuplot’ is
-nicely integrated into GNU Emacs.)  In this case, however, we create one
-from scratch, and in the process we will re-acquaint ourselves with some
-of what we learned before and learn more.
+   Als je in de praktijk een grafiek zou maken, zou je daarvoor
+waarschijnlijk een programma zoals ‘gnuplot’ gebruiken.  (‘gnuplot’ is
+mooi geïntegreerd en GNU Emacs.)  In dit geval echter maken we er een
+helemaal zelf en in het proces maken wij ons weer vertrouwd met sommige
+dingen die we eerder geleerd hebben en meer leren.
 
-   In this chapter, we will first write a simple graph printing
-function.  This first definition will be a “prototype”, a rapidly
-written function that enables us to reconnoiter this unknown
-graph-making territory.  We will discover dragons, or find that they are
-myth.  After scouting the terrain, we will feel more confident and
-enhance the function to label the axes automatically.
+   In dit hoofdstuk schrijven we eerste een simpele functie om een
+grafiek te tonen.  Deze eerste definitie wordt een “prototype”, een snel
+geschreven functie om het onbekende terrein van grafiek maken te
+verkennen.  We ontdekken draken of ontdekken dat ze een mythe zijn.  Na
+het terrein verkend te hebben voelen we ons meer zelfverzekerd en
+breiden de functie uit met automatische labeling van de assen.
 
 * Menu:
 
@@ -12912,51 +12950,53 @@ enhance the function to label the axes automatically.
 * Lijngrafiek oefening::     Lijngrafiek oefening
 
 
-File: emacs-lisp-intro-nl.info,  Node: Kolommen van een grafiek,  Next: graph-body-print,  Up: Een grafiek klaarmaken
+File: emacs-lisp-intro-nl.info,  Node: Kolommen van een grafiek,  Next: graph-body-print,  Up: Een grafiek voorbereiden
 
-Printing the Columns of a Graph
-===============================
+De kolommen van een grafiek tonen
+=================================
 
-Since Emacs is designed to be flexible and work with all kinds of
-terminals, including character-only terminals, the graph will need to be
-made from one of the typewriter symbols.  An asterisk will do; as we
-enhance the graph-printing function, we can make the choice of symbol a
-user option.
+Omdat Emacs gemaakt is om flexibel te zijn en met allerlei soorten
+terminals te werken, waaronder alleen-tekst terminals, moet de grafiek
+gemaakt worden met een typemachine-symbool.  Een sterretje is goed
+genoeg.  Wanneer we de functie om de grafiek te tonen uitbreiden, kunnen
+we van de keuze van het symbool een gebruikersoptie maken.
 
-   We can call this function ‘graph-body-print’; it will take a
-‘numbers-list’ as its only argument.  At this stage, we will not label
-the graph, but only print its body.
+   We kunnen deze functie ‘grafiek-body-tonen’ noemen, het neemt de
+‘numbers-list’ als enige argument.  Op dit moment geven we nog geen
+labels aan de grafiek, maar tonen alleen de body.
 
-   The ‘graph-body-print’ function inserts a vertical column of
-asterisks for each element in the ‘numbers-list’.  The height of each
-line is determined by the value of that element of the ‘numbers-list’.
+   De functie ‘grafiek-body-tonen’ voegt een verticale kolom van
+sterretjes in voor elk element van de ‘getallen-lijst’.  De hoogte van
+elke lijn wordt bepaald door de waarde van dat element in de
+‘getallen-lijst’.
 
-   Inserting columns is a repetitive act; that means that this function
-can be written either with a ‘while’ loop or recursively.
+   Kolommen invoegen is een reperterende actie wat betekent dat deze
+functie met een ‘while’ loop dan wel recursief geschreven kan worden.
 
-   Our first challenge is to discover how to print a column of
-asterisks.  Usually, in Emacs, we print characters onto a screen
-horizontally, line by line, by typing.  We have two routes we can
-follow: write our own column-insertion function or discover whether one
-exists in Emacs.
+   Onze eerste uitdaging is om te ontdekken hoe een kolom van sterretjes
+te tonen.  Meestal tonen we in Emacs horizontaal karakters op het
+scherm, regel voor regel, door te typen.  We kunnen twee routes volgen:
+we schrijven onze eigen kolom-invoeg-functie of ontdekken of er al een
+in Emacs bestaat.
 
-   To see whether there is one in Emacs, we can use the ‘M-x apropos’
-command.  This command is like the ‘C-h a’ (‘command-apropos’) command,
-except that the latter finds only those functions that are commands.
-The ‘M-x apropos’ command lists all symbols that match a regular
-expression, including functions that are not interactive.
+   Om te ontdekken of er al een in Emacs is, gebruiken we het commando
+‘M-x apropos’.  Dit commando is vergelijkbaar met het commando ‘C-h a’
+(‘command-apropos’), behalve dat de laatste alleen functies vindt dat
+commando's zijn.  Het commando ‘M-x apropos’ vermeldt alle symbolen die
+een reguliere expressie matchen, inclusief functies die niet interactief
+zijn.
 
-   What we want to look for is some command that prints or inserts
-columns.  Very likely, the name of the function will contain either the
-word "print" or the word "insert" or the word "column".  Therefore, we
-can simply type ‘M-x apropos <RET> print\|insert\|column <RET>’ and look
-at the result.  On my system, this command once took quite some time,
-and then produced a list of 79 functions and variables.  Now it does not
-take much time at all and produces a list of 211 functions and
-variables.  Scanning down the list, the only function that looks as if
-it might do the job is ‘insert-rectangle’.
+   Waar we naar zoeken is een commando dat kolommen toont of invoegt.
+Zeer waarschijnlijk bevat de naam van de functie het woord "print", het
+woord "insert" of het woord 11column".  Daarom kunnen we eenvoudigweg
+‘M-x apropos <RET> print\|insert\|column <RET>’ typen en naar het
+resultaat kijken.  Op mijn systeem kostte dit commando ooit behoorlijk
+wat tijd en produceerde een lijst met 79 functies en variabelen.  Nu
+kost het amper tijd en produceert een lijst met 211 functies en
+variabelen.  Bij het bekijken van de lijst is de enige functie die lijkt
+alsof die het werk kan doen is ‘insert-rectangle’.
 
-   Indeed, this is the function we want; its documentation says:
+   Inderdaad, dit is de functie die we willen, de documentatie zegt:
 
      insert-rectangle:
      Insert text of RECTANGLE with upper left corner at point.
@@ -13206,7 +13246,7 @@ This prints the body of a graph, not the labels for the vertical and
 horizontal axes, so we can call this ‘graph-body-print’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: graph-body-print,  Next: recursive-graph-body-print,  Prev: Kolommen van een grafiek,  Up: Een grafiek klaarmaken
+File: emacs-lisp-intro-nl.info,  Node: graph-body-print,  Next: recursive-graph-body-print,  Prev: Kolommen van een grafiek,  Up: Een grafiek voorbereiden
 
 15.1 The ‘graph-body-print’ Function
 ====================================
@@ -13324,7 +13364,7 @@ screen until the function exits.
                  *************
 
 
-File: emacs-lisp-intro-nl.info,  Node: recursive-graph-body-print,  Next: Afgedrukte assen,  Prev: graph-body-print,  Up: Een grafiek klaarmaken
+File: emacs-lisp-intro-nl.info,  Node: recursive-graph-body-print,  Next: Afgedrukte assen,  Prev: graph-body-print,  Up: Een grafiek voorbereiden
 
 15.2 The ‘recursive-graph-body-print’ Function
 ==============================================
@@ -13390,7 +13430,7 @@ the call to act on a shorter version of the ‘numbers-list’.
 ‘recursive-graph-body-print’, create the body of a graph.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Afgedrukte assen,  Next: Lijngrafiek oefening,  Prev: recursive-graph-body-print,  Up: Een grafiek klaarmaken
+File: emacs-lisp-intro-nl.info,  Node: Afgedrukte assen,  Next: Lijngrafiek oefening,  Prev: recursive-graph-body-print,  Up: Een grafiek voorbereiden
 
 15.3 Need for Printed Axes
 ==========================
@@ -13406,7 +13446,7 @@ contain much new material, I have placed their description in an
 appendix.  *Note A Graph with Labeled Axes: Full Graph.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Afgedrukte assen,  Up: Een grafiek klaarmaken
+File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Afgedrukte assen,  Up: Een grafiek voorbereiden
 
 15.4 Oefening
 =============
@@ -13414,7 +13454,7 @@ File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Afgedrukte a
 Write a line graph version of the graph printing functions.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Initialisatie van Emacs,  Next: Debuggen.,  Prev: Een grafiek klaarmaken,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Initialisatie van Emacs,  Next: Debuggen.,  Prev: Een grafiek voorbereiden,  Up: Top
 
 16 Jouw ‘.emacs’ bestand
 ************************
@@ -17582,9 +17622,9 @@ Index
 * apostrof om te quoten:                 Draai een programma. (line  13)
 * append-to-buffer:                      append-to-buffer.    (line   6)
 * apply:                                 Kolommen van een grafiek.
-                                                              (line 143)
+                                                              (line 145)
 * apropos:                               Kolommen van een grafiek.
-                                                              (line  33)
+                                                              (line  35)
 * Argument als lokale variabele:         Dec voorbeeld samengesteld.
                                                               (line  27)
 * argument gedefinieerd:                 Argumenten.          (line  16)
@@ -17600,6 +17640,7 @@ Index
 * Axis, print horizontal:                print-X-axis.        (line   6)
 * Axis, print vertical:                  print-Y-axis.        (line   6)
 * beginning-of-buffer:                   beginning-of-buffer. (line   6)
+* bestanden-in-onderliggende-directory:  Bestandenlijst.      (line  26)
 * Bewaren, type recursief patroon:       Bewaar.              (line   6)
 * Bewegen per zin en paragraaf:          Regexp zoeken.       (line   6)
 * Bibliotheek als term voor "bestand":   Meer vinden.         (line  42)
@@ -17613,7 +17654,7 @@ Index
                                                               (line   6)
 * Bloemen in een veld:                   Lisp lijsten.        (line  18)
 * body gedefinieerd:                     defun.               (line  40)
-* Body of graph:                         Een grafiek klaarmaken.
+* Body van grafiek:                      Een grafiek voorbereiden.
                                                               (line   6)
 * buffer-file-name:                      Buffer namen.        (line   6)
 * buffer-menu, bound to key:             Key bindings.        (line  69)
@@ -17650,11 +17691,7 @@ Index
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
 * count-words-in-defun:                  count-words-in-defun.
-                                                              (line  98)
-* Counting words in a defun:             Woorden in een defun.
-                                                              (line   6)
-* Counting words in a defun <1>:         count-words-in-defun.
-                                                              (line   6)
+                                                              (line 102)
 * current-buffer:                        Buffers pakken.      (line   6)
 * current-kill:                          current-kill.        (line   6)
 * Customizing your .emacs file:          Initialisatie van Emacs.
@@ -17689,7 +17726,7 @@ Index
 * describe-function:                     versimpelde-beginning-of-buffer.
                                                               (line  80)
 * describe-function, geïntroduceerd:     Meer vinden.         (line   6)
-* directory-files:                       Bestandenlijst.      (line  12)
+* directory-files:                       Bestandenlijst.      (line  13)
 * dolist:                                dolist.              (line   6)
 * dotimes:                               dotimes.             (line   6)
 * dotted pair:                           Lijsten uitgetekend. (line  97)
@@ -17703,6 +17740,8 @@ Index
 * Een bestand vinden:                    Een bestand vinden.  (line   6)
 * Een buffer krijgen:                    Buffers pakken.      (line   6)
 * Een functiedefinitie wijzigen:         Een defun wijzigen.  (line   6)
+* Een grafiek voorbereiden:              Een grafiek voorbereiden.
+                                                              (line   6)
 * Een programma draaien:                 Draai een programma. (line   6)
 * Een variabele initialiseren:           defvar.              (line   6)
 * Eigenschappen, vermelding van buffer-substring-no-properties: versmal oefening.
@@ -17728,7 +17767,6 @@ Index
 * expressie gedefinieerd:                Lisp atomen.         (line  27)
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                               (line   6)
-* files-in-below-directory:              Bestandenlijst.      (line  25)
 * fill-column, een voorbeeldvariabele:   fill-column voorbeeld.
                                                               (line   6)
 * filter-buffer-substring:               last-command en this-command.
@@ -17757,7 +17795,7 @@ Index
                                                               (line  89)
 * global-set-key:                        Key bindings.        (line  82)
 * global-unset-key:                      Key bindings.        (line  96)
-* Graph prototype:                       Een grafiek klaarmaken.
+* Grafiek prototype:                     Een grafiek voorbereiden.
                                                               (line   6)
 * graph-body-print:                      graph-body-print.    (line   6)
 * graph-body-print Final version.:       De finale versie.    (line  53)
@@ -17767,6 +17805,8 @@ Index
 * Herhaling (loops):                     Loops en recursie.   (line   6)
 * Het evalueren van een binnenste lijst: Geneste lijsten evalueren.
                                                               (line   6)
+* hoogste-van-ranges:                    Functiedefinities tellen.
+                                                              (line  20)
 * Horizontal axis printing:              print-X-axis.        (line   6)
 * Hulp bij formatteren:                  Typen van lijsten.   (line   6)
 * Hulp bij lijsten typen:                Typen van lijsten.   (line   6)
@@ -17809,10 +17849,11 @@ Index
                                                               (line   6)
 * lambda:                                lambda.              (line   6)
 * lege string gedefinieerd:              Terugblik.           (line 142)
+* lengte-lijst-bestand:                  lengte-lijst-bestand.
+                                                              (line  11)
 * length:                                length.              (line   6)
-* lengths-list-file:                     lengths-list-file.   (line  11)
 * lengths-list-many-files:               lengths-list-many-files.
-                                                              (line  32)
+                                                              (line  33)
 * let:                                   let.                 (line   6)
 * let expressie voorbeeld:               Voorbeeld let expressie.
                                                               (line   6)
@@ -17860,10 +17901,10 @@ Index
 * mark-whole-buffer:                     mark-whole-buffer.   (line   6)
 * match-beginning:                       fwd-para while.      (line 161)
 * max:                                   Kolommen van een grafiek.
-                                                              (line 131)
+                                                              (line 133)
 * message:                               message.             (line   6)
 * min:                                   Kolommen van een grafiek.
-                                                              (line 131)
+                                                              (line 133)
 * Mode line format:                      Mode line.           (line   6)
 * Mode selection, automatic:             Tekst en auto-fill.  (line  22)
 * mode-line-format:                      Mode line.           (line   6)
@@ -17874,7 +17915,7 @@ Index
 * nil:                                   Waar en onwaarheid.  (line   6)
 * nil, geschiedenis van woord:           Buffer namen.        (line  43)
 * nreverse:                              Functiedefinities tellen.
-                                                              (line 100)
+                                                              (line  99)
 * nth:                                   nth.                 (line   6)
 * nthcdr:                                nthcdr.              (line   6)
 * nthcdr <1>:                            copy-region-as-kill. (line   6)
@@ -17925,15 +17966,13 @@ Index
                                                               (line   6)
 * progn:                                 progn.               (line   6)
 * Properties, in mode line example:      Mode line.           (line  64)
-* Prototype graph:                       Een grafiek klaarmaken.
+* Prototype grafiek:                     Een grafiek voorbereiden.
                                                               (line   6)
 * push, voorbeeld:                       kill-new functie.    (line 118)
 * quote:                                 Draai een programma. (line  13)
 * quoten met de apostrof:                Draai een programma. (line  13)
 * re-search-forward:                     re-search-forward.   (line   6)
 * Read-only buffer:                      Read-only buffer.    (line   6)
-* Readying a graph:                      Een grafiek klaarmaken.
-                                                              (line   6)
 * Rebinding keys:                        Keymaps.             (line   6)
 * Recursie:                              Recursie.            (line   6)
 * Recursie en loops:                     Loops en recursie.   (line   6)
@@ -17943,6 +17982,8 @@ Index
                                                               (line   6)
 * Recursieve patronen:                   Recursieve patronen. (line   6)
 * Recursieve patronen - bewaren:         Bewaar.              (line   6)
+* recursieve-lengte-lijst-veel-bestanden: Enkele bestanden recursief.
+                                                              (line  17)
 * Recursive definitie onderdelen:        Recursive definitie onderdelen.
                                                               (line   6)
 * Recursive pattern - elke:              Elke.                (line   6)
@@ -17950,8 +17991,6 @@ Index
                                                               (line 263)
 * recursive-graph-body-print:            recursive-graph-body-print.
                                                               (line   6)
-* recursive-lengths-list-many-files:     Enkele bestanden recursief.
-                                                              (line  17)
 * regexp-quote:                          fwd-para let.        (line  95)
 * Region, wat is het:                    save-excursion.      (line   6)
 * Reguliere expressie voor tellen van woorden: Woorden tellen.
@@ -17960,7 +17999,7 @@ Index
 * Remainder function, %:                 Bereken het restant. (line   6)
 * Repetitie voor tellen van woorden:     Woorden tellen.      (line   6)
 * reverse:                               Functiedefinities tellen.
-                                                              (line 115)
+                                                              (line 114)
 * Ring, making a list like a:            Killring.            (line   6)
 * ring.el file:                          ring bestand.        (line   6)
 * Robots bouwen:                         Robots bouwen.       (line   6)
@@ -17984,7 +18023,7 @@ Index
 * site-load.el init file:                Site-wide init.      (line   6)
 * Sleutelwoord:                          Optionele argumenten.
                                                               (line  11)
-* sort:                                  Sorteren.            (line   6)
+* sorteren:                              Sorteren.            (line   6)
 * Source level debugger:                 edebug.              (line   6)
 * Speciale vorm:                         Complicaties.        (line  12)
 * Sterretje voor een read-only buffer:   Read-only buffer.    (line   6)
@@ -18000,7 +18039,7 @@ Index
 * Symbool zonder functie foutmelding:    Void functie.        (line   6)
 * Symbool zonder waarde fout:            Void variabele.      (line   6)
 * Symboolnamen:                          Namen en definities. (line   6)
-* Syntax categories and tables:          Syntax.              (line   6)
+* Syntax categorieën en tabellen:        Syntax.              (line   6)
 * Tabs, preventing:                      Indent Tabs Mode.    (line   6)
 * Tekst deleten:                         Knippen en opslaan van tekst.
                                                               (line   6)
@@ -18026,8 +18065,6 @@ Index
 * Text clippen:                          Knippen en opslaan van tekst.
                                                               (line   6)
 * Text Mode turned on:                   Tekst en auto-fill.  (line  39)
-* top-of-ranges:                         Functiedefinities tellen.
-                                                              (line  20)
 * triangle-bugged:                       debug.               (line  14)
 * Typen van data:                        Data typen.          (line   6)
 * Uitstel in recursie:                   Geen uitstel.        (line   6)
@@ -18071,11 +18108,15 @@ Index
                                                               (line   6)
 * Witte ruimte in lijsten:               Whitespace in lijsten.
                                                               (line   6)
+* Woorden en symbolen in defun:          Woorden en symbolen. (line   6)
+* Woorden tellen in een defun:           Woorden in een defun.
+                                                              (line   6)
+* Woorden tellen in een defun <1>:       Woorden in een defun.
+                                                              (line   6)
+* Woorden tellen in een defun <2>:       count-words-in-defun.
+                                                              (line   6)
 * Woorden, recursief geteld:             recursive-count-words.
                                                               (line   6)
-* Word counting in a defun:              Woorden in een defun.
-                                                              (line   6)
-* Words and symbols in defun:            Woorden en symbolen. (line   6)
 * Words, duplicated:                     de-de.               (line   6)
 * X axis printing:                       print-X-axis.        (line   6)
 * X-axis-element:                        X-as tic marks.      (line 105)
@@ -18119,321 +18160,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24394
-Node: Waarom25857
-Node: Over het lezen van deze tekst26520
-Node: Doelgroep28860
-Node: Geschiedenis van Lisp31863
-Node: Opmerking voor beginners32767
-Node: Dank35519
-Node: Lijsten verwerken36114
-Ref: Lijsten verwerken-Footnote-137570
-Node: Lisp lijsten37726
-Node: Genummerde lijsten38656
-Node: Lisp atomen39825
-Node: Whitespace in lijsten43739
-Node: Typen van lijsten45091
-Node: Draai een programma46312
-Ref: Draai een programma-Footnote-148865
-Node: Fouten maken49009
-Node: Namen en definities54212
-Node: Lisp interpreter56168
-Node: Complicaties57392
-Node: Byte compiling59641
-Node: Evaluatie60770
-Node: Hoe de interpreter werkt61401
-Node: Geneste lijsten evalueren62774
-Node: Variabelen65462
-Node: fill-column voorbeeld67078
-Node: Void functie68765
-Node: Void variabele70048
-Node: Argumenten71974
-Ref: Argumenten-Footnote-173780
-Node: Data typen74652
-Node: Argumenten als variabele of als lijst76889
-Node: Variabel aantal argumenten78630
-Node: Verkeerde type argument79526
-Ref: Verkeerde type argument-Footnote-183319
-Node: message83394
-Ref: message-Footnote-187616
-Node: setq87821
-Node: Setq gebruiken88546
-Node: Tellen91780
-Node: Samenvatting93842
-Node: Foutmelding oefeningen95845
-Node: Oefenen van evaluatie96401
-Node: Hoe te evalueren97628
-Node: Buffer namen99222
-Node: Buffers pakken105293
-Ref: Buffers pakken-Footnote-1107982
-Node: Van buffer verwisselen108232
-Ref: Van buffer verwisselen-Footnote-1111823
-Ref: Van buffer verwisselen-Footnote-2112165
-Node: Buffer grootte en locatie112919
-Node: Evaluatie oefening115133
-Node: Defuns schrijven115417
-Node: Primitieve functies116710
-Node: defun117945
-Node: Installeer124809
-Node: Effect van installatie126246
-Node: Een defun wijzigen127173
-Node: Interactief129053
-Node: Interactieve vermenigvuldig-met-zeven130236
-Node: vermenigvuldig-met-zeven in detail132366
-Node: Interactieve opties135219
-Node: Permanent installeren138581
-Node: let140892
-Node: Voorkom verwarring142484
-Ref: Voorkom verwarring-Footnote-1144749
-Node: Delen van een let expressie144893
-Node: Voorbeeld let expressie146608
-Ref: Voorbeeld let expressie-Footnote-1148430
-Node: Niet-geïnitialiseerde let variabelen148685
-Node: Hoe let variabelen bindt150459
-Node: Lexical en dynamische binding verschillen151797
-Node: Lexical vs dynamische binding voorbeeld153714
-Node: if155785
-Node: if in meer detail156731
-Node: type-dier in detail159544
-Node: else162194
-Node: Waar en onwaarheid165155
-Node: nil uitgelegd166164
-Node: save-excursion168361
-Node: Point en mark169137
-Node: Template voor save-excursion172246
-Node: Terugblik173534
-Node: defun oefeningen181577
-Node: Buffer rondleiding182050
-Node: Meer vinden183224
-Ref: Meer vinden-Footnote-1186239
-Node: versimpelde-beginning-of-buffer186456
-Node: mark-whole-buffer190960
-Node: mark-whole-buffer overzicht191834
-Node: Body van mark-whole-buffer193206
-Node: append-to-buffer196271
-Node: append-to-buffer overzicht196998
-Node: append interactief199800
-Node: append-to-buffer body202376
-Node: append save-excursion204563
-Ref: let* geïntroduceerd206360
-Node: Buffer gerelateerde terugblik210049
-Node: Buffer oefeningen212452
-Node: Meer complex212977
-Node: copy-to-buffer214088
-Ref: copy-to-buffer-Footnote-1216971
-Node: insert-buffer217191
-Node: insert-buffer code218650
-Node: insert-buffer interactief219659
-Node: Read-only buffer220209
-Node: b for interactief220853
-Node: insert-buffer body221981
-Node: if en or223203
-Node: Voeg or in226356
-Node: Voeg let in228703
-Node: Nieuwe insert-buffer232552
-Node: beginning-of-buffer233773
-Node: Optionele argumenten235423
-Node: beginning-of-buffer opt arg239066
-Node: Ontrafelen beginning-of-buffer240088
-Node: In geval van een groot buffer241442
-Node: In geval van een klein buffer244090
-Node: beginning-of-buffer compleet245868
-Node: Tweede buffer gerelateerde terugblik248912
-Node: optionele oefening250877
-Node: Versmallen en verbreden251401
-Node: Voordelen van versmallen252107
-Node: save-restriction254088
-Node: what-line256209
-Node: versmal oefening260660
-Node: car cdr en cons261708
-Node: Vreemde namen262894
-Node: car en cdr263616
-Node: cons268349
-Node: Bouw een lijst269438
-Ref: Bouw een lijst-Footnote-1271066
-Node: length271272
-Node: nthcdr272883
-Node: nth275993
-Node: setcar277514
-Node: setcdr280495
-Node: cons oefening282167
-Node: Knippen en opslaan van tekst282586
-Node: Tekst opslaan284002
-Node: zap-to-char286121
-Node: Complete zap-to-char286733
-Node: zap-to-char interactief289099
-Node: zap-to-char body290685
-Node: search-forward292234
-Node: progn295387
-Node: Samenvatting zap-to-char297202
-Node: kill-region298358
-Node: Complete kill-region299356
-Node: condition-case303767
-Node: Lisp macro306338
-Node: copy-region-as-kill308971
-Node: Complete copy-region-as-kill309914
-Node: copy-region-as-kill body312760
-Node: last-command en this-command313901
-Node: kill-append functie316239
-Node: kill-new functie320514
-Node: Uitwijding naar C331492
-Node: defvar337035
-Node: Inzien huidige variabele waarde338913
-Node: defvar en asterisk340875
-Node: cons en search-fwd terugblik342929
-Node: zoek oefening346108
-Node: Implementatie van lijsten346911
-Node: Lijsten uitgetekend348147
-Node: Symbolen als ladekast354636
-Node: Lijst oefening356751
-Node: Yanking357117
-Node: Killring overzicht358512
-Node: kill-ring-yank-pointer360324
-Node: yank nthcdr oefeningen362832
-Node: Loops en recursie363577
-Ref: Loops en recursie-Footnote-1364773
-Node: while365294
-Node: Looping met while366726
-Node: Loop voorbeeld368664
-Node: print-elements-of-list372366
-Node: Incrementele loop374952
-Node: Incrementele loop details375584
-Node: Incrementeel voorbeeld377057
-Node: Inc voorbeeld onderdelen379633
-Node: inc voorbeeld samengesteld383773
-Node: Decrementele loop387375
-Node: Decerementeel voorbeeld388847
-Node: Dec voorbeeld onderdelen390439
-Node: Dec voorbeeld samengesteld392520
-Node: dolist dotimes394796
-Node: dolist395627
-Node: dotimes398804
-Node: Recursie400351
-Node: Robots bouwen401563
-Node: Recursive definitie onderdelen403368
-Node: Recursie met lijst406015
-Node: Recursieve driehoek functie409683
-Node: Recursief voorbeeld arg van 1 of 2411061
-Node: Recursief voorbeeld arg van 3 of 4413326
-Node: Recursie met cond416530
-Node: Recursieve patronen418974
-Node: Elke419467
-Node: Accumuleren422027
-Node: Bewaar423407
-Node: Geen uitstel425475
-Node: Zonder uitstel oplossing428199
-Ref: Zonder uitstel oplossing-Footnote-1432161
-Ref: Zonder uitstel oplossing-Footnote-2432285
-Node: Looping oefening432808
-Node: Regexp zoeken434127
-Node: sentence-end436269
-Node: re-search-forward440316
-Node: forward-sentence442971
-Node: Complete forward-sentence443754
-Node: fwd-sentence while loops447458
-Node: fwd-sentence re-search451271
-Node: forward-paragraph453375
-Node: forward-paragraph in het kort455250
-Node: fwd-para let456808
-Node: fwd-para while463739
-Node: Regexp terugblik472592
-Node: re-search oefeningen475182
-Node: Woorden tellen475955
-Node: Waarom woorden tellen476738
-Node: tel-woorden-voorbeeld477894
-Node: Ontwerp tel-woorden-voorbeeld479267
-Node: Witte ruimte bug485999
-Node: recursive-count-words495834
-Node: Tellen voorbeeld508565
-Node: Woorden in een defun508937
-Node: Verdeel en heers510680
-Node: Woorden en symbolen511911
-Node: Syntax513981
-Node: count-words-in-defun517617
-Node: Enkele defuns523914
-Node: Een bestand vinden526306
-Node: lengths-list-file528948
-Node: Enkele bestanden534224
-Node: lengths-list-many-files534985
-Node: append537775
-Node: Enkele bestanden recursief538412
-Node: De data voorbereiden541252
-Node: Data in detail te tonen542381
-Node: Sorteren543305
-Node: Bestandenlijst544983
-Ref: Bestandenlijst-Footnote-1552515
-Node: Functiedefinities tellen552732
-Node: Een grafiek klaarmaken562054
-Node: Kolommen van een grafiek563383
-Node: graph-body-print577022
-Node: recursive-graph-body-print581827
-Node: Afgedrukte assen584517
-Node: Lijngrafiek oefening585264
-Node: Initialisatie van Emacs585471
-Node: Default configuratie586965
-Ref: Default configuratie-Footnote-1588949
-Node: Site-wide init589265
-Node: defcustom591327
-Node: Een init bestand beginnen597212
-Node: Tekst en auto-fill599608
-Ref: Tekst en auto-fill-Footnote-1603624
-Ref: Tekst en auto-fill-Footnote-2603908
-Node: Mail aliasen604169
-Node: Indent Tabs Mode605095
-Node: Key bindings606040
-Node: Keymaps610814
-Node: Bestanden laden613474
-Node: Autoload616756
-Node: Eenvoudige uitbreiding619644
-Ref: Eenvoudige uitbreiding-Footnote-1622209
-Node: X11 kleuren622498
-Ref: X11 kleuren-Footnote-1624316
-Node: Diverse624470
-Node: Mode line628692
-Node: Debuggen.634228
-Node: debug635124
-Node: debug-on-entry638256
-Node: debug-on-quit641861
-Node: edebug642898
-Node: Debuggen oefeningen647020
-Node: Conclusie648785
-Node: de-de654143
-Node: Killring656933
-Node: Wat de killring doet657750
-Node: current-kill659268
-Node: Code voor current-kill659966
-Node: current-kill begrijpen662798
-Node: Body van current-kill663598
-Node: Uitwijding over fout666749
-Node: Het element vaststellen667924
-Node: yank671629
-Node: yank-pop674843
-Node: ring bestand677378
-Node: Volledige grafiek677755
-Node: Gelabeld voorbeeld678595
-Node: print-graph varlist680592
-Node: print-Y-axis682315
-Node: print-Y-axis in detail683168
-Node: Hoogte van label683978
-Node: Bereken het restant685995
-Node: Y-as element689861
-Node: Y-axis-column693624
-Node: print-Y-axis enalaatste695236
-Node: print-X-axis697221
-Node: Overeenkomsten verschillen698539
-Node: X-as tic marks699372
-Node: De gehele grafiek afdrukken706375
-Node: De finale versie707491
-Node: Test print-graph711746
-Node: Woorden in defuns grafisch weergeven713430
-Node: lambda716054
-Node: mapcar717935
-Node: Een andere bug719995
-Node: Finale afgedrukte grafiek725524
-Node: Vrije software en vrije handleidingen726475
-Node: GNU Free Documentation License732791
-Node: Index757980
-Node: Over de auteur797016
+Node: Voorwoord24397
+Node: Waarom25860
+Node: Over het lezen van deze tekst26523
+Node: Doelgroep28863
+Node: Geschiedenis van Lisp31866
+Node: Opmerking voor beginners32770
+Node: Dank35522
+Node: Lijsten verwerken36117
+Ref: Lijsten verwerken-Footnote-137573
+Node: Lisp lijsten37729
+Node: Genummerde lijsten38659
+Node: Lisp atomen39828
+Node: Whitespace in lijsten43742
+Node: Typen van lijsten45094
+Node: Draai een programma46315
+Ref: Draai een programma-Footnote-148868
+Node: Fouten maken49012
+Node: Namen en definities54215
+Node: Lisp interpreter56171
+Node: Complicaties57395
+Node: Byte compiling59644
+Node: Evaluatie60773
+Node: Hoe de interpreter werkt61404
+Node: Geneste lijsten evalueren62777
+Node: Variabelen65465
+Node: fill-column voorbeeld67081
+Node: Void functie68768
+Node: Void variabele70051
+Node: Argumenten71977
+Ref: Argumenten-Footnote-173783
+Node: Data typen74655
+Node: Argumenten als variabele of als lijst76892
+Node: Variabel aantal argumenten78633
+Node: Verkeerde type argument79529
+Ref: Verkeerde type argument-Footnote-183322
+Node: message83397
+Ref: message-Footnote-187619
+Node: setq87824
+Node: Setq gebruiken88549
+Node: Tellen91783
+Node: Samenvatting93845
+Node: Foutmelding oefeningen95848
+Node: Oefenen van evaluatie96404
+Node: Hoe te evalueren97631
+Node: Buffer namen99225
+Node: Buffers pakken105296
+Ref: Buffers pakken-Footnote-1107985
+Node: Van buffer verwisselen108235
+Ref: Van buffer verwisselen-Footnote-1111826
+Ref: Van buffer verwisselen-Footnote-2112168
+Node: Buffer grootte en locatie112922
+Node: Evaluatie oefening115136
+Node: Defuns schrijven115420
+Node: Primitieve functies116713
+Node: defun117948
+Node: Installeer124812
+Node: Effect van installatie126249
+Node: Een defun wijzigen127176
+Node: Interactief129056
+Node: Interactieve vermenigvuldig-met-zeven130239
+Node: vermenigvuldig-met-zeven in detail132369
+Node: Interactieve opties135222
+Node: Permanent installeren138584
+Node: let140895
+Node: Voorkom verwarring142487
+Ref: Voorkom verwarring-Footnote-1144752
+Node: Delen van een let expressie144896
+Node: Voorbeeld let expressie146611
+Ref: Voorbeeld let expressie-Footnote-1148433
+Node: Niet-geïnitialiseerde let variabelen148688
+Node: Hoe let variabelen bindt150462
+Node: Lexical en dynamische binding verschillen151800
+Node: Lexical vs dynamische binding voorbeeld153717
+Node: if155788
+Node: if in meer detail156734
+Node: type-dier in detail159547
+Node: else162197
+Node: Waar en onwaarheid165158
+Node: nil uitgelegd166167
+Node: save-excursion168364
+Node: Point en mark169140
+Node: Template voor save-excursion172249
+Node: Terugblik173537
+Node: defun oefeningen181580
+Node: Buffer rondleiding182053
+Node: Meer vinden183227
+Ref: Meer vinden-Footnote-1186242
+Node: versimpelde-beginning-of-buffer186459
+Node: mark-whole-buffer190963
+Node: mark-whole-buffer overzicht191837
+Node: Body van mark-whole-buffer193209
+Node: append-to-buffer196274
+Node: append-to-buffer overzicht197001
+Node: append interactief199803
+Node: append-to-buffer body202379
+Node: append save-excursion204566
+Ref: let* geïntroduceerd206363
+Node: Buffer gerelateerde terugblik210052
+Node: Buffer oefeningen212455
+Node: Meer complex212980
+Node: copy-to-buffer214091
+Ref: copy-to-buffer-Footnote-1216974
+Node: insert-buffer217194
+Node: insert-buffer code218653
+Node: insert-buffer interactief219662
+Node: Read-only buffer220212
+Node: b for interactief220856
+Node: insert-buffer body221984
+Node: if en or223206
+Node: Voeg or in226359
+Node: Voeg let in228706
+Node: Nieuwe insert-buffer232555
+Node: beginning-of-buffer233776
+Node: Optionele argumenten235426
+Node: beginning-of-buffer opt arg239069
+Node: Ontrafelen beginning-of-buffer240091
+Node: In geval van een groot buffer241445
+Node: In geval van een klein buffer244093
+Node: beginning-of-buffer compleet245871
+Node: Tweede buffer gerelateerde terugblik248915
+Node: optionele oefening250880
+Node: Versmallen en verbreden251404
+Node: Voordelen van versmallen252110
+Node: save-restriction254091
+Node: what-line256212
+Node: versmal oefening260663
+Node: car cdr en cons261711
+Node: Vreemde namen262897
+Node: car en cdr263619
+Node: cons268352
+Node: Bouw een lijst269441
+Ref: Bouw een lijst-Footnote-1271069
+Node: length271275
+Node: nthcdr272886
+Node: nth275996
+Node: setcar277517
+Node: setcdr280498
+Node: cons oefening282170
+Node: Knippen en opslaan van tekst282589
+Node: Tekst opslaan284005
+Node: zap-to-char286124
+Node: Complete zap-to-char286736
+Node: zap-to-char interactief289102
+Node: zap-to-char body290688
+Node: search-forward292237
+Node: progn295390
+Node: Samenvatting zap-to-char297205
+Node: kill-region298361
+Node: Complete kill-region299359
+Node: condition-case303770
+Node: Lisp macro306341
+Node: copy-region-as-kill308974
+Node: Complete copy-region-as-kill309917
+Node: copy-region-as-kill body312763
+Node: last-command en this-command313904
+Node: kill-append functie316242
+Node: kill-new functie320517
+Node: Uitwijding naar C331495
+Node: defvar337038
+Node: Inzien huidige variabele waarde338916
+Node: defvar en asterisk340878
+Node: cons en search-fwd terugblik342932
+Node: zoek oefening346111
+Node: Implementatie van lijsten346914
+Node: Lijsten uitgetekend348150
+Node: Symbolen als ladekast354639
+Node: Lijst oefening356754
+Node: Yanking357120
+Node: Killring overzicht358515
+Node: kill-ring-yank-pointer360327
+Node: yank nthcdr oefeningen362835
+Node: Loops en recursie363580
+Ref: Loops en recursie-Footnote-1364776
+Node: while365297
+Node: Looping met while366729
+Node: Loop voorbeeld368667
+Node: print-elements-of-list372369
+Node: Incrementele loop374955
+Node: Incrementele loop details375587
+Node: Incrementeel voorbeeld377060
+Node: Inc voorbeeld onderdelen379636
+Node: inc voorbeeld samengesteld383776
+Node: Decrementele loop387378
+Node: Decerementeel voorbeeld388850
+Node: Dec voorbeeld onderdelen390442
+Node: Dec voorbeeld samengesteld392523
+Node: dolist dotimes394799
+Node: dolist395630
+Node: dotimes398807
+Node: Recursie400354
+Node: Robots bouwen401566
+Node: Recursive definitie onderdelen403371
+Node: Recursie met lijst406018
+Node: Recursieve driehoek functie409686
+Node: Recursief voorbeeld arg van 1 of 2411064
+Node: Recursief voorbeeld arg van 3 of 4413329
+Node: Recursie met cond416533
+Node: Recursieve patronen418977
+Node: Elke419470
+Node: Accumuleren422030
+Node: Bewaar423410
+Node: Geen uitstel425478
+Node: Zonder uitstel oplossing428202
+Ref: Zonder uitstel oplossing-Footnote-1432164
+Ref: Zonder uitstel oplossing-Footnote-2432288
+Node: Looping oefening432811
+Node: Regexp zoeken434130
+Node: sentence-end436276
+Node: re-search-forward440323
+Node: forward-sentence442978
+Node: Complete forward-sentence443761
+Node: fwd-sentence while loops447465
+Node: fwd-sentence re-search451278
+Node: forward-paragraph453382
+Node: forward-paragraph in het kort455257
+Node: fwd-para let456815
+Node: fwd-para while463746
+Node: Regexp terugblik472602
+Node: re-search oefeningen475192
+Node: Woorden tellen475965
+Node: Waarom woorden tellen476748
+Node: tel-woorden-voorbeeld477904
+Node: Ontwerp tel-woorden-voorbeeld479277
+Node: Witte ruimte bug486013
+Node: recursive-count-words495848
+Node: Tellen voorbeeld508579
+Node: Woorden in een defun508951
+Node: Verdeel en heers510722
+Node: Woorden en symbolen512033
+Node: Syntax514186
+Node: count-words-in-defun517902
+Node: Enkele defuns524569
+Node: Een bestand vinden527089
+Node: lengte-lijst-bestand529849
+Node: Enkele bestanden535319
+Node: lengths-list-many-files536125
+Node: append539052
+Node: Enkele bestanden recursief539706
+Node: De data voorbereiden542792
+Node: Data in detail te tonen543907
+Node: Sorteren544906
+Node: Bestandenlijst546762
+Ref: Bestandenlijst-Footnote-1554806
+Node: Functiedefinities tellen555028
+Node: Een grafiek voorbereiden564655
+Node: Kolommen van een grafiek566030
+Node: graph-body-print579806
+Node: recursive-graph-body-print584613
+Node: Afgedrukte assen587305
+Node: Lijngrafiek oefening588054
+Node: Initialisatie van Emacs588263
+Node: Default configuratie589759
+Ref: Default configuratie-Footnote-1591743
+Node: Site-wide init592059
+Node: defcustom594121
+Node: Een init bestand beginnen600006
+Node: Tekst en auto-fill602402
+Ref: Tekst en auto-fill-Footnote-1606418
+Ref: Tekst en auto-fill-Footnote-2606702
+Node: Mail aliasen606963
+Node: Indent Tabs Mode607889
+Node: Key bindings608834
+Node: Keymaps613608
+Node: Bestanden laden616268
+Node: Autoload619550
+Node: Eenvoudige uitbreiding622438
+Ref: Eenvoudige uitbreiding-Footnote-1625003
+Node: X11 kleuren625292
+Ref: X11 kleuren-Footnote-1627110
+Node: Diverse627264
+Node: Mode line631486
+Node: Debuggen.637022
+Node: debug637918
+Node: debug-on-entry641050
+Node: debug-on-quit644655
+Node: edebug645692
+Node: Debuggen oefeningen649814
+Node: Conclusie651579
+Node: de-de656937
+Node: Killring659727
+Node: Wat de killring doet660544
+Node: current-kill662062
+Node: Code voor current-kill662760
+Node: current-kill begrijpen665592
+Node: Body van current-kill666392
+Node: Uitwijding over fout669543
+Node: Het element vaststellen670718
+Node: yank674423
+Node: yank-pop677637
+Node: ring bestand680172
+Node: Volledige grafiek680549
+Node: Gelabeld voorbeeld681389
+Node: print-graph varlist683386
+Node: print-Y-axis685109
+Node: print-Y-axis in detail685962
+Node: Hoogte van label686772
+Node: Bereken het restant688789
+Node: Y-as element692655
+Node: Y-axis-column696418
+Node: print-Y-axis enalaatste698030
+Node: print-X-axis700015
+Node: Overeenkomsten verschillen701333
+Node: X-as tic marks702166
+Node: De gehele grafiek afdrukken709169
+Node: De finale versie710285
+Node: Test print-graph714540
+Node: Woorden in defuns grafisch weergeven716224
+Node: lambda718848
+Node: mapcar720729
+Node: Een andere bug722789
+Node: Finale afgedrukte grafiek728318
+Node: Vrije software en vrije handleidingen729269
+Node: GNU Free Documentation License735585
+Node: Index760774
+Node: Over de auteur799883
 
 End Tag Table
 

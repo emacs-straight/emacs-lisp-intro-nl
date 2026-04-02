@@ -174,20 +174,20 @@
 @numsecentry{Recursief woorden tellen}{13.2}{recursive-count-words}{164}
 @numsecentry{Oefening: Leestekens tellen}{13.3}{Tellen voorbeeld}{170}
 @numchapentry{Woorden tellen in een @code {defun}}{14}{Woorden in een defun}{171}
-@numsecentry{What to Count?}{14.1}{Woorden en symbolen}{171}
-@numsecentry{What Constitutes a Word or Symbol?}{14.2}{Syntax}{172}
-@numsecentry{The @code {count-words-in-defun} Function}{14.3}{count-words-in-defun}{173}
-@numsecentry{Count Several @code {defuns} Within a File}{14.4}{Enkele defuns}{176}
-@numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{177}
-@numsecentry{@code {lengths-list-file} in Detail}{14.6}{lengths-list-file}{178}
+@numsecentry{Wat te tellen?}{14.1}{Woorden en symbolen}{171}
+@numsecentry{Wat vormt een woord of symbool?}{14.2}{Syntax}{172}
+@numsecentry{De @code {tel-woorden-in-defun} functie}{14.3}{count-words-in-defun}{173}
+@numsecentry{Tel verschillende @code {defuns} in een bestand}{14.4}{Enkele defuns}{176}
+@numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{176}
+@numsecentry{@code {lengte-lijst-bestand} in detail}{14.6}{lengte-lijst-bestand}{177}
 @numsecentry{Woorden tellen in @code {defuns} in verschillende bestanden}{14.7}{Enkele bestanden}{179}
-@numsubsecentry{The @code {append} Function}{14.7.1}{append}{181}
-@numsecentry{Recursively Count Words in Different Files}{14.8}{Enkele bestanden recursief}{181}
+@numsubsecentry{De functie @code {append}}{14.7.1}{append}{180}
+@numsecentry{Recursief woorden tellen in verschillende bestanden}{14.8}{Enkele bestanden recursief}{181}
 @numsecentry{De data voorbereiden om in een grafiek te tonen}{14.9}{De data voorbereiden}{182}
-@numsubsecentry{Sorting Lists}{14.9.1}{Sorteren}{183}
-@numsubsecentry{Making a List of Files}{14.9.2}{Bestandenlijst}{183}
-@numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{186}
-@numchapentry{Een grafiek klaarmaken}{15}{Een grafiek klaarmaken}{191}
+@numsubsecentry{Lijsten sorteren}{14.9.1}{Sorteren}{182}
+@numsubsecentry{Een lijst van bestanden maken}{14.9.2}{Bestandenlijst}{183}
+@numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{187}
+@numchapentry{Een grafiek voorbereiden}{15}{Een grafiek voorbereiden}{191}
 @numsecentry{The @code {graph-body-print} Function}{15.1}{graph-body-print}{196}
 @numsecentry{The @code {recursive-graph-body-print} Function}{15.2}{recursive-graph-body-print}{198}
 @numsecentry{Need for Printed Axes}{15.3}{Afgedrukte assen}{199}

@@ -282,26 +282,26 @@
 @entry{Recursief woorden tellen}{164}{Recursief woorden tellen}
 @entry{Woorden, recursief geteld}{164}{Woorden, recursief geteld}
 @entry{recursive-count-words}{169}{@code {recursive-count-words}}
-@entry{Counting words in a defun}{171}{Counting words in a @code {defun}}
-@entry{Word counting in a defun}{171}{Word counting in a @code {defun}}
-@entry{Words and symbols in defun}{171}{Words and symbols in defun}
-@entry{Syntax categories and tables}{172}{Syntax categories and tables}
-@entry{Counting words in a defun}{173}{Counting words in a @code {defun}}
+@entry{Woorden tellen in een defun}{171}{Woorden tellen in een @code {defun}}
+@entry{Woorden tellen in een defun}{171}{Woorden tellen in een @code {defun}}
+@entry{Woorden en symbolen in defun}{171}{Woorden en symbolen in defun}
+@entry{Syntax categorieën en tabellen}{172}{Syntax categorieën en tabellen}
+@entry{Woorden tellen in een defun}{173}{Woorden tellen in een @code {defun}}
 @entry{count-words-in-defun}{175}{@code {count-words-in-defun}}
-@entry{Een bestand vinden}{177}{Een bestand vinden}
-@entry{lengths-list-file}{178}{@code {lengths-list-file}}
+@entry{Een bestand vinden}{176}{Een bestand vinden}
+@entry{lengte-lijst-bestand}{177}{@code {lengte-lijst-bestand}}
 @entry{lengths-list-many-files}{180}{@code {lengths-list-many-files}}
-@entry{recursive-lengths-list-many-files}{181}{@code {recursive-lengths-list-many-files}}
-@entry{sort}{183}{@code {sort}}
+@entry{recursieve-lengte-lijst-veel-bestanden}{181}{@code {recursieve-lengte-lijst-veel-bestanden}}
+@entry{sorteren}{182}{@code {sorteren}}
 @entry{directory-files}{183}{@code {directory-files}}
-@entry{files-in-below-directory}{183}{@code {files-in-below-directory}}
-@entry{top-of-ranges}{187}{@code {top-of-ranges}}
+@entry{bestanden-in-onderliggende-directory}{183}{@code {bestanden-in-onderliggende-directory}}
+@entry{hoogste-van-ranges}{187}{@code {hoogste-van-ranges}}
 @entry{nreverse}{188}{@code {nreverse}}
 @entry{reverse}{188}{@code {reverse}}
-@entry{Readying a graph}{191}{Readying a graph}
-@entry{Graph prototype}{191}{Graph prototype}
-@entry{Prototype graph}{191}{Prototype graph}
-@entry{Body of graph}{191}{Body of graph}
+@entry{Een grafiek voorbereiden}{191}{Een grafiek voorbereiden}
+@entry{Grafiek prototype}{191}{Grafiek prototype}
+@entry{Prototype grafiek}{191}{Prototype grafiek}
+@entry{Body van grafiek}{191}{Body van grafiek}
 @entry{apropos}{191}{@code {apropos}}
 @entry{max}{193}{@code {max}}
 @entry{min}{193}{@code {min}}
