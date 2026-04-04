@@ -610,9 +610,9 @@ Een grafiek voorbereiden
 
 
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek af te drukken.
-* recursive-graph-body-print::  recursive-graph-body-print
-* Afgedrukte assen::         Afgedrukte assen
+* graph-body-print::         Hoe de body van een grafiek te tonen.
+* recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
+* Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
 
 Jouw ‘.emacs’ bestand
@@ -1480,7 +1480,7 @@ File: emacs-lisp-intro-nl.info,  Node: Evaluatie,  Next: Variabelen,  Prev: Lisp
 Wanneer de Lisp interpreter een expressie verwerkt, dan is de term voor
 die activiteit “evaluatie”.  We zeggen dat de interpreter "de expressie
 evalueert".  Ik heb deze term verschillende keren eerder gebruikt.  Het
-woord komt van het gebruik in alledaagse taal, "de waarde vaststellen",
+woord komt van het gebruik in alledaagse taal, "de waarde bepalen",
 "taxeren", volgens de ‘Webster's New Collegiate Dictionary’.
 
 * Menu:
@@ -11419,7 +11419,7 @@ doe-opnieuw-test, de volgende-stap-expressie en de recursieve aanroep.
 aangeroepen wordt.  Omdat we woorden in een region tellen en een functie
 kunnen gebruiken die voor elk woord point voorwaarts verplaatst, kan de
 doe-opnieuw-test controleren of point nog steeds binnen de region is.
-De doe-opnieuw-test moet de waarde van point ontdekken en vaststellen of
+De doe-opnieuw-test moet de waarde van point ontdekken en bepalen of
 point voor, op, of na de waarde van het einde van de region is.  We
 kunnen de functie ‘point’ gebruiken om point te lokaliseren.
 Vanzelfsprekend moeten we de waarde van het einde van de region als
@@ -12107,7 +12107,7 @@ taken doen, waaronder het bestand vinden en zorgen dat point start vanaf
 het begin van het bestand.  De functiedefinitie ziet er zo uit:
 
      (defun lengte-lijst-bestand (bestandsnaam)
-       "Geef een lijst terug met definitielengtes in BESTANDSNAAM.
+       "Geef een lijst terug met definitielengtes in het bestand genaamd BESTANDSNAAM.
      De teruggeven lijst is een lijst van getallen.
      Elk getal is een het aahtal woorden of symbolen
      in een functiedefinitie."
@@ -12125,11 +12125,11 @@ het begin van het bestand.  De functiedefinitie ziet er zo uit:
            (kill-buffer buffer)
            lengte-lijst)))
 
-De functie krijgt één argument doorgegeven, de naam van het bestand
-waarop het gaat werken.  Het heeft vier regels documentatie maar geen
-interactieve specificatie.  Omdat mensen bang zijn dat de computer kapot
-is wanneer ze niets zien gebeuren, bevat de eerste regel van de body een
-boodschap.
+De functie krijgt één argument BESTANDSNAAM doorgegeven, de naam van het
+bestand waarop het gaat werken.  Het heeft vier regels documentatie maar
+geen interactieve specificatie.  Omdat mensen bang zijn dat de computer
+kapot is wanneer ze niets zien gebeuren, bevat de eerste regel van de
+body een boodschap.
 
    De volgende regel bevat een ‘save-excursion’ die Emacs aandacht
 terugbrengt bij het huidige buffer wanneer de functie klaar is.  Dit is
@@ -12170,8 +12170,8 @@ construeert een lengte-lijst die de informatie bevat.
    Na er doorheen gewerkt te hebben killt Emacs het buffer.  Dit is om
 binnen Emacs ruimte te sparen.  Mijn versie van GNU Emacs 19 bevat over
 300 bronbestanden die interessant zijn.  GNU Emacs 22 bevat meer dan
-duizend bronbestanden.  Een andere functie past ‘lengte-lijst-bestand’
-op elk bestand toe.
+duizend bronbestanden en Emacs 30.2 meer dan 1600.  Een andere functie
+past ‘lengte-lijst-bestand’ op elk bestand toe.
 
    De laatste expressie in de ‘let’ expressie tenslotte is de
 lengte-lijst variabele, wiens waarde wordt teruggegeven als de waarde
@@ -12182,11 +12182,12 @@ installeren.  Plaats daarna de cursor achter de volgende expressie en
 typ ‘C-x C-e’ (‘eval-last-sexp’).
 
      (lengte-lijst-bestand
-      "/usr/local/share/emacs/22.1/lisp/emacs-lisp/debug.el")
+      "/usr/local/share/emacs/30.2/lisp/emacs-lisp/debug.el")
 
-Misschien moet je de padnaam van het bestand aanpassen, deze hier is
-voor GNU Emacs versie 22.1.  Om de expressie te wijzigen, kopieer je die
-naar het ‘*scratch*’ buffer en wijzig het.
+Misschien moet je de naam van het bestand aanpassen, deze hier is voor
+de standaard installatie tree van GNU Emacs versie 30.2.  Om de
+expressie te wijzigen, kopieer je die naar het ‘*scratch*’ buffer en
+wijzig het.
 
 En om de volledige lengte van de lijst te zien, in plaats van een
 ingekorte versie, moet je misschien het volgende evalueren:
@@ -12197,9 +12198,10 @@ ingekorte versie, moet je misschien het volgende evalueren:
 daarna de ‘lengte-lijst-bestand ’ expressie.)
 
    Het maken van de lengte-lijst voor ‘debug.el’ duurt minder dan een
-seconde en ziet er zo uit in GNU Emacs 22:
+seconde en ziet er zo uit in GNU Emacs 30.2:
 
-     (83 113 105 144 289 22 30 97 48 89 25 52 52 88 28 29 77 49 43 290 232 587)
+     (79 26 140 34 17 112 81 24 155 54 43 102 21 36 36 117 28 29 102 49 43
+      208 101 28 22 728 15 27)
 
    (Op mijn oude machine duurde het maken van de versie 19 lengte-lijst
 van ‘debug.el’ zeven seconden en ziet er zo uit:
@@ -12444,7 +12446,7 @@ grootste.  Ten eerste maakt het sorteren het eenvoudiger de getallen in
 elke range te tellen, omdat twee opeenvolgende getallen in dezelfde
 range of aangrenzende ranges zijn.  Ten tweede door de gesorteerde lijst
 te inspecteren kunnen we ontdekken wat het hoogste en het laagste getal
-zijn, en daarmee vaststellen welke grootste en kleinste lengte-range we
+zijn, en daarmee bepalen welke grootste en kleinste lengte-range we
 nodig hebben.
 
 
@@ -12944,9 +12946,9 @@ breiden de functie uit met automatische labeling van de assen.
 * Menu:
 
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek af te drukken.
-* recursive-graph-body-print::  recursive-graph-body-print
-* Afgedrukte assen::         Afgedrukte assen
+* graph-body-print::         Hoe de body van een grafiek te tonen.
+* recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
+* Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
 
 
@@ -12962,7 +12964,7 @@ genoeg.  Wanneer we de functie om de grafiek te tonen uitbreiden, kunnen
 we van de keuze van het symbool een gebruikersoptie maken.
 
    We kunnen deze functie ‘grafiek-body-tonen’ noemen, het neemt de
-‘numbers-list’ als enige argument.  Op dit moment geven we nog geen
+‘getallenlijstn’ als enige argument.  Op dit moment geven we nog geen
 labels aan de grafiek, maar tonen alleen de body.
 
    De functie ‘grafiek-body-tonen’ voegt een verticale kolom van
@@ -12988,7 +12990,7 @@ zijn.
 
    Waar we naar zoeken is een commando dat kolommen toont of invoegt.
 Zeer waarschijnlijk bevat de naam van de functie het woord "print", het
-woord "insert" of het woord 11column".  Daarom kunnen we eenvoudigweg
+woord "insert" of het woord "column".  Daarom kunnen we eenvoudigweg
 ‘M-x apropos <RET> print\|insert\|column <RET>’ typen en naar het
 resultaat kijken.  Op mijn systeem kostte dit commando ooit behoorlijk
 wat tijd en produceerde een lijst met 79 functies en variabelen.  Nu
@@ -13006,153 +13008,158 @@ alsof die het werk kan doen is ‘insert-rectangle’.
      After this command, the mark is at the upper left corner
      and point is at the lower right corner.
 
-   We can run a quick test, to make sure it does what we expect of it.
+   We doen een snelle test om zeker te zijn dat het doet wat we
+verwachten.
 
-   Here is the result of placing the cursor after the ‘insert-rectangle’
-expression and typing ‘C-u C-x C-e’ (‘eval-last-sexp’).  The function
-inserts the strings ‘"first"’, ‘"second"’, and ‘"third"’ at and below
-point.  Also the function returns ‘nil’.
+   Hier is het resultaat van het plaatsen van de cursor achter de
+‘insert-rectangle’ expressie en ‘C-u C-x C-e’ (‘eval-last-sexp’) te
+typen.  De functie voegt de strings ‘"eerste"’, ‘"tweede"’, en ‘"derde"’
+bij en onder point.  Ook geeft de functie ‘nil’ terug.
 
-     (insert-rectangle '("first" "second" "third"))first
-                                                   second
-                                                   thirdnil
+     (insert-rectangle '("eerste" "tweede" "derde"))eerste
+                                                   tweede
+                                                   derdenil
 
-Of course, we won't be inserting the text of the ‘insert-rectangle’
-expression itself into the buffer in which we are making the graph, but
-will call the function from our program.  We shall, however, have to
-make sure that point is in the buffer at the place where the
-‘insert-rectangle’ function will insert its column of strings.
+We gaan natuurlijk niet zelf de tekst van de ‘insert-rectangle’
+expressie zelf in het buffer invoegen wanneer we de grafie maken, maar
+roepen de functie aan vanuit ons programma.  We moeten echter zeker
+weten dat point in het buffer op de plaats is waar ‘insert-rectangle’ de
+kolom invoegt.
 
-   If you are reading this in Info, you can see how this works by
-switching to another buffer, such as the ‘*scratch*’ buffer, placing
-point somewhere in the buffer, typing ‘M-:’, typing the
-‘insert-rectangle’ expression into the minibuffer at the prompt, and
-then typing <RET>.  This causes Emacs to evaluate the expression in the
-minibuffer, but to use as the value of point the position of point in
-the ‘*scratch*’ buffer.  (‘M-:’ is the key binding for
-‘eval-expression’.  Also, ‘nil’ does not appear in the ‘*scratch*’
-buffer since the expression is evaluated in the minibuffer.)
+   Wanneer je dit in Info leest kan je zien hoe dit werkt door naar een
+ander buffer te schakelen, zoals het ‘*scratch*’ buffer, en point ergens
+in het buffer te plaatsen.  Typ ‘M-:’ en typ de ‘insert-rectangle’
+expressie achter de prompt in het minibuffer gevolgd door <RET>.  Dit
+laat Emacs de expressie in het minibuffer evalueren, maar als waarde van
+point de positie van point in het ‘*scratch*’ buffer gebruiken.  (‘M-:’
+is de keybinding voor ‘eval-expression’.  ‘nil’ verschijnt niet in het
+‘*scratch*’ buffer omdat de expressie wordt geëvalueerd in het
+minibuffer.
 
-   We find when we do this that point ends up at the end of the last
-inserted line--that is to say, this function moves point as a
-side-effect.  If we were to repeat the command, with point at this
-position, the next insertion would be below and to the right of the
-previous insertion.  We don't want this!  If we are going to make a bar
-graph, the columns need to be beside each other.
+   We ontdekken dat als we dit doen, point aan het einde van de laatst
+ingevoegde regel staat--met andere woorden, deze functie verplaatst
+point als zij-effect.  Wanneer we het commando herhalen, met point op
+deze plaats, komt de volgende invoeging onder en rechts van de vorige.
+Dit willen we niet!  Wanneer we een staafgrafiek gaan maken moeten de
+kolommen naast elkaar komen.
 
-   So we discover that each cycle of the column-inserting ‘while’ loop
-must reposition point to the place we want it, and that place will be at
-the top, not the bottom, of the column.  Moreover, we remember that when
-we print a graph, we do not expect all the columns to be the same
-height.  This means that the top of each column may be at a different
-height from the previous one.  We cannot simply reposition point to the
-same line each time, but moved over to the right--or perhaps we can...
+   We hebben dus ontdekt dat elke cyclus van de kolom-invoegende ‘while’
+loop point moet herpositioneren op de plek waar we die willen, en die
+plek is aan de bovenkant, niet de onderkant, van de kolom.  Bovendien
+bedenken we dat wanneer we een grafiek tonen, we niet verwachten dat
+alle kolommen dezelfde hoogte hebben.  Dit betekent dat de bovenkant van
+elke kolom op aan andere hoogte kan zijn dan die van de vorige.  We
+kunnen niet simpel point elke keer naar rechts op dezelfde regel
+herpositioneren--maar misschien kunnen we...
 
-   We are planning to make the columns of the bar graph out of
-asterisks.  The number of asterisks in the column is the number
-specified by the current element of the ‘numbers-list’.  We need to
-construct a list of asterisks of the right length for each call to
-‘insert-rectangle’.  If this list consists solely of the requisite
-number of asterisks, then we will have to position point the right
-number of lines above the base for the graph to print correctly.  This
-could be difficult.
+   Wij zijn van plan om de kolommen van de grafiek van sterretjes te
+maken.  Het aantal sterretjes in de kolom is het getal dat
+gespecificeerd wordt door het huidige element in de ‘getallen-lijst’.
+We moeten een lijst van sterretjes van de juist lengte maken voor elke
+aanroep van ‘insert-rectangle’.  Wanneer deze lijst uitsluitend uit het
+aantal vereiste sterretjes bestaat, dan moeten point precies op het
+juiste aantal regels boven de bases van de grafiek positioneren.  Dit
+kan moeilijk zijn.
 
-   Alternatively, if we can figure out some way to pass
-‘insert-rectangle’ a list of the same length each time, then we can
-place point on the same line each time, but move it over one column to
-the right for each new column.  If we do this, however, some of the
-entries in the list passed to ‘insert-rectangle’ must be blanks rather
-than asterisks.  For example, if the maximum height of the graph is 5,
-but the height of the column is 3, then ‘insert-rectangle’ requires an
-argument that looks like this:
+   Of, als we een manier kunnen vinden om aan ‘insert-rectangle’ steeds
+een lijst van dezelfde lengte door te geven, dan kunnen we point steeds
+op dezelfde regel plaatsen, en het voor elke nieuwe kolom een stapje
+naar rechts zetten.  Wanneer we dit doen moeten echter sommige entries
+in de aan ‘insert-rectangle’ doorgegeven lijst leeg zijn in plaats van
+sterretjes.  Wanneer bijvoorbeeld de maximum hoogte van de grafiek 5 is,
+maar de hoogte van de kolom 3 is, dan vereist ‘insert-rectangle’ een
+argument dat er als volgt uitziet:
 
      (" " " " "*" "*" "*")
 
-   This last proposal is not so difficult, so long as we can determine
-the column height.  There are two ways for us to specify the column
-height: we can arbitrarily state what it will be, which would work fine
-for graphs of that height; or we can search through the list of numbers
-and use the maximum height of the list as the maximum height of the
-graph.  If the latter operation were difficult, then the former
-procedure would be easiest, but there is a function built into Emacs
-that determines the maximum of its arguments.  We can use that function.
-The function is called ‘max’ and it returns the largest of all its
-arguments, which must be numbers.  Thus, for example,
+   Dit laatste voorstel is niet zo moeilijk, zolang we de kolomhoogte
+kunnen bepalen.  Er zijn twee manieren voor ons om de kolomhoogte te
+bepalen: we kunnen willekeurig zeggen wat die is, wat goed zou werken
+voor grafieken van die hoogte, of we kunnen door de lijst met getallen
+zoeken en de maximale hoogte van de lijst als maximum hoogte van de
+grafiek te gebruiken.  Als de laatste operatie moeilijk zou zin, dan is
+de eerste het makkelijkst, maar er is een functie in Emacs ingebouwd die
+het maximum van de argumenten vaststelt.  We kunnen deze functie
+gebruiken.  De functie heeft ‘max’ en geeft de grootste van alle
+argumenten terug, welke getallen moeten zijn.  Dus, bijvoorbeeld:
 
      (max  3 4 6 5 7 3)
 
-returns 7.  (A corresponding function called ‘min’ returns the smallest
-of all its arguments.)
+geeft 7 terug.  (Een overeenkomstige functie genaamd ‘min’ geeft de
+kleinste waarde van alle argumenten terug.)
 
-   However, we cannot simply call ‘max’ on the ‘numbers-list’; the ‘max’
-function expects numbers as its argument, not a list of numbers.  Thus,
-the following expression,
+   We kunnen echter niet simpel ‘max’ aanroepen op de ‘getallen-lijst’.
+De functie ‘max’ verwacht getallen als argument, niet een lijst met
+getallen.  Dus, de volgende expressie,
 
      (max  '(3 4 6 5 7 3))
 
-produces the following error message;
+geeft de volgende foutboodschap:
 
      Wrong type of argument:  number-or-marker-p, (3 4 6 5 7 3)
 
-   We need a function that passes a list of arguments to a function.
-This function is ‘apply’.  This function applies its first argument (a
-function) to its remaining arguments, the last of which may be a list.
+   We hebben een functie nodig die een lijst van argumenten aan een
+functie doorgeeft.  Deze functie is ‘apply’.  Deze functie past het
+eerste argument (een functie) toe op de resterende argumenten, waarvan
+de laatste een lijst mag zijn.
 
    Bijvoorbeeld,
 
      (apply 'max 3 4 7 3 '(4 8 5))
 
-returns 8.
+geeft 8 terug.
 
-   (Incidentally, I don't know how you would learn of this function
-without a book such as this.  It is possible to discover other
-functions, like ‘search-forward’ or ‘insert-rectangle’, by guessing at a
-part of their names and then using ‘apropos’.  Even though its base in
-metaphor is clear--apply its first argument to the rest--I doubt a
-novice would come up with that particular word when using ‘apropos’ or
-other aid.  Of course, I could be wrong; after all, the function was
-first named by someone who had to invent it.)
+   (Overigens weet ik niet hoe je deze functie ontdekt zonder een boek
+als dit.  Het is mogelijk andere functies te ontdekken, zoals
+‘search-forward’ of ‘insert-rectangle’ door een deel van hun naam te
+raden en dan ‘apropos’ te gebruiken.  Alhoewel in basis de metafoor
+duidelijk is--past het eerste argument toe op de rest--betwijfel ik of
+een beginner op dit specifieke woord komt bij het gebruik van ‘apropos’
+of een ander hulpmiddel.  Ik kan natuurlijk fout zitten, tenslotte heeft
+de persoon die het uitgevonden heeft het zo genoemd.)
 
-   The second and subsequent arguments to ‘apply’ are optional, so we
-can use ‘apply’ to call a function and pass the elements of a list to
-it, like this, which also returns 8:
+   Het tweede en volgende argumenten van ‘apply’ zijn optioneel, we
+kunnen dus ‘apply’ gebruiken om een functie aan te roepen en de
+elementen van een lijst laten doorgeven, zoals dit, wat ook 8
+teruggeeft:
 
      (apply 'max '(4 8 5))
 
-   This latter way is how we will use ‘apply’.  The
-‘recursive-lengths-list-many-files’ function returns a numbers' list to
-which we can apply ‘max’ (we could also apply ‘max’ to the sorted
-numbers' list; it does not matter whether the list is sorted or not.)
+   Dit laatste is hoe wij ‘apply’ gaan gebruiken.  De functie
+‘recursieve-lengte-lijst-veel-bestanden’ geeft een lijst met getallen
+terug waarop we ‘max’ kunnen toepassen (we kunnen ook de ‘max’ op de
+gesorteerde getallenlijst toepassen, het maakt niet uit of de lijst is
+gesorteerd of niet).
 
-   Hence, the operation for finding the maximum height of the graph is
-this:
+   Dus de operatie voor het vinden van de maximum hoogte van de grafiek
+is deze:
 
-     (setq max-graph-height (apply 'max numbers-list))
+     (setq max-grafiek-hoogte (apply 'max getallen-lijst))
 
-   Now we can return to the question of how to create a list of strings
-for a column of the graph.  Told the maximum height of the graph and the
-number of asterisks that should appear in the column, the function
-should return a list of strings for the ‘insert-rectangle’ command to
-insert.
+   Nu kunnen we terugkeren naar de vraag hoe een lijst van strings te
+maken voor een kolom van de grafiek.  Wanneer het de maximum hoogte van
+de grafiek en het aantal sterretjes dat in de kolom moet verschijnen
+verteld wordt, moet de functie een lijst van strings teruggeven om die
+door het commando ‘insert-rectangle’ te laten invoegen.
 
-   Each column is made up of asterisks or blanks.  Since the function is
-passed the value of the height of the column and the number of asterisks
-in the column, the number of blanks can be found by subtracting the
-number of asterisks from the height of the column.  Given the number of
-blanks and the number of asterisks, two ‘while’ loops can be used to
-construct the list:
+   Elke kolom wordt gemaakt van sterretjes of spaties.  Omdat de functie
+de waarde van de hoogte van de kolom en het aantal sterretjes krijgt
+doorgegeven, kan het aantal spaties berekend worden door het aantal
+sterretjes af te trekken van de hoogte van de kolom.  Met het aantal
+spaties en het aantal sterretjes kunnen twee ‘while’ loops gebruikt
+worden om de lijst te maken:
 
-     ;;; First version.
-     (defun column-of-graph (max-graph-height actual-height)
-       "Return list of strings that is one column of a graph."
-       (let ((insert-list nil)
-             (number-of-top-blanks
-              (- max-graph-height actual-height)))
+     ;;; Eerste versie.
+     (defun kolom-van-grafiek (max-grafiek-hoogte actuele-hoogte)
+       "Geeft een lijst van strings terug die een kolom in de grafiek is."
+       (let ((invoeglijst nil)
+             (aantal-bovenste-spaties
+              (- max-grafiek-hoogte actuele-hoogte)))
 
-         ;; Fill in asterisks.
+         ;; Sterretjes invullen.
          (while (> actual-height 0)
-           (setq insert-list (cons "*" insert-list))
-           (setq actual-height (1- actual-height)))
+           (setq invoeglijst (cons "*" invoeglijst))
+           (setq actuele-hoogte (1- actuele-hoogte)))
 
          ;; Fill in blanks.
          (while (> number-of-top-blanks 0)
@@ -13160,200 +13167,202 @@ construct the list:
            (setq number-of-top-blanks
                  (1- number-of-top-blanks)))
 
-         ;; Return whole list.
-         insert-list))
+         ;; Geef hele lijst terug.
+         invoeglijst))
 
-   If you install this function and then evaluate the following
-expression you will see that it returns the list as desired:
+   Wanneer je deze functie installeert en dan de volgende expressie
+evalueert zie je dat het een lijst zoals gewenst teruggeeft:
 
-     (column-of-graph 5 3)
+     (kolom-van-grafiek 5 3)
 
-returns
+geeft terug
 
      (" " " " "*" "*" "*")
 
-   As written, ‘column-of-graph’ contains a major flaw: the symbols used
-for the blank and for the marked entries in the column are hard-coded as
-a space and asterisk.  This is fine for a prototype, but you, or another
-user, may wish to use other symbols.  For example, in testing the graph
-function, you may want to use a period in place of the space, to make
-sure the point is being repositioned properly each time the
-‘insert-rectangle’ function is called; or you might want to substitute a
-‘+’ sign or other symbol for the asterisk.  You might even want to make
-a graph-column that is more than one display column wide.  The program
-should be more flexible.  The way to do that is to replace the blank and
-the asterisk with two variables that we can call ‘graph-blank’ and
-‘graph-symbol’ and define those variables separately.
+   Zoals ‘kolom-van-grafiek’ geschreven is bevat die een groot gebrek:
+de symbolen voor de lege ruimte en voor de gemarkeerde entries in de
+kolom zijn hard gecodeerd als spatie en sterretje.  Dit is prima voor
+een prototype maar jij, of een andere gebruiker, kan andere symbolen
+symbolen willen.  Bijvoorbeeld bij het testen van de grafiek functie zou
+je een punt in plaats van een spatie willen, om zeker te zijn dat point
+juist gepositioneerd is elke keer dat de functie ‘insert-rectangle’
+wordt aangeroepen, of je zou liever het sterretje door een ‘+’ of ander
+symbool willen vervangen.  Je zou zelfs een grafiek-kolom willen maken
+die breder is dan een karakter.  Het programma moet flexibeler zijn.  De
+manier om dat te doen is het vervangen van de spatie en het sterretje
+met twee variabelen die we ‘grafiek-wit’ en ‘grafiek-symbool’ kunnen
+noemen en deze variabelen apart definieren.
 
-   Also, the documentation is not well written.  These considerations
-lead us to the second version of the function:
+   Ook is de documentatie niet goed geschreven.  Deze overwegingen
+leiden ons naar de tweede versie van de functie:
 
-     (defvar graph-symbol "*"
-       "String used as symbol in graph, usually an asterisk.")
+     (defvar grafiek-symbool "*"
+       "String gebruikt als symbool in grafiek, meestal een sterretje.")
 
-     (defvar graph-blank " "
-       "String used as blank in graph, usually a blank space.
-     graph-blank must be the same number of columns wide
-     as graph-symbol.")
+     (defvar grafiek-wit " "
+       "String gebruikt als lege ruimte in grafiek, meestal een spatie.
+     grafiek-wit moet even breed zijn als grafiek-symbool.")
 
-(For an explanation of ‘defvar’, see *note Initializing a Variable with
+(Voor een uitleg van ‘defvar’, zie *note Initialiseer een variabele met
 ‘defvar’: defvar.)
 
-     ;;; Second version.
-     (defun column-of-graph (max-graph-height actual-height)
-       "Return MAX-GRAPH-HEIGHT strings; ACTUAL-HEIGHT are graph-symbols.
+     ;;; Tweede versie.
+     (defun kolom-van-grafiek (max-grafiek-hoogte actuele-hoogte)
+       "Geef MAX-GRAFIEK-HOOGTE strings; ACTUELE-HOOGTE zijn grafiek-symbolen.
 
-     The graph-symbols are contiguous entries at the end
-     of the list.
-     The list will be inserted as one column of a graph.
-     The strings are either graph-blank or graph-symbol."
+     De grafieksymbolen zijn aaneengesloten entries aan het eind
+     van de lijst.
+     De lijst wordt ingevoegd als een kolom van een grafiek.
+     De strings zijn ofwel grafiek-wit of grafiek-symbool."
 
-       (let ((insert-list nil)
-             (number-of-top-blanks
-              (- max-graph-height actual-height)))
+       (let ((invoeglijst nil)
+             (aantal-bovenste-spaties
+              (- max-grafiek-hoogte actuele-hoogte)))
 
-         ;; Fill in ‘graph-symbols’.
-         (while (> actual-height 0)
-           (setq insert-list (cons graph-symbol insert-list))
-           (setq actual-height (1- actual-height)))
+         ;; ‘grafiek-symbolen’ invullen.
+         (while (> actuele-hoogte 0)
+           (setq invoeglijst (cons grafiek-symbool invoeglijst))
+           (setq actuele-hoogte (1- actuele-hoogte)))
 
-         ;; Fill in ‘graph-blanks’.
-         (while (> number-of-top-blanks 0)
-           (setq insert-list (cons graph-blank insert-list))
-           (setq number-of-top-blanks
-                 (1- number-of-top-blanks)))
+         ;; ‘grafiek-wit’ invullen.
+         (while (> aantal-bovenste-spaties 0)
+           (setq invoeglijst (cons grafiek-wit invoeglijst))
+           (setq aantal-bovenste-spaties
+                 (1- aantal-bovenste-spaties)))
 
-         ;; Return whole list.
-         insert-list))
+         ;; Geef hele lijst terug.
+         invoeglijst))
 
-   If we wished, we could rewrite ‘column-of-graph’ a third time to
-provide optionally for a line graph as well as for a bar graph.  This
-would not be hard to do.  One way to think of a line graph is that it is
-no more than a bar graph in which the part of each bar that is below the
-top is blank.  To construct a column for a line graph, the function
-first constructs a list of blanks that is one shorter than the value,
-then it uses ‘cons’ to attach a graph symbol to the list; then it uses
-‘cons’ again to attach the top blanks to the list.
+   Wanneer we dat zouden willen, kunnen de ‘kolom-van-grafiek’ een derde
+keer herschrijven om optioneel zowel een lijngrafiek als een
+staafgrafiek te tonen.  Dit is niet moeilijk om te doen.  Een manier om
+over een lijngrafiek te denken is dat het niet meer is dan een
+staafgrafiek waarbij het deel van elke staaf dat onder de bovenkant is,
+leeg is.  Om een kolom voor een lijngrafiek te maken, maken we eerst een
+lijst van spaties die één korter is dan de waarde, dan gebruikt het een
+‘cons’ om een grafiek-symbool aan de lijst te plakken, en dan gebruikt
+het ‘cons’ nog een keer om de bovenste-spaties aan de lijst te plakken.
 
-   It is easy to see how to write such a function, but since we don't
-need it, we will not do it.  But the job could be done, and if it were
-done, it would be done with ‘column-of-graph’.  Even more important, it
-is worth noting that few changes would have to be made anywhere else.
-The enhancement, if we ever wish to make it, is simple.
+   Het is makkelijk te zien hoe zo'n functie te schrijven, maar omdat we
+die niet nodig hebben, doen we dat niet.  Maar het is te doen en als het
+gedaan word, dan met ‘kolom-van-grafiek’.  Nog belangrijker is het waard
+op te merken dat een paar andere verandering moeten worden gemaakt.  De
+uitbreiding, als we die ooit willen maken, is eenvoudig.
 
-   Now, finally, we come to our first actual graph printing function.
-This prints the body of a graph, not the labels for the vertical and
-horizontal axes, so we can call this ‘graph-body-print’.
+   Nu komen we uiteindelijk bij onze eerste grafiek tonen functie.  Deze
+toont de body van de grafiek en niet de labels voor de verticale en
+horizontale assen, daarom noemen we deze ‘grafiek-body-tonen’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: graph-body-print,  Next: recursive-graph-body-print,  Prev: Kolommen van een grafiek,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: graph-body-print,  Next: recursieve-grafiek-body-tonen,  Prev: Kolommen van een grafiek,  Up: Een grafiek voorbereiden
 
-15.1 The ‘graph-body-print’ Function
+15.1 De functie ‘grafiek-body-tonen’
 ====================================
 
-After our preparation in the preceding section, the ‘graph-body-print’
-function is straightforward.  The function will print column after
-column of asterisks and blanks, using the elements of a numbers' list to
-specify the number of asterisks in each column.  This is a repetitive
-act, which means we can use a decrementing ‘while’ loop or recursive
-function for the job.  In this section, we will write the definition
-using a ‘while’ loop.
+Na onze voorbereiding in de voorgaande sectie, is de functie
+‘grafiek-body-tonen’ eenvoudig.  De functie toont kolom na kolom van
+sterretjes en spaties, met de elementen van een lijst met nummers om het
+aantal sterretjes in elke kolom te specificeren.
 
-   The ‘column-of-graph’ function requires the height of the graph as an
-argument, so we should determine and record that as a local variable.
+   De functie ‘grafiek-body-tonen’ vereist de hoogte van de grafiek als
+een argument, dus die moeten we bepalen en registreren als een lokale
+variabele.
 
-   This leads us to the following template for the ‘while’ loop version
-of this function:
+   Dit leidt ons tot het volgende sjabloon voor de ‘while’ loop versie
+van deze functie:
 
-     (defun graph-body-print (numbers-list)
-       "DOCUMENTATION..."
-       (let ((height  ...
+     (defun grafiek-body-tonen (getallenlijst)
+       "DOCUMENTATIE..."
+       (let ((hoogte  ...
               ...))
 
-         (while numbers-list
-           INSERT-COLUMNS-AND-REPOSITION-POINT
-           (setq numbers-list (cdr numbers-list)))))
+         (while getallenlijst
+           VOEG-KOLOM-IN-EN-HERPOSTIONEER-POINT
+           (setq getallenlijst (cdr getallenlijst)))))
 
-We need to fill in the slots of the template.
+We moeten de slots in het sjabloon invullen.
 
-   Clearly, we can use the ‘(apply 'max numbers-list)’ expression to
-determine the height of the graph.
+   We kunnen de ‘apply 'max getallenlijst’ expressie gebruiken om de
+hoogte van de grafiek te bepalen.
 
-   The ‘while’ loop will cycle through the ‘numbers-list’ one element at
-a time.  As it is shortened by the ‘(setq numbers-list (cdr
-numbers-list))’ expression, the CAR of each instance of the list is the
-value of the argument for ‘column-of-graph’.
+   De ‘while’ loop loopt door de ‘getallenlijst’ een element per keer.
+Wanneer het wordt verkort door de ‘(setq getallenlijst (cdr
+getallenlijst)))’ expressie, is de ‘car’ van elke instantie van de lijst
+de waarde van het argument voor ‘kolom-van-grafiek’.
 
-   At each cycle of the ‘while’ loop, the ‘insert-rectangle’ function
-inserts the list returned by ‘column-of-graph’.  Since the
-‘insert-rectangle’ function moves point to the lower right of the
-inserted rectangle, we need to save the location of point at the time
-the rectangle is inserted, move back to that position after the
-rectangle is inserted, and then move horizontally to the next place from
-which ‘insert-rectangle’ is called.
+   Bij iedere cyclus van de ‘while’ loop voegt de functie
+‘insert-rectangle’ de lijst in die teruggeven is door
+‘kolom-van-grafiek’.  Omdat de functie ‘insert-rectangle’ point
+verplaatst naar rechtsonder het ingevoegde vierkant, moeten we de
+lokatie van point op het moment dat het vierkant wordt ingevoegd bewaren
+en dan teruggaan naar die positie nadat het vierkant is ingevoegd en dan
+hozizontaal verplaatsen naar de volgende plek waar ‘insert-rectangle’
+wordt aangeroepen.
 
-   If the inserted columns are one character wide, as they will be if
-single blanks and asterisks are used, the repositioning command is
-simply ‘(forward-char 1)’; however, the width of a column may be greater
-than one.  This means that the repositioning command should be written
-‘(forward-char symbol-width)’.  The ‘symbol-width’ itself is the length
-of a ‘graph-blank’ and can be found using the expression ‘(length
-graph-blank)’.  The best place to bind the ‘symbol-width’ variable to
-the value of the width of graph column is in the varlist of the ‘let’
-expression.
+   Wanneer de ingevoegde kolommen één karakter breed zijn, wat zo is
+wanneer enkele spaties en sterretjes worden gebruikt, dan is het
+herpositionering commando simpel ‘(forward-char 1)’.  De breedte van een
+kolom kan echter groter zijn dan één.  Dit betekent dat het
+herpositionering commando ‘(forward-char symbool-breedte)’ moet zijn.
+De ‘symbool-breedte’ zelf is de lengte van een ‘grafiek-wit’ en kan
+bepaald worden met de expressie ‘(length grafiek-wit)’.  De beste plek
+om de ‘symbool-breedte’ variabele aan de waarde van de breedte van
+grafiek-kolom te binden is in de varlist van de ‘let’ expressie.
 
-   These considerations lead to the following function definition:
+   Deze overwegingen leiden tot de volgende functiedefinitie:
 
-     (defun graph-body-print (numbers-list)
-       "Print a bar graph of the NUMBERS-LIST.
-     The numbers-list consists of the Y-axis values."
+     (defun grafiek-body-tonen (getallenlijst)
+       "Toon een staafgrafiek van de getallenlijst.
+     De getallenlijst bestaat uit de Y-as waarden."
 
-       (let ((height (apply 'max numbers-list))
-             (symbol-width (length graph-blank))
-             from-position)
+       (let ((hoogte (apply 'max getallenlijst))
+             (symboolbreedte (length grafiek-wit))
+             van-positie)
 
-         (while numbers-list
-           (setq from-position (point))
+         (while getallenlijst
+           (setq van-positie (point))
            (insert-rectangle
-            (column-of-graph height (car numbers-list)))
-           (goto-char from-position)
-           (forward-char symbol-width)
-           ;; Draw graph column by column.
+            (kolom-van-grafiek hoogte (car getallenlijst)))
+           (goto-char van-positie)
+           (forward-char symboolbreedte)
+           ;; Teken grafiek kolom voor kolom.
            (sit-for 0)
-           (setq numbers-list (cdr numbers-list)))
-         ;; Place point for X axis labels.
-         (forward-line height)
+           (setq getallenlijst (cdr getallenlijst)))
+         ;; Plaats point voor X as labels.
+         (forward-line hoogte)
          (insert "\n")
      ))
 
-The one unexpected expression in this function is the ‘(sit-for 0)’
-expression in the ‘while’ loop.  This expression makes the graph
-printing operation more interesting to watch than it would be otherwise.
-The expression causes Emacs to “sit” or do nothing for a zero length of
-time and then redraw the screen.  Placed here, it causes Emacs to redraw
-the screen column by column.  Without it, Emacs would not redraw the
-screen until the function exits.
+De enige onverwachte expressie in deze functie is de ‘(sit-for 0)’
+expressie in de ‘while’ loop.  Deze expressie maakt de operatie die de
+grafiek toont interessanter om te zien dan zonder.  Deze expressie zorgt
+dat Emacs “sit”, of doet niets voor een nul lengte van tijd en
+herschrijf dan het scherm.  Hier geplaatst zorgt het dat Emacs het
+scherm kolom voor kolom herschrijft.  Zonder dit zou Emacs het scherm
+niet herschrijven tot de functie eindigt.
 
-   We can test ‘graph-body-print’ with a short list of numbers.
+   We kunnen de ‘grafiek-body-tonen’ testen met een korte lijst met
+getallen.
 
-  1. Install ‘graph-symbol’, ‘graph-blank’, ‘column-of-graph’, which are
-     in *note Columns of a graph::, and ‘graph-body-print’.
+  1. Installeer ‘grafiek-symbool’, ‘grafiek-wit’, ‘kolom-van-grafiek’
+     die allemaal in *note Kolommen van een grafiek::, staan en
+     ‘grafiek-body-tonen’,
 
-  2. Copy the following expression:
+  2. Kopieer de volgende expressie:
 
-          (graph-body-print '(1 2 3 4 6 4 3 5 7 6 5 2 3))
+          (grafiek-body-tonen '(1 2 3 4 6 4 3 5 7 6 5 2 3))
 
-  3. Switch to the ‘*scratch*’ buffer and place the cursor where you
-     want the graph to start.
+  3. Schakel naar het ‘*scratch*’ buffer en plaats de cursor daar waar
+     je de grafiek wilt laten beginnen.
 
-  4. Type ‘M-:’ (‘eval-expression’).
+  4. Typ ‘M-:’ (‘eval-expression’).
 
-  5. Yank the ‘graph-body-print’ expression into the minibuffer with
-     ‘C-y’ (‘yank)’.
+  5. Yank de ‘grafiek-body-tonen’ expressie in het minibuffer met ‘C-y’
+     (‘yank)’.
 
-  6. Press <RET> to evaluate the ‘graph-body-print’ expression.
+  6. Druk op <RET> om de ‘grafiek-body-tonen’ expressie te evalueren.
 
-   Emacs will print a graph like this:
+   Emacs toont een grafiek zoals deze:
 
                          *
                      *   **
@@ -13364,59 +13373,61 @@ screen until the function exits.
                  *************
 
 
-File: emacs-lisp-intro-nl.info,  Node: recursive-graph-body-print,  Next: Afgedrukte assen,  Prev: graph-body-print,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: recursieve-grafiek-body-tonen,  Next: Getoonde assen,  Prev: graph-body-print,  Up: Een grafiek voorbereiden
 
-15.2 The ‘recursive-graph-body-print’ Function
-==============================================
+15.2 De functie recursieve-grafiek-body-tonen
+=============================================
 
-The ‘graph-body-print’ function may also be written recursively.  The
-recursive solution is divided into two parts: an outside wrapper that
-uses a ‘let’ expression to determine the values of several variables
-that need only be found once, such as the maximum height of the graph,
-and an inside function that is called recursively to print the graph.
+De functie ‘grafiek-body-tonen’ kan ook recursief geschreven worden.  De
+recursieve oplossing is gesplitst in twee delen: een buitenste wrapper
+die een ‘let’ expressie gebruikt om de waarde van diverse variabelen te
+bepalen die maar een keer hoeven worden te gevonden, zoals de maximum
+hoogte van de grafiek, en een binnenste functie die recursief
+aangeroepen wordt om de grafiek te tonen.
 
-   The wrapper is uncomplicated:
+   De wrapper is ongecompliceerd:
 
-     (defun recursive-graph-body-print (numbers-list)
-       "Print a bar graph of the NUMBERS-LIST.
-     The numbers-list consists of the Y-axis values."
-       (let ((height (apply 'max numbers-list))
-             (symbol-width (length graph-blank))
+     (defun recursieve-grafiek-body-tonen (getallenlijst)
+       "Print a bar graph of the GETALLENLIJST.
+     The getallenlijst consists of the Y-axis values."
+       (let ((hoogte (apply 'max getallenlijst))
+             (symboolbreedte (length grafiek-wit))
              from-position)
-         (recursive-graph-body-print-internal
-          numbers-list
-          height
-          symbol-width)))
+         (recursieve-grafiek-body-tonen-intern
+          getallenlijst
+          hoogte
+          symboolbreedte)))
 
-   The recursive function is a little more difficult.  It has four
-parts: the do-again-test, the printing code, the recursive call, and the
-next-step-expression.  The do-again-test is a ‘when’ expression that
-determines whether the ‘numbers-list’ contains any remaining elements;
-if it does, the function prints one column of the graph using the
-printing code and calls itself again.  The function calls itself again
-according to the value produced by the next-step-expression which causes
-the call to act on a shorter version of the ‘numbers-list’.
+   De recursieve functie is iets moeilijker.  Het heeft vier delen: de
+doe-opnieuw-test, de tonende code, de resursieve aanroep en de
+volgende-stap-expressie.  De doe-opnieuw-test is een ‘when’ expressie
+die bepaalt of ‘getallenlijst’ resterende elementen bevat.  Wanneer dat
+zo is, dan toont de functie een kolom van de grafiek met de tonende code
+en roept zichzelf opnieuw aan.  De functie roept zichzelf opnieuw aan
+met de waarde geproduceerd door de volgende-stap-expressie die zorgt dat
+de aanroep op een kortere versie van de ‘getallenlijst’ acteert.
 
-     (defun recursive-graph-body-print-internal
-       (numbers-list height symbol-width)
+     (defun recursieve-grafiek-body-tonen-intern
+       (getallenlijst hoogte symboolbreedte)
        "Print a bar graph.
-     Used within recursive-graph-body-print function."
+     Gebruikt in de functie recursieve-grafiek-body-tonen."
 
-       (when numbers-list
-             (setq from-position (point))
+       (when getallenlijst
+             (setq van-positie (point))
              (insert-rectangle
-              (column-of-graph height (car numbers-list)))
-             (goto-char from-position)
-             (forward-char symbol-width)
+              (kolom-van-grafiek hoogte (car getallenlijst)))
+             (goto-char van-positie)
+             (forward-char symboolbreedte)
              (sit-for 0)     ; Draw graph column by column.
-             (recursive-graph-body-print-internal
-              (cdr numbers-list) height symbol-width)))
+             (recursieve-grafiek-body-tonen-intern
+              (cdr getallenlijst) hoogte symboolbreedte)))
 
-   After installation, this expression can be tested; here is a sample:
+   Na installatie kan deze expressie getest worden, hier is een
+voobeeld:
 
-     (recursive-graph-body-print '(3 2 5 6 7 5 3 4 6 4 3 2 1))
+     (recursieve-grafiek-body-tonen '(3 2 5 6 7 5 3 4 6 4 3 2 1))
 
-   Here is what ‘recursive-graph-body-print’ produces:
+   Hier is wat de ‘recursieve-grafiek-body-tonen’ produceert:
 
                      *
                     **   *
@@ -13426,32 +13437,33 @@ the call to act on a shorter version of the ‘numbers-list’.
                  ************
                  *************
 
-   Either of these two functions, ‘graph-body-print’ or
-‘recursive-graph-body-print’, create the body of a graph.
+   Beide functies, ‘grafiek-body-tonen’ en
+‘recursieve-grafiek-body-tonen’ maken de body van de grafiek.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Afgedrukte assen,  Next: Lijngrafiek oefening,  Prev: recursive-graph-body-print,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Getoonde assen,  Next: Lijngrafiek oefening,  Prev: recursieve-grafiek-body-tonen,  Up: Een grafiek voorbereiden
 
-15.3 Need for Printed Axes
-==========================
+15.3 Noodzaak voor getoonde assen
+=================================
 
-A graph needs printed axes, so you can orient yourself.  For a do-once
-project, it may be reasonable to draw the axes by hand using Emacs's
-Picture mode; but a graph drawing function may be used more than once.
+Een grafiek moet assen hebben zodat je jezelf kunt oriënteren.  Voor een
+eenmalig project kan het redelijk zijn de assen met de hand te tekenen
+met de Picture mode van Emacs.  Maar een grafiek tekenende functie kan
+meer dan eens gebruikt worden.
 
-   For this reason, I have written enhancements to the basic
-‘print-graph-body’ function that automatically print labels for the
-horizontal and vertical axes.  Since the label printing functions do not
-contain much new material, I have placed their description in an
-appendix.  *Note A Graph with Labeled Axes: Full Graph.
+   Om deze reden heb ik een uitbreiding geschreven op de basis
+‘grafiek-body-tonen’ functie die automatisch labels toont voor de
+horizontale en vertikale assen.  Omdat de label-toon functies niet veel
+nieuw materiaal bevatten, heb ik hun beschrijving in een appendix
+geplaatst.  *Note Een grafiek met labels op de assen: Volledige grafiek.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Afgedrukte assen,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Lijngrafiek oefening,  Prev: Getoonde assen,  Up: Een grafiek voorbereiden
 
 15.4 Oefening
 =============
 
-Write a line graph version of the graph printing functions.
+Schrijf een lijngrafiek versie van de grafiek tonende functies.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Initialisatie van Emacs,  Next: Debuggen.,  Prev: Een grafiek voorbereiden,  Up: Top
@@ -16148,17 +16160,17 @@ places point at the correct position for printing the body of the graph.
           Y-axis-column
           print-Y-axis
 
-  2. Copy the following expression:
+  2. Kopieer de volgende expressie:
 
           (print-Y-axis 12 5)
 
   3. Switch to the ‘*scratch*’ buffer and place the cursor where you
      want the axis labels to start.
 
-  4. Type ‘M-:’ (‘eval-expression’).
+  4. Typ ‘M-:’ (‘eval-expression’).
 
-  5. Yank the ‘graph-body-print’ expression into the minibuffer with
-     ‘C-y’ (‘yank)’.
+  5. Yank de ‘grafiek-body-tonen’ expressie in het minibuffer met ‘C-y’
+     (‘yank)’.
 
   6. Press <RET> to evaluate the expression.
 
@@ -16398,7 +16410,7 @@ variables, and calls to each of the two line printing functions:
      ‘print-X-axis-tic-line’, as well as ‘X-axis-element’,
      ‘print-X-axis-numbered-line’, and ‘print-X-axis’.
 
-  2. Copy the following expression:
+  2. Kopieer de volgende expressie:
 
           (progn
            (let ((full-Y-label-width 5)
@@ -16409,7 +16421,7 @@ variables, and calls to each of the two line printing functions:
   3. Switch to the ‘*scratch*’ buffer and place the cursor where you
      want the axis labels to start.
 
-  4. Type ‘M-:’ (‘eval-expression’).
+  4. Typ ‘M-:’ (‘eval-expression’).
 
   5. Yank the test expression into the minibuffer with ‘C-y’ (‘yank)’.
 
@@ -16573,14 +16585,14 @@ We can test the ‘print-graph’ function with a short list of numbers:
   1. Install the final versions of ‘Y-axis-column’, ‘graph-body-print’,
      and ‘print-graph’ (in addition to the rest of the code.)
 
-  2. Copy the following expression:
+  2. Kopieer de volgende expressie:
 
           (print-graph '(3 2 5 6 7 5 3 4 6 4 3 2 1))
 
   3. Switch to the ‘*scratch*’ buffer and place the cursor where you
      want the axis labels to start.
 
-  4. Type ‘M-:’ (‘eval-expression’).
+  4. Typ ‘M-:’ (‘eval-expression’).
 
   5. Yank the test expression into the minibuffer with ‘C-y’ (‘yank)’.
 
@@ -17622,7 +17634,7 @@ Index
 * apostrof om te quoten:                 Draai een programma. (line  13)
 * append-to-buffer:                      append-to-buffer.    (line   6)
 * apply:                                 Kolommen van een grafiek.
-                                                              (line 145)
+                                                              (line 147)
 * apropos:                               Kolommen van een grafiek.
                                                               (line  35)
 * Argument als lokale variabele:         Dec voorbeeld samengesteld.
@@ -17901,10 +17913,10 @@ Index
 * mark-whole-buffer:                     mark-whole-buffer.   (line   6)
 * match-beginning:                       fwd-para while.      (line 161)
 * max:                                   Kolommen van een grafiek.
-                                                              (line 133)
+                                                              (line 135)
 * message:                               message.             (line   6)
 * min:                                   Kolommen van een grafiek.
-                                                              (line 133)
+                                                              (line 135)
 * Mode line format:                      Mode line.           (line   6)
 * Mode selection, automatic:             Tekst en auto-fill.  (line  22)
 * mode-line-format:                      Mode line.           (line   6)
@@ -17982,6 +17994,8 @@ Index
                                                               (line   6)
 * Recursieve patronen:                   Recursieve patronen. (line   6)
 * Recursieve patronen - bewaren:         Bewaar.              (line   6)
+* recursieve-grafiek-body-tonen:         recursieve-grafiek-body-tonen.
+                                                              (line   6)
 * recursieve-lengte-lijst-veel-bestanden: Enkele bestanden recursief.
                                                               (line  17)
 * Recursive definitie onderdelen:        Recursive definitie onderdelen.
@@ -17989,8 +18003,6 @@ Index
 * Recursive pattern - elke:              Elke.                (line   6)
 * recursive-count-words:                 recursive-count-words.
                                                               (line 263)
-* recursive-graph-body-print:            recursive-graph-body-print.
-                                                              (line   6)
 * regexp-quote:                          fwd-para let.        (line  95)
 * Region, wat is het:                    save-excursion.      (line   6)
 * Reguliere expressie voor tellen van woorden: Woorden tellen.
@@ -18160,321 +18172,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24397
-Node: Waarom25860
-Node: Over het lezen van deze tekst26523
-Node: Doelgroep28863
-Node: Geschiedenis van Lisp31866
-Node: Opmerking voor beginners32770
-Node: Dank35522
-Node: Lijsten verwerken36117
-Ref: Lijsten verwerken-Footnote-137573
-Node: Lisp lijsten37729
-Node: Genummerde lijsten38659
-Node: Lisp atomen39828
-Node: Whitespace in lijsten43742
-Node: Typen van lijsten45094
-Node: Draai een programma46315
-Ref: Draai een programma-Footnote-148868
-Node: Fouten maken49012
-Node: Namen en definities54215
-Node: Lisp interpreter56171
-Node: Complicaties57395
-Node: Byte compiling59644
-Node: Evaluatie60773
-Node: Hoe de interpreter werkt61404
-Node: Geneste lijsten evalueren62777
-Node: Variabelen65465
-Node: fill-column voorbeeld67081
-Node: Void functie68768
-Node: Void variabele70051
-Node: Argumenten71977
-Ref: Argumenten-Footnote-173783
-Node: Data typen74655
-Node: Argumenten als variabele of als lijst76892
-Node: Variabel aantal argumenten78633
-Node: Verkeerde type argument79529
-Ref: Verkeerde type argument-Footnote-183322
-Node: message83397
-Ref: message-Footnote-187619
-Node: setq87824
-Node: Setq gebruiken88549
-Node: Tellen91783
-Node: Samenvatting93845
-Node: Foutmelding oefeningen95848
-Node: Oefenen van evaluatie96404
-Node: Hoe te evalueren97631
-Node: Buffer namen99225
-Node: Buffers pakken105296
-Ref: Buffers pakken-Footnote-1107985
-Node: Van buffer verwisselen108235
-Ref: Van buffer verwisselen-Footnote-1111826
-Ref: Van buffer verwisselen-Footnote-2112168
-Node: Buffer grootte en locatie112922
-Node: Evaluatie oefening115136
-Node: Defuns schrijven115420
-Node: Primitieve functies116713
-Node: defun117948
-Node: Installeer124812
-Node: Effect van installatie126249
-Node: Een defun wijzigen127176
-Node: Interactief129056
-Node: Interactieve vermenigvuldig-met-zeven130239
-Node: vermenigvuldig-met-zeven in detail132369
-Node: Interactieve opties135222
-Node: Permanent installeren138584
-Node: let140895
-Node: Voorkom verwarring142487
-Ref: Voorkom verwarring-Footnote-1144752
-Node: Delen van een let expressie144896
-Node: Voorbeeld let expressie146611
-Ref: Voorbeeld let expressie-Footnote-1148433
-Node: Niet-geïnitialiseerde let variabelen148688
-Node: Hoe let variabelen bindt150462
-Node: Lexical en dynamische binding verschillen151800
-Node: Lexical vs dynamische binding voorbeeld153717
-Node: if155788
-Node: if in meer detail156734
-Node: type-dier in detail159547
-Node: else162197
-Node: Waar en onwaarheid165158
-Node: nil uitgelegd166167
-Node: save-excursion168364
-Node: Point en mark169140
-Node: Template voor save-excursion172249
-Node: Terugblik173537
-Node: defun oefeningen181580
-Node: Buffer rondleiding182053
-Node: Meer vinden183227
-Ref: Meer vinden-Footnote-1186242
-Node: versimpelde-beginning-of-buffer186459
-Node: mark-whole-buffer190963
-Node: mark-whole-buffer overzicht191837
-Node: Body van mark-whole-buffer193209
-Node: append-to-buffer196274
-Node: append-to-buffer overzicht197001
-Node: append interactief199803
-Node: append-to-buffer body202379
-Node: append save-excursion204566
-Ref: let* geïntroduceerd206363
-Node: Buffer gerelateerde terugblik210052
-Node: Buffer oefeningen212455
-Node: Meer complex212980
-Node: copy-to-buffer214091
-Ref: copy-to-buffer-Footnote-1216974
-Node: insert-buffer217194
-Node: insert-buffer code218653
-Node: insert-buffer interactief219662
-Node: Read-only buffer220212
-Node: b for interactief220856
-Node: insert-buffer body221984
-Node: if en or223206
-Node: Voeg or in226359
-Node: Voeg let in228706
-Node: Nieuwe insert-buffer232555
-Node: beginning-of-buffer233776
-Node: Optionele argumenten235426
-Node: beginning-of-buffer opt arg239069
-Node: Ontrafelen beginning-of-buffer240091
-Node: In geval van een groot buffer241445
-Node: In geval van een klein buffer244093
-Node: beginning-of-buffer compleet245871
-Node: Tweede buffer gerelateerde terugblik248915
-Node: optionele oefening250880
-Node: Versmallen en verbreden251404
-Node: Voordelen van versmallen252110
-Node: save-restriction254091
-Node: what-line256212
-Node: versmal oefening260663
-Node: car cdr en cons261711
-Node: Vreemde namen262897
-Node: car en cdr263619
-Node: cons268352
-Node: Bouw een lijst269441
-Ref: Bouw een lijst-Footnote-1271069
-Node: length271275
-Node: nthcdr272886
-Node: nth275996
-Node: setcar277517
-Node: setcdr280498
-Node: cons oefening282170
-Node: Knippen en opslaan van tekst282589
-Node: Tekst opslaan284005
-Node: zap-to-char286124
-Node: Complete zap-to-char286736
-Node: zap-to-char interactief289102
-Node: zap-to-char body290688
-Node: search-forward292237
-Node: progn295390
-Node: Samenvatting zap-to-char297205
-Node: kill-region298361
-Node: Complete kill-region299359
-Node: condition-case303770
-Node: Lisp macro306341
-Node: copy-region-as-kill308974
-Node: Complete copy-region-as-kill309917
-Node: copy-region-as-kill body312763
-Node: last-command en this-command313904
-Node: kill-append functie316242
-Node: kill-new functie320517
-Node: Uitwijding naar C331495
-Node: defvar337038
-Node: Inzien huidige variabele waarde338916
-Node: defvar en asterisk340878
-Node: cons en search-fwd terugblik342932
-Node: zoek oefening346111
-Node: Implementatie van lijsten346914
-Node: Lijsten uitgetekend348150
-Node: Symbolen als ladekast354639
-Node: Lijst oefening356754
-Node: Yanking357120
-Node: Killring overzicht358515
-Node: kill-ring-yank-pointer360327
-Node: yank nthcdr oefeningen362835
-Node: Loops en recursie363580
-Ref: Loops en recursie-Footnote-1364776
-Node: while365297
-Node: Looping met while366729
-Node: Loop voorbeeld368667
-Node: print-elements-of-list372369
-Node: Incrementele loop374955
-Node: Incrementele loop details375587
-Node: Incrementeel voorbeeld377060
-Node: Inc voorbeeld onderdelen379636
-Node: inc voorbeeld samengesteld383776
-Node: Decrementele loop387378
-Node: Decerementeel voorbeeld388850
-Node: Dec voorbeeld onderdelen390442
-Node: Dec voorbeeld samengesteld392523
-Node: dolist dotimes394799
-Node: dolist395630
-Node: dotimes398807
-Node: Recursie400354
-Node: Robots bouwen401566
-Node: Recursive definitie onderdelen403371
-Node: Recursie met lijst406018
-Node: Recursieve driehoek functie409686
-Node: Recursief voorbeeld arg van 1 of 2411064
-Node: Recursief voorbeeld arg van 3 of 4413329
-Node: Recursie met cond416533
-Node: Recursieve patronen418977
-Node: Elke419470
-Node: Accumuleren422030
-Node: Bewaar423410
-Node: Geen uitstel425478
-Node: Zonder uitstel oplossing428202
-Ref: Zonder uitstel oplossing-Footnote-1432164
-Ref: Zonder uitstel oplossing-Footnote-2432288
-Node: Looping oefening432811
-Node: Regexp zoeken434130
-Node: sentence-end436276
-Node: re-search-forward440323
-Node: forward-sentence442978
-Node: Complete forward-sentence443761
-Node: fwd-sentence while loops447465
-Node: fwd-sentence re-search451278
-Node: forward-paragraph453382
-Node: forward-paragraph in het kort455257
-Node: fwd-para let456815
-Node: fwd-para while463746
-Node: Regexp terugblik472602
-Node: re-search oefeningen475192
-Node: Woorden tellen475965
-Node: Waarom woorden tellen476748
-Node: tel-woorden-voorbeeld477904
-Node: Ontwerp tel-woorden-voorbeeld479277
-Node: Witte ruimte bug486013
-Node: recursive-count-words495848
-Node: Tellen voorbeeld508579
-Node: Woorden in een defun508951
-Node: Verdeel en heers510722
-Node: Woorden en symbolen512033
-Node: Syntax514186
-Node: count-words-in-defun517902
-Node: Enkele defuns524569
-Node: Een bestand vinden527089
-Node: lengte-lijst-bestand529849
-Node: Enkele bestanden535319
-Node: lengths-list-many-files536125
-Node: append539052
-Node: Enkele bestanden recursief539706
-Node: De data voorbereiden542792
-Node: Data in detail te tonen543907
-Node: Sorteren544906
-Node: Bestandenlijst546762
-Ref: Bestandenlijst-Footnote-1554806
-Node: Functiedefinities tellen555028
-Node: Een grafiek voorbereiden564655
-Node: Kolommen van een grafiek566030
-Node: graph-body-print579806
-Node: recursive-graph-body-print584613
-Node: Afgedrukte assen587305
-Node: Lijngrafiek oefening588054
-Node: Initialisatie van Emacs588263
-Node: Default configuratie589759
-Ref: Default configuratie-Footnote-1591743
-Node: Site-wide init592059
-Node: defcustom594121
-Node: Een init bestand beginnen600006
-Node: Tekst en auto-fill602402
-Ref: Tekst en auto-fill-Footnote-1606418
-Ref: Tekst en auto-fill-Footnote-2606702
-Node: Mail aliasen606963
-Node: Indent Tabs Mode607889
-Node: Key bindings608834
-Node: Keymaps613608
-Node: Bestanden laden616268
-Node: Autoload619550
-Node: Eenvoudige uitbreiding622438
-Ref: Eenvoudige uitbreiding-Footnote-1625003
-Node: X11 kleuren625292
-Ref: X11 kleuren-Footnote-1627110
-Node: Diverse627264
-Node: Mode line631486
-Node: Debuggen.637022
-Node: debug637918
-Node: debug-on-entry641050
-Node: debug-on-quit644655
-Node: edebug645692
-Node: Debuggen oefeningen649814
-Node: Conclusie651579
-Node: de-de656937
-Node: Killring659727
-Node: Wat de killring doet660544
-Node: current-kill662062
-Node: Code voor current-kill662760
-Node: current-kill begrijpen665592
-Node: Body van current-kill666392
-Node: Uitwijding over fout669543
-Node: Het element vaststellen670718
-Node: yank674423
-Node: yank-pop677637
-Node: ring bestand680172
-Node: Volledige grafiek680549
-Node: Gelabeld voorbeeld681389
-Node: print-graph varlist683386
-Node: print-Y-axis685109
-Node: print-Y-axis in detail685962
-Node: Hoogte van label686772
-Node: Bereken het restant688789
-Node: Y-as element692655
-Node: Y-axis-column696418
-Node: print-Y-axis enalaatste698030
-Node: print-X-axis700015
-Node: Overeenkomsten verschillen701333
-Node: X-as tic marks702166
-Node: De gehele grafiek afdrukken709169
-Node: De finale versie710285
-Node: Test print-graph714540
-Node: Woorden in defuns grafisch weergeven716224
-Node: lambda718848
-Node: mapcar720729
-Node: Een andere bug722789
-Node: Finale afgedrukte grafiek728318
-Node: Vrije software en vrije handleidingen729269
-Node: GNU Free Documentation License735585
-Node: Index760774
-Node: Over de auteur799883
+Node: Voorwoord24396
+Node: Waarom25859
+Node: Over het lezen van deze tekst26522
+Node: Doelgroep28862
+Node: Geschiedenis van Lisp31865
+Node: Opmerking voor beginners32769
+Node: Dank35521
+Node: Lijsten verwerken36116
+Ref: Lijsten verwerken-Footnote-137572
+Node: Lisp lijsten37728
+Node: Genummerde lijsten38658
+Node: Lisp atomen39827
+Node: Whitespace in lijsten43741
+Node: Typen van lijsten45093
+Node: Draai een programma46314
+Ref: Draai een programma-Footnote-148867
+Node: Fouten maken49011
+Node: Namen en definities54214
+Node: Lisp interpreter56170
+Node: Complicaties57394
+Node: Byte compiling59643
+Node: Evaluatie60772
+Node: Hoe de interpreter werkt61399
+Node: Geneste lijsten evalueren62772
+Node: Variabelen65460
+Node: fill-column voorbeeld67076
+Node: Void functie68763
+Node: Void variabele70046
+Node: Argumenten71972
+Ref: Argumenten-Footnote-173778
+Node: Data typen74650
+Node: Argumenten als variabele of als lijst76887
+Node: Variabel aantal argumenten78628
+Node: Verkeerde type argument79524
+Ref: Verkeerde type argument-Footnote-183317
+Node: message83392
+Ref: message-Footnote-187614
+Node: setq87819
+Node: Setq gebruiken88544
+Node: Tellen91778
+Node: Samenvatting93840
+Node: Foutmelding oefeningen95843
+Node: Oefenen van evaluatie96399
+Node: Hoe te evalueren97626
+Node: Buffer namen99220
+Node: Buffers pakken105291
+Ref: Buffers pakken-Footnote-1107980
+Node: Van buffer verwisselen108230
+Ref: Van buffer verwisselen-Footnote-1111821
+Ref: Van buffer verwisselen-Footnote-2112163
+Node: Buffer grootte en locatie112917
+Node: Evaluatie oefening115131
+Node: Defuns schrijven115415
+Node: Primitieve functies116708
+Node: defun117943
+Node: Installeer124807
+Node: Effect van installatie126244
+Node: Een defun wijzigen127171
+Node: Interactief129051
+Node: Interactieve vermenigvuldig-met-zeven130234
+Node: vermenigvuldig-met-zeven in detail132364
+Node: Interactieve opties135217
+Node: Permanent installeren138579
+Node: let140890
+Node: Voorkom verwarring142482
+Ref: Voorkom verwarring-Footnote-1144747
+Node: Delen van een let expressie144891
+Node: Voorbeeld let expressie146606
+Ref: Voorbeeld let expressie-Footnote-1148428
+Node: Niet-geïnitialiseerde let variabelen148683
+Node: Hoe let variabelen bindt150457
+Node: Lexical en dynamische binding verschillen151795
+Node: Lexical vs dynamische binding voorbeeld153712
+Node: if155783
+Node: if in meer detail156729
+Node: type-dier in detail159542
+Node: else162192
+Node: Waar en onwaarheid165153
+Node: nil uitgelegd166162
+Node: save-excursion168359
+Node: Point en mark169135
+Node: Template voor save-excursion172244
+Node: Terugblik173532
+Node: defun oefeningen181575
+Node: Buffer rondleiding182048
+Node: Meer vinden183222
+Ref: Meer vinden-Footnote-1186237
+Node: versimpelde-beginning-of-buffer186454
+Node: mark-whole-buffer190958
+Node: mark-whole-buffer overzicht191832
+Node: Body van mark-whole-buffer193204
+Node: append-to-buffer196269
+Node: append-to-buffer overzicht196996
+Node: append interactief199798
+Node: append-to-buffer body202374
+Node: append save-excursion204561
+Ref: let* geïntroduceerd206358
+Node: Buffer gerelateerde terugblik210047
+Node: Buffer oefeningen212450
+Node: Meer complex212975
+Node: copy-to-buffer214086
+Ref: copy-to-buffer-Footnote-1216969
+Node: insert-buffer217189
+Node: insert-buffer code218648
+Node: insert-buffer interactief219657
+Node: Read-only buffer220207
+Node: b for interactief220851
+Node: insert-buffer body221979
+Node: if en or223201
+Node: Voeg or in226354
+Node: Voeg let in228701
+Node: Nieuwe insert-buffer232550
+Node: beginning-of-buffer233771
+Node: Optionele argumenten235421
+Node: beginning-of-buffer opt arg239064
+Node: Ontrafelen beginning-of-buffer240086
+Node: In geval van een groot buffer241440
+Node: In geval van een klein buffer244088
+Node: beginning-of-buffer compleet245866
+Node: Tweede buffer gerelateerde terugblik248910
+Node: optionele oefening250875
+Node: Versmallen en verbreden251399
+Node: Voordelen van versmallen252105
+Node: save-restriction254086
+Node: what-line256207
+Node: versmal oefening260658
+Node: car cdr en cons261706
+Node: Vreemde namen262892
+Node: car en cdr263614
+Node: cons268347
+Node: Bouw een lijst269436
+Ref: Bouw een lijst-Footnote-1271064
+Node: length271270
+Node: nthcdr272881
+Node: nth275991
+Node: setcar277512
+Node: setcdr280493
+Node: cons oefening282165
+Node: Knippen en opslaan van tekst282584
+Node: Tekst opslaan284000
+Node: zap-to-char286119
+Node: Complete zap-to-char286731
+Node: zap-to-char interactief289097
+Node: zap-to-char body290683
+Node: search-forward292232
+Node: progn295385
+Node: Samenvatting zap-to-char297200
+Node: kill-region298356
+Node: Complete kill-region299354
+Node: condition-case303765
+Node: Lisp macro306336
+Node: copy-region-as-kill308969
+Node: Complete copy-region-as-kill309912
+Node: copy-region-as-kill body312758
+Node: last-command en this-command313899
+Node: kill-append functie316237
+Node: kill-new functie320512
+Node: Uitwijding naar C331490
+Node: defvar337033
+Node: Inzien huidige variabele waarde338911
+Node: defvar en asterisk340873
+Node: cons en search-fwd terugblik342927
+Node: zoek oefening346106
+Node: Implementatie van lijsten346909
+Node: Lijsten uitgetekend348145
+Node: Symbolen als ladekast354634
+Node: Lijst oefening356749
+Node: Yanking357115
+Node: Killring overzicht358510
+Node: kill-ring-yank-pointer360322
+Node: yank nthcdr oefeningen362830
+Node: Loops en recursie363575
+Ref: Loops en recursie-Footnote-1364771
+Node: while365292
+Node: Looping met while366724
+Node: Loop voorbeeld368662
+Node: print-elements-of-list372364
+Node: Incrementele loop374950
+Node: Incrementele loop details375582
+Node: Incrementeel voorbeeld377055
+Node: Inc voorbeeld onderdelen379631
+Node: inc voorbeeld samengesteld383771
+Node: Decrementele loop387373
+Node: Decerementeel voorbeeld388845
+Node: Dec voorbeeld onderdelen390437
+Node: Dec voorbeeld samengesteld392518
+Node: dolist dotimes394794
+Node: dolist395625
+Node: dotimes398802
+Node: Recursie400349
+Node: Robots bouwen401561
+Node: Recursive definitie onderdelen403366
+Node: Recursie met lijst406013
+Node: Recursieve driehoek functie409681
+Node: Recursief voorbeeld arg van 1 of 2411059
+Node: Recursief voorbeeld arg van 3 of 4413324
+Node: Recursie met cond416528
+Node: Recursieve patronen418972
+Node: Elke419465
+Node: Accumuleren422025
+Node: Bewaar423405
+Node: Geen uitstel425473
+Node: Zonder uitstel oplossing428197
+Ref: Zonder uitstel oplossing-Footnote-1432159
+Ref: Zonder uitstel oplossing-Footnote-2432283
+Node: Looping oefening432806
+Node: Regexp zoeken434125
+Node: sentence-end436271
+Node: re-search-forward440318
+Node: forward-sentence442973
+Node: Complete forward-sentence443756
+Node: fwd-sentence while loops447460
+Node: fwd-sentence re-search451273
+Node: forward-paragraph453377
+Node: forward-paragraph in het kort455252
+Node: fwd-para let456810
+Node: fwd-para while463741
+Node: Regexp terugblik472597
+Node: re-search oefeningen475187
+Node: Woorden tellen475960
+Node: Waarom woorden tellen476743
+Node: tel-woorden-voorbeeld477899
+Node: Ontwerp tel-woorden-voorbeeld479272
+Node: Witte ruimte bug486008
+Node: recursive-count-words495843
+Node: Tellen voorbeeld508570
+Node: Woorden in een defun508942
+Node: Verdeel en heers510713
+Node: Woorden en symbolen512024
+Node: Syntax514177
+Node: count-words-in-defun517893
+Node: Enkele defuns524560
+Node: Een bestand vinden527080
+Node: lengte-lijst-bestand529840
+Node: Enkele bestanden535430
+Node: lengths-list-many-files536236
+Node: append539163
+Node: Enkele bestanden recursief539817
+Node: De data voorbereiden542903
+Node: Data in detail te tonen544018
+Node: Sorteren545013
+Node: Bestandenlijst546869
+Ref: Bestandenlijst-Footnote-1554913
+Node: Functiedefinities tellen555135
+Node: Een grafiek voorbereiden564762
+Node: Kolommen van een grafiek566136
+Node: graph-body-print580393
+Node: recursieve-grafiek-body-tonen585177
+Node: Getoonde assen587943
+Node: Lijngrafiek oefening588760
+Node: Initialisatie van Emacs588971
+Node: Default configuratie590467
+Ref: Default configuratie-Footnote-1592451
+Node: Site-wide init592767
+Node: defcustom594829
+Node: Een init bestand beginnen600714
+Node: Tekst en auto-fill603110
+Ref: Tekst en auto-fill-Footnote-1607126
+Ref: Tekst en auto-fill-Footnote-2607410
+Node: Mail aliasen607671
+Node: Indent Tabs Mode608597
+Node: Key bindings609542
+Node: Keymaps614316
+Node: Bestanden laden616976
+Node: Autoload620258
+Node: Eenvoudige uitbreiding623146
+Ref: Eenvoudige uitbreiding-Footnote-1625711
+Node: X11 kleuren626000
+Ref: X11 kleuren-Footnote-1627818
+Node: Diverse627972
+Node: Mode line632194
+Node: Debuggen.637730
+Node: debug638626
+Node: debug-on-entry641758
+Node: debug-on-quit645363
+Node: edebug646400
+Node: Debuggen oefeningen650522
+Node: Conclusie652287
+Node: de-de657645
+Node: Killring660435
+Node: Wat de killring doet661252
+Node: current-kill662770
+Node: Code voor current-kill663468
+Node: current-kill begrijpen666300
+Node: Body van current-kill667100
+Node: Uitwijding over fout670251
+Node: Het element vaststellen671426
+Node: yank675131
+Node: yank-pop678345
+Node: ring bestand680880
+Node: Volledige grafiek681257
+Node: Gelabeld voorbeeld682097
+Node: print-graph varlist684094
+Node: print-Y-axis685817
+Node: print-Y-axis in detail686670
+Node: Hoogte van label687480
+Node: Bereken het restant689497
+Node: Y-as element693363
+Node: Y-axis-column697126
+Node: print-Y-axis enalaatste698738
+Node: print-X-axis700719
+Node: Overeenkomsten verschillen702037
+Node: X-as tic marks702870
+Node: De gehele grafiek afdrukken709872
+Node: De finale versie710988
+Node: Test print-graph715243
+Node: Woorden in defuns grafisch weergeven716926
+Node: lambda719550
+Node: mapcar721431
+Node: Een andere bug723491
+Node: Finale afgedrukte grafiek729020
+Node: Vrije software en vrije handleidingen729971
+Node: GNU Free Documentation License736287
+Node: Index761476
+Node: Over de auteur800588
 
 End Tag Table
 

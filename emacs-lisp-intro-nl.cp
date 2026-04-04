@@ -292,12 +292,12 @@
 @entry{lengte-lijst-bestand}{177}{@code {lengte-lijst-bestand}}
 @entry{lengths-list-many-files}{180}{@code {lengths-list-many-files}}
 @entry{recursieve-lengte-lijst-veel-bestanden}{181}{@code {recursieve-lengte-lijst-veel-bestanden}}
-@entry{sorteren}{182}{@code {sorteren}}
+@entry{sorteren}{183}{@code {sorteren}}
 @entry{directory-files}{183}{@code {directory-files}}
-@entry{bestanden-in-onderliggende-directory}{183}{@code {bestanden-in-onderliggende-directory}}
+@entry{bestanden-in-onderliggende-directory}{184}{@code {bestanden-in-onderliggende-directory}}
 @entry{hoogste-van-ranges}{187}{@code {hoogste-van-ranges}}
 @entry{nreverse}{188}{@code {nreverse}}
-@entry{reverse}{188}{@code {reverse}}
+@entry{reverse}{189}{@code {reverse}}
 @entry{Een grafiek voorbereiden}{191}{Een grafiek voorbereiden}
 @entry{Grafiek prototype}{191}{Grafiek prototype}
 @entry{Prototype grafiek}{191}{Prototype grafiek}
@@ -307,7 +307,7 @@
 @entry{min}{193}{@code {min}}
 @entry{apply}{193}{@code {apply}}
 @entry{graph-body-print}{196}{@code {graph-body-print}}
-@entry{recursive-graph-body-print}{198}{@code {recursive-graph-body-print}}
+@entry{recursieve-grafiek-body-tonen}{198}{@code {recursieve-grafiek-body-tonen}}
 @entry{.emacs file}{200}{@file {.emacs} file}
 @entry{Customizing your .emacs file}{200}{Customizing your @file {.emacs} file}
 @entry{Initialization file}{200}{Initialization file}

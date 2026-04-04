@@ -41,7 +41,7 @@
 @entry{Axis, print vertical}{237}
 @initial {B}
 @entry{@code {beginning-of-buffer}}{66}
-@entry{@code {bestanden-in-onderliggende-directory}}{183}
+@entry{@code {bestanden-in-onderliggende-directory}}{184}
 @entry{Bewaren, type recursief patroon}{137}
 @entry{Bewegen per zin en paragraaf}{143}
 @entry{Bibliotheek als term voor ``bestand''}{48}
@@ -315,18 +315,18 @@
 @entry{Recursief woorden tellen}{164}
 @entry{Recursieve patronen}{135}
 @entry{Recursieve patronen - bewaren}{137}
+@entry{@code {recursieve-grafiek-body-tonen}}{198}
 @entry{@code {recursieve-lengte-lijst-veel-bestanden}}{181}
 @entry{Recursive definitie onderdelen}{130}
 @entry{Recursive pattern - elke}{135}
 @entry{@code {recursive-count-words}}{169}
-@entry{@code {recursive-graph-body-print}}{198}
 @entry{@code {regexp-quote}}{151}
 @entry{Region, wat is het}{42}
 @entry{Reguliere expressie voor tellen van woorden}{158}
 @entry{Reguliere expressie zoekopdrachten}{143}
 @entry{Remainder function, @code {%}}{238}
 @entry{Repetitie voor tellen van woorden}{158}
-@entry{@code {reverse}}{188}
+@entry{@code {reverse}}{189}
 @entry{Ring, making a list like a}{228}
 @entry{@file {ring.el} file}{235}
 @entry{Robots bouwen}{129}
@@ -348,7 +348,7 @@
 @entry{@file {site-init.el} init file}{200}
 @entry{@file {site-load.el} init file}{200}
 @entry{Sleutelwoord}{67}
-@entry{@code {sorteren}}{182}
+@entry{@code {sorteren}}{183}
 @entry{Source level debugger}{221}
 @entry{Speciale vorm}{7}
 @entry{Sterretje voor een read-only buffer}{62}

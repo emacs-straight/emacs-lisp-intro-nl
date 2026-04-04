@@ -181,16 +181,16 @@
 @numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{176}
 @numsecentry{@code {lengte-lijst-bestand} in detail}{14.6}{lengte-lijst-bestand}{177}
 @numsecentry{Woorden tellen in @code {defuns} in verschillende bestanden}{14.7}{Enkele bestanden}{179}
-@numsubsecentry{De functie @code {append}}{14.7.1}{append}{180}
+@numsubsecentry{De functie @code {append}}{14.7.1}{append}{181}
 @numsecentry{Recursief woorden tellen in verschillende bestanden}{14.8}{Enkele bestanden recursief}{181}
 @numsecentry{De data voorbereiden om in een grafiek te tonen}{14.9}{De data voorbereiden}{182}
-@numsubsecentry{Lijsten sorteren}{14.9.1}{Sorteren}{182}
+@numsubsecentry{Lijsten sorteren}{14.9.1}{Sorteren}{183}
 @numsubsecentry{Een lijst van bestanden maken}{14.9.2}{Bestandenlijst}{183}
 @numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{187}
 @numchapentry{Een grafiek voorbereiden}{15}{Een grafiek voorbereiden}{191}
-@numsecentry{The @code {graph-body-print} Function}{15.1}{graph-body-print}{196}
-@numsecentry{The @code {recursive-graph-body-print} Function}{15.2}{recursive-graph-body-print}{198}
-@numsecentry{Need for Printed Axes}{15.3}{Afgedrukte assen}{199}
+@numsecentry{De functie @code {grafiek-body-tonen}}{15.1}{graph-body-print}{196}
+@numsecentry{De functie recursieve-grafiek-body-tonen}{15.2}{recursieve-grafiek-body-tonen}{198}
+@numsecentry{Noodzaak voor getoonde assen}{15.3}{Getoonde assen}{199}
 @numsecentry{Oefening}{15.4}{Lijngrafiek oefening}{199}
 @numchapentry{Jouw @file {.emacs} bestand}{16}{Initialisatie van Emacs}{200}
 @numsecentry{Site-wide Initialization Files}{16.1}{Site-wide init}{200}
