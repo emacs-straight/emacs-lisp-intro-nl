@@ -193,50 +193,50 @@
 @numsecentry{Noodzaak voor getoonde assen}{15.3}{Getoonde assen}{199}
 @numsecentry{Oefening}{15.4}{Lijngrafiek oefening}{199}
 @numchapentry{Jouw @file {.emacs} bestand}{16}{Initialisatie van Emacs}{200}
-@numsecentry{Site-wide Initialization Files}{16.1}{Site-wide init}{200}
+@numsecentry{Systeembrede initialisatiebestanden}{16.1}{Systeem-brede init}{201}
 @numsecentry{Variabelen specificeren met @code {defcustom}}{16.2}{defcustom}{201}
 @numsecentry{Starten met een @file {.emacs} bestand}{16.3}{Een init bestand beginnen}{203}
 @numsecentry{Text and Auto Fill Mode}{16.4}{Tekst en auto-fill}{204}
 @numsecentry{Mail aliasen}{16.5}{Mail aliasen}{206}
 @numsecentry{Indent Tabs Mode}{16.6}{Indent Tabs Mode}{206}
-@numsecentry{Some Key Bindings}{16.7}{Key bindings}{207}
-@numsubsecentry{Legacy Global Key Binding Commands}{16.7.1}{}{208}
+@numsecentry{Enkele keybindings}{16.7}{Key bindings}{207}
+@numsubsecentry{Verouderde globale keybinding commando's}{16.7.1}{}{208}
 @numsecentry{Keymaps}{16.8}{Keymaps}{208}
 @numsecentry{Bestanden laden}{16.9}{Bestanden laden}{209}
 @numsecentry{Autoloading}{16.10}{Autoload}{210}
-@numsecentry{A Simple Extension: @code {line-to-top-of-window}}{16.11}{Eenvoudige uitbreiding}{211}
-@numsecentry{X11 kleuren}{16.12}{X11 kleuren}{212}
-@numsecentry{Miscellaneous Settings for a @file {.emacs} File}{16.13}{Diverse}{214}
-@numsecentry{A Modified Mode Line}{16.14}{Mode line}{216}
-@numchapentry{Debuggen.}{17}{Debuggen.}{218}
-@numsecentry{@code {debug}}{17.1}{debug}{218}
-@numsecentry{@code {debug-on-entry}}{17.2}{debug-on-entry}{219}
-@numsecentry{@code {debug-on-quit} and @code {(debug)}}{17.3}{debug-on-quit}{221}
-@numsecentry{The @code {edebug} Source Level Debugger}{17.4}{edebug}{221}
-@numsecentry{Debuggen oefeningen}{17.5}{Debuggen oefeningen}{223}
-@numchapentry{Conclusie}{18}{Conclusie}{224}
-@appentry{The @code {the-the} Function}{A}{de-de}{226}
-@appentry{De killring hanteren}{B}{Killring}{228}
-@appsecentry{De @code {current-kill} functie}{B.1}{current-kill}{228}
-@appsecentry{@code {yank}}{B.2}{yank}{233}
-@appsecentry{@code {yank-pop}}{B.3}{yank-pop}{234}
-@appsecentry{The @file {ring.el} File}{B.4}{ring bestand}{235}
-@appentry{Een grafiek met labels op de assen}{C}{Volledige grafiek}{236}
-@appsecentry{The @code {print-graph} Varlist}{C.1}{print-graph varlist}{237}
-@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{237}
-@appsubsecentry{Side Trip: Compute a Remainder}{C.2.1}{Bereken het restant}{238}
-@appsubsecentry{Construct a Y Axis Element}{C.2.2}{Y-as element}{240}
-@appsubsecentry{Create a Y Axis Column}{C.2.3}{Y-axis-column}{242}
-@appsubsecentry{The Not Quite Final Version of @code {print-Y-axis}}{C.2.4}{print-Y-axis enalaatste}{243}
-@appsecentry{De @code {print-X-axis} functie}{C.3}{print-X-axis}{244}
-@appsubsecentry{X-as tic marks}{C.3.1}{X-as tic marks}{244}
-@appsecentry{De hele grafiek afdrukken}{C.4}{De gehele grafiek afdrukken}{248}
-@appsubsecentry{Testing @code {print-graph}}{C.4.1}{Test print-graph}{250}
-@appsubsecentry{Graphing Numbers of Words and Symbols}{C.4.2}{Woorden in defuns grafisch weergeven}{251}
-@appsubsecentry{A @code {lambda} Expression: Useful Anonymity}{C.4.3}{lambda}{252}
-@appsubsecentry{The @code {mapcar} Function}{C.4.4}{mapcar}{254}
-@appsubsecentry{Another Bug @dots {} Most Insidious}{C.4.5}{Een andere bug}{255}
-@appsubsecentry{The Printed Graph}{C.4.6}{Finale afgedrukte grafiek}{257}
-@appentry{Vrije software en vrije handleidingen}{D}{Vrije software en vrije handleidingen}{258}
-@appentry{GNU Free Documentation License}{E}{GNU Free Documentation License}{260}
-@unnchapentry{Index}{10031}{Index}{269}
+@numsecentry{Een eenvoudige uitbreiding: @code {line-to-top-of-window}}{16.11}{Eenvoudige uitbreiding}{211}
+@numsecentry{X11 kleuren}{16.12}{X11 kleuren}{213}
+@numsecentry{Diverse instellingen voor een @file {.emacs} bestand}{16.13}{Diverse}{215}
+@numsecentry{Een aangepaste mode line}{16.14}{Mode line}{217}
+@numchapentry{Debuggen.}{17}{Debuggen.}{220}
+@numsecentry{@code {debug}}{17.1}{debug}{220}
+@numsecentry{@code {debug-on-entry}}{17.2}{debug-on-entry}{221}
+@numsecentry{@code {debug-on-quit} and @code {(debug)}}{17.3}{debug-on-quit}{223}
+@numsecentry{The @code {edebug} Source Level Debugger}{17.4}{edebug}{223}
+@numsecentry{Debuggen oefeningen}{17.5}{Debuggen oefeningen}{225}
+@numchapentry{Conclusie}{18}{Conclusie}{226}
+@appentry{The @code {the-the} Function}{A}{de-de}{228}
+@appentry{De killring hanteren}{B}{Killring}{230}
+@appsecentry{De @code {current-kill} functie}{B.1}{current-kill}{230}
+@appsecentry{@code {yank}}{B.2}{yank}{235}
+@appsecentry{@code {yank-pop}}{B.3}{yank-pop}{236}
+@appsecentry{The @file {ring.el} File}{B.4}{ring bestand}{237}
+@appentry{Een grafiek met labels op de assen}{C}{Volledige grafiek}{238}
+@appsecentry{The @code {print-graph} Varlist}{C.1}{print-graph varlist}{239}
+@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{239}
+@appsubsecentry{Side Trip: Compute a Remainder}{C.2.1}{Bereken het restant}{240}
+@appsubsecentry{Construct a Y Axis Element}{C.2.2}{Y-as element}{242}
+@appsubsecentry{Create a Y Axis Column}{C.2.3}{Y-axis-column}{244}
+@appsubsecentry{The Not Quite Final Version of @code {print-Y-axis}}{C.2.4}{print-Y-axis enalaatste}{245}
+@appsecentry{De @code {print-X-axis} functie}{C.3}{print-X-axis}{246}
+@appsubsecentry{X-as tic marks}{C.3.1}{X-as tic marks}{246}
+@appsecentry{De hele grafiek afdrukken}{C.4}{De gehele grafiek afdrukken}{250}
+@appsubsecentry{Testing @code {print-graph}}{C.4.1}{Test print-graph}{252}
+@appsubsecentry{Graphing Numbers of Words and Symbols}{C.4.2}{Woorden in defuns grafisch weergeven}{253}
+@appsubsecentry{A @code {lambda} Expression: Useful Anonymity}{C.4.3}{lambda}{254}
+@appsubsecentry{The @code {mapcar} Function}{C.4.4}{mapcar}{256}
+@appsubsecentry{Another Bug @dots {} Most Insidious}{C.4.5}{Een andere bug}{257}
+@appsubsecentry{The Printed Graph}{C.4.6}{Finale afgedrukte grafiek}{259}
+@appentry{Vrije software en vrije handleidingen}{D}{Vrije software en vrije handleidingen}{260}
+@appentry{GNU Free Documentation License}{E}{GNU Free Documentation License}{262}
+@unnchapentry{Index}{10031}{Index}{271}

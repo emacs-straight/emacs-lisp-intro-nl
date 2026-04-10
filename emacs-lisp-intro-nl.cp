@@ -308,109 +308,109 @@
 @entry{apply}{193}{@code {apply}}
 @entry{graph-body-print}{196}{@code {graph-body-print}}
 @entry{recursieve-grafiek-body-tonen}{198}{@code {recursieve-grafiek-body-tonen}}
-@entry{.emacs file}{200}{@file {.emacs} file}
-@entry{Customizing your .emacs file}{200}{Customizing your @file {.emacs} file}
-@entry{Initialization file}{200}{Initialization file}
-@entry{default.el init file}{200}{@file {default.el} init file}
-@entry{site-init.el init file}{200}{@file {site-init.el} init file}
-@entry{site-load.el init file}{200}{@file {site-load.el} init file}
+@entry{.emacs bestand}{200}{@file {.emacs} bestand}
+@entry{Je .emacs aanpassen}{200}{Je @file {.emacs} aanpassen}
+@entry{Initialisatie bestand}{200}{Initialisatie bestand}
+@entry{default.el init bestand}{201}{@file {default.el} init bestand}
+@entry{site-init.el init bestand}{201}{@file {site-init.el} init bestand}
+@entry{site-load.el init bestand}{201}{@file {site-load.el} init bestand}
 @entry{defcustom}{201}{@code {defcustom}}
 @entry{defsubst}{203}{@code {defsubst}}
 @entry{defconst}{203}{@code {defconst}}
-@entry{.emacs file, beginning of}{203}{@file {.emacs} file, beginning of}
-@entry{Per-buffer, local variables list}{204}{Per-buffer, local variables list}
-@entry{Local variables list, per-buffer,}{204}{Local variables list, per-buffer,}
-@entry{Automatic mode selection}{204}{Automatic mode selection}
-@entry{Mode selection, automatic}{204}{Mode selection, automatic}
-@entry{Text Mode turned on}{205}{Text Mode turned on}
-@entry{Auto Fill mode turned on}{205}{Auto Fill mode turned on}
+@entry{.emacs bestand, begin van}{203}{@file {.emacs} bestand, begin van}
+@entry{Per-buffer, lokale variabelen lijst}{205}{Per-buffer, lokale variabelen lijst}
+@entry{Local variables list, per-buffer,}{205}{Local variables list, per-buffer,}
+@entry{Automatische mode selectie}{205}{Automatische mode selectie}
+@entry{Mode selectie, automatisch}{205}{Mode selectie, automatisch}
+@entry{Text Mode aangezet}{205}{Text Mode aangezet}
+@entry{Auto Fill mode aangezet}{205}{Auto Fill mode aangezet}
 @entry{add-hook}{205}{@code {add-hook}}
 @entry{Mail aliases}{206}{Mail aliases}
-@entry{Tabs, preventing}{206}{Tabs, preventing}
+@entry{Tabs, voorkomen}{206}{Tabs, voorkomen}
 @entry{indent-tabs-mode}{206}{@code {indent-tabs-mode}}
 @entry{compare-windows}{207}{@code {compare-windows}}
-@entry{Setting a key globally}{207}{Setting a key globally}
-@entry{Keymap global set}{207}{Keymap global set}
-@entry{Key setting globally}{207}{Key setting globally}
+@entry{Een globale key zetten}{207}{Een globale key zetten}
+@entry{Keymap globaal zetten}{207}{Keymap globaal zetten}
+@entry{Key globaal zetten}{207}{Key globaal zetten}
 @entry{keymap-global-set}{207}{@code {keymap-global-set}}
 @entry{occur}{207}{@code {occur}}
 @entry{keymap-global-unset}{207}{@code {keymap-global-unset}}
-@entry{Unbinding key}{207}{Unbinding key}
-@entry{Key unbinding}{207}{Key unbinding}
+@entry{Ontkoppelen toets}{207}{Ontkoppelen toets}
+@entry{Toets ontkoppelen}{207}{Toets ontkoppelen}
 @entry{list-buffers, rebound}{208}{@code {list-buffers@r {, rebound}}}
-@entry{buffer-menu, bound to key}{208}{@code {buffer-menu@r {, bound to key}}}
+@entry{buffer-menu, gebonden aan een toetscombinatie}{208}{@code {buffer-menu@r {, gebonden aan een toetscombinatie}}}
 @entry{global-set-key}{208}{@code {global-set-key}}
-@entry{Global set key}{208}{Global set key}
+@entry{Globaal instellen toestcombinatie}{208}{Globaal instellen toestcombinatie}
 @entry{global-unset-key}{208}{@code {global-unset-key}}
 @entry{Keymaps}{208}{Keymaps}
-@entry{Rebinding keys}{208}{Rebinding keys}
-@entry{Loading files}{209}{Loading files}
+@entry{Toestcombinaties opnieuw binden}{208}{Toestcombinaties opnieuw binden}
+@entry{Bestanden laden}{209}{Bestanden laden}
 @entry{load-path}{210}{@code {load-path}}
 @entry{load-library}{210}{@code {load-library}}
 @entry{autoload}{210}{@code {autoload}}
 @entry{line-to-top-of-window}{211}{@code {line-to-top-of-window}}
-@entry{Simple extension in .emacs file}{211}{Simple extension in @file {.emacs} file}
-@entry{Conditional 'twixt two versions of Emacs}{212}{Conditional 'twixt two versions of Emacs}
-@entry{Version of Emacs, choosing}{212}{Version of Emacs, choosing}
-@entry{Emacs version, choosing}{212}{Emacs version, choosing}
-@entry{Key bindings, fixing}{215}{Key bindings, fixing}
-@entry{Bindings, key, fixing unpleasant}{215}{Bindings, key, fixing unpleasant}
-@entry{mode-line-format}{216}{@code {mode-line-format}}
-@entry{Mode line format}{216}{Mode line format}
-@entry{Properties, in mode line example}{216}{Properties, in mode line example}
-@entry{debugging}{218}{debugging}
-@entry{debug}{218}{@code {debug}}
-@entry{triangle-bugged}{218}{@code {triangle-bugged}}
-@entry{debug-on-entry}{219}{@code {debug-on-entry}}
-@entry{cancel-debug-on-entry}{221}{@code {cancel-debug-on-entry}}
-@entry{debug-on-quit}{221}{@code {debug-on-quit}}
-@entry{(debug) in code}{221}{@code {(debug)} in code}
-@entry{Source level debugger}{221}{Source level debugger}
-@entry{edebug}{221}{@code {edebug}}
-@entry{de-de}{226}{@code {de-de}}
-@entry{Duplicated words function}{226}{Duplicated words function}
-@entry{Words, duplicated}{226}{Words, duplicated}
-@entry{Kill ring handling}{228}{Kill ring handling}
-@entry{Handling the kill ring}{228}{Handling the kill ring}
-@entry{Ring, making a list like a}{228}{Ring, making a list like a}
-@entry{current-kill}{228}{@code {current-kill}}
-@entry{zerop}{230}{@code {zerop}}
-@entry{error}{230}{@code {error}}
-@entry{global variable defined}{232}{@samp {global variable} defined}
-@entry{variable, global, defined}{232}{@samp {variable, global}, defined}
-@entry{yank}{233}{@code {yank}}
-@entry{yank-pop}{234}{@code {yank-pop}}
-@entry{ring.el file}{235}{@file {ring.el} file}
-@entry{print-graph varlist}{237}{@code {print-graph} varlist}
-@entry{Axis, print vertical}{237}{Axis, print vertical}
-@entry{Y axis printing}{237}{Y axis printing}
-@entry{Vertical axis printing}{237}{Vertical axis printing}
-@entry{Print vertical axis}{237}{Print vertical axis}
-@entry{% (remainder function)}{238}{@code {% @r {(remainder function)}}}
-@entry{Remainder function, %}{238}{Remainder function, @code {%}}
-@entry{Y-axis-label-spacing}{240}{@code {Y-axis-label-spacing}}
-@entry{number-to-string}{240}{@code {number-to-string}}
-@entry{Y-axis-tic}{241}{@code {Y-axis-tic}}
-@entry{make-string}{241}{@code {make-string}}
-@entry{Y-axis-column}{242}{@code {Y-axis-column}}
-@entry{print-Y-axis}{243}{@code {print-Y-axis}}
-@entry{Axis, print horizontal}{244}{Axis, print horizontal}
-@entry{X axis printing}{244}{X axis printing}
-@entry{Print horizontal axis}{244}{Print horizontal axis}
-@entry{Horizontal axis printing}{244}{Horizontal axis printing}
-@entry{print-X-axis-tic-line}{246}{@code {print-X-axis-tic-line}}
-@entry{X-axis-element}{247}{@code {X-axis-element}}
-@entry{print-X-axis-numbered-line}{247}{@code {print-X-axis-numbered-line}}
-@entry{print-X-axis}{247}{@code {print-X-axis}}
-@entry{Printing the whole graph}{248}{Printing the whole graph}
-@entry{Whole graph printing}{248}{Whole graph printing}
-@entry{Graph, printing all}{248}{Graph, printing all}
-@entry{Y-axis-column Final version.}{249}{@code {Y-axis-column @r {Final version.}}}
-@entry{graph-body-print Final version.}{249}{@code {graph-body-print @r {Final version.}}}
-@entry{print-graph Final version.}{250}{@code {print-graph @r {Final version.}}}
-@entry{Anonymous function}{252}{Anonymous function}
-@entry{lambda}{252}{@code {lambda}}
-@entry{mapcar}{254}{@code {mapcar}}
-@entry{Bug, most insidious type}{255}{Bug, most insidious type}
-@entry{Insidious type of bug}{255}{Insidious type of bug}
-@entry{FDL, GNU Free Documentation License}{260}{FDL, GNU Free Documentation License}
+@entry{Eenvoudige uitbreiding in de .emacs bestand}{211}{Eenvoudige uitbreiding in de @file {.emacs} bestand}
+@entry{Conditional tussen twee versies van Emacs}{212}{Conditional tussen twee versies van Emacs}
+@entry{Versie van Emacs, kiezen}{212}{Versie van Emacs, kiezen}
+@entry{Emacs versie, kiezen}{212}{Emacs versie, kiezen}
+@entry{Kebindings, verbeteren}{216}{Kebindings, verbeteren}
+@entry{Bindings, key, verbeteren onplezierige}{216}{Bindings, key, verbeteren onplezierige}
+@entry{mode-line-format}{217}{@code {mode-line-format}}
+@entry{Mode line format}{217}{Mode line format}
+@entry{Eigenschappen in het mode line voorbeeld}{218}{Eigenschappen in het mode line voorbeeld}
+@entry{debuggen}{220}{debuggen}
+@entry{debug}{220}{@code {debug}}
+@entry{triangle-bugged}{220}{@code {triangle-bugged}}
+@entry{debug-on-entry}{221}{@code {debug-on-entry}}
+@entry{cancel-debug-on-entry}{223}{@code {cancel-debug-on-entry}}
+@entry{debug-on-quit}{223}{@code {debug-on-quit}}
+@entry{(debug) in code}{223}{@code {(debug)} in code}
+@entry{Source level debugger}{223}{Source level debugger}
+@entry{edebug}{223}{@code {edebug}}
+@entry{de-de}{228}{@code {de-de}}
+@entry{Duplicated words function}{228}{Duplicated words function}
+@entry{Words, duplicated}{228}{Words, duplicated}
+@entry{Kill ring handling}{230}{Kill ring handling}
+@entry{Handling the kill ring}{230}{Handling the kill ring}
+@entry{Ring, making a list like a}{230}{Ring, making a list like a}
+@entry{current-kill}{230}{@code {current-kill}}
+@entry{zerop}{232}{@code {zerop}}
+@entry{error}{232}{@code {error}}
+@entry{global variable defined}{234}{@samp {global variable} defined}
+@entry{variable, global, defined}{234}{@samp {variable, global}, defined}
+@entry{yank}{235}{@code {yank}}
+@entry{yank-pop}{236}{@code {yank-pop}}
+@entry{ring.el file}{237}{@file {ring.el} file}
+@entry{print-graph varlist}{239}{@code {print-graph} varlist}
+@entry{Axis, print vertical}{239}{Axis, print vertical}
+@entry{Y axis printing}{239}{Y axis printing}
+@entry{Vertical axis printing}{239}{Vertical axis printing}
+@entry{Print vertical axis}{239}{Print vertical axis}
+@entry{% (remainder function)}{240}{@code {% @r {(remainder function)}}}
+@entry{Remainder function, %}{240}{Remainder function, @code {%}}
+@entry{Y-axis-label-spacing}{242}{@code {Y-axis-label-spacing}}
+@entry{number-to-string}{242}{@code {number-to-string}}
+@entry{Y-axis-tic}{243}{@code {Y-axis-tic}}
+@entry{make-string}{243}{@code {make-string}}
+@entry{Y-axis-column}{244}{@code {Y-axis-column}}
+@entry{print-Y-axis}{245}{@code {print-Y-axis}}
+@entry{Axis, print horizontal}{246}{Axis, print horizontal}
+@entry{X axis printing}{246}{X axis printing}
+@entry{Print horizontal axis}{246}{Print horizontal axis}
+@entry{Horizontal axis printing}{246}{Horizontal axis printing}
+@entry{print-X-axis-tic-line}{248}{@code {print-X-axis-tic-line}}
+@entry{X-axis-element}{249}{@code {X-axis-element}}
+@entry{print-X-axis-numbered-line}{249}{@code {print-X-axis-numbered-line}}
+@entry{print-X-axis}{249}{@code {print-X-axis}}
+@entry{Printing the whole graph}{250}{Printing the whole graph}
+@entry{Whole graph printing}{250}{Whole graph printing}
+@entry{Graph, printing all}{250}{Graph, printing all}
+@entry{Y-axis-column Final version.}{251}{@code {Y-axis-column @r {Final version.}}}
+@entry{graph-body-print Final version.}{251}{@code {graph-body-print @r {Final version.}}}
+@entry{print-graph Final version.}{252}{@code {print-graph @r {Final version.}}}
+@entry{Anonymous function}{254}{Anonymous function}
+@entry{lambda}{254}{@code {lambda}}
+@entry{mapcar}{256}{@code {mapcar}}
+@entry{Bug, most insidious type}{257}{Bug, most insidious type}
+@entry{Insidious type of bug}{257}{Insidious type of bug}
+@entry{FDL, GNU Free Documentation License}{262}{FDL, GNU Free Documentation License}

@@ -619,8 +619,8 @@ Jouw ‘.emacs’ bestand
 
 
 
-* Default configuratie::     Default configuratie
-* Site-wide init::           Je kunt systeem-brede init bestanden schrijven.
+* Standaard configuratie::   Standaard configuratie
+* Systeem-brede init::       Je kunt systeem-brede init bestanden schrijven.
 * defcustom::                Emacs schrijft de code voor je.
 * Een init bestand beginnen::  Hoe een ‘.emacs’ init bestand te
                                  schrijven.
@@ -13471,18 +13471,19 @@ File: emacs-lisp-intro-nl.info,  Node: Initialisatie van Emacs,  Next: Debuggen.
 16 Jouw ‘.emacs’ bestand
 ************************
 
-"You don't have to like Emacs to like it"--this seemingly paradoxical
-statement is the secret of GNU Emacs.  The plain, out-of-the-box Emacs
-is a generic tool.  Most people who use it customize it to suit
-themselves.
+"'Je hoeft Emacs niet leuk te vinden om het leuk te vinden"'--deze
+schijnbaar paradoxale uitspraak is het geheim van GNU Emacs.  De gewone,
+out-of-the-box Emacs is een generieke tool.  De meeste mensen die het
+gebruiken passen het aan naar hun eigen keuze.
 
-   GNU Emacs is mostly written in Emacs Lisp; this means that by writing
-expressions in Emacs Lisp you can change or extend Emacs.
+   GNU Emacs is voornamelijk geschreven in Emacs Lisp.  Dit betekent dat
+je door het schrijven van expressies in Emacs Lisp Emacs kan veranderen
+en uitbreiden.
 
 * Menu:
 
-* Default configuratie::     Default configuratie
-* Site-wide init::           Je kunt systeem-brede init bestanden schrijven.
+* Standaard configuratie::   Standaard configuratie
+* Systeem-brede init::       Je kunt systeem-brede init bestanden schrijven.
 * defcustom::                Emacs schrijft de code voor je.
 * Een init bestand beginnen::  Hoe een ‘.emacs’ init bestand te
                                  schrijven.
@@ -13499,125 +13500,130 @@ expressions in Emacs Lisp you can change or extend Emacs.
 * Mode line::                Hoe je mode line aan te passen
 
 
-File: emacs-lisp-intro-nl.info,  Node: Default configuratie,  Next: Site-wide init,  Up: Initialisatie van Emacs
+File: emacs-lisp-intro-nl.info,  Node: Standaard configuratie,  Next: Systeem-brede init,  Up: Initialisatie van Emacs
 
-Emacs's Default Configuration
-=============================
+Emacs standaard configuratie
+============================
 
-There are those who appreciate Emacs's default configuration.  After
-all, Emacs starts you in C mode when you edit a C file, starts you in
-Fortran mode when you edit a Fortran file, and starts you in Fundamental
-mode when you edit an unadorned file.  This all makes sense, if you do
-not know who is going to use Emacs.  Who knows what a person hopes to do
-with an unadorned file?  Fundamental mode is the right default for such
-a file, just as C mode is the right default for editing C code.  (Enough
-programming languages have syntaxes that enable them to share or nearly
-share features, so C mode is now provided by CC mode, the C Collection.)
+Er zijn mensen die de Emacs standaard configuratie waarderen.  Emacs
+start tenslotte in C mode wanneer je een C-bestand edit, start in
+Fortran mode wanneer je een Fortran-bestand edit en start in Fundamental
+mode wanneer je een platte tekst bestand edit.  Dit is allemaal logisch
+wanneer je niet weet wie Emacs gaat gebruiken.  Wie weet wat iemand
+hoopt te doen met een platte tekst bestand?  De Fundamental mode is de
+juiste stndaard voor zo'n bestand, net als C mode de juiste standaard is
+voor het editten van C code.  (Genoeg programmeertalen hebben een syntax
+die het mogelijk maakt eigenschappen te delen of bijna te delen,
+waardoor C mode nu door CC mode wordt geleverd, de C Collectie.)
 
-   But when you do know who is going to use Emacs--you, yourself--then
-it makes sense to customize Emacs.
+   Maar wanneer je weet wie Emacs gaat gebruiken--jij, jezelf--dan is
+het logisch Emacs aan te passen.
 
-   For example, I seldom want Fundamental mode when I edit an otherwise
-undistinguished file; I want Text mode.  This is why I customize Emacs:
-so it suits me.
+   Ik gebruik bijvoorbeeld zelden Fundamental mode wanneer ik een platte
+tekst bestand edit, dan wil ik Text mode.  Dat is waarom ik Emacs
+aanpas: zo past het goed bij me.
 
-   You can customize and extend Emacs by writing or adapting a
-‘~/.emacs’ file.  This is your personal initialization file; its
-contents, written in Emacs Lisp, tell Emacs what to do.(1)
+   Je kunt Emacs aanpassen en uitbreiden door een ‘~/.emacs’ te maken of
+aan te passen.  Dit is je persoonlijke initialisatiebestand.  De inhoud,
+geschreven in Emacs Lisp, vertelt Emacs wat te doen.(1)
 
-   A ‘~/.emacs’ file contains Emacs Lisp code.  You can write this code
-yourself; or you can use Emacs's ‘customize’ feature to write the code
-for you.  You can combine your own expressions and auto-written
-Customize expressions in your ‘.emacs’ file.
+   Een ‘~/.emacs’ bestand bevat Emacs Lisp code.  Je kunt deze code zelf
+schrijven of je gebruikt de ‘customize’ eigenschap van Emacs en laat de
+code voor je schrijven.  Je kunt je eigen expressies en de automatisch
+geschreven Customize expressies in je ‘.emacs’ bestand combineren.
 
-   (I myself prefer to write my own expressions, except for those,
-particularly fonts, that I find easier to manipulate using the
-‘customize’ command.  I combine the two methods.)
+   (Ik geef er zelf voorkeur aan mijn eigen expressies te schrijven,
+behalve die makkelijker te manipuleren zijn met het ‘customize’
+commando, zoals fonts.  Ik combineer de twee methoden.)
 
-   Most of this chapter is about writing expressions yourself.  It
-describes a simple ‘.emacs’ file; for more information, see *note The
-Init File: (emacs)Init File, and *note The Init File: (elisp)Init File.
+   Het grootste deel van dit hoofdstuk gaat over het zelf expressies
+schrijven.  Het beschrijft een eenvoudig ‘.emacs’ bestand, voor meer
+informatie zie *note The Init File: (emacs)Init File, en *note The Init
+File: (elisp)Init File.
 
    ---------- Footnotes ----------
 
-   (1) You may also add ‘.el’ to ‘~/.emacs’ and call it a ‘~/.emacs.el’
-file.  In the past, you were forbidden to type the extra keystrokes that
-the name ‘~/.emacs.el’ requires, but now you may.  The new format is
-consistent with the Emacs Lisp file naming conventions; the old format
-saves typing.
+   (1) Je kunt ook ‘.el’ aan ‘~/.emacs’ toevoegen en het ‘~/.emacs.el’
+noemen.  In het verleden mocht je niet de extra toetsaanslagen typen die
+de bestandnaam ‘~/.emacs.el’ vereist, maar nu mag dat.  Het nieuwe
+formaat is consistent met de Emacs Lisp naamgeving conventies, het oude
+formaat spaart typen.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Site-wide init,  Next: defcustom,  Prev: Default configuratie,  Up: Initialisatie van Emacs
+File: emacs-lisp-intro-nl.info,  Node: Systeem-brede init,  Next: defcustom,  Prev: Standaard configuratie,  Up: Initialisatie van Emacs
 
-16.1 Site-wide Initialization Files
-===================================
+16.1 Systeembrede initialisatiebestanden
+========================================
 
-In addition to your personal initialization file, Emacs automatically
-loads various site-wide initialization files, if they exist.  These have
-the same form as your ‘.emacs’ file, but are loaded by everyone.
+Naast je persoonlijke initialisatiebestand laadt Emacs automatisch
+verschillende systeembrede initialisatiebestanden, als die bestaan.
+Deze hebben dezelfde vorm als je ‘.emacs’ bestand, maar worden door
+iedereen geladen.
 
-   Two site-wide initialization files, ‘site-load.el’ and
-‘site-init.el’, are loaded into Emacs and then dumped if a dumped
-version of Emacs is created, as is most common.  (Dumped copies of Emacs
-load more quickly.  However, once a file is loaded and dumped, a change
-to it does not lead to a change in Emacs unless you load it yourself or
-re-dump Emacs.  *Note Building Emacs: (elisp)Building Emacs, and the
-‘INSTALL’ file.)
+   Twee systeembrede initialisatiebestanden, ‘site-load.el’ and
+‘site-init.el’, worden in Emacs geleden en dan gedumpt wanneer een
+gedumpte versie van Emacs wordt gemaakt, wat het meest gebruikelijk is.
+(Gedumpte exemplaren van Emacs laden sneller.  Wanneer echter een
+bestand is geladen en gedumpt, leidt een verandering er van niet tot een
+verandering in Emacs, tenzij je het zelf laadt en opnieuw Emacs dumpt.
+*Note Building Emacs: (elisp)Building Emacs, en het ‘INSTALL’ bestand.).
 
-   Three other site-wide initialization files are loaded automatically
-each time you start Emacs, if they exist.  These are ‘site-start.el’,
-which is loaded _before_ your ‘.emacs’ file, and ‘default.el’, and the
-terminal type file, which are both loaded _after_ your ‘.emacs’ file.
+   Drie andere systeembrede initialisatiebestanden worden elke keer dat
+je Emacs start automatisch geladen, wanneer die bestaan.  Dit zijn
+‘site-start.el’, die _voorafgaand_ aan je ‘.emacs’ bestand geladen
+wordt, en ‘default.el’ en het terminal type bestand, die beide _na_ je
+‘.emacs’ bestand geladen worden.
 
-   Settings and definitions in your ‘.emacs’ file will overwrite
-conflicting settings and definitions in a ‘site-start.el’ file, if it
-exists; but the settings and definitions in a ‘default.el’ or terminal
-type file will overwrite those in your ‘.emacs’ file.  (You can prevent
-interference from a terminal type file by setting ‘term-file-prefix’ to
-‘nil’.  *Note A Simple Extension: Simple Extension.)
+   De instellingen en definities in je ‘.emacs’ bestand overschrijven
+conflicterende instellingen en definities in een ‘site-start.el’
+bestand, als die er is, maar de instellingen en definities in een
+‘default.el’ en een terminal type bestand overschrijven die in je
+‘.emacs’ bestand.  (Je kunt interferenties tussen het terminal type
+bestand voorkomen door het instellen van ‘term-file-prefix’ op ‘nil’.
+*Note Een eennvoudige uitbreiding: Eenvoudige uitbreiding.)
 
-   The ‘INSTALL’ file that comes in the distribution contains
-descriptions of the ‘site-init.el’ and ‘site-load.el’ files.
+   Het ‘INSTALL’ bestand dat bij de distributie meekomt bevat
+beschrijvingen van de ‘site-init.el’ en ‘site-load.el’ bestanden.
 
-   The ‘loadup.el’, ‘startup.el’, and ‘loaddefs.el’ files control
-loading.  These files are in the ‘lisp’ directory of the Emacs
-distribution and are worth perusing.
+   De ‘loadup.el’, ‘startup.el’ en ‘loaddefs.el’ bestanden beheren het
+laden.  Deze bestanden staan in de ‘lisp’ directories van de Emacs
+distributie en zijn het waard om te bekijken.
 
-   The ‘loaddefs.el’ file contains a good many suggestions as to what to
-put into your own ‘.emacs’ file, or into a site-wide initialization
-file.
+   Het ‘loaddefs.el’ bestand bevat veel goede suggesties over wat in je
+‘.emacs’ bestand te zetten, of in een systeembreed initialisatiebestand.
 
 
-File: emacs-lisp-intro-nl.info,  Node: defcustom,  Next: Een init bestand beginnen,  Prev: Site-wide init,  Up: Initialisatie van Emacs
+File: emacs-lisp-intro-nl.info,  Node: defcustom,  Next: Een init bestand beginnen,  Prev: Systeem-brede init,  Up: Initialisatie van Emacs
 
 16.2 Variabelen specificeren met ‘defcustom’
 ============================================
 
-You can specify variables using ‘defcustom’ so that you and others can
-then use Emacs's ‘customize’ feature to set their values.  (You cannot
-use ‘customize’ to write function definitions; but you can write
-‘defuns’ in your ‘.emacs’ file.  Indeed, you can write any Lisp
-expression in your ‘.emacs’ file.)
+Je kunt variabelen specificeren met ‘defcustom’ waardoor jij en anderen
+de Emacs ‘customize’ eigenschap kunnen gebruiken om hun waarden te
+zetten.  (Je kunt ‘customize’ niet gebruiken om functiedefinities te
+schrijven.  Maar je kunt ‘defuns’ in je ‘.emacs’ bestand schrijven.  Je
+kunt elke Lisp expressie in je ‘.emacs’ bestand zetten.)
 
-   The ‘customize’ feature depends on the ‘defcustom’ macro.  Although
-you can use ‘defvar’ or ‘setq’ for variables that users set, the
-‘defcustom’ macro is designed for the job.
+   De ‘customize’ eigenschap hangt af van de ‘defcustom’ macro.  Hoewel
+je ‘defvar’ en ‘setq’ kunt gebruiken voor variabelen die gebruikers
+instellen, is de ‘defcustom’ macro voor die taak gemaakt.
 
-   You can use your knowledge of ‘defvar’ for writing the first three
-arguments for ‘defcustom’.  The first argument to ‘defcustom’ is the
-name of the variable.  The second argument is the variable's initial
-value, if any; and this value is set only if the value has not already
-been set.  The third argument is the documentation.
+   Je kunt je kennis van ‘defvar’ gebruiken voor het schrijven van de
+eerste drie argumenten van ‘defcustom’.  Het eerste argument van
+‘defcustom’ is de naam van de variabele.  Het tweede argument is de
+initiële waarde van de variabele, als die er is, en deze waarde wordt
+alleen ingesteld als de variabele niet al is gezet.  Het derde argument
+is de documentatie.
 
-   The fourth and subsequent arguments to ‘defcustom’ specify types and
-options; these are not featured in ‘defvar’.  (These arguments are
-optional.)
+   Het vierde en volgende argument voor ‘defcustom’ specificeren types
+en opties.  Deze zijn niet opgenomen in ‘defvar’.  (Deze argumenten zijn
+optioneel.)
 
-   Each of these arguments consists of a keyword followed by a value.
-Each keyword starts with the colon character ‘:’.
+   Elk van deze argumenten bestaan uit een sleutelwoord gevolgd door een
+waarde.  Elk sleutelwoord start met een dubbelepunt karakter ‘:’.
 
-   For example, the customizable user option variable ‘text-mode-hook’
-looks like this:
+   De aanpasbare gebruikersoptie variabele ‘text-mode-hook’ ziet er zo
+uit:
 
      (defcustom text-mode-hook nil
        "Normal hook run when entering Text mode and many related modes."
@@ -13625,44 +13631,47 @@ looks like this:
        :options '(turn-on-auto-fill flyspell-mode)
        :group 'wp)
 
-The name of the variable is ‘text-mode-hook’; it has no default value;
-and its documentation string tells you what it does.
+De naam van de variabele is ‘text-mode-hook’.  Het heeft geen default
+waarde en de documentatiestring vertelt je wat het doet.
 
-   The ‘:type’ keyword tells Emacs the kind of data to which
-‘text-mode-hook’ should be set and how to display the value in a
+   Het sleutelwoord ‘:type’ vertelt Emacs de datasoort waarop de
+‘text-mode-hook’ kan worden gezet en hoe de waarde te tonen in het
 Customization buffer.
 
-   The ‘:options’ keyword specifies a suggested list of values for the
-variable.  Usually, ‘:options’ applies to a hook.  The list is only a
-suggestion; it is not exclusive; a person who sets the variable may set
-it to other values; the list shown following the ‘:options’ keyword is
-intended to offer convenient choices to a user.
+   Het sleutelwoord ‘:options’ specificeert een gesuggereerde lijst van
+waarden voor de variabele.  Meestal worden ‘:options’ toegepast op een
+hook.  De lijst is alleen een suggestie en is niet exclusief, iemand die
+de variabele zet kan het op een andere waarde zetten.  De lijst die
+volgend op het sleutelwoord ‘:options’ getoond wordt is bedoeld om een
+makkelijke keuze voor de gebruiker te bieden.
 
-   Finally, the ‘:group’ keyword tells the Emacs Customization command
-in which group the variable is located.  This tells where to find it.
+   Het sleutelwoord ‘:group’ tenslotte vertelt het Emacs Customization
+commando in welke groep de variabele zich bevindt.  Het vertelt waar het
+te vinden is.
 
-   The ‘defcustom’ macro recognizes more than a dozen keywords.  For
-more information, see *note Writing Customization Definitions:
+   De ‘defcustom’ macro herkent meer dan een dozijn sleutelwoorden.
+Voor meer informatie, zie *note Writing Customization Definitions:
 (elisp)Customization.
 
-   Consider ‘text-mode-hook’ as an example.
+   Beschouw ‘text-mode-hook’ als een voorbeeld.
 
-   There are two ways to customize this variable.  You can use the
-customization command or write the appropriate expressions yourself.
+   Er zijn twee manieren om deze variabele aan te passen.  Je kunt het
+customize commando gebruiken of je schrijft de betreffende expressies
+zelf.
 
-   Using the customization command, you can type:
+   Om het customize commando te gebruiken, typ je:
 
      M-x customize
 
-and find that the group for editing files of text is called "Text".
-Enter that group.  Text Mode Hook is the first member.  You can click on
-its various options, such as ‘turn-on-auto-fill’, to set the values.
-After you click on the button to
+en ontdek dat de groep voor het editten van tekstbestanden "Text" heet.
+Ga die groep in.  Text Mode Hook is het eerste onderdeel.  Je kunt op de
+verschillende opties klikken, zoals ‘turn-on-auto-fill’, om de waarden
+te zetten.  Daarna klik je op de button en kies je
 
      Save for Future Sessions
 
-Emacs will write an expression into your ‘.emacs’ file.  It will look
-like this:
+Emacs schrijft een expressie in je ‘.emacs’ bestand.  Het ziet er zo
+uit:
 
      (custom-set-variables
        ;; custom-set-variables was added by Custom.
@@ -13671,54 +13680,56 @@ like this:
        ;; If there is more than one, they won't work right.
       '(text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)))
 
-(The ‘text-mode-hook-identify’ function tells
-‘toggle-text-mode-auto-fill’ which buffers are in Text mode.  It comes
-on automatically.)
+(De functie ‘text-mode-hook-identify’ vertelt ‘toggle-text-mode-
+auto-fill’ welke buffers in Text mode zijn.  Het schakelt automatisch
+aan.)
 
-   The ‘custom-set-variables’ function works somewhat differently than a
-‘setq’.  While I have never learned the differences, I modify the
-‘custom-set-variables’ expressions in my ‘.emacs’ file by hand: I make
-the changes in what appears to me to be a reasonable manner and have not
-had any problems.  Others prefer to use the Customization command and
-let Emacs do the work for them.
+   De functie ‘custom-set-variables’ werkt een beetje anders dan een
+‘setq’.  Hoewel ik nooit geleerd heb wat de verschillen zijn, wijzig ik
+handmatig de ‘custom-set-variables’ expressies: ik maak wijzigingen de
+mij redelijke lijken en heb nooit problemen gehad.  Anderen geven de
+voorkeur om het customize commando te gebruiken en laten Emacs het werk
+voor hen doen.
 
-   Another ‘custom-set-...’ function is ‘custom-set-faces’.  This
-function sets the various font faces.  Over time, I have set a
-considerable number of faces.  Some of the time, I re-set them using
-‘customize’; other times, I simply edit the ‘custom-set-faces’
-expression in my ‘.emacs’ file itself.
+   Een andere ‘custom-set-...’ functie is ‘custom-set-faces’.  Deze
+functie stelt verschillende lettertypen in.  In de loop der tijd heb ik
+flink wat lettertypen ingesteld.  Af en toe zet ik ze opnieuw met
+‘customize’ en af en toe wijzig ik eenvoudig zelf de ‘custom-set-faces’
+expressie in mijn ‘.emacs’ bestand.
 
-   The second way to customize your ‘text-mode-hook’ is to set it
-yourself in your ‘.emacs’ file using code that has nothing to do with
-the ‘custom-set-...’ functions.
+   Een tweede manier om de ‘text-mode-hook’ aan te passen is het zelf te
+doen in je ‘.emacs’ bestand met code die niets van doen heeft met de
+‘custom-set-...’ functies.
 
-   When you do this, and later use ‘customize’, you will see a message
-that says
+   Wanneer je dit doet en dan later ‘customize’ gebruikt, zie je een
+boodschap die zegt:
 
      CHANGED outside Customize; operating on it here may be unreliable.
 
-   This message is only a warning.  If you click on the button to
+   Deze boodschap is slechts een waarschuwing.  Wanneer je op de button
+klikt om
 
      Save for Future Sessions
 
-Emacs will write a ‘custom-set-...’ expression near the end of your
-‘.emacs’ file that will be evaluated after your hand-written expression.
-It will, therefore, overrule your hand-written expression.  No harm will
-be done.  When you do this, however, be careful to remember which
-expression is active; if you forget, you may confuse yourself.
+schrijft Emacs een ‘custom-set-...’ expressie aan het einde van je
+‘.emacs’ bestand die wordt geëvalueerd na je handschreven expressie.
+Het zal daardoor jouw handgeschreven expressie overrulen.  Dit kan geen
+kwaad.  Onthoudt welke expressie actief is als je dit doet.  Wanneer je
+dat vergeet kan je in de war raken.
 
-   So long as you remember where the values are set, you will have no
-trouble.  In any event, the values are always set in your initialization
-file, which is usually called ‘.emacs’.
+   Zolang je onthoudt elke waarden gezet zijn, heb je geen problemen.
+De waarden zijn in elk geval in je initialisatiebestand gezet, dat
+meestal ‘.emacs’ heet.
 
-   I myself use ‘customize’ for hardly anything.  Mostly, I write
-expressions myself.
+   Ik zelf gebruik ‘customize’ weinig.  Meestal schrijf ik zelf de
+expressies.
 
-   Incidentally, to be more complete concerning defines: ‘defsubst’
-defines an inline function.  The syntax is just like that of ‘defun’.
-‘defconst’ defines a symbol as a constant.  The intent is that neither
-programs nor users should ever change a value set by ‘defconst’.  (You
-can change it; the value set is a variable; but please do not.)
+   Overigens om meer compleet te zijn inzake de defines: ‘debsubst’
+definieert een inline functie.  De systax is net als die van ‘defun’.
+‘defconst’ definieert een symbool als een constante.  Het doel is dat
+zowel programma's als gebruikers nooit aan waarde wijzigen die gezet is
+met ‘defconst’.  (Je kunt het wijzigen, de waarde is gezet als een
+variabele, maar doe dat liever niet.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Een init bestand beginnen,  Next: Tekst en auto-fill,  Prev: defcustom,  Up: Initialisatie van Emacs
@@ -13726,39 +13737,40 @@ File: emacs-lisp-intro-nl.info,  Node: Een init bestand beginnen,  Next: Tekst e
 16.3 Starten met een ‘.emacs’ bestand
 =====================================
 
-When you start Emacs, it loads your ‘.emacs’ file unless you tell it not
-to by specifying ‘-q’ on the command line.  (The ‘emacs -q’ command
-gives you a plain, out-of-the-box Emacs.)
+Wanneer je Emacs start laadt het je ‘.emacs’ bestand, tenzij je het zegt
+dat niet te doen door ‘-q’ op de commandline te specificeren.  (Het
+commando ‘emacs -q’ geeft je een standaard out-of-the-box Emacs.)
 
-   A ‘.emacs’ file contains Lisp expressions.  Often, these are no more
-than expressions to set values; sometimes they are function definitions.
+   Een ‘.emacs’ bestand bevat Lisp expressies.  Vaak zijn dit niet meer
+dan expressies om waarden te zetten.  Soms zijn het functiedefinities.
 
-   *Note The Init File ‘~/.emacs’: (emacs)Init File, for a short
-description of initialization files.
+   *Note The Init File ‘~/.emacs’: (emacs)Init File, voor een korte
+beschrijving van initialisatiebestanden.
 
-   This chapter goes over some of the same ground, but is a walk among
-extracts from a complete, long-used ‘.emacs’ file--my own.
+   Dit hoofdstuk behandelt een gedeelte van dit gebied, het is een
+wandeling tussen fragmenten van een compleet, lang gebruikt ‘.emacs’
+bestand--mijn eigen.
 
-   The first part of the file consists of comments: reminders to myself.
-By now, of course, I remember these things, but when I started, I did
-not.
+   Het eerste deel van het bestand bestaat uit commentaar: reminders
+voor mijzelf.  Nu onthoud ik die dingen wel natuurijk, maar toen ik
+startte deed ik dat niet.
 
      ;;;; Bob's .emacs file
      ; Robert J. Chassell
      ; 26 September 1985
 
-Look at that date!  I started this file a long time ago.  I have been
-adding to it ever since.
+Zie die datum!  Ik startte dit bestand een lange tijd geleden.
+Sindsdien heb ik er steeds aan toegevoegd.
 
      ; Each section in this file is introduced by a
      ; line beginning with four semicolons; and each
      ; entry is introduced by a line beginning with
      ; three semicolons.
 
-This describes the usual conventions for comments in Emacs Lisp.
-Everything on a line that follows a semicolon is a comment.  Two, three,
-and four semicolons are used as subsection and section markers.  (*Note
-(elisp)Comments::, for more about comments.)
+Dit beschrijft de gebruikelijke conventie voor commentaar in Emacs Lisp.
+Alles op een regel dat achter een puntkomma staat is commentaar.  Twee,
+drie en vier puntkomma's worden gebruikt om subsecties en secties te
+markeren.  (*Note (elisp)Comments::, voor meer over commentaar.
 
      ;;;; The Help Key
      ; Control-h is the help key;
@@ -13767,20 +13779,20 @@ and four semicolons are used as subsection and section markers.  (*Note
      ; For an explanation of the help facility,
      ; type control-h two times in a row.
 
-Just remember: type ‘C-h’ two times for help.
+Onthoud: typ twee keer ‘C-h’ voor help.
 
      ; To find out about any mode, type control-h m
      ; while in that mode.  For example, to find out
      ; about mail mode, enter mail mode and then type
      ; control-h m.
 
-"Mode help", as I call this, is very helpful.  Usually, it tells you all
-you need to know.
+"Mode help", zoals ik het noem, is erg behulpzaam.  Meestal vertelt het
+alles wat je moet weten.
 
-   Of course, you don't need to include comments like these in your
-‘.emacs’ file.  I included them in mine because I kept forgetting about
-Mode help or the conventions for comments--but I was able to remember to
-look here to remind myself.
+   Je hoeft natuurlijk geen commentaar zoals deze in je ‘.emacs’ bestand
+op te nemen.  Ik voegde ze in het mijne in omdat ik steeds Mode help
+vergat, net als de conventies voor commentaar--maar was altijd in staat
+te onthouden om hier te kijken om mijzelf te herinneren.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Tekst en auto-fill,  Next: Mail aliasen,  Prev: Een init bestand beginnen,  Up: Initialisatie van Emacs
@@ -13788,7 +13800,7 @@ File: emacs-lisp-intro-nl.info,  Node: Tekst en auto-fill,  Next: Mail aliasen, 
 16.4 Text and Auto Fill Mode
 ============================
 
-Now we come to the part that turns on Text mode and Auto Fill mode(1).
+Nu komen we bij het gedeelte dat Text mode en Auto fill aanzet(1).
 
      ;;; Text mode and Auto Fill mode
      ;; The next two lines put Emacs into Text mode
@@ -13797,95 +13809,101 @@ Now we come to the part that turns on Text mode and Auto Fill mode(1).
      (setq-default major-mode 'text-mode)
      (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-   Here is the first part of this ‘.emacs’ file that does something
-besides remind a forgetful human!
+   Hier is het eerste deel van dit ‘.emacs’ bestand dat iets doet,
+anders dan reminders voor een vergeetachtig mens!
 
-   The first of the two lines in parentheses tells Emacs to turn on Text
-mode when you find a file, _unless_ that file should go into some other
-mode, such as C mode.
+   De eerste twee regels tussen haakjes vertellen Emacs om Text mode aan
+te zetten wanneer je een bestand vindt, _behalve_ wanneer dat bestand in
+een andere mode zou moeten, zoals C mode.
 
-   When Emacs reads a file, it looks at the extension to the file name,
-if any.  (The extension is the part that comes after a ‘.’.)  If the
-file ends with a ‘.c’ or ‘.h’ extension then Emacs turns on C mode.
-Also, Emacs looks at first nonblank line of the file; if the line says
-‘-*- C -*-’, Emacs turns on C mode.  Emacs possesses a list of
-extensions and specifications that it uses automatically.  In addition,
-Emacs looks near the last page for a per-buffer, local variables list,
-if any.
+   Wanneer Emacs een bestand leest kijkt het naar de extensie van de
+bestandsnaam, als die er is.  (De extensie is het gedeelte dat komt na
+een ‘.’.)  Wanneer het bestand eindigt met een ‘.c’ of ‘.h’ extensie dan
+zet Emacs C mode aan.  Ook kijkt Emacs naar de eerste niet-lege regel
+van het bestand.  Als de regel ‘-*- C -*-’ zegt, dan zet Emacs C mode
+aan.  Emacs beschikt over een lijst van extensies en specificaties die
+het automatisch gebruikt.  Daarnaast kijkt Emacs in de buurt van de
+laatste pagina voor een per-buffer lokale variabelen lijst, als die er
+is.
 
    *Note How Major Modes are Chosen: (emacs)Choosing Modes.
 
    *Note Local Variables in Files: (emacs)File Variables.
 
-   Now, back to the ‘.emacs’ file.
+   Nu terug naar het ‘.emacs’ bestand.
 
-   Here is the line again; how does it work?
+   Hier is de regel opnieuw.  Hoe werkt die?
 
      (setq-default major-mode 'text-mode)
 
-This line is a short, but complete Emacs Lisp expression.
+Deze regel is een korte, maar complete Emacs Lisp expressie.
 
-   We are already familiar with ‘setq’.  We use a similar macro
-‘setq-default’ to set the following variable, ‘major-mode’(2), to the
-subsequent value, which is ‘text-mode’.  The single-quote before
-‘text-mode’ tells Emacs to deal directly with the ‘text-mode’ symbol,
-not with whatever it might stand for.  *Note Setting the Value of a
-Variable: setq, for a reminder of how ‘setq’ works.  The main point is
-that there is no difference between the procedure you use to set a value
-in your ‘.emacs’ file and the procedure you use anywhere else in Emacs.
+   Wij zijn al bekend met ‘setq’.  Wij gebruiken een vergelijkbare macro
+‘setq-default’ om de volgende variabele, ‘major-mode’(2), op de
+daaropvolgende waarde te zetten, die ‘text-mode’ is.  Het enkele
+aanhalingsteken voor ‘text-mode’ vertelt Emacs om direct met het
+‘text-mode’ te werken en niet voor wat dan ook het staat.  *Note De
+waarde van een variabele zetten: setq, voor een herinnering van hoe
+‘setq’ werkt.  Het belangrijkste punt is dat er geen verschil is tussen
+een procedure die je gebruikt om een waarde te zetten in je ‘.emacs’
+bestand en een procedure die je ergens anders in Emacs gebruikt.
 
-   Here is the next line:
+   Hier is de volgende regel:
 
      (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-In this line, the ‘add-hook’ command adds ‘turn-on-auto-fill’ to the
-variable.
+In deze regel voegt het ‘add-hook’ commando ‘turn-on-auto-fill’ toe aan
+de variabele.
 
-   ‘turn-on-auto-fill’ is the name of a program, that, you guessed it!,
-turns on Auto Fill mode.
+   ‘turn-on-auto-fill’ is de naam van een programma, dat, je raadde
+het!, Auto Fill mode aanzet.
 
-   Every time Emacs turns on Text mode, Emacs runs the commands hooked
-onto Text mode.  So every time Emacs turns on Text mode, Emacs also
-turns on Auto Fill mode.
+   Elke keer als Emacs Text mode aanzet, dan voert Emacs de commando's
+uit die aan Text mode gehooked zijn.  Dus elk keer dat Emacs Text mode
+aanzet, zet Emacs ook Auto Fill mode aan.
 
-   In brief, the first line causes Emacs to enter Text mode when you
-edit a file, unless the file name extension, a first non-blank line, or
-local variables to tell Emacs otherwise.
+   In het kort, de eerste regel zort dat Emacs in Text mode gaat wanneer
+je een bestand bewerkt, tenzij de bestandnaam extensie, de eerste
+niet-lege regel of lokale variabelen Emacs anders zeggen.
 
-   Text mode among other actions, sets the syntax table to work
-conveniently for writers.  In Text mode, Emacs considers an apostrophe
-as part of a word like a letter; but Emacs does not consider a period or
-a space as part of a word.  Thus, ‘M-f’ moves you over ‘it's’.  On the
-other hand, in C mode, ‘M-f’ stops just after the ‘t’ of ‘it's’.
+   Text mode stelt, naast andere acties, de syntax table in om voor
+schrijvers makkelijk te werken.  In Text mode beschouwt Emacs een
+apostrof als onderdeel van een woord, net als een letter en beschouwt
+Emacs een punt en een spatie niet als onderdeel van een woord.  Dus
+verplaatst ‘M-f’ je over ‘it's’.  Anderzijds, in C mode stopt ‘M-f’
+direct achter de ‘t’ van ‘it's’.
 
-   The second line causes Emacs to turn on Auto Fill mode when it turns
-on Text mode.  In Auto Fill mode, Emacs automatically breaks a line that
-is too wide and brings the excessively wide part of the line down to the
-next line.  Emacs breaks lines between words, not within them.
+   De tweede regel zorgt dat Emacs Auto Fill mode aanzet wanneer het
+Text mode aanzet.  In Auto Fill mode breekt Emacs automatisch een regel
+die te breed is af en brengt het extreem brede deel van de regel terug
+naar de volgende regel.  Emacs breekt regels tussen woorden, niet midden
+in ze.
 
-   When Auto Fill mode is turned off, lines continue to the right as you
-type them.  Depending on how you set the value of ‘truncate-lines’, the
-words you type either disappear off the right side of the screen, or
-else are shown, in a rather ugly and unreadable manner, as a
-continuation line on the screen.
+   Wanneer Auto Fill mode uitstaat, dan lopen regels door naar rechts
+net zo lang als je ze typt.  Afhankelijk van hoe je de waarde van
+‘truncate-lines’ instelt verdwijnen de woorden die je typt aan de
+rechterkant van het scherm of worden in een nogal lelijke en onleesbare
+manier als een vervolgregel op het scherm getoond.
 
-   In addition, in this part of my ‘.emacs’ file, I tell the Emacs fill
-commands to insert two spaces after a colon:
+   Daarnaast vertel ik Emacs fill commando in dit deel van het ‘.emacs’
+bestand het Emacs fill commando twee spaties in te voegen na een dubbele
+punt:
 
      (setq colon-double-space t)
 
    ---------- Footnotes ----------
 
-   (1) This section suggests settings that are more suitable for
-writers.  For programmers, the default mode will be set to the
-corresponding prog-mode automatically based on the type of the file.
-And it's perfectly fine if you want to keep the fundamental mode as the
-default mode.
+   (1) Deze sectie stelt instellingen voor die meer geschikt zijn voor
+schrijvers.  Voor programmeurs wordt de default mode automatisch
+ingesteld op de corresponderende prog-mode gebaseerd op het soort
+bestand.  En is het helemaal goed als je de fundamental mode houdt als
+de standaard mode.
 
-   (2) We use ‘setq-default’ here because ‘text-mode’ is buffer-local.
-If we use ‘setq’, it will only apply to the current buffer, whereas
-using ‘setq-default’ will also apply to newly created buffers.  This is
-not recommended for programmers.
+   (2) Wij gebruiken hier ‘setq-default’ omdat ‘text-mode’ buffer-local
+is.  Wanneer we ‘setq’ gebruiken dan wordt het alleen op het huidige
+buffer toegepast, terwijl het gebruik van ‘setq-default’ ook van
+toepassing is op nieuw te maken buffers.  Dit wordt niet voor
+programmeurs aangeraden.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Mail aliasen,  Next: Indent Tabs Mode,  Prev: Tekst en auto-fill,  Up: Initialisatie van Emacs
@@ -13893,7 +13911,7 @@ File: emacs-lisp-intro-nl.info,  Node: Mail aliasen,  Next: Indent Tabs Mode,  P
 16.5 Mail aliasen
 =================
 
-Here is a ‘setq’ that turns on mail aliases, along with more reminders.
+Hier is een ‘setq’ die samen met meer reminders, mail aliases aanzet.
 
      ;;; Message mode
      ; To enter message mode, type 'C-x m'
@@ -13901,17 +13919,17 @@ Here is a ‘setq’ that turns on mail aliases, along with more reminders.
      ; type 'M-x rmail'
      (setq mail-aliases t)
 
-This ‘setq’ sets the value of the variable ‘mail-aliases’ to ‘t’.  Since
-‘t’ means true, the line says, in effect, "Yes, use mail aliases."
+Deze ‘setq’ zet de waarde van de variabele ‘mail-aliases’ op ‘t’.  Omdat
+‘t’ waar betekent, zegt deze regel in feite "Ja, gebruik mail aliases."
 
-   Mail aliases are convenient short names for long email addresses or
-for lists of email addresses.  The file where you keep your aliases is
-‘~/.mailrc’.  You write an alias like this:
+   Mail aliases zijn makkelijke korte namen voor lange e-mailaddressen
+of voor een lijst met e-mailadressen.  Het bestand waar je de aliases in
+opslaat is ‘~/.mailrc’.  Je schrijft een alias als volgt:
 
      alias geo george@foobar.wiz.edu
 
-When you write a message to George, address it to ‘geo’; the mailer will
-automatically expand ‘geo’ to the full address.
+Wanneer je een bericht aan George schrijft adresseer je het aan ‘geo’,
+de mailer breidt ‘geo’ automatisch uit tot het volledige adres.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Indent Tabs Mode,  Next: Key bindings,  Prev: Mail aliasen,  Up: Initialisatie van Emacs
@@ -13919,20 +13937,21 @@ File: emacs-lisp-intro-nl.info,  Node: Indent Tabs Mode,  Next: Key bindings,  P
 16.6 Indent Tabs Mode
 =====================
 
-By default, Emacs inserts tabs in place of multiple spaces when it
-formats a region.  (For example, you might indent many lines of text all
-at once with the ‘indent-region’ command.)  Tabs look fine on a terminal
-or with ordinary printing, but they produce badly indented output when
-you use TeX or Texinfo since TeX ignores tabs.
+Standaard voegt Emacs in plaats van meerdere spaties tabs in wanneer het
+een region formateert.  (Je kunt bijvoorbeeld meerdere regels tekst in
+een keer laten inspringen met het commando ‘indent-region’.)  Tabs zien
+er goed uit op een terminal of met gewoon afdrukken, maar zij produceren
+slecht ingesprongen output wanneer je TeX of Texinfo gebruikt omdat TeX
+tabs negeert.
 
-   The following turns off Indent Tabs mode:
+   Het volgende zet Indent Tabs mode uit:
 
      ;;; Prevent Extraneous Tabs
      (setq-default indent-tabs-mode nil)
 
-   Note that this line uses ‘setq-default’ rather than the ‘setq’ that
-we have seen before; ‘setq-default’ sets values only in buffers that do
-not have their own local values for the variable.
+   Merk op dat deze regel ‘setq-default’ gebruikt in plaats van ‘setq’
+dat we eerder gezien hebben.  Alleen in buffers die geen eigen lokale
+waarde voor de variabele hebben stelt ‘setq-default’ waarden in.
 
    *Note Tabs vs. Spaces: (emacs)Just Spaces.
 
@@ -13941,103 +13960,111 @@ not have their own local values for the variable.
 
 File: emacs-lisp-intro-nl.info,  Node: Key bindings,  Next: Keymaps,  Prev: Indent Tabs Mode,  Up: Initialisatie van Emacs
 
-16.7 Some Key Bindings
-======================
+16.7 Enkele keybindings
+=======================
 
-Now for some personal key bindings:
+Nu enkele persoonlijke keybindings.
 
      ;;; Compare windows
      (keymap-global-set "C-c w" 'compare-windows)
 
-   ‘compare-windows’ is a nifty command that compares the text in your
-current window with text in the next window.  It makes the comparison by
-starting at point in each window, moving over text in each window as far
-as they match.  I use this command all the time.
+   ‘compare-windows’ is een handig commando dat de tekst in je huidige
+window vergelijkt met de tekst in het volgende window.  Het maakt de
+vergelijking beginnend bij point in elk window, en springt over tekst in
+elk window voor zover die gelijk is.  Ik gebruik dit commando vaak.
 
-   This also shows how to set a key globally, for all modes.
+   Dit toont ook hoe je een key globaal zet, voor alle modes.
 
-   The key setting command is ‘keymap-global-set’.  It is followed by
-the key binding.  In a ‘.emacs’ file, the keybinding is written as
-shown: ‘C-c’ stands for Control-C, which means to press the control key
-and the ‘c’ key at the same time.  The ‘w’ means to press the ‘w’ key.
-The key binding is surrounded by double quotation marks.  (If you were
-binding a <META> key, rather than a <CTRL> key, you would write ‘M-c’ in
-your ‘.emacs’ file.  *Note Rebinding Keys in Your Init File: (emacs)Init
-Rebinding, for details.)
+   Het commando dat toetsen instelt is ‘keymap-global-set’.  Het wordt
+gevolgd door de keybinding.  In een ‘.emacs’ bestand wordt de keybinding
+geschreven zoals getoond.  ‘C-c’ staat voor Control-C, dit betekent de
+control toets an de ‘c’ tegelijk aanslaan.  De ‘w’ betekent de ‘w’ toets
+aanslaan.  De keybinding wordt omgeven door dubbele aanhalingstekens.
+(Wanneer je een <META> toets in plaats van een <CTRL> zou binden, dan
+schrijf je ‘M-c’ in je ‘.emacs’ bestand.  *Note Rebinding Keys in Your
+Init File: (emacs)Init Rebinding, for details.)
 
-   The command invoked by the keys is ‘compare-windows’.  Note that
-‘compare-windows’ is preceded by a single-quote; otherwise, Emacs would
-first try to evaluate the symbol to determine its value.
+   Het commando dat door de toetsen wordt aangeroepen is
+‘compare-windows’.  Merk op dat ‘compare-windows’ wordt voorafgegaan
+door een enkele quote.  Anders zou Emacs het eerst het symbool proberen
+te evalueren om zijn waarde te bepalen.
 
-   These three things, the double quotation marks, the backslash before
-the ‘C’, and the single-quote are necessary parts of key binding that I
-tend to forget.  Fortunately, I have come to remember that I should look
-at my existing ‘.emacs’ file, and adapt what is there.
+   Deze drie dingen, de dubbele aanhalingstekens, de backslash voor de
+‘C’ en de enkele quote zijn noodzakelijke onderdelen van keybindings die
+ik vaak vergeet.  Gelukkig ben ik me gaan herinneren dat ik moet kijken
+in mijn bestaande ‘.emacs’ bestand, en gebruiken wat er in staat.
 
-   As for the key binding itself: ‘C-c w’.  This combines the prefix
-key, ‘C-c’, with a single character, in this case, ‘w’.  This set of
-keys, ‘C-c’ followed by a single character, is strictly reserved for
-individuals' own use.  (I call these “own” keys, since these are for my
-own use.)  You should always be able to create such a key binding for
-your own use without stomping on someone else's key binding.  If you
-ever write an extension to Emacs, please avoid taking any of these keys
-for public use.  Create a key like ‘C-c C-w’ instead.  Otherwise, we
-will run out of own keys.
+   Voor wat betreft de keybinding zelf: ‘C-c w’.  Dit combineert de
+prefix toets ‘C-c’, met een enkel karakter, in dit geval ‘w’.  Deze
+toetsencombinatie, ‘C-c’ gevold door een enkel karakter, is strikt
+gereserveerd voor je eigen gebruik.  (Ik noem deze “eigen” toetsen,
+omdat deze voor mijn eigen gebruik zijn.)  Je moet altijd in staat zijn
+om zulke keybindings voor je eigen gebruik te maken zonder de
+keybindings van iemand anders te verprutsen.  Wanneer je ooit een
+uitbreiding van Emacs schrijft, vermijdt dan alsjeblieft deze toetsen
+voor publiek gebruik te nemen.  Maak in plaats daarvan een
+toetscombinatie zoals ‘C-c C-w’.  Anders zouden we zonder onze eigen
+toetscombinaties geraken.
 
-   Here is another key binding, with a comment:
+   Hier is een andere keybinding met commentaar:
 
      ;;; Key binding for 'occur'
      ; I use occur a lot, so let's bind it to a key:
      (keymap-global-set "C-c o" 'occur)
 
-   The ‘occur’ command shows all the lines in the current buffer that
-contain a match for a regular expression.  When the region is active,
-‘occur’ restricts matches to such region.  Otherwise it uses the entire
-buffer.  Matching lines are shown in a buffer called ‘*Occur*’.  That
-buffer serves as a menu to jump to occurrences.
+   Het commando ‘occur’ toont alle regels in het huidige buffer die een
+match voor een reguliere expressie bevatten.  Wanneer de region actief
+is, dan beperkt ‘occur’ matches tot die region.  Zo niet dan gebruikt
+die het gehele buffer.  De matchende regels worden getoond in een buffer
+met de naam ‘*Occur*’.  Dat buffer dient als een menu om naar de matches
+te springen.
 
-   Here is how to unbind a key, so it does not work:
+   Hier volgt hoe je een toets ontkoppelt, zodat die niet werkt:
 
      ;;; Unbind 'C-x f'
      (keymap-global-unset "C-x f")
 
-   There is a reason for this unbinding: I found I inadvertently typed
-‘C-x f’ when I meant to type ‘C-x C-f’.  Rather than find a file, as I
-intended, I accidentally set the width for filled text, almost always to
-a width I did not want.  Since I hardly ever reset my default width, I
-simply unbound the key.
+   Er is een reden voor deze ontkoppeling: Ik ontdekte dat ik per
+ongeluk ‘C-x f’ typ terwijl ik ‘C-x C-f’ bedoelde te typen.  In plaats
+van een bestand te vinden, zoals de bedoeling was, zette ik per ongeluk
+de breedte voor uitgevulde tekst, vrijwel altijd op een breedte die ik
+niet wil.  Omdat ik haast nooit mijn standaard breedte aanpas, heb ik
+simpel deze toetscombinatie ontkoppeld.
 
-   The following rebinds an existing key:
+   Het volgende koppelt een bestaande toetscombinatie opnieuw:
 
      ;;; Rebind 'C-x C-b' for 'buffer-menu'
      (keymap-global-set "C-x C-b" 'buffer-menu)
 
-   By default, ‘C-x C-b’ runs the ‘list-buffers’ command.  This command
-lists your buffers in _another_ window.  Since I almost always want to
-do something in that window, I prefer the ‘buffer-menu’ command, which
-not only lists the buffers, but moves point into that window.
+   Standaard roept ‘C-x C-b’ het commando ‘list-buffers’ aan.  Dit
+commando vermeldt al je buffers in _een ander_ window.  Maar omdat ik
+altijd iets wil doen in dat window, geef ik de voorkeur aan het commando
+‘buffer-menu’, dat niet alleen de buffers vermeldt, maar ook point naar
+dat window verplaatst.
 
-16.7.1 Legacy Global Key Binding Commands
------------------------------------------
+16.7.1 Verouderde globale keybinding commando's
+-----------------------------------------------
 
-Historically, keys are bound globally using a lower-level function,
-‘global-set-key’, which is now considered legacy.  While you are
-encouraged to use ‘keymap-global-set’, you likely would encounter
-‘global-set-key’ in various places.  The first example in this section
-can be rewritten using ‘global-set-key’ as:
+Vroeger werden toetscombinaties globaal gebonden met een functie op laag
+niveau, ‘global-set-key’, wat nu als achterhaald wordt beschouwd.
+Hoewel je wordt aangemoedigd om ‘keymap-global-set’ te gebruiken, kom je
+waarschijnlijk ‘global-set-key’ op verschillende plekken tegen.  Het
+eerste voorbeeld in deze sectie kan met ‘global-set-key’ worden
+herschreven als:
 
      (global-set-key "\C-cw" 'compare-windows)
 
-   It is very similar to ‘keymap-global-set’, with the keybinding
-following a slightly different format.  Control-C is represented by
-‘\C-c’, instead of ‘C-c’.  There is no space between key strokes, like
-‘\C-c’ and ‘w’ in this example.  Despite the difference, in
-documentation, this is still written as ‘C-c w’ for readability.
+   Het lijkt erg op ‘keymap-global-set’, met de keybinding volgens een
+wat anders formaat.  Control-C wordt getoond als ‘\C-c’ in plaats van
+‘C-c’.  Er staat geen spatie tussen de toestaanslagen, zoals ‘\C-c’ en
+‘w’ in dit voorbeeld.  Ondanks het verschil wordt dit in documentatie in
+verband met de leesbaarheid nog steeds geschreven als ‘C-cw’.
 
-   Historically, keys are unbound globally using a lower-function,
-‘global-unset-key’, which is now considered legacy.  Its key binding
-format follows that of ‘global-set-key’.  The key unbinding example in
-this section can be rewritten as:
+   Vroeger werden toestcombinaties globaal ontkoppeld met een functie op
+laag niveau, ‘global-unset-key’, wat nu als verouderd beschouwd wordt.
+Het keybinding formaat volgt dat van ‘global-set-key’.  Het
+toetscombinatie ontkoppelende voorbeeld in deze sectie kan herschreven
+worden als:
 
      ;;; Unbind 'C-x f'
      (global-unset-key "\C-xf")
@@ -14048,44 +14075,45 @@ File: emacs-lisp-intro-nl.info,  Node: Keymaps,  Next: Bestanden laden,  Prev: K
 16.8 Keymaps
 ============
 
-Emacs uses “keymaps” to record which keys call which commands.  When you
-use ‘keymap-global-set’ to set the key binding for a single command in
-all parts of Emacs, you are specifying the key binding in
-‘current-global-map’.
+Emacs gebruikt “keymaps” om te registreren welke toetscombinatie welk
+commando aanroept.  Wanneer je “keymaps” gebruikt om de keybinding voor
+een enkel commando in te stellen in alle delen van Emacs, dan
+specificeer je de keybinding in de ‘current-global-map’.
 
-   Specific modes, such as C mode or Text mode, have their own keymaps;
-the mode-specific keymaps override the global map that is shared by all
-buffers.
+   Specifieke modes, zoals C mode of Text mode, hebben hun eigen
+keymaps.  De mode-specifieke keymaps overrulen de globale map die met
+alle buffers gedeeld is.
 
-   The ‘keymap-global-set’ function binds, or rebinds, the global
-keymap.  For example, the following binds the key ‘C-x C-b’ to the
-function ‘buffer-menu’:
+   De functie ‘keymap-global-set’ bindt of bindt opnieuw de globale
+keymap.  Het volgende bijvoorbeeld bindt de toetscombinatie ‘C-x C-b’
+aan de functie ‘buffer-menu’:
 
      (keymap-global-set "C-x C-b" 'buffer-menu)
 
-   Mode-specific keymaps are bound using the ‘keymap-set’ function,
-which takes a specific keymap as an argument, as well as the key and the
-command.  For example, the following expression binds the
-‘texinfo-insert-@group’ command to ‘C-c C-c g’:
+   Mode-specifieke keymaps worden gebonden met de functie ‘keymap-set’,
+die een specifieke keymap als argument heeft, net als de toestcombinatie
+en het command.  De volgende expressie bijvoorbeeld bindt het commando
+‘texinfo-insert-@group’ aan ‘C-c C-c g’:
 
      (keymap-set texinfo-mode-map "C-c C-c g" 'texinfo-insert-@group)
 
-   Historically, keymaps are bound using a lower-level function,
-‘define-key’, which is now considered legacy.  While you are encouraged
-to use ‘keymap-set’, you likely would encounter ‘define-key’ in various
-places.  The above key binding can be rewritten using ‘define-key’ as:
+   Vroeger werden keymaps gebonden met een functie op lager niveau,
+‘define-key’ dat nu als verouderd wordt beschouwd.  Hoewel je wordt
+aangemoedigd om ‘keymap-set’ te gebruiken, komt je waarschijnlijk
+‘define-key’ op verschillende plaatsen tegen.  De keybinding hierboven
+kan herschreven worden met ‘define-key’ als:
 
      (define-key texinfo-mode-map "\C-c\C-cg" 'texinfo-insert-@group)
 
-The ‘texinfo-insert-@group’ function itself is a little extension to
-Texinfo mode that inserts ‘@group’ into a Texinfo file.  I use this
-command all the time and prefer to type the three strokes ‘C-c C-c g’
-rather than the six strokes ‘@ g r o u p’.  (‘@group’ and its matching
-‘@end group’ are commands that keep all enclosed text together on one
-page; many multi-line examples in this book are surrounded by ‘@group
-... @end group’.)
+De functie ‘texinfo-insert-@group’ is een kleine uitbreiding op Texinfo
+mode dat ‘@group’ in een Texinfo bestand invoegt.  Ik gebruik dit
+commando vaak en geef de voorkeur aan het typen van drie toestaanslagen
+‘C-c C-c g’ in plaast van zes aanslagen ‘@ g r o u p’.  (‘@group’ en het
+bijbehorende ‘@end group’ zijn commando's die alle omsloten tekst bij
+elkaar op een bladzijdeh houdt.  Veel meerregelige voorbeelden in dit
+boek zijn omgeven door ‘@group ... @end group’.)
 
-   Here is the ‘texinfo-insert-@group’ function definition:
+   Hier is de ‘texinfo-insert-@group’ functiedefinitie:
 
      (defun texinfo-insert-@group ()
        "Insert the string @group in a Texinfo buffer."
@@ -14093,16 +14121,17 @@ page; many multi-line examples in this book are surrounded by ‘@group
        (beginning-of-line)
        (insert "@group\n"))
 
-   (Of course, I could have used Abbrev mode to save typing, rather than
-write a function to insert a word; but I prefer key strokes consistent
-with other Texinfo mode key bindings.)
+   (Ik had natuurlijk Abbrev mode kunnen gebruiken om toetsaanslagen te
+besparen, in plaats van een functie om een woord in te voegen, maar ik
+geef voorkeur aan toestaanslagen die consistent zijn met andere Texinfo
+mode keybindings.)
 
-   You will see numerous ‘keymap-set’ and ‘define-key’ expressions in
-‘loaddefs.el’ as well as in the various mode libraries, such as
-‘cc-mode.el’ and ‘lisp-mode.el’.
+   Je komt veel ‘keymap-set’ en ‘define-key’ expressies tegen in
+‘loaddefs.el’ en ook in verschillende mode libraries, zoals ‘cc-mode.el’
+en ‘lisp-mode.el’.
 
-   *Note Customizing Key Bindings: (emacs)Key Bindings, and *note
-Keymaps: (elisp)Keymaps, for more information about keymaps.
+   *Note Customizing Key Bindings: (emacs)Key Bindings, en *note
+Keymaps: (elisp)Keymaps, voor meer informatie over keymaps.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Bestanden laden,  Next: Autoload,  Prev: Keymaps,  Up: Initialisatie van Emacs
@@ -14110,50 +14139,50 @@ File: emacs-lisp-intro-nl.info,  Node: Bestanden laden,  Next: Autoload,  Prev: 
 16.9 Bestanden laden
 ====================
 
-Many people in the GNU Emacs community have written extensions to Emacs.
-As time goes by, these extensions are often included in new releases.
-For example, the Calendar and Diary packages are now part of the
-standard GNU Emacs, as is Calc.
+Veel mensen in de GNU Emacs community hebben uitbreidingen op Emacs
+geschreven.  In de loop der tijd worden die exentensies vaak opgenomen
+in nieuwe releases.  De Calendar en Diary packages bijvoorbeeld zijn nu
+onderdeel van de de standaard GNU Emacs, net als Calc.
 
-   You can use a ‘load’ command to evaluate a complete file and thereby
-install all the functions and variables in the file into Emacs.  For
-example:
+   Je kunt met het commando ‘load’ een compleet bestand evalueren en
+daarmee alle functies en variabelen in het bestand in Emacs installeren.
+Bijvoorbeeld:
 
      (load "~/emacs/slowsplit")
 
-   This evaluates, i.e., loads, the ‘slowsplit.el’ file or if it exists,
-the faster, byte compiled ‘slowsplit.elc’ file from the ‘emacs’
-sub-directory of your home directory.  The file contains the function
-‘split-window-quietly’, which John Robinson wrote in 1989.
+   Dit evalueert, dat wil zeggen laadt het bestand ‘slowsplit.el’ of,
+als dat bestaat, het byte-compiled bestand ‘slowsplit.elc’ in de ‘emacs’
+subdirectory of in je home directory.  Het bestand bevat de functie
+‘split-window-quietly’ dat John Robinson in 1989 schreef.
 
-   The ‘split-window-quietly’ function splits a window with the minimum
-of redisplay.  I installed it in 1989 because it worked well with the
-slow 1200 baud terminals I was then using.  Nowadays, I only
-occasionally come across such a slow connection, but I continue to use
-the function because I like the way it leaves the bottom half of a
-buffer in the lower of the new windows and the top half in the upper
-window.
+   De functie ‘split-window-quietly’ split een window met een minimum
+aan scherm-aanpassingen.  Ik installeerde het in 1989 omdat het goed
+werkte op de langzame 1200 baud terminals die ik toen gebruikte.
+Tegenwoordig kom ik af en toe zo'n langzame connectie tegen, maar ik
+blijf de functie gebruiken omdat ik de manier waarop het de onderste
+helft van een buffer onder in het nieuwe window houdt en de bovenste
+helft in het bovenste window.
 
-   To replace the key binding for the default ‘split-window-vertically’,
-you must bind the keys to ‘split-window-quietly’, like this:
+   Om de keybinding voor het standaard ‘split-window-vertically’ te
+vervangen, moet je de toetsaanslagen als volgt binden aan
+‘split-window-quietly’:
 
      (keymap-global-set "C-x 2" 'split-window-quietly)
 
-   If you load many extensions, as I do, then instead of specifying the
-exact location of the extension file, as shown above, you can specify
-that directory as part of Emacs's ‘load-path’.  Then, when Emacs loads a
-file, it will search that directory as well as its default list of
-directories.  (The default list is specified in ‘epaths.h’ when Emacs is
-built.)
+   Als je veel uitbreidingen laadt, zoals ik doe, dan kan je in plaats
+van de exacte lokatie van het uitbreidingsbestand, zoals hierboven, de
+directory specificeren als deel van de het ‘load-path’ van Emacs.
+Wanneer Emacs een bestand laadt kijkt het dan zowel in die directory als
+in de standaard lijst van directories.  (De standaard lijst wordt
+gespecificeerd in ‘epaths.h’ wanneer Emacs wordt gebouwd.)
 
-   The following command adds your ‘~/emacs’ directory to the existing
-load path:
+   Het volgende commando voegt je ‘~/emacs’ directory toe aan het
+bestaande load-path:
 
-     ;;; Emacs Load Path
      (setq load-path (cons "~/emacs" load-path))
 
-   Incidentally, ‘load-library’ is an interactive interface to the
-‘load’ function.  The complete function looks like this:
+   OVerigens, ‘load-library’ is een interactieve interface voor de
+‘load’ functie.  De complete functie ziet er zo uit:
 
      (defun load-library (library)
        "Load the Emacs Lisp library named LIBRARY.
@@ -14170,14 +14199,14 @@ load path:
                                                 (get-load-suffixes)))))
        (load library))
 
-   The name of the function, ‘load-library’, comes from the use of
-"library" as a conventional synonym for "file".  The source for the
-‘load-library’ command is in the ‘files.el’ library.
+   De naam van de functie ‘load-library’ komt van het gebruik van
+"library" als conventioneel synoniem voor "file".  De bron voor het
+commando ‘load-library’ staat in de ‘files.el’ library.
 
-   Another interactive command that does a slightly different job is
+   Een ander interactief commando dat een iets andere taak doet is
 ‘load-file’.  *Note Libraries of Lisp Code for Emacs: (emacs)Lisp
-Libraries, for information on the distinction between ‘load-library’ and
-this command.
+Libraries, voor informatie over het verschil tussen ‘load-library’ en
+dit commando.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Autoload,  Next: Eenvoudige uitbreiding,  Prev: Bestanden laden,  Up: Initialisatie van Emacs
@@ -14185,76 +14214,77 @@ File: emacs-lisp-intro-nl.info,  Node: Autoload,  Next: Eenvoudige uitbreiding, 
 16.10 Autoloading
 =================
 
-Instead of installing a function by loading the file that contains it,
-or by evaluating the function definition, you can make the function
-available but not actually install it until it is first called.  This is
-called “autoloading”.
+In plaats van het installeren van een functie door het bestand dat het
+bevat te laden, of door het evalueren van de functiedefinitie, kan je
+een functie beschikbaar maken zonder die te installeren, totdat die voor
+het eerst wordt aangeroepen.  Dit heet “autoloading”.
 
-   When you execute an autoloaded function, Emacs automatically
-evaluates the file that contains the definition, and then calls the
-function.
+   Wanneer je een autoloaded functie uitvoert, evalueert Emacs
+automatisch het bestand dat de definitie bevat en roept daarna de
+functie aan.
 
-   Emacs starts quicker with autoloaded functions, since their libraries
-are not loaded right away; but you need to wait a moment when you first
-use such a function, while its containing file is evaluated.
+   Emacs start sneller met autoloaded functies omdat hun libraries niet
+meteen geladen worden, maar je moet iets langer wachten wanneer je zo'n
+functie voor het eerst gebruikt, terwijl het bestand waar het in staat
+is geëvalueerd.
 
-   Rarely used functions are frequently autoloaded.  The ‘loaddefs.el’
-library contains thousands of autoloaded functions, from ‘5x5’ to
-‘zone’.  Of course, you may come to use a rare function frequently.
-When you do, you should load that function's file with a ‘load’
-expression in your ‘.emacs’ file.
+   Weinig gebruikte functies worden vaak autoloaded.  De library
+‘loaddefs.el’ bevat duizenden autoloaded functies, van ‘5x5’ tot ‘zone’.
+Natuurlijk kan het zijn dat je vaak een weinig gebruikte functie
+gebruikt.  Wanneer je dat doet, zou je het bestand met die functie
+moeten laden met een ‘load’ expressie in je ‘.emacs’ bestand.
 
-   In my ‘.emacs’ file, I load 14 libraries that contain functions that
-would otherwise be autoloaded.  (Actually, it would have been better to
-include these files in my dumped Emacs, but I forgot.  *Note Building
-Emacs: (elisp)Building Emacs, and the ‘INSTALL’ file for more about
-dumping.)
+   In mijn ‘.emacs’ bestand laad ik 14 libraries die functies bevatten
+die anders worden autoloaded.  (Eigenlijk zou het beter zijn deze
+bestanden op te nemen in mijn gedumpte Emacs, maar dat vergat ik.  *Note
+Building Emacs: (elisp)Building Emacs, en het ‘INSTALL’ bestand voor
+meer over dumping.)
 
-   You may also want to include autoloaded expressions in your ‘.emacs’
-file.  ‘autoload’ is a built-in function that takes up to five
-arguments, the final three of which are optional.  The first argument is
-the name of the function to be autoloaded; the second is the name of the
-file to be loaded.  The third argument is documentation for the
-function, and the fourth tells whether the function can be called
-interactively.  The fifth argument tells what type of object--‘autoload’
-can handle a keymap or macro as well as a function (the default is a
-function).
+   Je kunt ook autoloaded expressies in je ‘.emacs’ bestand opnemen.
+‘autoload’ is een ingebouwde functie die tot vijf argumenten neemt,
+waarvan de laatste drie optioneel zijn.  Het eerste argument is de naam
+van de functie om te autoloaden, de tweede is de naam van het bestand om
+de laden.  Het derde is de documentatie van de functie en de vierde
+geeft aan of de functie interactief kan worden aangeroepen.  Het vijfde
+argument vertelt welke objecttype--‘autoload’ kan met een keymap, macro
+of functie omgaan (de standaard is een functie).
 
-   Here is a typical example:
+   Hier is een typisch voorbeeld
 
      (autoload 'html-helper-mode
        "html-helper-mode" "Edit HTML documents" t)
 
-(‘html-helper-mode’ is an older alternative to ‘html-mode’, which is a
-standard part of the distribution.)
+(‘html-helper-mode’ is een ouder alternatief voor ‘html-mode’ die een
+standaard onderdeel is van de distributie.
 
-This expression autoloads the ‘html-helper-mode’ function.  It takes it
-from the ‘html-helper-mode.el’ file (or from the byte compiled version
-‘html-helper-mode.elc’, if that exists.)  The file must be located in a
-directory specified by ‘load-path’.  The documentation says that this is
-a mode to help you edit documents written in the HyperText Markup
-Language.  You can call this mode interactively by typing ‘M-x
-html-helper-mode’.  (You need to duplicate the function's regular
-documentation in the autoload expression because the regular function is
-not yet loaded, so its documentation is not available.)
+Deze expressie autoload de functie ‘html-helper-mode’.  Het haalt die op
+uit het bestand ‘html-helper-mode.el’ (of uit de byte compiled versie
+‘html-helper-mode.elc’ als die bestaat.)  Het bestand moet in een
+directory staan die gespecificeerd is door ‘load-path’.  De documentatie
+geeft aan dit een mode is die je helpt bij het aanpassen van documenten
+die geschreven zijn in de HyperText Markup Language.  Je roept deze mode
+interactief aan door ‘M-x html-helper-mode’ te typen.  (Je moet de
+gewone documentatie van de functie in de autoload expressie kopiëren
+omdat de gewone functie nog niet is geladen waardoor de documentatie nog
+niet beschikbaar is.)
 
-   *Note Autoload: (elisp)Autoload, for more information.
+   *Note Autoload: (elisp)Autoload, voor meer informatie.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Eenvoudige uitbreiding,  Next: X11 kleuren,  Prev: Autoload,  Up: Initialisatie van Emacs
 
-16.11 A Simple Extension: ‘line-to-top-of-window’
-=================================================
+16.11 Een eenvoudige uitbreiding: ‘line-to-top-of-window’
+=========================================================
 
-Here is a simple extension to Emacs that moves the line that point is on
-to the top of the window.  I use this all the time, to make text easier
-to read.
+Hier is een eenvoudige uitbreiding op Emacs die de regel waar point
+staat naar de bovenkant van het window verplaatst.  Ik gebruikt dit heel
+vaak om de tekst makkelijker leesbaar te maken.
 
-   You can put the following code into a separate file and then load it
-from your ‘.emacs’ file, or you can include it within your ‘.emacs’
-file.
+   Je kunt de volgende code in een apart bestand zetten en dan laden
+vanuit je ‘.emacs’ bestand, of je kunt het opnemen in je ‘.emacs’
+bestand.
 
-   Here is the definition:
+   Hier is de definitie:
 
      ;;; Line to top of window;
      ;;; replace three keystroke sequence  C-u 0 C-l
@@ -14263,21 +14293,21 @@ file.
        (interactive)
        (recenter 0))
 
-   Now for the key binding.
+   Nu de keybinding.
 
-   Function keys as well as mouse button events and non-ASCII characters
-are written within square brackets, without quotation marks.
+   Functietoetsen, muisbutton-events en non-ASCII karakters schrijf je
+tussen vierkante haakjes, zonder aanhalingstekens.
 
-   I bind ‘line-to-top-of-window’ to my <F6> function key like this:
+   Zo bind ik ‘line-to-top-of-window’ aan mijn <F6> functietoets:
 
      (keymap-global-set "<f6>" 'line-to-top-of-window)
 
-   For more information, see *note Rebinding Keys in Your Init File:
+   Voor meer informatie, zie *note Rebinding Keys in Your Init File:
 (emacs)Init Rebinding.
 
-   If you run two versions of GNU Emacs, such as versions 27 and 28, and
-use one ‘.emacs’ file, you can select which code to evaluate with the
-following conditional:
+   Wanneer je twee versies van GNU Emacs draait, zoals versie 27 en 28,
+en één ‘.emacs’ bestand gebruikt, dan selecteer je met de volgende
+conditional welke code te evalueren:
 
      (cond
       ((= 27 emacs-major-version)
@@ -14326,12 +14356,13 @@ File: emacs-lisp-intro-nl.info,  Node: X11 kleuren,  Next: Diverse,  Prev: Eenvo
 16.12 X11 kleuren
 =================
 
-You can specify colors when you use Emacs with the MIT X Windowing
-system.
+Je kunt kleuren opgeven wanneer je Emacs met het MIT X Windowing systeem
+gebruikt.
 
-   I dislike the default colors and specify my own.
+   Ik vind de standaard kleuren niet prettig een geef mijn eigen op.
 
-   Here are the expressions in my ‘.emacs’ file that set values:
+   Hier staan de expressies in mijn ‘.emacs’ bestand die de waarden
+zetten:
 
      ;; Set cursor color
      (set-cursor-color "white")
@@ -14359,39 +14390,39 @@ system.
        (set-face-background 'holiday "slate blue")
        (set-face-foreground 'holiday "white"))
 
-   The various shades of blue soothe my eye and prevent me from seeing
-the screen flicker.
+   De verschillende blauwtinten kalmeren mijn oog en voorkomen dat ik
+het scherm zie knipperen.
 
-   Alternatively, I could have set my specifications in various X
-initialization files.  For example, I could set the foreground,
-background, cursor, and pointer (i.e., mouse) colors in my
-‘~/.Xresources’ file like this:
+   Anderzijds had ik mijn specificaties in verschillende X
+initialisatiebestanden kunnen zetten.  Ik kon bijvoorbeeld de kleuren
+voor de voorgrond, achtergrond, cursor en pijltje (oftewel muis) als
+volgt in mijn ‘~/.Xresources’ bestand zetten:
 
      Emacs*foreground:   white
      Emacs*background:   darkblue
      Emacs*cursorColor:  white
      Emacs*pointerColor: white
 
-   In any event, since it is not part of Emacs, I set the root color of
-my X window in my ‘~/.xinitrc’ file, like this(1):
+   In elk geval, omdat dit geen onderdeel van Emacs is, zet de root
+kleur van mijn X window in mijn ‘~/.xinitrc’ bestand zoals dit(1):
 
      xsetroot -solid Navy -fg white &
 
    ---------- Footnotes ----------
 
-   (1) I also run more modern window managers, such as Enlightenment,
-Gnome, or KDE; in those cases, I often specify an image rather than a
-plain color.
+   (1) Ik gebruik ook modernere window managers zoals Enlightenment,
+Gnome, of KDE. In die gevallen specificeer ik vaak een afbeelding in
+plaats van een enkele kleur.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Diverse,  Next: Mode line,  Prev: X11 kleuren,  Up: Initialisatie van Emacs
 
-16.13 Miscellaneous Settings for a ‘.emacs’ File
-================================================
+16.13 Diverse instellingen voor een ‘.emacs’ bestand
+====================================================
 
-Here are a few miscellaneous settings:
+Hier zijn een paar diverse instellingen
 
-   − Set the shape and color of the mouse cursor:
+   − Stel de vorm en kleur van de muiscursor:
 
           ; Cursor shapes are defined in
           ; '/usr/include/X11/cursorfont.h';
@@ -14407,8 +14438,8 @@ Here are a few miscellaneous settings:
             (setq x-pointer-shape (string-to-number mpointer))
             (set-mouse-color "white"))
 
-   − Or you can set the values of a variety of features in an alist,
-     like this:
+   − Of je zet de waarden voor verschillende eigenschappen in een alist,
+     zoals hier:
 
           (setq-default
            default-frame-alist
@@ -14426,9 +14457,9 @@ Here are a few miscellaneous settings:
                    "-Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO8859-1")
              ))
 
-   − Convert ‘<CTRL>-h’ into <DEL> and <DEL> into ‘<CTRL>-h’.
-     (Some older keyboards needed this, although I have not seen the
-     problem recently.)
+   − Converteer ‘<CTRL>-h’ naar <DEL> en <DEL> naar ‘<CTRL>- h’.
+     (Sommige oude toetsenborden vereisen dit, hoewel ik het probleem de
+     laatste tijd niet gezien heb.)
 
           ;; Translate 'C-h' to <DEL>.
           ; (key-translate "C-h" "C-?")
@@ -14436,59 +14467,60 @@ Here are a few miscellaneous settings:
           ;; Translate <DEL> to 'C-h'.
           (key-translate "C-?" "C-h")
 
-   − Turn off a blinking cursor!
+   − Zet knipperende cursor uit!
 
           (if (fboundp 'blink-cursor-mode)
               (blink-cursor-mode -1))
 
-     or start GNU Emacs with the command ‘emacs -nbc’.
+     of start GNU Emacs met het commando ‘emacs -nbc’.
 
-   − When using ‘grep’
-     ‘-i’  Ignore case distinctions
-     ‘-n’  Prefix each line of output with line number
-     ‘-H’  Print the filename for each match.
-     ‘-e’  Protect patterns beginning with a hyphen character, ‘-’
+   − Bij het gebruik van ‘grep’
+     ‘-i’  Negeer verschil hoofd- en kleine letters
+     ‘-n’  Vermeldt het regelnummer op elke output-regel
+     ‘-H’  Toon de bestandsnaam voor elke match
+     ‘-e’  Bescherm patronen die beginnen met een minteken, ‘-’
 
           (setq grep-command "grep -i -nH -e ")
 
-   − Find an existing buffer, even if it has a different name
-     This avoids problems with symbolic links.
+   − Vind een bestaand buffer, zelfs als het een andere naam heeft
+     Dit voorkomt problemen met symbolische links.
 
           (setq find-file-existing-other-name t)
 
-   − Set your language environment and default input method
+   − Stel je taalomgeving en de standaard input methode in
 
           (set-language-environment "latin-1")
           ;; Remember you can enable or disable multilingual text input
           ;; with the toggle-input-method' (C-\) command
           (setq default-input-method "latin-1-prefix")
 
-     If you want to write with Chinese GB characters, set this instead:
+     Wanneer je in Chinese GB karakters wilt schrijven, gebruik dan in
+     plaats daarvan dit:
 
           (set-language-environment "Chinese-GB")
           (setq default-input-method "chinese-tonepy")
 
-Fixing Unpleasant Key Bindings
-..............................
+Onplezierige keybindings verbeteren
+...................................
 
-Some systems bind keys unpleasantly.  Sometimes, for example, the <CTRL>
-key appears in an awkward spot rather than at the far left of the home
-row.
+Sommige systemen binden keys onplezierig, Soms verschijnt bijvoorbeeld
+de <CTRL> op een onhandige plek in plaats van uiterst links in de
+home-row.
 
-   Usually, when people fix these sorts of key bindings, they do not
-change their ‘~/.emacs’ file.  Instead, they bind the proper keys on
-their consoles with the ‘loadkeys’ or ‘install-keymap’ commands in their
-boot script and then include ‘xmodmap’ commands in their ‘.xinitrc’ or
-‘.Xsession’ file for X Windows.
+   Wanneer mensen deze soort keybindings verbeteren veranderen zij
+meestal niet hun ‘.emacs’ bestand.  In plaats daarvan binnen zij de
+juiste toetsen op hun consoles met de ‘loadkeys’ of ‘install-keymap’
+commando's in hun boot-script en nemen daarna ‘xmodmap’ commando's in
+hun ‘.xinitrc’ of ‘.Xsession’ bestand voor X Windows.
 
-For a boot script:
+Voor een boot-script:
 
      loadkeys /usr/share/keymaps/i386/qwerty/emacs2.kmap.gz
 or
      install-keymap emacs2
 
-For a ‘.xinitrc’ or ‘.Xsession’ file when the <Caps Lock> key is at the
-far left of the home row:
+Voor een ‘.xinitrc’ of ‘.Xsession’ bestand wanneer de <Caps Lock> toets
+is uiterst links in de home-row:
 
      # Bind the key labeled 'Caps Lock' to 'Control'
      # (Such a broken user interface suggests that keyboard manufacturers
@@ -14497,8 +14529,8 @@ far left of the home row:
      xmodmap -e "clear Lock"
      xmodmap -e "add Control = Caps_Lock"
 
-In a ‘.xinitrc’ or ‘.Xsession’ file, to convert an <ALT> key to a <META>
-key:
+In een ‘.xinitrc’ of ‘.Xsession’ bestand om de <ALT> toets te
+converteren naar een <META> toets:
 
      # Some ill designed keyboards have a key labeled ALT and no Meta
      xmodmap -e "keysym Alt_L = Meta_L Alt_L"
@@ -14506,23 +14538,24 @@ key:
 
 File: emacs-lisp-intro-nl.info,  Node: Mode line,  Prev: Diverse,  Up: Initialisatie van Emacs
 
-16.14 A Modified Mode Line
-==========================
+16.14 Een aangepaste mode line
+==============================
 
-Finally, a feature I really like: a modified mode line.
+Tenslotte een eigenschap die ik echt waardeer: een aangepaste mode line.
 
-   When I work over a network, I forget which machine I am using.  Also,
-I tend to lose track of where I am, and which line point is on.
+   Wanneer ik over een netwerk werk dan vergeet ik welke machine ik
+gebruik.  Ook heb ik de neiging te vergeten waar ik ben, en op welke
+regel point is.
 
-   So I reset my mode line to look like this:
+   Daarom stel ik mijn mode line in zodat die er zo uitziet:
 
      -:-- foo.texi   rattlesnake:/home/bob/  Line 1  (Texinfo Fill) Top
 
-   I am visiting a file called ‘foo.texi’, on my machine ‘rattlesnake’
-in my ‘/home/bob’ buffer.  I am on line 1, in Texinfo mode, and am at
-the top of the buffer.
+   Ik bezoek een bestand met de naam ‘foo.texi’, op mijn machine
+‘rattlesnake’ in mijn ‘/home/bob’ buffer.  Ik ben op regel 1, in Texinfo
+mode en ben aan de bovenkant van het buffer.
 
-   My ‘.emacs’ file has a section that looks like this:
+   Mijn ‘.emacs’ bestand heeft een sectie die er zo uitziet:
 
      ;; Set a Mode Line that tells me which machine, which directory,
      ;; and which line I am on, plus the other customary information.
@@ -14558,80 +14591,86 @@ the top of the buffer.
         ;;   "-%-"
         )))
 
-Here, I redefine the default mode line.  Most of the parts are from the
-original; but I make a few changes.  I set the _default_ mode line
-format so as to permit various modes, such as Info, to override it.
+Hier herdefinieer ik de standaard mode line.  Veel delen zijn van het
+origineel, maar ik heb een paar wijzigingen.  Ik zet het _default_ mode
+line formaat zo dat verschillende modes, zoals Info, het mogen
+overschrijven.
 
-   Many elements in the list are self-explanatory: ‘mode-line-modified’
-is a variable that tells whether the buffer has been modified,
-‘mode-name’ tells the name of the mode, and so on.  However, the format
-looks complicated because of two features we have not discussed.
+   Veel elementen in de lijst spreken voor zich: ‘mode-line-modified’ is
+een variabele die aangeeft of het buffer is gewijzigd, ‘mode-name’ geeft
+de naam van de mode aan, enzovoorts.  Het format ziet er echter
+gecompliceerd uit omdat we twee eigenschappen nog niet hebben besproken:
 
-   The first string in the mode line is a dash or hyphen, ‘-’.  In the
-old days, it would have been specified simply as ‘"-"’.  But nowadays,
-Emacs can add properties to a string, such as highlighting or, as in
-this case, a help feature.  If you place your mouse cursor over the
-hyphen, some help information appears (By default, you must wait
-seven-tenths of a second before the information appears.  You can change
-that timing by changing the value of ‘tooltip-delay’.)
+   De eerste string in de mode line is een minteken, ‘-’.  In vroegere
+tijden zou het eenvoudig zijn gespecificeerd met ‘"-"’.  Maar
+tegenwoordig kan Emacs eigenschappen aan een string toevoegen, zoals
+highlighting of, zoals in dit geval, een helpfunctie.  Wanneer je de
+muiscursor boven het minteken houdt verschijnt helpinformatie.
+(Standaard moet je een zeven-tiende van een seconde wachten voor de
+informatie verschijnt.  Je kunt de timing daarvan aanpassen door de
+waarde van ‘tooltip-delay’ te wijzigen.)
 
-   The new string format has a special syntax:
+   Het nieuwe string-formaat heeft een speciale syntax:
 
      #("-" 0 1 (help-echo "mouse-1: select window, ..."))
 
-The ‘#(’ begins a list.  The first element of the list is the string
-itself, just one ‘-’.  The second and third elements specify the range
-over which the fourth element applies.  A range starts _after_ a
-character, so a zero means the range starts just before the first
-character; a 1 means that the range ends just after the first character.
-The third element is the property for the range.  It consists of a
-property list, a property name, in this case, ‘help-echo’, followed by a
-value, in this case, a string.  The second, third, and fourth elements
-of this new string format can be repeated.
+De ‘#(’ begint een lijst.  Het eerste element in de lijst is de string
+zelf, slechts één ‘-’.  Het tweede en derde element specificeren de
+range waarop het vierde element van toepassing is.  Een range start _na_
+een karakter, dus een nul betekent dat de range direct voor het eerste
+karakter start, een 1 betekent dat de range direct achter het eerste
+karakter eindigt.  Het derde element is een eigenschap voor de range.
+Het bestaat uit een eigenschappen-lijst, een eigenschap-naam, in dit
+geval ‘help-echo’, gevolgd door een waarde, in dit geval een string.
+Het tweede, derde en vierde element van dit nieuwe string-formaat kan
+worden herhaald.
 
-   *Note Text Properties: (elisp)Text Properties, and see *note Mode
-Line Format: (elisp)Mode Line Format, for more information.
+   *Note Text Properties: (elisp)Text Properties, en zi *note Mode Line
+Format: (elisp)Mode Line Format, voor meer informatie.
 
-   ‘mode-line-buffer-identification’ displays the current buffer name.
-It is a list beginning ‘(#("%12b" 0 4 ...’.  The ‘#(’ begins the list.
+   ‘mode-line-buffer-identification’ toont het naam van het huidige
+buffer.  Het is een lijst die begint met ‘(#("%12b" 0 4 ...’.  De ‘#(’
+begint de lijst.
 
-   The ‘"%12b"’ displays the current buffer name, using the
-‘buffer-name’ function with which we are familiar; the ‘12’ specifies
-the maximum number of characters that will be displayed.  When a name
-has fewer characters, whitespace is added to fill out to this number.
-(Buffer names can and often should be longer than 12 characters; this
-length works well in a typical 80 column wide window.)
+   De ‘"%12b"’ toont de naam van het huidige buffer, met de functie
+‘buffer-name’ waarmee we vertrouwd zijn.  De ‘12’ specificeert het
+maximum aantal karakters dat wordt getoond.  Wanneer een naam minder
+karakters heeft, dan wordt witte ruimte toegevoegd om tot dit aantal uit
+te vullen.  (Buffernamen kunnen en moeten langer zijn dan 12 karakters.
+Deze lengte werkt goed in een typisch 80 karakters breed window.)
 
-   ‘:eval’ says to evaluate the following form and use the result as a
-string to display.  In this case, the expression displays the first
-component of the full system name.  The end of the first component is a
-‘.’ (period), so I use the ‘string-match’ function to tell me the length
-of the first component.  The substring from the zeroth character to that
-length is the name of the machine.
+   ‘:eval’ geeft aan om de volgende vorm te evalueren en het resultaat
+te gebruiken als een te tonen string.  In dit geval toont de expressie
+het eerste element van de volledige systeemnaam.  Het einde van het
+eerste component is een ‘.’ (punt) daarom gebruik ik de ‘string-match’
+functie om mij de lengte van het eerste component te vertellen.  De
+substring van het nul-de karakter tot die lengte is de naam van de
+machine.
 
-   This is the expression:
+   Dit is de expressie:
 
      (:eval (substring
              (system-name) 0 (string-match "\\..+" (system-name))))
 
-   ‘%[’ and ‘%]’ cause a pair of square brackets to appear for each
-recursive editing level.  ‘%n’ says "Narrow" when narrowing is in
-effect.  ‘%P’ tells you the percentage of the buffer that is above the
-bottom of the window, or "Top", "Bottom", or "All".  (A lower case ‘p’
-tell you the percentage above the _top_ of the window.)  ‘%-’ inserts
-enough dashes to fill out the line.
+   ‘%[’ en ‘%]’ laten een paar vierkante haken voor elk recursief
+editing level verschijnen.  ‘%n’ vermeldt "Narrow" wanneer versmalling
+van toepassing is.  ‘%P’ vertelt je het percentage van het buffer dat
+boven de onderkant van het window is, of "Top", "Bottom", of "All".
+(Een kleine letter ‘p’ vertelt je het percentage boven de _bovenkant_
+van het window.)  ‘%-’ voegt voldoende mintekens in om de regel uit te
+vullen.
 
-   Remember, you don't have to like Emacs to like it--your own Emacs can
-have different colors, different commands, and different keys than a
-default Emacs.
+   Onthoud, je hoeft niet van Emacs te houden om er van te houden--je
+eigen Emacs kan andere kleuren, andere commando's en andere
+toetscombinaties hebben dan de standaard Emacs.
 
-   On the other hand, if you want to bring up a plain out-of-the-box
-Emacs, with no customization, type:
+   Anderzijds, als je een standaard out-of-the-box Emacs zonder enige
+aanpassing wilt starten, typ:
 
      emacs -q
 
-This will start an Emacs that does _not_ load your ‘~/.emacs’
-initialization file.  A plain, default Emacs.  Nothing more.
+Dit start een Emacs die _niet_ je ‘.emacs’ initialisatiebestand laadt.
+Een gewone, standaard Emacs.  Niets meer.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Debuggen.,  Next: Conclusie,  Prev: Initialisatie van Emacs,  Up: Top
@@ -17606,9 +17645,9 @@ Index
  [index ]
 * Menu:
 
-* .emacs file:                           Initialisatie van Emacs.
+* .emacs bestand:                        Initialisatie van Emacs.
                                                               (line   6)
-* .emacs file, beginning of:             Een init bestand beginnen.
+* .emacs bestand, begin van:             Een init bestand beginnen.
                                                               (line   6)
 * ' om te quoten:                        Draai een programma. (line  13)
 * (debug) in code:                       debug-on-quit.       (line  13)
@@ -17627,7 +17666,7 @@ Index
 * aanroepen gedefinieerd:                Van buffer verwisselen.
                                                               (line  56)
 * Accumuleren, type recursief patroon:   Accumuleren.         (line   6)
-* add-hook:                              Tekst en auto-fill.  (line  54)
+* add-hook:                              Tekst en auto-fill.  (line  56)
 * and:                                   kill-new functie.    (line 211)
 * and <1>:                               fwd-para let.        (line  66)
 * Anonymous function:                    lambda.              (line   6)
@@ -17646,12 +17685,13 @@ Index
 * Argumenten, variabel aantal:           Variabel aantal argumenten.
                                                               (line   6)
 * argumentlijst gedefinieerd:            defun.               (line  62)
-* Auto Fill mode turned on:              Tekst en auto-fill.  (line  54)
+* Auto Fill mode aangezet:               Tekst en auto-fill.  (line  56)
 * autoload:                              Autoload.            (line   6)
-* Automatic mode selection:              Tekst en auto-fill.  (line  22)
+* Automatische mode selectie:            Tekst en auto-fill.  (line  22)
 * Axis, print horizontal:                print-X-axis.        (line   6)
 * Axis, print vertical:                  print-Y-axis.        (line   6)
 * beginning-of-buffer:                   beginning-of-buffer. (line   6)
+* Bestanden laden:                       Bestanden laden.     (line   6)
 * bestanden-in-onderliggende-directory:  Bestandenlijst.      (line  26)
 * Bewaren, type recursief patroon:       Bewaar.              (line   6)
 * Bewegen per zin en paragraaf:          Regexp zoeken.       (line   6)
@@ -17661,7 +17701,7 @@ Index
                                                               (line  16)
 * Binding, lexical:                      Lexical en dynamische binding verschillen.
                                                               (line   6)
-* Bindings, key, fixing unpleasant:      Diverse.             (line  88)
+* Bindings, key, verbeteren onplezierige: Diverse.            (line  89)
 * Binnenste lijst evaluatie:             Geneste lijsten evalueren.
                                                               (line   6)
 * Bloemen in een veld:                   Lisp lijsten.        (line  18)
@@ -17669,7 +17709,8 @@ Index
 * Body van grafiek:                      Een grafiek voorbereiden.
                                                               (line   6)
 * buffer-file-name:                      Buffer namen.        (line   6)
-* buffer-menu, bound to key:             Key bindings.        (line  69)
+* buffer-menu, gebonden aan een toetscombinatie: Key bindings.
+                                                              (line  74)
 * buffer-name:                           Buffer namen.        (line   6)
 * Buffer, geschiedenis van woord:        Buffer namen.        (line  69)
 * Buffergrootte:                         Buffer grootte en locatie.
@@ -17695,7 +17736,7 @@ Index
 * concat:                                Data typen.          (line  12)
 * cond:                                  Recursie met cond.   (line   6)
 * condition-case:                        condition-case.      (line   6)
-* Conditional 'twixt two versions of Emacs: Eenvoudige uitbreiding.
+* Conditional tussen twee versies van Emacs: Eenvoudige uitbreiding.
                                                               (line  35)
 * Conditioneel met if:                   if.                  (line   6)
 * cons-cel:                              Lijsten uitgetekend. (line  97)
@@ -17706,8 +17747,6 @@ Index
                                                               (line 102)
 * current-buffer:                        Buffers pakken.      (line   6)
 * current-kill:                          current-kill.        (line   6)
-* Customizing your .emacs file:          Initialisatie van Emacs.
-                                                              (line   6)
 * dan-deel gedefinieerd:                 if in meer detail.   (line   6)
 * Data typen:                            Data typen.          (line   6)
 * Data typen van argumenten:             Data typen.          (line   6)
@@ -17717,14 +17756,14 @@ Index
 * debug:                                 debug.               (line   6)
 * debug-on-entry:                        debug-on-entry.      (line   6)
 * debug-on-quit:                         debug-on-quit.       (line   9)
-* debugging:                             Debuggen..           (line   6)
-* default.el init file:                  Site-wide init.      (line   6)
-* defconst:                              defcustom.           (line 127)
+* debuggen:                              Debuggen..           (line   6)
+* default.el init bestand:               Systeem-brede init.  (line   6)
+* defconst:                              defcustom.           (line 132)
 * defcustom:                             defcustom.           (line   6)
 * Definitie installatie:                 Installeer.          (line   6)
 * Definitie schrijven:                   Defuns schrijven.    (line   6)
 * Definitie, hoe te wijzigen:            Een defun wijzigen.  (line   6)
-* defsubst:                              defcustom.           (line 127)
+* defsubst:                              defcustom.           (line 132)
 * defun:                                 defun.               (line   6)
 * defvar:                                defvar.              (line   6)
 * defvar met een sterretje:              defvar en asterisk.  (line   6)
@@ -17752,15 +17791,19 @@ Index
 * Een bestand vinden:                    Een bestand vinden.  (line   6)
 * Een buffer krijgen:                    Buffers pakken.      (line   6)
 * Een functiedefinitie wijzigen:         Een defun wijzigen.  (line   6)
+* Een globale key zetten:                Key bindings.        (line  18)
 * Een grafiek voorbereiden:              Een grafiek voorbereiden.
                                                               (line   6)
 * Een programma draaien:                 Draai een programma. (line   6)
 * Een variabele initialiseren:           defvar.              (line   6)
+* Eenvoudige uitbreiding in de .emacs bestand: Eenvoudige uitbreiding.
+                                                              (line   6)
+* Eigenschappen in het mode line voorbeeld: Mode line.        (line  66)
 * Eigenschappen, vermelding van buffer-substring-no-properties: versmal oefening.
                                                               (line  13)
 * Elke, soort van recursief patroon:     Elke.                (line   6)
 * Else:                                  else.                (line   6)
-* Emacs version, choosing:               Eenvoudige uitbreiding.
+* Emacs versie, kiezen:                  Eenvoudige uitbreiding.
                                                               (line  35)
 * empty list gedefinieerd:               Lisp atomen.         (line  19)
 * eobp:                                  fwd-para while.      (line  61)
@@ -17802,11 +17845,11 @@ Index
 * gebogen aanhalingstekens <1>:          Complete zap-to-char.
                                                               (line  39)
 * Genereer een foutmelding:              Fouten maken.        (line   6)
-* Global set key:                        Key bindings.        (line  82)
+* Globaal instellen toestcombinatie:     Key bindings.        (line  88)
 * global variable defined:               Het element vaststellen.
                                                               (line  89)
-* global-set-key:                        Key bindings.        (line  82)
-* global-unset-key:                      Key bindings.        (line  96)
+* global-set-key:                        Key bindings.        (line  88)
+* global-unset-key:                      Key bindings.        (line 103)
 * Grafiek prototype:                     Een grafiek voorbereiden.
                                                               (line   6)
 * graph-body-print:                      graph-body-print.    (line   6)
@@ -17827,7 +17870,7 @@ Index
 * Indentie voor formatteren:             append save-excursion.
                                                               (line  15)
 * Informatie naar functies doorgeven:    Argumenten.          (line   6)
-* Initialization file:                   Initialisatie van Emacs.
+* Initialisatie bestand:                 Initialisatie van Emacs.
                                                               (line   6)
 * insert-buffer:                         insert-buffer.       (line   6)
 * insert-buffer-substring:               append-to-buffer overzicht.
@@ -17843,12 +17886,13 @@ Index
 * interactive, voorbeeld gebruik van:    insert-buffer interactief.
                                                               (line   6)
 * Interpreter, Lisp, uitgelegd:          Draai een programma. (line  39)
-* Key bindings, fixing:                  Diverse.             (line  88)
-* Key setting globally:                  Key bindings.        (line  18)
-* Key unbinding:                         Key bindings.        (line  58)
-* Keymap global set:                     Key bindings.        (line  18)
+* Je .emacs aanpassen:                   Initialisatie van Emacs.
+                                                              (line   6)
+* Kebindings, verbeteren:                Diverse.             (line  89)
+* Key globaal zetten:                    Key bindings.        (line  18)
+* Keymap globaal zetten:                 Key bindings.        (line  18)
 * keymap-global-set:                     Key bindings.        (line  18)
-* keymap-global-unset:                   Key bindings.        (line  58)
+* keymap-global-unset:                   Key bindings.        (line  62)
 * Keymaps:                               Keymaps.             (line   6)
 * Kill ring handling:                    Killring.            (line   6)
 * kill-append:                           kill-append functie. (line   6)
@@ -17890,10 +17934,9 @@ Index
 * Lisp interpreter, wat die doet <1>:    Lisp interpreter.    (line   6)
 * Lisp lijsten:                          Lisp lijsten.        (line   6)
 * Lisp macro:                            Lisp macro.          (line   6)
-* list-buffers, rebound:                 Key bindings.        (line  69)
+* list-buffers, rebound:                 Key bindings.        (line  74)
 * load-library:                          Bestanden laden.     (line  51)
-* load-path:                             Bestanden laden.     (line  35)
-* Loading files:                         Bestanden laden.     (line   6)
+* load-path:                             Bestanden laden.     (line  36)
 * Local variables list, per-buffer,:     Tekst en auto-fill.  (line  22)
 * Locatie van point:                     Buffer grootte en locatie.
                                                               (line   6)
@@ -17918,7 +17961,7 @@ Index
 * min:                                   Kolommen van een grafiek.
                                                               (line 135)
 * Mode line format:                      Mode line.           (line   6)
-* Mode selection, automatic:             Tekst en auto-fill.  (line  22)
+* Mode selectie, automatisch:            Tekst en auto-fill.  (line  22)
 * mode-line-format:                      Mode line.           (line   6)
 * narrowing defined:                     Buffer grootte en locatie.
                                                               (line  43)
@@ -17933,11 +17976,12 @@ Index
 * nthcdr <1>:                            copy-region-as-kill. (line   6)
 * nthcdr, voorbeeld:                     kill-new functie.    (line 149)
 * number-to-string:                      Y-as element.        (line  12)
-* occur:                                 Key bindings.        (line  52)
+* occur:                                 Key bindings.        (line  55)
 * Onderdelen van een recursieve definitie: Recursive definitie onderdelen.
                                                               (line   6)
 * Ongeïnitialiseerde let variabelen:     Niet-geïnitialiseerde let variabelen.
                                                               (line   6)
+* Ontkoppelen toets:                     Key bindings.        (line  62)
 * Onwaarheid en waar in Emacs Lisp:      Waar en onwaarheid.  (line   6)
 * Oplossing zonder uitstel:              Zonder uitstel oplossing.
                                                               (line   6)
@@ -17950,7 +17994,7 @@ Index
 * other-buffer:                          Buffers pakken.      (line   6)
 * Paragrafen, bewegen per:               Regexp zoeken.       (line   6)
 * Patronen, zoeken naar:                 Regexp zoeken.       (line   6)
-* Per-buffer, local variables list:      Tekst en auto-fill.  (line  22)
+* Per-buffer, lokale variabelen lijst:   Tekst en auto-fill.  (line  22)
 * Permanente code installatie:           Permanent installeren.
                                                               (line   6)
 * point:                                 save-excursion.      (line   6)
@@ -17977,7 +18021,6 @@ Index
 * Printing the whole graph:              De gehele grafiek afdrukken.
                                                               (line   6)
 * progn:                                 progn.               (line   6)
-* Properties, in mode line example:      Mode line.           (line  64)
 * Prototype grafiek:                     Een grafiek voorbereiden.
                                                               (line   6)
 * push, voorbeeld:                       kill-new functie.    (line 118)
@@ -17985,7 +18028,6 @@ Index
 * quoten met de apostrof:                Draai een programma. (line  13)
 * re-search-forward:                     re-search-forward.   (line   6)
 * Read-only buffer:                      Read-only buffer.    (line   6)
-* Rebinding keys:                        Keymaps.             (line   6)
 * Recursie:                              Recursie.            (line   6)
 * Recursie en loops:                     Loops en recursie.   (line   6)
 * Recursie zonder uitstel:               Geen uitstel.        (line   6)
@@ -18028,11 +18070,8 @@ Index
 * setcar:                                setcar.              (line   6)
 * setcdr:                                setcdr.              (line   6)
 * setcdr, voorbeeld:                     kill-new functie.    (line 153)
-* Setting a key globally:                Key bindings.        (line  18)
-* Simple extension in .emacs file:       Eenvoudige uitbreiding.
-                                                              (line   6)
-* site-init.el init file:                Site-wide init.      (line   6)
-* site-load.el init file:                Site-wide init.      (line   6)
+* site-init.el init bestand:             Systeem-brede init.  (line   6)
+* site-load.el init bestand:             Systeem-brede init.  (line   6)
 * Sleutelwoord:                          Optionele argumenten.
                                                               (line  11)
 * sorteren:                              Sorteren.            (line   6)
@@ -18052,7 +18091,7 @@ Index
 * Symbool zonder waarde fout:            Void variabele.      (line   6)
 * Symboolnamen:                          Namen en definities. (line   6)
 * Syntax categorieën en tabellen:        Syntax.              (line   6)
-* Tabs, preventing:                      Indent Tabs Mode.    (line   6)
+* Tabs, voorkomen:                       Indent Tabs Mode.    (line   6)
 * Tekst deleten:                         Knippen en opslaan van tekst.
                                                               (line   6)
 * Tekst killen:                          Knippen en opslaan van tekst.
@@ -18076,12 +18115,13 @@ Index
                                                               (line   6)
 * Text clippen:                          Knippen en opslaan van tekst.
                                                               (line   6)
-* Text Mode turned on:                   Tekst en auto-fill.  (line  39)
+* Text Mode aangezet:                    Tekst en auto-fill.  (line  40)
+* Toestcombinaties opnieuw binden:       Keymaps.             (line   6)
+* Toets ontkoppelen:                     Key bindings.        (line  62)
 * triangle-bugged:                       debug.               (line  14)
 * Typen van data:                        Data typen.          (line   6)
 * Uitstel in recursie:                   Geen uitstel.        (line   6)
 * Uitwijding naar C:                     Uitwijding naar C.   (line   6)
-* Unbinding key:                         Key bindings.        (line  58)
 * Variabel aantal argumenten:            Variabel aantal argumenten.
                                                               (line   6)
 * Variabele initialisatie:               defvar.              (line   6)
@@ -18099,10 +18139,10 @@ Index
 * Verbreden, voorbeeld van:              what-line.           (line   6)
 * Verkeerde type argument:               Verkeerde type argument.
                                                               (line   6)
+* Versie van Emacs, kiezen:              Eenvoudige uitbreiding.
+                                                              (line  35)
 * versimpelde-beginning-of-buffer:       versimpelde-beginning-of-buffer.
                                                               (line   6)
-* Version of Emacs, choosing:            Eenvoudige uitbreiding.
-                                                              (line  35)
 * Versmallen:                            Versmallen en verbreden.
                                                               (line   6)
 * Vertical axis printing:                print-Y-axis.        (line   6)
@@ -18172,321 +18212,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1630
-Node: Voorwoord24396
-Node: Waarom25859
-Node: Over het lezen van deze tekst26522
-Node: Doelgroep28862
-Node: Geschiedenis van Lisp31865
-Node: Opmerking voor beginners32769
-Node: Dank35521
-Node: Lijsten verwerken36116
-Ref: Lijsten verwerken-Footnote-137572
-Node: Lisp lijsten37728
-Node: Genummerde lijsten38658
-Node: Lisp atomen39827
-Node: Whitespace in lijsten43741
-Node: Typen van lijsten45093
-Node: Draai een programma46314
-Ref: Draai een programma-Footnote-148867
-Node: Fouten maken49011
-Node: Namen en definities54214
-Node: Lisp interpreter56170
-Node: Complicaties57394
-Node: Byte compiling59643
-Node: Evaluatie60772
-Node: Hoe de interpreter werkt61399
-Node: Geneste lijsten evalueren62772
-Node: Variabelen65460
-Node: fill-column voorbeeld67076
-Node: Void functie68763
-Node: Void variabele70046
-Node: Argumenten71972
-Ref: Argumenten-Footnote-173778
-Node: Data typen74650
-Node: Argumenten als variabele of als lijst76887
-Node: Variabel aantal argumenten78628
-Node: Verkeerde type argument79524
-Ref: Verkeerde type argument-Footnote-183317
-Node: message83392
-Ref: message-Footnote-187614
-Node: setq87819
-Node: Setq gebruiken88544
-Node: Tellen91778
-Node: Samenvatting93840
-Node: Foutmelding oefeningen95843
-Node: Oefenen van evaluatie96399
-Node: Hoe te evalueren97626
-Node: Buffer namen99220
-Node: Buffers pakken105291
-Ref: Buffers pakken-Footnote-1107980
-Node: Van buffer verwisselen108230
-Ref: Van buffer verwisselen-Footnote-1111821
-Ref: Van buffer verwisselen-Footnote-2112163
-Node: Buffer grootte en locatie112917
-Node: Evaluatie oefening115131
-Node: Defuns schrijven115415
-Node: Primitieve functies116708
-Node: defun117943
-Node: Installeer124807
-Node: Effect van installatie126244
-Node: Een defun wijzigen127171
-Node: Interactief129051
-Node: Interactieve vermenigvuldig-met-zeven130234
-Node: vermenigvuldig-met-zeven in detail132364
-Node: Interactieve opties135217
-Node: Permanent installeren138579
-Node: let140890
-Node: Voorkom verwarring142482
-Ref: Voorkom verwarring-Footnote-1144747
-Node: Delen van een let expressie144891
-Node: Voorbeeld let expressie146606
-Ref: Voorbeeld let expressie-Footnote-1148428
-Node: Niet-geïnitialiseerde let variabelen148683
-Node: Hoe let variabelen bindt150457
-Node: Lexical en dynamische binding verschillen151795
-Node: Lexical vs dynamische binding voorbeeld153712
-Node: if155783
-Node: if in meer detail156729
-Node: type-dier in detail159542
-Node: else162192
-Node: Waar en onwaarheid165153
-Node: nil uitgelegd166162
-Node: save-excursion168359
-Node: Point en mark169135
-Node: Template voor save-excursion172244
-Node: Terugblik173532
-Node: defun oefeningen181575
-Node: Buffer rondleiding182048
-Node: Meer vinden183222
-Ref: Meer vinden-Footnote-1186237
-Node: versimpelde-beginning-of-buffer186454
-Node: mark-whole-buffer190958
-Node: mark-whole-buffer overzicht191832
-Node: Body van mark-whole-buffer193204
-Node: append-to-buffer196269
-Node: append-to-buffer overzicht196996
-Node: append interactief199798
-Node: append-to-buffer body202374
-Node: append save-excursion204561
-Ref: let* geïntroduceerd206358
-Node: Buffer gerelateerde terugblik210047
-Node: Buffer oefeningen212450
-Node: Meer complex212975
-Node: copy-to-buffer214086
-Ref: copy-to-buffer-Footnote-1216969
-Node: insert-buffer217189
-Node: insert-buffer code218648
-Node: insert-buffer interactief219657
-Node: Read-only buffer220207
-Node: b for interactief220851
-Node: insert-buffer body221979
-Node: if en or223201
-Node: Voeg or in226354
-Node: Voeg let in228701
-Node: Nieuwe insert-buffer232550
-Node: beginning-of-buffer233771
-Node: Optionele argumenten235421
-Node: beginning-of-buffer opt arg239064
-Node: Ontrafelen beginning-of-buffer240086
-Node: In geval van een groot buffer241440
-Node: In geval van een klein buffer244088
-Node: beginning-of-buffer compleet245866
-Node: Tweede buffer gerelateerde terugblik248910
-Node: optionele oefening250875
-Node: Versmallen en verbreden251399
-Node: Voordelen van versmallen252105
-Node: save-restriction254086
-Node: what-line256207
-Node: versmal oefening260658
-Node: car cdr en cons261706
-Node: Vreemde namen262892
-Node: car en cdr263614
-Node: cons268347
-Node: Bouw een lijst269436
-Ref: Bouw een lijst-Footnote-1271064
-Node: length271270
-Node: nthcdr272881
-Node: nth275991
-Node: setcar277512
-Node: setcdr280493
-Node: cons oefening282165
-Node: Knippen en opslaan van tekst282584
-Node: Tekst opslaan284000
-Node: zap-to-char286119
-Node: Complete zap-to-char286731
-Node: zap-to-char interactief289097
-Node: zap-to-char body290683
-Node: search-forward292232
-Node: progn295385
-Node: Samenvatting zap-to-char297200
-Node: kill-region298356
-Node: Complete kill-region299354
-Node: condition-case303765
-Node: Lisp macro306336
-Node: copy-region-as-kill308969
-Node: Complete copy-region-as-kill309912
-Node: copy-region-as-kill body312758
-Node: last-command en this-command313899
-Node: kill-append functie316237
-Node: kill-new functie320512
-Node: Uitwijding naar C331490
-Node: defvar337033
-Node: Inzien huidige variabele waarde338911
-Node: defvar en asterisk340873
-Node: cons en search-fwd terugblik342927
-Node: zoek oefening346106
-Node: Implementatie van lijsten346909
-Node: Lijsten uitgetekend348145
-Node: Symbolen als ladekast354634
-Node: Lijst oefening356749
-Node: Yanking357115
-Node: Killring overzicht358510
-Node: kill-ring-yank-pointer360322
-Node: yank nthcdr oefeningen362830
-Node: Loops en recursie363575
-Ref: Loops en recursie-Footnote-1364771
-Node: while365292
-Node: Looping met while366724
-Node: Loop voorbeeld368662
-Node: print-elements-of-list372364
-Node: Incrementele loop374950
-Node: Incrementele loop details375582
-Node: Incrementeel voorbeeld377055
-Node: Inc voorbeeld onderdelen379631
-Node: inc voorbeeld samengesteld383771
-Node: Decrementele loop387373
-Node: Decerementeel voorbeeld388845
-Node: Dec voorbeeld onderdelen390437
-Node: Dec voorbeeld samengesteld392518
-Node: dolist dotimes394794
-Node: dolist395625
-Node: dotimes398802
-Node: Recursie400349
-Node: Robots bouwen401561
-Node: Recursive definitie onderdelen403366
-Node: Recursie met lijst406013
-Node: Recursieve driehoek functie409681
-Node: Recursief voorbeeld arg van 1 of 2411059
-Node: Recursief voorbeeld arg van 3 of 4413324
-Node: Recursie met cond416528
-Node: Recursieve patronen418972
-Node: Elke419465
-Node: Accumuleren422025
-Node: Bewaar423405
-Node: Geen uitstel425473
-Node: Zonder uitstel oplossing428197
-Ref: Zonder uitstel oplossing-Footnote-1432159
-Ref: Zonder uitstel oplossing-Footnote-2432283
-Node: Looping oefening432806
-Node: Regexp zoeken434125
-Node: sentence-end436271
-Node: re-search-forward440318
-Node: forward-sentence442973
-Node: Complete forward-sentence443756
-Node: fwd-sentence while loops447460
-Node: fwd-sentence re-search451273
-Node: forward-paragraph453377
-Node: forward-paragraph in het kort455252
-Node: fwd-para let456810
-Node: fwd-para while463741
-Node: Regexp terugblik472597
-Node: re-search oefeningen475187
-Node: Woorden tellen475960
-Node: Waarom woorden tellen476743
-Node: tel-woorden-voorbeeld477899
-Node: Ontwerp tel-woorden-voorbeeld479272
-Node: Witte ruimte bug486008
-Node: recursive-count-words495843
-Node: Tellen voorbeeld508570
-Node: Woorden in een defun508942
-Node: Verdeel en heers510713
-Node: Woorden en symbolen512024
-Node: Syntax514177
-Node: count-words-in-defun517893
-Node: Enkele defuns524560
-Node: Een bestand vinden527080
-Node: lengte-lijst-bestand529840
-Node: Enkele bestanden535430
-Node: lengths-list-many-files536236
-Node: append539163
-Node: Enkele bestanden recursief539817
-Node: De data voorbereiden542903
-Node: Data in detail te tonen544018
-Node: Sorteren545013
-Node: Bestandenlijst546869
-Ref: Bestandenlijst-Footnote-1554913
-Node: Functiedefinities tellen555135
-Node: Een grafiek voorbereiden564762
-Node: Kolommen van een grafiek566136
-Node: graph-body-print580393
-Node: recursieve-grafiek-body-tonen585177
-Node: Getoonde assen587943
-Node: Lijngrafiek oefening588760
-Node: Initialisatie van Emacs588971
-Node: Default configuratie590467
-Ref: Default configuratie-Footnote-1592451
-Node: Site-wide init592767
-Node: defcustom594829
-Node: Een init bestand beginnen600714
-Node: Tekst en auto-fill603110
-Ref: Tekst en auto-fill-Footnote-1607126
-Ref: Tekst en auto-fill-Footnote-2607410
-Node: Mail aliasen607671
-Node: Indent Tabs Mode608597
-Node: Key bindings609542
-Node: Keymaps614316
-Node: Bestanden laden616976
-Node: Autoload620258
-Node: Eenvoudige uitbreiding623146
-Ref: Eenvoudige uitbreiding-Footnote-1625711
-Node: X11 kleuren626000
-Ref: X11 kleuren-Footnote-1627818
-Node: Diverse627972
-Node: Mode line632194
-Node: Debuggen.637730
-Node: debug638626
-Node: debug-on-entry641758
-Node: debug-on-quit645363
-Node: edebug646400
-Node: Debuggen oefeningen650522
-Node: Conclusie652287
-Node: de-de657645
-Node: Killring660435
-Node: Wat de killring doet661252
-Node: current-kill662770
-Node: Code voor current-kill663468
-Node: current-kill begrijpen666300
-Node: Body van current-kill667100
-Node: Uitwijding over fout670251
-Node: Het element vaststellen671426
-Node: yank675131
-Node: yank-pop678345
-Node: ring bestand680880
-Node: Volledige grafiek681257
-Node: Gelabeld voorbeeld682097
-Node: print-graph varlist684094
-Node: print-Y-axis685817
-Node: print-Y-axis in detail686670
-Node: Hoogte van label687480
-Node: Bereken het restant689497
-Node: Y-as element693363
-Node: Y-axis-column697126
-Node: print-Y-axis enalaatste698738
-Node: print-X-axis700719
-Node: Overeenkomsten verschillen702037
-Node: X-as tic marks702870
-Node: De gehele grafiek afdrukken709872
-Node: De finale versie710988
-Node: Test print-graph715243
-Node: Woorden in defuns grafisch weergeven716926
-Node: lambda719550
-Node: mapcar721431
-Node: Een andere bug723491
-Node: Finale afgedrukte grafiek729020
-Node: Vrije software en vrije handleidingen729971
-Node: GNU Free Documentation License736287
-Node: Index761476
-Node: Over de auteur800588
+Node: Voorwoord24398
+Node: Waarom25861
+Node: Over het lezen van deze tekst26524
+Node: Doelgroep28864
+Node: Geschiedenis van Lisp31867
+Node: Opmerking voor beginners32771
+Node: Dank35523
+Node: Lijsten verwerken36118
+Ref: Lijsten verwerken-Footnote-137574
+Node: Lisp lijsten37730
+Node: Genummerde lijsten38660
+Node: Lisp atomen39829
+Node: Whitespace in lijsten43743
+Node: Typen van lijsten45095
+Node: Draai een programma46316
+Ref: Draai een programma-Footnote-148869
+Node: Fouten maken49013
+Node: Namen en definities54216
+Node: Lisp interpreter56172
+Node: Complicaties57396
+Node: Byte compiling59645
+Node: Evaluatie60774
+Node: Hoe de interpreter werkt61401
+Node: Geneste lijsten evalueren62774
+Node: Variabelen65462
+Node: fill-column voorbeeld67078
+Node: Void functie68765
+Node: Void variabele70048
+Node: Argumenten71974
+Ref: Argumenten-Footnote-173780
+Node: Data typen74652
+Node: Argumenten als variabele of als lijst76889
+Node: Variabel aantal argumenten78630
+Node: Verkeerde type argument79526
+Ref: Verkeerde type argument-Footnote-183319
+Node: message83394
+Ref: message-Footnote-187616
+Node: setq87821
+Node: Setq gebruiken88546
+Node: Tellen91780
+Node: Samenvatting93842
+Node: Foutmelding oefeningen95845
+Node: Oefenen van evaluatie96401
+Node: Hoe te evalueren97628
+Node: Buffer namen99222
+Node: Buffers pakken105293
+Ref: Buffers pakken-Footnote-1107982
+Node: Van buffer verwisselen108232
+Ref: Van buffer verwisselen-Footnote-1111823
+Ref: Van buffer verwisselen-Footnote-2112165
+Node: Buffer grootte en locatie112919
+Node: Evaluatie oefening115133
+Node: Defuns schrijven115417
+Node: Primitieve functies116710
+Node: defun117945
+Node: Installeer124809
+Node: Effect van installatie126246
+Node: Een defun wijzigen127173
+Node: Interactief129053
+Node: Interactieve vermenigvuldig-met-zeven130236
+Node: vermenigvuldig-met-zeven in detail132366
+Node: Interactieve opties135219
+Node: Permanent installeren138581
+Node: let140892
+Node: Voorkom verwarring142484
+Ref: Voorkom verwarring-Footnote-1144749
+Node: Delen van een let expressie144893
+Node: Voorbeeld let expressie146608
+Ref: Voorbeeld let expressie-Footnote-1148430
+Node: Niet-geïnitialiseerde let variabelen148685
+Node: Hoe let variabelen bindt150459
+Node: Lexical en dynamische binding verschillen151797
+Node: Lexical vs dynamische binding voorbeeld153714
+Node: if155785
+Node: if in meer detail156731
+Node: type-dier in detail159544
+Node: else162194
+Node: Waar en onwaarheid165155
+Node: nil uitgelegd166164
+Node: save-excursion168361
+Node: Point en mark169137
+Node: Template voor save-excursion172246
+Node: Terugblik173534
+Node: defun oefeningen181577
+Node: Buffer rondleiding182050
+Node: Meer vinden183224
+Ref: Meer vinden-Footnote-1186239
+Node: versimpelde-beginning-of-buffer186456
+Node: mark-whole-buffer190960
+Node: mark-whole-buffer overzicht191834
+Node: Body van mark-whole-buffer193206
+Node: append-to-buffer196271
+Node: append-to-buffer overzicht196998
+Node: append interactief199800
+Node: append-to-buffer body202376
+Node: append save-excursion204563
+Ref: let* geïntroduceerd206360
+Node: Buffer gerelateerde terugblik210049
+Node: Buffer oefeningen212452
+Node: Meer complex212977
+Node: copy-to-buffer214088
+Ref: copy-to-buffer-Footnote-1216971
+Node: insert-buffer217191
+Node: insert-buffer code218650
+Node: insert-buffer interactief219659
+Node: Read-only buffer220209
+Node: b for interactief220853
+Node: insert-buffer body221981
+Node: if en or223203
+Node: Voeg or in226356
+Node: Voeg let in228703
+Node: Nieuwe insert-buffer232552
+Node: beginning-of-buffer233773
+Node: Optionele argumenten235423
+Node: beginning-of-buffer opt arg239066
+Node: Ontrafelen beginning-of-buffer240088
+Node: In geval van een groot buffer241442
+Node: In geval van een klein buffer244090
+Node: beginning-of-buffer compleet245868
+Node: Tweede buffer gerelateerde terugblik248912
+Node: optionele oefening250877
+Node: Versmallen en verbreden251401
+Node: Voordelen van versmallen252107
+Node: save-restriction254088
+Node: what-line256209
+Node: versmal oefening260660
+Node: car cdr en cons261708
+Node: Vreemde namen262894
+Node: car en cdr263616
+Node: cons268349
+Node: Bouw een lijst269438
+Ref: Bouw een lijst-Footnote-1271066
+Node: length271272
+Node: nthcdr272883
+Node: nth275993
+Node: setcar277514
+Node: setcdr280495
+Node: cons oefening282167
+Node: Knippen en opslaan van tekst282586
+Node: Tekst opslaan284002
+Node: zap-to-char286121
+Node: Complete zap-to-char286733
+Node: zap-to-char interactief289099
+Node: zap-to-char body290685
+Node: search-forward292234
+Node: progn295387
+Node: Samenvatting zap-to-char297202
+Node: kill-region298358
+Node: Complete kill-region299356
+Node: condition-case303767
+Node: Lisp macro306338
+Node: copy-region-as-kill308971
+Node: Complete copy-region-as-kill309914
+Node: copy-region-as-kill body312760
+Node: last-command en this-command313901
+Node: kill-append functie316239
+Node: kill-new functie320514
+Node: Uitwijding naar C331492
+Node: defvar337035
+Node: Inzien huidige variabele waarde338913
+Node: defvar en asterisk340875
+Node: cons en search-fwd terugblik342929
+Node: zoek oefening346108
+Node: Implementatie van lijsten346911
+Node: Lijsten uitgetekend348147
+Node: Symbolen als ladekast354636
+Node: Lijst oefening356751
+Node: Yanking357117
+Node: Killring overzicht358512
+Node: kill-ring-yank-pointer360324
+Node: yank nthcdr oefeningen362832
+Node: Loops en recursie363577
+Ref: Loops en recursie-Footnote-1364773
+Node: while365294
+Node: Looping met while366726
+Node: Loop voorbeeld368664
+Node: print-elements-of-list372366
+Node: Incrementele loop374952
+Node: Incrementele loop details375584
+Node: Incrementeel voorbeeld377057
+Node: Inc voorbeeld onderdelen379633
+Node: inc voorbeeld samengesteld383773
+Node: Decrementele loop387375
+Node: Decerementeel voorbeeld388847
+Node: Dec voorbeeld onderdelen390439
+Node: Dec voorbeeld samengesteld392520
+Node: dolist dotimes394796
+Node: dolist395627
+Node: dotimes398804
+Node: Recursie400351
+Node: Robots bouwen401563
+Node: Recursive definitie onderdelen403368
+Node: Recursie met lijst406015
+Node: Recursieve driehoek functie409683
+Node: Recursief voorbeeld arg van 1 of 2411061
+Node: Recursief voorbeeld arg van 3 of 4413326
+Node: Recursie met cond416530
+Node: Recursieve patronen418974
+Node: Elke419467
+Node: Accumuleren422027
+Node: Bewaar423407
+Node: Geen uitstel425475
+Node: Zonder uitstel oplossing428199
+Ref: Zonder uitstel oplossing-Footnote-1432161
+Ref: Zonder uitstel oplossing-Footnote-2432285
+Node: Looping oefening432808
+Node: Regexp zoeken434127
+Node: sentence-end436273
+Node: re-search-forward440320
+Node: forward-sentence442975
+Node: Complete forward-sentence443758
+Node: fwd-sentence while loops447462
+Node: fwd-sentence re-search451275
+Node: forward-paragraph453379
+Node: forward-paragraph in het kort455254
+Node: fwd-para let456812
+Node: fwd-para while463743
+Node: Regexp terugblik472599
+Node: re-search oefeningen475189
+Node: Woorden tellen475962
+Node: Waarom woorden tellen476745
+Node: tel-woorden-voorbeeld477901
+Node: Ontwerp tel-woorden-voorbeeld479274
+Node: Witte ruimte bug486010
+Node: recursive-count-words495845
+Node: Tellen voorbeeld508572
+Node: Woorden in een defun508944
+Node: Verdeel en heers510715
+Node: Woorden en symbolen512026
+Node: Syntax514179
+Node: count-words-in-defun517895
+Node: Enkele defuns524562
+Node: Een bestand vinden527082
+Node: lengte-lijst-bestand529842
+Node: Enkele bestanden535432
+Node: lengths-list-many-files536238
+Node: append539165
+Node: Enkele bestanden recursief539819
+Node: De data voorbereiden542905
+Node: Data in detail te tonen544020
+Node: Sorteren545015
+Node: Bestandenlijst546871
+Ref: Bestandenlijst-Footnote-1554915
+Node: Functiedefinities tellen555137
+Node: Een grafiek voorbereiden564764
+Node: Kolommen van een grafiek566138
+Node: graph-body-print580395
+Node: recursieve-grafiek-body-tonen585179
+Node: Getoonde assen587945
+Node: Lijngrafiek oefening588762
+Node: Initialisatie van Emacs588973
+Node: Standaard configuratie590540
+Ref: Standaard configuratie-Footnote-1592666
+Node: Systeem-brede init592988
+Node: defcustom595249
+Node: Een init bestand beginnen601374
+Node: Tekst en auto-fill603905
+Ref: Tekst en auto-fill-Footnote-1608226
+Ref: Tekst en auto-fill-Footnote-2608519
+Node: Mail aliasen608829
+Node: Indent Tabs Mode609788
+Node: Key bindings610787
+Node: Keymaps616073
+Node: Bestanden laden618907
+Node: Autoload622279
+Node: Eenvoudige uitbreiding625298
+Ref: Eenvoudige uitbreiding-Footnote-1627900
+Node: X11 kleuren628189
+Ref: X11 kleuren-Footnote-1630083
+Node: Diverse630251
+Node: Mode line634611
+Node: Debuggen.640460
+Node: debug641356
+Node: debug-on-entry644488
+Node: debug-on-quit648093
+Node: edebug649130
+Node: Debuggen oefeningen653252
+Node: Conclusie655017
+Node: de-de660375
+Node: Killring663165
+Node: Wat de killring doet663982
+Node: current-kill665500
+Node: Code voor current-kill666198
+Node: current-kill begrijpen669030
+Node: Body van current-kill669830
+Node: Uitwijding over fout672981
+Node: Het element vaststellen674156
+Node: yank677861
+Node: yank-pop681075
+Node: ring bestand683610
+Node: Volledige grafiek683987
+Node: Gelabeld voorbeeld684827
+Node: print-graph varlist686824
+Node: print-Y-axis688547
+Node: print-Y-axis in detail689400
+Node: Hoogte van label690210
+Node: Bereken het restant692227
+Node: Y-as element696093
+Node: Y-axis-column699856
+Node: print-Y-axis enalaatste701468
+Node: print-X-axis703449
+Node: Overeenkomsten verschillen704767
+Node: X-as tic marks705600
+Node: De gehele grafiek afdrukken712602
+Node: De finale versie713718
+Node: Test print-graph717973
+Node: Woorden in defuns grafisch weergeven719656
+Node: lambda722280
+Node: mapcar724161
+Node: Een andere bug726221
+Node: Finale afgedrukte grafiek731750
+Node: Vrije software en vrije handleidingen732701
+Node: GNU Free Documentation License739017
+Node: Index764206
+Node: Over de auteur803388
 
 End Tag Table
 
