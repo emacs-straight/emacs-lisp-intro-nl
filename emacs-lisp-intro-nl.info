@@ -207,7 +207,7 @@ Oefenen van evaluatie
 * Buffer namen::             Buffers en bestanden zijn verschillend.
 * Buffers pakken::           Pak een buffer zelf, niet slechts zijn naam.
 * Van buffer verwisselen::   Hoe je naar een andere buffer overschakelt
-* Buffer grootte en locatie::  De locatie van point en de grootte van het
+* Buffer grootte en lokatie::  De lokatie van point en de grootte van het
                                  buffer.
 * Evaluatie oefening::       Evaluatie oefening
 
@@ -270,7 +270,7 @@ Waar en onwaarheid in Emacs Lisp
 
 
 
-* Point en mark::            Een overzicht van verschillende locaties.
+* Point en mark::            Een overzicht van verschillende lokaties.
 * Template voor save-excursion::  Template voor save-excursion
 
 Enkele buffer gerelateerde functies
@@ -484,7 +484,7 @@ Loop met een decrementele teller
 
 
 
-* Decerementeel voorbeeld::  Meer steentjes op het strand.
+* Decrementeel voorbeeld::   Meer steentjes op het strand.
 * Dec voorbeeld onderdelen::  De onderdelen van een functiedefinitie.
 * Dec voorbeeld samengesteld::  De functiedefinitie samenstellen.
 
@@ -578,7 +578,7 @@ Woorden tellen in een ‘defun’
 * Verdeel en heers::         Verdeel en heers
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
-* count-words-in-defun::     Erg vergelijkbaar met
+* tel-woorden-in-defun::     Erg vergelijkbaar met
                                ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
@@ -1939,7 +1939,7 @@ probeert vast te stellen of de informatie die het kreeg een getal is of
 een marker (een speciaal object dat een bufferpositie vertegenwoordigt).
 Wat het doet is testen of de ‘+’ getallen kreeg om op te tellen.  Ook
 test of het argument iets is dat een marker genoemd wordt, wat een
-specifieke eigenschap van Emacs Lisp is.  (In Emacs worden locaties in
+specifieke eigenschap van Emacs Lisp is.  (In Emacs worden lokaties in
 een buffer geregistreerd als markers.  Wanneer de mark is gezet met het
 ‘C-@’ of ‘C-<SPC>’ commando, wordt zijn positie bewaard als een marker.
 De mark kan worden beschouwd als een getal-het aantal karakters van de
@@ -1997,7 +1997,7 @@ hiervan).
    Wanneer er echter een ‘%s’ in de string tussen aanhalingstekens
 staat, toont de ‘message’-functie de ‘%s’ niet als zodanig, maar kijkt
 naar het argument dat op de string volgt.  Het evalueert het tweede
-argument en toont de waarde op de locatie in de string waar de ‘%s’
+argument en toont de waarde op de lokatie in de string waar de ‘%s’
 staat.
 
    De kun je zien door de cursor achter de volgende expressie te
@@ -2290,7 +2290,7 @@ buffer-gerelateerde functies om te zien hoe die zijn geschreven.
 * Buffer namen::             Buffers en bestanden zijn verschillend.
 * Buffers pakken::           Pak een buffer zelf, niet slechts zijn naam.
 * Van buffer verwisselen::   Hoe je naar een andere buffer overschakelt
-* Buffer grootte en locatie::  De locatie van point en de grootte van het
+* Buffer grootte en lokatie::  De lokatie van point en de grootte van het
                                  buffer.
 * Evaluatie oefening::       Evaluatie oefening
 
@@ -2323,7 +2323,7 @@ evalueren, deze zullen we beschrijven wanneer die aan de orde komen.
    Naast dat we ze voor evaluatie-oefeningen gebruiken, zijn de functies
 die in volgende secties behandeld worden op zichzelf belangrijk.  Het
 bestuderen van deze functies verheldert het verschil tussen buffers en
-bestanden, hoe tussen buffer te schakelen, en hoe een locatie er binnen
+bestanden, hoe tussen buffer te schakelen, en hoe een lokatie er binnen
 vast te stellen.
 
 
@@ -2506,7 +2506,7 @@ het meest recente buffer kiezen dat je niet kunt zien.  Dit is een
 subtiliteit die ik meestal vergeet.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Van buffer verwisselen,  Next: Buffer grootte en locatie,  Prev: Buffers pakken,  Up: Oefenen van evaluatie
+File: emacs-lisp-intro-nl.info,  Node: Van buffer verwisselen,  Next: Buffer grootte en lokatie,  Prev: Buffers pakken,  Up: Oefenen van evaluatie
 
 2.3 Van buffer verwisselen
 ==========================
@@ -2589,14 +2589,14 @@ in vensters zichtbaar is omdat je hoogst waarschijnlijk ‘C-x o’
 (‘other-window’) gebruikt om naar een ander zichtbaar buffer te gaan.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Buffer grootte en locatie,  Next: Evaluatie oefening,  Prev: Van buffer verwisselen,  Up: Oefenen van evaluatie
+File: emacs-lisp-intro-nl.info,  Node: Buffer grootte en lokatie,  Next: Evaluatie oefening,  Prev: Van buffer verwisselen,  Up: Oefenen van evaluatie
 
-2.4 Buffergrootte en de locatie van point
+2.4 Buffergrootte en de lokatie van point
 =========================================
 
 Laten wij tenslotte naar enkele nogal eenvoudige functies kijken,
 ‘buffer-size’, ‘point’, ‘point-min’ en ‘point-max’.  Deze geven
-informatie over de grootte van een buffer en de locatie van point
+informatie over de grootte van een buffer en de lokatie van point
 daarin.
 
    De functie ‘buffer-size’ vertelt je hoe groot het huidige buffer is.
@@ -2621,7 +2621,7 @@ de gebruikelijke manier evalueren van de volgende expressie:
 Terwijl ik dit schrijf is de waarde van point 65724.  De ‘point’ functie
 wordt vaak gebruikt in sommige voorbeelden later in dit boek.
 
-   De waarde van point hangt natuurlijk af van zijn locatie in het
+   De waarde van point hangt natuurlijk af van zijn lokatie in het
 buffer.  Wanneer je point op deze plek evalueert, is het getal groter:
 
      (point)
@@ -2641,7 +2641,7 @@ verbreden: Versmallen en verbreden.)  Evenzo geeft de functie
 buffer.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Evaluatie oefening,  Prev: Buffer grootte en locatie,  Up: Oefenen van evaluatie
+File: emacs-lisp-intro-nl.info,  Node: Evaluatie oefening,  Prev: Buffer grootte en lokatie,  Up: Oefenen van evaluatie
 
 2.5 Oefening
 ============
@@ -3819,7 +3819,7 @@ De functie ‘save-excursion’ is de laatste speciale vorm die we in dit
 hoofdstuk bespreken.
 
    In Emacs Lisp programma's voor editing is de functie ‘save-excursion’
-heel gebruikelijk.  Het bewaart de locatie van point, voert de body van
+heel gebruikelijk.  Het bewaart de lokatie van point, voert de body van
 de functie uit en herstelt point naar zijn vorige positie indien zijn
 lokatie is gewijzigd.  Het primaire doel is te voorkomen dat de
 gebruiker verrast en verstoord wordt door onverwachte verplaatsing van
@@ -3827,7 +3827,7 @@ point.
 
 * Menu:
 
-* Point en mark::            Een overzicht van verschillende locaties.
+* Point en mark::            Een overzicht van verschillende lokaties.
 * Template voor save-excursion::  Template voor save-excursion
 
 
@@ -3864,7 +3864,7 @@ Talrijke commando's werken op de region, inclusief ‘center-region’,
 herstelt de positie nadat de code in de body van de speciale vorm is
 geëvalueerd door de Lisp interpreter.  Als point dus aan het begin van
 een stuk tekst staat en bepaalde code heeft point naar het eind van het
-buffer verplaatst, plaatst ‘save-excursion’ point terug naar de locatie
+buffer verplaatst, plaatst ‘save-excursion’ point terug naar de lokatie
 waar het eerder was, nadat de expressies in de body van de functie zijn
 geëvalueerd.
 
@@ -4188,7 +4188,7 @@ Je kunt op ook de volledige documentatie van een variabele opvragen met
 het typen van ‘C-h v’, en daarna de naam van de variabele (gevolg met
 <RET>).
 
-   ‘describe-function’ vertelt je ook de locatie van de functie.
+   ‘describe-function’ vertelt je ook de lokatie van de functie.
 
    Plaats point in de naam van het bestand dat de functie bevat en druk
 op de <RET>-toets.  In dit geval betekent <RET> ‘push-button’ in plaats
@@ -4416,7 +4416,7 @@ van de cursor.
 staat en ‘(push-mark)’ in de expressie ‘beginning-of-buffer’ .
 Misschien wist wie de code schreef niet dat de argumenten van
 ‘push-mark’ optioneel zijn en dat wanneer geen argument aan ‘push-mark’
-wordt doorgegeven, de functie automatisch standaard de locatie van de
+wordt doorgegeven, de functie automatisch standaard de lokatie van de
 cursor gebruikt.  Of misschien was de expressie zo geschreven dat die
 parallel aan de structuur van de volgende regel is.  In elk geval zorgt
 de regel dat Emacs de positie van point vaststelt en de mark daar zet.
@@ -5892,7 +5892,7 @@ versmalling wordt hersteld vlak voor de voltooiing van de functie door
 de speciale vorm ‘save-restriction’.
 
    De aanroep van ‘widen’ wordt gevolgd door ‘save-excursion’ die de
-locatie van de cursor (dus van point) bewaart, en herstelt die nadat de
+lokatie van de cursor (dus van point) bewaart, en herstelt die nadat de
 code in de body van de ‘save-excursion’ de functie ‘beginning-of-line’
 gebruikt om point te verplaatsen.
 
@@ -6007,7 +6007,7 @@ File: emacs-lisp-intro-nl.info,  Node: car en cdr,  Next: cons,  Prev: Vreemde n
 De CAR van een lijst is, vrij eenvoudig, het eerste item in de lijst.
 Dus de CAR van de lijst ‘(roos viool madelief boterbloem)’ is ‘roos’.
 
-   Wanneer je dit in Info in GNU Emacs leest kan je dit door het
+   Wanneer je dit in Info in GNU Emacs leest kan je zien dit door het
 volgende te evalueren:
 
      (car '(roos viool madelief boterbloem))
@@ -6041,7 +6041,7 @@ door ‘roos’ als een functie aan te roepen.  In dit voorbeeld willen we
 dat niet.
 
    Voor het werken met lijsten zouden de namen ‘first’ en ‘rest’
-logischer zijn dan de namen ‘car’ en ‘cdr’.  Sommige programmers
+logischer zijn dan de namen ‘car’ en ‘cdr’.  Sommige programmeurs
 definieren inderdaad ‘first’ en ‘rest’ als aliassen voor ‘car’ en ‘cdr’
 en gebruiken daarna ‘first’ en ‘rest’ in de rest van hun code.
 
@@ -6125,7 +6125,7 @@ lijst plaatst, of dat het een element aan de lijst vastmaakt of pusht,
 maar deze formulering is misleidend, omdat ‘cons’ geen bestaande lijst
 verandert, maar een nieuwe maakt.
 
-   Like ‘car’ and ‘cdr’, ‘cons’ is non-destructive.
+   Net als ‘car’ en ‘cdr’, is ‘cons’ niet-destructief.
 
 * Menu:
 
@@ -6384,12 +6384,12 @@ lijst met de functie ‘list’:
 Wanneer je dit in Info binnen GNU Emacs leest kan je deze expressie op
 de gebruikelijke manier evalueren, door de cursor achter de expressie te
 plaatsen en ‘C-x C-e’ te typen.  (Ik doe dat meteen hier terwijl ik dit
-schrijft.  Dat is een van de voordelen van een in je computer omgeving
-ingebouwde interpreter Overigen, wanneer is niets op de regel na het
+schrijf.  Dat is een van de voordelen van een ingebouwde interpreter in
+je computer omgeving.  Overigens, wanneer is niets op de regel na het
 laatste haakje staat, zoals commentaar, kan point ook de volgende regel
 staan.  Dus als point op de eerste kolom van de regel staat, hoef je die
 niet te verplaatsten.  Emacs staat zelfs een willekeurige hoeveelheid
-witte ruimte achter het laaste haakje toe.)
+witte ruimte achter het laatste haakje toe.)
 
    Wanneer we de variabele ‘dieren’ evalueren dan zien we dat die
 gebonden is aan de lijst ‘(antiloop giraf leeuw tijger)’:
@@ -6418,8 +6418,8 @@ Het eerste element van de lijst, ‘antiloop’ is vervangen met
 ‘nijlpaard’.
 
    We zien dus dat ‘setcar’ geen nieuw element aan de lijst heeft
-toegevoegd, wat ‘cons’ gedaan zou hebben, maar het verving ‘antiloop’
-met ‘nijlpaard’.  Het _wijzigde_ de lijst.
+toegevoegd, wat ‘cons’ gedaan zou hebben, maar ‘antiloop’ verving met
+‘nijlpaard’.  Het _wijzigde_ de lijst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: setcdr,  Next: cons oefening,  Prev: setcar,  Up: car cdr en cons
@@ -6483,12 +6483,12 @@ File: emacs-lisp-intro-nl.info,  Node: Knippen en opslaan van tekst,  Next: Impl
 8 Tekst knippen en opslaan
 **************************
 
-Steeds als je in GNU Emacs tekst uit een buffer snijdt op clipt met een
+Steeds als je in GNU Emacs tekst uit een buffer snijdt of clipt met een
 “kill” commando, wordt het bewaard in een lijst en kan je het terughalen
 met een “yank” commando.
 
    (Het gebruik van het woord "kill" in Emacs voor processen die _niet_
-specifiek de waarden van de entiteiten vernietigen), is een ongelukkig
+specifiek de waarden van de entiteiten vernietigen, is een ongelukkig
 historisch ongeluk.  Een veel beter word zou "clip" zijn, omdat dat is
 wat kill commando's doen.  Zij clippen tekst uit het buffer en bergen
 dat in een opslagplaats op van waar het teruggebracht kan worden.  Ik
@@ -6549,11 +6549,12 @@ tweede, derde, of welke dan ook.  Verder, wanneer je aan het einde van
 lijst komt, moet Emacs je het eerste element van de lijst geven, in
 plaats van helemaal niets.
 
-   De lijst die de stukken tekst bevat het de “killring”.  Dit hoofdstuk
-werkt naar een beschijving van de killring toe en hoe die gebruikt wordt
-door eerst te volgen hoe de functie ‘zap-to-char’ werkt.  Deze functie
-roept een functie aan die een functie start die de killring manipuleert.
-Dus, voordat we de bergen bereiken, beklimmen we eerst de voetheuvels.
+   De lijst die de stukken tekst bevat heet de “killring”.  Dit
+hoofdstuk werkt naar een beschijving van de killring toe en hoe die
+gebruikt wordt door eerst te volgen hoe de functie ‘zap-to-char’ werkt.
+Deze functie roept een functie aan die een functie start die de killring
+manipuleert.  Dus, voordat we de bergen bereiken, beklimmen we eerst de
+voetheuvels.
 
    Een volgend hoofdstuk beschrijft hoe tekst dat uit het buffer is
 gesneden wordt teruggehaald.  *Note Tekst terug yanken: Yanking.
@@ -6678,7 +6679,7 @@ karakter killt (dat wil zeggen, verwijdert).
 
 ‘char-table-p’ functie zien we voor het eerst.  Het stelt vast of het
 argument een karakter-tabel is.  Wanneer dat het geval is, dan stelt die
-het karakter was aan ‘zap-to-char’ wordt doorgegeven aan een van hen in.
+het karakter dat aan ‘zap-to-char’ wordt doorgegeven aan een van hen in.
 (Dit is belangrijk voor bepaalde karakters in niet-Europese talen.  De
 functie ‘aref’ extraheert een element uit een array.  Het is een
 array-specifieke functie die we in dit document niet bespreken.  *Note
@@ -6699,7 +6700,7 @@ File: emacs-lisp-intro-nl.info,  Node: search-forward,  Next: progn,  Prev: zap-
 8.1.3 De functie ‘search-forward’
 ---------------------------------
 
-De functie ‘search-forward’ wordt ‘zap-to-char’ gebruikt het
+De functie ‘search-forward’ wordt door ‘zap-to-char’ gebruikt om het
 zapped-for-karakter te vinden.  Wanneer het zoeken succesvol is, zet
 ‘search-forward’ point onmiddellijk achter het laatste karakter in de
 doelstring.  (In ‘zap-to-char’ is de doelstring slechts één karakter
@@ -6774,7 +6775,7 @@ uitvoeren.  De waarden die zij produceren worden weggegooid.
        BODY...)
 
    In ‘zap-to-char’ moet de ‘progn’ expressie twee dingen doen: zet
-point exact op de juiste positie en geef de locatie van point zodat
+point exact op de juiste positie en geef de lokatie van point zodat
 ‘kill-region’ weet hoe ver het moet killen.
 
    Het eerste argument van de ‘progn’ is ‘search-forward’.  Wanneer
@@ -8847,12 +8848,12 @@ Lisp ingebouwde functie die 1 van zijn argument aftrekt.
 
 * Menu:
 
-* Decerementeel voorbeeld::  Meer steentjes op het strand.
+* Decrementeel voorbeeld::   Meer steentjes op het strand.
 * Dec voorbeeld onderdelen::  De onderdelen van een functiedefinitie.
 * Dec voorbeeld samengesteld::  De functiedefinitie samenstellen.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Decerementeel voorbeeld,  Next: Dec voorbeeld onderdelen,  Up: Decrementele loop
+File: emacs-lisp-intro-nl.info,  Node: Decrementeel voorbeeld,  Next: Dec voorbeeld onderdelen,  Up: Decrementele loop
 
 Voorbeeld met een aflopende teller
 ..................................
@@ -8883,7 +8884,7 @@ rij 7.  Op dezelfde manier weten we hoeveel steentjes in de daaraan
 voorafgaande rij zijn: het is een minder dan het aantal in de rij.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Dec voorbeeld onderdelen,  Next: Dec voorbeeld samengesteld,  Prev: Decerementeel voorbeeld,  Up: Decrementele loop
+File: emacs-lisp-intro-nl.info,  Node: Dec voorbeeld onderdelen,  Next: Dec voorbeeld samengesteld,  Prev: Decrementeel voorbeeld,  Up: Decrementele loop
 
 De onderdelen van de functiedefinitie
 .....................................
@@ -11659,7 +11660,7 @@ het vertellen.
 * Verdeel en heers::         Verdeel en heers
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
-* count-words-in-defun::     Erg vergelijkbaar met
+* tel-woorden-in-defun::     Erg vergelijkbaar met
                                ‘tel-woorden-voorbeeld’
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
@@ -11749,7 +11750,7 @@ definieert.  Wat bedoeld wordt met "woord-vormende letters" brengt ons
 bij het probleem van de syntax, wat een aparte sectie waard is.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Syntax,  Next: count-words-in-defun,  Prev: Woorden en symbolen,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: Syntax,  Next: tel-woorden-in-defun,  Prev: Woorden en symbolen,  Up: Woorden in een defun
 
 14.2 Wat vormt een woord of symbool?
 ====================================
@@ -11824,7 +11825,7 @@ geen witten ruimte zijn en dan optioneel gevold door witte ruimte.
      "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
 
 
-File: emacs-lisp-intro-nl.info,  Node: count-words-in-defun,  Next: Enkele defuns,  Prev: Syntax,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: tel-woorden-in-defun,  Next: Enkele defuns,  Prev: Syntax,  Up: Woorden in een defun
 
 14.3 De ‘tel-woorden-in-defun’ functie
 ======================================
@@ -11982,7 +11983,7 @@ Succes!  De definitie heeft 10 woorden en symbolen.
 meerdere definities in een enkel bestand te tellen.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Enkele defuns,  Next: Een bestand vinden,  Prev: count-words-in-defun,  Up: Woorden in een defun
+File: emacs-lisp-intro-nl.info,  Node: Enkele defuns,  Next: Een bestand vinden,  Prev: tel-woorden-in-defun,  Up: Woorden in een defun
 
 14.4 Tel verschillende ‘defuns’ in een bestand
 ==============================================
@@ -14678,13 +14679,13 @@ File: emacs-lisp-intro-nl.info,  Node: Debuggen.,  Next: Conclusie,  Prev: Initi
 17 Debuggen.
 ************
 
-GNU Emacs has two debuggers, ‘debug’ and ‘edebug’.  The first is built
-into the internals of Emacs and is always with you; the second requires
-that you instrument a function before you can use it.
+GNU Emacs heeft twee debuggers, ‘debug’ en ‘edebug’.  De eerste is
+ingebouwd in Emacs en is altijd bij je in de buurt.  De tweede vereist
+dat je een functie instrumenteert voordat je het kunt gebruiken.
 
-   Both debuggers are described extensively in *note Debugging Lisp
-Programs: (elisp)Debugging.  In this chapter, I will walk through a
-short example of each.
+   Beide debuggers zijn uitgebreid beschreven in *note Debugging Lisp
+Programs: (elisp)Debugging.  In dit hoofdstuk loop ik een kort voorbeeld
+van beide door.
 
 * Menu:
 
@@ -14701,84 +14702,89 @@ File: emacs-lisp-intro-nl.info,  Node: debug,  Next: debug-on-entry,  Up: Debugg
 17.1 ‘debug’
 ============
 
-Suppose you have written a function definition that is intended to
-return the sum of the numbers 1 through a given number.  (This is the
-‘triangle’ function discussed earlier.  *Note Example with Decrementing
-Counter: Decrementing Example, for a discussion.)
+Stel dat je een functiedefinitie hebt geschreven die bedoeld is om de
+som van de getallen 1 tot een opgegeven getal terug te geven.  (Dit is
+de eerder besproken ‘driehoek’ functie.  *Note Voorbeeld met een
+aflopende teller: Decrementeel voorbeeld, voor een bespreking.)
 
-   However, your function definition has a bug.  You have mistyped ‘1=’
-for ‘1-’.  Here is the broken definition:
+   Je functiedefinitie heeft echter een bug.  Je hebt ‘1-’ verkeerd
+getypt als ‘1=’.  Hier is de kapotte definitie:
 
-     (defun triangle-bugged (number)
-       "Return sum of numbers 1 through NUMBER inclusive."
-       (let ((total 0))
-         (while (> number 0)
-           (setq total (+ total number))
-           (setq number (1= number)))      ; Error here.
-         total))
+     (defun driehoek-met-bug (getal)
+       "Geef som van getallen 1 t/m GETAL terug."
+       (let ((totaal 0))
+         (while (> getal 0)
+           (setq totaal (+ totaal getal))
+           (setq getal (1= getal)))      ; Fout hier.
+         totaal))
 
-   If you are reading this in Info, you can evaluate this definition in
-the normal fashion.  You will see ‘triangle-bugged’ appear in the echo
-area.
+   Wanneer je dit leest in Info kan je deze definitie op de
+gebruikelijke manier evalueren.  Je ziet ‘driehoek-met-bug’ in het
+echogebied verschijnen.
 
-   Now evaluate the ‘triangle-bugged’ function with an argument of 4:
+   Evalueer nu de functie ‘driehoek-met-bug’ met een argument van 4:
 
-     (triangle-bugged 4)
+     (driehoek-met-bug 4)
 
-This will create and enter a ‘*Backtrace*’ buffer that says:
+Dit creëert en zet je in een ‘*Backtrace*’ buffer met de tekst:
 
      ---------- Buffer: *Backtrace* ----------
      Debugger entered--Lisp error: (void-function 1=)
-       (1= number)
-       (setq number (1= number))
-       (while (> number 0) (setq total (+ total number))
-             (setq number (1= number)))
-       (let ((total 0)) (while (> number 0) (setq total ...)
-         (setq number ...)) total)
-       triangle-bugged(4)
-       eval((triangle-bugged 4) nil)
-       eval-expression((triangle-bugged 4) nil nil 127)
-       funcall-interactively(eval-expression (triangle-bugged 4) nil nil 127)
-       call-interactively(eval-expression nil nil)
-       command-execute(eval-expression)
+       (1= getal)
+       (setq getal (1= getal))
+       (while (> getal 0) (setq totaal (+ totaal getal))
+             (setq getal (1= getal)))
+       (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+          (setq getal ...)) totaal)
+       driehoek-met-bug(4)
+       eval((driehoek-met-bug 4) nil)
+       elisp--eval-last-sexp(nil)
+       #f(compiled-function () #<bytecode ...)()
+       handler-bind-1(#f(compiled-function () #<bytecode ...)
+         (error) eval-expression--debug)
+       eval-last-sexp(nil)
+       funcall-interactively(eval-last-sexp nil)
+       call-interactively(eval-last-sexp nil nil)
+       command-execute(eval-last-sexp)
      ---------- Buffer: *Backtrace* ----------
 
-(I have reformatted this example slightly; the debugger does not fold
-long lines.  As usual, you can quit the debugger by typing ‘q’ in the
-‘*Backtrace*’ buffer.)
+(Ik heb dit voorbeeld iets anders geformatteerd.  De debugger breekt de
+lange regels niet af.  Zoals gebruikelijk kun je de debugger sluiten
+door ‘q’ in het ‘*Backtrace*’ buffer te typen.)
 
-   In practice, for a bug as simple as this, the Lisp error line will
-tell you what you need to know to correct the definition.  The function
+   Voor een bug zo simpel als deze vertelt in de praktijk de Lisp error
+regel je wat je moet weten om de definitie te verbeteren.  De functie
 ‘1=’ is void.
 
-   However, suppose you are not quite certain what is going on?  You can
-read the complete backtrace.
+   Stel echter dat je niet helemaal zeker bent wat er aan de hand is.
+Dan kan je de complete backtrace lezen.
 
-   Emacs automatically starts the debugger that puts you in the
-‘*Backtrace*’ buffer.  You can also start the debugger manually as
-described below.
+   Emacs start automatisch de debugger die je in het ‘*Backtrace*’
+buffer zet.  Je kunt de debugger ook handmatig starten zoals hieronder
+beschreven.
 
-   Read the ‘*Backtrace*’ buffer from the bottom up; it tells you what
-Emacs did that led to the error.  Emacs made an interactive call to ‘C-x
-C-e’ (‘eval-last-sexp’), which led to the evaluation of the
-‘triangle-bugged’ expression.  Each line above tells you what the Lisp
-interpreter evaluated next.
+   Lees het ‘*Backtrace*’ buffer van onder naar boven.  Het vertelt je
+wat Emacs deed wat tot de fout leidde.  Emacs riep interactief ‘C-x C-e’
+(‘eval-last-sexp’), wat leidde tot de evaluatie van de
+‘driehoek-met-bug’.  Elke regel erboven zegt wat de Lisp interpreter
+daarna evalueerde.
 
-   The third line from the top of the buffer is
+   De derde regel van de bovenkant van het buffer is
 
-     (setq number (1= number))
+     (setq getal (1= getal))
 
-Emacs tried to evaluate this expression; in order to do so, it tried to
-evaluate the inner expression shown on the second line from the top:
+Emacs probeerde deze expressie te evalueren.  Om dat te doen, probeerde
+het de binnenste expressie te evalueren, die op de tweede regel van
+boven staat:
 
-     (1= number)
+     (1= getal)
 
-This is where the error occurred; as the top line says:
+Dit is waar de fout optrad.  Zoals de bovenste regel zegt:
 
      Debugger entered--Lisp error: (void-function 1=)
 
-You can correct the mistake, re-evaluate the function definition, and
-then run your test again.
+Je kunt de vergissing verbeteren, de functiedefinitie opnieuw evalueren
+en je test opnieuw uitvoeren.
 
 
 File: emacs-lisp-intro-nl.info,  Node: debug-on-entry,  Next: debug-on-quit,  Prev: debug,  Up: Debuggen.
@@ -14786,226 +14792,239 @@ File: emacs-lisp-intro-nl.info,  Node: debug-on-entry,  Next: debug-on-quit,  Pr
 17.2 ‘debug-on-entry’
 =====================
 
-Emacs starts the debugger automatically when your function has an error.
+Emacs start de debugger automatisch wanneer je functie een fout bevat.
 
-   Incidentally, you can start the debugger manually for all versions of
-Emacs; the advantage is that the debugger runs even if you do not have a
-bug in your code.  Sometimes your code will be free of bugs!
+   Overigens kan je de debugger handmatig starten in alle versies van
+Emacs.  Het voordeel is dat de debugger zelfs draait wanneer je geen bug
+in je code hebt.  Soms is je code zonder bugs!
 
-   You can enter the debugger when you call the function by calling
-‘debug-on-entry’.
+   Je kunt de debugger handmatig starten door de functie aan te roepen
+met ‘debug-on-entry’.
 
-Type:
+Typ:
 
-     M-x debug-on-entry <RET> triangle-bugged <RET>
+     M-x debug-on-entry <RET> driehoek-met-bug <RET>
 
-Now, evaluate the following:
+Evalueer nu het volgende:
 
-     (triangle-bugged 5)
+     (driehoek-met-bug 5)
 
-All versions of Emacs will create a ‘*Backtrace*’ buffer and tell you
-that it is beginning to evaluate the ‘triangle-bugged’ function:
+Alle versies van Emacs maken een ‘*Backtrace*’ buffer en vertellen je
+dat het begint met de evaluatie van de functie ‘driehoek-met-bug’:
 
-     ---------- Buffer: *Backtrace* ----------
      Debugger entered--entering a function:
-     * triangle-bugged(5)
-       eval((triangle-bugged 5) nil)
-       eval-expression((triangle-bugged 5) nil nil 127)
-       funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-       call-interactively(eval-expression nil nil)
-       command-execute(eval-expression)
-     ---------- Buffer: *Backtrace* ----------
+     * driehoek-met-bug(5)
+       eval((driehoek-met-bug 5) nil)
+       #f(compiled-function () #<bytecode ...>)()
+       handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+       eval-last-sexp(nil)
+       funcall-interactively(eval-last-sexp nil)
+       call-interactively(eval-last-sexp nil nil)
+       command-execute(eval-last-sexp)
 
-   In the ‘*Backtrace*’ buffer, type ‘d’.  Emacs will evaluate the first
-expression in ‘triangle-bugged’; the buffer will look like this:
+   Typ ‘d’ in het ‘*Backtrace*’ buffer.  Emacs evalueert de eerste
+expressie in de ‘driehoek-met-bug’.  Het buffer ziet er zo uit:
 
-     ---------- Buffer: *Backtrace* ----------
-     Debugger entered--beginning evaluation of function call form:
-     * (let ((total 0)) (while (> number 0) (setq total ...)
-             (setq number ...)) total)
-     * triangle-bugged(5)
-       eval((triangle-bugged 5))
-       eval((triangle-bugged 5) nil)
-       eval-expression((triangle-bugged 5) nil nil 127)
-       funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-       call-interactively(eval-expression nil nil)
-       command-execute(eval-expression)
-     ---------- Buffer: *Backtrace* ----------
+     Debugger entered--entering a function:
+     * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+       (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+             (setq getal ...)) totaal)) (5))
+     * driehoek-met-bug(5)
+       eval((driehoek-met-bug 5) nil)
+     elisp--eval-last-sexp(nil)
+       #f(compiled-function () #<bytecode ...>)()
+       handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+       eval-last-sexp(nil)
+       funcall-interactively(eval-last-sexp nil)
+       call-interactively(eval-last-sexp nil nil)
+       command-execute(eval-last-sexp)
 
-Now, type ‘d’ again, eight times, slowly.  Each time you type ‘d’, Emacs
-will evaluate another expression in the function definition.
+Typ nu opnieuw, langzaam acht keer ‘d’.  Elke keer dat je ‘d’ typt,
+evalueert Emacs een volgende expressie in de functiedefinitie.
 
-   Eventually, the buffer will look like this:
+   Uiteindelijk ziet het buffer zer zo uit:
 
      ---------- Buffer: *Backtrace* ----------
      Debugger entered--beginning evaluation of function call form:
      * (setq number (1= number))
      * (while (> number 0) (setq total (+ total number))
              (setq number (1= number)))
-     * (let ((total 0)) (while (> number 0) (setq total ...)
-             (setq number ...)) total)
-     * triangle-bugged(5)
-       eval((triangle-bugged 5) nil)
-       eval-expression((triangle-bugged 5) nil nil 127)
-       funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-       call-interactively(eval-expression nil nil)
-       command-execute(eval-expression)
-     ---------- Buffer: *Backtrace* ----------
+     * (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+              (setq getal ...)) totaal)
+     * #f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+       (let ((totaal 0)) (while (> getal 0)
+          (setq totaal (+ totaal getal)) (setq getal ...)) totaal))(5)
+     * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+       (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+          (setq getal ...)) totaal)) 5)
+     * driehoek-met-bug(5)
+       eval((driehoek-met-bug 5) nil)
+       elisp--eval-last-sexp(nil)
+       #f(compiled-function () #<bytecode ...>)()
+       handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+       eval-last-sexp(nil)
+       funcall-interactively(eval-last-sexp nil)
+       call-interactively(eval-last-sexp nil nil)
+       command-execute(eval-last-sexp)
+       #f(compiled-function () #<bytecode ...>)()
+       handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+       eval-last-sexp(nil)
+       funcall-interactively(eval-last-sexp nil)
+       call-interactively(eval-last-sexp nil nil)
+       command-execute(eval-last-sexp)
 
-Finally, after you type ‘d’ two more times, Emacs will reach the error,
-and the top two lines of the ‘*Backtrace*’ buffer will look like this:
+Nadat je ‘d’ nog twee keer getypt hebt, bereikt Emacs tenslotte de fout,
+en zien de bovenste twee regels van het ‘*Backtrace*’ buffer er zo uit:
 
-     ---------- Buffer: *Backtrace* ----------
-     Debugger entered--Lisp error: (void-function 1=)
-     * (1= number)
+     Debugger entered--entering a function:
+     * eval-expression--debug((void-function 1=))
+     * (1= getal)
      ...
-     ---------- Buffer: *Backtrace* ----------
 
-   By typing ‘d’, you were able to step through the function.
+   Je kon met het typen van ‘d’ door de functie stappen.
 
-   You can quit a ‘*Backtrace*’ buffer by typing ‘q’ in it; this quits
-the trace, but does not cancel ‘debug-on-entry’.
+   Je kunt ‘*Backtrace*’ buffer afsluiten door ‘q’ er in te typen.  Dit
+stopt de trace, maar zet ‘debug-on-entry’ niet uit.
 
-   To cancel the effect of ‘debug-on-entry’, call
-‘cancel-debug-on-entry’ and the name of the function, like this:
+   Om het effect van ‘debug-on-entry’ te stoppen, roep je
+‘cancel-debug-on-entry’ aan en de naam van de functie, zoals dit:
 
-     M-x cancel-debug-on-entry <RET> triangle-bugged <RET>
+     M-x cancel-debug-on-entry <RET> driehoek-met-bug <RET>
 
-(If you are reading this in Info, cancel ‘debug-on-entry’ now.)
+(Wanneer je dit in Info leest, stop je ‘debug-on-entry’ nu.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: debug-on-quit,  Next: edebug,  Prev: debug-on-entry,  Up: Debuggen.
 
-17.3 ‘debug-on-quit’ and ‘(debug)’
-==================================
+17.3 ‘debug-on-quit’ en ‘(debug)’
+=================================
 
-In addition to setting ‘debug-on-error’ or calling ‘debug-on-entry’,
-there are two other ways to start ‘debug’.
+Naast het zetten van ‘debug-on-error’ of het aanroepen van
+‘debug-on-entry’, zijn er twee andere manieren om ‘debug’ te starten.
 
-   You can start ‘debug’ whenever you type ‘C-g’ (‘keyboard-quit’) by
-setting the variable ‘debug-on-quit’ to ‘t’.  This is useful for
-debugging infinite loops.
+   Je kunt steeds wanneer ‘C-g’ (‘keyboard-quit’) typt ‘debug’ starten
+door de variabele ‘debug-on-quit’ op ‘t’ te zetten.  Dit is zinvol om
+oneindige loops te debuggen.
 
-   Or, you can insert a line that says ‘(debug)’ into your code where
-you want the debugger to start, like this:
+   Of je neemt een regel met de tekst ‘(debug)’ op in je code waar je de
+debugger wilt starten, zoals dit:
 
-     (defun triangle-bugged (number)
-       "Return sum of numbers 1 through NUMBER inclusive."
-       (let ((total 0))
-         (while (> number 0)
-           (setq total (+ total number))
+     (defun driehoek-met-bug (getal)
+       "Geef som van getallen 1 t/m GETAL terug."
+       (let ((totaal 0))
+         (while (> getal 0)
+           (setq totaal (+ totaal getal))
            (debug)                         ; Start debugger.
-           (setq number (1= number)))      ; Error here.
-         total))
+           (setq getal (1= getal)))        ; Fout hier.
+         totaal))
 
-   The ‘debug’ function is described in detail in *note The Lisp
+   De functie ‘debug’ is gedetailleerd beschreven in *note The Lisp
 Debugger: (elisp)Debugger.
 
 
 File: emacs-lisp-intro-nl.info,  Node: edebug,  Next: Debuggen oefeningen,  Prev: debug-on-quit,  Up: Debuggen.
 
-17.4 The ‘edebug’ Source Level Debugger
-=======================================
+17.4 De ‘edebug’ Source Level Debugger
+======================================
 
-Edebug is a source level debugger.  Edebug normally displays the source
-of the code you are debugging, with an arrow at the left that shows
-which line you are currently executing.
+Edebug is een source level debugger.  Edebug toont gewoonlijk de bron
+van de code die je aan het debuggen bent met links een pijltje dat de
+regel aanwijst die je op dit moment uitvoert.
 
-   You can walk through the execution of a function, line by line, or
-run quickly until reaching a “breakpoint” where execution stops.
+   Je kunt regel voor regel door de uitvoering van de functie wandelen
+of snel er doorheen gaan tot het bereiken van een “breakpoint”, waar de
+uitvoering stopt.
 
-   Edebug is described in *note (elisp)Edebug::.
+   Edebug is beschreven in *note (elisp)Edebug::.
 
-   Here is a bugged function definition for ‘triangle-recursively’.
-*Note Recursion in place of a counter: Recursive triangle function, for
-a review of it.
+   Hier is een functiedefinitie voor ‘driehoek-recursieve’ met een bug.
+*Note Recursie in plaats van een teller: Recursieve driehoek functie,
+voor een review er van.
 
-     (defun triangle-recursively-bugged (number)
-       "Return sum of numbers 1 through NUMBER inclusive.
-     Uses recursion."
-       (if (= number 1)
+     (defun driehoek-recursief-bugged (aantal)
+       "Geef de som van de getallen 1 tot en met AANTAL terug.
+     Met recursie."
+       (if (= aantal 1)
            1
-         (+ number
-            (triangle-recursively-bugged
-             (1= number)))))               ; Error here.
+         (+ aantal
+            (driehoek-recursief-bugged
+             (1= aantal)))))               ; Fout hier
 
-Normally, you would install this definition by positioning your cursor
-after the function's closing parenthesis and typing ‘C-x C-e’
-(‘eval-last-sexp’) or else by positioning your cursor within the
-definition and typing ‘C-M-x’ (‘eval-defun’).  (By default, the
-‘eval-defun’ command works only in Emacs Lisp mode or in Lisp
-Interaction mode.)
+Normaliter installeer je deze definitie door de cursor achter het haakje
+dat de functie afsluit te plaatsen en ‘C-x C-e’ (‘eval-last-sexp’) te
+typen, of anders de cursor in de definitie te plaatsten en ‘C-M-x’
+(‘eval-defun’) te typen.  (Standaard werkt het ‘eval-defun’ commando
+alleen in Emacs Lisp mode of in Lisp Interaction mode.)
 
-   However, to prepare this function definition for Edebug, you must
-first “instrument” the code using a different command.  You can do this
-by positioning your cursor within or just after the definition and
-typing
+   Echter, om deze functiedefinitie voor Edebug voor te bereiden, moet
+je eerst de code “instrumenteren” met een ander commando.  Je doet dit
+door de cursors in of direct achter de definitie te plaatsen en dan het
+volgende te typen:
 
      M-x edebug-defun <RET>
 
-This will cause Emacs to load Edebug automatically if it is not already
-loaded, and properly instrument the function.
+Dit zorgt dat Emacs automatisch Edebug laadt, wanneer het nog niet is
+geladen en de functie correct instrumenteert.
 
-   After instrumenting the function, place your cursor after the
-following expression and type ‘C-x C-e’ (‘eval-last-sexp’):
+   Nadat het instrumenteren van de functie plaats je de cursor achter de
+volgende expressie en typ je ‘C-x C-e’ (‘eval-last-sexp’):
 
-     (triangle-recursively-bugged 3)
+     (driehoek-recursief-bugged 3)
 
-You will be jumped back to the source for ‘triangle-recursively-bugged’
-and the cursor positioned at the beginning of the ‘if’ line of the
-function.  Also, you will see an arrowhead at the left hand side of that
-line.  The arrowhead marks the line where the function is executing.
-(In the following examples, we show the arrowhead with ‘=>’; in a
-windowing system, you may see the arrowhead as a solid triangle in the
-window fringe.)
+Je springt terug naar de bron van ‘driehoek-recursief-bugged’ met de
+cursor gepositioneerd aan begin van de ‘if’ regel van de functie.  Ook
+zie je een pijlpunt aan de linkerkant van de regel.  De pijlpunt
+markeert de regel die de functie aan het uitvoeren is.  (In de volgende
+voorbeelden tonen we de pijlpunt met ‘=>’.  In een windowing systeem kan
+de pijlpunt er als een gevulde driehoek in de window-kantlijn uitzien.)
 
      =>⋆(if (= number 1)
 
-In the example, the location of point is displayed as ‘⋆’ (in a printed
-book, it is displayed with a five pointed star).
+In het voorbeeld is de lokatie van point getoond als ‘⋆’ (in een gedrukt
+boek wordt het getoond met een vijfpuntige ster.)
 
-   If you now press <SPC>, point will move to the next expression to be
-executed; the line will look like this:
+   Wanneer je nu <SPC> aanslaat, verplaatst point naar de volgende
+expressie om uit te voeren, de regel ziet er zo uit:
 
      =>(if ⋆(= number 1)
 
-As you continue to press <SPC>, point will move from expression to
-expression.  At the same time, whenever an expression returns a value,
-that value will be displayed in the echo area.  For example, after you
-move point past ‘number’, you will see the following:
+Terwijl je doorgaat met <SPC> aan te slaan verplaatst point van
+expressie naar expressie.  Steeds als een functie een waarde teruggeeft,
+wordt die tegelijkertijd in het echogebied getoond.  Nadat je point
+bijvoorbeeld voorbij ‘number’ verplaatst hebt, zie je het volgende:
 
      Result: 3 (#o3, #x3, ?\C-c)
 
-This means the value of ‘number’ is 3, which is octal three, hexadecimal
-three, and ASCII Control-C (the third letter of the alphabet, in case
-you need to know this information).
+Dit betekent dat de waarde van ‘getal’ 3 is, wat gelijk is aan octal
+drie, hexidicimaal drie en ASCII Control-C (de derde letter van het
+alfabet, voor het geval je deze informatie nodig hebt).
 
-   You can continue moving through the code until you reach the line
-with the error.  Before evaluation, that line looks like this:
+   Je kunt door de code blijven gaan totdat je de regel met de fout
+bereikt.  Voor de evaluatie ziet die regel er zo uit:
 
-     =>        ⋆(1= number)))))               ; Error here.
+     =>       ⋆(1= aantal)))))               ; Fout hier
 
-When you press <SPC> once again, you will produce an error message that
-says:
+Wanneer je nog een keer <SPC> aanslaat, produceer je een foutmelding met
+de tekst:
 
      Symbol's function definition is void: 1=
 
-This is the bug.
+Dit is de bug
 
-   Press ‘q’ to quit Edebug.
+   Druk op ‘q’ om Edebug te stoppen.
 
-   To remove instrumentation from a function definition, simply
-re-evaluate it with a command that does not instrument it.  For example,
-you could place your cursor after the definition's closing parenthesis
-and type ‘C-x C-e’.
+   Om de instrumentalisatie van een functiedefinitie te verwijderen,
+her-evalueer je die eenvoudig met een commando dat het niet
+instrumenteert.  Bijvoorbeeld kan je de cursor na het haakje dat de
+functie afsluit plaatsen en ‘C-x C-e’ te typen.
 
-   Edebug does a great deal more than walk with you through a function.
-You can set it so it races through on its own, stopping only at an error
-or at specified stopping points; you can cause it to display the
-changing values of various expressions; you can find out how many times
-a function is called, and more.
+   Edebug doet veel meer dan je door een functie te wandelen.  Je kunt
+het zo instellen dat het zelf door een functie rent en alleen stopt bij
+een fout of bij gespecificeerde stoppunten.  Je kunt het de veranderende
+waardes van verschillende expressies laten tonen, of ontdekken hoe vaak
+een functie wordt aangeroepen, en meer.
 
-   Edebug is described in *note (elisp)Edebug::.
+   Edebug is beschreven in *note (elisp)Edebug::.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Debuggen oefeningen,  Prev: edebug,  Up: Debuggen.
@@ -15013,37 +15032,37 @@ File: emacs-lisp-intro-nl.info,  Node: Debuggen oefeningen,  Prev: edebug,  Up: 
 17.5 Debuggen oefeningen
 ========================
 
-   • Install the ‘count-words-example’ function and then cause it to
-     enter the built-in debugger when you call it.  Run the command on a
-     region containing two words.  You will need to press ‘d’ a
-     remarkable number of times.  On your system, is a hook called after
-     the command finishes?  (For information on hooks, see *note Command
-     Loop Overview: (elisp)Command Overview.)
+   • Installeer de ‘tel-woorden-voorbeeld’ functie en laat het de
+     ingebouwde debugger ingaaan wanneer je het aanroept.  Run het
+     commando op een region die twee woorden bevat.  Je moet ‘d’ een
+     opmerkelijk aantal keer aanslaan.  Wordt op jouw systeem een hook
+     aangeroepen wanneer het commando eindigt?  (Voor informatie over
+     hooks, zie *note Command Loop Overview: (elisp)Command Overview.))
 
-   • Copy ‘count-words-example’ into the ‘*scratch*’ buffer, instrument
-     the function for Edebug, and walk through its execution.  The
-     function does not need to have a bug, although you can introduce
-     one if you wish.  If the function lacks a bug, the walk-through
-     completes without problems.
+   • Kopieer ‘tel-woorden-voorbeeld’ in het ‘*scratch*’ buffer,
+     instrumenteer de functie voor Edebug, en wandel door de uitvoering.
+     De functie hoeft geen bug te hebben, maar je kunt er een
+     introduceren als je dat wilt.  Wanneer de functie geen bug heeft,
+     eindigt de wandeling zonder problemen.
 
-   • While running Edebug, type ‘?’ to see a list of all the Edebug
-     commands.  (The ‘global-edebug-prefix’ is usually ‘C-x X’, i.e.,
-     ‘<CTRL>-x’ followed by an upper case ‘X’; use this prefix for
-     commands made outside of the Edebug debugging buffer.)
+   • Typ ‘?’ terwijl je Edebug draait om een lijst te zien van alle
+     Edebug commando's.  (De ‘global-edebug-prefix’ is meestal ‘C-x X’,
+     dus ‘<CTRL>-x’ gevold door een hoofdletter ‘X’.  Gebruik deze
+     prefix voor commando's buiten het Edebug debugging buffer.)
 
-   • In the Edebug debugging buffer, use the ‘p’ (‘edebug-bounce-point’)
-     command to see where in the region the ‘count-words-example’ is
-     working.
+   • Gebruik het ‘p’ (‘edebug-bounce-point’) commando in het Edebug
+     debugging buffer om te zien in welke region de
+     ‘tel-woorden-voorbeeld’ aan het werk is.
 
-   • Move point to some spot further down the function and then type the
-     ‘h’ (‘edebug-goto-here’) command to jump to that location.
+   • Verplaats point naar een plaats verder in de functie en typ dan het
+     ‘h’ (‘edebug-goto-here’) commando om naar die lokatie te springen.
 
-   • Use the ‘t’ (‘edebug-trace-mode’) command to cause Edebug to walk
-     through the function on its own; use an upper case ‘T’ for
-     ‘edebug-Trace-fast-mode’.
+   • Gebruik het ‘t’ (‘edebug-trace-mode’) commando om te zorgen dat
+     Edebug zelf door de functie wandelt.  Gebruik een hoofdletter ‘T’
+     voor ‘edebug-Trace-fast-mode’.
 
-   • Set a breakpoint, then run Edebug in Trace mode until it reaches
-     the stopping point.
+   • Zet een breakpoint en draai Edubug in Trace mode tot het dit
+     stoppunt bereikt.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Conclusie,  Next: de-de,  Prev: Debuggen.,  Up: Top
@@ -15051,106 +15070,107 @@ File: emacs-lisp-intro-nl.info,  Node: Conclusie,  Next: de-de,  Prev: Debuggen.
 18 Conclusie
 ************
 
-We have now reached the end of this Introduction.  You have now learned
-enough about programming in Emacs Lisp to set values, to write simple
-‘.emacs’ files for yourself and your friends, and write simple
-customizations and extensions to Emacs.
+Je hebt nu het einde van deze Introductie bereikt.  Je hebt nu genoeg
+geleerd over het programmeren in Emacs Lisp om waardes te zetten,
+eenvoudige ‘.emacs’ bestanden voor jezelf en je vrienden te schrijven en
+om eenvoudige aanpassingen en extensies op Emacs te schrijven.
 
-   This is a place to stop.  Or, if you wish, you can now go onward, and
-teach yourself.
+   Dit is een plaats op te stoppen.  Of, als je dat wilt, kan je nu
+verder gaan en je zelf iets leren.
 
-   You have learned some of the basic nuts and bolts of programming.
-But only some.  There are a great many more brackets and hinges that are
-easy to use that we have not touched.
+   Je hebt wat van de basisfuncties van programmeren geleerd.  Maar
+slechts een paar.  Er zijn nog veel meer elementen die makkelijk te
+gebruiken zijn die we niet geraakt hebben.
 
-   A path you can follow right now lies among the sources to GNU Emacs
-and in *note The GNU Emacs Lisp Reference Manual: (elisp)Top.
+   Het pad dat je nu kunt volgen ligt ondermeer in de broncode van GNU
+Emacs en in *note The GNU Emacs Lisp Reference Manual: (elisp)Top.
 
-   The Emacs Lisp sources are an adventure.  When you read the sources
-and come across a function or expression that is unfamiliar, you need to
-figure out or find out what it does.
+   De Emacs Lisp broncode is een avontuur.  Wanneer je de broncode leest
+en een onbekende functie of expressie tegenkomt moet je ontdekken wat
+die doet.
 
-   Go to the Reference Manual.  It is a thorough, complete, and fairly
-easy-to-read description of Emacs Lisp.  It is written not only for
-experts, but for people who know what you know.  (The ‘Reference Manual’
-comes with the standard GNU Emacs distribution.  Like this introduction,
-it comes as a Texinfo source file, so you can read it on your computer
-and as a typeset, printed book.)
+   Ga naar de Reference Manual.  Het is een grondige, complete en
+redelijk makkelijk te lezen beschrijving van Emacs Lisp.  Het is niet
+alleen voor experts geschreven, maar voor mensen die weten wat jij weet.
+(De ‘Reference Manual’ zit bij de standaard GNU Emacs distributie.  Net
+als deze introductie komt het als Texinfo bronbestand, zodat je het op
+je computer kunt lezen en als een opgemaakt gedrukt boek.)
 
-   Go to the other built-in help that is part of GNU Emacs: the built-in
-documentation for all functions and variables, and
-‘xref-find-definitions’, the program that takes you to sources.
+   Ga naar de andere ingebouwde hulp die onderdeel van GNU Emacs is: de
+ingebouwde documentatie voor alle functies en variabelen, en
+‘xref-find-definitions’, het programma dat je naar de broncode brengt.
 
-   Here is an example of how I explore the sources.  Because of its
-name, ‘simple.el’ is the file I looked at first, a long time ago.  As it
-happens some of the functions in ‘simple.el’ are complicated, or at
-least look complicated at first sight.  The ‘open-line’ function, for
-example, looks complicated.
+   Hier is een voorbeeld van hoe ik de broncode verken.  Vanwege de naam
+is ‘simple.el’ het bestand dat ik het eerste bekeek, een lange tijd
+geleden.  Het blijkt dat sommige functies in ‘simple.el’ erg
+gecompliceerd zijn of op zijn minst op het eerste gezicht er
+gecompliceerd uitzien.  De functie ‘open-line’ bijvoorbeeld ziet er
+gecompliceerd uit.
 
-   You may want to walk through this function slowly, as we did with the
-‘forward-sentence’ function.  (*Note The ‘forward-sentence’ function:
-forward-sentence.)  Or you may want to skip that function and look at
-another, such as ‘split-line’.  You don't need to read all the
-functions.  According to ‘count-words-in-defun’, the ‘split-line’
-function contains 102 words and symbols.
+   Je wilt misschien langzaam door deze functie wandelen, zoals we met
+de functie ‘forward-sentence’ deden.  ((*Note De functie
+‘forward-sentence’: forward-sentence.)  Of je wilt deze functie
+overslaan en naar een andere kijken, zoals ‘split-line’.  Je hoeft niet
+alle functies te lezen.  Volgens ‘tel-woorden-in-defun’ bevat de functie
+‘split-line’ 102 woorden en symbolen.
 
-   Even though it is short, ‘split-line’ contains expressions we have
-not studied: ‘skip-chars-forward’, ‘indent-to’, ‘current-column’ and
+   Hoewel die kort is, bevat ‘split-line’ expressie die we nog niet
+bestudeerd hebben: ‘skip-chars-forward’, ‘indent-to’, ‘current-column’
+en ‘insert-and-inherit’.
+
+   Beschouw de functie ‘skip-chars-forward’.  In GNU Emacs ontdek je
+meer over ‘skip-chars-forward’ door het typen van ‘C-h f’
+(‘describe-function’) en de naam van de functie.  Dit levert je de
+functiedocumentatie.
+
+   Je kunt misschien raden wat gedaan wordt door een functie met een
+goede naam zoals ‘indent-to’, of je kunt het opzoeken.  Overigens staat
+de functie ‘describe-function’ zelf in ‘help.el’.  Het is een van die
+lange, maar ontcijferbare functies.  Je kunt de ‘describe-function’
+opzoeken met het ‘C-h f’ commando!
+
+   In dit geval, omdat de code in Lisp is, bevat het ‘*Help*’ buffer de
+naam van de library met de broncode van de functie.  Je kunt point op de
+naam van de library zetten en dan op de <RET> toets drukken, die in deze
+situatie gebonden is aan ‘help-follow’ en je direct naar de broncode
+brengt, op dezelfde manier als ‘M-.’ (‘xref-find-definitions’).
+
+   De definitie van ‘describe-function’ illustreert hoe de ‘interactive’
+aan te passen zonder de standaard karakter-codes te gebruiken en het
+laat zien hoe je een tijdelijke buffer maakt.
+
+   (De functie ‘indent-to’ is in C geschreven in plaats van Emacs Lisp,
+het is een ingebouwde functie.  ‘help-follow’ neemt je naar de broncode
+net als ‘xref-find-definitions’, wanneer correct opgezet.)
+
+   Je kunt naar een de bron van een functie kijken met
+‘xref-find-definitions’ dat aan ‘M-.’ gebonden is.  Tenslottte kun je
+ontdekken wat de Reference Manual te zeggen heeft door de manual in Info
+te bezoeken en ‘i’ (‘Info-index’) en de naam van de functie te typen, of
+het op te zoeken in de index van een afgedrukt exemplaar van de manual.
+
+   Op dezelfde manier kan je uit vinden vat bedoeld wordt met
 ‘insert-and-inherit’.
 
-   Consider the ‘skip-chars-forward’ function.  In GNU Emacs, you can
-find out more about ‘skip-chars-forward’ by typing ‘C-h f’
-(‘describe-function’) and the name of the function.  This gives you the
-function documentation.
+   Andere interessante bronbestanden zijn ‘paragraphs.el’,
+‘loaddefs.el’, en ‘loadup.el’.  Het bestand ‘paragraphs.el’ bevat zowel
+korte makkelijk te begrijpen functies als ook langere.  Het bestand
+‘loaddefs.el’ bevat veel standaard autoloads en veel keymaps.  Ik heb
+het nooit in zijn geheel bekeken, alleen in delen.  Het bestand
+‘loadup.el’ is het bestand dat veel standaard onderdelen van Emacs
+laadt, het vertelt je veel over hoe Emacs is gebouwd.  (*Note Building
+Emacs: (elisp)Building Emacs, voor meer over bouwen.)
 
-   You may be able to guess what is done by a well named function such
-as ‘indent-to’; or you can look it up, too.  Incidentally, the
-‘describe-function’ function itself is in ‘help.el’; it is one of those
-long, but decipherable functions.  You can look up ‘describe-function’
-using the ‘C-h f’ command!
+   Zoals ik heb gezegd, je hebt sommmige basisdelen geleerd, echter, en
+erg belangrijk, hebben we amper belangrijke aspecten van programmeren
+geraakt.  Ik heb niets gezegd over het sorteren van informatie, bevalve
+het gebruik van de standaard ‘sort’ functie.  Ik heb niets gezegd over
+hoe je programma's schrijft die programma's schrijven.  Dit zijn
+onderwerpen voor een ander en ander soort boek, een andere manier van
+leren.
 
-   In this instance, since the code is Lisp, the ‘*Help*’ buffer
-contains the name of the library containing the function's source.  You
-can put point over the name of the library and press the <RET> key,
-which in this situation is bound to ‘help-follow’, and be taken directly
-to the source, in the same way as ‘M-.’ (‘xref-find-definitions’).
-
-   The definition for ‘describe-function’ illustrates how to customize
-the ‘interactive’ expression without using the standard character codes;
-and it shows how to create a temporary buffer.
-
-   (The ‘indent-to’ function is written in C rather than Emacs Lisp; it
-is a built-in function.  ‘help-follow’ takes you to its source as does
-‘xref-find-definitions’, when properly set up.)
-
-   You can look at a function's source using ‘xref-find-definitions’,
-which is bound to ‘M-.’ Finally, you can find out what the Reference
-Manual has to say by visiting the manual in Info, and typing ‘i’
-(‘Info-index’) and the name of the function, or by looking up the
-function in the index to a printed copy of the manual.
-
-   Similarly, you can find out what is meant by ‘insert-and-inherit’.
-
-   Other interesting source files include ‘paragraphs.el’,
-‘loaddefs.el’, and ‘loadup.el’.  The ‘paragraphs.el’ file includes
-short, easily understood functions as well as longer ones.  The
-‘loaddefs.el’ file contains the many standard autoloads and many
-keymaps.  I have never looked at it all; only at parts.  ‘loadup.el’ is
-the file that loads the standard parts of Emacs; it tells you a great
-deal about how Emacs is built.  (*Note Building Emacs: (elisp)Building
-Emacs, for more about building.)
-
-   As I said, you have learned some nuts and bolts; however, and very
-importantly, we have hardly touched major aspects of programming; I have
-said nothing about how to sort information, except to use the predefined
-‘sort’ function; I have said nothing about how to store information,
-except to use variables and lists; I have said nothing about how to
-write programs that write programs.  These are topics for another, and
-different kind of book, a different kind of learning.
-
-   What you have done is learn enough for much practical work with GNU
-Emacs.  What you have done is get started.  This is the end of a
-beginning.
+   Je hebt genoeg geleerd om veel practisch werk met GNU Emacs te doen.
+En wat je gedaan hebt, is beginnen.  Dit is het einde van het begin.
 
 
 File: emacs-lisp-intro-nl.info,  Node: de-de,  Next: Killring,  Prev: Conclusie,  Up: Top
@@ -17713,15 +17733,15 @@ Index
                                                               (line  74)
 * buffer-name:                           Buffer namen.        (line   6)
 * Buffer, geschiedenis van woord:        Buffer namen.        (line  69)
-* Buffergrootte:                         Buffer grootte en locatie.
+* Buffergrootte:                         Buffer grootte en lokatie.
                                                               (line   6)
-* Buffergrootte <1>:                     Buffer grootte en locatie.
+* Buffergrootte <1>:                     Buffer grootte en lokatie.
                                                               (line   6)
 * Bug, most insidious type:              Een andere bug.      (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
 * C-taal primitieven:                    Primitieve functies. (line   6)
 * C, een uitweiding naar:                Uitwijding naar C.   (line   6)
-* cancel-debug-on-entry:                 debug-on-entry.      (line  86)
+* cancel-debug-on-entry:                 debug-on-entry.      (line 100)
 * car, introduced:                       car cdr en cons.     (line   6)
 * cdr, introduced:                       car cdr en cons.     (line   6)
 * Code installtie:                       Permanent installeren.
@@ -17743,8 +17763,6 @@ Index
 * cons, geïntroduceerd:                  cons.                (line   6)
 * copy-region-as-kill:                   copy-region-as-kill. (line   6)
 * copy-to-buffer:                        copy-to-buffer.      (line   6)
-* count-words-in-defun:                  count-words-in-defun.
-                                                              (line 102)
 * current-buffer:                        Buffers pakken.      (line   6)
 * current-kill:                          current-kill.        (line   6)
 * dan-deel gedefinieerd:                 if in meer detail.   (line   6)
@@ -17782,6 +17800,7 @@ Index
 * dotimes:                               dotimes.             (line   6)
 * dotted pair:                           Lijsten uitgetekend. (line  97)
 * Draai een programma:                   Draai een programma. (line   6)
+* driehoek-met-bug:                      debug.               (line  14)
 * driehoek-recursief:                    Recursieve driehoek functie.
                                                               (line   6)
 * Duplicated words function:             de-de.               (line   6)
@@ -17938,11 +17957,11 @@ Index
 * load-library:                          Bestanden laden.     (line  51)
 * load-path:                             Bestanden laden.     (line  36)
 * Local variables list, per-buffer,:     Tekst en auto-fill.  (line  22)
-* Locatie van point:                     Buffer grootte en locatie.
-                                                              (line   6)
-* Locatie van point <1>:                 Buffer grootte en locatie.
-                                                              (line   6)
 * lokale variabele gedefinieerd:         Voorkom verwarring.  (line   6)
+* Lokatie van point:                     Buffer grootte en lokatie.
+                                                              (line   6)
+* Lokatie van point <1>:                 Buffer grootte en lokatie.
+                                                              (line   6)
 * looking-at:                            fwd-para while.      (line  85)
 * Loops:                                 while.               (line   6)
 * Loops en recursie:                     Loops en recursie.   (line   6)
@@ -17963,7 +17982,7 @@ Index
 * Mode line format:                      Mode line.           (line   6)
 * Mode selectie, automatisch:            Tekst en auto-fill.  (line  22)
 * mode-line-format:                      Mode line.           (line   6)
-* narrowing defined:                     Buffer grootte en locatie.
+* narrowing defined:                     Buffer grootte en lokatie.
                                                               (line  43)
 * nieuwe versie body voor insert-buffer: Nieuwe insert-buffer.
                                                               (line   6)
@@ -18000,7 +18019,7 @@ Index
 * point:                                 save-excursion.      (line   6)
 * Point en buffer behouden:              save-excursion.      (line   6)
 * Point en buffer behouden <1>:          save-excursion.      (line   6)
-* point gedefinieerd:                    Buffer grootte en locatie.
+* point gedefinieerd:                    Buffer grootte en lokatie.
                                                               (line  20)
 * predicate gedefinieerd:                Verkeerde type argument.
                                                               (line  56)
@@ -18108,6 +18127,8 @@ Index
                                                               (line   6)
 * Tel woorden recursief:                 recursive-count-words.
                                                               (line   6)
+* tel-woorden-in-defun:                  tel-woorden-in-defun.
+                                                              (line 102)
 * tel-woorden-voorbeeld:                 tel-woorden-voorbeeld.
                                                               (line   6)
 * Tellen:                                Tellen.              (line   6)
@@ -18118,7 +18139,6 @@ Index
 * Text Mode aangezet:                    Tekst en auto-fill.  (line  40)
 * Toestcombinaties opnieuw binden:       Keymaps.             (line   6)
 * Toets ontkoppelen:                     Key bindings.        (line  62)
-* triangle-bugged:                       debug.               (line  14)
 * Typen van data:                        Data typen.          (line   6)
 * Uitstel in recursie:                   Geen uitstel.        (line   6)
 * Uitwijding naar C:                     Uitwijding naar C.   (line   6)
@@ -18165,7 +18185,7 @@ Index
                                                               (line   6)
 * Woorden tellen in een defun <1>:       Woorden in een defun.
                                                               (line   6)
-* Woorden tellen in een defun <2>:       count-words-in-defun.
+* Woorden tellen in een defun <2>:       tel-woorden-in-defun.
                                                               (line   6)
 * Woorden, recursief geteld:             recursive-count-words.
                                                               (line   6)
@@ -18262,7 +18282,7 @@ Ref: Buffers pakken-Footnote-1107982
 Node: Van buffer verwisselen108232
 Ref: Van buffer verwisselen-Footnote-1111823
 Ref: Van buffer verwisselen-Footnote-2112165
-Node: Buffer grootte en locatie112919
+Node: Buffer grootte en lokatie112919
 Node: Evaluatie oefening115133
 Node: Defuns schrijven115417
 Node: Primitieve functies116710
@@ -18341,192 +18361,192 @@ Node: versmal oefening260660
 Node: car cdr en cons261708
 Node: Vreemde namen262894
 Node: car en cdr263616
-Node: cons268349
-Node: Bouw een lijst269438
-Ref: Bouw een lijst-Footnote-1271066
-Node: length271272
-Node: nthcdr272883
-Node: nth275993
-Node: setcar277514
-Node: setcdr280495
-Node: cons oefening282167
-Node: Knippen en opslaan van tekst282586
-Node: Tekst opslaan284002
-Node: zap-to-char286121
-Node: Complete zap-to-char286733
-Node: zap-to-char interactief289099
-Node: zap-to-char body290685
-Node: search-forward292234
-Node: progn295387
-Node: Samenvatting zap-to-char297202
-Node: kill-region298358
-Node: Complete kill-region299356
-Node: condition-case303767
-Node: Lisp macro306338
-Node: copy-region-as-kill308971
-Node: Complete copy-region-as-kill309914
-Node: copy-region-as-kill body312760
-Node: last-command en this-command313901
-Node: kill-append functie316239
-Node: kill-new functie320514
-Node: Uitwijding naar C331492
-Node: defvar337035
-Node: Inzien huidige variabele waarde338913
-Node: defvar en asterisk340875
-Node: cons en search-fwd terugblik342929
-Node: zoek oefening346108
-Node: Implementatie van lijsten346911
-Node: Lijsten uitgetekend348147
-Node: Symbolen als ladekast354636
-Node: Lijst oefening356751
-Node: Yanking357117
-Node: Killring overzicht358512
-Node: kill-ring-yank-pointer360324
-Node: yank nthcdr oefeningen362832
-Node: Loops en recursie363577
-Ref: Loops en recursie-Footnote-1364773
-Node: while365294
-Node: Looping met while366726
-Node: Loop voorbeeld368664
-Node: print-elements-of-list372366
-Node: Incrementele loop374952
-Node: Incrementele loop details375584
-Node: Incrementeel voorbeeld377057
-Node: Inc voorbeeld onderdelen379633
-Node: inc voorbeeld samengesteld383773
-Node: Decrementele loop387375
-Node: Decerementeel voorbeeld388847
-Node: Dec voorbeeld onderdelen390439
-Node: Dec voorbeeld samengesteld392520
-Node: dolist dotimes394796
-Node: dolist395627
-Node: dotimes398804
-Node: Recursie400351
-Node: Robots bouwen401563
-Node: Recursive definitie onderdelen403368
-Node: Recursie met lijst406015
-Node: Recursieve driehoek functie409683
-Node: Recursief voorbeeld arg van 1 of 2411061
-Node: Recursief voorbeeld arg van 3 of 4413326
-Node: Recursie met cond416530
-Node: Recursieve patronen418974
-Node: Elke419467
-Node: Accumuleren422027
-Node: Bewaar423407
-Node: Geen uitstel425475
-Node: Zonder uitstel oplossing428199
-Ref: Zonder uitstel oplossing-Footnote-1432161
-Ref: Zonder uitstel oplossing-Footnote-2432285
-Node: Looping oefening432808
-Node: Regexp zoeken434127
-Node: sentence-end436273
-Node: re-search-forward440320
-Node: forward-sentence442975
-Node: Complete forward-sentence443758
-Node: fwd-sentence while loops447462
-Node: fwd-sentence re-search451275
-Node: forward-paragraph453379
-Node: forward-paragraph in het kort455254
-Node: fwd-para let456812
-Node: fwd-para while463743
-Node: Regexp terugblik472599
-Node: re-search oefeningen475189
-Node: Woorden tellen475962
-Node: Waarom woorden tellen476745
-Node: tel-woorden-voorbeeld477901
-Node: Ontwerp tel-woorden-voorbeeld479274
-Node: Witte ruimte bug486010
-Node: recursive-count-words495845
-Node: Tellen voorbeeld508572
-Node: Woorden in een defun508944
-Node: Verdeel en heers510715
-Node: Woorden en symbolen512026
-Node: Syntax514179
-Node: count-words-in-defun517895
-Node: Enkele defuns524562
-Node: Een bestand vinden527082
-Node: lengte-lijst-bestand529842
-Node: Enkele bestanden535432
-Node: lengths-list-many-files536238
-Node: append539165
-Node: Enkele bestanden recursief539819
-Node: De data voorbereiden542905
-Node: Data in detail te tonen544020
-Node: Sorteren545015
-Node: Bestandenlijst546871
-Ref: Bestandenlijst-Footnote-1554915
-Node: Functiedefinities tellen555137
-Node: Een grafiek voorbereiden564764
-Node: Kolommen van een grafiek566138
-Node: graph-body-print580395
-Node: recursieve-grafiek-body-tonen585179
-Node: Getoonde assen587945
-Node: Lijngrafiek oefening588762
-Node: Initialisatie van Emacs588973
-Node: Standaard configuratie590540
-Ref: Standaard configuratie-Footnote-1592666
-Node: Systeem-brede init592988
-Node: defcustom595249
-Node: Een init bestand beginnen601374
-Node: Tekst en auto-fill603905
-Ref: Tekst en auto-fill-Footnote-1608226
-Ref: Tekst en auto-fill-Footnote-2608519
-Node: Mail aliasen608829
-Node: Indent Tabs Mode609788
-Node: Key bindings610787
-Node: Keymaps616073
-Node: Bestanden laden618907
-Node: Autoload622279
-Node: Eenvoudige uitbreiding625298
-Ref: Eenvoudige uitbreiding-Footnote-1627900
-Node: X11 kleuren628189
-Ref: X11 kleuren-Footnote-1630083
-Node: Diverse630251
-Node: Mode line634611
-Node: Debuggen.640460
-Node: debug641356
-Node: debug-on-entry644488
-Node: debug-on-quit648093
-Node: edebug649130
-Node: Debuggen oefeningen653252
-Node: Conclusie655017
-Node: de-de660375
-Node: Killring663165
-Node: Wat de killring doet663982
-Node: current-kill665500
-Node: Code voor current-kill666198
-Node: current-kill begrijpen669030
-Node: Body van current-kill669830
-Node: Uitwijding over fout672981
-Node: Het element vaststellen674156
-Node: yank677861
-Node: yank-pop681075
-Node: ring bestand683610
-Node: Volledige grafiek683987
-Node: Gelabeld voorbeeld684827
-Node: print-graph varlist686824
-Node: print-Y-axis688547
-Node: print-Y-axis in detail689400
-Node: Hoogte van label690210
-Node: Bereken het restant692227
-Node: Y-as element696093
-Node: Y-axis-column699856
-Node: print-Y-axis enalaatste701468
-Node: print-X-axis703449
-Node: Overeenkomsten verschillen704767
-Node: X-as tic marks705600
-Node: De gehele grafiek afdrukken712602
-Node: De finale versie713718
-Node: Test print-graph717973
-Node: Woorden in defuns grafisch weergeven719656
-Node: lambda722280
-Node: mapcar724161
-Node: Een andere bug726221
-Node: Finale afgedrukte grafiek731750
-Node: Vrije software en vrije handleidingen732701
-Node: GNU Free Documentation License739017
-Node: Index764206
-Node: Over de auteur803388
+Node: cons268355
+Node: Bouw een lijst269447
+Ref: Bouw een lijst-Footnote-1271075
+Node: length271281
+Node: nthcdr272892
+Node: nth276002
+Node: setcar277523
+Node: setcdr280503
+Node: cons oefening282175
+Node: Knippen en opslaan van tekst282594
+Node: Tekst opslaan284009
+Node: zap-to-char286129
+Node: Complete zap-to-char286741
+Node: zap-to-char interactief289107
+Node: zap-to-char body290693
+Node: search-forward292242
+Node: progn295403
+Node: Samenvatting zap-to-char297218
+Node: kill-region298374
+Node: Complete kill-region299372
+Node: condition-case303783
+Node: Lisp macro306354
+Node: copy-region-as-kill308987
+Node: Complete copy-region-as-kill309930
+Node: copy-region-as-kill body312776
+Node: last-command en this-command313917
+Node: kill-append functie316255
+Node: kill-new functie320530
+Node: Uitwijding naar C331508
+Node: defvar337051
+Node: Inzien huidige variabele waarde338929
+Node: defvar en asterisk340891
+Node: cons en search-fwd terugblik342945
+Node: zoek oefening346124
+Node: Implementatie van lijsten346927
+Node: Lijsten uitgetekend348163
+Node: Symbolen als ladekast354652
+Node: Lijst oefening356767
+Node: Yanking357133
+Node: Killring overzicht358528
+Node: kill-ring-yank-pointer360340
+Node: yank nthcdr oefeningen362848
+Node: Loops en recursie363593
+Ref: Loops en recursie-Footnote-1364789
+Node: while365310
+Node: Looping met while366742
+Node: Loop voorbeeld368680
+Node: print-elements-of-list372382
+Node: Incrementele loop374968
+Node: Incrementele loop details375600
+Node: Incrementeel voorbeeld377073
+Node: Inc voorbeeld onderdelen379649
+Node: inc voorbeeld samengesteld383789
+Node: Decrementele loop387391
+Node: Decrementeel voorbeeld388863
+Node: Dec voorbeeld onderdelen390454
+Node: Dec voorbeeld samengesteld392534
+Node: dolist dotimes394810
+Node: dolist395641
+Node: dotimes398818
+Node: Recursie400365
+Node: Robots bouwen401577
+Node: Recursive definitie onderdelen403382
+Node: Recursie met lijst406029
+Node: Recursieve driehoek functie409697
+Node: Recursief voorbeeld arg van 1 of 2411075
+Node: Recursief voorbeeld arg van 3 of 4413340
+Node: Recursie met cond416544
+Node: Recursieve patronen418988
+Node: Elke419481
+Node: Accumuleren422041
+Node: Bewaar423421
+Node: Geen uitstel425489
+Node: Zonder uitstel oplossing428213
+Ref: Zonder uitstel oplossing-Footnote-1432175
+Ref: Zonder uitstel oplossing-Footnote-2432299
+Node: Looping oefening432822
+Node: Regexp zoeken434141
+Node: sentence-end436287
+Node: re-search-forward440334
+Node: forward-sentence442989
+Node: Complete forward-sentence443772
+Node: fwd-sentence while loops447476
+Node: fwd-sentence re-search451289
+Node: forward-paragraph453393
+Node: forward-paragraph in het kort455268
+Node: fwd-para let456826
+Node: fwd-para while463757
+Node: Regexp terugblik472613
+Node: re-search oefeningen475203
+Node: Woorden tellen475976
+Node: Waarom woorden tellen476759
+Node: tel-woorden-voorbeeld477915
+Node: Ontwerp tel-woorden-voorbeeld479288
+Node: Witte ruimte bug486024
+Node: recursive-count-words495859
+Node: Tellen voorbeeld508586
+Node: Woorden in een defun508958
+Node: Verdeel en heers510729
+Node: Woorden en symbolen512040
+Node: Syntax514193
+Node: tel-woorden-in-defun517909
+Node: Enkele defuns524576
+Node: Een bestand vinden527096
+Node: lengte-lijst-bestand529856
+Node: Enkele bestanden535446
+Node: lengths-list-many-files536252
+Node: append539179
+Node: Enkele bestanden recursief539833
+Node: De data voorbereiden542919
+Node: Data in detail te tonen544034
+Node: Sorteren545029
+Node: Bestandenlijst546885
+Ref: Bestandenlijst-Footnote-1554929
+Node: Functiedefinities tellen555151
+Node: Een grafiek voorbereiden564778
+Node: Kolommen van een grafiek566152
+Node: graph-body-print580409
+Node: recursieve-grafiek-body-tonen585193
+Node: Getoonde assen587959
+Node: Lijngrafiek oefening588776
+Node: Initialisatie van Emacs588987
+Node: Standaard configuratie590554
+Ref: Standaard configuratie-Footnote-1592680
+Node: Systeem-brede init593002
+Node: defcustom595263
+Node: Een init bestand beginnen601388
+Node: Tekst en auto-fill603919
+Ref: Tekst en auto-fill-Footnote-1608240
+Ref: Tekst en auto-fill-Footnote-2608533
+Node: Mail aliasen608843
+Node: Indent Tabs Mode609802
+Node: Key bindings610801
+Node: Keymaps616087
+Node: Bestanden laden618921
+Node: Autoload622293
+Node: Eenvoudige uitbreiding625312
+Ref: Eenvoudige uitbreiding-Footnote-1627914
+Node: X11 kleuren628203
+Ref: X11 kleuren-Footnote-1630097
+Node: Diverse630265
+Node: Mode line634625
+Node: Debuggen.640474
+Node: debug641376
+Node: debug-on-entry644685
+Node: debug-on-quit649033
+Node: edebug650083
+Node: Debuggen oefeningen654307
+Node: Conclusie656121
+Node: de-de661586
+Node: Killring664376
+Node: Wat de killring doet665193
+Node: current-kill666711
+Node: Code voor current-kill667409
+Node: current-kill begrijpen670241
+Node: Body van current-kill671041
+Node: Uitwijding over fout674192
+Node: Het element vaststellen675367
+Node: yank679072
+Node: yank-pop682286
+Node: ring bestand684821
+Node: Volledige grafiek685198
+Node: Gelabeld voorbeeld686038
+Node: print-graph varlist688035
+Node: print-Y-axis689758
+Node: print-Y-axis in detail690611
+Node: Hoogte van label691421
+Node: Bereken het restant693438
+Node: Y-as element697304
+Node: Y-axis-column701067
+Node: print-Y-axis enalaatste702679
+Node: print-X-axis704660
+Node: Overeenkomsten verschillen705978
+Node: X-as tic marks706811
+Node: De gehele grafiek afdrukken713813
+Node: De finale versie714929
+Node: Test print-graph719184
+Node: Woorden in defuns grafisch weergeven720867
+Node: lambda723491
+Node: mapcar725372
+Node: Een andere bug727432
+Node: Finale afgedrukte grafiek732961
+Node: Vrije software en vrije handleidingen733912
+Node: GNU Free Documentation License740228
+Node: Index765417
+Node: Over de auteur804599
 
 End Tag Table
 

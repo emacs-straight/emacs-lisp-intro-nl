@@ -393,7 +393,7 @@ Oefenen van evaluatie
 * Buffer namen::             Buffers en bestanden zijn verschillend.
 * Buffers pakken::           Pak een buffer zelf, niet slechts zijn naam.
 * Van buffer verwisselen::   Hoe je naar een andere buffer overschakelt
-* Buffer grootte en locatie::  De locatie van point en de grootte van het 
+* Buffer grootte en lokatie::  De lokatie van point en de grootte van het 
                                  buffer.
 * Evaluatie oefening::       Evaluatie oefening
 
@@ -456,7 +456,7 @@ Waar en onwaarheid in Emacs Lisp
 
 
 
-* Point en mark::            Een overzicht van verschillende locaties.
+* Point en mark::            Een overzicht van verschillende lokaties.
 * Template voor save-excursion::  Template voor save-excursion
 
 Enkele buffer gerelateerde functies
@@ -670,7 +670,7 @@ Loop met een decrementele teller
 
 
 
-* Decerementeel voorbeeld::  Meer steentjes op het strand.
+* Decrementeel voorbeeld::   Meer steentjes op het strand.
 * Dec voorbeeld onderdelen::  De onderdelen van een functiedefinitie.
 * Dec voorbeeld samengesteld::  De functiedefinitie samenstellen.
 
@@ -764,7 +764,7 @@ Woorden tellen in een @code{defun}
 * Verdeel en heers::         Verdeel en heers
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
-* count-words-in-defun::     Erg vergelijkbaar met 
+* tel-woorden-in-defun::     Erg vergelijkbaar met 
                                @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
@@ -2276,7 +2276,7 @@ probeert vast te stellen of de informatie die het kreeg een getal is of een
 marker (een speciaal object dat een bufferpositie vertegenwoordigt). Wat het
 doet is testen of de @code{+} getallen kreeg om op te tellen. Ook test of
 het argument iets is dat een marker genoemd wordt, wat een specifieke
-eigenschap van Emacs Lisp is. (In Emacs worden locaties in een buffer
+eigenschap van Emacs Lisp is. (In Emacs worden lokaties in een buffer
 geregistreerd als markers. Wanneer de mark is gezet met het @kbd{C-@@} of
 @kbd{C-@key{SPC}} commando, wordt zijn positie bewaard als een marker. De
 mark kan worden beschouwd als een getal--het aantal karakters van de lokatie
@@ -2332,7 +2332,7 @@ voor een voorbeeld hiervan).
 Wanneer er echter een @samp{%s} in de string tussen aanhalingstekens staat,
 toont de @code{message}-functie de @samp{%s} niet als zodanig, maar kijkt
 naar het argument dat op de string volgt. Het evalueert het tweede argument
-en toont de waarde op de locatie in de string waar de @samp{%s} staat.
+en toont de waarde op de lokatie in de string waar de @samp{%s} staat.
 
 @need 1250
 De kun je zien door de cursor achter de volgende expressie te plaatsen en
@@ -2663,7 +2663,7 @@ geschreven.
 * Buffer namen::             Buffers en bestanden zijn verschillend.
 * Buffers pakken::           Pak een buffer zelf, niet slechts zijn naam.
 * Van buffer verwisselen::   Hoe je naar een andere buffer overschakelt
-* Buffer grootte en locatie::  De locatie van point en de grootte van het 
+* Buffer grootte en lokatie::  De lokatie van point en de grootte van het 
                                  buffer.
 * Evaluatie oefening::       Evaluatie oefening
 @end menu
@@ -2698,7 +2698,7 @@ zullen we beschrijven wanneer die aan de orde komen.
 Naast dat we ze voor evaluatie-oefeningen gebruiken, zijn de functies die in
 volgende secties behandeld worden op zichzelf belangrijk. Het bestuderen van
 deze functies verheldert het verschil tussen buffers en bestanden, hoe
-tussen buffer te schakelen, en hoe een locatie er binnen vast te stellen.
+tussen buffer te schakelen, en hoe een lokatie er binnen vast te stellen.
 
 @node Buffer namen
 @section Buffer namen
@@ -2980,16 +2980,16 @@ voort uit het begrip van de functie als entiteit dan iets voor je kan doen
 wanneer je het aanroept---net als een loodgieter een entiteit is die een lek
 kan repareren wanneer je hem of haar roept.
 
-@node Buffer grootte en locatie
-@section Buffergrootte en de locatie van point
+@node Buffer grootte en lokatie
+@section Buffergrootte en de lokatie van point
 @cindex Buffergrootte
 @cindex Buffergrootte
-@cindex Locatie van point
-@cindex Locatie van point
+@cindex Lokatie van point
+@cindex Lokatie van point
 
 Laten wij tenslotte naar enkele nogal eenvoudige functies kijken,
 @code{buffer-size}, @code{point}, @code{point-min} en @code{point-max}. Deze
-geven informatie over de grootte van een buffer en de locatie van point
+geven informatie over de grootte van een buffer en de lokatie van point
 daarin.
 
 De functie @code{buffer-size} vertelt je hoe groot het huidige buffer
@@ -3023,7 +3023,7 @@ Terwijl ik dit schrijf is de waarde van point 65724. De @code{point} functie
 wordt vaak gebruikt in sommige voorbeelden later in dit boek.
 
 @need 1250
-De waarde van point hangt natuurlijk af van zijn locatie in het
+De waarde van point hangt natuurlijk af van zijn lokatie in het
 buffer. Wanneer je point op deze plek evalueert, is het getal groter:
 
 @smallexample
@@ -4407,13 +4407,13 @@ De functie @code{save-excursion} is de laatste speciale vorm die we in dit
 hoofdstuk bespreken.
 
 In Emacs Lisp programma's voor editing is de functie @code{save-excursion}
-heel gebruikelijk. Het bewaart de locatie van point, voert de body van de
+heel gebruikelijk. Het bewaart de lokatie van point, voert de body van de
 functie uit en herstelt point naar zijn vorige positie indien zijn lokatie
 is gewijzigd. Het primaire doel is te voorkomen dat de gebruiker verrast en
 verstoord wordt door onverwachte verplaatsing van point.
 
 @menu
-* Point en mark::            Een overzicht van verschillende locaties.
+* Point en mark::            Een overzicht van verschillende lokaties.
 * Template voor save-excursion::  Template voor save-excursion
 @end menu
 
@@ -4450,7 +4450,7 @@ De speciale vorm @code{save-excursion} bewaart de lokatie van point en
 herstelt de positie nadat de code in de body van de speciale vorm is
 geëvalueerd door de Lisp interpreter. Als point dus aan het begin van een
 stuk tekst staat en bepaalde code heeft point naar het eind van het buffer
-verplaatst, plaatst @code{save-excursion} point terug naar de locatie waar
+verplaatst, plaatst @code{save-excursion} point terug naar de lokatie waar
 het eerder was, nadat de expressies in de body van de functie zijn
 geëvalueerd.
 
@@ -4806,7 +4806,7 @@ opvragen met het typen van @kbd{C-h v}, en daarna de naam van de variabele
 
 @cindex De source van een functie vinden
 @c In version 22, tells location both of C and of Emacs Lisp
-@code{describe-function} vertelt je ook de locatie van de functie.
+@code{describe-function} vertelt je ook de lokatie van de functie.
 
 Plaats point in de naam van het bestand dat de functie bevat en druk op de
 @key{RET}-toets. In dit geval betekent @key{RET} @code{push-button} in
@@ -5076,7 +5076,7 @@ staat en @code{(push-mark)} in de expressie @code{beginning-of-buffer}
 . Misschien wist wie de code schreef niet dat de argumenten van
 @code{push-mark} optioneel zijn en dat wanneer geen argument aan
 @code{push-mark} wordt doorgegeven, de functie automatisch standaard de
-locatie van de cursor gebruikt. Of misschien was de expressie zo geschreven
+lokatie van de cursor gebruikt. Of misschien was de expressie zo geschreven
 dat die parallel aan de structuur van de volgende regel is. In elk geval
 zorgt de regel dat Emacs de positie van point vaststelt en de mark daar zet.
 
@@ -6840,7 +6840,7 @@ oorspronkelijke versmalling wordt hersteld vlak voor de voltooiing van de
 functie door de speciale vorm @code{save-restriction}.
 
 De aanroep van @code{widen} wordt gevolgd door @code{save-excursion} die de
-locatie van de cursor (dus van point) bewaart, en herstelt die nadat de code
+lokatie van de cursor (dus van point) bewaart, en herstelt die nadat de code
 in de body van de @code{save-excursion} de functie @code{beginning-of-line}
 gebruikt om point te verplaatsen.
 
@@ -6985,8 +6985,8 @@ lijst. Dus de @sc{car} van de lijst @code{(roos viool madelief boterbloem)}
 is @code{roos}.
 
 @need 1200
-Wanneer je dit in Info in GNU Emacs leest kan je dit door het volgende te
-evalueren:
+Wanneer je dit in Info in GNU Emacs leest kan je zien dit door het volgende
+te evalueren:
 
 @smallexample
 (car '(roos viool madelief boterbloem))
@@ -7026,7 +7026,7 @@ zo was zou de Lisp interpreter de lijst proberen te evalueren door
 niet.
 
 Voor het werken met lijsten zouden de namen @code{first} en @code{rest}
-logischer zijn dan de namen @code{car} en @code{cdr}. Sommige programmers
+logischer zijn dan de namen @code{car} en @code{cdr}. Sommige programmeurs
 definieren inderdaad @code{first} en @code{rest} als aliassen voor
 @code{car} en @code{cdr} en gebruiken daarna @code{first} en @code{rest} in
 de rest van hun code.
@@ -7141,7 +7141,7 @@ plaatst, of dat het een element aan de lijst vastmaakt of pusht, maar deze
 formulering is misleidend, omdat @code{cons} geen bestaande lijst verandert,
 maar een nieuwe maakt.
 
-Like @code{car} and @code{cdr}, @code{cons} is non-destructive.
+Net als @code{car} en @code{cdr}, is @code{cons} niet-destructief.
 
 @menu
 * Bouw een lijst::           Bouw een lijst
@@ -7487,12 +7487,12 @@ plaats daarvan construeren we daarom als volgt een lijst met de functie
 Wanneer je dit in Info binnen GNU Emacs leest kan je deze expressie op de
 gebruikelijke manier evalueren, door de cursor achter de expressie te
 plaatsen en @kbd{C-x C-e} te typen. (Ik doe dat meteen hier terwijl ik dit
-schrijft. Dat is een van de voordelen van een in je computer omgeving
-ingebouwde interpreter Overigen, wanneer is niets op de regel na het laatste
+schrijf. Dat is een van de voordelen van een ingebouwde interpreter in je
+computer omgeving. Overigens, wanneer is niets op de regel na het laatste
 haakje staat, zoals commentaar, kan point ook de volgende regel staan. Dus
 als point op de eerste kolom van de regel staat, hoef je die niet te
 verplaatsten. Emacs staat zelfs een willekeurige hoeveelheid witte ruimte
-achter het laaste haakje toe.)
+achter het laatste haakje toe.)
 
 @need 1200
 Wanneer we de variabele @code{dieren} evalueren dan zien we dat die gebonden
@@ -7536,8 +7536,8 @@ Het eerste element van de lijst, @code{antiloop} is vervangen met
 @code{nijlpaard}.
 
 We zien dus dat @code{setcar} geen nieuw element aan de lijst heeft
-toegevoegd, wat @code{cons} gedaan zou hebben, maar het verving
-@code{antiloop} met @code{nijlpaard}. Het @emph{wijzigde} de lijst.
+toegevoegd, wat @code{cons} gedaan zou hebben, maar @code{antiloop} verving
+met @code{nijlpaard}. Het @emph{wijzigde} de lijst.
 
 @node setcdr
 @section @code{setcdr}
@@ -7616,12 +7616,12 @@ vissen.
 @cindex Tekst wissen
 @cindex Tekst deleten
 
-Steeds als je in GNU Emacs tekst uit een buffer snijdt op clipt met een
+Steeds als je in GNU Emacs tekst uit een buffer snijdt of clipt met een
 @dfn{kill} commando, wordt het bewaard in een lijst en kan je het terughalen
 met een @dfn{yank} commando.
 
 (Het gebruik van het woord ``kill'' in Emacs voor processen die @emph{niet}
-specifiek de waarden van de entiteiten vernietigen), is een ongelukkig
+specifiek de waarden van de entiteiten vernietigen, is een ongelukkig
 historisch ongeluk. Een veel beter word zou ``clip'' zijn, omdat dat is wat
 kill commando's doen. Zij clippen tekst uit het buffer en bergen dat in een
 opslagplaats op van waar het teruggebracht kan worden. Ik ben vaak in de
@@ -7696,7 +7696,7 @@ kan uitzoeken welk element in de lijst je wilt---eerste, tweede, derde, of
 welke dan ook. Verder, wanneer je aan het einde van lijst komt, moet Emacs
 je het eerste element van de lijst geven, in plaats van helemaal niets.
 
-De lijst die de stukken tekst bevat het de @dfn{killring}. Dit hoofdstuk
+De lijst die de stukken tekst bevat heet de @dfn{killring}. Dit hoofdstuk
 werkt naar een beschijving van de killring toe en hoe die gebruikt wordt
 door eerst te volgen hoe de functie @code{zap-to-char} werkt. Deze functie
 roept een functie aan die een functie start die de killring
@@ -7842,7 +7842,7 @@ Het eerste deel van de code ziet er zo uit:
 @noindent
 @code{char-table-p} functie zien we voor het eerst. Het stelt vast of het
 argument een karakter-tabel is. Wanneer dat het geval is, dan stelt die het
-karakter was aan @code{zap-to-char} wordt doorgegeven aan een van hen
+karakter dat aan @code{zap-to-char} wordt doorgegeven aan een van hen
 in. (Dit is belangrijk voor bepaalde karakters in niet-Europese talen. De
 functie @code{aref} extraheert een element uit een array. Het is een
 array-specifieke functie die we in dit document niet
@@ -7864,8 +7864,8 @@ Het is eenvoudiger te begrijpen hoe @code{progn} werkt nadat we
 @subsection De functie @code{search-forward}
 @findex search-forward
 
-De functie @code{search-forward} wordt @code{zap-to-char} gebruikt het
-zapped-for-karakter te vinden. Wanneer het zoeken succesvol is, zet
+De functie @code{search-forward} wordt door @code{zap-to-char} gebruikt om
+het zapped-for-karakter te vinden. Wanneer het zoeken succesvol is, zet
 @code{search-forward} point onmiddellijk achter het laatste karakter in de
 doelstring. (In @code{zap-to-char} is de doelstring slechts één karakter
 lang. @code{zap-to-char} gebruikt de functie @code{char-to-string} om zeker
@@ -7955,7 +7955,7 @@ Het sjabloon voor een @code{progn} expressie is erg eenvoudig:
 @end smallexample
 
 In @code{zap-to-char} moet de @code{progn} expressie twee dingen doen: zet
-point exact op de juiste positie en geef de locatie van point zodat
+point exact op de juiste positie en geef de lokatie van point zodat
 @code{kill-region} weet hoe ver het moet killen.
 
 Het eerste argument van de @code{progn} is @code{search-forward}. Wanneer
@@ -10612,12 +10612,12 @@ Het slabloon voor een decrementele @code{while} loop ziet er zo uit:
 @end smallexample
 
 @menu
-* Decerementeel voorbeeld::  Meer steentjes op het strand.
+* Decrementeel voorbeeld::   Meer steentjes op het strand.
 * Dec voorbeeld onderdelen::  De onderdelen van een functiedefinitie.
 * Dec voorbeeld samengesteld::  De functiedefinitie samenstellen.
 @end menu
 
-@node Decerementeel voorbeeld
+@node Decrementeel voorbeeld
 @unnumberedsubsubsec Voorbeeld met een aflopende teller
 
 Om een loop met een aflopende teller te laten zien, gaan we de functie
@@ -14138,7 +14138,7 @@ nieuwsgierig hoe lang een typische functie is, en dit gaat het vertellen.
 * Verdeel en heers::         Verdeel en heers
 * Woorden en symbolen::      Wat te tellen?
 * Syntax::                   Wat vormt een woord of een symbool?
-* count-words-in-defun::     Erg vergelijkbaar met 
+* tel-woorden-in-defun::     Erg vergelijkbaar met 
                                @code{@value{TEL-WOORDEN}}
 * Enkele defuns::            Enkele defuns in een bestand tellen.
 * Een bestand vinden::       Wil je naar een bestand kijken?
@@ -14320,7 +14320,7 @@ Hier is de volledige reguliere expressie:
 "\\(\\w\\|\\s_\\)+[^ \t\n]*[ \t\n]*"
 @end smallexample
 
-@node count-words-in-defun
+@node tel-woorden-in-defun
 @section De @code{tel-woorden-in-defun} functie
 @cindex Woorden tellen in een @code{defun}
 
@@ -14435,7 +14435,7 @@ geëvalueerd de telling teruggeeft.
 @need 1250
 Samengevoegd ziet de @code{tel-woorden-in-defun} er zo uit:
 
-@findex count-words-in-defun
+@findex tel-woorden-in-defun
 @smallexample
 @group
 (defun tel-woorden-in-defun ()
@@ -17855,13 +17855,13 @@ laadt. Een gewone, standaard Emacs. Niets meer.
 @chapter Debuggen.
 @cindex debuggen
 
-GNU Emacs has two debuggers, @code{debug} and @code{edebug}.  The first is
-built into the internals of Emacs and is always with you; the second
-requires that you instrument a function before you can use it.
+GNU Emacs heeft twee debuggers, @code{debug} en @code{edebug}. De eerste is
+ingebouwd in Emacs en is altijd bij je in de buurt. De tweede vereist dat je
+een functie instrumenteert voordat je het kunt gebruiken.
 
-Both debuggers are described extensively in @ref{Debugging, , Debugging Lisp
-Programs, elisp, The GNU Emacs Lisp Reference Manual}.  In this chapter, I
-will walk through a short example of each.
+Beide debuggers zijn uitgebreid beschreven in @ref{Debugging, , Debugging
+Lisp Programs, elisp, The GNU Emacs Lisp Reference Manual}.  In dit
+hoofdstuk loop ik een kort voorbeeld van beide door.
 
 @menu
 * debug::                    Hoe de ingebouwde debugger te gebruiken.
@@ -17877,190 +17877,194 @@ will walk through a short example of each.
 @findex debug
 
 @c xref{Decrementing Loop,, Loop with a Decrementing Counter}, for a discussion.)
-Suppose you have written a function definition that is intended to return
-the sum of the numbers 1 through a given number.  (This is the
-@code{triangle} function discussed earlier.  @xref{Decrementing Example, ,
-Example with Decrementing Counter}, for a discussion.)
+Stel dat je een functiedefinitie hebt geschreven die bedoeld is om de som
+van de getallen 1 tot een opgegeven getal terug te geven. (Dit is de eerder
+besproken @code{driehoek} functie. @xref{Decrementeel voorbeeld, , Voorbeeld
+met een aflopende teller}, voor een bespreking.)
 
-However, your function definition has a bug.  You have mistyped @samp{1=}
-for @samp{1-}.  Here is the broken definition:
+Je functiedefinitie heeft echter een bug. Je hebt @samp{1-} verkeerd getypt
+als @samp{1=}. Hier is de kapotte definitie:
 
-@findex triangle-bugged
+@findex driehoek-met-bug
 @smallexample
 @group
-(defun triangle-bugged (number)
-  "Return sum of numbers 1 through NUMBER inclusive."
-  (let ((total 0))
-    (while (> number 0)
-      (setq total (+ total number))
-      (setq number (1= number)))      ; @r{Error here.}
-    total))
+(defun driehoek-met-bug (getal)
+  "Geef som van getallen 1 t/m GETAL terug."
+  (let ((totaal 0))
+    (while (> getal 0)
+      (setq totaal (+ totaal getal))
+      (setq getal (1= getal)))      ; @r{Fout hier.}
+    totaal))
 @end group
 @end smallexample
 
-If you are reading this in Info, you can evaluate this definition in the
-normal fashion.  You will see @code{triangle-bugged} appear in the echo
-area.
+Wanneer je dit leest in Info kan je deze definitie op de gebruikelijke
+manier evalueren. Je ziet @code{driehoek-met-bug} in het echogebied
+verschijnen.
 
 @need 1250
-Now evaluate the @code{triangle-bugged} function with an argument of 4:
+Evalueer nu de functie @code{driehoek-met-bug} met een argument van 4:
 
 @smallexample
-(triangle-bugged 4)
+(driehoek-met-bug 4)
 @end smallexample
 
 @noindent
-This will create and enter a @file{*Backtrace*} buffer that says:
+Dit creëert en zet je in een @file{*Backtrace*} buffer met de tekst:
 
 @noindent
 @smallexample
 @group
 ---------- Buffer: *Backtrace* ----------
 Debugger entered--Lisp error: (void-function 1=)
-  (1= number)
-  (setq number (1= number))
-  (while (> number 0) (setq total (+ total number))
-        (setq number (1= number)))
-  (let ((total 0)) (while (> number 0) (setq total ...)
-    (setq number ...)) total)
-  triangle-bugged(4)
+  (1= getal)
+  (setq getal (1= getal))
+  (while (> getal 0) (setq totaal (+ totaal getal))
+        (setq getal (1= getal)))
+  (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+     (setq getal ...)) totaal)
+  driehoek-met-bug(4)
 @end group
 @group
-  eval((triangle-bugged 4) nil)
-  eval-expression((triangle-bugged 4) nil nil 127)
-  funcall-interactively(eval-expression (triangle-bugged 4) nil nil 127)
-  call-interactively(eval-expression nil nil)
-  command-execute(eval-expression)
+  eval((driehoek-met-bug 4) nil)
+  elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...)
+    (error) eval-expression--debug)
+  eval-last-sexp(nil)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 ---------- Buffer: *Backtrace* ----------
 @end group
 @end smallexample
 
 @noindent
-(I have reformatted this example slightly; the debugger does not fold long
-lines.  As usual, you can quit the debugger by typing @kbd{q} in the
-@file{*Backtrace*} buffer.)
+(Ik heb dit voorbeeld iets anders geformatteerd. De debugger breekt de lange
+regels niet af. Zoals gebruikelijk kun je de debugger sluiten door @kbd{q}
+in het @file{*Backtrace*} buffer te typen.)
 
-In practice, for a bug as simple as this, the Lisp error line will tell you
-what you need to know to correct the definition.  The function @code{1=} is
+Voor een bug zo simpel als deze vertelt in de praktijk de Lisp error regel
+je wat je moet weten om de definitie te verbeteren. De functie @code{1=} is
 void.
 
-However, suppose you are not quite certain what is going on? You can read
-the complete backtrace.
+Stel echter dat je niet helemaal zeker bent wat er aan de hand is. Dan kan
+je de complete backtrace lezen.
 
-Emacs automatically starts the debugger that puts you in the
-@file{*Backtrace*} buffer.  You can also start the debugger manually as
-described below.
+Emacs start automatisch de debugger die je in het @file{*Backtrace*} buffer
+zet. Je kunt de debugger ook handmatig starten zoals hieronder beschreven.
 
-Read the @file{*Backtrace*} buffer from the bottom up; it tells you what
-Emacs did that led to the error.  Emacs made an interactive call to @kbd{C-x
-C-e} (@code{eval-last-sexp}), which led to the evaluation of the
-@code{triangle-bugged} expression.  Each line above tells you what the Lisp
-interpreter evaluated next.
+Lees het @file{*Backtrace*} buffer van onder naar boven. Het vertelt je wat
+Emacs deed wat tot de fout leidde. Emacs riep interactief @kbd{C-x C-e}
+(@code{eval-last-sexp}), wat leidde tot de evaluatie van de
+@code{driehoek-met-bug}. Elke regel erboven zegt wat de Lisp interpreter
+daarna evalueerde.
 
 @need 1250
-The third line from the top of the buffer is
+De derde regel van de bovenkant van het buffer is
 
 @smallexample
-(setq number (1= number))
+(setq getal (1= getal))
 @end smallexample
 
 @noindent
-Emacs tried to evaluate this expression; in order to do so, it tried to
-evaluate the inner expression shown on the second line from the top:
+Emacs probeerde deze expressie te evalueren. Om dat te doen, probeerde het
+de binnenste expressie te evalueren, die op de tweede regel van boven staat:
 
 @smallexample
-(1= number)
+(1= getal)
 @end smallexample
 
 @need 1250
 @noindent
-This is where the error occurred; as the top line says:
+Dit is waar de fout optrad. Zoals de bovenste regel zegt:
 
 @smallexample
 Debugger entered--Lisp error: (void-function 1=)
 @end smallexample
 
 @noindent
-You can correct the mistake, re-evaluate the function definition, and then
-run your test again.
+Je kunt de vergissing verbeteren, de functiedefinitie opnieuw evalueren en
+je test opnieuw uitvoeren.
 
 @node debug-on-entry
 @section @code{debug-on-entry}
 @findex debug-on-entry
 
-Emacs starts the debugger automatically when your function has an error.
+Emacs start de debugger automatisch wanneer je functie een fout bevat.
 
-Incidentally, you can start the debugger manually for all versions of Emacs;
-the advantage is that the debugger runs even if you do not have a bug in
-your code.  Sometimes your code will be free of bugs!
+Overigens kan je de debugger handmatig starten in alle versies van
+Emacs. Het voordeel is dat de debugger zelfs draait wanneer je geen bug in
+je code hebt. Soms is je code zonder bugs!
 
-You can enter the debugger when you call the function by calling
+Je kunt de debugger handmatig starten door de functie aan te roepen met
 @code{debug-on-entry}.
 
 @need 1250
 @noindent
-Type:
+Typ:
 
 @smallexample
-M-x debug-on-entry @key{RET} triangle-bugged @key{RET}
+M-x debug-on-entry @key{RET} driehoek-met-bug @key{RET}
 @end smallexample
 
 @need 1250
 @noindent
-Now, evaluate the following:
+Evalueer nu het volgende:
 
 @smallexample
-(triangle-bugged 5)
+(driehoek-met-bug 5)
 @end smallexample
 
 @noindent
-All versions of Emacs will create a @file{*Backtrace*} buffer and tell you
-that it is beginning to evaluate the @code{triangle-bugged} function:
+Alle versies van Emacs maken een @file{*Backtrace*} buffer en vertellen je
+dat het begint met de evaluatie van de functie @code{driehoek-met-bug}:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
 Debugger entered--entering a function:
-* triangle-bugged(5)
-  eval((triangle-bugged 5) nil)
+* driehoek-met-bug(5)
+  eval((driehoek-met-bug 5) nil)
 @end group
 @group
-  eval-expression((triangle-bugged 5) nil nil 127)
-  funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-  call-interactively(eval-expression nil nil)
-  command-execute(eval-expression)
----------- Buffer: *Backtrace* ----------
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+  eval-last-sexp(nil)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 @end group
 @end smallexample
 
-In the @file{*Backtrace*} buffer, type @kbd{d}.  Emacs will evaluate the
-first expression in @code{triangle-bugged}; the buffer will look like this:
+Typ @kbd{d} in het @file{*Backtrace*} buffer. Emacs evalueert de eerste
+expressie in de @code{driehoek-met-bug}. Het buffer ziet er zo uit:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
-Debugger entered--beginning evaluation of function call form:
-* (let ((total 0)) (while (> number 0) (setq total ...)
-        (setq number ...)) total)
-* triangle-bugged(5)
-  eval((triangle-bugged 5))
+Debugger entered--entering a function:
+* apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+  (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+        (setq getal ...)) totaal)) (5))
+* driehoek-met-bug(5)
+  eval((driehoek-met-bug 5) nil)
 @end group
 @group
-  eval((triangle-bugged 5) nil)
-  eval-expression((triangle-bugged 5) nil nil 127)
-  funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-  call-interactively(eval-expression nil nil)
-  command-execute(eval-expression)
----------- Buffer: *Backtrace* ----------
+elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+  eval-last-sexp(nil)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 @end group
 @end smallexample
 
 @noindent
-Now, type @kbd{d} again, eight times, slowly.  Each time you type @kbd{d},
-Emacs will evaluate another expression in the function definition.
+Typ nu opnieuw, langzaam acht keer @kbd{d}. Elke keer dat je @kbd{d} typt,
+evalueert Emacs een volgende expressie in de functiedefinitie.
 
 @need 1750
-Eventually, the buffer will look like this:
+Uiteindelijk ziet het buffer zer zo uit:
 
 @smallexample
 @group
@@ -18071,151 +18075,166 @@ Debugger entered--beginning evaluation of function call form:
         (setq number (1= number)))
 @group
 @end group
-* (let ((total 0)) (while (> number 0) (setq total ...)
-        (setq number ...)) total)
-* triangle-bugged(5)
-  eval((triangle-bugged 5) nil)
+* (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+         (setq getal ...)) totaal)
+* #f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+  (let ((totaal 0)) (while (> getal 0)
+     (setq totaal (+ totaal getal)) (setq getal ...)) totaal))(5)
+* apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
+  (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
+     (setq getal ...)) totaal)) 5)
+* driehoek-met-bug(5)
+  eval((driehoek-met-bug 5) nil)
+  elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+  eval-last-sexp(nil)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 @group
 @end group
-  eval-expression((triangle-bugged 5) nil nil 127)
-  funcall-interactively(eval-expression (triangle-bugged 5) nil nil 127)
-  call-interactively(eval-expression nil nil)
-  command-execute(eval-expression)
----------- Buffer: *Backtrace* ----------
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
+  eval-last-sexp(nil)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 @end group
 @end smallexample
 
 @need 1500
 @noindent
-Finally, after you type @kbd{d} two more times, Emacs will reach the error,
-and the top two lines of the @file{*Backtrace*} buffer will look like this:
+Nadat je @kbd{d} nog twee keer getypt hebt, bereikt Emacs tenslotte de fout,
+en zien de bovenste twee regels van het @file{*Backtrace*} buffer er zo uit:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
-Debugger entered--Lisp error: (void-function 1=)
-* (1= number)
+Debugger entered--entering a function:
+* eval-expression--debug((void-function 1=))
+* (1= getal)
 @dots{}
----------- Buffer: *Backtrace* ----------
 @end group
 @end smallexample
 
-By typing @kbd{d}, you were able to step through the function.
+Je kon met het typen van @kbd{d} door de functie stappen.
 
-You can quit a @file{*Backtrace*} buffer by typing @kbd{q} in it; this quits
-the trace, but does not cancel @code{debug-on-entry}.
+Je kunt @file{*Backtrace*} buffer afsluiten door @kbd{q} er in te typen. Dit
+stopt de trace, maar zet @code{debug-on-entry} niet uit.
 
 @findex cancel-debug-on-entry
-To cancel the effect of @code{debug-on-entry}, call
-@code{cancel-debug-on-entry} and the name of the function, like this:
+Om het effect van @code{debug-on-entry} te stoppen, roep je
+@code{cancel-debug-on-entry} aan en de naam van de functie, zoals dit:
 
 @smallexample
-M-x cancel-debug-on-entry @key{RET} triangle-bugged @key{RET}
+M-x cancel-debug-on-entry @key{RET} driehoek-met-bug @key{RET}
 @end smallexample
 
 @noindent
-(If you are reading this in Info, cancel @code{debug-on-entry} now.)
+(Wanneer je dit in Info leest, stop je @code{debug-on-entry} nu.)
 
 @node debug-on-quit
-@section @code{debug-on-quit} and @code{(debug)}
+@section @code{debug-on-quit} en @code{(debug)}
 
-In addition to setting @code{debug-on-error} or calling
-@code{debug-on-entry}, there are two other ways to start @code{debug}.
+Naast het zetten van @code{debug-on-error} of het aanroepen van
+@code{debug-on-entry}, zijn er twee andere manieren om @code{debug} te
+starten.
 
 @findex debug-on-quit
-You can start @code{debug} whenever you type @kbd{C-g}
-(@code{keyboard-quit}) by setting the variable @code{debug-on-quit} to
-@code{t}.  This is useful for debugging infinite loops.
+Je kunt steeds wanneer @kbd{C-g} (@code{keyboard-quit}) typt @code{debug}
+starten door de variabele @code{debug-on-quit} op @code{t} te zetten. Dit is
+zinvol om oneindige loops te debuggen.
 
 @need 1500
 @cindex @code{(debug)} in code
-Or, you can insert a line that says @code{(debug)} into your code where you
-want the debugger to start, like this:
+Of je neemt een regel met de tekst @code{(debug)} op in je code waar je de
+debugger wilt starten, zoals dit:
 
 @smallexample
 @group
-(defun triangle-bugged (number)
-  "Return sum of numbers 1 through NUMBER inclusive."
-  (let ((total 0))
-    (while (> number 0)
-      (setq total (+ total number))
+(defun driehoek-met-bug (getal)
+  "Geef som van getallen 1 t/m GETAL terug."
+  (let ((totaal 0))
+    (while (> getal 0)
+      (setq totaal (+ totaal getal))
       (debug)                         ; @r{Start debugger.}
-      (setq number (1= number)))      ; @r{Error here.}
-    total))
+      (setq getal (1= getal)))        ; @r{Fout hier.}
+    totaal))
 @end group
 @end smallexample
 
-The @code{debug} function is described in detail in @ref{Debugger, , The
+De functie @code{debug} is gedetailleerd beschreven in @ref{Debugger, , The
 Lisp Debugger, elisp, The GNU Emacs Lisp Reference Manual}.
 
 @node edebug
-@section The @code{edebug} Source Level Debugger
+@section De @code{edebug} Source Level Debugger
 @cindex Source level debugger
 @findex edebug
 
-Edebug is a source level debugger.  Edebug normally displays the source of
-the code you are debugging, with an arrow at the left that shows which line
-you are currently executing.
+Edebug is een source level debugger. Edebug toont gewoonlijk de bron van de
+code die je aan het debuggen bent met links een pijltje dat de regel
+aanwijst die je op dit moment uitvoert.
 
-You can walk through the execution of a function, line by line, or run
-quickly until reaching a @dfn{breakpoint} where execution stops.
+Je kunt regel voor regel door de uitvoering van de functie wandelen of snel
+er doorheen gaan tot het bereiken van een @dfn{breakpoint}, waar de
+uitvoering stopt.
 
-Edebug is described in @ref{Edebug, , , elisp, The GNU Emacs Lisp Reference
+Edebug is beschreven in @ref{Edebug, , , elisp, The GNU Emacs Lisp Reference
 Manual}.
 
 @need 1250
-Here is a bugged function definition for @code{triangle-recursively}.
-@xref{Recursive triangle function, , Recursion in place of a counter}, for a
-review of it.
+Hier is een functiedefinitie voor @code{driehoek-recursieve} met een
+bug. @xref{Recursieve driehoek functie, , Recursie in plaats van een
+teller}, voor een review er van.
 
 @smallexample
 @group
-(defun triangle-recursively-bugged (number)
-  "Return sum of numbers 1 through NUMBER inclusive.
-Uses recursion."
-  (if (= number 1)
+(defun driehoek-recursief-bugged (aantal)
+  "Geef de som van de getallen 1 tot en met AANTAL terug.
+Met recursie."
+  (if (= aantal 1)
       1
-    (+ number
-       (triangle-recursively-bugged
-        (1= number)))))               ; @r{Error here.}
+    (+ aantal
+       (driehoek-recursief-bugged
+        (1= aantal)))))               ; @r{Fout hier}
 @end group
 @end smallexample
 
 @noindent
-Normally, you would install this definition by positioning your cursor after
-the function's closing parenthesis and typing @kbd{C-x C-e}
-(@code{eval-last-sexp}) or else by positioning your cursor within the
-definition and typing @kbd{C-M-x} (@code{eval-defun}).  (By default, the
-@code{eval-defun} command works only in Emacs Lisp mode or in Lisp
-Interaction mode.)
+Normaliter installeer je deze definitie door de cursor achter het haakje dat
+de functie afsluit te plaatsen en @kbd{C-x C-e} (@code{eval-last-sexp}) te
+typen, of anders de cursor in de definitie te plaatsten en @kbd{C-M-x}
+(@code{eval-defun}) te typen. (Standaard werkt het @code{eval-defun}
+commando alleen in Emacs Lisp mode of in Lisp Interaction mode.)
 
 @need 1500
-However, to prepare this function definition for Edebug, you must first
-@dfn{instrument} the code using a different command.  You can do this by
-positioning your cursor within or just after the definition and typing
+Echter, om deze functiedefinitie voor Edebug voor te bereiden, moet je eerst
+de code @dfn{instrumenteren} met een ander commando. Je doet dit door de
+cursors in of direct achter de definitie te plaatsen en dan het volgende te
+typen:
 
 @smallexample
 M-x edebug-defun @key{RET}
 @end smallexample
 
 @noindent
-This will cause Emacs to load Edebug automatically if it is not already
-loaded, and properly instrument the function.
+Dit zorgt dat Emacs automatisch Edebug laadt, wanneer het nog niet is
+geladen en de functie correct instrumenteert.
 
-After instrumenting the function, place your cursor after the following
-expression and type @kbd{C-x C-e} (@code{eval-last-sexp}):
+Nadat het instrumenteren van de functie plaats je de cursor achter de
+volgende expressie en typ je @kbd{C-x C-e} (@code{eval-last-sexp}):
 
 @smallexample
-(triangle-recursively-bugged 3)
+(driehoek-recursief-bugged 3)
 @end smallexample
 
 @noindent
-You will be jumped back to the source for @code{triangle-recursively-bugged}
-and the cursor positioned at the beginning of the @code{if} line of the
-function.  Also, you will see an arrowhead at the left hand side of that
-line.  The arrowhead marks the line where the function is executing.  (In
-the following examples, we show the arrowhead with @samp{=>}; in a windowing
-system, you may see the arrowhead as a solid triangle in the window fringe.)
+Je springt terug naar de bron van @code{driehoek-recursief-bugged} met de
+cursor gepositioneerd aan begin van de @code{if} regel van de functie. Ook
+zie je een pijlpunt aan de linkerkant van de regel. De pijlpunt markeert de
+regel die de functie aan het uitvoeren is. (In de volgende voorbeelden tonen
+we de pijlpunt met @samp{=>}. In een windowing systeem kan de pijlpunt er
+als een gevulde driehoek in de window-kantlijn uitzien.)
 
 @smallexample
 =>@point{}(if (= number 1)
@@ -18223,69 +18242,69 @@ system, you may see the arrowhead as a solid triangle in the window fringe.)
 
 @noindent
 @iftex
-In the example, the location of point is displayed with a star,
-@samp{@point{}} (in Info, it is displayed as @samp{-!-}).
+In het voorbeeld is de lokatie van point getoond met een sterretje,
+@samp{@point{}} (in Info wordt het getoond als @samp{-!-}.)
 @end iftex
 @ifnottex
-In the example, the location of point is displayed as @samp{@point{}} (in a
-printed book, it is displayed with a five pointed star).
+In het voorbeeld is de lokatie van point getoond als @samp{@point{}} (in een
+gedrukt boek wordt het getoond met een vijfpuntige ster.)
 @end ifnottex
 
-If you now press @key{SPC}, point will move to the next expression to be
-executed; the line will look like this:
+Wanneer je nu @key{SPC} aanslaat, verplaatst point naar de volgende
+expressie om uit te voeren, de regel ziet er zo uit:
 
 @smallexample
 =>(if @point{}(= number 1)
 @end smallexample
 
 @noindent
-As you continue to press @key{SPC}, point will move from expression to
-expression.  At the same time, whenever an expression returns a value, that
-value will be displayed in the echo area.  For example, after you move point
-past @code{number}, you will see the following:
+Terwijl je doorgaat met @key{SPC} aan te slaan verplaatst point van
+expressie naar expressie. Steeds als een functie een waarde teruggeeft,
+wordt die tegelijkertijd in het echogebied getoond. Nadat je point
+bijvoorbeeld voorbij @code{number} verplaatst hebt, zie je het volgende:
 
 @smallexample
 Result: 3 (#o3, #x3, ?\C-c)
 @end smallexample
 
 @noindent
-This means the value of @code{number} is 3, which is octal three,
-hexadecimal three, and @sc{ascii} Control-C (the third letter of the
-alphabet, in case you need to know this information).
+Dit betekent dat de waarde van @code{getal} 3 is, wat gelijk is aan octal
+drie, hexidicimaal drie en @sc{ascii} Control-C (de derde letter van het
+alfabet, voor het geval je deze informatie nodig hebt).
 
-You can continue moving through the code until you reach the line with the
-error.  Before evaluation, that line looks like this:
+Je kunt door de code blijven gaan totdat je de regel met de fout
+bereikt. Voor de evaluatie ziet die regel er zo uit:
 
 @smallexample
-=>        @point{}(1= number)))))               ; @r{Error here.}
+=>       @point{}(1= aantal)))))               ; @r{Fout hier}
 @end smallexample
 
 @need 1250
 @noindent
-When you press @key{SPC} once again, you will produce an error message that
-says:
+Wanneer je nog een keer @key{SPC} aanslaat, produceer je een foutmelding met
+de tekst:
 
 @smallexample
 Symbol's function definition is void:@: 1=
 @end smallexample
 
 @noindent
-This is the bug.
+Dit is de bug
 
-Press @kbd{q} to quit Edebug.
+Druk op @kbd{q} om Edebug te stoppen.
 
-To remove instrumentation from a function definition, simply re-evaluate it
-with a command that does not instrument it.  For example, you could place
-your cursor after the definition's closing parenthesis and type @kbd{C-x
-C-e}.
+Om de instrumentalisatie van een functiedefinitie te verwijderen,
+her-evalueer je die eenvoudig met een commando dat het niet
+instrumenteert. Bijvoorbeeld kan je de cursor na het haakje dat de functie
+afsluit plaatsen en @kbd{C-x C-e} te typen.
 
-Edebug does a great deal more than walk with you through a function.  You
-can set it so it races through on its own, stopping only at an error or at
-specified stopping points; you can cause it to display the changing values
-of various expressions; you can find out how many times a function is
-called, and more.
+Edebug doet veel meer dan je door een functie te wandelen. Je kunt het zo
+instellen dat het zelf door een functie rent en alleen stopt bij een fout of
+bij gespecificeerde stoppunten. Je kunt het de veranderende waardes van
+verschillende expressies laten tonen, of ontdekken hoe vaak een functie
+wordt aangeroepen, en meer.
 
-Edebug is described in @ref{Edebug, , , elisp, The GNU Emacs Lisp Reference
+Edebug is beschreven in @ref{Edebug, , , elisp, The GNU Emacs Lisp Reference
 Manual}.
 
 @need 1500
@@ -18294,60 +18313,62 @@ Manual}.
 
 @itemize @bullet
 @item
-Install the @code{@value{COUNT-WORDS}} function and then cause it to enter
-the built-in debugger when you call it.  Run the command on a region
-containing two words.  You will need to press @kbd{d} a remarkable number of
-times.  On your system, is a hook called after the command finishes? (For
-information on hooks, see @ref{Command Overview, , Command Loop Overview,
-elisp, The GNU Emacs Lisp Reference Manual}.)
+Installeer de @code{@value{TEL-WOORDEN}} functie en laat het de ingebouwde
+debugger ingaaan wanneer je het aanroept. Run het commando op een region die
+twee woorden bevat. Je moet @kbd{d} een opmerkelijk aantal keer
+aanslaan. Wordt op jouw systeem een hook aangeroepen wanneer het commando
+eindigt? (Voor informatie over hooks, zie @ref{Command Overview, , Command
+Loop Overview, elisp, The GNU Emacs Lisp Reference Manual}.))
 
 @item
-Copy @code{@value{COUNT-WORDS}} into the @file{*scratch*} buffer, instrument
-the function for Edebug, and walk through its execution.  The function does
-not need to have a bug, although you can introduce one if you wish.  If the
-function lacks a bug, the walk-through completes without problems.
+Kopieer @code{@value{TEL-WOORDEN}} in het @file{*scratch*} buffer,
+instrumenteer de functie voor Edebug, en wandel door de uitvoering. De
+functie hoeft geen bug te hebben, maar je kunt er een introduceren als je
+dat wilt. Wanneer de functie geen bug heeft, eindigt de wandeling zonder
+problemen.
 
 @item
-While running Edebug, type @kbd{?} to see a list of all the Edebug
-commands.  (The @code{global-edebug-prefix} is usually @kbd{C-x X}, i.e.,
-@kbd{@key{CTRL}-x} followed by an upper case @kbd{X}; use this prefix for
-commands made outside of the Edebug debugging buffer.)
+Typ @kbd{?} terwijl je Edebug draait om een lijst te zien van alle Edebug
+commando's. (De @code{global-edebug-prefix} is meestal @kbd{C-x X}, dus
+@kbd{@key{CTRL}-x} gevold door een hoofdletter @kbd{X}. Gebruik deze prefix
+voor commando's buiten het Edebug debugging buffer.)
 
 @item
-In the Edebug debugging buffer, use the @kbd{p} (@code{edebug-bounce-point})
-command to see where in the region the @code{@value{COUNT-WORDS}} is
-working.
+Gebruik het @kbd{p} (@code{edebug-bounce-point}) commando in het Edebug
+debugging buffer om te zien in welke region de @code{@value{TEL-WOORDEN}}
+aan het werk is.
 
 @item
-Move point to some spot further down the function and then type the @kbd{h}
-(@code{edebug-goto-here}) command to jump to that location.
+Verplaats point naar een plaats verder in de functie en typ dan het @kbd{h}
+(@code{edebug-goto-here}) commando om naar die lokatie te springen.
 
 @item
-Use the @kbd{t} (@code{edebug-trace-mode}) command to cause Edebug to walk
-through the function on its own; use an upper case @kbd{T} for
+Gebruik het @kbd{t} (@code{edebug-trace-mode}) commando om te zorgen dat
+Edebug zelf door de functie wandelt. Gebruik een hoofdletter @kbd{T} voor
 @code{edebug-Trace-fast-mode}.
 
 @item
-Set a breakpoint, then run Edebug in Trace mode until it reaches the
-stopping point.
+Zet een breakpoint en draai Edubug in Trace mode tot het dit stoppunt
+bereikt.
 @end itemize
 
 @node Conclusie
 @chapter Conclusie
 
-We have now reached the end of this Introduction.  You have now learned
-enough about programming in Emacs Lisp to set values, to write simple
-@file{.emacs} files for yourself and your friends, and write simple
-customizations and extensions to Emacs.
+Je hebt nu het einde van deze Introductie bereikt. Je hebt nu genoeg geleerd
+over het programmeren in Emacs Lisp om waardes te zetten, eenvoudige
+@file{.emacs} bestanden voor jezelf en je vrienden te schrijven en om
+eenvoudige aanpassingen en extensies op Emacs te schrijven.
 
-This is a place to stop.  Or, if you wish, you can now go onward, and teach
-yourself.
+Dit is een plaats op te stoppen. Of, als je dat wilt, kan je nu verder gaan
+en je zelf iets leren.
 
-You have learned some of the basic nuts and bolts of programming.  But only
-some.  There are a great many more brackets and hinges that are easy to use
-that we have not touched.
+Je hebt wat van de basisfuncties van programmeren geleerd. Maar slechts een
+paar. Er zijn nog veel meer elementen die makkelijk te gebruiken zijn die we
+niet geraakt hebben.
 
-A path you can follow right now lies among the sources to GNU Emacs and in
+Het pad dat je nu kunt volgen ligt ondermeer in de broncode van GNU Emacs en
+in
 @ifnotinfo
 @cite{The GNU Emacs Lisp Reference Manual}.
 @end ifnotinfo
@@ -18356,90 +18377,91 @@ A path you can follow right now lies among the sources to GNU Emacs and in
 Reference Manual}.
 @end ifinfo
 
-The Emacs Lisp sources are an adventure.  When you read the sources and come
-across a function or expression that is unfamiliar, you need to figure out
-or find out what it does.
+De Emacs Lisp broncode is een avontuur. Wanneer je de broncode leest en een
+onbekende functie of expressie tegenkomt moet je ontdekken wat die doet.
 
-Go to the Reference Manual.  It is a thorough, complete, and fairly
-easy-to-read description of Emacs Lisp.  It is written not only for experts,
-but for people who know what you know.  (The @cite{Reference Manual} comes
-with the standard GNU Emacs distribution.  Like this introduction, it comes
-as a Texinfo source file, so you can read it on your computer and as a
-typeset, printed book.)
+Ga naar de Reference Manual. Het is een grondige, complete en redelijk
+makkelijk te lezen beschrijving van Emacs Lisp. Het is niet alleen voor
+experts geschreven, maar voor mensen die weten wat jij weet. (De
+@cite{Reference Manual} zit bij de standaard GNU Emacs distributie. Net als
+deze introductie komt het als Texinfo bronbestand, zodat je het op je
+computer kunt lezen en als een opgemaakt gedrukt boek.)
 
-Go to the other built-in help that is part of GNU Emacs: the built-in
-documentation for all functions and variables, and
-@code{xref-find-definitions}, the program that takes you to sources.
+Ga naar de andere ingebouwde hulp die onderdeel van GNU Emacs is: de
+ingebouwde documentatie voor alle functies en variabelen, en
+@code{xref-find-definitions}, het programma dat je naar de broncode brengt.
 
-Here is an example of how I explore the sources.  Because of its name,
-@file{simple.el} is the file I looked at first, a long time ago.  As it
-happens some of the functions in @file{simple.el} are complicated, or at
-least look complicated at first sight.  The @code{open-line} function, for
-example, looks complicated.
+Hier is een voorbeeld van hoe ik de broncode verken. Vanwege de naam is
+@file{simple.el} het bestand dat ik het eerste bekeek, een lange tijd
+geleden. Het blijkt dat sommige functies in @file{simple.el} erg
+gecompliceerd zijn of op zijn minst op het eerste gezicht er gecompliceerd
+uitzien. De functie @code{open-line} bijvoorbeeld ziet er gecompliceerd uit.
 
-You may want to walk through this function slowly, as we did with the
-@code{forward-sentence} function.  (@xref{forward-sentence, The
-@code{forward-sentence} function}.)  Or you may want to skip that function
-and look at another, such as @code{split-line}.  You don't need to read all
-the functions.  According to @code{count-words-in-defun}, the
-@code{split-line} function contains 102 words and symbols.
+Je wilt misschien langzaam door deze functie wandelen, zoals we met de
+functie @code{forward-sentence} deden. ((@xref{forward-sentence, De functie
+@code{forward-sentence}}.) Of je wilt deze functie overslaan en naar een
+andere kijken, zoals @code{split-line}. Je hoeft niet alle functies te
+lezen. Volgens @code{tel-woorden-in-defun} bevat de functie
+@code{split-line} 102 woorden en symbolen.
 
-Even though it is short, @code{split-line} contains expressions we have not
-studied: @code{skip-chars-forward}, @code{indent-to}, @code{current-column}
-and @code{insert-and-inherit}.
+Hoewel die kort is, bevat @code{split-line} expressie die we nog niet
+bestudeerd hebben: @code{skip-chars-forward}, @code{indent-to},
+@code{current-column} en @code{insert-and-inherit}.
 
-Consider the @code{skip-chars-forward} function.  In GNU Emacs, you can find
-out more about @code{skip-chars-forward} by typing @kbd{C-h f}
-(@code{describe-function}) and the name of the function.  This gives you the
-function documentation.
+Beschouw de functie @code{skip-chars-forward}. In GNU Emacs ontdek je meer
+over @code{skip-chars-forward} door het typen van @kbd{C-h f}
+(@code{describe-function}) en de naam van de functie. Dit levert je de
+functiedocumentatie.
 
-You may be able to guess what is done by a well named function such as
-@code{indent-to}; or you can look it up, too.  Incidentally, the
-@code{describe-function} function itself is in @file{help.el}; it is one of
-those long, but decipherable functions.  You can look up
-@code{describe-function} using the @kbd{C-h f} command!
+Je kunt misschien raden wat gedaan wordt door een functie met een goede naam
+zoals @code{indent-to}, of je kunt het opzoeken. Overigens staat de functie
+@code{describe-function} zelf in @file{help.el}. Het is een van die lange,
+maar ontcijferbare functies. Je kunt de @code{describe-function} opzoeken
+met het @kbd{C-h f} commando!
 
-In this instance, since the code is Lisp, the @file{*Help*} buffer contains
-the name of the library containing the function's source.  You can put point
-over the name of the library and press the @key{RET} key, which in this
-situation is bound to @code{help-follow}, and be taken directly to the
-source, in the same way as @kbd{M-.} (@code{xref-find-definitions}).
+In dit geval, omdat de code in Lisp is, bevat het @file{*Help*} buffer de
+naam van de library met de broncode van de functie. Je kunt point op de naam
+van de library zetten en dan op de @key{RET} toets drukken, die in deze
+situatie gebonden is aan @code{help-follow} en je direct naar de broncode
+brengt, op dezelfde manier als @kbd{M-.} (@code{xref-find-definitions}).
 
-The definition for @code{describe-function} illustrates how to customize the
-@code{interactive} expression without using the standard character codes;
-and it shows how to create a temporary buffer.
+De definitie van @code{describe-function} illustreert hoe de
+@code{interactive} aan te passen zonder de standaard karakter-codes te
+gebruiken en het laat zien hoe je een tijdelijke buffer maakt.
 
-(The @code{indent-to} function is written in C rather than Emacs Lisp; it is
-a built-in function.  @code{help-follow} takes you to its source as does
-@code{xref-find-definitions}, when properly set up.)
+(De functie @code{indent-to} is in C geschreven in plaats van Emacs Lisp,
+het is een ingebouwde functie. @code{help-follow} neemt je naar de broncode
+net als @code{xref-find-definitions}, wanneer correct opgezet.)
 
-You can look at a function's source using @code{xref-find-definitions},
-which is bound to @kbd{M-.} Finally, you can find out what the Reference
-Manual has to say by visiting the manual in Info, and typing @kbd{i}
-(@code{Info-index}) and the name of the function, or by looking up the
-function in the index to a printed copy of the manual.
+Je kunt naar een de bron van een functie kijken met
+@code{xref-find-definitions} dat aan @kbd{M-.} gebonden is. Tenslottte kun
+je ontdekken wat de Reference Manual te zeggen heeft door de manual in Info
+te bezoeken en @kbd{i} (@code{Info-index}) en de naam van de functie te
+typen, of het op te zoeken in de index van een afgedrukt exemplaar van de
+manual.
 
-Similarly, you can find out what is meant by @code{insert-and-inherit}.
+Op dezelfde manier kan je uit vinden vat bedoeld wordt met
+@code{insert-and-inherit}.
 
-Other interesting source files include @file{paragraphs.el},
-@file{loaddefs.el}, and @file{loadup.el}.  The @file{paragraphs.el} file
-includes short, easily understood functions as well as longer ones.  The
-@file{loaddefs.el} file contains the many standard autoloads and many
-keymaps.  I have never looked at it all; only at parts.  @file{loadup.el} is
-the file that loads the standard parts of Emacs; it tells you a great deal
-about how Emacs is built.  (@xref{Building Emacs, , Building Emacs, elisp,
-The GNU Emacs Lisp Reference Manual}, for more about building.)
+Andere interessante bronbestanden zijn @file{paragraphs.el},
+@file{loaddefs.el}, en @file{loadup.el}. Het bestand @file{paragraphs.el}
+bevat zowel korte makkelijk te begrijpen functies als ook langere. Het
+bestand @file{loaddefs.el} bevat veel standaard autoloads en veel
+keymaps. Ik heb het nooit in zijn geheel bekeken, alleen in delen. Het
+bestand @file{loadup.el} is het bestand dat veel standaard onderdelen van
+Emacs laadt, het vertelt je veel over hoe Emacs is gebouwd. (@xref{Building
+Emacs, , Building Emacs, elisp, The GNU Emacs Lisp Reference Manual}, voor
+meer over bouwen.)
 
-As I said, you have learned some nuts and bolts; however, and very
-importantly, we have hardly touched major aspects of programming; I have
-said nothing about how to sort information, except to use the predefined
-@code{sort} function; I have said nothing about how to store information,
-except to use variables and lists; I have said nothing about how to write
-programs that write programs.  These are topics for another, and different
-kind of book, a different kind of learning.
+Zoals ik heb gezegd, je hebt sommmige basisdelen geleerd, echter, en erg
+belangrijk, hebben we amper belangrijke aspecten van programmeren
+geraakt. Ik heb niets gezegd over het sorteren van informatie, bevalve het
+gebruik van de standaard @code{sort} functie. Ik heb niets gezegd over hoe
+je programma's schrijft die programma's schrijven. Dit zijn onderwerpen voor
+een ander en ander soort boek, een andere manier van leren.
 
-What you have done is learn enough for much practical work with GNU Emacs.
-What you have done is get started.  This is the end of a beginning.
+Je hebt genoeg geleerd om veel practisch werk met GNU Emacs te doen. En wat
+je gedaan hebt, is beginnen. Dit is het einde van het begin.
 
 @c ================ Appendix ================
 

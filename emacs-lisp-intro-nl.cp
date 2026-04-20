@@ -80,8 +80,8 @@
 @entry{aanroepen gedefinieerd}{24}{@samp {aanroepen} gedefinieerd}
 @entry{Buffergrootte}{24}{Buffergrootte}
 @entry{Buffergrootte}{24}{Buffergrootte}
-@entry{Locatie van point}{24}{Locatie van point}
-@entry{Locatie van point}{24}{Locatie van point}
+@entry{Lokatie van point}{24}{Lokatie van point}
+@entry{Lokatie van point}{24}{Lokatie van point}
 @entry{point gedefinieerd}{24}{@samp {point} gedefinieerd}
 @entry{narrowing defined}{25}{@samp {narrowing} defined}
 @entry{Definitie schrijven}{26}{Definitie schrijven}
@@ -287,7 +287,7 @@
 @entry{Woorden en symbolen in defun}{171}{Woorden en symbolen in defun}
 @entry{Syntax categorieën en tabellen}{172}{Syntax categorieën en tabellen}
 @entry{Woorden tellen in een defun}{173}{Woorden tellen in een @code {defun}}
-@entry{count-words-in-defun}{175}{@code {count-words-in-defun}}
+@entry{tel-woorden-in-defun}{175}{@code {tel-woorden-in-defun}}
 @entry{Een bestand vinden}{176}{Een bestand vinden}
 @entry{lengte-lijst-bestand}{177}{@code {lengte-lijst-bestand}}
 @entry{lengths-list-many-files}{180}{@code {lengths-list-many-files}}
@@ -360,7 +360,7 @@
 @entry{Eigenschappen in het mode line voorbeeld}{218}{Eigenschappen in het mode line voorbeeld}
 @entry{debuggen}{220}{debuggen}
 @entry{debug}{220}{@code {debug}}
-@entry{triangle-bugged}{220}{@code {triangle-bugged}}
+@entry{driehoek-met-bug}{220}{@code {driehoek-met-bug}}
 @entry{debug-on-entry}{221}{@code {debug-on-entry}}
 @entry{cancel-debug-on-entry}{223}{@code {cancel-debug-on-entry}}
 @entry{debug-on-quit}{223}{@code {debug-on-quit}}

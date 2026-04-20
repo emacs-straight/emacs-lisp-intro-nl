@@ -82,7 +82,6 @@
 @entry{cons-cel}{110}
 @entry{@code {copy-region-as-kill}}{94}
 @entry{@code {copy-to-buffer}}{60}
-@entry{@code {count-words-in-defun}}{175}
 @entry{@code {current-buffer}}{22}
 @entry{@code {current-kill}}{230}
 @initial {D}
@@ -117,6 +116,7 @@
 @entry{@code {dotimes}}{128}
 @entry{dotted pair}{110}
 @entry{Draai een programma}{3}
+@entry{@code {driehoek-met-bug}}{220}
 @entry{@code {driehoek-recursief}}{132}
 @entry{Duplicated words function}{228}
 @entry{Dynamische binding}{36}
@@ -237,8 +237,8 @@
 @entry{@code {load-library}}{210}
 @entry{@code {load-path}}{210}
 @entry{Local variables list, per-buffer,}{205}
-@entry{Locatie van point}{24}
 @entry{@samp {lokale variabele} gedefinieerd}{33}
+@entry{Lokatie van point}{24}
 @entry{@code {looking-at}}{153}
 @entry{Loops}{116}
 @entry{Loops en recursie}{116}
@@ -373,6 +373,7 @@
 @entry{Tekst tussen dubbele aanhalingstekens}{2}
 @entry{Tekst wissen}{86}
 @entry{Tel woorden recursief}{164}
+@entry{@code {tel-woorden-in-defun}}{175}
 @entry{@code {tel-woorden-voorbeeld}}{158}
 @entry{Tellen}{17}
 @entry{@samp {teruggegeven waarde} uitgelegd}{8}
@@ -380,7 +381,6 @@
 @entry{Text Mode aangezet}{205}
 @entry{Toestcombinaties opnieuw binden}{208}
 @entry{Toets ontkoppelen}{207}
-@entry{@code {triangle-bugged}}{220}
 @entry{Typen van data}{12}
 @initial {U}
 @entry{Uitstel in recursie}{138}

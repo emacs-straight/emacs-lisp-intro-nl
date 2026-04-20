@@ -34,7 +34,7 @@
 @numsecentry{Buffer namen}{2.1}{Buffer namen}{20}
 @numsecentry{Buffers pakken}{2.2}{Buffers pakken}{22}
 @numsecentry{Van buffer verwisselen}{2.3}{Van buffer verwisselen}{23}
-@numsecentry{Buffergrootte en de locatie van point}{2.4}{Buffer grootte en locatie}{24}
+@numsecentry{Buffergrootte en de lokatie van point}{2.4}{Buffer grootte en lokatie}{24}
 @numsecentry{Oefening}{2.5}{Evaluatie oefening}{25}
 @numchapentry{Hoe functiedefinities te schrijven}{3}{Defuns schrijven}{26}
 @numsecentry{De @code {defun} macro}{3.1}{defun}{26}
@@ -137,7 +137,7 @@
 @unnsubsubsecentry{De onderdelen van de functiedefinitie}{10016}{Inc voorbeeld onderdelen}{121}
 @unnsubsubsecentry{De functiedefinitie samenstellen}{10017}{inc voorbeeld samengesteld}{122}
 @numsubsecentry{Loop met een decrementele teller}{11.1.4}{Decrementele loop}{124}
-@unnsubsubsecentry{Voorbeeld met een aflopende teller}{10018}{Decerementeel voorbeeld}{124}
+@unnsubsubsecentry{Voorbeeld met een aflopende teller}{10018}{Decrementeel voorbeeld}{124}
 @unnsubsubsecentry{De onderdelen van de functiedefinitie}{10019}{Dec voorbeeld onderdelen}{125}
 @unnsubsubsecentry{De functiedefinitie samenstellen}{10020}{Dec voorbeeld samengesteld}{125}
 @numsecentry{Bespaar je tijd: @code {dolist} en @code {dotimes}}{11.2}{dolist dotimes}{126}
@@ -176,7 +176,7 @@
 @numchapentry{Woorden tellen in een @code {defun}}{14}{Woorden in een defun}{171}
 @numsecentry{Wat te tellen?}{14.1}{Woorden en symbolen}{171}
 @numsecentry{Wat vormt een woord of symbool?}{14.2}{Syntax}{172}
-@numsecentry{De @code {tel-woorden-in-defun} functie}{14.3}{count-words-in-defun}{173}
+@numsecentry{De @code {tel-woorden-in-defun} functie}{14.3}{tel-woorden-in-defun}{173}
 @numsecentry{Tel verschillende @code {defuns} in een bestand}{14.4}{Enkele defuns}{176}
 @numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{176}
 @numsecentry{@code {lengte-lijst-bestand} in detail}{14.6}{lengte-lijst-bestand}{177}
@@ -211,8 +211,8 @@
 @numchapentry{Debuggen.}{17}{Debuggen.}{220}
 @numsecentry{@code {debug}}{17.1}{debug}{220}
 @numsecentry{@code {debug-on-entry}}{17.2}{debug-on-entry}{221}
-@numsecentry{@code {debug-on-quit} and @code {(debug)}}{17.3}{debug-on-quit}{223}
-@numsecentry{The @code {edebug} Source Level Debugger}{17.4}{edebug}{223}
+@numsecentry{@code {debug-on-quit} en @code {(debug)}}{17.3}{debug-on-quit}{223}
+@numsecentry{De @code {edebug} Source Level Debugger}{17.4}{edebug}{223}
 @numsecentry{Debuggen oefeningen}{17.5}{Debuggen oefeningen}{225}
 @numchapentry{Conclusie}{18}{Conclusie}{226}
 @appentry{The @code {the-the} Function}{A}{de-de}{228}
