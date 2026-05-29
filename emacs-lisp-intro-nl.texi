@@ -18068,11 +18068,10 @@ Uiteindelijk ziet het buffer zer zo uit:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
 Debugger entered--beginning evaluation of function call form:
-* (setq number (1= number))
-* (while (> number 0) (setq total (+ total number))
-        (setq number (1= number)))
+* (setq getal (1= getal))
+* (while (> getal 0) (setq totaal (+ totaal getal))
+        (setq getal (1= getal)))
 @group
 @end group
 * (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
@@ -18466,114 +18465,116 @@ je gedaan hebt, is beginnen. Dit is het einde van het begin.
 @c ================ Appendix ================
 
 @node de-de
-@appendix The @code{the-the} Function
+@appendix De @code{de-de} functie
 @findex de-de
-@cindex Duplicated words function
-@cindex Words, duplicated
+@cindex Gedupliceerde woorden functie
+@cindex Woorden, gedupliceerd
 
-Sometimes when you you write text, you duplicate words---as with ``you you''
-near the beginning of this sentence.  I find that most frequently, I
-duplicate ``the''; hence, I call the function for detecting duplicated
-words, @code{the-the}.
+Wanneer je je tekst schrijft dupliceer je soms woorden---zoals ``je je'' aan
+het begin van deze zin. Ik ontdekte dat ik het meest van ``de'' dupliceer,
+daarom noem ik de functie om gedupliceerde woorden te detecteren
+@code{de-de}
 
 @need 1250
-As a first step, you could use the following regular expression to search
-for duplicates:
+Als eerste stap zou de volgende reguliere expressie kunnen gebruiken om naar
+duplicaten te zoeken:
 
 @smallexample
 \\(\\w+[ \t\n]+\\)\\1
 @end smallexample
 
 @noindent
-This regexp matches one or more word-constituent characters followed by one
-or more spaces, tabs, or newlines.  However, it does not detect duplicated
-words on different lines, since the ending of the first word, the end of the
-line, is different from the ending of the second word, a space.  (For more
-information about regular expressions, see @ref{Regexp Search, , Regular
-Expression Searches}, as well as @ref{Regexps, , Syntax of Regular
-Expressions, emacs, The GNU Emacs Manual}, and @ref{Regular Expressions, ,
-Regular Expressions, elisp, The GNU Emacs Lisp Reference Manual}.)
+Deze regexp matcht een of meer woorden-vormende karakters gevolg door een of
+meer spaties, tabs of nieuwe-regel-tekens. Het detecteert echter geen op
+verschillende regels gedupliceerde woorden, omdat het einde van het eerste
+woord, het einde van de regel, verschilt van het einde van het tweede woord,
+een spatie. (Voor meer informatie over reguliere expressies zie @ref{Regexp
+zoeken, , Reguliere expressie zoekopdrachten}, en ook @ref{Regexps, , Syntax
+of Regular Expressions, emacs, The GNU Emacs Manual}, and @ref{Regular
+Expressions, , Regular Expressions, elisp, The GNU Emacs Lisp Reference
+Manual}.)
 
-You might try searching just for duplicated word-constituent characters but
-that does not work since the pattern detects doubles such as the two
-occurrences of ``th'' in ``with the''.
+Je zou ook slechts kunnen zoeken naar gedupliceerde woord-vormende karakters
+maar dat werkt niet omdat het patroon doublures detecteert zoals het twee
+keer voorkomen van ``de'' in ``belde de''.
 
-Another possible regexp searches for word-constituent characters followed by
-non-word-constituent characters, reduplicated.  Here, @w{@samp{\\w+}}
-matches one or more word-constituent characters and @w{@samp{\\W*}} matches
-zero or more non-word-constituent characters.
+Een andere mogelijke regexp zoekt naar woord-vormende karakters gevolgd door
+niet-woord-vormende karakters, herhaald. Hier matcht @w{@samp{\\w+}} een of
+meer woord-vormende karakters en @w{@samp{\\W*}}matcht nul of meer
+niet-woord-vormende karakters.
 
 @smallexample
 \\(\\(\\w+\\)\\W*\\)\\1
 @end smallexample
 
 @noindent
-Again, not useful.
+Opnieuw, niet nuttig
 
-Here is the pattern that I use.  It is not perfect, but good enough.
-@w{@samp{\\b}} matches the empty string, provided it is at the beginning or
-end of a word; @w{@samp{[^@@ \n\t]+}} matches one or more occurrences of any
-characters that are @emph{not} an @@-sign, space, newline, or tab.
+Hier is het patroon dat ik gebruik. Het is niet perfect, maar goed
+genoeg. @w{@samp{\\b}} matcht de lege string, onder voorwaarde dat het aan
+het begin of eind van een woord staat. @w{@samp{[^@@ \n\t]+}} matcht een of
+meer karakters die @emph{niet} een @@-teken, spatie, nieuwe-regel-teken of
+tab zijn.
 
 @smallexample
 \\b\\([^@@ \n\t]+\\)[ \n\t]+\\1\\b
 @end smallexample
 
-One can write more complicated expressions, but I found that this expression
-is good enough, so I use it.
+Je kunt meer ingewikkelde expressies schrijven, maar ik vind deze expressie
+goeg genoeg en gebruik die daarom.
 
-Here is the @code{the-the} function, as I include it in my @file{.emacs}
-file, along with a handy global key binding:
+Hier is de functie @code{de-de} die ik in mijn @file{.emacs} bestand opneem,
+samen met een handige globale keybinding.
 
 @smallexample
 @group
-(defun the-the ()
-  "Search forward for for a duplicated word."
+(defun de-de ()
+  "Zoek voorwaarts naar naar een gedupliceerd woord.."
   (interactive)
-  (message "Searching for for duplicated words ...")
+  (message "Zoeken naar naar gedupliceerde woorden ...")
   (push-mark)
 @end group
 @group
-  ;; This regexp is not perfect
-  ;; but is fairly good over all:
+  ;; Deze regexp is niet perfect
+  ;; maar is behoorlijk goed:
   (if (re-search-forward
        "\\b\\([^@@ \n\t]+\\)[ \n\t]+\\1\\b" nil 'move)
-      (message "Found duplicated word.")
+      (message "Gedupliceerd woord gevonden")
     (message "End of buffer")))
 @end group
 
 @group
-;; Bind 'the-the' to  C-c \
-(keymap-global-set "C-c \\" 'the-the)
+;; Bind 'de-de' to  C-c \
+(keymap-global-set "C-c \\" 'de-de)
 @end group
 @end smallexample
 
 @sp 1
-Here is test text:
+Hier is de test tekst:
 
 @smallexample
 @group
-one two two three four five
-five six seven
+een twee twee drie vier vijf
+vijf zes zeven
 @end group
 @end smallexample
 
-You can substitute the other regular expressions shown above in the function
-definition and try each of them on this list.
+Je kunt de andere hierboven getoonde reguliere expressies in de
+functiedefinitie substitueren en elke op deze lijst proberen.
 
 @node Killring
 @appendix De killring hanteren
-@cindex Kill ring handling
-@cindex Handling the kill ring
-@cindex Ring, making a list like a
+@cindex Killring hanteren
+@cindex Hanteren van de killring
+@cindex Ring, een lijst maken zoals een
 
-The kill ring is a list that is transformed into a ring by the workings of
-the @code{current-kill} function.  The @code{yank} and @code{yank-pop}
-commands use the @code{current-kill} function.
+De killring is een lijst die is getransformeerd in een ring door de functie
+@code{current-kill}. De @code{yank} en @code{yank-pop} commando's gebruiken
+de functie @code{current-kill}.
 
-This appendix describes the @code{current-kill} function as well as both the
-@code{yank} and the @code{yank-pop} commands, but first, consider the
-workings of the kill ring.
+Deze appendix beschrijft de functie @code{current-kill} en ook de commando's
+@code{yank} en @code{yank-pop}, maar eerst beschouwen we de werking van de
+killring.
 
 @menu
 * Wat de killring doet::     Wat de killring doet
@@ -18589,9 +18590,9 @@ workings of the kill ring.
 @end ifnottex
 
 @need 1250
-The kill ring has a default maximum length of sixty items; this number is
-too large for an explanation.  Instead, set it to four.  Please evaluate the
-following:
+De killring heeft een standaard maximum lengte van zestig items. Dit getal
+is te groot voor een uitleg. Zet in het in plaats daarvan op vier. Evalueer
+het volgende:
 
 @smallexample
 @group
@@ -18601,9 +18602,8 @@ following:
 @end smallexample
 
 @noindent
-Then, please copy each line of the following indented example into the kill
-ring.  You may kill each line with @kbd{C-k} or mark it and copy it with
-@kbd{M-w}.
+Kopieer daarna elke regel van het volgende voorbeeld in de killring. Je kunt
+elke regel killen met @kbd{C-k} of markeren en dan kopiëren met @kbd{M-w}.
 
 @noindent
 (In a read-only buffer, such as the @file{*info*} buffer, the kill command,
@@ -18615,22 +18615,22 @@ to succeed, but it does not matter at which end you put point or mark.)
 
 @need 1250
 @noindent
-Please invoke the calls in order, so that five elements attempt to fill the
-kill ring:
+Roep deze calls op volgorde aan, zodat vijf elementen de killring proberen
+te vullen.
 
 @smallexample
 @group
-first some text
-second piece of text
-third line
-fourth line of text
-fifth bit of text
+eerst wat tekst
+tweede stukje tekst
+derde regel
+vierde regel tekst
+vijfde stukje tekst
 @end group
 @end smallexample
 
 @need 1250
 @noindent
-Then find the value of @code{kill-ring} by evaluating
+Vind vervolgens de waarde van @code{kill-ring} door het evalueren van
 
 @smallexample
 kill-ring
@@ -18638,20 +18638,20 @@ kill-ring
 
 @need 800
 @noindent
-It is:
+Dit is:
 
 @smallexample
 @group
-("fifth bit of text" "fourth line of text"
-"third line" "second piece of text")
+("vijfde stukje tekst" "vierde regel tekst"
+"derde regel" "tweede stukje tekst")
 @end group
 @end smallexample
 
 @noindent
-The first element, @samp{first some text}, was dropped.
+Het eerste element, @samp{eerst wat tekst}, was verwijderd.
 
 @need 1250
-To return to the old value for the length of the kill ring, evaluate:
+Om de oude waarde van de lengte van de killring te herstellen, evalueer:
 
 @smallexample
 (setq kill-ring-max old-kill-ring-max)
@@ -18661,12 +18661,12 @@ To return to the old value for the length of the kill ring, evaluate:
 @appendixsec De @code{current-kill} functie
 @findex current-kill
 
-The @code{current-kill} function changes the element in the kill ring to
-which @code{kill-ring-yank-pointer} points.  (Also, the @code{kill-new}
-function sets @code{kill-ring-yank-pointer} to point to the latest element
-of the kill ring.  The @code{kill-new} function is used directly or
-indirectly by @code{kill-append}, @code{copy-region-as-kill},
-@code{kill-ring-save}, @code{kill-line}, and @code{kill-region}.)
+De functie @code{current-kill} wijzigt het element in de killring naar waar
+@code{kill-ring-yank-pointer} wijst. (De functie @code{kill-new} zet ook
+@code{kill-ring-yank-pointer} zo dat die wijst naar het laatste element van
+de killring. De functie @code{kill-new} wordt direct of indirect gebruikt
+door @code{kill-append}, @code{copy-region-as-kill}, @code{kill-ring-save},
+@code{kill-line} en @code{kill-region}.)
 
 @menu
 * Code voor current-kill::   Code voor current-kill
@@ -18675,13 +18675,13 @@ indirectly by @code{kill-append}, @code{copy-region-as-kill},
 
 @ifnottex
 @node Code voor current-kill
-@unnumberedsubsec The code for @code{current-kill}
+@unnumberedsubsec De code voor @code{current-kill}
 @end ifnottex
 
 
 @need 1500
-The @code{current-kill} function is used by @code{yank} and by
-@code{yank-pop}.  Here is the code for @code{current-kill}:
+De functie @code{current-kill} wordt gebruikt door @code{yank} en door
+@code{yank-pop}. Hier is de code van @code{current-kill}: 
 
 @smallexample
 @group
@@ -18701,7 +18701,6 @@ kill at the new yank point into the window system selection.
 @group
 If optional arg DO-NOT-MOVE is non-nil, then don't actually
 move the yanking point; just return the Nth kill forward."
-
   (let ((interprogram-paste (and (= n 0)
                                  interprogram-paste-function
                                  (funcall interprogram-paste-function))))
@@ -18734,15 +18733,15 @@ move the yanking point; just return the Nth kill forward."
 @end group
 @end smallexample
 
-Remember also that the @code{kill-new} function sets
-@code{kill-ring-yank-pointer} to the latest element of the kill ring, which
-means that all the functions that call it set the value indirectly:
-@code{kill-append}, @code{copy-region-as-kill}, @code{kill-ring-save},
-@code{kill-line}, and @code{kill-region}.
+Bedenk dat ook de @code{kill-new} functie @code{kill-ring-yank-pointer} naar
+het laatste element van de killring laat wijzen, wat betekent dat al de
+functies die het aanroepen de waarde indirect zetten: @code{kill-append},
+@code{copy-region-as-kill}, @code{kill-ring-save}, @code{kill-line} en
+@code{kill-region}.
 
 @need 1500
-Here is the line in @code{kill-new}, which is explained in @ref{kill-new
-function, , The @code{kill-new} function}.
+Hier is de regel in @code{kill-new}, die uitgelegd is in @ref{kill-new
+functie, , The @code{kill-new} function}.
 
 @smallexample
 (setq kill-ring-yank-pointer kill-ring)
@@ -18753,9 +18752,9 @@ function, , The @code{kill-new} function}.
 @unnumberedsubsec Overzicht @code{current-kill}
 @end ifnottex
 
-The @code{current-kill} function looks complex, but as usual, it can be
-understood by taking it apart piece by piece.  First look at it in skeletal
-form:
+De functie @code{current-kill} ziet er ingewikkeld uit, maar zoals
+gewoonlijk, wordt die begrijpelijk door het stuk voor stuk uit te
+rafelen. Kijk eerst naar de vorm van het geraamte:
 
 @smallexample
 @group
@@ -18766,8 +18765,8 @@ form:
 @end group
 @end smallexample
 
-This function takes two arguments, one of which is optional.  It has a
-documentation string.  It is @emph{not} interactive.
+De functie heeft twee argumenten waarvan er een optioneel is. Het heeft een
+documentatiestring. Het is @emph{niet} interactief.
 
 @menu
 * Body van current-kill::    Body van current-kill
@@ -18780,24 +18779,25 @@ documentation string.  It is @emph{not} interactive.
 @unnumberedsubsubsec The Body of @code{current-kill}
 @end ifnottex
 
-The body of the function definition is a @code{let} expression, which itself
-has a body as well as a @var{varlist}.
+De body van de functiedefinitie is een @code{let} expressie, die zelf een
+body en een @var{varlist} heeft.
 
-The @code{let} expression declares a variable that will be only usable
-within the bounds of this function.  This variable is called
-@code{interprogram-paste} and is for copying to another program.  It is not
-for copying within this instance of GNU Emacs.  Most window systems provide
-a facility for interprogram pasting.  Sadly, that facility usually provides
-only for the last element.  Most windowing systems have not adopted a ring
-of many possibilities, even though Emacs has provided it for decades.
+De @code{let} expressie declareert een variabele die alleen bruikbaar is
+binnen de grenzen van deze functie. Deze variabele heet
+@code{interprogram-paste} en is voor het kopiëren naar een ander
+programma. Het is niet voor kopiëren binnen deze instantie van GNU Emacs. De
+meeste window systemen verschaffen een faciliteit voor het plakken tussen
+programma's. Helaas werkt zo'n faciliteit meestal alleen met het laatste
+element. De meeste window systemen hebben een ring met veel mogelijkheden
+niet geadopteerd, hoewel Emacs dat al tientallen jaren heeft.
 
-The @code{if} expression has two parts, one if there exists
-@code{interprogram-paste} and one if not.
+De @code{if} expressie heeft twee delen, eentje voor als er een
+@code{interprogram-paste} bestaat, en eentje voor als dat niet zo is.
 
 @need 2000
-Laat ons het else-gedeelte van de @code{current-kill} functie
-beschouwen. (Het then-gedeelte gebruikt de @code{kill-new} functie, die we
-al eerder hebben beschreven. @xref{kill-new functie, , De @code{kill-new}
+Laat ons het anders-gedeelte van de @code{current-kill} functie
+beschouwen. (Het dan-gedeelte gebruikt de @code{kill-new} functie, die we al
+eerder hebben beschreven. @xref{kill-new functie, , De @code{kill-new}
 functie}.)
 
 @smallexample
@@ -18814,78 +18814,78 @@ functie}.)
 @end smallexample
 
 @noindent
-The code first checks whether the kill ring has content; otherwise it
-signals an error.
+De code controleert eerst of de killring inhoud heeft, zo niet, dan geeft
+het een foutmelding.
 
 @need 1000
-Note that the @code{or} expression is very similar to testing length with an
-@code{if}:
+Merk op dat de @code{or} expressie erg lijkt op het testen van de lengte met
+een @code{if}.
 
-@findex zerop
+@findex zerrop
 @findex error
 @smallexample
 @group
-(if (zerop (length kill-ring))          ; @r{if-part}
-    (error "Kill ring is empty"))       ; @r{then-part}
-  ;; No else-part
+(if (zerop (length kill-ring))          ; @r{if-deel}
+    (error "Kill ring is empty"))       ; @r{dan-deel}
+  ;; Geen anders-deel
 @end group
 @end smallexample
 
 @noindent
-If there is not anything in the kill ring, its length must be zero and an
-error message sent to the user: @samp{Kill ring is empty}.  The
-@code{current-kill} function uses an @code{or} expression which is simpler.
-But an @code{if} expression reminds us what goes on.
+Wanneer er niets in de killring is, moet zijn lengte nul zijn en krijgt de
+gebruiker een foutboodschap: @samp{Kill ring is empty}. De functie
+@code{current-kill} gebruikt een @code{or} expressie die eenvoudiger
+is. Maar een @code{if} expressie vertelt ons aan wat er gebeurt.
 
-This @code{if} expression uses the function @code{zerop} which returns true
-if the value it is testing is zero.  When @code{zerop} tests true, the
-then-part of the @code{if} is evaluated.  The then-part is a list starting
-with the function @code{error}, which is a function that is similar to the
-@code{message} function (@pxref{message, , The @code{message} Function}) in
-that it prints a one-line message in the echo area.  However, in addition to
-printing a message, @code{error} also stops evaluation of the function
-within which it is embedded.  This means that the rest of the function will
-not be evaluated if the length of the kill ring is zero.
+Deze @code{if} expressie gebruikt de functie @code{zerop} die waar
+teruggeeft wanneer de waarde die die test nul is. Wanneer @code{zerop} waar
+test, wordt het dan-deel van de @code{if} geëvalueerd. Het dan-deel is een
+lijst die begint met de functie @code{error}, die een functie sis
+vergelijkbaar met de functie @code{message} (@pxref{message, , De
+@code{message} functie}), het toont een een-regelige boodschap in het
+echogebied. In aanvulling op het tonen van een boodschap stopt @code{error}
+echter ook de evaluatie van de functie waarin die is opgenomen. Dit betekent
+dat de rest van de functie niet wordt geëvalueerd wanneer de lengte van de
+killring nul is.
 
-Then the @code{current-kill} function selects the element to return.  The
-selection depends on the number of places that @code{current-kill} rotates
-and on where @code{kill-ring-yank-pointer} points.
+Dan selecteert de functie @code{current-kill} het element om terug te
+geven. De selectie hangt af van het aantal plaatsen dat @code{current-kill}
+roteert en van waar @code{kill-ring-yank-pointer} naar wijst.
 
-Next, either the optional @code{do-not-move} argument is true or the current
-value of @code{kill-ring-yank-pointer} is set to point to the list.
-Finally, another expression returns the first element of the list even if
-the @code{do-not-move} argument is true.
+Vervolgens is hetzij het optionele argument @code{do-not-move} waar, dan wel
+de huidige waarde van @code{kill-ring-yank-pointer} wordt zo gezet dat die
+naar de lijst wijst. Tenslotte geeft een andere expressie het eerste element
+van de lijst terug, zelfs als het argument @code{do-not-move} waar is.
 
 @ifnottex
 @node Uitwijding over fout
-@unnumberedsubsubsec Digression about the word ``error''
+@unnumberedsubsubsec Uitweiding over het woord ``error''
 @end ifnottex
 
-In my opinion, it is slightly misleading, at least to humans, to use the
-term ``error'' as the name of the @code{error} function.  A better term
-would be ``cancel''.  Strictly speaking, of course, you cannot point to,
-much less rotate a pointer to a list that has no length, so from the point
-of view of the computer, the word ``error'' is correct.  But a human expects
-to attempt this sort of thing, if only to find out whether the kill ring is
-full or empty.  This is an act of exploration.
+Naar mijn mening is het lichtelijk misleidend, tenminste voor mensen, om de
+term ``error'' te gebruiken voor de naam van de functie @code{error}. Een
+betere term zou ``cancel'' zijn. Strikt genomen kan je natuurlijk niet
+wijzen, of een pointer roteren, naar een lijst die geen lengte heeft, zodat
+vanuit het perspectief van de computer is het woord ``error'' correct. Maar
+een mens verwacht zo iets te proberen, als is het maar om vast te stellen od
+de killring vol of leeg is. Dit is een daad van verkenning.
 
-From the human point of view, the act of exploration and discovery is not
-necessarily an error, and therefore should not be labeled as one, even in
-the bowels of a computer.  As it is, the code in Emacs implies that a human
-who is acting virtuously, by exploring his or her environment, is making an
-error.  This is bad.  Even though the computer takes the same steps as it
-does when there is an error, a term such as ``cancel'' would have a clearer
-connotation.
+Vanuit het menselijk perspectief is de daad van verkenning en ontdekking
+niet noodzakelijkerwijs een fout, en daarom zou het niet als zodanig moeten
+worden bestempeld, zelfs in de buik van de computer. Zoals het nu is,
+impliceert de code in Emacs dat een mens die deugdzaam handelt door zijn of
+haar omgeving te verkennen een fout maakt. Dat is niet goed. Alhoewel de
+computer dezelfde stappen zet die het doet wanneer er een fout is, zou een
+term zoals ``cancel'' een helderder connotatie hebben.
 
 @ifnottex
 @node Het element vaststellen
 @unnumberedsubsubsec Het element vaststellen
 @end ifnottex
 
-Among other actions, the else-part of the @code{if} expression sets the
-value of @code{kill-ring-yank-pointer} to @code{ARGth-kill-element} when the
-kill ring has something in it and the value of @code{do-not-move} is
-@code{nil}.
+Naast andere acties zet het anders-deel van de @code{if} expressie de waarde
+van @code{kill-ring-yank-pointer} naar @code{ARGth-kill-element}, wanneer de
+killring iets bevat en de waarde van @code{do-not-move} @code{nil} is.
 
 @need 800
 De code ziet er zo uit:
@@ -18898,20 +18898,20 @@ De code ziet er zo uit:
 @end group
 @end smallexample
 
-This needs some examination.  Unless it is not supposed to move the pointer,
-the @code{current-kill} function changes where @code{kill-ring-yank-pointer}
-points.  That is what the @w{@code{(setq kill-ring-yank-pointer
-ARGth-kill-element))}} expression does.  Also, clearly,
-@code{ARGth-kill-element} is being set to be equal to some @sc{cdr} of the
-kill ring, using the @code{nthcdr} function that is described in an earlier
-section.  (@xref{copy-region-as-kill}.)  How does it do this?
+Dit vereist wat onderzoek. Tenzij het niet de bedoeling is de pointer te
+verplaatsen, wijzigt de functie @code{current-kill} naar waar
+@code{kill-ring-yank-pointer} wijst. Dat is wat de expressie @w{@code{(setq
+kill-ring-yank-pointer ARGth-kill-element))}} doet. Ook wordt
+@code{ARGth-kill-element} hetzelfde ingesteld als een @sc{cdr} in de
+killring, met de functie @code{nthcdr} die in een eerdere sectie besproken
+is. (@xref{copy-region-as-kill}.) Hoe doet het dat?
 
-As we have seen before (@pxref{nthcdr}), the @code{nthcdr} function works by
-repeatedly taking the @sc{cdr} of a list---it takes the @sc{cdr} of the
-@sc{cdr} of the @sc{cdr} @dots{}
+Zoals we eerder zagen (@pxref{nthcdr}), werkt de @code{nthcdr} functie door
+herhaaldelijk de @sc{cdr} van een lijst te nemen---het neemt de  @sc{cdr}
+van de @sc{cdr} van de @sc{cdr} @dots{}
 
 @need 800
-The two following expressions produce the same result:
+De volgende twee expressies produceren hetzelfde resultaat:
 
 @smallexample
 @group
@@ -18921,32 +18921,32 @@ The two following expressions produce the same result:
 @end group
 @end smallexample
 
-However, the @code{nthcdr} expression is more complicated.  It uses the
-@code{mod} function to determine which @sc{cdr} to select.
+De @code{nthcdr} expressie is echter meer gecompliceerd. Het gebruikt de
+functie @code{mod} om vast te stellen welke @sc{cdr} te selecteren.
 
-(You will remember to look at inner functions first; indeed, we will have to
-go inside the @code{mod}.)
+(Je herinnert je om eerst naar de binnenste functie te kijken, we moeten
+inderdaad de @code{mod} in.)
 
-The @code{mod} function returns the value of its first argument modulo the
-second; that is to say, it returns the remainder after dividing the first
-argument by the second.  The value returned has the same sign as the second
-argument.
+De functie @code{mod} geeft de waarde van het eerste argument modulo het
+tweede. Met andere woorden, het geeft de rest na het delen van het eerste
+argument door het tweede. De teruggegeven waarde heeft hetzelfde teken als
+het tweede argument.
 
 @need 800
-Thus,
+Dus
 
 @smallexample
 @group
 (mod 12 4)
-  @result{} 0  ;; @r{because there is no remainder}
+  @result{} 0  ;; @r{omdat er geen rest is}
 (mod 13 4)
   @result{} 1
 @end group
 @end smallexample
 
 @need 1250
-In this case, the first argument is often smaller than the second.  That is
-fine.
+In dit geval is het eerste argument vaak kleiner dan het tweede. Dat is
+prima.
 
 @smallexample
 @group
@@ -18957,73 +18957,75 @@ fine.
 @end group
 @end smallexample
 
-We can guess what the @code{-} function does.  It is like @code{+} but
-subtracts instead of adds; the @code{-} function subtracts its second
-argument from its first.  Also, we already know what the @code{length}
-function does (@pxref{length}).  It returns the length of a list.
+We kunnen raden wat de functie @code{-} doet. Het is net als @code{+} maar
+trekt af in plaats van optellen. De functie @code{-} trekt het tweede
+argument af van het eerste. We weten al wat de functie @code{length} doet
+(@pxref{length}). Het geeft de lengte van een lijst terug.
 
-And @code{n} is the name of the required argument to the @code{current-kill}
-function.
+En @code{n} is de naam van het vereiste argument van de functie
+@code{current-kill}.
 
 @need 1250
-So when the first argument to @code{nthcdr} is zero, the @code{nthcdr}
-expression returns the whole list, as you can see by evaluating the
-following:
+Dus wanneer het eerste argument van @code{nthcdr} nul is, geeft de
+@code{nthcdr} expressie de hele lijst terug, zoals je kunt zien door het
+evalueren van het volgende:
 
 @smallexample
 @group
-;; kill-ring-yank-pointer @r{and} kill-ring @r{have a length of four}
-;; @r{and} (mod (- 0 4) 4) @result{} 0
+;; kill-ring-yank-pointer @r{en} kill-ring @r{hebben een lengte van 4}
+;; @r{en} (mod (- 0 4) 4) @result{} 0
 (nthcdr (mod (- 0 4) 4)
-        '("fourth line of text"
-          "third line"
-          "second piece of text"
-          "first some text"))
+        '("vierde regel tekst"
+          "derde regel"
+          "tweede stukje tekst"
+          "eerst wat tekst"))
 @end group
 @end smallexample
 
 @need 1250
-When the first argument to the @code{current-kill} function is one, the
-@code{nthcdr} expression returns the list without its first element.
+Wanneer het eerste argument van de functie @code{current-kill} één is, geeft
+de @code{nthcdr} expressie de lijst terug zonder het eerste element.
 
 @smallexample
 @group
 (nthcdr (mod (- 1 4) 4)
-        '("fourth line of text"
-          "third line"
-          "second piece of text"
-          "first some text"))
+        '("vierde regel tekst"
+          "derde regel"
+          "tweede stukje tekst"
+          "eerst wat tekst"))
 @end group
 @end smallexample
 
-@cindex @samp{global variable} defined
-@cindex @samp{variable, global}, defined
-Incidentally, both @code{kill-ring} and @code{kill-ring-yank-pointer} are
-@dfn{global variables}.  That means that any expression in Emacs Lisp can
-access them.  They are not like the local variables set by @code{let} or
-like the symbols in an argument list.  Local variables can only be accessed
-within the @code{let} that defines them or the function that specifies them
-in an argument list (and within expressions called by them).
+@cindex @samp{global variable} gedefinieerd
+@cindex @samp{variable, global}, gedefinieerd
+Overigens zijn zowel @code{kill-ring} als @code{kill-ring-yank-pointer}
+@dfn{globale variabelen}. Dat betekent dat elke expressie in Emacs Lisp
+toegang tot ze heeft. Zij zijn niet zoals de lokale variabelen gezet door
+@code{let} of zoals de symbolen in een argument list. Lokale variabelen zijn
+alleen toegankelijk binnen de @code{let} die ze definieert of de functie die
+ze specificeert in een argument list (en binnen de door ze aangeroepen
+expressies).
 
 @c texi2dvi fails when the name of the section is within ifnottex ...
 @ifnottex
-(@xref{Prevent confusion, , @code{let} Prevents Confusion}, and
+(@xref{Voorkom verwarring, , @code{let} voorkomt verwarring}, en
 @end ifnottex
 @iftex
-(@xref{Permanent Installation, , @code{let} Prevents Confusion}, and
+(@xref{Permanent installeren, , @code{let} voorkomt verwarring}, en
 @end iftex
-@ref{defun, , The @code{defun} Macro}.)
+@ref{defun, , De @code{defun} macro}.)
 
 @node yank
 @appendixsec @code{yank}
 @findex yank
 
-After learning about @code{current-kill}, the code for the @code{yank}
-function is almost easy.
+Na het bestuderen van @code{current-kill} is de code van de functie
+@code{yank} bijna makkelijk.
 
-The @code{yank} function does not use the @code{kill-ring-yank-pointer}
-variable directly.  It calls @code{insert-for-yank} which calls
-@code{current-kill} which sets the @code{kill-ring-yank-pointer} variable.
+De functie @code{yank} gebruikt de variabele @code{kill-ring-yank-pointer}
+niet direct. Het roept @code{insert-for-yank} aan, die roept
+@code{current-kill} aan welke de variabele @code{kill-ring-yank-pointer}
+zet.
 
 @need 1250
 De code ziet er zo uit:
@@ -19073,35 +19075,36 @@ See also the command `yank-pop' (\\[yank-pop])."
 @end group
 @end smallexample
 
-The key expression is @code{insert-for-yank}, which inserts the string
-returned by @code{current-kill}, but removes some text properties from it.
+De sleutel-expressie is @code{insert-for-yank}, die de string teruggeven
+door @code{current-kill} invoegt, maar verwijdert enkele teksteigenschappen
+er van.
 
-However, before getting to that expression, the function sets the value of
-@code{yank-window-start} to the position returned by the
-@code{(window-start)} expression, the position at which the display
-currently starts.  The @code{yank} function also sets @code{this-command}
-and pushes the mark.
+Voor dat het bij die expressie komt, zet de functie de waarde van
+@code{yank-window-start} op de positie teruggegeven door de
+@code{window-start} expressie., de positie waarop het display thans
+begint. De functie @code{yank} zet ook @code{this-command} en pusht de mark.
 
-After it yanks the appropriate element, if the optional argument is a
-@sc{cons} rather than a number or nothing, it puts point at beginning of the
-yanked text and mark at its end.
+Nadat het het passende element yankt, wanneer het optionele argument een
+@sc{cons} is in plaats van een getal of niets, dan plaatst het point aan het
+begin van de geyankte tekst en markeert het einde.
 
-(The @code{prog1} function is like @code{progn} but returns the value of its
-first argument rather than the value of its last argument.  Its first
-argument is forced to return the buffer's mark as an integer.  You can see
-the documentation for these functions by placing point over them in this
-buffer and then typing @kbd{C-h f} (@code{describe-function}) followed by a
-@kbd{RET}; the default is the function.)
+(De functie @code{prog1} is net als @code{progn} maar geeft de waarde van
+het eerste argument terug in plaats van de waarde van het laatste
+argument. Het eerste argument is geforceerd om de mark van de buffer als
+integer terug te geven. Je kunt de documentatie van deze functies zien door
+in dit buffer point op ze te plaatsten en dan @kbd{C-h f}
+(@code{describe-function}) te typen, gevold door een @kbd{RET}; de default
+is de functie.)
 
-The last part of the function tells what to do when it succeeds.
+Het laatste deel van de functie zegt wat te doen wanneer het succesvol is.
 
 @node yank-pop
 @appendixsec @code{yank-pop}
 @findex yank-pop
 
-After understanding @code{yank} and @code{current-kill}, you know how to
-approach the @code{yank-pop} function.  Leaving out the documentation to
-save space, it looks like this:
+Na het begrijpen van @code{yank} en @code{current-kill}, weet je hoe de
+functie @code{yank-pop} te benaderen. Met het weglaten van de documentatie
+om plek te besparen, ziet die er zo uit:
 
 @c GNU Emacs 22
 @smallexample
@@ -19145,32 +19148,33 @@ save space, it looks like this:
 @end group
 @end smallexample
 
-The function is interactive with a small @samp{p} so the prefix argument is
-processed and passed to the function.  The command can only be used after a
-previous yank; otherwise an error message is sent.  This check uses the
-variable @code{last-command} which is set by @code{yank} and is discussed
-elsewhere.  (@xref{copy-region-as-kill}.)
+De functie is interactief met een kleine letter @samp{p} zodat het prefix
+argument wordt verwerkt en doorgegeven aan de functie. Het commando kan
+alleen worden gebruikt na een voorgaande yank, anders wordt een
+foutboodschap gegeven. Deze check gebruikt de variabele @code{last-command}
+die gezet is door @code{yank} en elders is
+besproken. (@xref{copy-region-as-kill}.)
 
-The @code{let} clause sets the variable @code{before} to true or false
-depending whether point is before or after mark and then the region between
-point and mark is deleted.  This is the region that was just inserted by the
-previous yank and it is this text that will be replaced.
+De @code{let} clausule zet de variabele @code{before} op waar of onwaar
+afhankelijk of point voor of na de mark is en delete dan de region tussen
+point en mark. Dit is de region dat zojuist was ingevoegd door de voorgaande
+yank en dit is de tekst die wordt vervangen.
 
-@code{funcall} calls its first argument as a function, passing remaining
-arguments to it.  The first argument is whatever the @code{or} expression
-returns.  The two remaining arguments are the positions of point and mark
-set by the preceding @code{yank} command.
+@code{funcall} roept het eerste argument als functie aan, en geeft de
+resterende argumenten er aan door. Het eerste argument is wat de @code{or}
+teruggeeft. De twee resterende argumenten zijn de posities van point en
+mark, gezet door het voorafgaande @code{yank} commando.
 
-There is more, but that is the hardest part.
+Er is meer, maar dit is het moeilijkste deel.
 
 @node ring bestand
-@appendixsec The @file{ring.el} File
-@cindex @file{ring.el} file
+@appendixsec Het bestand @file{ring.el}
+@cindex @file{ring.el} bestand
 
-Interestingly, GNU Emacs possesses a file called @file{ring.el} that
-provides many of the features we just discussed.  But functions such as
-@code{kill-ring-yank-pointer} do not use this library, possibly because they
-were written earlier.
+Interessant is dat GNU Emacs een bestand bevat met de naam @code{ring.el}
+dat veel van de functies bevat die we zojuist bespaken. Maar functies zoals
+@code{kill-ring-yank-pointer} gebruiken deze library niet, mogelijk omdat ze
+eerder zijn geschreven.
 
 @node Volledige grafiek
 @appendix Een grafiek met labels op de assen
@@ -20491,7 +20495,7 @@ whole body.
 
 @need 1250
 @noindent
-Thus,
+Dus
 
 @smallexample
 (lambda (arg) (/ arg 50))

@@ -1,5 +1,5 @@
-This is emacs-lisp-intro-nl.info, produced by makeinfo version 7.2 from
-emacs-lisp-intro-nl.texi.
+This is emacs-lisp-intro-nl.info, produced by makeinfo version 7.1.1
+from emacs-lisp-intro-nl.texi.
 
 Dit is ‘Een introductie in Programmeren in Emacs Lisp’, voor mensen die
 geen programmeur zijn.
@@ -713,6 +713,7 @@ De hele grafiek afdrukken
                                lijst.
 * Een andere bug::           Weer een andere bug ... erg verraderlijk.
 * Finale afgedrukte grafiek::  De grafiek zelf
+
 
 
 File: emacs-lisp-intro-nl.info,  Node: Voorwoord,  Next: Lijsten verwerken,  Prev: Top,  Up: Top
@@ -3597,6 +3598,7 @@ expressies evalueren om de resultaten te zien:
 
      (type-dier "gestreept")
 
+
 Wanneer je ‘(type-dier "woest")’ evalueert, zie je de volgende boodschap
 in het echogebied: ‘"Het is een tijger!"’ en wanneer je ‘(type-dier
 "gestreept")’ evalueert dan zie je ‘nil’ in het echogebied.
@@ -3721,6 +3723,7 @@ functie door te geven.
      (type-dier "woest")
 
      (type-dier "gestreept")
+
 
 Wanneer je ‘(type-dier "woest")’ evalueert, zie je de volgende boodschap
 in het echogebied: ‘"Het is een tijger!"’, maar wanneer je ‘(type-dier
@@ -9764,6 +9767,7 @@ allemaal uitgevoerd kunnen worden.
             (driehoek-recursief            ; recursieve aanroep
              (1- aantal)))))               ; volgende-stap-expressie
 
+
    Wat gebeurt er wanneer de deze functie met een argument van 7
 aanroepen?
 
@@ -14844,11 +14848,10 @@ evalueert Emacs een volgende expressie in de functiedefinitie.
 
    Uiteindelijk ziet het buffer zer zo uit:
 
-     ---------- Buffer: *Backtrace* ----------
      Debugger entered--beginning evaluation of function call form:
-     * (setq number (1= number))
-     * (while (> number 0) (setq total (+ total number))
-             (setq number (1= number)))
+     * (setq getal (1= getal))
+     * (while (> getal 0) (setq totaal (+ totaal getal))
+             (setq getal (1= getal)))
      * (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
               (setq getal ...)) totaal)
      * #f(lambda (getal) :dynbind "Geef som van getallen 1 t/m GETAL terug."
@@ -15175,77 +15178,78 @@ En wat je gedaan hebt, is beginnen.  Dit is het einde van het begin.
 
 File: emacs-lisp-intro-nl.info,  Node: de-de,  Next: Killring,  Prev: Conclusie,  Up: Top
 
-Appendix A The ‘the-the’ Function
-*********************************
+Appendix A De ‘de-de’ functie
+*****************************
 
-Sometimes when you you write text, you duplicate words--as with "you
-you" near the beginning of this sentence.  I find that most frequently,
-I duplicate "the"; hence, I call the function for detecting duplicated
-words, ‘the-the’.
+Wanneer je je tekst schrijft dupliceer je soms woorden--zoals "je je"
+aan het begin van deze zin.  Ik ontdekte dat ik het meest van "de"
+dupliceer, daarom noem ik de functie om gedupliceerde woorden te
+detecteren ‘de-de’
 
-   As a first step, you could use the following regular expression to
-search for duplicates:
+   Als eerste stap zou de volgende reguliere expressie kunnen gebruiken
+om naar duplicaten te zoeken:
 
      \\(\\w+[ \t\n]+\\)\\1
 
-This regexp matches one or more word-constituent characters followed by
-one or more spaces, tabs, or newlines.  However, it does not detect
-duplicated words on different lines, since the ending of the first word,
-the end of the line, is different from the ending of the second word, a
-space.  (For more information about regular expressions, see *note
-Regular Expression Searches: Regexp Search, as well as *note Syntax of
-Regular Expressions: (emacs)Regexps, and *note Regular Expressions:
-(elisp)Regular Expressions.)
+Deze regexp matcht een of meer woorden-vormende karakters gevolg door
+een of meer spaties, tabs of nieuwe-regel-tekens.  Het detecteert echter
+geen op verschillende regels gedupliceerde woorden, omdat het einde van
+het eerste woord, het einde van de regel, verschilt van het einde van
+het tweede woord, een spatie.  (Voor meer informatie over reguliere
+expressies zie *note Reguliere expressie zoekopdrachten: Regexp zoeken,
+en ook *note Syntax of Regular Expressions: (emacs)Regexps, and *note
+Regular Expressions: (elisp)Regular Expressions.)
 
-   You might try searching just for duplicated word-constituent
-characters but that does not work since the pattern detects doubles such
-as the two occurrences of "th" in "with the".
+   Je zou ook slechts kunnen zoeken naar gedupliceerde woord-vormende
+karakters maar dat werkt niet omdat het patroon doublures detecteert
+zoals het twee keer voorkomen van "de" in "belde de".
 
-   Another possible regexp searches for word-constituent characters
-followed by non-word-constituent characters, reduplicated.  Here, ‘\\w+’
-matches one or more word-constituent characters and ‘\\W*’ matches zero
-or more non-word-constituent characters.
+   Een andere mogelijke regexp zoekt naar woord-vormende karakters
+gevolgd door niet-woord-vormende karakters, herhaald.  Hier matcht
+‘\\w+’ een of meer woord-vormende karakters en ‘\\W*’matcht nul of meer
+niet-woord-vormende karakters.
 
      \\(\\(\\w+\\)\\W*\\)\\1
 
-Again, not useful.
+Opnieuw, niet nuttig
 
-   Here is the pattern that I use.  It is not perfect, but good enough.
-‘\\b’ matches the empty string, provided it is at the beginning or end
-of a word; ‘[^@ \n\t]+’ matches one or more occurrences of any
-characters that are _not_ an @-sign, space, newline, or tab.
+   Hier is het patroon dat ik gebruik.  Het is niet perfect, maar goed
+genoeg.  ‘\\b’ matcht de lege string, onder voorwaarde dat het aan het
+begin of eind van een woord staat.  ‘[^@ \n\t]+’ matcht een of meer
+karakters die _niet_ een @-teken, spatie, nieuwe-regel-teken of tab
+zijn.
 
      \\b\\([^@ \n\t]+\\)[ \n\t]+\\1\\b
 
-   One can write more complicated expressions, but I found that this
-expression is good enough, so I use it.
+   Je kunt meer ingewikkelde expressies schrijven, maar ik vind deze
+expressie goeg genoeg en gebruik die daarom.
 
-   Here is the ‘the-the’ function, as I include it in my ‘.emacs’ file,
-along with a handy global key binding:
+   Hier is de functie ‘de-de’ die ik in mijn ‘.emacs’ bestand opneem,
+samen met een handige globale keybinding.
 
-     (defun the-the ()
-       "Search forward for for a duplicated word."
+     (defun de-de ()
+       "Zoek voorwaarts naar naar een gedupliceerd woord.."
        (interactive)
-       (message "Searching for for duplicated words ...")
+       (message "Zoeken naar naar gedupliceerde woorden ...")
        (push-mark)
-       ;; This regexp is not perfect
-       ;; but is fairly good over all:
+       ;; Deze regexp is niet perfect
+       ;; maar is behoorlijk goed:
        (if (re-search-forward
             "\\b\\([^@ \n\t]+\\)[ \n\t]+\\1\\b" nil 'move)
-           (message "Found duplicated word.")
+           (message "Gedupliceerd woord gevonden")
          (message "End of buffer")))
 
-     ;; Bind 'the-the' to  C-c \
-     (keymap-global-set "C-c \\" 'the-the)
+     ;; Bind 'de-de' to  C-c \
+     (keymap-global-set "C-c \\" 'de-de)
 
 
-   Here is test text:
+   Hier is de test tekst:
 
-     one two two three four five
-     five six seven
+     een twee twee drie vier vijf
+     vijf zes zeven
 
-   You can substitute the other regular expressions shown above in the
-function definition and try each of them on this list.
+   Je kunt de andere hierboven getoonde reguliere expressies in de
+functiedefinitie substitueren en elke op deze lijst proberen.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Killring,  Next: Volledige grafiek,  Prev: de-de,  Up: Top
@@ -15253,13 +15257,13 @@ File: emacs-lisp-intro-nl.info,  Node: Killring,  Next: Volledige grafiek,  Prev
 Appendix B De killring hanteren
 *******************************
 
-The kill ring is a list that is transformed into a ring by the workings
-of the ‘current-kill’ function.  The ‘yank’ and ‘yank-pop’ commands use
-the ‘current-kill’ function.
+De killring is een lijst die is getransformeerd in een ring door de
+functie ‘current-kill’.  De ‘yank’ en ‘yank-pop’ commando's gebruiken de
+functie ‘current-kill’.
 
-   This appendix describes the ‘current-kill’ function as well as both
-the ‘yank’ and the ‘yank-pop’ commands, but first, consider the workings
-of the kill ring.
+   Deze appendix beschrijft de functie ‘current-kill’ en ook de
+commando's ‘yank’ en ‘yank-pop’, maar eerst beschouwen we de werking van
+de killring.
 
 * Menu:
 
@@ -15275,16 +15279,15 @@ File: emacs-lisp-intro-nl.info,  Node: Wat de killring doet,  Next: current-kill
 Wat de killring doet
 ====================
 
-The kill ring has a default maximum length of sixty items; this number
-is too large for an explanation.  Instead, set it to four.  Please
-evaluate the following:
+De killring heeft een standaard maximum lengte van zestig items.  Dit
+getal is te groot voor een uitleg.  Zet in het in plaats daarvan op
+vier.  Evalueer het volgende:
 
      (setq old-kill-ring-max kill-ring-max)
      (setq kill-ring-max 4)
 
-Then, please copy each line of the following indented example into the
-kill ring.  You may kill each line with ‘C-k’ or mark it and copy it
-with ‘M-w’.
+Kopieer daarna elke regel van het volgende voorbeeld in de killring.  Je
+kunt elke regel killen met ‘C-k’ of markeren en dan kopiëren met ‘M-w’.
 
 (In a read-only buffer, such as the ‘*info*’ buffer, the kill command,
 ‘C-k’ (‘kill-line’), will not remove the text, merely copy it to the
@@ -15293,27 +15296,28 @@ silence, you may copy the region of each line with the ‘M-w’
 (‘kill-ring-save’) command.  You must mark each line for this command to
 succeed, but it does not matter at which end you put point or mark.)
 
-Please invoke the calls in order, so that five elements attempt to fill
-the kill ring:
+Roep deze calls op volgorde aan, zodat vijf elementen de killring
+proberen te vullen.
 
-     first some text
-     second piece of text
-     third line
-     fourth line of text
-     fifth bit of text
+     eerst wat tekst
+     tweede stukje tekst
+     derde regel
+     vierde regel tekst
+     vijfde stukje tekst
 
-Then find the value of ‘kill-ring’ by evaluating
+Vind vervolgens de waarde van ‘kill-ring’ door het evalueren van
 
      kill-ring
 
-It is:
+Dit is:
 
-     ("fifth bit of text" "fourth line of text"
-     "third line" "second piece of text")
+     ("vijfde stukje tekst" "vierde regel tekst"
+     "derde regel" "tweede stukje tekst")
 
-The first element, ‘first some text’, was dropped.
+Het eerste element, ‘eerst wat tekst’, was verwijderd.
 
-   To return to the old value for the length of the kill ring, evaluate:
+   Om de oude waarde van de lengte van de killring te herstellen,
+evalueer:
 
      (setq kill-ring-max old-kill-ring-max)
 
@@ -15323,12 +15327,12 @@ File: emacs-lisp-intro-nl.info,  Node: current-kill,  Next: yank,  Prev: Wat de 
 B.1 De ‘current-kill’ functie
 =============================
 
-The ‘current-kill’ function changes the element in the kill ring to
-which ‘kill-ring-yank-pointer’ points.  (Also, the ‘kill-new’ function
-sets ‘kill-ring-yank-pointer’ to point to the latest element of the kill
-ring.  The ‘kill-new’ function is used directly or indirectly by
-‘kill-append’, ‘copy-region-as-kill’, ‘kill-ring-save’, ‘kill-line’, and
-‘kill-region’.)
+De functie ‘current-kill’ wijzigt het element in de killring naar waar
+‘kill-ring-yank-pointer’ wijst.  (De functie ‘kill-new’ zet ook
+‘kill-ring-yank-pointer’ zo dat die wijst naar het laatste element van
+de killring.  De functie ‘kill-new’ wordt direct of indirect gebruikt
+door ‘kill-append’, ‘copy-region-as-kill’, ‘kill-ring-save’, ‘kill-line’
+en ‘kill-region’.)
 
 * Menu:
 
@@ -15338,11 +15342,11 @@ ring.  The ‘kill-new’ function is used directly or indirectly by
 
 File: emacs-lisp-intro-nl.info,  Node: Code voor current-kill,  Next: current-kill begrijpen,  Up: current-kill
 
-The code for ‘current-kill’
+De code voor ‘current-kill’
 ---------------------------
 
-The ‘current-kill’ function is used by ‘yank’ and by ‘yank-pop’.  Here
-is the code for ‘current-kill’:
+De functie ‘current-kill’ wordt gebruikt door ‘yank’ en door ‘yank-pop’.
+Hier is de code van ‘current-kill’:
 
      (defun current-kill (n &optional do-not-move)
        "Rotate the yanking point by N places, and then return that kill.
@@ -15356,7 +15360,6 @@ is the code for ‘current-kill’:
      kill at the new yank point into the window system selection.
      If optional arg DO-NOT-MOVE is non-nil, then don't actually
      move the yanking point; just return the Nth kill forward."
-
        (let ((interprogram-paste (and (= n 0)
                                       interprogram-paste-function
                                       (funcall interprogram-paste-function))))
@@ -15383,14 +15386,13 @@ is the code for ‘current-kill’:
                  (funcall interprogram-cut-function (car ARGth-kill-element))))
              (car ARGth-kill-element)))))
 
-   Remember also that the ‘kill-new’ function sets
-‘kill-ring-yank-pointer’ to the latest element of the kill ring, which
-means that all the functions that call it set the value indirectly:
-‘kill-append’, ‘copy-region-as-kill’, ‘kill-ring-save’, ‘kill-line’, and
-‘kill-region’.
+   Bedenk dat ook de ‘kill-new’ functie ‘kill-ring-yank-pointer’ naar
+het laatste element van de killring laat wijzen, wat betekent dat al de
+functies die het aanroepen de waarde indirect zetten: ‘kill-append’,
+‘copy-region-as-kill’, ‘kill-ring-save’, ‘kill-line’ en ‘kill-region’.
 
-   Here is the line in ‘kill-new’, which is explained in *note The
-‘kill-new’ function: kill-new function.
+   Hier is de regel in ‘kill-new’, die uitgelegd is in *note The
+‘kill-new’ function: kill-new functie.
 
      (setq kill-ring-yank-pointer kill-ring)
 
@@ -15400,17 +15402,17 @@ File: emacs-lisp-intro-nl.info,  Node: current-kill begrijpen,  Prev: Code voor 
 Overzicht ‘current-kill’
 ------------------------
 
-The ‘current-kill’ function looks complex, but as usual, it can be
-understood by taking it apart piece by piece.  First look at it in
-skeletal form:
+De functie ‘current-kill’ ziet er ingewikkeld uit, maar zoals
+gewoonlijk, wordt die begrijpelijk door het stuk voor stuk uit te
+rafelen.  Kijk eerst naar de vorm van het geraamte:
 
      (defun current-kill (n &optional do-not-move)
        "Rotate the yanking point by N places, and then return that kill."
        (let VARLIST
          BODY...)
 
-   This function takes two arguments, one of which is optional.  It has
-a documentation string.  It is _not_ interactive.
+   De functie heeft twee argumenten waarvan er een optioneel is.  Het
+heeft een documentatiestring.  Het is _niet_ interactief.
 
 * Menu:
 
@@ -15424,24 +15426,26 @@ File: emacs-lisp-intro-nl.info,  Node: Body van current-kill,  Next: Uitwijding 
 The Body of ‘current-kill’
 ..........................
 
-The body of the function definition is a ‘let’ expression, which itself
-has a body as well as a VARLIST.
+De body van de functiedefinitie is een ‘let’ expressie, die zelf een
+body en een VARLIST heeft.
 
-   The ‘let’ expression declares a variable that will be only usable
-within the bounds of this function.  This variable is called
-‘interprogram-paste’ and is for copying to another program.  It is not
-for copying within this instance of GNU Emacs.  Most window systems
-provide a facility for interprogram pasting.  Sadly, that facility
-usually provides only for the last element.  Most windowing systems have
-not adopted a ring of many possibilities, even though Emacs has provided
-it for decades.
+   De ‘let’ expressie declareert een variabele die alleen bruikbaar is
+binnen de grenzen van deze functie.  Deze variabele heet
+‘interprogram-paste’ en is voor het kopiëren naar een ander programma.
+Het is niet voor kopiëren binnen deze instantie van GNU Emacs.  De
+meeste window systemen verschaffen een faciliteit voor het plakken
+tussen programma's.  Helaas werkt zo'n faciliteit meestal alleen met het
+laatste element.  De meeste window systemen hebben een ring met veel
+mogelijkheden niet geadopteerd, hoewel Emacs dat al tientallen jaren
+heeft.
 
-   The ‘if’ expression has two parts, one if there exists
-‘interprogram-paste’ and one if not.
+   De ‘if’ expressie heeft twee delen, eentje voor als er een
+‘interprogram-paste’ bestaat, en eentje voor als dat niet zo is.
 
-   Laat ons het else-gedeelte van de ‘current-kill’ functie beschouwen.
-(Het then-gedeelte gebruikt de ‘kill-new’ functie, die we al eerder
-hebben beschreven.  *Note De ‘kill-new’ functie: kill-new functie.)
+   Laat ons het anders-gedeelte van de ‘current-kill’ functie
+beschouwen.  (Het dan-gedeelte gebruikt de ‘kill-new’ functie, die we al
+eerder hebben beschreven.  *Note De ‘kill-new’ functie: kill-new
+functie.)
 
      (or kill-ring (error "Kill ring is empty"))
      (let ((ARGth-kill-element
@@ -15452,61 +15456,64 @@ hebben beschreven.  *Note De ‘kill-new’ functie: kill-new functie.)
            (setq kill-ring-yank-pointer ARGth-kill-element))
        (car ARGth-kill-element))
 
-The code first checks whether the kill ring has content; otherwise it
-signals an error.
+De code controleert eerst of de killring inhoud heeft, zo niet, dan
+geeft het een foutmelding.
 
-   Note that the ‘or’ expression is very similar to testing length with
-an ‘if’:
+   Merk op dat de ‘or’ expressie erg lijkt op het testen van de lengte
+met een ‘if’.
 
-     (if (zerop (length kill-ring))          ; if-part
-         (error "Kill ring is empty"))       ; then-part
-       ;; No else-part
+     (if (zerop (length kill-ring))          ; if-deel
+         (error "Kill ring is empty"))       ; dan-deel
+       ;; Geen anders-deel
 
-If there is not anything in the kill ring, its length must be zero and
-an error message sent to the user: ‘Kill ring is empty’.  The
-‘current-kill’ function uses an ‘or’ expression which is simpler.  But
-an ‘if’ expression reminds us what goes on.
+Wanneer er niets in de killring is, moet zijn lengte nul zijn en krijgt
+de gebruiker een foutboodschap: ‘Kill ring is empty’.  De functie
+‘current-kill’ gebruikt een ‘or’ expressie die eenvoudiger is.  Maar een
+‘if’ expressie vertelt ons aan wat er gebeurt.
 
-   This ‘if’ expression uses the function ‘zerop’ which returns true if
-the value it is testing is zero.  When ‘zerop’ tests true, the then-part
-of the ‘if’ is evaluated.  The then-part is a list starting with the
-function ‘error’, which is a function that is similar to the ‘message’
-function (*note The ‘message’ Function: message.) in that it prints a
-one-line message in the echo area.  However, in addition to printing a
-message, ‘error’ also stops evaluation of the function within which it
-is embedded.  This means that the rest of the function will not be
-evaluated if the length of the kill ring is zero.
+   Deze ‘if’ expressie gebruikt de functie ‘zerop’ die waar teruggeeft
+wanneer de waarde die die test nul is.  Wanneer ‘zerop’ waar test, wordt
+het dan-deel van de ‘if’ geëvalueerd.  Het dan-deel is een lijst die
+begint met de functie ‘error’, die een functie sis vergelijkbaar met de
+functie ‘message’ (*note De ‘message’ functie: message.), het toont een
+een-regelige boodschap in het echogebied.  In aanvulling op het tonen
+van een boodschap stopt ‘error’ echter ook de evaluatie van de functie
+waarin die is opgenomen.  Dit betekent dat de rest van de functie niet
+wordt geëvalueerd wanneer de lengte van de killring nul is.
 
-   Then the ‘current-kill’ function selects the element to return.  The
-selection depends on the number of places that ‘current-kill’ rotates
-and on where ‘kill-ring-yank-pointer’ points.
+   Dan selecteert de functie ‘current-kill’ het element om terug te
+geven.  De selectie hangt af van het aantal plaatsen dat ‘current-kill’
+roteert en van waar ‘kill-ring-yank-pointer’ naar wijst.
 
-   Next, either the optional ‘do-not-move’ argument is true or the
-current value of ‘kill-ring-yank-pointer’ is set to point to the list.
-Finally, another expression returns the first element of the list even
-if the ‘do-not-move’ argument is true.
+   Vervolgens is hetzij het optionele argument ‘do-not-move’ waar, dan
+wel de huidige waarde van ‘kill-ring-yank-pointer’ wordt zo gezet dat
+die naar de lijst wijst.  Tenslotte geeft een andere expressie het
+eerste element van de lijst terug, zelfs als het argument ‘do-not-move’
+waar is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Uitwijding over fout,  Next: Het element vaststellen,  Prev: Body van current-kill,  Up: current-kill begrijpen
 
-Digression about the word "error"
+Uitweiding over het woord "error"
 .................................
 
-In my opinion, it is slightly misleading, at least to humans, to use the
-term "error" as the name of the ‘error’ function.  A better term would
-be "cancel".  Strictly speaking, of course, you cannot point to, much
-less rotate a pointer to a list that has no length, so from the point of
-view of the computer, the word "error" is correct.  But a human expects
-to attempt this sort of thing, if only to find out whether the kill ring
-is full or empty.  This is an act of exploration.
+Naar mijn mening is het lichtelijk misleidend, tenminste voor mensen, om
+de term "error" te gebruiken voor de naam van de functie ‘error’.  Een
+betere term zou "cancel" zijn.  Strikt genomen kan je natuurlijk niet
+wijzen, of een pointer roteren, naar een lijst die geen lengte heeft,
+zodat vanuit het perspectief van de computer is het woord "error"
+correct.  Maar een mens verwacht zo iets te proberen, als is het maar om
+vast te stellen od de killring vol of leeg is.  Dit is een daad van
+verkenning.
 
-   From the human point of view, the act of exploration and discovery is
-not necessarily an error, and therefore should not be labeled as one,
-even in the bowels of a computer.  As it is, the code in Emacs implies
-that a human who is acting virtuously, by exploring his or her
-environment, is making an error.  This is bad.  Even though the computer
-takes the same steps as it does when there is an error, a term such as
-"cancel" would have a clearer connotation.
+   Vanuit het menselijk perspectief is de daad van verkenning en
+ontdekking niet noodzakelijkerwijs een fout, en daarom zou het niet als
+zodanig moeten worden bestempeld, zelfs in de buik van de computer.
+Zoals het nu is, impliceert de code in Emacs dat een mens die deugdzaam
+handelt door zijn of haar omgeving te verkennen een fout maakt.  Dat is
+niet goed.  Alhoewel de computer dezelfde stappen zet die het doet
+wanneer er een fout is, zou een term zoals "cancel" een helderder
+connotatie hebben.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Het element vaststellen,  Prev: Uitwijding over fout,  Up: current-kill begrijpen
@@ -15514,9 +15521,9 @@ File: emacs-lisp-intro-nl.info,  Node: Het element vaststellen,  Prev: Uitwijdin
 Het element vaststellen
 .......................
 
-Among other actions, the else-part of the ‘if’ expression sets the value
-of ‘kill-ring-yank-pointer’ to ‘ARGth-kill-element’ when the kill ring
-has something in it and the value of ‘do-not-move’ is ‘nil’.
+Naast andere acties zet het anders-deel van de ‘if’ expressie de waarde
+van ‘kill-ring-yank-pointer’ naar ‘ARGth-kill-element’, wanneer de
+killring iets bevat en de waarde van ‘do-not-move’ ‘nil’ is.
 
    De code ziet er zo uit:
 
@@ -15524,88 +15531,89 @@ has something in it and the value of ‘do-not-move’ is ‘nil’.
                   (length kill-ring))
              kill-ring)))
 
-   This needs some examination.  Unless it is not supposed to move the
-pointer, the ‘current-kill’ function changes where
-‘kill-ring-yank-pointer’ points.  That is what the
-‘(setq kill-ring-yank-pointer ARGth-kill-element))’ expression does.
-Also, clearly, ‘ARGth-kill-element’ is being set to be equal to some CDR
-of the kill ring, using the ‘nthcdr’ function that is described in an
-earlier section.  (*Note copy-region-as-kill::.)  How does it do this?
+   Dit vereist wat onderzoek.  Tenzij het niet de bedoeling is de
+pointer te verplaatsen, wijzigt de functie ‘current-kill’ naar waar
+‘kill-ring-yank-pointer’ wijst.  Dat is wat de expressie
+‘(setq kill-ring-yank-pointer ARGth-kill-element))’ doet.  Ook wordt
+‘ARGth-kill-element’ hetzelfde ingesteld als een CDR in de killring, met
+de functie ‘nthcdr’ die in een eerdere sectie besproken is.  (*Note
+copy-region-as-kill::.)  Hoe doet het dat?
 
-   As we have seen before (*note nthcdr::), the ‘nthcdr’ function works
-by repeatedly taking the CDR of a list--it takes the CDR of the CDR of
-the CDR ...
+   Zoals we eerder zagen (*note nthcdr::), werkt de ‘nthcdr’ functie
+door herhaaldelijk de CDR van een lijst te nemen--het neemt de CDR van
+de CDR van de CDR ...
 
-   The two following expressions produce the same result:
+   De volgende twee expressies produceren hetzelfde resultaat:
 
      (setq kill-ring-yank-pointer (cdr kill-ring))
 
      (setq kill-ring-yank-pointer (nthcdr 1 kill-ring))
 
-   However, the ‘nthcdr’ expression is more complicated.  It uses the
-‘mod’ function to determine which CDR to select.
+   De ‘nthcdr’ expressie is echter meer gecompliceerd.  Het gebruikt de
+functie ‘mod’ om vast te stellen welke CDR te selecteren.
 
-   (You will remember to look at inner functions first; indeed, we will
-have to go inside the ‘mod’.)
+   (Je herinnert je om eerst naar de binnenste functie te kijken, we
+moeten inderdaad de ‘mod’ in.)
 
-   The ‘mod’ function returns the value of its first argument modulo the
-second; that is to say, it returns the remainder after dividing the
-first argument by the second.  The value returned has the same sign as
-the second argument.
+   De functie ‘mod’ geeft de waarde van het eerste argument modulo het
+tweede.  Met andere woorden, het geeft de rest na het delen van het
+eerste argument door het tweede.  De teruggegeven waarde heeft hetzelfde
+teken als het tweede argument.
 
-   Thus,
+   Dus
 
      (mod 12 4)
-       ⇒ 0  ;; because there is no remainder
+       ⇒ 0  ;; omdat er geen rest is
      (mod 13 4)
        ⇒ 1
 
-   In this case, the first argument is often smaller than the second.
-That is fine.
+   In dit geval is het eerste argument vaak kleiner dan het tweede.  Dat
+is prima.
 
      (mod 0 4)
        ⇒ 0
      (mod 1 4)
        ⇒ 1
 
-   We can guess what the ‘-’ function does.  It is like ‘+’ but
-subtracts instead of adds; the ‘-’ function subtracts its second
-argument from its first.  Also, we already know what the ‘length’
-function does (*note length::).  It returns the length of a list.
+   We kunnen raden wat de functie ‘-’ doet.  Het is net als ‘+’ maar
+trekt af in plaats van optellen.  De functie ‘-’ trekt het tweede
+argument af van het eerste.  We weten al wat de functie ‘length’ doet
+(*note length::).  Het geeft de lengte van een lijst terug.
 
-   And ‘n’ is the name of the required argument to the ‘current-kill’
-function.
+   En ‘n’ is de naam van het vereiste argument van de functie
+‘current-kill’.
 
-   So when the first argument to ‘nthcdr’ is zero, the ‘nthcdr’
-expression returns the whole list, as you can see by evaluating the
-following:
+   Dus wanneer het eerste argument van ‘nthcdr’ nul is, geeft de
+‘nthcdr’ expressie de hele lijst terug, zoals je kunt zien door het
+evalueren van het volgende:
 
-     ;; kill-ring-yank-pointer and kill-ring have a length of four
-     ;; and (mod (- 0 4) 4) ⇒ 0
+     ;; kill-ring-yank-pointer en kill-ring hebben een lengte van 4
+     ;; en (mod (- 0 4) 4) ⇒ 0
      (nthcdr (mod (- 0 4) 4)
-             '("fourth line of text"
-               "third line"
-               "second piece of text"
-               "first some text"))
+             '("vierde regel tekst"
+               "derde regel"
+               "tweede stukje tekst"
+               "eerst wat tekst"))
 
-   When the first argument to the ‘current-kill’ function is one, the
-‘nthcdr’ expression returns the list without its first element.
+   Wanneer het eerste argument van de functie ‘current-kill’ één is,
+geeft de ‘nthcdr’ expressie de lijst terug zonder het eerste element.
 
      (nthcdr (mod (- 1 4) 4)
-             '("fourth line of text"
-               "third line"
-               "second piece of text"
-               "first some text"))
+             '("vierde regel tekst"
+               "derde regel"
+               "tweede stukje tekst"
+               "eerst wat tekst"))
 
-   Incidentally, both ‘kill-ring’ and ‘kill-ring-yank-pointer’ are
-“global variables”.  That means that any expression in Emacs Lisp can
-access them.  They are not like the local variables set by ‘let’ or like
-the symbols in an argument list.  Local variables can only be accessed
-within the ‘let’ that defines them or the function that specifies them
-in an argument list (and within expressions called by them).
+   Overigens zijn zowel ‘kill-ring’ als ‘kill-ring-yank-pointer’
+“globale variabelen”.  Dat betekent dat elke expressie in Emacs Lisp
+toegang tot ze heeft.  Zij zijn niet zoals de lokale variabelen gezet
+door ‘let’ of zoals de symbolen in een argument list.  Lokale variabelen
+zijn alleen toegankelijk binnen de ‘let’ die ze definieert of de functie
+die ze specificeert in een argument list (en binnen de door ze
+aangeroepen expressies).
 
-   (*Note ‘let’ Prevents Confusion: Prevent confusion, and *note The
-‘defun’ Macro: defun.)
+   (*Note ‘let’ voorkomt verwarring: Voorkom verwarring, en *note De
+‘defun’ macro: defun.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: yank,  Next: yank-pop,  Prev: current-kill,  Up: Killring
@@ -15613,12 +15621,12 @@ File: emacs-lisp-intro-nl.info,  Node: yank,  Next: yank-pop,  Prev: current-kil
 B.2 ‘yank’
 ==========
 
-After learning about ‘current-kill’, the code for the ‘yank’ function is
-almost easy.
+Na het bestuderen van ‘current-kill’ is de code van de functie ‘yank’
+bijna makkelijk.
 
-   The ‘yank’ function does not use the ‘kill-ring-yank-pointer’
-variable directly.  It calls ‘insert-for-yank’ which calls
-‘current-kill’ which sets the ‘kill-ring-yank-pointer’ variable.
+   De functie ‘yank’ gebruikt de variabele ‘kill-ring-yank-pointer’ niet
+direct.  Het roept ‘insert-for-yank’ aan, die roept ‘current-kill’ aan
+welke de variabele ‘kill-ring-yank-pointer’ zet.
 
    De code ziet er zo uit:
 
@@ -15656,27 +15664,28 @@ variable directly.  It calls ‘insert-for-yank’ which calls
            (setq this-command 'yank))
        nil)
 
-   The key expression is ‘insert-for-yank’, which inserts the string
-returned by ‘current-kill’, but removes some text properties from it.
+   De sleutel-expressie is ‘insert-for-yank’, die de string teruggeven
+door ‘current-kill’ invoegt, maar verwijdert enkele teksteigenschappen
+er van.
 
-   However, before getting to that expression, the function sets the
-value of ‘yank-window-start’ to the position returned by the
-‘(window-start)’ expression, the position at which the display currently
-starts.  The ‘yank’ function also sets ‘this-command’ and pushes the
-mark.
+   Voor dat het bij die expressie komt, zet de functie de waarde van
+‘yank-window-start’ op de positie teruggegeven door de ‘window-start’
+expressie., de positie waarop het display thans begint.  De functie
+‘yank’ zet ook ‘this-command’ en pusht de mark.
 
-   After it yanks the appropriate element, if the optional argument is a
-CONS rather than a number or nothing, it puts point at beginning of the
-yanked text and mark at its end.
+   Nadat het het passende element yankt, wanneer het optionele argument
+een CONS is in plaats van een getal of niets, dan plaatst het point aan
+het begin van de geyankte tekst en markeert het einde.
 
-   (The ‘prog1’ function is like ‘progn’ but returns the value of its
-first argument rather than the value of its last argument.  Its first
-argument is forced to return the buffer's mark as an integer.  You can
-see the documentation for these functions by placing point over them in
-this buffer and then typing ‘C-h f’ (‘describe-function’) followed by a
-‘RET’; the default is the function.)
+   (De functie ‘prog1’ is net als ‘progn’ maar geeft de waarde van het
+eerste argument terug in plaats van de waarde van het laatste argument.
+Het eerste argument is geforceerd om de mark van de buffer als integer
+terug te geven.  Je kunt de documentatie van deze functies zien door in
+dit buffer point op ze te plaatsten en dan ‘C-h f’ (‘describe-function’)
+te typen, gevold door een ‘RET’; de default is de functie.)
 
-   The last part of the function tells what to do when it succeeds.
+   Het laatste deel van de functie zegt wat te doen wanneer het
+succesvol is.
 
 
 File: emacs-lisp-intro-nl.info,  Node: yank-pop,  Next: ring bestand,  Prev: yank,  Up: Killring
@@ -15684,9 +15693,9 @@ File: emacs-lisp-intro-nl.info,  Node: yank-pop,  Next: ring bestand,  Prev: yan
 B.3 ‘yank-pop’
 ==============
 
-After understanding ‘yank’ and ‘current-kill’, you know how to approach
-the ‘yank-pop’ function.  Leaving out the documentation to save space,
-it looks like this:
+Na het begrijpen van ‘yank’ en ‘current-kill’, weet je hoe de functie
+‘yank-pop’ te benaderen.  Met het weglaten van de documentatie om plek
+te besparen, ziet die er zo uit:
 
      (defun yank-pop (&optional arg)
        "..."
@@ -15717,34 +15726,35 @@ it looks like this:
                                       (current-buffer))))))
        nil)
 
-   The function is interactive with a small ‘p’ so the prefix argument
-is processed and passed to the function.  The command can only be used
-after a previous yank; otherwise an error message is sent.  This check
-uses the variable ‘last-command’ which is set by ‘yank’ and is discussed
-elsewhere.  (*Note copy-region-as-kill::.)
+   De functie is interactief met een kleine letter ‘p’ zodat het prefix
+argument wordt verwerkt en doorgegeven aan de functie.  Het commando kan
+alleen worden gebruikt na een voorgaande yank, anders wordt een
+foutboodschap gegeven.  Deze check gebruikt de variabele ‘last-command’
+die gezet is door ‘yank’ en elders is besproken.  (*Note
+copy-region-as-kill::.)
 
-   The ‘let’ clause sets the variable ‘before’ to true or false
-depending whether point is before or after mark and then the region
-between point and mark is deleted.  This is the region that was just
-inserted by the previous yank and it is this text that will be replaced.
+   De ‘let’ clausule zet de variabele ‘before’ op waar of onwaar
+afhankelijk of point voor of na de mark is en delete dan de region
+tussen point en mark.  Dit is de region dat zojuist was ingevoegd door
+de voorgaande yank en dit is de tekst die wordt vervangen.
 
-   ‘funcall’ calls its first argument as a function, passing remaining
-arguments to it.  The first argument is whatever the ‘or’ expression
-returns.  The two remaining arguments are the positions of point and
-mark set by the preceding ‘yank’ command.
+   ‘funcall’ roept het eerste argument als functie aan, en geeft de
+resterende argumenten er aan door.  Het eerste argument is wat de ‘or’
+teruggeeft.  De twee resterende argumenten zijn de posities van point en
+mark, gezet door het voorafgaande ‘yank’ commando.
 
-   There is more, but that is the hardest part.
+   Er is meer, maar dit is het moeilijkste deel.
 
 
 File: emacs-lisp-intro-nl.info,  Node: ring bestand,  Prev: yank-pop,  Up: Killring
 
-B.4 The ‘ring.el’ File
-======================
+B.4 Het bestand ‘ring.el’
+=========================
 
-Interestingly, GNU Emacs possesses a file called ‘ring.el’ that provides
-many of the features we just discussed.  But functions such as
-‘kill-ring-yank-pointer’ do not use this library, possibly because they
-were written earlier.
+Interessant is dat GNU Emacs een bestand bevat met de naam ‘ring.el’ dat
+veel van de functies bevat die we zojuist bespaken.  Maar functies zoals
+‘kill-ring-yank-pointer’ gebruiken deze library niet, mogelijk omdat ze
+eerder zijn geschreven.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Volledige grafiek,  Next: Vrije software en vrije handleidingen,  Prev: Killring,  Up: Top
@@ -16776,7 +16786,7 @@ C.4.3 A ‘lambda’ Expression: Useful Anonymity
 name.  Every time you use an anonymous function, you need to include its
 whole body.
 
-Thus,
+Dus
 
      (lambda (arg) (/ arg 50))
 
@@ -17741,7 +17751,7 @@ Index
 * Byte compiling:                        Byte compiling.      (line   6)
 * C-taal primitieven:                    Primitieve functies. (line   6)
 * C, een uitweiding naar:                Uitwijding naar C.   (line   6)
-* cancel-debug-on-entry:                 debug-on-entry.      (line 100)
+* cancel-debug-on-entry:                 debug-on-entry.      (line  99)
 * car, introduced:                       car cdr en cons.     (line   6)
 * cdr, introduced:                       car cdr en cons.     (line   6)
 * Code installtie:                       Permanent installeren.
@@ -17803,7 +17813,6 @@ Index
 * driehoek-met-bug:                      debug.               (line  14)
 * driehoek-recursief:                    Recursieve driehoek functie.
                                                               (line   6)
-* Duplicated words function:             de-de.               (line   6)
 * Dynamische binding:                    Lexical en dynamische binding verschillen.
                                                               (line  16)
 * edebug:                                edebug.              (line   6)
@@ -17831,7 +17840,7 @@ Index
                                                               (line  36)
 * equal:                                 Terugblik.           (line 127)
 * error:                                 Body van current-kill.
-                                                              (line  40)
+                                                              (line  42)
 * evaluate gedefinieerd:                 Draai een programma. (line   6)
 * Evaluatie:                             Evaluatie.           (line   6)
 * Evaluatie oefenen:                     Oefenen van evaluatie.
@@ -17863,9 +17872,10 @@ Index
                                                               (line  39)
 * gebogen aanhalingstekens <1>:          Complete zap-to-char.
                                                               (line  39)
+* Gedupliceerde woorden functie:         de-de.               (line   6)
 * Genereer een foutmelding:              Fouten maken.        (line   6)
 * Globaal instellen toestcombinatie:     Key bindings.        (line  88)
-* global variable defined:               Het element vaststellen.
+* global variable gedefinieerd:          Het element vaststellen.
                                                               (line  89)
 * global-set-key:                        Key bindings.        (line  88)
 * global-unset-key:                      Key bindings.        (line 103)
@@ -17875,7 +17885,7 @@ Index
 * graph-body-print Final version.:       De finale versie.    (line  53)
 * Graph, printing all:                   De gehele grafiek afdrukken.
                                                               (line   6)
-* Handling the kill ring:                Killring.            (line   6)
+* Hanteren van de killring:              Killring.            (line   6)
 * Herhaling (loops):                     Loops en recursie.   (line   6)
 * Het evalueren van een binnenste lijst: Geneste lijsten evalueren.
                                                               (line   6)
@@ -17913,10 +17923,10 @@ Index
 * keymap-global-set:                     Key bindings.        (line  18)
 * keymap-global-unset:                   Key bindings.        (line  62)
 * Keymaps:                               Keymaps.             (line   6)
-* Kill ring handling:                    Killring.            (line   6)
 * kill-append:                           kill-append functie. (line   6)
 * kill-new:                              kill-new functie.    (line   6)
 * kill-region:                           kill-region.         (line   6)
+* Killring hanteren:                     Killring.            (line   6)
 * Killring overzicht:                    Killring overzicht.  (line   6)
 * Ladekast, metafoor voor een symbool:   Symbolen als ladekast.
                                                               (line   6)
@@ -18073,8 +18083,8 @@ Index
 * Repetitie voor tellen van woorden:     Woorden tellen.      (line   6)
 * reverse:                               Functiedefinities tellen.
                                                               (line 114)
-* Ring, making a list like a:            Killring.            (line   6)
-* ring.el file:                          ring bestand.        (line   6)
+* Ring, een lijst maken zoals een:       Killring.            (line   6)
+* ring.el bestand:                       ring bestand.        (line   6)
 * Robots bouwen:                         Robots bouwen.       (line   6)
 * Robots, bouwen:                        Robots bouwen.       (line   6)
 * save-excursion:                        save-excursion.      (line   6)
@@ -18150,7 +18160,7 @@ Index
                                                               (line   6)
 * Variabele, waarde zetten:              setq.                (line   6)
 * Variabelen:                            Variabelen.          (line   6)
-* variable, global, defined:             Het element vaststellen.
+* variable, global, gedefinieerd:        Het element vaststellen.
                                                               (line  89)
 * varlist gedefinieerd:                  Delen van een let expressie.
                                                               (line   6)
@@ -18187,9 +18197,9 @@ Index
                                                               (line   6)
 * Woorden tellen in een defun <2>:       tel-woorden-in-defun.
                                                               (line   6)
+* Woorden, gedupliceerd:                 de-de.               (line   6)
 * Woorden, recursief geteld:             recursive-count-words.
                                                               (line   6)
-* Words, duplicated:                     de-de.               (line   6)
 * X axis printing:                       print-X-axis.        (line   6)
 * X-axis-element:                        X-as tic marks.      (line 105)
 * Y axis printing:                       print-Y-axis.        (line   6)
@@ -18201,8 +18211,8 @@ Index
 * yank <1>:                              yank.                (line   6)
 * yank-pop:                              yank-pop.            (line   6)
 * zap-to-char:                           zap-to-char.         (line   6)
-* zerop:                                 Body van current-kill.
-                                                              (line  40)
+* zerrop:                                Body van current-kill.
+                                                              (line  42)
 * zij-effect gedefinieerd:               Hoe de interpreter werkt.
                                                               (line  16)
 * Zinnen, bewegen per:                   Regexp zoeken.       (line   6)
@@ -18229,329 +18239,329 @@ Over de auteur
      "Goodbye to Bob Chassell"
      (https://www.fsf.org/blogs/community/goodbye-to-bob-chassell)
 
+
 
 Tag Table:
-Node: Top1630
-Node: Voorwoord24398
-Node: Waarom25861
-Node: Over het lezen van deze tekst26524
-Node: Doelgroep28864
-Node: Geschiedenis van Lisp31867
-Node: Opmerking voor beginners32771
-Node: Dank35523
-Node: Lijsten verwerken36118
-Ref: Lijsten verwerken-Footnote-137574
-Node: Lisp lijsten37730
-Node: Genummerde lijsten38660
-Node: Lisp atomen39829
-Node: Whitespace in lijsten43743
-Node: Typen van lijsten45095
-Node: Draai een programma46316
-Ref: Draai een programma-Footnote-148869
-Node: Fouten maken49013
-Node: Namen en definities54216
-Node: Lisp interpreter56172
-Node: Complicaties57396
-Node: Byte compiling59645
-Node: Evaluatie60774
-Node: Hoe de interpreter werkt61401
-Node: Geneste lijsten evalueren62774
-Node: Variabelen65462
-Node: fill-column voorbeeld67078
-Node: Void functie68765
-Node: Void variabele70048
-Node: Argumenten71974
-Ref: Argumenten-Footnote-173780
-Node: Data typen74652
-Node: Argumenten als variabele of als lijst76889
-Node: Variabel aantal argumenten78630
-Node: Verkeerde type argument79526
-Ref: Verkeerde type argument-Footnote-183319
-Node: message83394
-Ref: message-Footnote-187616
-Node: setq87821
-Node: Setq gebruiken88546
-Node: Tellen91780
-Node: Samenvatting93842
-Node: Foutmelding oefeningen95845
-Node: Oefenen van evaluatie96401
-Node: Hoe te evalueren97628
-Node: Buffer namen99222
-Node: Buffers pakken105293
-Ref: Buffers pakken-Footnote-1107982
-Node: Van buffer verwisselen108232
-Ref: Van buffer verwisselen-Footnote-1111823
-Ref: Van buffer verwisselen-Footnote-2112165
-Node: Buffer grootte en lokatie112919
-Node: Evaluatie oefening115133
-Node: Defuns schrijven115417
-Node: Primitieve functies116710
-Node: defun117945
-Node: Installeer124809
-Node: Effect van installatie126246
-Node: Een defun wijzigen127173
-Node: Interactief129053
-Node: Interactieve vermenigvuldig-met-zeven130236
-Node: vermenigvuldig-met-zeven in detail132366
-Node: Interactieve opties135219
-Node: Permanent installeren138581
-Node: let140892
-Node: Voorkom verwarring142484
-Ref: Voorkom verwarring-Footnote-1144749
-Node: Delen van een let expressie144893
-Node: Voorbeeld let expressie146608
-Ref: Voorbeeld let expressie-Footnote-1148430
-Node: Niet-geïnitialiseerde let variabelen148685
-Node: Hoe let variabelen bindt150459
-Node: Lexical en dynamische binding verschillen151797
-Node: Lexical vs dynamische binding voorbeeld153714
-Node: if155785
-Node: if in meer detail156731
-Node: type-dier in detail159544
-Node: else162194
-Node: Waar en onwaarheid165155
-Node: nil uitgelegd166164
-Node: save-excursion168361
-Node: Point en mark169137
-Node: Template voor save-excursion172246
-Node: Terugblik173534
-Node: defun oefeningen181577
-Node: Buffer rondleiding182050
-Node: Meer vinden183224
-Ref: Meer vinden-Footnote-1186239
-Node: versimpelde-beginning-of-buffer186456
-Node: mark-whole-buffer190960
-Node: mark-whole-buffer overzicht191834
-Node: Body van mark-whole-buffer193206
-Node: append-to-buffer196271
-Node: append-to-buffer overzicht196998
-Node: append interactief199800
-Node: append-to-buffer body202376
-Node: append save-excursion204563
-Ref: let* geïntroduceerd206360
-Node: Buffer gerelateerde terugblik210049
-Node: Buffer oefeningen212452
-Node: Meer complex212977
-Node: copy-to-buffer214088
-Ref: copy-to-buffer-Footnote-1216971
-Node: insert-buffer217191
-Node: insert-buffer code218650
-Node: insert-buffer interactief219659
-Node: Read-only buffer220209
-Node: b for interactief220853
-Node: insert-buffer body221981
-Node: if en or223203
-Node: Voeg or in226356
-Node: Voeg let in228703
-Node: Nieuwe insert-buffer232552
-Node: beginning-of-buffer233773
-Node: Optionele argumenten235423
-Node: beginning-of-buffer opt arg239066
-Node: Ontrafelen beginning-of-buffer240088
-Node: In geval van een groot buffer241442
-Node: In geval van een klein buffer244090
-Node: beginning-of-buffer compleet245868
-Node: Tweede buffer gerelateerde terugblik248912
-Node: optionele oefening250877
-Node: Versmallen en verbreden251401
-Node: Voordelen van versmallen252107
-Node: save-restriction254088
-Node: what-line256209
-Node: versmal oefening260660
-Node: car cdr en cons261708
-Node: Vreemde namen262894
-Node: car en cdr263616
-Node: cons268355
-Node: Bouw een lijst269447
-Ref: Bouw een lijst-Footnote-1271075
-Node: length271281
-Node: nthcdr272892
-Node: nth276002
-Node: setcar277523
-Node: setcdr280503
-Node: cons oefening282175
-Node: Knippen en opslaan van tekst282594
-Node: Tekst opslaan284009
-Node: zap-to-char286129
-Node: Complete zap-to-char286741
-Node: zap-to-char interactief289107
-Node: zap-to-char body290693
-Node: search-forward292242
-Node: progn295403
-Node: Samenvatting zap-to-char297218
-Node: kill-region298374
-Node: Complete kill-region299372
-Node: condition-case303783
-Node: Lisp macro306354
-Node: copy-region-as-kill308987
-Node: Complete copy-region-as-kill309930
-Node: copy-region-as-kill body312776
-Node: last-command en this-command313917
-Node: kill-append functie316255
-Node: kill-new functie320530
-Node: Uitwijding naar C331508
-Node: defvar337051
-Node: Inzien huidige variabele waarde338929
-Node: defvar en asterisk340891
-Node: cons en search-fwd terugblik342945
-Node: zoek oefening346124
-Node: Implementatie van lijsten346927
-Node: Lijsten uitgetekend348163
-Node: Symbolen als ladekast354652
-Node: Lijst oefening356767
-Node: Yanking357133
-Node: Killring overzicht358528
-Node: kill-ring-yank-pointer360340
-Node: yank nthcdr oefeningen362848
-Node: Loops en recursie363593
-Ref: Loops en recursie-Footnote-1364789
-Node: while365310
-Node: Looping met while366742
-Node: Loop voorbeeld368680
-Node: print-elements-of-list372382
-Node: Incrementele loop374968
-Node: Incrementele loop details375600
-Node: Incrementeel voorbeeld377073
-Node: Inc voorbeeld onderdelen379649
-Node: inc voorbeeld samengesteld383789
-Node: Decrementele loop387391
-Node: Decrementeel voorbeeld388863
-Node: Dec voorbeeld onderdelen390454
-Node: Dec voorbeeld samengesteld392534
-Node: dolist dotimes394810
-Node: dolist395641
-Node: dotimes398818
-Node: Recursie400365
-Node: Robots bouwen401577
-Node: Recursive definitie onderdelen403382
-Node: Recursie met lijst406029
-Node: Recursieve driehoek functie409697
-Node: Recursief voorbeeld arg van 1 of 2411075
-Node: Recursief voorbeeld arg van 3 of 4413340
-Node: Recursie met cond416544
-Node: Recursieve patronen418988
-Node: Elke419481
-Node: Accumuleren422041
-Node: Bewaar423421
-Node: Geen uitstel425489
-Node: Zonder uitstel oplossing428213
-Ref: Zonder uitstel oplossing-Footnote-1432175
-Ref: Zonder uitstel oplossing-Footnote-2432299
-Node: Looping oefening432822
-Node: Regexp zoeken434141
-Node: sentence-end436287
-Node: re-search-forward440334
-Node: forward-sentence442989
-Node: Complete forward-sentence443772
-Node: fwd-sentence while loops447476
-Node: fwd-sentence re-search451289
-Node: forward-paragraph453393
-Node: forward-paragraph in het kort455268
-Node: fwd-para let456826
-Node: fwd-para while463757
-Node: Regexp terugblik472613
-Node: re-search oefeningen475203
-Node: Woorden tellen475976
-Node: Waarom woorden tellen476759
-Node: tel-woorden-voorbeeld477915
-Node: Ontwerp tel-woorden-voorbeeld479288
-Node: Witte ruimte bug486024
-Node: recursive-count-words495859
-Node: Tellen voorbeeld508586
-Node: Woorden in een defun508958
-Node: Verdeel en heers510729
-Node: Woorden en symbolen512040
-Node: Syntax514193
-Node: tel-woorden-in-defun517909
-Node: Enkele defuns524576
-Node: Een bestand vinden527096
-Node: lengte-lijst-bestand529856
-Node: Enkele bestanden535446
-Node: lengths-list-many-files536252
-Node: append539179
-Node: Enkele bestanden recursief539833
-Node: De data voorbereiden542919
-Node: Data in detail te tonen544034
-Node: Sorteren545029
-Node: Bestandenlijst546885
-Ref: Bestandenlijst-Footnote-1554929
-Node: Functiedefinities tellen555151
-Node: Een grafiek voorbereiden564778
-Node: Kolommen van een grafiek566152
-Node: graph-body-print580409
-Node: recursieve-grafiek-body-tonen585193
-Node: Getoonde assen587959
-Node: Lijngrafiek oefening588776
-Node: Initialisatie van Emacs588987
-Node: Standaard configuratie590554
-Ref: Standaard configuratie-Footnote-1592680
-Node: Systeem-brede init593002
-Node: defcustom595263
-Node: Een init bestand beginnen601388
-Node: Tekst en auto-fill603919
-Ref: Tekst en auto-fill-Footnote-1608240
-Ref: Tekst en auto-fill-Footnote-2608533
-Node: Mail aliasen608843
-Node: Indent Tabs Mode609802
-Node: Key bindings610801
-Node: Keymaps616087
-Node: Bestanden laden618921
-Node: Autoload622293
-Node: Eenvoudige uitbreiding625312
-Ref: Eenvoudige uitbreiding-Footnote-1627914
-Node: X11 kleuren628203
-Ref: X11 kleuren-Footnote-1630097
-Node: Diverse630265
-Node: Mode line634625
-Node: Debuggen.640474
-Node: debug641376
-Node: debug-on-entry644685
-Node: debug-on-quit649033
-Node: edebug650083
-Node: Debuggen oefeningen654307
-Node: Conclusie656121
-Node: de-de661586
-Node: Killring664376
-Node: Wat de killring doet665193
-Node: current-kill666711
-Node: Code voor current-kill667409
-Node: current-kill begrijpen670241
-Node: Body van current-kill671041
-Node: Uitwijding over fout674192
-Node: Het element vaststellen675367
-Node: yank679072
-Node: yank-pop682286
-Node: ring bestand684821
-Node: Volledige grafiek685198
-Node: Gelabeld voorbeeld686038
-Node: print-graph varlist688035
-Node: print-Y-axis689758
-Node: print-Y-axis in detail690611
-Node: Hoogte van label691421
-Node: Bereken het restant693438
-Node: Y-as element697304
-Node: Y-axis-column701067
-Node: print-Y-axis enalaatste702679
-Node: print-X-axis704660
-Node: Overeenkomsten verschillen705978
-Node: X-as tic marks706811
-Node: De gehele grafiek afdrukken713813
-Node: De finale versie714929
-Node: Test print-graph719184
-Node: Woorden in defuns grafisch weergeven720867
-Node: lambda723491
-Node: mapcar725372
-Node: Een andere bug727432
-Node: Finale afgedrukte grafiek732961
-Node: Vrije software en vrije handleidingen733912
-Node: GNU Free Documentation License740228
-Node: Index765417
-Node: Over de auteur804599
+Node: Top1632
+Node: Voorwoord24401
+Node: Waarom25864
+Node: Over het lezen van deze tekst26527
+Node: Doelgroep28867
+Node: Geschiedenis van Lisp31870
+Node: Opmerking voor beginners32774
+Node: Dank35526
+Node: Lijsten verwerken36121
+Ref: Lijsten verwerken-Footnote-137577
+Node: Lisp lijsten37733
+Node: Genummerde lijsten38663
+Node: Lisp atomen39832
+Node: Whitespace in lijsten43746
+Node: Typen van lijsten45098
+Node: Draai een programma46319
+Ref: Draai een programma-Footnote-148872
+Node: Fouten maken49016
+Node: Namen en definities54219
+Node: Lisp interpreter56175
+Node: Complicaties57399
+Node: Byte compiling59648
+Node: Evaluatie60777
+Node: Hoe de interpreter werkt61404
+Node: Geneste lijsten evalueren62777
+Node: Variabelen65465
+Node: fill-column voorbeeld67081
+Node: Void functie68768
+Node: Void variabele70051
+Node: Argumenten71977
+Ref: Argumenten-Footnote-173783
+Node: Data typen74655
+Node: Argumenten als variabele of als lijst76892
+Node: Variabel aantal argumenten78633
+Node: Verkeerde type argument79529
+Ref: Verkeerde type argument-Footnote-183322
+Node: message83397
+Ref: message-Footnote-187619
+Node: setq87824
+Node: Setq gebruiken88549
+Node: Tellen91783
+Node: Samenvatting93845
+Node: Foutmelding oefeningen95848
+Node: Oefenen van evaluatie96404
+Node: Hoe te evalueren97631
+Node: Buffer namen99225
+Node: Buffers pakken105296
+Ref: Buffers pakken-Footnote-1107985
+Node: Van buffer verwisselen108235
+Ref: Van buffer verwisselen-Footnote-1111826
+Ref: Van buffer verwisselen-Footnote-2112168
+Node: Buffer grootte en lokatie112922
+Node: Evaluatie oefening115136
+Node: Defuns schrijven115420
+Node: Primitieve functies116713
+Node: defun117948
+Node: Installeer124812
+Node: Effect van installatie126249
+Node: Een defun wijzigen127176
+Node: Interactief129056
+Node: Interactieve vermenigvuldig-met-zeven130239
+Node: vermenigvuldig-met-zeven in detail132369
+Node: Interactieve opties135222
+Node: Permanent installeren138584
+Node: let140895
+Node: Voorkom verwarring142487
+Ref: Voorkom verwarring-Footnote-1144752
+Node: Delen van een let expressie144896
+Node: Voorbeeld let expressie146611
+Ref: Voorbeeld let expressie-Footnote-1148433
+Node: Niet-geïnitialiseerde let variabelen148688
+Node: Hoe let variabelen bindt150462
+Node: Lexical en dynamische binding verschillen151800
+Node: Lexical vs dynamische binding voorbeeld153717
+Node: if155788
+Node: if in meer detail156734
+Node: type-dier in detail159548
+Node: else162198
+Node: Waar en onwaarheid165160
+Node: nil uitgelegd166169
+Node: save-excursion168366
+Node: Point en mark169142
+Node: Template voor save-excursion172251
+Node: Terugblik173539
+Node: defun oefeningen181582
+Node: Buffer rondleiding182055
+Node: Meer vinden183229
+Ref: Meer vinden-Footnote-1186244
+Node: versimpelde-beginning-of-buffer186461
+Node: mark-whole-buffer190965
+Node: mark-whole-buffer overzicht191839
+Node: Body van mark-whole-buffer193211
+Node: append-to-buffer196276
+Node: append-to-buffer overzicht197003
+Node: append interactief199805
+Node: append-to-buffer body202381
+Node: append save-excursion204568
+Ref: let* geïntroduceerd206365
+Node: Buffer gerelateerde terugblik210054
+Node: Buffer oefeningen212457
+Node: Meer complex212982
+Node: copy-to-buffer214093
+Ref: copy-to-buffer-Footnote-1216976
+Node: insert-buffer217196
+Node: insert-buffer code218655
+Node: insert-buffer interactief219664
+Node: Read-only buffer220214
+Node: b for interactief220858
+Node: insert-buffer body221986
+Node: if en or223208
+Node: Voeg or in226361
+Node: Voeg let in228708
+Node: Nieuwe insert-buffer232557
+Node: beginning-of-buffer233778
+Node: Optionele argumenten235428
+Node: beginning-of-buffer opt arg239071
+Node: Ontrafelen beginning-of-buffer240093
+Node: In geval van een groot buffer241447
+Node: In geval van een klein buffer244095
+Node: beginning-of-buffer compleet245873
+Node: Tweede buffer gerelateerde terugblik248917
+Node: optionele oefening250882
+Node: Versmallen en verbreden251406
+Node: Voordelen van versmallen252112
+Node: save-restriction254093
+Node: what-line256214
+Node: versmal oefening260665
+Node: car cdr en cons261713
+Node: Vreemde namen262899
+Node: car en cdr263621
+Node: cons268360
+Node: Bouw een lijst269452
+Ref: Bouw een lijst-Footnote-1271080
+Node: length271286
+Node: nthcdr272897
+Node: nth276007
+Node: setcar277528
+Node: setcdr280508
+Node: cons oefening282180
+Node: Knippen en opslaan van tekst282599
+Node: Tekst opslaan284014
+Node: zap-to-char286134
+Node: Complete zap-to-char286746
+Node: zap-to-char interactief289112
+Node: zap-to-char body290698
+Node: search-forward292247
+Node: progn295408
+Node: Samenvatting zap-to-char297223
+Node: kill-region298379
+Node: Complete kill-region299377
+Node: condition-case303788
+Node: Lisp macro306359
+Node: copy-region-as-kill308992
+Node: Complete copy-region-as-kill309935
+Node: copy-region-as-kill body312781
+Node: last-command en this-command313922
+Node: kill-append functie316260
+Node: kill-new functie320535
+Node: Uitwijding naar C331513
+Node: defvar337056
+Node: Inzien huidige variabele waarde338934
+Node: defvar en asterisk340896
+Node: cons en search-fwd terugblik342950
+Node: zoek oefening346129
+Node: Implementatie van lijsten346932
+Node: Lijsten uitgetekend348168
+Node: Symbolen als ladekast354657
+Node: Lijst oefening356772
+Node: Yanking357138
+Node: Killring overzicht358533
+Node: kill-ring-yank-pointer360345
+Node: yank nthcdr oefeningen362853
+Node: Loops en recursie363598
+Ref: Loops en recursie-Footnote-1364794
+Node: while365315
+Node: Looping met while366747
+Node: Loop voorbeeld368685
+Node: print-elements-of-list372387
+Node: Incrementele loop374973
+Node: Incrementele loop details375605
+Node: Incrementeel voorbeeld377078
+Node: Inc voorbeeld onderdelen379654
+Node: inc voorbeeld samengesteld383794
+Node: Decrementele loop387396
+Node: Decrementeel voorbeeld388868
+Node: Dec voorbeeld onderdelen390459
+Node: Dec voorbeeld samengesteld392539
+Node: dolist dotimes394815
+Node: dolist395646
+Node: dotimes398823
+Node: Recursie400370
+Node: Robots bouwen401582
+Node: Recursive definitie onderdelen403387
+Node: Recursie met lijst406034
+Node: Recursieve driehoek functie409702
+Node: Recursief voorbeeld arg van 1 of 2411080
+Node: Recursief voorbeeld arg van 3 of 4413345
+Node: Recursie met cond416549
+Node: Recursieve patronen418993
+Node: Elke419486
+Node: Accumuleren422046
+Node: Bewaar423426
+Node: Geen uitstel425494
+Node: Zonder uitstel oplossing428219
+Ref: Zonder uitstel oplossing-Footnote-1432181
+Ref: Zonder uitstel oplossing-Footnote-2432305
+Node: Looping oefening432828
+Node: Regexp zoeken434147
+Node: sentence-end436293
+Node: re-search-forward440340
+Node: forward-sentence442995
+Node: Complete forward-sentence443778
+Node: fwd-sentence while loops447482
+Node: fwd-sentence re-search451295
+Node: forward-paragraph453399
+Node: forward-paragraph in het kort455274
+Node: fwd-para let456832
+Node: fwd-para while463763
+Node: Regexp terugblik472619
+Node: re-search oefeningen475209
+Node: Woorden tellen475982
+Node: Waarom woorden tellen476765
+Node: tel-woorden-voorbeeld477921
+Node: Ontwerp tel-woorden-voorbeeld479294
+Node: Witte ruimte bug486030
+Node: recursive-count-words495865
+Node: Tellen voorbeeld508592
+Node: Woorden in een defun508964
+Node: Verdeel en heers510735
+Node: Woorden en symbolen512046
+Node: Syntax514199
+Node: tel-woorden-in-defun517915
+Node: Enkele defuns524582
+Node: Een bestand vinden527102
+Node: lengte-lijst-bestand529862
+Node: Enkele bestanden535452
+Node: lengths-list-many-files536258
+Node: append539185
+Node: Enkele bestanden recursief539839
+Node: De data voorbereiden542925
+Node: Data in detail te tonen544040
+Node: Sorteren545035
+Node: Bestandenlijst546891
+Ref: Bestandenlijst-Footnote-1554935
+Node: Functiedefinities tellen555157
+Node: Een grafiek voorbereiden564784
+Node: Kolommen van een grafiek566158
+Node: graph-body-print580415
+Node: recursieve-grafiek-body-tonen585199
+Node: Getoonde assen587965
+Node: Lijngrafiek oefening588782
+Node: Initialisatie van Emacs588993
+Node: Standaard configuratie590560
+Ref: Standaard configuratie-Footnote-1592686
+Node: Systeem-brede init593008
+Node: defcustom595269
+Node: Een init bestand beginnen601394
+Node: Tekst en auto-fill603925
+Ref: Tekst en auto-fill-Footnote-1608246
+Ref: Tekst en auto-fill-Footnote-2608539
+Node: Mail aliasen608849
+Node: Indent Tabs Mode609808
+Node: Key bindings610807
+Node: Keymaps616093
+Node: Bestanden laden618927
+Node: Autoload622299
+Node: Eenvoudige uitbreiding625318
+Ref: Eenvoudige uitbreiding-Footnote-1627920
+Node: X11 kleuren628209
+Ref: X11 kleuren-Footnote-1630103
+Node: Diverse630271
+Node: Mode line634631
+Node: Debuggen.640480
+Node: debug641382
+Node: debug-on-entry644691
+Node: debug-on-quit648988
+Node: edebug650038
+Node: Debuggen oefeningen654262
+Node: Conclusie656076
+Node: de-de661541
+Node: Killring664383
+Node: Wat de killring doet665180
+Node: current-kill666723
+Node: Code voor current-kill667423
+Node: current-kill begrijpen670261
+Node: Body van current-kill671098
+Node: Uitwijding over fout674420
+Node: Het element vaststellen675653
+Node: yank679411
+Node: yank-pop682676
+Node: ring bestand685256
+Node: Volledige grafiek685651
+Node: Gelabeld voorbeeld686491
+Node: print-graph varlist688488
+Node: print-Y-axis690211
+Node: print-Y-axis in detail691064
+Node: Hoogte van label691874
+Node: Bereken het restant693891
+Node: Y-as element697757
+Node: Y-axis-column701520
+Node: print-Y-axis enalaatste703132
+Node: print-X-axis705113
+Node: Overeenkomsten verschillen706431
+Node: X-as tic marks707264
+Node: De gehele grafiek afdrukken714266
+Node: De finale versie715382
+Node: Test print-graph719637
+Node: Woorden in defuns grafisch weergeven721320
+Node: lambda723944
+Node: mapcar725823
+Node: Een andere bug727883
+Node: Finale afgedrukte grafiek733412
+Node: Vrije software en vrije handleidingen734363
+Node: GNU Free Documentation License740679
+Node: Index765868
+Node: Over de auteur805050
 
 End Tag Table
 
 
 Local Variables:
 coding: utf-8
-Info-documentlanguage: nl
 End:
