@@ -1,5 +1,5 @@
 \initial {%}
-\entry{@code {% @r {(remainder function)}}}{241}
+\entry{@code {% @r {(rest functie)}}}{242}
 \initial {'}
 \entry{@code {'} om te quoten}{3}
 \initial {(}
@@ -23,7 +23,7 @@
 \entry{Accumuleren, type recursief patroon}{137}
 \entry{@code {add-hook}}{205}
 \entry{@code {and}}{101, 151}
-\entry{Anonymous function}{255}
+\entry{Anonieme functie}{256}
 \entry{apostrof om te quoten}{3}
 \entry{@code {append-to-buffer}}{52}
 \entry{@code {apply}}{193}
@@ -34,11 +34,11 @@
 \entry{Argumenten}{11}
 \entry{Argumenten, variabel aantal}{13}
 \entry{@samp {argumentlijst} gedefinieerd}{27}
+\entry{As, horizontaal tonen}{247}
+\entry{As, verticaal tonen}{241}
 \entry{Auto Fill mode aangezet}{205}
 \entry{@code {autoload}}{210}
 \entry{Automatische mode selectie}{205}
-\entry{Axis, print horizontal}{247}
-\entry{Axis, print vertical}{240}
 \initial {B}
 \entry{@code {beginning-of-buffer}}{66}
 \entry{Bestanden laden}{209}
@@ -59,7 +59,7 @@
 \entry{@code {buffer-menu@r {, gebonden aan een toetscombinatie}}}{208}
 \entry{@code {buffer-name}}{20}
 \entry{Buffergrootte}{24}
-\entry{Bug, most insidious type}{258}
+\entry{Bug, meest verraderlijke type}{258}
 \entry{Byte compiling}{7}
 \initial {C}
 \entry{C, een uitweiding naar}{102}
@@ -88,6 +88,7 @@
 \entry{@samp {dan-deel} gedefinieerd}{38}
 \entry{Data typen}{12}
 \entry{Data typen van argumenten}{12}
+\entry{De gehele grafiek tonen}{251}
 \entry{De source van een functie vinden}{48}
 \entry{De waarde van een variabele zetten}{16}
 \entry{@code {de-de}}{228}
@@ -170,15 +171,16 @@
 \entry{@code {global-set-key}}{208}
 \entry{@code {global-unset-key}}{208}
 \entry{Grafiek prototype}{191}
-\entry{Graph, printing all}{251}
-\entry{@code {graph-body-print}}{196}
-\entry{@code {graph-body-print @r {Final version.}}}{252}
+\entry{Grafiek, alles tonen}{251}
+\entry{@code {grafiek-body-tonen}}{196}
+\entry{@code {grafiek-body-tonen @r {Finale versie.}}}{252}
 \initial {H}
 \entry{Hanteren van de killring}{230}
+\entry{Hele grafiek tonen}{251}
 \entry{Herhaling (loops)}{116}
 \entry{Het evalueren van een binnenste lijst}{8}
 \entry{@code {hoogste-van-ranges}}{187}
-\entry{Horizontal axis printing}{247}
+\entry{Horizontale as tonen}{247}
 \entry{Hulp bij formatteren}{3}
 \entry{Hulp bij lijsten typen}{3}
 \initial {I}
@@ -190,7 +192,6 @@
 \entry{@code {insert-buffer}}{61}
 \entry{@code {insert-buffer@r {, nieuwe versie body}}}{66}
 \entry{@code {insert-buffer-substring}}{52}
-\entry{Insidious type of bug}{258}
 \entry{Installeer een functiedefinitie}{28}
 \entry{Interactieve functies}{29}
 \entry{Interactieve opties}{31}
@@ -214,7 +215,7 @@
 \entry{Killring overzicht}{113}
 \initial {L}
 \entry{Ladekast, metafoor voor een symbool}{111}
-\entry{@code {lambda}}{255}
+\entry{@code {lambda}}{256}
 \entry{@samp {lege string} gedefinieerd}{46}
 \entry{@code {lengte-lijst-bestand}}{177}
 \entry{@code {length}}{81}
@@ -290,17 +291,10 @@
 \entry{@samp {predicate} gedefinieerd}{14}
 \entry{Primitieve functies}{26}
 \entry{Primitieven geschreven in C}{26}
-\entry{Print horizontal axis}{247}
-\entry{Print vertical axis}{240}
 \entry{@code {print-elementen-recursief}}{131}
 \entry{@code {print-elements-of-list}}{118}
-\entry{@code {print-graph @r {Final version.}}}{253}
-\entry{@code {print-graph} varlist}{240}
 \entry{@code {print-X-axis}}{250}
-\entry{@code {print-X-axis-numbered-line}}{250}
-\entry{@code {print-X-axis-tic-line}}{249}
 \entry{@code {print-Y-axis}}{246}
-\entry{Printing the whole graph}{251}
 \entry{@code {progn}}{89}
 \entry{Prototype grafiek}{191}
 \entry{@code {push@r {, voorbeeld}}}{100}
@@ -326,8 +320,8 @@
 \entry{Region, wat is het}{42}
 \entry{Reguliere expressie voor tellen van woorden}{158}
 \entry{Reguliere expressie zoekopdrachten}{143}
-\entry{Remainder function, @code {%}}{241}
 \entry{Repetitie voor tellen van woorden}{158}
+\entry{Rest functie, @code {%}}{242}
 \entry{@code {reverse}}{189}
 \entry{Ring, een lijst maken zoals een}{230}
 \entry{@file {ring.el} bestand}{238}
@@ -381,6 +375,12 @@
 \entry{Text Mode aangezet}{205}
 \entry{Toestcombinaties opnieuw binden}{208}
 \entry{Toets ontkoppelen}{207}
+\entry{Toon horizontale as}{247}
+\entry{Toon verticale as}{241}
+\entry{@code {toon-grafiek @r {Finale versie.}}}{253}
+\entry{@code {toon-grafiek} varlist}{240}
+\entry{@code {toon-X-as-genummerde-regel}}{250}
+\entry{@code {toon-X-as-tic-line}}{249}
 \entry{Typen van data}{12}
 \initial {U}
 \entry{Uitstel in recursie}{138}
@@ -397,10 +397,11 @@
 \entry{Verbreden}{74}
 \entry{Verbreden, voorbeeld van}{75}
 \entry{Verkeerde type argument}{13}
+\entry{Verraderlijk type bug}{258}
 \entry{Versie van Emacs, kiezen}{212}
 \entry{@code {versimpelde-beginning-of-buffer}}{49}
 \entry{Versmallen}{74}
-\entry{Vertical axis printing}{240}
+\entry{Verticale as tonen}{241}
 \entry{Vind functiedocumentatie}{48}
 \entry{Voorbeeld @code {let} expressie}{35}
 \entry{Voorbeeldvariabele, @code {fill-column}}{9}
@@ -410,21 +411,20 @@
 \entry{@samp {wanneer-deel} gedefinieerd}{38}
 \entry{@code {what-line}}{75}
 \entry{@code {while}}{116}
-\entry{Whole graph printing}{251}
 \entry{Witte ruimte in lijsten}{2}
 \entry{Woorden en symbolen in defun}{171}
 \entry{Woorden tellen in een @code {defun}}{171, 173}
 \entry{Woorden, gedupliceerd}{228}
 \entry{Woorden, recursief geteld}{164}
 \initial {X}
-\entry{X axis printing}{247}
-\entry{@code {X-axis-element}}{250}
+\entry{X-as tonen}{247}
+\entry{@code {X-as-element}}{250}
 \initial {Y}
-\entry{Y axis printing}{240}
+\entry{Y-as tonen}{241}
+\entry{@code {Y-as-kolom @r {finale versie}}}{252}
+\entry{@code {Y-as-label-spacing}}{243}
+\entry{@code {Y-as-tic}}{244}
 \entry{@code {Y-axis-column}}{245}
-\entry{@code {Y-axis-column @r {Final version.}}}{252}
-\entry{@code {Y-axis-label-spacing}}{243}
-\entry{@code {Y-axis-tic}}{244}
 \entry{@code {yank}}{113, 235}
 \entry{@code {yank-pop}}{237}
 \initial {Z}

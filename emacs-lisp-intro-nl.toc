@@ -188,7 +188,7 @@
 @numsubsecentry{Een lijst van bestanden maken}{14.9.2}{Bestandenlijst}{183}
 @numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{187}
 @numchapentry{Een grafiek voorbereiden}{15}{Een grafiek voorbereiden}{191}
-@numsecentry{De functie @code {grafiek-body-tonen}}{15.1}{graph-body-print}{196}
+@numsecentry{De functie @code {grafiek-body-tonen}}{15.1}{grafiek-body-tonen}{196}
 @numsecentry{De functie recursieve-grafiek-body-tonen}{15.2}{recursieve-grafiek-body-tonen}{198}
 @numsecentry{Noodzaak voor getoonde assen}{15.3}{Getoonde assen}{199}
 @numsecentry{Oefening}{15.4}{Lijngrafiek oefening}{199}
@@ -222,21 +222,21 @@
 @appsecentry{@code {yank-pop}}{B.3}{yank-pop}{237}
 @appsecentry{Het bestand @file {ring.el}}{B.4}{ring bestand}{238}
 @appentry{Een grafiek met labels op de assen}{C}{Volledige grafiek}{239}
-@appsecentry{The @code {print-graph} Varlist}{C.1}{print-graph varlist}{240}
-@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{240}
-@appsubsecentry{Side Trip: Compute a Remainder}{C.2.1}{Bereken het restant}{241}
-@appsubsecentry{Construct a Y Axis Element}{C.2.2}{Y-as element}{243}
-@appsubsecentry{Create a Y Axis Column}{C.2.3}{Y-axis-column}{245}
-@appsubsecentry{The Not Quite Final Version of @code {print-Y-axis}}{C.2.4}{print-Y-axis enalaatste}{246}
-@appsecentry{De @code {print-X-axis} functie}{C.3}{print-X-axis}{247}
-@appsubsecentry{X-as tic marks}{C.3.1}{X-as tic marks}{247}
-@appsecentry{De hele grafiek afdrukken}{C.4}{De gehele grafiek afdrukken}{251}
-@appsubsecentry{Testing @code {print-graph}}{C.4.1}{Test print-graph}{253}
-@appsubsecentry{Graphing Numbers of Words and Symbols}{C.4.2}{Woorden in defuns grafisch weergeven}{254}
-@appsubsecentry{A @code {lambda} Expression: Useful Anonymity}{C.4.3}{lambda}{255}
-@appsubsecentry{The @code {mapcar} Function}{C.4.4}{mapcar}{257}
-@appsubsecentry{Another Bug @dots {} Most Insidious}{C.4.5}{Een andere bug}{258}
-@appsubsecentry{The Printed Graph}{C.4.6}{Finale afgedrukte grafiek}{260}
-@appentry{Vrije software en vrije handleidingen}{D}{Vrije software en vrije handleidingen}{261}
+@appsecentry{The @code {toon-grafiek} varlist}{C.1}{print-graph varlist}{240}
+@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{241}
+@appsubsecentry{Zijspoor: bereken een rest}{C.2.1}{Bereken het restant}{242}
+@appsubsecentry{Construeer een Y-as element}{C.2.2}{Y-as element}{243}
+@appsubsecentry{De Y-as kolom maken}{C.2.3}{Y-axis-column}{245}
+@appsubsecentry{De Niet Geheel Finale Versie van @code {toon-Y-as}}{C.2.4}{toon-Y-as enalaatste}{246}
+@appsecentry{De @code {print-X-as} functie}{C.3}{print-X-axis}{247}
+@appsubsecentry{X-as merktekens}{C.3.1}{X-as merktekens}{247}
+@appsecentry{De gehele grafiek tonen}{C.4}{De gehele grafiek afdrukken}{251}
+@appsubsecentry{@code {toon-grafiek} testen}{C.4.1}{Test print-graph}{253}
+@appsubsecentry{Grafiek met aantallen woorden en symbolen}{C.4.2}{Woorden in defuns grafisch weergeven}{255}
+@appsubsecentry{Een @code {lambda} expressie: nuttige anonimiteit}{C.4.3}{lambda}{256}
+@appsubsecentry{De @code {mapcar} function}{C.4.4}{mapcar}{257}
+@appsubsecentry{Weer een bug @dots {} meest verraderlijk}{C.4.5}{Een andere bug}{258}
+@appsubsecentry{De getoonde grafiek}{C.4.6}{Finale afgedrukte grafiek}{260}
+@appentry{Free Software and Free Manuals}{D}{Free Software and Free Manuals}{261}
 @appentry{GNU Free Documentation License}{E}{GNU Free Documentation License}{263}
 @unnchapentry{Index}{10002}{Index}{272}

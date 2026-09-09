@@ -306,7 +306,7 @@
 \entry{max}{193}{@code {max}}
 \entry{min}{193}{@code {min}}
 \entry{apply}{193}{@code {apply}}
-\entry{graph-body-print}{196}{@code {graph-body-print}}
+\entry{grafiek-body-tonen}{196}{@code {grafiek-body-tonen}}
 \entry{recursieve-grafiek-body-tonen}{198}{@code {recursieve-grafiek-body-tonen}}
 \entry{.emacs bestand}{200}{@file {.emacs} bestand}
 \entry{Je .emacs aanpassen}{200}{Je @file {.emacs} aanpassen}
@@ -381,36 +381,36 @@
 \entry{yank}{235}{@code {yank}}
 \entry{yank-pop}{237}{@code {yank-pop}}
 \entry{ring.el bestand}{238}{@file {ring.el} bestand}
-\entry{print-graph varlist}{240}{@code {print-graph} varlist}
-\entry{Axis, print vertical}{240}{Axis, print vertical}
-\entry{Y axis printing}{240}{Y axis printing}
-\entry{Vertical axis printing}{240}{Vertical axis printing}
-\entry{Print vertical axis}{240}{Print vertical axis}
-\entry{% (remainder function)}{241}{@code {% @r {(remainder function)}}}
-\entry{Remainder function, %}{241}{Remainder function, @code {%}}
-\entry{Y-axis-label-spacing}{243}{@code {Y-axis-label-spacing}}
+\entry{toon-grafiek varlist}{240}{@code {toon-grafiek} varlist}
+\entry{As, verticaal tonen}{241}{As, verticaal tonen}
+\entry{Y-as tonen}{241}{Y-as tonen}
+\entry{Verticale as tonen}{241}{Verticale as tonen}
+\entry{Toon verticale as}{241}{Toon verticale as}
+\entry{% (rest functie)}{242}{@code {% @r {(rest functie)}}}
+\entry{Rest functie, %}{242}{Rest functie, @code {%}}
+\entry{Y-as-label-spacing}{243}{@code {Y-as-label-spacing}}
 \entry{number-to-string}{243}{@code {number-to-string}}
-\entry{Y-axis-tic}{244}{@code {Y-axis-tic}}
+\entry{Y-as-tic}{244}{@code {Y-as-tic}}
 \entry{make-string}{244}{@code {make-string}}
 \entry{Y-axis-column}{245}{@code {Y-axis-column}}
 \entry{print-Y-axis}{246}{@code {print-Y-axis}}
-\entry{Axis, print horizontal}{247}{Axis, print horizontal}
-\entry{X axis printing}{247}{X axis printing}
-\entry{Print horizontal axis}{247}{Print horizontal axis}
-\entry{Horizontal axis printing}{247}{Horizontal axis printing}
-\entry{print-X-axis-tic-line}{249}{@code {print-X-axis-tic-line}}
-\entry{X-axis-element}{250}{@code {X-axis-element}}
-\entry{print-X-axis-numbered-line}{250}{@code {print-X-axis-numbered-line}}
+\entry{As, horizontaal tonen}{247}{As, horizontaal tonen}
+\entry{X-as tonen}{247}{X-as tonen}
+\entry{Toon horizontale as}{247}{Toon horizontale as}
+\entry{Horizontale as tonen}{247}{Horizontale as tonen}
+\entry{toon-X-as-tic-line}{249}{@code {toon-X-as-tic-line}}
+\entry{X-as-element}{250}{@code {X-as-element}}
+\entry{toon-X-as-genummerde-regel}{250}{@code {toon-X-as-genummerde-regel}}
 \entry{print-X-axis}{250}{@code {print-X-axis}}
-\entry{Printing the whole graph}{251}{Printing the whole graph}
-\entry{Whole graph printing}{251}{Whole graph printing}
-\entry{Graph, printing all}{251}{Graph, printing all}
-\entry{Y-axis-column Final version.}{252}{@code {Y-axis-column @r {Final version.}}}
-\entry{graph-body-print Final version.}{252}{@code {graph-body-print @r {Final version.}}}
-\entry{print-graph Final version.}{253}{@code {print-graph @r {Final version.}}}
-\entry{Anonymous function}{255}{Anonymous function}
-\entry{lambda}{255}{@code {lambda}}
+\entry{De gehele grafiek tonen}{251}{De gehele grafiek tonen}
+\entry{Hele grafiek tonen}{251}{Hele grafiek tonen}
+\entry{Grafiek, alles tonen}{251}{Grafiek, alles tonen}
+\entry{Y-as-kolom finale versie}{252}{@code {Y-as-kolom @r {finale versie}}}
+\entry{grafiek-body-tonen Finale versie.}{252}{@code {grafiek-body-tonen @r {Finale versie.}}}
+\entry{toon-grafiek Finale versie.}{253}{@code {toon-grafiek @r {Finale versie.}}}
+\entry{Anonieme functie}{256}{Anonieme functie}
+\entry{lambda}{256}{@code {lambda}}
 \entry{mapcar}{257}{@code {mapcar}}
-\entry{Bug, most insidious type}{258}{Bug, most insidious type}
-\entry{Insidious type of bug}{258}{Insidious type of bug}
+\entry{Bug, meest verraderlijke type}{258}{Bug, meest verraderlijke type}
+\entry{Verraderlijk type bug}{258}{Verraderlijk type bug}
 \entry{FDL, GNU Free Documentation License}{263}{FDL, GNU Free Documentation License}

@@ -293,8 +293,7 @@ van elk hoofdstuk.
 * Killring::                 Een appendix: hoe de killring werkt.
 * Volledige grafiek::        Hoe een grafiek met labels op de assen te 
                                maken.
-* Vrije software en vrije handleidingen::  Vrije software en vrije 
-                                             handleidingen
+* Free Software and Free Manuals::  Free Software and Free Manuals
 * GNU Free Documentation License::  GNU Free Documentation License
 * Index::                    Index
 * Over de auteur::           Over de auteur
@@ -796,7 +795,7 @@ Een grafiek voorbereiden
 
 
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek te tonen.
+* grafiek-body-tonen::       Hoe de body van een grafiek te tonen.
 * recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
 * Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
@@ -872,22 +871,22 @@ De @code{print-Y-axis} functie
 
 
 
-* print-Y-axis in detail::   print-Y-axis in detail
+* toon-Y-as in detail::      toon-Y-as in detail
 * Hoogte van label::         Welke hoogte voor de Y-as?
 * Bereken het restant::      Hoe het restant van een deling te berekenen.
 * Y-as element::             Een lijn voor de y-as construeren.
 * Y-axis-column::            Een lijst van y-as labels genereren.
-* print-Y-axis enalaatste::  Nog niet finale versie
+* toon-Y-as enalaatste::     Nog niet finale versie
 
-De @code{print-X-axis} functie
+De @code{print-X-as} functie
 
 
 
 * Overeenkomsten verschillen::  Grotendeels als @code{print-Y-axis}, maar 
                                   niet helemaal gelijk.
-* X-as tic marks::           Maak tic marks voor de horizontale as.
+* X-as merktekens::          Maak tic marks voor de horizontale as.
 
-De hele grafiek afdrukken
+De gehele grafiek tonen
 
 
 
@@ -11473,13 +11472,13 @@ Hier is een voorbeeld:
 
 @smallexample
 @group
-(defun kwadrateer-elke (getallen-lijst)
+(defun kwadrateer-elke (getallenlijst)
   "Kwadrateer elk van een GETALLEN Lijst, recursief."
-  (if (not getallen-lijst)                ; doe-opnieuw-test
+  (if (not getallenlijst)                ; doe-opnieuw-test
       nil
     (cons
-     (* (car getallen-lijst) (car getallen-lijst))
-     (kwadrateer-elke (cdr getallen-lijst))))) ; volgende-stap-expressie
+     (* (car getallenlijst) (car getallenlijst))
+     (kwadrateer-elke (cdr getallenlijst))))) ; volgende-stap-expressie
 @end group
 
 @group
@@ -11490,12 +11489,12 @@ Hier is een voorbeeld:
 
 @need 1200
 @noindent
-Wanneer @code{getallen-lijst} leeg is, doe niets. Maar als die inhoud heeft,
+Wanneer @code{getallenlijst} leeg is, doe niets. Maar als die inhoud heeft,
 construeer een lijst door het kwadraat van het eerste getal te combineren
 met een lijst met het resultaat van de recursieve aanroep.
 
 (Het voorbeeld volgt exact dit patroon: @code{nil} wordt teruggeven wanneer
-de getallen-lijst leeg is. In de praktijk schrijf je conditional zo dat het
+de getallenlijst leeg is. In de praktijk schrijf je conditional zo dat het
 de actie uitvoert wanneer de lijst met getallen niet leeg is.)
 
 De functie @code{print-elementen-recursief} (@pxref{Recursie met lijst, ,
@@ -11575,11 +11574,11 @@ Hier is een voorbeeld:
 
 @smallexample
 @group
-(defun sommeer-elementen (getallen-lijst)
-  "Tel de elementen van GETALLEN-LIJST bij elkaar op."
-  (if (not getallen-lijst)
+(defun sommeer-elementen (getallenlijst)
+  "Tel de elementen van GETALLENLIJST bij elkaar op."
+  (if (not getallenlijst)
       0
-    (+ (car getallen-lijst) (sommeer-elementen (cdr getallen-lijst)))))
+    (+ (car getallenlijst) (sommeer-elementen (cdr getallenlijst)))))
 @end group
 
 @group
@@ -15728,7 +15727,7 @@ automatische labeling van de assen.
 
 @menu
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek te tonen.
+* grafiek-body-tonen::       Hoe de body van een grafiek te tonen.
 * recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
 * Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
@@ -15750,7 +15749,7 @@ We kunnen deze functie @code{grafiek-body-tonen} noemen, het neemt de
 labels aan de grafiek, maar tonen alleen de body.
 
 De functie @code{grafiek-body-tonen} voegt een verticale kolom van
-sterretjes in voor elk element van de @code{getallen-lijst}. De hoogte van
+sterretjes in voor elk element van de @code{getallenlijst}. De hoogte van
 elke lijn wordt bepaald door de waarde van dat element in de
 @code{getallen-lijst}.
 
@@ -15846,7 +15845,7 @@ kunnen we@dots{}
 
 Wij zijn van plan om de kolommen van de grafiek van sterretjes te maken. Het
 aantal sterretjes in de kolom is het getal dat gespecificeerd wordt door het
-huidige element in de @code{getallen-lijst}. We moeten een lijst van
+huidige element in de @code{getallenlijst}. We moeten een lijst van
 sterretjes van de juist lengte maken voor elke aanroep van
 @code{insert-rectangle}. Wanneer deze lijst uitsluitend uit het aantal
 vereiste sterretjes bestaat, dan moeten point precies op het juiste aantal
@@ -15946,7 +15945,7 @@ Dus de operatie voor het vinden van de maximum hoogte van de grafiek is
 deze:
 
 @smallexample
-(setq max-grafiek-hoogte (apply 'max getallen-lijst))
+(setq max-grafiek-hoogte (apply 'max getallenlijst))
 @end smallexample
 
 Nu kunnen we terugkeren naar de vraag hoe een lijst van strings te maken
@@ -16101,9 +16100,9 @@ Nu komen we uiteindelijk bij onze eerste grafiek tonen functie. Deze toont
 de body van de grafiek en niet de labels voor de verticale en horizontale
 assen, daarom noemen we deze @code{grafiek-body-tonen}.
 
-@node graph-body-print
+@node grafiek-body-tonen
 @section De functie @code{grafiek-body-tonen}
-@findex graph-body-print
+@findex grafiek-body-tonen
 
 Na onze voorbereiding in de voorgaande sectie, is de functie
 @code{grafiek-body-tonen} eenvoudig. De functie toont kolom na kolom van
@@ -16276,8 +16275,8 @@ De wrapper is ongecompliceerd:
 @smallexample
 @group
 (defun recursieve-grafiek-body-tonen (getallenlijst)
-  "Print a bar graph of the GETALLENLIJST.
-The getallenlijst consists of the Y-axis values."
+  "Toon een staafgrafiek van  de GETALLENLIJST.
+De getallenlijst bestaat uit de Y-as values."
   (let ((hoogte (apply 'max getallenlijst))
         (symboolbreedte (length grafiek-wit))
         from-position)
@@ -16301,7 +16300,7 @@ op een kortere versie van de @code{getallenlijst} acteert.
 @group
 (defun recursieve-grafiek-body-tonen-intern
   (getallenlijst hoogte symboolbreedte)
-  "Print a bar graph.
+  "Toon een staafgrafiek.
 Gebruikt in de functie recursieve-grafiek-body-tonen."
 @end group
 
@@ -16477,7 +16476,7 @@ bestand, als die er is, maar de instellingen en definities in een
 @file{default.el} en een terminal type bestand overschrijven die in je
 @file{.emacs} bestand. (Je kunt interferenties tussen het terminal type
 bestand voorkomen door het instellen van @code{term-file-prefix} op
-@code{nil}. @xref{Eenvoudige uitbreiding, , Een eennvoudige uitbreiding})
+@code{nil}. @xref{Eenvoudige uitbreiding, , Een eennvoudige uitbreiding}.)
 
 @c Rewritten to avoid overfull hbox.
 Het @file{INSTALL} bestand dat bij de distributie meekomt bevat
@@ -19179,10 +19178,11 @@ eerder zijn geschreven.
 @node Volledige grafiek
 @appendix Een grafiek met labels op de assen
 
-Printed axes help you understand a graph.  They convey scale.  In an earlier
-chapter (@pxref{Readying a Graph, , Readying a Graph}), we wrote the code to
-print the body of a graph.  Here we write the code for printing and labeling
-vertical and horizontal axes, along with the body itself.
+Assen helpen je een grafiek te begrijpen. Zij brengen de schaal over. In een
+eerder hoofdstuk (@pxref{Een grafiek voorbereiden, , Een grafiek
+voorbereiden}), schreven we de code om de body van een grafiek te
+tonen. Hier schrijven we de code voor het tonen en labelen van vertikale en
+horizontale assen, samen met de body zelf.
 
 @menu
 * Gelabeld voorbeeld::       Gelabeld voorbeeld
@@ -19194,30 +19194,30 @@ vertical and horizontal axes, along with the body itself.
 
 @ifnottex
 @node Gelabeld voorbeeld
-@unnumberedsec Labeled Example Graph
+@unnumberedsec Gelabeld voorbeeld grafiek
 @end ifnottex
 
-Since insertions fill a buffer to the right and below point, the new graph
-printing function should first print the Y or vertical axis, then the body
-of the graph, and finally the X or horizontal axis.  This sequence lays out
-for us the contents of the function:
+Omdat invoegen een buffer rechts en onder point vult, moet de nieuwe
+toon-grafiek functie eerst de Y-as of verticale as tonen, dan de body van de
+grafiek en tenslotte de X-as of horizontale as. Deze volgorde legt de inhoud
+van de functie voor ons uit:
 
 @enumerate
 @item
-Set up code.
+Code opzetten
 
 @item
-Print Y axis.
+Y-as tonen.
 
 @item
-Print body of graph.
+Body van de grafiek tonen.
 
 @item
-Print X axis.
+X-as tonen.
 @end enumerate
 
 @need 800
-Here is an example of how a finished graph should look:
+Hier is een voorbeeld hoe de uiteindelijke grafiek er uit moet zien:
 
 @smallexample
 @group
@@ -19237,9 +19237,9 @@ Here is an example of how a finished graph should look:
 @end smallexample
 
 @noindent
-In this graph, both the vertical and the horizontal axes are labeled with
-numbers.  However, in some graphs, the horizontal axis is time and would be
-better labeled with months, like this:
+In deze grafiek zijn zowel de vertikale als de horizontale as gelabeld met
+getallen. In sommige grafieken is echter de horizontale as tijd en is die
+beter gelabeld met maanden, zoals dit:
 
 @smallexample
 @group
@@ -19249,87 +19249,86 @@ better labeled with months, like this:
           ********** **
      1 - **************
          |    ^      |
-         Jan  June   Jan
+         Jan  Juni   Jan
 @end group
 @end smallexample
 
-Indeed, with a little thought, we can easily come up with a variety of
-vertical and horizontal labeling schemes.  Our task could become
-complicated.  But complications breed confusion.  Rather than permit this,
-it is better choose a simple labeling scheme for our first effort, and to
-modify or replace it later.
+Met wat nadenken kunnen we gemakkelijk een verscheidenheid aan vertikale en
+horizontale labeling-schema's verzinnen. Onze taak kan gecompliceerd
+worden. Maar complicaties veroorzaken verwarring. In plaats van dit toe te
+staan, is het beter een eenvoudig labeling-schema voor onze eerste poging te
+kizen, en die later te veranderen of te vervangen.
 
 @need 1200
-These considerations suggest the following outline for the
-@code{print-graph} function:
+Deze overwegingen leidden tot de volgende outline voor onze
+@code{toon-grafiek} functie:
 
 @smallexample
 @group
-(defun print-graph (numbers-list)
-  "@var{documentation}@dots{}"
-  (let ((height  @dots{}
+(defun toon-grafiek (getallenlijst)
+  "@var{documentatie}@dots{}"
+  (let ((hoogte  @dots{}
         @dots{}))
 @end group
 @group
-    (print-Y-axis height @dots{} )
-    (graph-body-print numbers-list)
-    (print-X-axis @dots{} )))
+    (toon-Y-as hoogte @dots{} )
+    (grafiek-body-tonen getallenlijst)
+    (toon-X-as @dots{} )))
 @end group
 @end smallexample
 
-We can work on each part of the @code{print-graph} function definition in
-turn.
+We kunnen aan elk deel van de @code{toon-grafiek} functiedefinitie op zijn
+beurt werken.
 
 @node print-graph varlist
-@appendixsec The @code{print-graph} Varlist
-@cindex @code{print-graph} varlist
+@appendixsec The @code{toon-grafiek} varlist
+@cindex @code{toon-grafiek} varlist
 
-In writing the @code{print-graph} function, the first task is to write the
-varlist in the @code{let} expression.  (We will leave aside for the moment
-any thoughts about making the function interactive or about the contents of
-its documentation string.)
+Bij het schrijven van de functie @code{toon-grafiek} is de eerste taak het
+schrijven van de @code{let} expressie. (We laten op dit moment de gedachten
+over het interactief maken van de functie en over de inhoud van de
+documentatiestring even achterwege.)
 
-The varlist should set several values.  Clearly, the top of the label for
-the vertical axis must be at least the height of the graph, which means that
-we must obtain this information here.  Note that the @code{print-graph-body}
-function also requires this information.  There is no reason to calculate
-the height of the graph in two different places, so we should change
-@code{print-graph-body} from the way we defined it earlier to take advantage
-of the calculation.
+De varlist moet verschillende waardes setten. De hoogte van het label voor
+de verticale as moet tenmiste de hoogte van de grafiek zijn, wat betekent
+dat we die informatie hier moeten verkrijgen. Merk op dat de functie
+@code{grafiek-body-tonen} ook deze informatie nodig heeft. Er is geen reden
+om de hoogte van de grafiek op twee verschillende plaatsen te berekenen en
+daarom moeten we @code{grafiek-body-tonen} zoals we die eerder definieerden
+aanpassen om van deze berekening gebruik te maken.
 
-Similarly, both the function for printing the X axis labels and the
-@code{print-graph-body} function need to learn the value of the width of
-each symbol.  We can perform the calculation here and change the definition
-for @code{print-graph-body} from the way we defined it in the previous
-chapter.
+Op dezelfde manier moeten zowel de functie voor het tonen van de X-as als de
+functie @code{toon-grafiek-body} de waarde van de breedte van elk symbool
+weten. We kunnen de berekening hier uitvoeren en de definitie aanpassen van
+@code{grafiek-body-tonen} zoals in het eerdere hoofdstuk beschreven.
 
-The length of the label for the horizontal axis must be at least as long as
-the graph.  However, this information is used only in the function that
-prints the horizontal axis, so it does not need to be calculated here.
+De lengte van het label voor de horizontale as moet minstens zo lang zijn
+als de grafiek. Deze informatie wordt echter alleen gebruikt in de functie
+die de horizontale as toont, dus die hoeven we hier niet te berekenen.
 
-These thoughts lead us directly to the following form for the varlist in the
-@code{let} for @code{print-graph}:
+Deze gedachten leiden ons direct tot de volgende vorm voor de varlist in de
+nieuwe @code{let} voor @code{toon-grafiek}.
 
 @smallexample
 @group
-(let ((height (apply 'max numbers-list)) ; @r{First version.}
-      (symbol-width (length graph-blank)))
+(let ((hoogte (apply 'max getallenlijst)) ; @r{Eerste versie..}
+      (symbol-width (length grafiek-wit)))
 @end group
 @end smallexample
 
 @noindent
-As we shall see, this expression is not quite right.
+Zoals we zullen zien is deze expressie niet helemaal juist.
 
 @need 2000
 @node print-Y-axis
 @appendixsec De @code{print-Y-axis} functie
-@cindex Axis, print vertical
-@cindex Y axis printing
-@cindex Vertical axis printing
-@cindex Print vertical axis
+@cindex As, verticaal tonen
+@cindex Y-as tonen
+@cindex Verticale as tonen
+@cindex Toon verticale as
 
-The job of the @code{print-Y-axis} function is to print a label for the
-vertical axis that looks like this:
+De taak van de functie @code{toon-Y-as} is een label voor de vertikale as te
+tonen die er zo uitziet:
 
 @smallexample
 @group
@@ -19347,85 +19346,86 @@ vertical axis that looks like this:
 @end smallexample
 
 @noindent
-The function should be passed the height of the graph, and then should
-construct and insert the appropriate numbers and marks.
+De functie moet de hoogte van de grafiek doorgegeven krijgen en moet dan de
+passende getallen en markeren construeren en invoegen.
 
 @menu
-* print-Y-axis in detail::   print-Y-axis in detail
+* toon-Y-as in detail::      toon-Y-as in detail
 * Hoogte van label::         Welke hoogte voor de Y-as?
 * Bereken het restant::      Hoe het restant van een deling te berekenen.
 * Y-as element::             Een lijn voor de y-as construeren.
 * Y-axis-column::            Een lijst van y-as labels genereren.
-* print-Y-axis enalaatste::  Nog niet finale versie
+* toon-Y-as enalaatste::     Nog niet finale versie
 @end menu
 
 @ifnottex
-@node print-Y-axis in detail
-@unnumberedsubsec The @code{print-Y-axis} Function in Detail
+@node toon-Y-as in detail
+@unnumberedsubsec De @code{toon-Y-as} functie in detail
 @end ifnottex
 
-It is easy enough to see in the figure what the Y axis label should look
-like; but to say in words, and then to write a function definition to do the
-job is another matter.  It is not quite true to say that we want a number
-and a tic every five lines: there are only three lines between the @samp{1}
-and the @samp{5} (lines 2, 3, and 4), but four lines between the @samp{5}
-and the @samp{10} (lines 6, 7, 8, and 9).  It is better to say that we want
-a number and a tic mark on the base line (number 1) and then that we want a
-number and a tic on the fifth line from the bottom and on every line that is
-a multiple of five.
+Het is makkelijk om in de afbeelding te zien hoe de Y-as label er uit moet
+zien. Maar om dat onder woorden te brengen en vervolgens een
+functiedefinitie voor die taak te schrijven is een ander verhaal. Het is
+niet helemaal waar te zeggen dat we een getal en een streepje op elke vijf
+regels willen. Er zijn slechts drie regels tussen de @samp{1} en de @samp{5}
+(regels 2, 3 en 4). maar vier regels tussen de @samp{5} en de @samp{10}
+(regels 6, 7, 8 en 9). Het is beter te zeggen dat we een getal en een
+streepje op de basisregel (het getal 1) en dan dat we een nummer en een
+streepje op de vijfde regel vanaf de onderkant en op elke regel die een
+meervoud van vijf is. 
 
 @ifnottex
 @node Hoogte van label
-@unnumberedsubsec What height should the label be?
+@unnumberedsubsec Op welke hoogte moet het label zijn?
 @end ifnottex
 
-The next issue is what height the label should be? Suppose the maximum
-height of tallest column of the graph is seven.  Should the highest label on
-the Y axis be @samp{5 -}, and should the graph stick up above the label? Or
-should the highest label be @samp{7 -}, and mark the peak of the graph? Or
-should the highest label be @code{10 -}, which is a multiple of five, and be
-higher than the topmost value of the graph?
+Het volgende probleem is wat de hoogte van het label moet zijn.  Stel dat de
+maximum hoogte van de grootste kolom van de grafiek zeven is. Moet het
+hoogste label op de Y-as @samp{5 -} zijn en moet de grafiek boven het label
+uitsteken? Of moet het hoogste label @code{10 -} zijn, wat een veelvoud van
+vijf is en hoger dan de hoogste waarde van de grafiek?
 
-The latter form is preferred.  Most graphs are drawn within rectangles whose
-sides are an integral number of steps long---5, 10, 15, and so on for a step
-distance of five.  But as soon as we decide to use a step height for the
-vertical axis, we discover that the simple expression in the varlist for
-computing the height is wrong.  The expression is @code{(apply 'max
-numbers-list)}.  This returns the precise height, not the maximum height
-plus whatever is necessary to round up to the nearest multiple of five.  A
-more complex expression is required.
+De laatste vorm heeft de voorkeur. De meeste grafieken worden getekend
+binnen rechthoeken waarvan de zijden een integraal aantal stappen lang
+zijn--5, 10, 15, enzovoorts voor een stapgrootte van vijf. Maar zodra we
+besluiten een staphoogte te gebruiken voor de vertikale as ontdekken we dat
+de eenvoudige expressie in de varlist om de hoogte uit te rekenen fout
+is. De expressie is @code{(apply 'max numbers-list)}. Dit geeft de exacte
+hoogte terug, niet de maximum hoogte plus wat nodig is om af te ronden op
+het dichtstbijzijnde meervoud van vijf. Een complexere expressie is nodig.
 
-As usual in cases like this, a complex problem becomes simpler if it is
-divided into several smaller problems.
+Zoals bij gevallen zoals deze gebruikelijk, wordt een complex probleem
+eenvoudiger wanneer het in verschillende kleinere problemen wordt opgedeeld.
 
-First, consider the case when the highest value of the graph is an integral
-multiple of five---when it is 5, 10, 15, or some higher multiple of five.
-We can use this value as the Y axis height.
+Ten eerste, beschouw het geval wanner de hoogste waarde van de grafiek een
+integraal meervoud van vijf is---wanneer het 5, 10, 15, of een hoger
+meervoud van vijf is. We kunnen deze waarde gebruiken als de hoogte van de
+Y-as.
 
-A fairly simply way to determine whether a number is a multiple of five is
-to divide it by five and see if the division results in a remainder.  If
-there is no remainder, the number is a multiple of five.  Thus, seven
-divided by five has a remainder of two, and seven is not an integral
-multiple of five.  Put in slightly different language, more reminiscent of
-the classroom, five goes into seven once, with a remainder of two.  However,
-five goes into ten twice, with no remainder: ten is an integral multiple of
-five.
+Een tamelijk eenvoudige manier om vast te stellen of een getal een meervoud
+van vijf is, is het door vijf te delen en te kijken of de deling een rest
+heeft. Wanneer er geen rest is, is het getal een meervoud van vijf. Dus,
+zeven gedeeld door vijf heeft een rest van twee, en zeven is geen integraal
+meervoud van vijf. In een iets andere taal, meer herinnerend aan het
+klaslokaal, vijf gaat eenmalig in zeven, met een rest van twee. Echter vijf
+gaat twee keer in tien, zonder rest: tien is een integraal meervoud van
+vijf.
 
 @node Bereken het restant
-@appendixsubsec Side Trip: Compute a Remainder
+@appendixsubsec Zijspoor: bereken een rest
 
-@findex % @r{(remainder function)}
-@cindex Remainder function, @code{%}
-In Lisp, the function for computing a remainder is @code{%}.  The function
-returns the remainder of its first argument divided by its second argument.
-As it happens, @code{%} is a function in Emacs Lisp that you cannot discover
-using @code{apropos}: you find nothing if you type @kbd{M-x apropos
-@key{RET} remainder @key{RET}}.  The only way to learn of the existence of
-@code{%} is to read about it in a book such as this or in the Emacs Lisp
-sources.
+@findex % @r{(rest functie)}
+@cindex Rest functie, @code{%}
+In Lisp is de functie om een rest uit te rekenen @code{%}. De functie geeft
+de rest terug van het eerste argument gedeeld door het tweede
+argument. Toevallig is @code{%} een functie in Emacs Lisp die je niet kunt
+ontdekken met @code{apropos}: je vindt niets wanneer je typt @kbd{M-x
+apropos @key{RET} remainder @key{RET}}. De enige manier om het bestaan van
+@code{%} te ontdekken is door het te lezen in een boek zoals dit of in de
+Emacs Lisp broncode.
 
-You can try the @code{%} function by evaluating the following two
-expressions:
+Je kunt de functie @code{%} uitproberen door het evalueren van de volgende
+twee expressies:
 
 @smallexample
 @group
@@ -19438,9 +19438,9 @@ expressions:
 @noindent
 The first expression returns 2 and the second expression returns 0.
 
-To test whether the returned value is zero or some other number, we can use
-the @code{zerop} function.  This function returns @code{t} if its argument,
-which must be a number, is zero.
+Om te testen of de teruggegeven waarde nul is of een ander getal, kunnen we
+de functie @code{zerop} gebruiken. Deze functie geeft @code{t} terug wanneer
+het argument, dat een getal moet zijn, nul is.
 
 @smallexample
 @group
@@ -19452,34 +19452,34 @@ which must be a number, is zero.
 @end group
 @end smallexample
 
-Thus, the following expression will return @code{t} if the height of the
-graph is evenly divisible by five:
+Dus geeft de volgende expressie @code{t} wanneer de hoogte van de grafiek
+deelbaar is door vijf:
 
 @smallexample
-(zerop (% height 5))
+(zerop (% hoogte 5))
 @end smallexample
 
 @noindent
-(The value of @code{height}, of course, can be found from @code{(apply 'max
-numbers-list)}.)
+(De waarde van @code{hoogte} kan natuurlijk worden gevonden met @code{(apply
+'max getallenlijst)}.)
 
-On the other hand, if the value of @code{height} is not a multiple of five,
-we want to reset the value to the next higher multiple of five.  This is
-straightforward arithmetic using functions with which we are already
-familiar.  First, we divide the value of @code{height} by five to determine
-how many times five goes into the number.  Thus, five goes into twelve
-twice.  If we add one to this quotient and multiply by five, we will obtain
-the value of the next multiple of five that is larger than the height.  Five
-goes into twelve twice.  Add one to two, and multiply by five; the result is
-fifteen, which is the next multiple of five that is higher than twelve.  The
-Lisp expression for this is:
+Anderzijds als de waarde van @code{hoogte} niet een meervoud van vijf is,
+willen we de waarde zetten op het eerstvolgende veelvoud van vijf. Dit is
+eenvoudige rekenkunde met functies waar we al vertrouwd mee zijn. Eerst
+deleen we de waarde van @code{hoogte} door vijf om vast te stellen hoeveel
+keer vijf in het getal past. Dus, vijf gaat twee keer in twaalf. Wanneer we
+één bij dit quotiënt optellen en met vijf vermenigvuldigen, rijgen we de
+waarde van het eerstvolgende meervoud van vijf dat groter dan de
+hoogte. Vijf gaat twee keer in twaalf. Tel een bij twee op en vermenigvuldig
+dat met met vijf. Het resultaat is vijftien, wat het eerste meervoud van
+vijf is dat groter is dan twaalf. De Lisp expressie hiervoor is:
 
 @smallexample
-(* (1+ (/ height 5)) 5)
+(* (1+ (/ hoogte 5)) 5)
 @end smallexample
 
 @noindent
-For example, if you evaluate the following, the result is 15:
+Bijvoorbeeld, als je het volgende evalueert, is het resultaat 15:
 
 @smallexample
 (* (1+ (/ 12 5)) 5)
@@ -19492,73 +19492,74 @@ value.  The best name I can think of for this variable is
 @code{Y-axis-label-spacing}.
 
 @need 1250
-Using this term, and an @code{if} expression, we produce the following:
+Met deze term en een @code{if} expressie, maken we het volgende: 
 
 @smallexample
 @group
-(if (zerop (% height Y-axis-label-spacing))
-    height
+(if (zerop (% hoogte Y-as-label-spacing))
+    hoogte
   ;; @r{else}
-  (* (1+ (/ height Y-axis-label-spacing))
-     Y-axis-label-spacing))
+  (* (1+ (/ hoogte Y-as-label-spacing))
+     Y-as-label-spacing)))
 @end group
 @end smallexample
 
 @noindent
-This expression returns the value of @code{height} itself if the height is
-an even multiple of the value of the @code{Y-axis-label-spacing} or else it
-computes and returns a value of @code{height} that is equal to the next
-higher multiple of the value of the @code{Y-axis-label-spacing}.
+Deze expressie geeft de waarde van @code{hoogte} zelf als de hoogte een
+veelvoud van de waarde van @code{Y-as-label-spacing} is, zo niet dan
+berekent het een waarde voor @code{hoogte} dat gelijk is aan eerstvolgende
+veelvoud van de waarde van de @code{Y-as-label-spacing} en geeft die waarde
+terug.
 
-We can now include this expression in the @code{let} expression of the
-@code{print-graph} function (after first setting the value of
-@code{Y-axis-label-spacing}):
-@vindex Y-axis-label-spacing
+We kunnen nu deze expressie opnemen in de @code{let} expressie van de
+functie @code{toon-grafiek} (na eerst de waarde te zetten voor de
+@code{Y-as-label-spacing}):
+@vindex Y-as-label-spacing
 
 @smallexample
 @group
-(defvar Y-axis-label-spacing 5
-  "Number of lines from one Y axis label to next.")
+(defvar Y-as-label-spacing 5
+  "Aantal regels van een Y-as label tot de volgende.")
 @end group
 
 @group
 @dots{}
-(let* ((height (apply 'max numbers-list))
-       (height-of-top-line
-        (if (zerop (% height Y-axis-label-spacing))
-            height
+(let* ((hoogte (apply 'max numbers-list))
+       (hoogte-van-top-line
+        (if (zerop (% hoogte Y-as-label-spacing))
+            hoogte
 @end group
 @group
-          ;; @r{else}
-          (* (1+ (/ height Y-axis-label-spacing))
-             Y-axis-label-spacing)))
-       (symbol-width (length graph-blank))))
+          ;; @r{anders}
+          (* (1+ (/ hoogte Y-as-label-spacing))
+             Y-as-label-spacing)))
+       (symboolbreedte (length grafiek-wit))))
 @dots{}
 @end group
 @end smallexample
 
 @noindent
-(Note use of the @code{let*} function: the initial value of height is
-computed once by the @code{(apply 'max numbers-list)} expression and then
-the resulting value of @code{height} is used to compute its final value.
-@xref{fwd-para let, , The @code{let*} expression}, for more about
-@code{let*}.)
+(Merk het gebruik op van de functie @code{let*}: de initiële waarde van
+hoogte wordt een keer berekend door de @code{(apply 'max getallenlijst)}
+expressie en daarna wordt de resulterende waarde van @code{hoogte} gebruikt
+om de uiteindelijke waarde te bepalen. @xref{fwd-para let, , De @code{let*}
+expressie}, voor meer over @code{let*}.)
 
 @node Y-as element
-@appendixsubsec Construct a Y Axis Element
+@appendixsubsec Construeer een Y-as element
 
-When we print the vertical axis, we want to insert strings such as
-@w{@samp{5 -}} and @w{@samp{10 - }} every five lines.  Moreover, we want the
-numbers and dashes to line up, so shorter numbers must be padded with
-leading spaces.  If some of the strings use two digit numbers, the strings
-with single digit numbers must include a leading blank space before the
-number.
+Wanneer we de vertikale as tonen, willen we elke vijf regels strings
+invoegen zoals @w{@samp{5 -}} en @w{@samp{10 - }}. Bovendien willen de
+getallen en streepjes netjes uitlijnen, dus moeten spaties aan kortere
+getallen voorafgaan. Wanneer sommige strings uit twee cijfers bestaan,
+moeten de strings met een eencijferig beginnen met een spatie voor het
+getal.
 
 @findex number-to-string
-To figure out the length of the number, the @code{length} function is used.
-But the @code{length} function works only with a string, not with a number.
-So the number has to be converted from being a number to being a string.
-This is done with the @code{number-to-string} function.  For example,
+Om de lengte van het getal te bepalen wordt de functie @code{length}
+gebruikt. Maar de functie @code{length} werkt alleen met een string, niet
+met een getal. Het getal moet worden geconverteerd van een getal naar een
+string. Dit doet de functie @code{number-to-string}. Bijvoorbeeld:
 
 @smallexample
 @group
@@ -19571,163 +19572,163 @@ This is done with the @code{number-to-string} function.  For example,
 @end smallexample
 
 @noindent
-(@code{number-to-string} is also called @code{int-to-string}; you will see
-this alternative name in various sources.)
+(@code{number-to-string} wordt ook @code{int-to-string} genoemd. Je zult
+deze alternatieve naam in diverse bronnen tegenkomen.)
 
-In addition, in each label, each number is followed by a string such as
-@w{@samp{ - }}, which we will call the @code{Y-axis-tic} marker.  This
-variable is defined with @code{defvar}:
+Verder wordt in elk label elk getal gevolgd door een string zoals @w{@samp{
+- }}, die we het @code{Y-as-tic} merkteken noemen. Deze variabele wordt
+gedefinieerd met @code{defvar}:
 
-@vindex Y-axis-tic
+@vindex Y-as-tic
 @smallexample
 @group
-(defvar Y-axis-tic " - "
-   "String that follows number in a Y axis label.")
+(defvar Y-as-tic  " - "
+    "String die na een getal volgt in een Y as label.")
 @end group
 @end smallexample
 
-The length of the Y label is the sum of the length of the Y axis tic mark
-and the length of the number of the top of the graph.
+De lengte van het Y label is de som van de lengte van het Y-as-tic merkteken
+en de lengte van het getal op de top van de grafiek.
 
 @smallexample
-(length (concat (number-to-string height) Y-axis-tic)))
+(length (concat (number-to-string height) Y-as-tic)))
 @end smallexample
 
-This value will be calculated by the @code{print-graph} function in its
-varlist as @code{full-Y-label-width} and passed on.  (Note that we did not
-think to include this in the varlist when we first proposed it.)
+Deze waarde wordt uitgerekend door de functie @code{print-grafiek} in de
+varlist als @code{complete-Y-label-breedte} en doorgegeven. (Merk op date er
+niet aan dachten dit in de varlist op te nemen toen we die eerder
+voorstelden.)
 
-To make a complete vertical axis label, a tic mark is concatenated with a
-number; and the two together may be preceded by one or more spaces depending
-on how long the number is.  The label consists of three parts: the
-(optional) leading spaces, the number, and the tic mark.  The function is
-passed the value of the number for the specific row, and the value of the
-width of the top line, which is calculated (just once) by
-@code{print-graph}.
+Om een complete verticale as label te maken wordt een tic merkteken aan een
+getal vastgemaakt en de twee samen kunnen worden voorafgegaan door een of
+meer spaties afhankelijk van de lengte van het getal. Het label bestaat uit
+drie delen: de (optionele) inleidende spaties, het getal en het tic
+merkteken. De functie krijgt de waarde van het getal voor een specifieke rij
+doorgegeven, en de waarde van de breedte van de topregel, die (slechts één
+keer) wordt berekend door @code{print-grafiek}.
 
 @smallexample
 @group
-(defun Y-axis-element (number full-Y-label-width)
-  "Construct a NUMBERed label element.
-A numbered element looks like this `  5 - ',
-and is padded as needed so all line up with
-the element for the largest number."
+(defun Y-as-element (getal volle-Y-label-breedte)
+    "Construceer een label element met GETAL.
+ Een label element ziet er zo uit `  5 - ',
+ en begint indien nodig met spaties zodat ze allemaal
+ uitlijnen met het element met het grootste getal."
 @end group
 @group
-  (let* ((leading-spaces
-         (- full-Y-label-width
+  (let* ((inleidende-spaties
+         (- volle-Y-label-breedte
             (length
-             (concat (number-to-string number)
-                     Y-axis-tic)))))
+             (concat (number-to-string getal)
+                     Y-as-tic)))))
 @end group
 @group
     (concat
-     (make-string leading-spaces ? )
-     (number-to-string number)
-     Y-axis-tic)))
+     (make-string inleidende-spaties ? )
+     (number-to-string getal)
+     Y-as-tic)))
 @end group
 @end smallexample
 
-The @code{Y-axis-element} function concatenates together the leading spaces,
-if any; the number, as a string; and the tic mark.
+De functie @code{Y-as-element} plakt de inleidende spaties, voor zover die
+er zijn, het getal, als een string en het merkteken aan elkaar.
 
-To figure out how many leading spaces the label will need, the function
-subtracts the actual length of the label---the length of the number plus the
-length of the tic mark---from the desired label width.
+Om uit te zoeken hoeveel inleidende spaties het label moet krijgen, trekt de
+functie de lengte van het label---de lengte van het getal plus de lengte van
+het merkteken---van het breedte van het gewenste label af.
 
 @findex make-string
-Blank spaces are inserted using the @code{make-string} function.  This
-function takes two arguments: the first tells it how long the string will be
-and the second is a symbol for the character to insert, in a special
-format.  The format is a question mark followed by a blank space, like this,
-@samp{? }.  @xref{Character Type, , Character Type, elisp, The GNU Emacs
-Lisp Reference Manual}, for a description of the syntax for characters.  (Of
-course, you might want to replace the blank space by some other character
-@dots{} You know what to do.)
+Met de functie @code{make-string} worden de spaties ingevoegd. Deze functie
+heeft twee argumenten: het eerste zegt hoe lang de string moet worden en de
+tweede is het symbool van het in te voegen karakter, in een speciaal
+formaat. Het formaat is een vraagteken gevold door een spatie, zoals dit,
+@samp{? }. @xref{Character Type, , Character Type, elisp, The GNU Emacs Lisp
+Reference Manual}, voor een beschrijving van de syntax van
+karakters. (Natuurlijk zou je de spatie willen vervangen door een ander
+karakter @dots{} Je weet wat je doen moet.)
 
-The @code{number-to-string} function is used in the concatenation
-expression, to convert the number to a string that is concatenated with the
-leading spaces and the tic mark.
+De functie @code{number-to-string} wordt gebruik in de concatenation
+expressie. om het getal om te zetten in een string die aan de inleidende
+spaties en het merkteken geplakt wordt.
 
 @node Y-axis-column
-@appendixsubsec Create a Y Axis Column
+@appendixsubsec De Y-as kolom maken
 
-The preceding functions provide all the tools needed to construct a function
-that generates a list of numbered and blank strings to insert as the label
-for the vertical axis:
+De voorgaande functies leveren alle tool nodig om een functie te construeren
+die ene lijst van genummerde en blanco strings genereert om in te voegen als
+label voor de verticale as.
 
 @findex Y-axis-column
 @smallexample
 @group
-(defun Y-axis-column (height width-of-label)
-  "Construct list of Y axis labels and blank strings.
-For HEIGHT of line above base and WIDTH-OF-LABEL."
-  (let (Y-axis)
+(defun Y-as-kolom (hoogte breedte-van-label)
+  "Construceer lijst van Y-as labels en blanco strings.
+Voor HOOGTE van line boven de bases en BREEDTE-VAN-LABEL."
+   (let (Y-as)
 @group
 @end group
-    (while (> height 1)
-      (if (zerop (% height Y-axis-label-spacing))
-          ;; @r{Insert label.}
-          (setq Y-axis
+    (while (> hoogte 1)
+      (if (zerop (% hoogte Y-as-label-spacing))
+          ;; @r{Invoegen label.}
+          (setq Y-as
                 (cons
-                 (Y-axis-element height width-of-label)
-                 Y-axis))
+                 (Y-as-element hoogte breedte-van-label)
+                 Y-as))
 @group
 @end group
-        ;; @r{Else, insert blanks.}
-        (setq Y-axis
+        ;; @r{Anders, invoegen spaties.}
+        (setq Y-as
               (cons
-               (make-string width-of-label ? )
-               Y-axis)))
-      (setq height (1- height)))
-    ;; @r{Insert base line.}
-    (setq Y-axis
-          (cons (Y-axis-element 1 width-of-label) Y-axis))
-    (nreverse Y-axis)))
+               (make-string breedte-van-label ? )
+               Y-as)))
+      (setq hoogte (1- hoogte)))
+    ;; @r{Invoegen base line.}
+    (setq Y-as
+          (cons (Y-as-element 1 breedte-van-label) Y-as))
+    (nreverse Y-as)))
 @end group
 @end smallexample
 
-In this function, we start with the value of @code{height} and repetitively
-subtract one from its value.  After each subtraction, we test to see whether
-the value is an integral multiple of the @code{Y-axis-label-spacing}.  If it
-is, we construct a numbered label using the @code{Y-axis-element} function;
-if not, we construct a blank label using the @code{make-string} function.
-The base line consists of the number one followed by a tic mark.
+In deze functie starten we met de waarde van @code{hoogte} en trekken
+respectievelijk één van de zijn waarde af. Na elke aftrekking testen we om
+te zien of de waarde een integraal meervoud is van de functie
+@code{Y-as-label-spacing}. Zo niet, dan construeren we een blanco regel met
+de functie @code{make-string}. De base line bestaat uit het getal één gevold
+door een merkteken.
 
 @need 2000
-@node print-Y-axis enalaatste
-@appendixsubsec The Not Quite Final Version of @code{print-Y-axis}
+@node toon-Y-as enalaatste
+@appendixsubsec De Niet Geheel Finale Versie van @code{toon-Y-as}
 
-The list constructed by the @code{Y-axis-column} function is passed to the
-@code{print-Y-axis} function, which inserts the list as a column.
+De door de functie @code{Y-as-kolom} geconstrueerde lijst wordt doorgegeven
+aan de functie @code{toon-Y-as}, die de lijst als kolom invoegt.
 
 @findex print-Y-axis
 @smallexample
 @group
-(defun print-Y-axis (height full-Y-label-width)
-  "Insert Y axis using HEIGHT and FULL-Y-LABEL-WIDTH.
-Height must be the maximum height of the graph.
-Full width is the width of the highest label element."
-;; Value of height and full-Y-label-width
-;; are passed by print-graph.
+(defun toon-Y-as (hoogte volle-Y-label-breedte)
+  "Voeg Y-as in met HOOGTE en VOLLE-Y-LABEL-BREEDTE.
+Hoogte moet de maximum hoogte van de grafiek zijn.
+Volle breedte is de breedte van het hoogte  label element."
+;; De waarde van hoogte en volle-Y-label-breedte
+;; worden doorgegeven door toon-grafiek.
 @end group
 @group
   (let ((start (point)))
     (insert-rectangle
-     (Y-axis-column height full-Y-label-width))
-    ;; @r{Place point ready for inserting graph.}
+     (Y-as-kolom hoogte volle-Y-label-breedte))
+    ;; @r{Zet point klaar om de grafiek in te voegen.}
     (goto-char start)
-    ;; @r{Move point forward by value of} full-Y-label-width
-    (forward-char full-Y-label-width)))
+    ;; @r{Verplaats point voorwaarts met de waarde van} volle-Y-label-breedte
+    (forward-char volle-Y-label-breedte)))
 @end group
 @end smallexample
 
-The @code{print-Y-axis} uses the @code{insert-rectangle} function to insert
-the Y axis labels created by the @code{Y-axis-column} function.  In
-addition, it places point at the correct position for printing the body of
-the graph.
+De @code{toon-Y-as} gebruikt de functie @code{insert-rectangle} om de Y-as
+labels in te voegen die zijn gemaakt door de functie @code{Y-as-kolom}. Ook
+plaatst die point op de juiste plek om de body van de grafiek te tonen.
 
-You can test @code{print-Y-axis}:
+Je kunt de @code{toon-Y-as} testen: 
 
 @enumerate
 @item
@@ -19735,11 +19736,11 @@ Installeer
 
 @smallexample
 @group
-Y-axis-label-spacing
-Y-axis-tic
-Y-axis-element
-Y-axis-column
-print-Y-axis
+Y-as-label-spacing
+Y-as-tic
+Y-as-element
+Y-as-kolom
+toon-Y-as
 @end group
 @end smallexample
 
@@ -19747,12 +19748,12 @@ print-Y-axis
 Kopieer de volgende expressie:
 
 @smallexample
-(print-Y-axis 12 5)
+(toon-Y-as 12 5)
 @end smallexample
 
 @item
-Switch to the @file{*scratch*} buffer and place the cursor where you want
-the axis labels to start.
+Schakel naar het @file{*scratch*} buffer en plaats de cursor daar waar je de
+as labels wilt starten.
 
 @item
 Typ @kbd{M-:} (@code{eval-expression}).
@@ -19762,7 +19763,7 @@ Yank de @code{grafiek-body-tonen} expressie in het minibuffer met @kbd{C-y}
 (@code{yank)}.
 
 @item
-Press @key{RET} to evaluate the expression.
+Druk op @key{RET} om de expressie te evalueren.
 @end enumerate
 
 Emacs will print labels vertically, the top one being @w{@samp{10 -@w{ }}}.
@@ -19772,14 +19773,14 @@ getting rid of what might appear as a bug.)
 
 @need 2000
 @node print-X-axis
-@appendixsec De @code{print-X-axis} functie
-@cindex Axis, print horizontal
-@cindex X axis printing
-@cindex Print horizontal axis
-@cindex Horizontal axis printing
+@appendixsec De @code{print-X-as} functie
+@cindex As, horizontaal tonen
+@cindex X-as tonen
+@cindex Toon horizontale as
+@cindex Horizontale as tonen
 
-X axis labels are much like Y axis labels, except that the ticks are on a
-line above the numbers.  Labels should look like this:
+X-as labes lijken erg op Y as labes, behvale dat de merktekens boven een
+regel met getallen staan. De labels moeten er zo uitzien:
 
 @smallexample
 @group
@@ -19788,152 +19789,154 @@ line above the numbers.  Labels should look like this:
 @end group
 @end smallexample
 
-The first tic is under the first column of the graph and is preceded by
-several blank spaces.  These spaces provide room in rows above for the Y
-axis labels.  The second, third, fourth, and subsequent ticks are all spaced
-equally, according to the value of @code{X-axis-label-spacing}.
+Het eerste merkteken staat onder de eerste kolom van de grafiek en wordt
+voorafgegaan door meerdere spatie. Deze spates geven ruimte in rijen er
+boven voor de Y-as labels. De tweede, derde ne volgende merktekens staan op
+gelijke afstand, overeenkomstig met de waarde van @code{X-as-label-spacing}.
 
-The second row of the X axis consists of numbers, preceded by several blank
-spaces and also separated according to the value of the variable
-@code{X-axis-label-spacing}.
+De tweede rij van de X-as bestaat uit getallen, voorafgegaan door meerdere
+spaties en eveneens gescheiden volgens de waarde van de variabele
+@code{X-as-label-spacing}.
 
-The value of the variable @code{X-axis-label-spacing} should itself be
-measured in units of @code{symbol-width}, since you may want to change the
-width of the symbols that you are using to print the body of the graph
-without changing the ways the graph is labeled.
+De waarde van de variabele @code{X-as-label-spacing} zelf moet gemeten
+woorden in eenheden van @code{symbol-width}, omdat je de breedte van de
+symbolen die je gebruikt om de grafiek te tonen zou willen aanpassen zonder
+de manier waarop de grafiek wordt gelabeld te veranderen.
 
 @menu
 * Overeenkomsten verschillen::  Grotendeels als @code{print-Y-axis}, maar 
                                   niet helemaal gelijk.
-* X-as tic marks::           Maak tic marks voor de horizontale as.
+* X-as merktekens::          Maak tic marks voor de horizontale as.
 @end menu
 
 @ifnottex
 @node Overeenkomsten verschillen
-@unnumberedsubsec Similarities and differences
+@unnumberedsubsec Overeenkomsten en verschillen
 @end ifnottex
 
-The @code{print-X-axis} function is constructed in more or less the same
-fashion as the @code{print-Y-axis} function except that it has two lines:
-the line of tic marks and the numbers.  We will write a separate function to
-print each line and then combine them within the @code{print-X-axis}
-function.
+De functie @code{toon-X-as} wordt min of meer op dezelfde manier
+geconstrueerd als de functie @code{toon-Y-as} behalve dat het twee regels
+bevat: een regel met merktekens en een met getallen. We schrijven een aparte
+functie om elke regel te tonen en combineren die dan in de @code{toon-X-as}.
 
-This is a three step process:
+Dit is een proces in drie stappen:
 
 @enumerate
 @item
-Write a function to print the X axis tic marks,
-@code{print-X-axis-tic-line}.
+Schrijf een functie om de X-as merktekens te tonen,
+@code{print-X-as-tic-line}.
 
 @item
-Write a function to print the X numbers, @code{print-X-axis-numbered-line}.
+Schrijf een functie om de X getallen te tonen,
+@code{print-X-as-genummerd-line}.
 
 @item
-Write a function to print both lines, the @code{print-X-axis} function,
-using @code{print-X-axis-tic-line} and @code{print-X-axis-numbered-line}.
+Schrijf een functie die beide regels toont, de functie @code{toon-X-as}, met
+@code{print-X-as-tic-line} en @code{print-X-as-genummerd-line}.
 @end enumerate
 
-@node X-as tic marks
-@appendixsubsec X-as tic marks
+@node X-as merktekens
+@appendixsubsec X-as merktekens
 
-The first function should print the X axis tic marks.  We must specify the
-tic marks themselves and their spacing:
+De eerste functie moet de X-as merktekens tonen. We moeten de merktekens
+zelf speicificeren en hun onderlinge afstand.
 
 @smallexample
 @group
-(defvar X-axis-label-spacing
-  (if (boundp 'graph-blank)
-      (* 5 (length graph-blank)) 5)
-  "Number of units from one X axis label to next.")
+(defvar X-as-label-spacing
+  (if (boundp 'grafiek-wit)
+      (* 5 (length grafiek-wit)) 5)
+  "Aantal eenheden tussen een X as label tot de volgende.")
 @end group
 @end smallexample
 
 @noindent
-(Note that the value of @code{graph-blank} is set by another @code{defvar}.
-The @code{boundp} predicate checks whether it has already been set;
-@code{boundp} returns @code{nil} if it has not.  If @code{graph-blank} were
-unbound and we did not use this conditional construction, we would enter the
-debugger and see an error message saying @samp{@w{Debugger entered--Lisp
-error:} @w{(void-variable graph-blank)}}.)
+(Merk op dat de waarde van @code{grafiek-wit} door een andere @code{defvar}
+wordt gezet. Het predicaat @code{boundp} controleert of het al gezet is,
+@code{boundp} geeft @code{nil} terug wanneer dat niet het geval is. Wanneer
+@code{grafiek-wit} ongebonden zou zijn en we deze conditionele constructie
+niet zouden gebruiken, zouden we de debugger ingaan en een foutboodschap
+zien die zegt @samp{@w{Debugger entered--Lisp error:} @w{(void-variable
+grafiek-wit)}}.)
 
 @need 1200
-Here is the @code{defvar} for @code{X-axis-tic-symbol}:
+Hier is de @code{defvar} voor @code{X-as-tic-symbol}:
 
 @smallexample
 @group
-(defvar X-axis-tic-symbol "|"
-  "String to insert to point to a column in X axis.")
+(defvar X-as-tic-symbol "|"
+  "String in te voegen die wijst naar een kolom in de X-as.")
 @end group
 @end smallexample
 
 @need 1250
-The goal is to make a line that looks like this:
+Het doel is een regel te maken zie er zo uit ziet:
 
 @smallexample
        |   |    |    |
 @end smallexample
 
-The first tic is indented so that it is under the first column, which is
-indented to provide space for the Y axis labels.
+Het eerste merkteken is ingesprongen zodat die onder de eerste kolom staat,
+die ingesprongen is om ruimte te maken voor de Y-as labels.
 
-A tic element consists of the blank spaces that stretch from one tic to the
-next plus a tic symbol.  The number of blanks is determined by the width of
-the tic symbol and the @code{X-axis-label-spacing}.
+Een merkteken bestaat uit spaties van het ene merkteken tot het volgende
+plus het merkteken symbool. Het aantal spaties wordt bepaald door de breedte
+van het merkteken symbool en de @code{X-as-label-spacing}.
 
 @need 1250
 De code ziet er zo uit:
 
 @smallexample
 @group
-;;; X-axis-tic-element
+;;; X-as-merkteken-element
 @dots{}
 (concat
  (make-string
-  ;; @r{Make a string of blanks.}
-  (-  (* symbol-width X-axis-label-spacing)
-      (length X-axis-tic-symbol))
+  ;; @r{Maak een string spaties.}
+  (-  (* symbol-width X-as-label-spacing)
+      (length X-as-tic-symbol))
   ? )
- ;; @r{Concatenate blanks with tic symbol.}
- X-axis-tic-symbol)
+ ;; @r{Plak spaties aan X-as-tic-symbol.}
+ X-as-tic-symbol)
 @dots{}
 @end group
 @end smallexample
 
-Next, we determine how many blanks are needed to indent the first tic mark
-to the first column of the graph.  This uses the value of
-@code{full-Y-label-width} passed it by the @code{print-graph} function.
+Hierna stellen we vast hoeveel spaties nodig zijn voor het inspringen van
+het eerste merkteken naar de eerste kolom in de grafiek. Dit gebruikt de
+waarde van @code{volle-Y-label-breedte} die wordt doorgegeven door de
+functie @code{toon-grafiek}.
 
 @need 1250
-The code to make @code{X-axis-leading-spaces} looks like this:
+De code om @code{X-as-leading-spaces} te maken ziet er zo uit:
 
 @smallexample
 @group
-;; X-axis-leading-spaces
+;; X-as-leading-spaces
 @dots{}
-(make-string full-Y-label-width ? )
+(make-string volle-Y-label-breedte ? )
 @dots{}
 @end group
 @end smallexample
 
-We also need to determine the length of the horizontal axis, which is the
-length of the numbers list, and the number of ticks in the horizontal axis:
+We moeten ook de lengte van de horizontale as vaststellen, dat is de lengte
+van de getallenlijst, en het aantal merktekens in de horizontale as:
 
 @smallexample
 @group
-;; X-length
+;; X-lengte
 @dots{}
-(length numbers-list)
+(length getallenlijst)
 @end group
 
 @group
-;; tic-width
+;; merkteken-breedte
 @dots{}
-(* symbol-width X-axis-label-spacing)
+(* symbol-width X-axs-label-spacing)
 @end group
 
 @group
-;; number-of-X-ticks
+;; aantal-merktekens
 (if (zerop (% (X-length tic-width)))
     (/ (X-length tic-width))
   (1+ (/ (X-length tic-width))))
@@ -19941,16 +19944,17 @@ length of the numbers list, and the number of ticks in the horizontal axis:
 @end smallexample
 
 @need 1250
-All this leads us directly to the function for printing the X axis tic line:
+Dit alles leidt ons direct naar de functie om de X-as merkteken regel te
+tonen:
 
-@findex print-X-axis-tic-line
+@findex toon-X-as-tic-line
 @smallexample
 @group
-(defun print-X-axis-tic-line
-  (number-of-X-tics X-axis-leading-spaces X-axis-tic-element)
-  "Print ticks for X axis."
-    (insert X-axis-leading-spaces)
-    (insert X-axis-tic-symbol)  ; @r{Under first column.}
+(defun toon-X-as-tic-line
+  (number-of-X-tics X-as-leading-spaces X-as-tic-element)
+  "Toon ticks for X as."
+    (insert X-as-leading-spaces)
+    (insert X-as-tic-symbol)  ; @r{Onder eerste kolom.}
 @end group
 @group
     ;; @r{Insert second tic in the right spot.}
@@ -19963,85 +19967,85 @@ All this leads us directly to the function for printing the X axis tic line:
              X-axis-tic-symbol))
 @end group
 @group
-    ;; @r{Insert remaining ticks.}
+    ;; @r{Voeg resterende merktekens in.}
     (while (> number-of-X-tics 1)
-      (insert X-axis-tic-element)
+      (insert X-as-tic-element)
       (setq number-of-X-tics (1- number-of-X-tics))))
 @end group
 @end smallexample
 
-The line of numbers is equally straightforward:
+De regels met getallen en even makkelijk:
 
 @need 1250
-First, we create a numbered element with blank spaces before each number:
+Eerst maken we een genummerd element met spaties voor elk getal:
 
-@findex X-axis-element
+@findex X-as-element
 @smallexample
 @group
-(defun X-axis-element (number)
-  "Construct a numbered X axis element."
+(defun X-as-element (getal)
+  "Construeer een genummerd X-as element."
   (let ((leading-spaces
-         (-  (* symbol-width X-axis-label-spacing)
-             (length (number-to-string number)))))
+         (-  (* symbol-width X-as-label-spacing)
+             (length (number-to-string getal)))))
     (concat (make-string leading-spaces ? )
-            (number-to-string number))))
+            (number-to-string getal))))
 @end group
 @end smallexample
 
-Next, we create the function to print the numbered line, starting with the
-number 1 under the first column:
+Vervolgens creëren we de functie om de genummerde regel te tonen, beginnend
+met nummer 1 onder de eerste kolom.
 
-@findex print-X-axis-numbered-line
+@findex toon-X-as-genummerde-regel 
 @smallexample
 @group
-(defun print-X-axis-numbered-line
-  (number-of-X-tics X-axis-leading-spaces)
-  "Print line of X-axis numbers"
-  (let ((number X-axis-label-spacing))
-    (insert X-axis-leading-spaces)
+(defun toon-X-as-numbered-line
+  (number-of-X-tics X-as-leading-spaces)
+  "Toon regel X-as getallen"
+  (let ((getal X-as-label-spacing))
+    (insert X-as-leading-spaces)
     (insert "1")
 @end group
 @group
     (insert (concat
              (make-string
-              ;; @r{Insert white space up to next number.}
-              (-  (* symbol-width X-axis-label-spacing) 2)
+              ;; @r{Voeg witte ruimte in tot het volgende getal.}
+              (-  (* symbol-width X-as-label-spacing) 2)
               ? )
-             (number-to-string number)))
+             (number-to-string getal)))
 @end group
 @group
-    ;; @r{Insert remaining numbers.}
-    (setq number (+ number X-axis-label-spacing))
+    ;; @r{Voeg resterende getallen in.}
+    (setq getal (+ getal X-as-label-spacing))
     (while (> number-of-X-tics 1)
-      (insert (X-axis-element number))
-      (setq number (+ number X-axis-label-spacing))
+      (insert (X-as-element getal))
+      (setq getal(+ getal X-as-label-spacing))
       (setq number-of-X-tics (1- number-of-X-tics)))))
 @end group
 @end smallexample
 
-Finally, we need to write the @code{print-X-axis} that uses
-@code{print-X-axis-tic-line} and @code{print-X-axis-numbered-line}.
+Tenslotte moeten de @code{toon-X-as} schrijven die gebruik maakt van de
+@code{toon-X-as-tic-line} en @code{toon-X-as-numbered-line}.
 
-The function must determine the local values of the variables used by both
-@code{print-X-axis-tic-line} and @code{print-X-axis-numbered-line}, and then
-it must call them.  Also, it must print the carriage return that separates
-the two lines.
+De functie moet de lokale waarden van de variabelen vast stellen die door
+zowel @code{toon-X-as-tic-line} als @code{toon-X-as-numbered-line} gebruikt
+worden en moeten we ze aanroepen. Ook met het een einde regelteken tonen,
+dat de twee regels van elkaar scheidt.
 
-The function consists of a varlist that specifies five local variables, and
-calls to each of the two line printing functions:
+De functie bestaat uit een varlist die vijf lokale variabelen specificeert
+en de twee toon-regel functies aanroept.
 
 @findex print-X-axis
 @smallexample
 @group
-(defun print-X-axis (numbers-list)
-  "Print X axis labels to length of NUMBERS-LIST."
+(defun toon-X-as (getallenlijst)
+  "Toon X as labels voor de lengte van GETALLENLIJST."
   (let* ((leading-spaces
-          (make-string full-Y-label-width ? ))
+          (make-string volle-Y-label-breedte ? ))
 @end group
 @group
-       ;; symbol-width @r{is provided by} graph-body-print
-       (tic-width (* symbol-width X-axis-label-spacing))
-       (X-length (length numbers-list))
+       ;; symbol-width @r{wordt verstrekt door} grafiek-body-tonen
+       (tic-width (* symbol-width X-as-label-spacing))
+       (X-length (length getallenlijst))
 @end group
 @group
        (X-tic
@@ -20049,14 +20053,14 @@ calls to each of the two line printing functions:
          (make-string
 @end group
 @group
-          ;; @r{Make a string of blanks.}
-          (-  (* symbol-width X-axis-label-spacing)
-              (length X-axis-tic-symbol))
+          ;; @r{Maak een string van spaties.}
+          (-  (* symbol-width X-as-label-spacing)
+              (length X-as-tic-symbol))
           ? )
 @end group
 @group
-         ;; @r{Concatenate blanks with tic symbol.}
-         X-axis-tic-symbol))
+         ;; @r{Concatenate spaties met tic symbol.}
+         X-as-tic-symbol))
 @end group
 @group
        (tic-number
@@ -20065,20 +20069,20 @@ calls to each of the two line printing functions:
           (1+ (/ X-length tic-width)))))
 @end group
 @group
-    (print-X-axis-tic-line tic-number leading-spaces X-tic)
+    (toon-X-as-tic-line tic-number leading-spaces X-tic)
     (insert "\n")
-    (print-X-axis-numbered-line tic-number leading-spaces)))
+    (toon-X-as-numbered-line tic-number leading-spaces)))
 @end group
 @end smallexample
 
 @need 1250
-You can test @code{print-X-axis}:
+Je kunt @code{toon-X-as} testen:
 
 @enumerate
 @item
-Install @code{X-axis-tic-symbol}, @code{X-axis-label-spacing},
-@code{print-X-axis-tic-line}, as well as @code{X-axis-element},
-@code{print-X-axis-numbered-line}, and @code{print-X-axis}.
+Installeer @code{X-as-tic-symbol}, @code{X-as-label-spacing},
+@code{toon-X-as-tic-line} en @code{X-as-element},
+@code{toon-X-as-genummerde-regel} en @code{toon-X-as}.
 
 @item
 Kopieer de volgende expressie:
@@ -20086,29 +20090,29 @@ Kopieer de volgende expressie:
 @smallexample
 @group
 (progn
- (let ((full-Y-label-width 5)
+ (let ((volle-Y-label-breedte 5)
        (symbol-width 1))
-   (print-X-axis
+   (toon-X-as
     '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16))))
 @end group
 @end smallexample
 
 @item
-Switch to the @file{*scratch*} buffer and place the cursor where you want
-the axis labels to start.
+Schakel naar het @file{*scratch*} buffer en plaats de cursor daar waar je de
+as labels wilt starten.
 
 @item
 Typ @kbd{M-:} (@code{eval-expression}).
 
 @item
-Yank the test expression into the minibuffer with @kbd{C-y} (@code{yank)}.
+Yank de test expressie in het minibuffer met  @kbd{C-y} (@code{yank)}.
 
 @item
-Press @key{RET} to evaluate the expression.
+Druk op @key{RET} om de expressie te evalueren.
 @end enumerate
 
 @need 1250
-Emacs will print the horizontal axis like this:
+Emacs toont de horizontale as zoals dit:
 @sp 1
 
 @smallexample
@@ -20119,31 +20123,31 @@ Emacs will print the horizontal axis like this:
 @end smallexample
 
 @node De gehele grafiek afdrukken
-@appendixsec De hele grafiek afdrukken
-@cindex Printing the whole graph
-@cindex Whole graph printing
-@cindex Graph, printing all
+@appendixsec De gehele grafiek tonen
+@cindex De gehele grafiek tonen
+@cindex Hele grafiek tonen
+@cindex Grafiek, alles tonen
 
-Now we are nearly ready to print the whole graph.
+Nu zijn we bijna klaar om de gehele grafiek te tonen.
 
-The function to print the graph with the proper labels follows the outline
-we created earlier (@pxref{Full Graph, , A Graph with Labeled Axes}), but
-with additions.
+De functie om de grafiek met de juiste labels te tonen volgt de outline de
+we eerder gemaakt hebben (@pxref{Volledige grafiek, , Een grafiek met
+gelabelde assen}), maar met toevoegingen.
 
 @need 1250
-Here is the outline:
+Hier is de outline:
 
 @smallexample
 @group
-(defun print-graph (numbers-list)
-  "@var{documentation}@dots{}"
-  (let ((height  @dots{}
+(defun toon-grafiek (getallenlijst)
+  "@var{documentatie}@dots{}"
+  (let ((hoogte  @dots{}
         @dots{}))
 @end group
 @group
-    (print-Y-axis height @dots{} )
-    (graph-body-print numbers-list)
-    (print-X-axis @dots{} )))
+    (toon-Y-as hoogte @dots{} )
+    (grafiek-body-tonen getallenlijst)
+    (toon-X-as @dots{} )))
 @end group
 @end smallexample
 
@@ -20160,189 +20164,193 @@ Here is the outline:
 
 @ifnottex
 @node De finale versie
-@unnumberedsubsec Changes for the Final Version
+@unnumberedsubsec Wijzigingen voor de finale versie
 @end ifnottex
 
-The final version is different from what we planned in two ways: first, it
-contains additional values calculated once in the varlist; second, it
-carries an option to specify the labels' increment per row.  This latter
-feature turns out to be essential; otherwise, a graph may have more rows
-than fit on a display or on a sheet of paper.
+De finale versie wijkt op twee manieren af van wat we hadden gepland: ten
+eerste bevat het additionele eenmalig berekende waarden in de varlist, ten
+tweede heeft het een optie om de stapgrootte per regel van de regels te
+specificeren. Deze laatste eigenschap blijkt essentieel te zijn, anders zou
+de grafiek meer regels kunnen hebben dan op het display of een blad papier
+passen.
 
 @need 1500
-This new feature requires a change to the @code{Y-axis-column} function, to
-add @code{vertical-step} to it.  The function looks like this:
+Deze nieuwe eigenschap vereist een verandering in de functie
+@code{Y-as-kolom}, om de @code{vertikale-stap} er aan toe te voegen. De
+functie ziet er zo uit:
 
-@findex Y-axis-column @r{Final version.}
+@findex Y-as-kolom @r{finale versie}
 @smallexample
 @group
-;;; @r{Final version.}
-(defun Y-axis-column
-  (height width-of-label &optional vertical-step)
-  "Construct list of labels for Y axis.
-HEIGHT is maximum height of graph.
-WIDTH-OF-LABEL is maximum width of label.
-VERTICAL-STEP, an option, is a positive integer
-that specifies how much a Y axis label increments
-for each line.  For example, a step of 5 means
-that each line is five units of the graph."
+;;; @r{Finale versie.}
+(defun Y-as-kolom
+  (hoogte width-of-label &optional vertical-step)
+  "Construeer lijst van labels voor de Y as.
+HOOGTE is maximum hoogte van de grafiek.
+WIDTH-OF-LABEL is maximum breedte van label.
+VERTICAL-STEP, een optie, is een positieve integer
+die voor elke regel specificeert hoeveel een Y-as label
+toeneemt.
+Een stap van vijf bijvoorbeeld betekent dat elke regel
+vijf eenheden van de grafiek is."
 @end group
 @group
-  (let (Y-axis
-        (number-per-line (or vertical-step 1)))
-    (while (> height 1)
-      (if (zerop (% height Y-axis-label-spacing))
+  (let (Y-as
+        (getal-per-regel (or vertical-step 1)))
+    (while (> hoogte 1)
+      (if (zerop (% hoogte Y-as-label-spacing))
 @end group
 @group
-          ;; @r{Insert label.}
-          (setq Y-axis
+          ;; @r{Label invoegen.}
+          (setq Y-as
                 (cons
-                 (Y-axis-element
-                  (* height number-per-line)
+                 (Y-as-element
+                  (* hoogte getal-per-regel)
                   width-of-label)
-                 Y-axis))
+                 Y-as))
 @end group
 @group
-        ;; @r{Else, insert blanks.}
-        (setq Y-axis
+        ;; @r{Anders, voeg spaties in.}
+        (setq Y-as
               (cons
                (make-string width-of-label ? )
-               Y-axis)))
-      (setq height (1- height)))
+               Y-as)))
+      (setq hoogte (1- hoogte)))
 @end group
 @group
-    ;; @r{Insert base line.}
-    (setq Y-axis (cons (Y-axis-element
+    ;; @r{Invoegen basis regel.}
+    (setq Y-as (cons (Y-as-element
                         (or vertical-step 1)
                         width-of-label)
-                       Y-axis))
-    (nreverse Y-axis)))
+                       Y-as))
+    (nreverse Y-as)))
 @end group
 @end smallexample
 
-The values for the maximum height of graph and the width of a symbol are
-computed by @code{print-graph} in its @code{let} expression; so
-@code{graph-body-print} must be changed to accept them.
+De waarden voor de maximum hoogte van de grafiek en de breedte van een
+symbool worden berekend door @code{toon-grafiek} in de @code{let} expressie,
+dus @code{grafiek-body-tonen} moet worden aangepast om die te accepteren.
 
-@findex graph-body-print @r{Final version.}
+@findex grafiek-body-tonen  @r{Finale versie.}
 @smallexample
 @group
-;;; @r{Final version.}
-(defun graph-body-print (numbers-list height symbol-width)
-  "Print a bar graph of the NUMBERS-LIST.
-The numbers-list consists of the Y-axis values.
-HEIGHT is maximum height of graph.
-SYMBOL-WIDTH is number of each column."
+;;; @r{Finale versie.}
+(defun grafiek-body-gonen (getallenlijst hoogte symboolbreedte)
+  "Toon een staafgrafiek of the NUMBERS-LIST.
+The numbers-list consists of the Y-as values.
+HOOGTE is maximum hoogte van de grafiek.
+SYMBOOLBREEDTE is getal van elke kolom."
 @end group
 @group
-  (let (from-position)
-    (while numbers-list
-      (setq from-position (point))
+  (let (van-positie)
+    (while getallenlijst
+      (setq van-positie (point))
       (insert-rectangle
-       (column-of-graph height (car numbers-list)))
-      (goto-char from-position)
-      (forward-char symbol-width)
+       (kolom-van-grafiek hoogte (car getallenlijst)))
+      (goto-char van-positie)
+      (forward-char symboolbreedte)
 @end group
 @group
-      ;; @r{Draw graph column by column.}
+      ;; @r{Teken grafiek kolom voor kolom.}
       (sit-for 0)
-      (setq numbers-list (cdr numbers-list)))
-    ;; @r{Place point for X axis labels.}
-    (forward-line height)
+      (setq getallenlijst (cdr getallenlijst)))
+    ;; @r{Plaats point voor X as labels.}
+    (forward-line hoogte)
     (insert "\n")))
 @end group
 @end smallexample
 
 @need 1250
-Finally, the code for the @code{print-graph} function:
+Tenslotte de code voor de @code{toon-grafiek} functie: 
 
-@findex print-graph @r{Final version.}
+@findex toon-grafiek @r{Finale versie.}
 @smallexample
 @group
-;;; @r{Final version.}
-(defun print-graph
-  (numbers-list &optional vertical-step)
-  "Print labeled bar graph of the NUMBERS-LIST.
-The numbers-list consists of the Y-axis values.
+;;; @r{Finale versie.}
+(defun toon-grafiek
+  (getallenlijst &optional vertical-step)
+  "Toon gelabelde staafgrafiek van de GETALLENLIJST.
+De getallenlijst bestaat uit de Y-as waarden.
 @end group
 
 @group
-Optionally, VERTICAL-STEP, a positive integer,
-specifies how much a Y axis label increments for
-each line.  For example, a step of 5 means that
-each row is five units."
+Optioneel speficieert VERTICAL-STEP, een positieve
+ integer, hoe veel een Y as label toeneemt bij elke
+regel.  Een stap van 5 bijvoorbeeld betekent dat
+elke rij vijf eenheden is."
 @end group
 @group
-  (let* ((symbol-width (length graph-blank))
-         ;; @code{height} @r{is both the largest number}
-         ;; @r{and the number with the most digits.}
-         (height (apply 'max numbers-list))
+  (let* ((symboolbreedte (length grafiek-wit))
+         ;; @code{hoogte} @r{is zowel het grootste getal}
+         ;; @r{en het getal met de meeste cijfers.}
+         (hoogte (apply 'max getallenlijst))
 @end group
 @group
-         (height-of-top-line
-          (if (zerop (% height Y-axis-label-spacing))
-              height
+         (hoogte-van-top-line
+          (if (zerop (% hoogte Y-as-label-spacing))
+              hoogte
             ;; @r{else}
-            (* (1+ (/ height Y-axis-label-spacing))
-               Y-axis-label-spacing)))
+            (* (1+ (/ hoogte Y-as-label-spacing))
+               Y-as-label-spacing)))
 @end group
 @group
          (vertical-step (or vertical-step 1))
-         (full-Y-label-width
-          (length
+         (volle-Y-label-breedte          (length
 @end group
 @group
            (concat
             (number-to-string
-             (* height-of-top-line vertical-step))
-            Y-axis-tic))))
+             (* hoogte-van-top-line vertical-step))
+            Y-as-tic))))
 @end group
 
 @group
-    (print-Y-axis
-     height-of-top-line full-Y-label-width vertical-step)
+    (toon-Y-as
+     hoogte-van-top-line volle-Y-label-breedte vertical-step)
 @end group
 @group
-    (graph-body-print
-     numbers-list height-of-top-line symbol-width)
-    (print-X-axis numbers-list)))
+    (grafiek-body-tonen
+     getallenlijst hoogte-van-top-line symboolbreedte)
+    (print-X-as getallenlijst)))
 @end group
 @end smallexample
 
 @node Test print-graph
-@appendixsubsec Testing @code{print-graph}
+@appendixsubsec @code{toon-grafiek} testen
 
 @need 1250
-We can test the @code{print-graph} function with a short list of numbers:
+We kunnen de functie @code{toon-grafiek} testen met een korte lijst van
+getallen:
 
 @enumerate
 @item
-Install the final versions of @code{Y-axis-column}, @code{graph-body-print},
-and @code{print-graph} (in addition to the rest of the code.)
+Installeer de finale versie van @code{Y-as-kolom},
+@code{grafiek-body-tonen}, en @code{toon-grafiek} (als aanvulling op de rest
+van de code).
 
 @item
 Kopieer de volgende expressie:
 
 @smallexample
-(print-graph '(3 2 5 6 7 5 3 4 6 4 3 2 1))
+(toon-grafiek '(3 2 5 6 7 5 3 4 6 4 3 2 1))
 @end smallexample
 
 @item
-Switch to the @file{*scratch*} buffer and place the cursor where you want
-the axis labels to start.
+Schakel naar het @file{*scratch*} buffer en plaats de cursor daar waar je de
+as labels wilt starten.
 
 @item
 Typ @kbd{M-:} (@code{eval-expression}).
 
 @item
-Yank the test expression into the minibuffer with @kbd{C-y} (@code{yank)}.
+Yank de test expressie in het minibuffer met  @kbd{C-y} (@code{yank)}.
 
 @item
-Press @key{RET} to evaluate the expression.
+Druk op @key{RET} om de expressie te evalueren.
 @end enumerate
 
 @need 1250
-Emacs will print a graph that looks like this:
+Emacs toont een grafiek die er zo uit ziet:
 
 @smallexample
 @group
@@ -20363,16 +20371,16 @@ Emacs will print a graph that looks like this:
 @end smallexample
 
 @need 1200
-On the other hand, if you pass @code{print-graph} a @code{vertical-step}
-value of 2, by evaluating this expression:
+Anderzijds, als je @code{toon-grafiek} een @code{vertical-step} waarde van 2
+doorgeeft, door deze expressie te evalueren:
 
 @smallexample
-(print-graph '(3 2 5 6 7 5 3 4 6 4 3 2 1) 2)
+(toon-grafiek '(3 2 5 6 7 5 3 4 6 4 3 2 1) 2)
 @end smallexample
 
 @need 1250
 @noindent
-The graph looks like this:
+De grafiek ziet er zo uit:
 
 @smallexample
 @group
@@ -20393,28 +20401,29 @@ The graph looks like this:
 @end smallexample
 
 @noindent
-(A question: is the @samp{2} on the bottom of the vertical axis a bug or a
-feature? If you think it is a bug, and should be a @samp{1} instead, (or
-even a @samp{0}), you can modify the sources.)
+(Een vraag: is de @samp{2} aan de onderkant van de vertikale as een bug of
+een feature? Wanneer je denkt dat dit een bug is, en het een @samp{1} zou
+moeten zijn (of zelfs @samp{0}), kan je broncode aanpassen.)
 
 @node Woorden in defuns grafisch weergeven
-@appendixsubsec Graphing Numbers of Words and Symbols
+@appendixsubsec Grafiek met aantallen woorden en symbolen
 
-Now for the graph for which all this code was written: a graph that shows
-how many function definitions contain fewer than 10 words and symbols, how
-many contain between 10 and 19 words and symbols, how many contain between
-20 and 29 words and symbols, and so on.
+Nu naar de grafiek waarvoor al deze code is geschreven: een grafiek die
+toont hoeveel functiedefinities minder dan 10 woorden en symbolen bevatten,
+hoeveel tussen 10 en 19 woorden en symbolen bevatten, en hoeveel tussen 20
+en 29 woorden en symbolen bevatten, enzovoorts.
 
-This is a multi-step process.  First make sure you have loaded all the
-requisite code.
+Dit is een meervoudige stappen proces. Verzeker je eerst dat je al de
+benodigde code geladen hebt.
 
 @need 1500
-It is a good idea to reset the value of @code{top-of-ranges} in case you
-have set it to some different value.  You can evaluate the following:
+Het is een goed idee om de waarde van @code{hoogste-van-ranges} te resetten,
+in geval je dat op een of andere waarde gezet hebt. Je kunt het volgende
+evalueren:
 
 @smallexample
 @group
-(setq top-of-ranges
+(setq hoogste-van-ranges
  '(10  20  30  40  50
    60  70  80  90 100
   110 120 130 140 150
@@ -20425,18 +20434,18 @@ have set it to some different value.  You can evaluate the following:
 @end smallexample
 
 @noindent
-Next create a list of the number of words and symbols in each range.
+Maak nu een lijst van het aantal woorden in symbolen in elke range.
 
 @need 1500
 @noindent
-Evaluate the following:
+Evalueer het volgende:
 
 @smallexample
 @group
-(setq list-for-graph
+(setq lijst-voor-grafiek
        (defuns-per-range
          (sort
-          (recursive-lengths-list-many-files
+          (recursieve-lengte-lijst-veel-bestanden
            (directory-files "/usr/local/emacs/lisp"
                             t ".+el$"))
           '<)
@@ -20445,9 +20454,9 @@ Evaluate the following:
 @end smallexample
 
 @noindent
-On my old machine, this took about an hour.  It looked though 303 Lisp files
-in my copy of Emacs version 19.23.  After all that computing, the
-@code{list-for-graph} had this value:
+Op mijn oude machine duurde dit ongeveer een uur. Het ging door 303 Lisp
+bestanden in mijn installatie van Emacs versie 19.23. Na al daar rekenen, de
+@code{lijst-voor-grafiek} had deze waarde:
 
 @smallexample
 @group
@@ -20457,41 +20466,41 @@ in my copy of Emacs version 19.23.  After all that computing, the
 @end smallexample
 
 @noindent
-This means that my copy of Emacs had 537 function definitions with fewer
-than 10 words or symbols in them, 1,027 function definitions with 10 to 19
-words or symbols in them, 955 function definitions with 20 to 29 words or
-symbols in them, and so on.
+Dit betekent dat mijn installatie van Emacs 537 functiedefinities had met
+minder dan 10 woorden of symbolen, 1.027 functiedefinities met 10 tot 19
+woorden of symbolen, 955 functiedefinities met 20 tot 29 woorden of
+symbolen, enzovoorts.
 
-Clearly, just by looking at this list we can see that most function
-definitions contain ten to thirty words and symbols.
+Door gewoon naar deze lijst te kijken kunnen we duidelijk zijn dat de meeste
+functiedefinities tien tot dertig woorden en symbolen bevatten.
 
-Now for printing.  We do @emph{not} want to print a graph that is 1,030
-lines high @dots{} Instead, we should print a graph that is fewer than
-twenty-five lines high.  A graph that height can be displayed on almost any
-monitor, and easily printed on a sheet of paper.
+Nu naar het tonen. We willen @emph{geen} grafiek tonen die 1.030 regels hoog
+is @dots{} In plaats daarvan zouden we een grafiek tonen die minder dan
+vijfentwintig regels hoog is. Een grafiek van die hoogte kan op vrijwel elke
+monitor getoond worden en makkelijk op een vel papier afgedrukt worden.
 
-This means that each value in @code{list-for-graph} must be reduced to
-one-fiftieth its present value.
+Dit betekent dat elke waarde in de @code{lijst-voor-grafiek} moet worden
+gereduceerd tot een vijftigste van zijn huidige waarde.
 
-Here is a short function to do just that, using two functions we have not
-yet seen, @code{mapcar} and @code{lambda}.
+Hier is een korte functie die dat doet, met twee functies die nog niet
+gezien hebben, @code{mapcar} en @code{lambda}.
 
 @smallexample
 @group
-(defun one-fiftieth (full-range)
-  "Return list, each number one-fiftieth of previous."
+(defun een-vijftigste (full-range)
+  "Geef een lijst terug, met elk getal een vijftigste van de eerdere."
  (mapcar (lambda (arg) (/ arg 50)) full-range))
 @end group
 @end smallexample
 
 @node lambda
-@appendixsubsec A @code{lambda} Expression: Useful Anonymity
-@cindex Anonymous function
+@appendixsubsec Een @code{lambda} expressie: nuttige anonimiteit 
+@cindex Anonieme functie
 @findex lambda
 
-@code{lambda} is the symbol for an anonymous function, a function without a
-name.  Every time you use an anonymous function, you need to include its
-whole body.
+@code{lambda} is het symbool voor een anonieme functie, een functie zonder
+een naam. Elke keer dat je een anonieme functie gebruikt, dien je de gehele
+body er van op te nemen.
 
 @need 1250
 @noindent
@@ -20502,69 +20511,72 @@ Dus
 @end smallexample
 
 @noindent
-is a function that returns the value resulting from dividing whatever is
-passed to it as @code{arg} by 50.
+is een functie die de waarde teruggeeft die het resultaat is van datgene dat
+is doorgegeven als @code{arg} gedeeld door 50.
 
 @need 1200
-Earlier, for example, we had a function @code{multiply-by-seven}; it
-multiplied its argument by 7.  This function is similar, except it divides
-its argument by 50; and, it has no name.  The anonymous equivalent of
-@code{multiply-by-seven} is:
+Eerder bijvoorbeeld hadden we een functie
+@code{vermenigvuldig-met-zeven}. Het vermenigvuldigt het argument met
+7. Deze functie is vergelijkbaar, behalve dat die het argument door 50
+deelt, en dat die geen naam heeft. Het anonieme equivalent van
+@code{vermenigvuldig-met-zeven} is:
 
 @smallexample
-(lambda (number) (* 7 number))
+(lambda (getal) (* 7 getal))
 @end smallexample
 
 @noindent
-(@xref{defun, , The @code{defun} Macro}.)
+(@xref{defun, , De @code{defun} macro}.)
 
 @need 1250
 @noindent
 @c lambda example diagram #1
-If we want to multiply 3 by 7, we can write:
+Wanneer we 3 met 7 willen vermenigvuldigen, kunnen we schrijven:
 @sp 1
-@center @image{lambda-1}
+@center @image{lambda-1-nl}
 @sp 1
 
 @noindent
-This expression returns 21.
+Deze expressie geeft 21 terug.
 
 @need 1250
 @noindent
 @c lambda example diagram #2
-Similarly, we can write:
+Op dezelfde manier kunnen we schrijven:
 @sp 1
-@center @image{lambda-2}
+@center @image{lambda-2-nl}
 @sp 1
 
 @need 1250
 @noindent
 @c lambda example diagram #3
-If we want to divide 100 by 50, we can write:
+Wanneer we 100 door 50 willen delen, kunnen we schrijven:
 @sp 1
-@center @image{lambda-3}
+@center @image{lambda-3-nl}
 @sp 1
 
 @noindent
-This expression returns 2.  The 100 is passed to the function, which divides
-that number by 50.
+Deze expressie geeft 2 terug. De 100 is doorgegeven aan de functie, die dat
+getal deelt door 50.
 
 @xref{Lambda Expressions, , Lambda Expressions, elisp, The GNU Emacs Lisp
-Reference Manual}, for more about @code{lambda}.  Lisp and lambda
-expressions derive from the Lambda Calculus.
+Reference Manual}, voor meer over @code{lambda}.  Lisp en lambda expressies
+zijn afkomstig van de Lambda Calculus.
 
 @node mapcar
-@appendixsubsec The @code{mapcar} Function
+@appendixsubsec De @code{mapcar} function
 @findex mapcar
 
-@code{mapcar} is a function that calls its first argument with each element
-of its second argument, in turn.  The second argument must be a sequence.
+@code{mapcar} is een functie die het eerste argument beurtelings aanroept
+met elk element uit het tweede argument. Het tweede argument moet een reeks
+zijn.
 
-The @samp{map} part of the name comes from the mathematical phrase,
-``mapping over a domain'', meaning to apply a function to each of the
-elements in a domain.  The mathematical phrase is based on the metaphor of a
-surveyor walking, one step at a time, over an area he is mapping.  And
-@samp{car}, of course, comes from the Lisp notion of the first of a list.
+Het @samp{map} deel van de naam komt van de wiskundige zin ``over een domein
+mappen'', wat betekent een functie toepassen op elk van elementen in een
+domein. De wiskundige zin is gebaseerd op de metafoor van een lopende
+landmeter die, stap voor stap, over een gebied loopt dat om in kaart te
+brengen. En @samp{car} komt natuurlijk van de Lisp notitie van het eerste
+van een lijst.
 
 @need 1250
 @noindent
@@ -20578,27 +20590,27 @@ Bijvoorbeeld,
 @end smallexample
 
 @noindent
-The function @code{1+} which adds one to its argument, is executed on
-@emph{each} element of the list, and a new list is returned.
+De functie @code{1+} die een bij het argument optelt, wordt uitgevoerd op
+@emph{elk} element van de lijst, en een nieuwe lijst wordt teruggegeven.
 
-Contrast this with @code{apply}, which applies its first argument to all the
-remaining.  (@xref{Readying a Graph, , Readying a Graph}, for an explanation
-of @code{apply}.)
+Vergelijk dit met @code{apply}, die het eerste argument op alle resterende
+toepast. @xref{Een grafiek voorbereiden, , Een grafiek voorbereiden} voor
+een uitleg van @code{apply}.
 
 @need 1250
-In the definition of @code{one-fiftieth}, the first argument is the
-anonymous function:
+In de definitie van @code{een-vijftigste} is het eerste argument de anonieme
+functie:
 
 @smallexample
 (lambda (arg) (/ arg 50))
 @end smallexample
 
 @noindent
-and the second argument is @code{full-range}, which will be bound to
-@code{list-for-graph}.
+en het tweede argument is @code{full-range}, die gebonden wordt aan
+@code{lijst-voor-grafiek}.
 
 @need 1250
-The whole expression looks like this:
+De hele expressie ziet er zo uit:
 
 @smallexample
 (mapcar (lambda (arg) (/ arg 50)) full-range))
@@ -20607,19 +20619,19 @@ The whole expression looks like this:
 @xref{Mapping Functions, , Mapping Functions, elisp, The GNU Emacs Lisp
 Reference Manual}, for more about @code{mapcar}.
 
-Using the @code{one-fiftieth} function, we can generate a list in which each
-element is one-fiftieth the size of the corresponding element in
-@code{list-for-graph}.
+Met de functie @code{een-vijftigste} genereren we een lijst waarin elk
+element een vijftigste is van de grootte van het corresponderende element in
+de @code{lijst-voor-grafiek}.
 
 @smallexample
 @group
-(setq fiftieth-list-for-graph
-      (one-fiftieth list-for-graph))
+(setq vijftigste-lijst-voor-grafiek
+      (een-vijftigste lijst-voor-grafiek))
 @end group
 @end smallexample
 
 @need 1250
-The resulting list looks like this:
+De resulterende lijst ziet er zo uit:
 
 @smallexample
 @group
@@ -20629,51 +20641,51 @@ The resulting list looks like this:
 @end smallexample
 
 @noindent
-This, we are almost ready to print! (We also notice the loss of information:
-many of the higher ranges are 0, meaning that fewer than 50 defuns had that
-many words or symbols---but not necessarily meaning that none had that many
-words or symbols.)
+We zijn bijna klaar om de tonen! (We merken ook het verlies van informatie
+op: vele van de hogere ranges zijn 0, wat betekent minder dan 50 defuns
+hadden dat aantal woorden of symbolen---maar dat betekent niet
+noodzakelijkerwijs dat geen had veel woorden of symbolen.)
 
 @node Een andere bug
-@appendixsubsec Another Bug @dots{} Most Insidious
-@cindex Bug, most insidious type
-@cindex Insidious type of bug
+@appendixsubsec Weer een bug @dots{} meest verraderlijk
+@cindex Bug, meest verraderlijke type
+@cindex Verraderlijk type bug
 
-I said ``almost ready to print''! Of course, there is a bug in the
-@code{print-graph} function @dots{} It has a @code{vertical-step} option,
-but not a @code{horizontal-step} option.  The @code{top-of-range} scale goes
-from 10 to 300 by tens.  But the @code{print-graph} function will print only
-by ones.
+Ik zei ``bijna klaar om te tonen''! Natuurlijk is er een bug in de functie
+@code{toon-grafiek} @dots{} Het heeft een optie @code{vertical-step} maar
+geen optie @code{horizontal-step}. De @code{top-of-range} schaal gaat van 10
+tot 300 in stappen van tien. Maar de functie @code{toon-grafiek} toont
+alleen stappen van 1.
 
-This is a classic example of what some consider the most insidious type of
-bug, the bug of omission.  This is not the kind of bug you can find by
-studying the code, for it is not in the code; it is an omitted feature.
-Your best actions are to try your program early and often; and try to
-arrange, as much as you can, to write code that is easy to understand and
-easy to change.  Try to be aware, whenever you can, that whatever you have
-written, @emph{will} be rewritten, if not soon, eventually.  A hard maxim to
-follow.
+Dit is een klassiek voorbeeld van wat sommigen als het meest verraderlijke
+type bug beschouwen, de bug van weglating. Dit is niet het soort bug dat je
+kunt vinden door de code te bestuderen, omdat het niet in de code zit. Het
+is een weggelaten eigenschap. De beste acties zijn om je programma vroeg en
+vaak te testen en zo veel mogelijk te proberen code te schrijven die
+makkelijk te begrijpen en makkelijk te wijzigen is. Probeer je daar waar
+mogelijk bewust te zijn dat wat je ook hebt geschreven, @emph{wordt}
+herschreven, zo niet snel, dan uiteindelijk. Een belangrijk principe om te
+volgen.
 
-It is the @code{print-X-axis-numbered-line} function that needs the work;
-and then the @code{print-X-axis} and the @code{print-graph} functions need
-to be adapted.  Not much needs to be done; there is one nicety: the numbers
-ought to line up under the tic marks.  This takes a little thought.
+Het is de functie @code{toon-X-as-numbered-line} die het werk nodig heeft en
+de functies @code{toon-X-as} en @code{toon-grafiek} moeten worden
+aangepast. Er hoeft niet veel te gebeuren, er is één aandachtspunt: de
+getallen horen uitgelijnd onder de merktekens. Dat vergt wat nadenken.
 
 @need 1250
-Here is the corrected @code{print-X-axis-numbered-line}:
+Hier is de verbeterde @code{toon-X-as-numbered-line}:
 
 @smallexample
 @group
-(defun print-X-axis-numbered-line
-  (number-of-X-tics X-axis-leading-spaces
+(defun toon-X-as-numbered-line  (number-of-X-tics X-as-leading-spaces)
    &optional horizontal-step)
-  "Print line of X-axis numbers"
-  (let ((number X-axis-label-spacing)
+  "Toon regel X-as getallen"
+  (let ((getal X-as-label-spacing))
         (horizontal-step (or horizontal-step 1)))
 @end group
 @group
-    (insert X-axis-leading-spaces)
-    ;; @r{Delete extra leading spaces.}
+    (insert X-as-leading-spaces)
+    ;; @r{Verwijder extra inleidende spaties.}
     (delete-char
      (- (1-
          (length (number-to-string horizontal-step)))))
@@ -20681,51 +20693,50 @@ Here is the corrected @code{print-X-axis-numbered-line}:
              (make-string
 @end group
 @group
-              ;; @r{Insert white space.}
+              ;; @r{Voeg witte ruimte in.}
               (-  (* symbol-width
-                     X-axis-label-spacing)
+                     X-as-label-spacing)
                   (1-
                    (length
                     (number-to-string horizontal-step)))
                   2)
               ? )
              (number-to-string
-              (* number horizontal-step))))
+              (* getal horizontal-step))))
 @end group
 @group
-    ;; @r{Insert remaining numbers.}
-    (setq number (+ number X-axis-label-spacing))
+    ;; @r{Invoegen resterende getallen.}
+    (setq getal (+ getal X-as-label-spacing))
     (while (> number-of-X-tics 1)
       (insert (X-axis-element
-               (* number horizontal-step)))
-      (setq number (+ number X-axis-label-spacing))
+               (* getal horizontal-step)))
+      (setq getal (+ getal X-as-label-spacing))
       (setq number-of-X-tics (1- number-of-X-tics)))))
 @end group
 @end smallexample
 
 @need 1500
-If you are reading this in Info, you can see the new versions of
-@code{print-X-axis} @code{print-graph} and evaluate them.  If you are
-reading this in a printed book, you can see the changed lines here (the full
-text is too much to print).
+Wanneer je dit in Info lees, dan kun je de nieuwe versies van
+@code{toon-X-as} en @code{toon-grafiek} bekijken en evalueren. Wanneer je
+dit in een gedrukt boek leest, dan zie je de gewijzigde regels hier (de
+volledige tekst is te veel om af te drukken.)
 
 @iftex
 @smallexample
 @group
-(defun print-X-axis (numbers-list horizontal-step)
+(defun toon-X-as (getallenlijst horizontal-step)
   @dots{}
-    (print-X-axis-numbered-line
-     tic-number leading-spaces horizontal-step))
+    (toon-X-as-numbered-line     tic-number leading-spaces horizontal-step))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-graph
-  (numbers-list
+(defun toon-grafiek
+  (getallenlijst
    &optional vertical-step horizontal-step)
   @dots{}
-    (print-X-axis numbers-list horizontal-step))
+    (toon-X-as getallenlijst horizontal-step))
 @end group
 @end smallexample
 @end iftex
@@ -20733,20 +20744,20 @@ text is too much to print).
 @ifnottex
 @smallexample
 @group
-(defun print-X-axis (numbers-list horizontal-step)
-  "Print X axis labels to length of NUMBERS-LIST.
-Optionally, HORIZONTAL-STEP, a positive integer,
-specifies how much an X  axis label increments for
-each column."
+(defun toon-X-as (getallenlijst horizontal-step)
+  "Toon X axis labels op lengte van GETALLENLIJST.
+Optionally, HORIZONTAL-STEP, een positieve integer,
+specificeert hoe veel een X as label toeneemt voor
+elke kolom."
 @end group
 @group
-;; Value of symbol-width and full-Y-label-width
-;; are passed by print-graph.
+;; Waarde van symbol-width and volle-Y-label-breedte
+;; worden doorgegeven door toon-grafiek.
   (let* ((leading-spaces
-          (make-string full-Y-label-width ? ))
-       ;; symbol-width @r{is provided by} graph-body-print
-       (tic-width (* symbol-width X-axis-label-spacing))
-       (X-length (length numbers-list))
+          (make-string volle-Y-label-breedte ? ))
+       ;; symbol-width @r{wordt verstrekt door} grafiek-body-tonen
+       (tic-width (* symbol-width X-as-label-spacing))
+       (X-length (length getallenlijst))
 @end group
 @group
        (X-tic
@@ -20758,8 +20769,8 @@ each column."
           ? )
 @end group
 @group
-         ;; @r{Concatenate blanks with tic symbol.}
-         X-axis-tic-symbol))
+         ;; @r{Concatenate spaties met merkteken symbol.}
+         X-as-tic-symbol))
        (tic-number
         (if (zerop (% X-length tic-width))
             (/ X-length tic-width)
@@ -20767,60 +20778,59 @@ each column."
 @end group
 
 @group
-    (print-X-axis-tic-line
+    (toon-X-as-tic-line
      tic-number leading-spaces X-tic)
     (insert "\n")
-    (print-X-axis-numbered-line
+    (toon-X-as-numbered-line
      tic-number leading-spaces horizontal-step)))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-graph
-  (numbers-list &optional vertical-step horizontal-step)
-  "Print labeled bar graph of the NUMBERS-LIST.
-The numbers-list consists of the Y-axis values.
+(defun toon-grafiek
+  (getallenlijst &optional vertical-step horizontal-step)
+  "Toon gelabelde staafgrafiek van de GETALLENLIJST.
+De getallenlijst bestaat uit de Y-as waarden.
 @end group
 
 @group
-Optionally, VERTICAL-STEP, a positive integer,
-specifies how much a Y axis label increments for
-each line.  For example, a step of 5 means that
-each row is five units.
+Optioneel specificeert VERTICAL-STEP, een positieve
+integer, hoeveel een Y-as label toeneemt voor elke
+regel. Bijvoorbeeld een stap van 5 betekent dat
+elke rij vijf eenheden is.
 @end group
 
 @group
-Optionally, HORIZONTAL-STEP, a positive integer,
-specifies how much an X  axis label increments for
-each column."
-  (let* ((symbol-width (length graph-blank))
-         ;; @code{height} @r{is both the largest number}
-         ;; @r{and the number with the most digits.}
-         (height (apply 'max numbers-list))
+Optioneel specificeert HORIZONTAL-STEP, een
+positieve integer, hoeveel een X as label toeneemt
+voor elke kolom.
+  (let* ((symbol-width (length grafiek-wit))
+         ;; @code{hoogte} @r{is zowel het grootste getal}
+         ;; @r{en het getal met de meeste cijfers.}
+         (hoogte (apply 'max getallenlijst))
 @end group
 @group
-         (height-of-top-line
-          (if (zerop (% height Y-axis-label-spacing))
-              height
+         (hoogte-van-top-line
+          (if (zerop (% hoogte Y-as-label-spacing))
+              hoogte
             ;; @r{else}
-            (* (1+ (/ height Y-axis-label-spacing))
-               Y-axis-label-spacing)))
+            (* (1+ (/ hoogte Y-as-label-spacing))
+               Y-as-label-spacing)))
 @end group
 @group
          (vertical-step (or vertical-step 1))
-         (full-Y-label-width
-          (length
+         (volle-Y-label-breedte          (length
            (concat
             (number-to-string
              (* height-of-top-line vertical-step))
-            Y-axis-tic))))
+            Y-ass-tic))))
 @end group
 @group
-    (print-Y-axis
-     height-of-top-line full-Y-label-width vertical-step)
-    (graph-body-print
-        numbers-list height-of-top-line symbol-width)
+    (toon-Y-as
+     height-of-top-line volle-Y-label-breedte vertical-step)
+    (grafiek-body-tonen
+        getallenlijst height-of-top-line symbol-width)
     (print-X-axis numbers-list horizontal-step)))
 @end group
 @end smallexample
@@ -20841,7 +20851,7 @@ Here are all the graphing definitions in their final form:
   110 120 130 140 150
   160 170 180 190 200
   210 220 230 240 250)
- "List specifying ranges for `defuns-per-range'.")
+ "Lijst die de ranges voor `defuns-per-range' specificeert.")
 @end group
 
 @group
@@ -20856,25 +20866,25 @@ grafiek-wit moet even breed zijn als grafiek-symbool.")
 @end group
 
 @group
-(defvar Y-axis-tic " - "
-   "String that follows number in a Y axis label.")
+(defvar Y-as-tic  " - "
+    "String die na een getal volgt in een Y as label.")
 @end group
 
 @group
-(defvar Y-axis-label-spacing 5
-  "Number of lines from one Y axis label to next.")
+(defvar Y-as-label-spacing 5
+  "Aantal regels van een Y-as label tot de volgende.")
 @end group
 
 @group
-(defvar X-axis-tic-symbol "|"
-  "String to insert to point to a column in X axis.")
+(defvar X-as-tic-symbol "|"
+  "String in te voegen die wijst naar een kolom in de X-as.")
 @end group
 
 @group
-(defvar X-axis-label-spacing
-  (if (boundp 'graph-blank)
-      (* 5 (length graph-blank)) 5)
-  "Number of units from one X axis label to next.")
+(defvar X-as-label-spacing
+  (if (boundp 'grafiek-wit)
+      (* 5 (length grafiek-wit)) 5)
+  "Aantal eenheden tussen een X as label tot de volgende.")
 @end group
 @end smallexample
 
@@ -20908,7 +20918,7 @@ in een functiedefinitie."
 @end group
 
 @group
-  (message "Working on `%s' ... " filename)
+  (message "In bewerking `%s' ... " filename)
   (save-excursion
     (let ((buffer (find-file-noselect filename))
           (lengths-list))
@@ -20929,23 +20939,23 @@ in een functiedefinitie."
 
 @smallexample
 @group
-(defun lengths-list-many-files (list-of-files)
-  "Return list of lengths of defuns in LIST-OF-FILES."
-  (let (lengths-list)
+(defun lengte-lijst-veel-bestanden (lijst-met-bestanden)
+  "Geef een lijst terug met de lengte van defuns in LIJST-MET-BESTANDEN."
+  (let (lengteslijst)
 ;;; @r{true-or-false-test}
-    (while list-of-files
-      (setq lengths-list
+    (while lijst-met-bestanden
+      (setq lengteslijst
             (append
-             lengths-list
+             lengteslijst
 @end group
 @group
-;;; @r{Generate a lengths' list.}
-             (lengths-list-file
-              (expand-file-name (car list-of-files)))))
-;;; @r{Make files' list shorter.}
-      (setq list-of-files (cdr list-of-files)))
-;;; @r{Return final value of lengths' list.}
-    lengths-list))
+;;; @r{Genereer een lengths' list.}
+             (lengteslijst-file
+              (expand-file-name (car lijst-met-bestanden)))))
+;;; @r{Maak bestandenlijst korter.}
+      (setq lijst-met-bestanden (cdr lijst-met-bestanden)))
+;;; @r{Geef finale waarde van lengtesljst terug.}
+    lengteslijst))
 @end group
 @end smallexample
 
@@ -21001,19 +21011,18 @@ in een functiedefinitie."
 
 @smallexample
 @group
-(defun column-of-graph (max-graph-height actual-height)
-  "Return list of MAX-GRAPH-HEIGHT strings;
-ACTUAL-HEIGHT are graph-symbols.
-The graph-symbols are contiguous entries at the end
-of the list.
-The list will be inserted as one column of a graph.
-The strings are either graph-blank or graph-symbol."
+(defun kolom-van-grafiek (max-grafiek-hoogte actual-height)
+  "Geef een lijst terug van MAX-GRAFIEK-HOOGTE strings;
+ACTUELE-HOOGTE are graph-symbols.
+De grafiek-symbolen zijn aaneengesloten entries aan het
+einde van de lijst.
+De lijst wordt ingevoegd als een kolom van een grafiek.
+De strings zijn hetzij grafiek-wit dan wel grafiek-symbool."
 @end group
 
 @group
   (let ((insert-list nil)
-        (number-of-top-blanks
-         (- max-graph-height actual-height)))
+        (aantal-bovenste-spaties         (- max-grafiek-hoogte actuele-hoogte)))
 
     ;; @r{@code{grafiek-symbolen} invullen.}
     (while (> actuele-hoogte 0)
@@ -21035,58 +21044,58 @@ The strings are either graph-blank or graph-symbol."
 
 @smallexample
 @group
-(defun Y-axis-element (number full-Y-label-width)
-  "Construct a NUMBERed label element.
-A numbered element looks like this `  5 - ',
-and is padded as needed so all line up with
-the element for the largest number."
+(defun Y-as-element (getal volle-Y-label-breedte)
+    "Construceer een label element met GETAL.
+ Een label element ziet er zo uit `  5 - ',
+ en begint indien nodig met spaties zodat ze allemaal
+ uitlijnen met het element met het grootste getal."
 @end group
 @group
-  (let* ((leading-spaces
-         (- full-Y-label-width
+  (let* ((inleidende-spaties
+         (- volle-Y-label-breedte
             (length
-             (concat (number-to-string number)
-                     Y-axis-tic)))))
+             (concat (number-to-string getal)
+                     Y-as-tic)))))
 @end group
 @group
     (concat
-     (make-string leading-spaces ? )
-     (number-to-string number)
-     Y-axis-tic)))
+     (make-string inleidende-spaties ? )
+     (number-to-string getal)
+     Y-as-tic)))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-Y-axis
-  (height full-Y-label-width &optional vertical-step)
-  "Insert Y axis by HEIGHT and FULL-Y-LABEL-WIDTH.
-Height must be the  maximum height of the graph.
-Full width is the width of the highest label element.
-Optionally, print according to VERTICAL-STEP."
+(defun toon-Y-as
+  (hoogte full-Y-label-width &optional vertical-step)
+  "Voeg  Y as in bij HOOGTE en VOLLE-Y-LABEL-BREEDTE.
+Hoogte moet de  maximum hoogte van de grafiek zijn.
+Volle breedte is de breedte van het hoogste label element.
+Toon optioneel overeenkomstig met VERTICAL-STEP."
 @end group
 @group
-;; Value of height and full-Y-label-width
-;; are passed by 'print-graph'.
+;; Waarde van hoogte en volle-y-label-breedte
+;; worden doorgegeven door 'toon-grafiek'.
   (let ((start (point)))
     (insert-rectangle
-     (Y-axis-column height full-Y-label-width vertical-step))
+     (Y-as-kolom hoogte volle-y-label-breedte vertical-step))
 @end group
 @group
-    ;; @r{Place point ready for inserting graph.}
+    ;; @r{Zet point klaar voor invoegen grafiek.}
     (goto-char start)
-    ;; @r{Move point forward by value of} full-Y-label-width
-    (forward-char full-Y-label-width)))
+    ;; @r{Verplaats point voorwaats met waarde van} volle-y-label-breedte
+    (forward-char volle-y-label-breedte)))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-X-axis-tic-line
-  (number-of-X-tics X-axis-leading-spaces X-axis-tic-element)
-  "Print ticks for X axis."
-    (insert X-axis-leading-spaces)
-    (insert X-axis-tic-symbol)  ; @r{Under first column.}
+(defun toon-X-as-tic-line
+  (number-of-X-tics X-as-leading-spaces X-as-tic-element)
+  "Toon ticks for X as."
+    (insert X-as-leading-spaces)
+    (insert X-as-tic-symbol)  ; @r{Onder eerste kolom.}
 @end group
 @group
     ;; @r{Insert second tic in the right spot.}
@@ -21099,48 +21108,48 @@ Optionally, print according to VERTICAL-STEP."
              X-axis-tic-symbol))
 @end group
 @group
-    ;; @r{Insert remaining ticks.}
+    ;; @r{Voeg resterende merktekens in.}
     (while (> number-of-X-tics 1)
-      (insert X-axis-tic-element)
+      (insert X-as-tic-element)
       (setq number-of-X-tics (1- number-of-X-tics))))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun X-axis-element (number)
-  "Construct a numbered X axis element."
+(defun X-as-element (getal)
+  "Construeer een genummerd X-as element."
   (let ((leading-spaces
-         (-  (* symbol-width X-axis-label-spacing)
-             (length (number-to-string number)))))
+         (-  (* symbol-width X-as-label-spacing)
+             (length (number-to-string getal)))))
     (concat (make-string leading-spaces ? )
-            (number-to-string number))))
+            (number-to-string getal))))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun graph-body-print (numbers-list height symbol-width)
-  "Print a bar graph of the NUMBERS-LIST.
-The numbers-list consists of the Y-axis values.
-HEIGHT is maximum height of graph.
-SYMBOL-WIDTH is number of each column."
+(defun grafiek-body-toon (getallenlijst hoogte symbool-breedte)
+  "Toon een bar grafiek van de GETALLENLIJST.
+De getallenlijst bestaat uit de Y-as waarden.
+HOOGTE is maximum hoogte van grafiek.
+SYMBOOL-BREEDTE is getal van elke kolom."
 @end group
 @group
-  (let (from-position)
-    (while numbers-list
-      (setq from-position (point))
+  (let (van-positie)
+    (while getallenlijst
+      (setq van-positie (point))
       (insert-rectangle
-       (column-of-graph height (car numbers-list)))
-      (goto-char from-position)
-      (forward-char symbol-width)
+       (kolom-van-grafiek hoogte (car getallenlijst)))
+      (goto-char van-positie)
+      (forward-char symboolbreedte)
 @end group
 @group
-      ;; @r{Draw graph column by column.}
+      ;; @r{Teken grafiek kolom voor kolom.}
       (sit-for 0)
-      (setq numbers-list (cdr numbers-list)))
-    ;; @r{Place point for X axis labels.}
-    (forward-line height)
+      (setq getallenlijst (cdr getallenlijst)))
+    ;; @r{Plaats point voor X as labels.}
+    (forward-line hoogte)
     (insert "\n")))
 @end group
 @end smallexample
@@ -21148,10 +21157,10 @@ SYMBOL-WIDTH is number of each column."
 @smallexample
 @group
 (defun Y-axis-column
-  (height width-of-label &optional vertical-step)
-  "Construct list of labels for Y axis.
-HEIGHT is maximum height of graph.
-WIDTH-OF-LABEL is maximum width of label.
+  (hoogte labelbreedte &optional vertical-step)
+  "Construeer lijst van labels voor Y as.
+HOOGTE is maximum hoogte van grafiek.
+LABELBREEDTE is maximum breedte van label.
 @end group
 @group
 VERTICAL-STEP, an option, is a positive integer
@@ -21173,71 +21182,70 @@ that each line is five units of the graph."
                  Y-axis))
 @end group
 @group
-        ;; @r{Else, insert blanks.}
-        (setq Y-axis
+        ;; @r{Anders, voeg spaties in.}
+        (setq Y-as
               (cons
                (make-string width-of-label ? )
-               Y-axis)))
-      (setq height (1- height)))
+               Y-as)))
+      (setq hoogte (1- hoogte)))
 @end group
 @group
-    ;; @r{Insert base line.}
-    (setq Y-axis (cons (Y-axis-element
+    ;; @r{Invoegen basis regel.}
+    (setq Y-as (cons (Y-as-element
                         (or vertical-step 1)
                         width-of-label)
-                       Y-axis))
-    (nreverse Y-axis)))
+                       Y-as))
+    (nreverse Y-as)))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-X-axis-numbered-line
-  (number-of-X-tics X-axis-leading-spaces
+(defun toon-X-as-numbered-line  (number-of-X-tics X-as-leading-spaces)
    &optional horizontal-step)
-  "Print line of X-axis numbers"
-  (let ((number X-axis-label-spacing)
+  "Toon regel X-as getallen"
+  (let ((getal X-as-label-spacing))
         (horizontal-step (or horizontal-step 1)))
 @end group
 @group
-    (insert X-axis-leading-spaces)
-    ;; line up number
+    (insert X-as-leading-spaces)
+    ;; getal uitlijnen
     (delete-char (- (1- (length (number-to-string horizontal-step)))))
     (insert (concat
              (make-string
-              ;; @r{Insert white space up to next number.}
-              (-  (* symbol-width X-axis-label-spacing)
+              ;; @r{Voeg witte ruimte in tot volgende getal.}
+              (-  (* symbol-width X-as-label-spacing)
                   (1- (length (number-to-string horizontal-step)))
                   2)
               ? )
              (number-to-string (* number horizontal-step))))
 @end group
 @group
-    ;; @r{Insert remaining numbers.}
-    (setq number (+ number X-axis-label-spacing))
+    ;; @r{Resterende getallen invoegen.}
+    (setq getal (+ getal X-as-label-spacing))
     (while (> number-of-X-tics 1)
-      (insert (X-axis-element (* number horizontal-step)))
-      (setq number (+ number X-axis-label-spacing))
+      (insert (X-as-element (* getal horizontal-step)))
+      (setq getal (+ getal X-as-label-spacing))
       (setq number-of-X-tics (1- number-of-X-tics)))))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-X-axis (numbers-list horizontal-step)
-  "Print X axis labels to length of NUMBERS-LIST.
-Optionally, HORIZONTAL-STEP, a positive integer,
-specifies how much an X  axis label increments for
-each column."
+(defun toon-X-as (getallenlijst horizontal-step)
+  "Toon X axis labels op lengte van GETALLENLIJST.
+Optionally, HORIZONTAL-STEP, een positieve integer,
+specificeert hoe veel een X as label toeneemt voor
+elke kolom."
 @end group
 @group
-;; Value of symbol-width and full-Y-label-width
-;; are passed by 'print-graph'.
+;; Waarde van symbool-breedte en volle-Y-label-breedte
+;; worden doorgegeven door 'toon-grafiek'.
   (let* ((leading-spaces
-          (make-string full-Y-label-width ? ))
-       ;; symbol-width @r{is provided by} graph-body-print
-       (tic-width (* symbol-width X-axis-label-spacing))
-       (X-length (length numbers-list))
+          (make-string volle-Y-label-breedte ? ))
+       ;; symbool-breedte @r{wordt doorgegeven door} grafiek-body-toon
+       (tic-width (* symbool-breedte X-axis-label-spacing))
+       (X-length (length getallenlijst))
 @end group
 @group
        (X-tic
@@ -21249,8 +21257,8 @@ each column."
           ? )
 @end group
 @group
-         ;; @r{Concatenate blanks with tic symbol.}
-         X-axis-tic-symbol))
+         ;; @r{Concatenate spaties met merkteken symbol.}
+         X-as-tic-symbol))
        (tic-number
         (if (zerop (% X-length tic-width))
             (/ X-length tic-width)
@@ -21258,69 +21266,68 @@ each column."
 @end group
 
 @group
-    (print-X-axis-tic-line
+    (toon-X-as-tic-line
      tic-number leading-spaces X-tic)
     (insert "\n")
-    (print-X-axis-numbered-line
+    (toon-X-as-numbered-line
      tic-number leading-spaces horizontal-step)))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun one-fiftieth (full-range)
-  "Return list, each number of which is 1/50th previous."
+(defun een-vijftigste (full-range)
+  "Geef lijst terug, elk getal er van is 1/50-ste vorige."
  (mapcar (lambda (arg) (/ arg 50)) full-range))
 @end group
 @end smallexample
 
 @smallexample
 @group
-(defun print-graph
-  (numbers-list &optional vertical-step horizontal-step)
-  "Print labeled bar graph of the NUMBERS-LIST.
-The numbers-list consists of the Y-axis values.
+(defun toon-grafiek
+  (getallenlijst &optional vertical-step horizontal-step)
+  "Toon gelabelde staafgrafiek van de GETALLENLIJST.
+De getallenlijst bestaat uit de Y-as waarden.
 @end group
 
 @group
-Optionally, VERTICAL-STEP, a positive integer,
-specifies how much a Y axis label increments for
-each line.  For example, a step of 5 means that
-each row is five units.
+Optioneel specificeert VERTICAL-STEP, een positieve
+integer, hoeveel een Y-as label toeneemt voor elke
+regel. Bijvoorbeeld een stap van 5 betekent dat
+elke rij vijf eenheden is.
 @end group
 
 @group
-Optionally, HORIZONTAL-STEP, a positive integer,
-specifies how much an X  axis label increments for
-each column."
-  (let* ((symbol-width (length graph-blank))
-         ;; @code{height} @r{is both the largest number}
-         ;; @r{and the number with the most digits.}
-         (height (apply 'max numbers-list))
+Optioneel specificeert HORIZONTAL-STEP, een
+positieve integer, hoeveel een X as label toeneemt
+voor elke kolom.
+  (let* ((symbol-width (length grafiek-wit))
+         ;; @code{hoogte} @r{is zowel het grootste getal}
+         ;; @r{en het getal met de meeste cijfers.}
+         (hoogte (apply 'max getallenlijst))
 @end group
 @group
-         (height-of-top-line
-          (if (zerop (% height Y-axis-label-spacing))
-              height
+         (hoogte-van-top-line
+          (if (zerop (% hoogte Y-as-label-spacing))
+              hoogte
             ;; @r{else}
-            (* (1+ (/ height Y-axis-label-spacing))
-               Y-axis-label-spacing)))
+            (* (1+ (/ hoogte Y-as-label-spacing))
+               Y-as-label-spacing)))
 @end group
 @group
          (vertical-step (or vertical-step 1))
-         (full-Y-label-width
-          (length
+         (volle-Y-label-breedte          (length
            (concat
             (number-to-string
              (* height-of-top-line vertical-step))
-            Y-axis-tic))))
+            Y-ass-tic))))
 @end group
 @group
 
-    (print-Y-axis
-     height-of-top-line full-Y-label-width vertical-step)
-    (graph-body-print
-        numbers-list height-of-top-line symbol-width)
+    (toon-Y-as
+     height-of-top-line volle-Y-label-breedte vertical-step)
+    (grafiek-body-tonen
+        getallenlijst height-of-top-line symbol-width)
     (print-X-axis numbers-list horizontal-step)))
 @end group
 @end smallexample
@@ -21329,21 +21336,21 @@ each column."
 
 @page
 @node Finale afgedrukte grafiek
-@appendixsubsec The Printed Graph
+@appendixsubsec De getoonde grafiek
 
-When made and installed, you can call the @code{print-graph} command like
-this:
+Na gemaakt en geïnstalleerd roep je het @code{toon-grafiek} commando aan
+zoals: this:
 @sp 1
 
 @smallexample
 @group
-(print-graph fiftieth-list-for-graph 50 10)
+(toon-grafiek een-vijftigste lijst-voor-grafiek 50 10)
 @end group
 @end smallexample
 @sp 1
 
 @noindent
-Here is the graph:
+Hier is de grafiek:
 @sp 2
 
 @smallexample
@@ -21376,10 +21383,10 @@ Here is the graph:
 @sp 2
 
 @noindent
-The largest group of functions contain 10--19 words and symbols each.
+De grootste groep van functies bevat 10--19 woorden en symbolen elk.
 
-@node Vrije software en vrije handleidingen
-@appendix Vrije software en vrije handleidingen
+@node Free Software and Free Manuals
+@appendix Free Software and Free Manuals
 
 @strong{by Richard M. Stallman}
 @sp 1

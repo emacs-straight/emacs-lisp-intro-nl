@@ -108,8 +108,7 @@ onderdeel van elk hoofdstuk.
 * Killring::                 Een appendix: hoe de killring werkt.
 * Volledige grafiek::        Hoe een grafiek met labels op de assen te
                                maken.
-* Vrije software en vrije handleidingen::  Vrije software en vrije
-                                             handleidingen
+* Free Software and Free Manuals::  Free Software and Free Manuals
 * GNU Free Documentation License::  GNU Free Documentation License
 * Index::                    Index
 * Over de auteur::           Over de auteur
@@ -610,7 +609,7 @@ Een grafiek voorbereiden
 
 
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek te tonen.
+* grafiek-body-tonen::       Hoe de body van een grafiek te tonen.
 * recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
 * Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
@@ -686,22 +685,22 @@ De ‘print-Y-axis’ functie
 
 
 
-* print-Y-axis in detail::   print-Y-axis in detail
+* toon-Y-as in detail::      toon-Y-as in detail
 * Hoogte van label::         Welke hoogte voor de Y-as?
 * Bereken het restant::      Hoe het restant van een deling te berekenen.
 * Y-as element::             Een lijn voor de y-as construeren.
 * Y-axis-column::            Een lijst van y-as labels genereren.
-* print-Y-axis enalaatste::  Nog niet finale versie
+* toon-Y-as enalaatste::     Nog niet finale versie
 
-De ‘print-X-axis’ functie
+De ‘print-X-as’ functie
 
 
 
 * Overeenkomsten verschillen::  Grotendeels als ‘print-Y-axis’, maar
                                   niet helemaal gelijk.
-* X-as tic marks::           Maak tic marks voor de horizontale as.
+* X-as merktekens::          Maak tic marks voor de horizontale as.
 
-De hele grafiek afdrukken
+De gehele grafiek tonen
 
 
 
@@ -9611,25 +9610,25 @@ element van de lijst.
 
    Hier is een voorbeeld:
 
-     (defun kwadrateer-elke (getallen-lijst)
+     (defun kwadrateer-elke (getallenlijst)
        "Kwadrateer elk van een GETALLEN Lijst, recursief."
-       (if (not getallen-lijst)                ; doe-opnieuw-test
+       (if (not getallenlijst)                ; doe-opnieuw-test
            nil
          (cons
-          (* (car getallen-lijst) (car getallen-lijst))
-          (kwadrateer-elke (cdr getallen-lijst))))) ; volgende-stap-expressie
+          (* (car getallenlijst) (car getallenlijst))
+          (kwadrateer-elke (cdr getallenlijst))))) ; volgende-stap-expressie
 
      (kwadrateer-elke '(1 2 3))
          ⇒ (1 4 9)
 
-Wanneer ‘getallen-lijst’ leeg is, doe niets.  Maar als die inhoud heeft,
+Wanneer ‘getallenlijst’ leeg is, doe niets.  Maar als die inhoud heeft,
 construeer een lijst door het kwadraat van het eerste getal te
 combineren met een lijst met het resultaat van de recursieve aanroep.
 
    (Het voorbeeld volgt exact dit patroon: ‘nil’ wordt teruggeven
-wanneer de getallen-lijst leeg is.  In de praktijk schrijf je
-conditional zo dat het de actie uitvoert wanneer de lijst met getallen
-niet leeg is.)
+wanneer de getallenlijst leeg is.  In de praktijk schrijf je conditional
+zo dat het de actie uitvoert wanneer de lijst met getallen niet leeg
+is.)
 
    De functie ‘print-elementen-recursief’ (*note Recursie met een lijst:
 Recursie met lijst.) is een ander voorbeeld van een ‘elke’ patroon,
@@ -9683,11 +9682,11 @@ niet wordt gebruikt, maar een andere combinerende functie.
 
    Hier is een voorbeeld:
 
-     (defun sommeer-elementen (getallen-lijst)
-       "Tel de elementen van GETALLEN-LIJST bij elkaar op."
-       (if (not getallen-lijst)
+     (defun sommeer-elementen (getallenlijst)
+       "Tel de elementen van GETALLENLIJST bij elkaar op."
+       (if (not getallenlijst)
            0
-         (+ (car getallen-lijst) (sommeer-elementen (cdr getallen-lijst)))))
+         (+ (car getallenlijst) (sommeer-elementen (cdr getallenlijst)))))
 
      (sommeer-elementen '(1 2 3 4))
          ⇒ 10
@@ -12951,13 +12950,13 @@ breiden de functie uit met automatische labeling van de assen.
 * Menu:
 
 * Kolommen van een grafiek::  Kolommen van een grafiek
-* graph-body-print::         Hoe de body van een grafiek te tonen.
+* grafiek-body-tonen::       Hoe de body van een grafiek te tonen.
 * recursieve-grafiek-body-tonen::  recursieve-grafiek-body-tonen
 * Getoonde assen::           Getoonde assen
 * Lijngrafiek oefening::     Lijngrafiek oefening
 
 
-File: emacs-lisp-intro-nl.info,  Node: Kolommen van een grafiek,  Next: graph-body-print,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: Kolommen van een grafiek,  Next: grafiek-body-tonen,  Up: Een grafiek voorbereiden
 
 De kolommen van een grafiek tonen
 =================================
@@ -12973,7 +12972,7 @@ we van de keuze van het symbool een gebruikersoptie maken.
 labels aan de grafiek, maar tonen alleen de body.
 
    De functie ‘grafiek-body-tonen’ voegt een verticale kolom van
-sterretjes in voor elk element van de ‘getallen-lijst’.  De hoogte van
+sterretjes in voor elk element van de ‘getallenlijst’.  De hoogte van
 elke lijn wordt bepaald door de waarde van dat element in de
 ‘getallen-lijst’.
 
@@ -13059,8 +13058,8 @@ herpositioneren--maar misschien kunnen we...
 
    Wij zijn van plan om de kolommen van de grafiek van sterretjes te
 maken.  Het aantal sterretjes in de kolom is het getal dat
-gespecificeerd wordt door het huidige element in de ‘getallen-lijst’.
-We moeten een lijst van sterretjes van de juist lengte maken voor elke
+gespecificeerd wordt door het huidige element in de ‘getallenlijst’.  We
+moeten een lijst van sterretjes van de juist lengte maken voor elke
 aanroep van ‘insert-rectangle’.  Wanneer deze lijst uitsluitend uit het
 aantal vereiste sterretjes bestaat, dan moeten point precies op het
 juiste aantal regels boven de bases van de grafiek positioneren.  Dit
@@ -13139,7 +13138,7 @@ gesorteerd of niet).
    Dus de operatie voor het vinden van de maximum hoogte van de grafiek
 is deze:
 
-     (setq max-grafiek-hoogte (apply 'max getallen-lijst))
+     (setq max-grafiek-hoogte (apply 'max getallenlijst))
 
    Nu kunnen we terugkeren naar de vraag hoe een lijst van strings te
 maken voor een kolom van de grafiek.  Wanneer het de maximum hoogte van
@@ -13259,7 +13258,7 @@ toont de body van de grafiek en niet de labels voor de verticale en
 horizontale assen, daarom noemen we deze ‘grafiek-body-tonen’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: graph-body-print,  Next: recursieve-grafiek-body-tonen,  Prev: Kolommen van een grafiek,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: grafiek-body-tonen,  Next: recursieve-grafiek-body-tonen,  Prev: Kolommen van een grafiek,  Up: Een grafiek voorbereiden
 
 15.1 De functie ‘grafiek-body-tonen’
 ====================================
@@ -13378,7 +13377,7 @@ getallen.
                  *************
 
 
-File: emacs-lisp-intro-nl.info,  Node: recursieve-grafiek-body-tonen,  Next: Getoonde assen,  Prev: graph-body-print,  Up: Een grafiek voorbereiden
+File: emacs-lisp-intro-nl.info,  Node: recursieve-grafiek-body-tonen,  Next: Getoonde assen,  Prev: grafiek-body-tonen,  Up: Een grafiek voorbereiden
 
 15.2 De functie recursieve-grafiek-body-tonen
 =============================================
@@ -13393,8 +13392,8 @@ aangeroepen wordt om de grafiek te tonen.
    De wrapper is ongecompliceerd:
 
      (defun recursieve-grafiek-body-tonen (getallenlijst)
-       "Print a bar graph of the GETALLENLIJST.
-     The getallenlijst consists of the Y-axis values."
+       "Toon een staafgrafiek van  de GETALLENLIJST.
+     De getallenlijst bestaat uit de Y-as values."
        (let ((hoogte (apply 'max getallenlijst))
              (symboolbreedte (length grafiek-wit))
              from-position)
@@ -13414,7 +13413,7 @@ de aanroep op een kortere versie van de ‘getallenlijst’ acteert.
 
      (defun recursieve-grafiek-body-tonen-intern
        (getallenlijst hoogte symboolbreedte)
-       "Print a bar graph.
+       "Toon een staafgrafiek.
      Gebruikt in de functie recursieve-grafiek-body-tonen."
 
        (when getallenlijst
@@ -15757,16 +15756,16 @@ veel van de functies bevat die we zojuist bespaken.  Maar functies zoals
 eerder zijn geschreven.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Volledige grafiek,  Next: Vrije software en vrije handleidingen,  Prev: Killring,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Volledige grafiek,  Next: Free Software and Free Manuals,  Prev: Killring,  Up: Top
 
 Appendix C Een grafiek met labels op de assen
 *********************************************
 
-Printed axes help you understand a graph.  They convey scale.  In an
-earlier chapter (*note Readying a Graph: Readying a Graph.), we wrote
-the code to print the body of a graph.  Here we write the code for
-printing and labeling vertical and horizontal axes, along with the body
-itself.
+Assen helpen je een grafiek te begrijpen.  Zij brengen de schaal over.
+In een eerder hoofdstuk (*note Een grafiek voorbereiden: Een grafiek
+voorbereiden.), schreven we de code om de body van een grafiek te tonen.
+Hier schrijven we de code voor het tonen en labelen van vertikale en
+horizontale assen, samen met de body zelf.
 
 * Menu:
 
@@ -15779,23 +15778,23 @@ itself.
 
 File: emacs-lisp-intro-nl.info,  Node: Gelabeld voorbeeld,  Next: print-graph varlist,  Up: Volledige grafiek
 
-Labeled Example Graph
-=====================
+Gelabeld voorbeeld grafiek
+==========================
 
-Since insertions fill a buffer to the right and below point, the new
-graph printing function should first print the Y or vertical axis, then
-the body of the graph, and finally the X or horizontal axis.  This
-sequence lays out for us the contents of the function:
+Omdat invoegen een buffer rechts en onder point vult, moet de nieuwe
+toon-grafiek functie eerst de Y-as of verticale as tonen, dan de body
+van de grafiek en tenslotte de X-as of horizontale as.  Deze volgorde
+legt de inhoud van de functie voor ons uit:
 
-  1. Set up code.
+  1. Code opzetten
 
-  2. Print Y axis.
+  2. Y-as tonen.
 
-  3. Print body of graph.
+  3. Body van de grafiek tonen.
 
-  4. Print X axis.
+  4. X-as tonen.
 
-   Here is an example of how a finished graph should look:
+   Hier is een voorbeeld hoe de uiteindelijke grafiek er uit moet zien:
 
          10 -
                        *
@@ -15810,9 +15809,9 @@ sequence lays out for us the contents of the function:
               |   |    |    |
               1   5   10   15
 
-In this graph, both the vertical and the horizontal axes are labeled
-with numbers.  However, in some graphs, the horizontal axis is time and
-would be better labeled with months, like this:
+In deze grafiek zijn zowel de vertikale als de horizontale as gelabeld
+met getallen.  In sommige grafieken is echter de horizontale as tijd en
+is die beter gelabeld met maanden, zoals dit:
 
           5 -      *
                  * ** *
@@ -15820,65 +15819,66 @@ would be better labeled with months, like this:
                ********** **
           1 - **************
               |    ^      |
-              Jan  June   Jan
+              Jan  Juni   Jan
 
-   Indeed, with a little thought, we can easily come up with a variety
-of vertical and horizontal labeling schemes.  Our task could become
-complicated.  But complications breed confusion.  Rather than permit
-this, it is better choose a simple labeling scheme for our first effort,
-and to modify or replace it later.
+   Met wat nadenken kunnen we gemakkelijk een verscheidenheid aan
+vertikale en horizontale labeling-schema's verzinnen.  Onze taak kan
+gecompliceerd worden.  Maar complicaties veroorzaken verwarring.  In
+plaats van dit toe te staan, is het beter een eenvoudig labeling-schema
+voor onze eerste poging te kizen, en die later te veranderen of te
+vervangen.
 
-   These considerations suggest the following outline for the
-‘print-graph’ function:
+   Deze overwegingen leidden tot de volgende outline voor onze
+‘toon-grafiek’ functie:
 
-     (defun print-graph (numbers-list)
-       "DOCUMENTATION..."
-       (let ((height  ...
+     (defun toon-grafiek (getallenlijst)
+       "DOCUMENTATIE..."
+       (let ((hoogte  ...
              ...))
-         (print-Y-axis height ... )
-         (graph-body-print numbers-list)
-         (print-X-axis ... )))
+         (toon-Y-as hoogte ... )
+         (grafiek-body-tonen getallenlijst)
+         (toon-X-as ... )))
 
-   We can work on each part of the ‘print-graph’ function definition in
-turn.
+   We kunnen aan elk deel van de ‘toon-grafiek’ functiedefinitie op zijn
+beurt werken.
 
 
 File: emacs-lisp-intro-nl.info,  Node: print-graph varlist,  Next: print-Y-axis,  Prev: Gelabeld voorbeeld,  Up: Volledige grafiek
 
-C.1 The ‘print-graph’ Varlist
-=============================
+C.1 The ‘toon-grafiek’ varlist
+==============================
 
-In writing the ‘print-graph’ function, the first task is to write the
-varlist in the ‘let’ expression.  (We will leave aside for the moment
-any thoughts about making the function interactive or about the contents
-of its documentation string.)
+Bij het schrijven van de functie ‘toon-grafiek’ is de eerste taak het
+schrijven van de ‘let’ expressie.  (We laten op dit moment de gedachten
+over het interactief maken van de functie en over de inhoud van de
+documentatiestring even achterwege.)
 
-   The varlist should set several values.  Clearly, the top of the label
-for the vertical axis must be at least the height of the graph, which
-means that we must obtain this information here.  Note that the
-‘print-graph-body’ function also requires this information.  There is no
-reason to calculate the height of the graph in two different places, so
-we should change ‘print-graph-body’ from the way we defined it earlier
-to take advantage of the calculation.
+   De varlist moet verschillende waardes setten.  De hoogte van het
+label voor de verticale as moet tenmiste de hoogte van de grafiek zijn,
+wat betekent dat we die informatie hier moeten verkrijgen.  Merk op dat
+de functie ‘grafiek-body-tonen’ ook deze informatie nodig heeft.  Er is
+geen reden om de hoogte van de grafiek op twee verschillende plaatsen te
+berekenen en daarom moeten we ‘grafiek-body-tonen’ zoals we die eerder
+definieerden aanpassen om van deze berekening gebruik te maken.
 
-   Similarly, both the function for printing the X axis labels and the
-‘print-graph-body’ function need to learn the value of the width of each
-symbol.  We can perform the calculation here and change the definition
-for ‘print-graph-body’ from the way we defined it in the previous
-chapter.
+   Op dezelfde manier moeten zowel de functie voor het tonen van de X-as
+als de functie ‘toon-grafiek-body’ de waarde van de breedte van elk
+symbool weten.  We kunnen de berekening hier uitvoeren en de definitie
+aanpassen van ‘grafiek-body-tonen’ zoals in het eerdere hoofdstuk
+beschreven.
 
-   The length of the label for the horizontal axis must be at least as
-long as the graph.  However, this information is used only in the
-function that prints the horizontal axis, so it does not need to be
-calculated here.
+   De lengte van het label voor de horizontale as moet minstens zo lang
+zijn als de grafiek.  Deze informatie wordt echter alleen gebruikt in de
+functie die de horizontale as toont, dus die hoeven we hier niet te
+berekenen.
 
-   These thoughts lead us directly to the following form for the varlist
-in the ‘let’ for ‘print-graph’:
+   Deze gedachten leiden ons direct tot de volgende vorm voor de varlist
+in de nieuwe ‘let’ voor ‘toon-grafiek’.
 
-     (let ((height (apply 'max numbers-list)) ; First version.
-           (symbol-width (length graph-blank)))
+     (let ((hoogte (apply 'max getallenlijst)) ; Eerste versie..
+           (symbol-width (length grafiek-wit)))
 
-As we shall see, this expression is not quite right.
+Zoals we zullen zien is deze expressie niet helemaal juist.
 
 
 File: emacs-lisp-intro-nl.info,  Node: print-Y-axis,  Next: print-X-axis,  Prev: print-graph varlist,  Up: Volledige grafiek
@@ -15886,8 +15886,8 @@ File: emacs-lisp-intro-nl.info,  Node: print-Y-axis,  Next: print-X-axis,  Prev:
 C.2 De ‘print-Y-axis’ functie
 =============================
 
-The job of the ‘print-Y-axis’ function is to print a label for the
-vertical axis that looks like this:
+De taak van de functie ‘toon-Y-as’ is een label voor de vertikale as te
+tonen die er zo uitziet:
 
          10 -
 
@@ -15900,88 +15900,90 @@ vertical axis that looks like this:
 
           1 -
 
-The function should be passed the height of the graph, and then should
-construct and insert the appropriate numbers and marks.
+De functie moet de hoogte van de grafiek doorgegeven krijgen en moet dan
+de passende getallen en markeren construeren en invoegen.
 
 * Menu:
 
-* print-Y-axis in detail::   print-Y-axis in detail
+* toon-Y-as in detail::      toon-Y-as in detail
 * Hoogte van label::         Welke hoogte voor de Y-as?
 * Bereken het restant::      Hoe het restant van een deling te berekenen.
 * Y-as element::             Een lijn voor de y-as construeren.
 * Y-axis-column::            Een lijst van y-as labels genereren.
-* print-Y-axis enalaatste::  Nog niet finale versie
+* toon-Y-as enalaatste::     Nog niet finale versie
 
 
-File: emacs-lisp-intro-nl.info,  Node: print-Y-axis in detail,  Next: Hoogte van label,  Up: print-Y-axis
+File: emacs-lisp-intro-nl.info,  Node: toon-Y-as in detail,  Next: Hoogte van label,  Up: print-Y-axis
 
-The ‘print-Y-axis’ Function in Detail
--------------------------------------
-
-It is easy enough to see in the figure what the Y axis label should look
-like; but to say in words, and then to write a function definition to do
-the job is another matter.  It is not quite true to say that we want a
-number and a tic every five lines: there are only three lines between
-the ‘1’ and the ‘5’ (lines 2, 3, and 4), but four lines between the ‘5’
-and the ‘10’ (lines 6, 7, 8, and 9).  It is better to say that we want a
-number and a tic mark on the base line (number 1) and then that we want
-a number and a tic on the fifth line from the bottom and on every line
-that is a multiple of five.
-
-
-File: emacs-lisp-intro-nl.info,  Node: Hoogte van label,  Next: Bereken het restant,  Prev: print-Y-axis in detail,  Up: print-Y-axis
-
-What height should the label be?
+De ‘toon-Y-as’ functie in detail
 --------------------------------
 
-The next issue is what height the label should be?  Suppose the maximum
-height of tallest column of the graph is seven.  Should the highest
-label on the Y axis be ‘5 -’, and should the graph stick up above the
-label?  Or should the highest label be ‘7 -’, and mark the peak of the
-graph?  Or should the highest label be ‘10 -’, which is a multiple of
-five, and be higher than the topmost value of the graph?
+Het is makkelijk om in de afbeelding te zien hoe de Y-as label er uit
+moet zien.  Maar om dat onder woorden te brengen en vervolgens een
+functiedefinitie voor die taak te schrijven is een ander verhaal.  Het
+is niet helemaal waar te zeggen dat we een getal en een streepje op elke
+vijf regels willen.  Er zijn slechts drie regels tussen de ‘1’ en de ‘5’
+(regels 2, 3 en 4).  maar vier regels tussen de ‘5’ en de ‘10’ (regels
+6, 7, 8 en 9).  Het is beter te zeggen dat we een getal en een streepje
+op de basisregel (het getal 1) en dan dat we een nummer en een streepje
+op de vijfde regel vanaf de onderkant en op elke regel die een meervoud
+van vijf is.
 
-   The latter form is preferred.  Most graphs are drawn within
-rectangles whose sides are an integral number of steps long--5, 10, 15,
-and so on for a step distance of five.  But as soon as we decide to use
-a step height for the vertical axis, we discover that the simple
-expression in the varlist for computing the height is wrong.  The
-expression is ‘(apply 'max numbers-list)’.  This returns the precise
-height, not the maximum height plus whatever is necessary to round up to
-the nearest multiple of five.  A more complex expression is required.
+
+File: emacs-lisp-intro-nl.info,  Node: Hoogte van label,  Next: Bereken het restant,  Prev: toon-Y-as in detail,  Up: print-Y-axis
 
-   As usual in cases like this, a complex problem becomes simpler if it
-is divided into several smaller problems.
+Op welke hoogte moet het label zijn?
+------------------------------------
 
-   First, consider the case when the highest value of the graph is an
-integral multiple of five--when it is 5, 10, 15, or some higher multiple
-of five.  We can use this value as the Y axis height.
+Het volgende probleem is wat de hoogte van het label moet zijn.  Stel
+dat de maximum hoogte van de grootste kolom van de grafiek zeven is.
+Moet het hoogste label op de Y-as ‘5 -’ zijn en moet de grafiek boven
+het label uitsteken?  Of moet het hoogste label ‘10 -’ zijn, wat een
+veelvoud van vijf is en hoger dan de hoogste waarde van de grafiek?
 
-   A fairly simply way to determine whether a number is a multiple of
-five is to divide it by five and see if the division results in a
-remainder.  If there is no remainder, the number is a multiple of five.
-Thus, seven divided by five has a remainder of two, and seven is not an
-integral multiple of five.  Put in slightly different language, more
-reminiscent of the classroom, five goes into seven once, with a
-remainder of two.  However, five goes into ten twice, with no remainder:
-ten is an integral multiple of five.
+   De laatste vorm heeft de voorkeur.  De meeste grafieken worden
+getekend binnen rechthoeken waarvan de zijden een integraal aantal
+stappen lang zijn-5, 10, 15, enzovoorts voor een stapgrootte van vijf.
+Maar zodra we besluiten een staphoogte te gebruiken voor de vertikale as
+ontdekken we dat de eenvoudige expressie in de varlist om de hoogte uit
+te rekenen fout is.  De expressie is ‘(apply 'max numbers-list)’.  Dit
+geeft de exacte hoogte terug, niet de maximum hoogte plus wat nodig is
+om af te ronden op het dichtstbijzijnde meervoud van vijf.  Een
+complexere expressie is nodig.
+
+   Zoals bij gevallen zoals deze gebruikelijk, wordt een complex
+probleem eenvoudiger wanneer het in verschillende kleinere problemen
+wordt opgedeeld.
+
+   Ten eerste, beschouw het geval wanner de hoogste waarde van de
+grafiek een integraal meervoud van vijf is--wanneer het 5, 10, 15, of
+een hoger meervoud van vijf is.  We kunnen deze waarde gebruiken als de
+hoogte van de Y-as.
+
+   Een tamelijk eenvoudige manier om vast te stellen of een getal een
+meervoud van vijf is, is het door vijf te delen en te kijken of de
+deling een rest heeft.  Wanneer er geen rest is, is het getal een
+meervoud van vijf.  Dus, zeven gedeeld door vijf heeft een rest van
+twee, en zeven is geen integraal meervoud van vijf.  In een iets andere
+taal, meer herinnerend aan het klaslokaal, vijf gaat eenmalig in zeven,
+met een rest van twee.  Echter vijf gaat twee keer in tien, zonder rest:
+tien is een integraal meervoud van vijf.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Bereken het restant,  Next: Y-as element,  Prev: Hoogte van label,  Up: print-Y-axis
 
-C.2.1 Side Trip: Compute a Remainder
-------------------------------------
+C.2.1 Zijspoor: bereken een rest
+--------------------------------
 
-In Lisp, the function for computing a remainder is ‘%’.  The function
-returns the remainder of its first argument divided by its second
-argument.  As it happens, ‘%’ is a function in Emacs Lisp that you
-cannot discover using ‘apropos’: you find nothing if you type ‘M-x
-apropos <RET> remainder <RET>’.  The only way to learn of the existence
-of ‘%’ is to read about it in a book such as this or in the Emacs Lisp
-sources.
+In Lisp is de functie om een rest uit te rekenen ‘%’.  De functie geeft
+de rest terug van het eerste argument gedeeld door het tweede argument.
+Toevallig is ‘%’ een functie in Emacs Lisp die je niet kunt ontdekken
+met ‘apropos’: je vindt niets wanneer je typt ‘M-x apropos <RET>
+remainder <RET>’.  De enige manier om het bestaan van ‘%’ te ontdekken
+is door het te lezen in een boek zoals dit of in de Emacs Lisp broncode.
 
-   You can try the ‘%’ function by evaluating the following two
-expressions:
+   Je kunt de functie ‘%’ uitproberen door het evalueren van de volgende
+twee expressies:
 
      (% 7 5)
 
@@ -15989,9 +15991,9 @@ expressions:
 
 The first expression returns 2 and the second expression returns 0.
 
-   To test whether the returned value is zero or some other number, we
-can use the ‘zerop’ function.  This function returns ‘t’ if its
-argument, which must be a number, is zero.
+   Om te testen of de teruggegeven waarde nul is of een ander getal,
+kunnen we de functie ‘zerop’ gebruiken.  Deze functie geeft ‘t’ terug
+wanneer het argument, dat een getal moet zijn, nul is.
 
      (zerop (% 7 5))
           ⇒ nil
@@ -15999,28 +16001,29 @@ argument, which must be a number, is zero.
      (zerop (% 10 5))
           ⇒ t
 
-   Thus, the following expression will return ‘t’ if the height of the
-graph is evenly divisible by five:
+   Dus geeft de volgende expressie ‘t’ wanneer de hoogte van de grafiek
+deelbaar is door vijf:
 
-     (zerop (% height 5))
+     (zerop (% hoogte 5))
 
-(The value of ‘height’, of course, can be found from ‘(apply 'max
-numbers-list)’.)
+(De waarde van ‘hoogte’ kan natuurlijk worden gevonden met ‘(apply 'max
+getallenlijst)’.)
 
-   On the other hand, if the value of ‘height’ is not a multiple of
-five, we want to reset the value to the next higher multiple of five.
-This is straightforward arithmetic using functions with which we are
-already familiar.  First, we divide the value of ‘height’ by five to
-determine how many times five goes into the number.  Thus, five goes
-into twelve twice.  If we add one to this quotient and multiply by five,
-we will obtain the value of the next multiple of five that is larger
-than the height.  Five goes into twelve twice.  Add one to two, and
-multiply by five; the result is fifteen, which is the next multiple of
-five that is higher than twelve.  The Lisp expression for this is:
+   Anderzijds als de waarde van ‘hoogte’ niet een meervoud van vijf is,
+willen we de waarde zetten op het eerstvolgende veelvoud van vijf.  Dit
+is eenvoudige rekenkunde met functies waar we al vertrouwd mee zijn.
+Eerst deleen we de waarde van ‘hoogte’ door vijf om vast te stellen
+hoeveel keer vijf in het getal past.  Dus, vijf gaat twee keer in
+twaalf.  Wanneer we één bij dit quotiënt optellen en met vijf
+vermenigvuldigen, rijgen we de waarde van het eerstvolgende meervoud van
+vijf dat groter dan de hoogte.  Vijf gaat twee keer in twaalf.  Tel een
+bij twee op en vermenigvuldig dat met met vijf.  Het resultaat is
+vijftien, wat het eerste meervoud van vijf is dat groter is dan twaalf.
+De Lisp expressie hiervoor is:
 
-     (* (1+ (/ height 5)) 5)
+     (* (1+ (/ hoogte 5)) 5)
 
-For example, if you evaluate the following, the result is 15:
+Bijvoorbeeld, als je het volgende evalueert, is het resultaat 15:
 
      (* (1+ (/ 12 5)) 5)
 
@@ -16030,59 +16033,59 @@ For generality, we should replace 5 with a variable to which we can
 assign a value.  The best name I can think of for this variable is
 ‘Y-axis-label-spacing’.
 
-   Using this term, and an ‘if’ expression, we produce the following:
+   Met deze term en een ‘if’ expressie, maken we het volgende:
 
-     (if (zerop (% height Y-axis-label-spacing))
-         height
+     (if (zerop (% hoogte Y-as-label-spacing))
+         hoogte
        ;; else
-       (* (1+ (/ height Y-axis-label-spacing))
-          Y-axis-label-spacing))
+       (* (1+ (/ hoogte Y-as-label-spacing))
+          Y-as-label-spacing)))
 
-This expression returns the value of ‘height’ itself if the height is an
-even multiple of the value of the ‘Y-axis-label-spacing’ or else it
-computes and returns a value of ‘height’ that is equal to the next
-higher multiple of the value of the ‘Y-axis-label-spacing’.
+Deze expressie geeft de waarde van ‘hoogte’ zelf als de hoogte een
+veelvoud van de waarde van ‘Y-as-label-spacing’ is, zo niet dan berekent
+het een waarde voor ‘hoogte’ dat gelijk is aan eerstvolgende veelvoud
+van de waarde van de ‘Y-as-label-spacing’ en geeft die waarde terug.
 
-   We can now include this expression in the ‘let’ expression of the
-‘print-graph’ function (after first setting the value of
-‘Y-axis-label-spacing’):
+   We kunnen nu deze expressie opnemen in de ‘let’ expressie van de
+functie ‘toon-grafiek’ (na eerst de waarde te zetten voor de
+‘Y-as-label-spacing’):
 
-     (defvar Y-axis-label-spacing 5
-       "Number of lines from one Y axis label to next.")
+     (defvar Y-as-label-spacing 5
+       "Aantal regels van een Y-as label tot de volgende.")
 
      ...
-     (let* ((height (apply 'max numbers-list))
-            (height-of-top-line
-             (if (zerop (% height Y-axis-label-spacing))
-                 height
-               ;; else
-               (* (1+ (/ height Y-axis-label-spacing))
-                  Y-axis-label-spacing)))
-            (symbol-width (length graph-blank))))
+     (let* ((hoogte (apply 'max numbers-list))
+            (hoogte-van-top-line
+             (if (zerop (% hoogte Y-as-label-spacing))
+                 hoogte
+               ;; anders
+               (* (1+ (/ hoogte Y-as-label-spacing))
+                  Y-as-label-spacing)))
+            (symboolbreedte (length grafiek-wit))))
      ...
 
-(Note use of the ‘let*’ function: the initial value of height is
-computed once by the ‘(apply 'max numbers-list)’ expression and then the
-resulting value of ‘height’ is used to compute its final value.  *Note
-The ‘let*’ expression: fwd-para let, for more about ‘let*’.)
+(Merk het gebruik op van de functie ‘let*’: de initiële waarde van
+hoogte wordt een keer berekend door de ‘(apply 'max getallenlijst)’
+expressie en daarna wordt de resulterende waarde van ‘hoogte’ gebruikt
+om de uiteindelijke waarde te bepalen.  *Note De ‘let*’ expressie:
+fwd-para let, voor meer over ‘let*’.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Y-as element,  Next: Y-axis-column,  Prev: Bereken het restant,  Up: print-Y-axis
 
-C.2.2 Construct a Y Axis Element
---------------------------------
+C.2.2 Construeer een Y-as element
+---------------------------------
 
-When we print the vertical axis, we want to insert strings such as ‘5 -’
-and ‘10 - ’ every five lines.  Moreover, we want the numbers and dashes
-to line up, so shorter numbers must be padded with leading spaces.  If
-some of the strings use two digit numbers, the strings with single digit
-numbers must include a leading blank space before the number.
+Wanneer we de vertikale as tonen, willen we elke vijf regels strings
+invoegen zoals ‘5 -’ en ‘10 - ’.  Bovendien willen de getallen en
+streepjes netjes uitlijnen, dus moeten spaties aan kortere getallen
+voorafgaan.  Wanneer sommige strings uit twee cijfers bestaan, moeten de
+strings met een eencijferig beginnen met een spatie voor het getal.
 
-   To figure out the length of the number, the ‘length’ function is
-used.  But the ‘length’ function works only with a string, not with a
-number.  So the number has to be converted from being a number to being
-a string.  This is done with the ‘number-to-string’ function.  For
-example,
+   Om de lengte van het getal te bepalen wordt de functie ‘length’
+gebruikt.  Maar de functie ‘length’ werkt alleen met een string, niet
+met een getal.  Het getal moet worden geconverteerd van een getal naar
+een string.  Dit doet de functie ‘number-to-string’.  Bijvoorbeeld:
 
      (length (number-to-string 35))
           ⇒ 2
@@ -16090,158 +16093,157 @@ example,
      (length (number-to-string 100))
           ⇒ 3
 
-(‘number-to-string’ is also called ‘int-to-string’; you will see this
-alternative name in various sources.)
+(‘number-to-string’ wordt ook ‘int-to-string’ genoemd.  Je zult deze
+alternatieve naam in diverse bronnen tegenkomen.)
 
-   In addition, in each label, each number is followed by a string such
-as ‘ - ’, which we will call the ‘Y-axis-tic’ marker.  This variable is
-defined with ‘defvar’:
+   Verder wordt in elk label elk getal gevolgd door een string zoals
+‘ - ’, die we het ‘Y-as-tic’ merkteken noemen.  Deze variabele wordt
+gedefinieerd met ‘defvar’:
 
-     (defvar Y-axis-tic " - "
-        "String that follows number in a Y axis label.")
+     (defvar Y-as-tic  " - "
+         "String die na een getal volgt in een Y as label.")
 
-   The length of the Y label is the sum of the length of the Y axis tic
-mark and the length of the number of the top of the graph.
+   De lengte van het Y label is de som van de lengte van het Y-as-tic
+merkteken en de lengte van het getal op de top van de grafiek.
 
-     (length (concat (number-to-string height) Y-axis-tic)))
+     (length (concat (number-to-string height) Y-as-tic)))
 
-   This value will be calculated by the ‘print-graph’ function in its
-varlist as ‘full-Y-label-width’ and passed on.  (Note that we did not
-think to include this in the varlist when we first proposed it.)
+   Deze waarde wordt uitgerekend door de functie ‘print-grafiek’ in de
+varlist als ‘complete-Y-label-breedte’ en doorgegeven.  (Merk op date er
+niet aan dachten dit in de varlist op te nemen toen we die eerder
+voorstelden.)
 
-   To make a complete vertical axis label, a tic mark is concatenated
-with a number; and the two together may be preceded by one or more
-spaces depending on how long the number is.  The label consists of three
-parts: the (optional) leading spaces, the number, and the tic mark.  The
-function is passed the value of the number for the specific row, and the
-value of the width of the top line, which is calculated (just once) by
-‘print-graph’.
+   Om een complete verticale as label te maken wordt een tic merkteken
+aan een getal vastgemaakt en de twee samen kunnen worden voorafgegaan
+door een of meer spaties afhankelijk van de lengte van het getal.  Het
+label bestaat uit drie delen: de (optionele) inleidende spaties, het
+getal en het tic merkteken.  De functie krijgt de waarde van het getal
+voor een specifieke rij doorgegeven, en de waarde van de breedte van de
+topregel, die (slechts één keer) wordt berekend door ‘print-grafiek’.
 
-     (defun Y-axis-element (number full-Y-label-width)
-       "Construct a NUMBERed label element.
-     A numbered element looks like this `  5 - ',
-     and is padded as needed so all line up with
-     the element for the largest number."
-       (let* ((leading-spaces
-              (- full-Y-label-width
+     (defun Y-as-element (getal volle-Y-label-breedte)
+         "Construceer een label element met GETAL.
+      Een label element ziet er zo uit `  5 - ',
+      en begint indien nodig met spaties zodat ze allemaal
+      uitlijnen met het element met het grootste getal."
+       (let* ((inleidende-spaties
+              (- volle-Y-label-breedte
                  (length
-                  (concat (number-to-string number)
-                          Y-axis-tic)))))
+                  (concat (number-to-string getal)
+                          Y-as-tic)))))
          (concat
-          (make-string leading-spaces ? )
-          (number-to-string number)
-          Y-axis-tic)))
+          (make-string inleidende-spaties ? )
+          (number-to-string getal)
+          Y-as-tic)))
 
-   The ‘Y-axis-element’ function concatenates together the leading
-spaces, if any; the number, as a string; and the tic mark.
+   De functie ‘Y-as-element’ plakt de inleidende spaties, voor zover die
+er zijn, het getal, als een string en het merkteken aan elkaar.
 
-   To figure out how many leading spaces the label will need, the
-function subtracts the actual length of the label--the length of the
-number plus the length of the tic mark--from the desired label width.
+   Om uit te zoeken hoeveel inleidende spaties het label moet krijgen,
+trekt de functie de lengte van het label--de lengte van het getal plus
+de lengte van het merkteken--van het breedte van het gewenste label af.
 
-   Blank spaces are inserted using the ‘make-string’ function.  This
-function takes two arguments: the first tells it how long the string
-will be and the second is a symbol for the character to insert, in a
-special format.  The format is a question mark followed by a blank
-space, like this, ‘? ’.  *Note Character Type: (elisp)Character Type,
-for a description of the syntax for characters.  (Of course, you might
-want to replace the blank space by some other character ... You know
-what to do.)
+   Met de functie ‘make-string’ worden de spaties ingevoegd.  Deze
+functie heeft twee argumenten: het eerste zegt hoe lang de string moet
+worden en de tweede is het symbool van het in te voegen karakter, in een
+speciaal formaat.  Het formaat is een vraagteken gevold door een spatie,
+zoals dit, ‘? ’.  *Note Character Type: (elisp)Character Type, voor een
+beschrijving van de syntax van karakters.  (Natuurlijk zou je de spatie
+willen vervangen door een ander karakter ... Je weet wat je doen moet.)
 
-   The ‘number-to-string’ function is used in the concatenation
-expression, to convert the number to a string that is concatenated with
-the leading spaces and the tic mark.
+   De functie ‘number-to-string’ wordt gebruik in de concatenation
+expressie.  om het getal om te zetten in een string die aan de
+inleidende spaties en het merkteken geplakt wordt.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Y-axis-column,  Next: print-Y-axis enalaatste,  Prev: Y-as element,  Up: print-Y-axis
+File: emacs-lisp-intro-nl.info,  Node: Y-axis-column,  Next: toon-Y-as enalaatste,  Prev: Y-as element,  Up: print-Y-axis
 
-C.2.3 Create a Y Axis Column
-----------------------------
+C.2.3 De Y-as kolom maken
+-------------------------
 
-The preceding functions provide all the tools needed to construct a
-function that generates a list of numbered and blank strings to insert
-as the label for the vertical axis:
+De voorgaande functies leveren alle tool nodig om een functie te
+construeren die ene lijst van genummerde en blanco strings genereert om
+in te voegen als label voor de verticale as.
 
-     (defun Y-axis-column (height width-of-label)
-       "Construct list of Y axis labels and blank strings.
-     For HEIGHT of line above base and WIDTH-OF-LABEL."
-       (let (Y-axis)
-         (while (> height 1)
-           (if (zerop (% height Y-axis-label-spacing))
-               ;; Insert label.
-               (setq Y-axis
+     (defun Y-as-kolom (hoogte breedte-van-label)
+       "Construceer lijst van Y-as labels en blanco strings.
+     Voor HOOGTE van line boven de bases en BREEDTE-VAN-LABEL."
+        (let (Y-as)
+         (while (> hoogte 1)
+           (if (zerop (% hoogte Y-as-label-spacing))
+               ;; Invoegen label.
+               (setq Y-as
                      (cons
-                      (Y-axis-element height width-of-label)
-                      Y-axis))
-             ;; Else, insert blanks.
-             (setq Y-axis
+                      (Y-as-element hoogte breedte-van-label)
+                      Y-as))
+             ;; Anders, invoegen spaties.
+             (setq Y-as
                    (cons
-                    (make-string width-of-label ? )
-                    Y-axis)))
-           (setq height (1- height)))
-         ;; Insert base line.
-         (setq Y-axis
-               (cons (Y-axis-element 1 width-of-label) Y-axis))
-         (nreverse Y-axis)))
+                    (make-string breedte-van-label ? )
+                    Y-as)))
+           (setq hoogte (1- hoogte)))
+         ;; Invoegen base line.
+         (setq Y-as
+               (cons (Y-as-element 1 breedte-van-label) Y-as))
+         (nreverse Y-as)))
 
-   In this function, we start with the value of ‘height’ and
-repetitively subtract one from its value.  After each subtraction, we
-test to see whether the value is an integral multiple of the
-‘Y-axis-label-spacing’.  If it is, we construct a numbered label using
-the ‘Y-axis-element’ function; if not, we construct a blank label using
-the ‘make-string’ function.  The base line consists of the number one
-followed by a tic mark.
+   In deze functie starten we met de waarde van ‘hoogte’ en trekken
+respectievelijk één van de zijn waarde af.  Na elke aftrekking testen we
+om te zien of de waarde een integraal meervoud is van de functie
+‘Y-as-label-spacing’.  Zo niet, dan construeren we een blanco regel met
+de functie ‘make-string’.  De base line bestaat uit het getal één gevold
+door een merkteken.
 
 
-File: emacs-lisp-intro-nl.info,  Node: print-Y-axis enalaatste,  Prev: Y-axis-column,  Up: print-Y-axis
+File: emacs-lisp-intro-nl.info,  Node: toon-Y-as enalaatste,  Prev: Y-axis-column,  Up: print-Y-axis
 
-C.2.4 The Not Quite Final Version of ‘print-Y-axis’
----------------------------------------------------
+C.2.4 De Niet Geheel Finale Versie van ‘toon-Y-as’
+--------------------------------------------------
 
-The list constructed by the ‘Y-axis-column’ function is passed to the
-‘print-Y-axis’ function, which inserts the list as a column.
+De door de functie ‘Y-as-kolom’ geconstrueerde lijst wordt doorgegeven
+aan de functie ‘toon-Y-as’, die de lijst als kolom invoegt.
 
-     (defun print-Y-axis (height full-Y-label-width)
-       "Insert Y axis using HEIGHT and FULL-Y-LABEL-WIDTH.
-     Height must be the maximum height of the graph.
-     Full width is the width of the highest label element."
-     ;; Value of height and full-Y-label-width
-     ;; are passed by print-graph.
+     (defun toon-Y-as (hoogte volle-Y-label-breedte)
+       "Voeg Y-as in met HOOGTE en VOLLE-Y-LABEL-BREEDTE.
+     Hoogte moet de maximum hoogte van de grafiek zijn.
+     Volle breedte is de breedte van het hoogte  label element."
+     ;; De waarde van hoogte en volle-Y-label-breedte
+     ;; worden doorgegeven door toon-grafiek.
        (let ((start (point)))
          (insert-rectangle
-          (Y-axis-column height full-Y-label-width))
-         ;; Place point ready for inserting graph.
+          (Y-as-kolom hoogte volle-Y-label-breedte))
+         ;; Zet point klaar om de grafiek in te voegen.
          (goto-char start)
-         ;; Move point forward by value of full-Y-label-width
-         (forward-char full-Y-label-width)))
+         ;; Verplaats point voorwaarts met de waarde van volle-Y-label-breedte
+         (forward-char volle-Y-label-breedte)))
 
-   The ‘print-Y-axis’ uses the ‘insert-rectangle’ function to insert the
-Y axis labels created by the ‘Y-axis-column’ function.  In addition, it
-places point at the correct position for printing the body of the graph.
+   De ‘toon-Y-as’ gebruikt de functie ‘insert-rectangle’ om de Y-as
+labels in te voegen die zijn gemaakt door de functie ‘Y-as-kolom’.  Ook
+plaatst die point op de juiste plek om de body van de grafiek te tonen.
 
-   You can test ‘print-Y-axis’:
+   Je kunt de ‘toon-Y-as’ testen:
 
   1. Installeer
 
-          Y-axis-label-spacing
-          Y-axis-tic
-          Y-axis-element
-          Y-axis-column
-          print-Y-axis
+          Y-as-label-spacing
+          Y-as-tic
+          Y-as-element
+          Y-as-kolom
+          toon-Y-as
 
   2. Kopieer de volgende expressie:
 
-          (print-Y-axis 12 5)
+          (toon-Y-as 12 5)
 
-  3. Switch to the ‘*scratch*’ buffer and place the cursor where you
-     want the axis labels to start.
+  3. Schakel naar het ‘*scratch*’ buffer en plaats de cursor daar waar
+     je de as labels wilt starten.
 
   4. Typ ‘M-:’ (‘eval-expression’).
 
   5. Yank de ‘grafiek-body-tonen’ expressie in het minibuffer met ‘C-y’
      (‘yank)’.
 
-  6. Press <RET> to evaluate the expression.
+  6. Druk op <RET> om de expressie te evalueren.
 
    Emacs will print labels vertically, the top one being ‘10 - ’.  (The
 ‘print-graph’ function will pass the value of ‘height-of-top-line’,
@@ -16251,145 +16253,147 @@ appear as a bug.)
 
 File: emacs-lisp-intro-nl.info,  Node: print-X-axis,  Next: De gehele grafiek afdrukken,  Prev: print-Y-axis,  Up: Volledige grafiek
 
-C.3 De ‘print-X-axis’ functie
-=============================
+C.3 De ‘print-X-as’ functie
+===========================
 
-X axis labels are much like Y axis labels, except that the ticks are on
-a line above the numbers.  Labels should look like this:
+X-as labes lijken erg op Y as labes, behvale dat de merktekens boven een
+regel met getallen staan.  De labels moeten er zo uitzien:
 
          |   |    |    |
          1   5   10   15
 
-   The first tic is under the first column of the graph and is preceded
-by several blank spaces.  These spaces provide room in rows above for
-the Y axis labels.  The second, third, fourth, and subsequent ticks are
-all spaced equally, according to the value of ‘X-axis-label-spacing’.
+   Het eerste merkteken staat onder de eerste kolom van de grafiek en
+wordt voorafgegaan door meerdere spatie.  Deze spates geven ruimte in
+rijen er boven voor de Y-as labels.  De tweede, derde ne volgende
+merktekens staan op gelijke afstand, overeenkomstig met de waarde van
+‘X-as-label-spacing’.
 
-   The second row of the X axis consists of numbers, preceded by several
-blank spaces and also separated according to the value of the variable
-‘X-axis-label-spacing’.
+   De tweede rij van de X-as bestaat uit getallen, voorafgegaan door
+meerdere spaties en eveneens gescheiden volgens de waarde van de
+variabele ‘X-as-label-spacing’.
 
-   The value of the variable ‘X-axis-label-spacing’ should itself be
-measured in units of ‘symbol-width’, since you may want to change the
-width of the symbols that you are using to print the body of the graph
-without changing the ways the graph is labeled.
+   De waarde van de variabele ‘X-as-label-spacing’ zelf moet gemeten
+woorden in eenheden van ‘symbol-width’, omdat je de breedte van de
+symbolen die je gebruikt om de grafiek te tonen zou willen aanpassen
+zonder de manier waarop de grafiek wordt gelabeld te veranderen.
 
 * Menu:
 
 * Overeenkomsten verschillen::  Grotendeels als ‘print-Y-axis’, maar
                                   niet helemaal gelijk.
-* X-as tic marks::           Maak tic marks voor de horizontale as.
+* X-as merktekens::          Maak tic marks voor de horizontale as.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Overeenkomsten verschillen,  Next: X-as tic marks,  Up: print-X-axis
+File: emacs-lisp-intro-nl.info,  Node: Overeenkomsten verschillen,  Next: X-as merktekens,  Up: print-X-axis
 
-Similarities and differences
-----------------------------
+Overeenkomsten en verschillen
+-----------------------------
 
-The ‘print-X-axis’ function is constructed in more or less the same
-fashion as the ‘print-Y-axis’ function except that it has two lines: the
-line of tic marks and the numbers.  We will write a separate function to
-print each line and then combine them within the ‘print-X-axis’
-function.
+De functie ‘toon-X-as’ wordt min of meer op dezelfde manier
+geconstrueerd als de functie ‘toon-Y-as’ behalve dat het twee regels
+bevat: een regel met merktekens en een met getallen.  We schrijven een
+aparte functie om elke regel te tonen en combineren die dan in de
+‘toon-X-as’.
 
-   This is a three step process:
+   Dit is een proces in drie stappen:
 
-  1. Write a function to print the X axis tic marks,
-     ‘print-X-axis-tic-line’.
+  1. Schrijf een functie om de X-as merktekens te tonen,
+     ‘print-X-as-tic-line’.
 
-  2. Write a function to print the X numbers,
-     ‘print-X-axis-numbered-line’.
+  2. Schrijf een functie om de X getallen te tonen,
+     ‘print-X-as-genummerd-line’.
 
-  3. Write a function to print both lines, the ‘print-X-axis’ function,
-     using ‘print-X-axis-tic-line’ and ‘print-X-axis-numbered-line’.
+  3. Schrijf een functie die beide regels toont, de functie ‘toon-X-as’,
+     met ‘print-X-as-tic-line’ en ‘print-X-as-genummerd-line’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: X-as tic marks,  Prev: Overeenkomsten verschillen,  Up: print-X-axis
+File: emacs-lisp-intro-nl.info,  Node: X-as merktekens,  Prev: Overeenkomsten verschillen,  Up: print-X-axis
 
-C.3.1 X-as tic marks
---------------------
+C.3.1 X-as merktekens
+---------------------
 
-The first function should print the X axis tic marks.  We must specify
-the tic marks themselves and their spacing:
+De eerste functie moet de X-as merktekens tonen.  We moeten de
+merktekens zelf speicificeren en hun onderlinge afstand.
 
-     (defvar X-axis-label-spacing
-       (if (boundp 'graph-blank)
-           (* 5 (length graph-blank)) 5)
-       "Number of units from one X axis label to next.")
+     (defvar X-as-label-spacing
+       (if (boundp 'grafiek-wit)
+           (* 5 (length grafiek-wit)) 5)
+       "Aantal eenheden tussen een X as label tot de volgende.")
 
-(Note that the value of ‘graph-blank’ is set by another ‘defvar’.  The
-‘boundp’ predicate checks whether it has already been set; ‘boundp’
-returns ‘nil’ if it has not.  If ‘graph-blank’ were unbound and we did
-not use this conditional construction, we would enter the debugger and
-see an error message saying ‘Debugger entered--Lisp error:
-(void-variable graph-blank)’.)
+(Merk op dat de waarde van ‘grafiek-wit’ door een andere ‘defvar’ wordt
+gezet.  Het predicaat ‘boundp’ controleert of het al gezet is, ‘boundp’
+geeft ‘nil’ terug wanneer dat niet het geval is.  Wanneer ‘grafiek-wit’
+ongebonden zou zijn en we deze conditionele constructie niet zouden
+gebruiken, zouden we de debugger ingaan en een foutboodschap zien die
+zegt ‘Debugger entered--Lisp error: (void-variable grafiek-wit)’.)
 
-   Here is the ‘defvar’ for ‘X-axis-tic-symbol’:
+   Hier is de ‘defvar’ voor ‘X-as-tic-symbol’:
 
-     (defvar X-axis-tic-symbol "|"
-       "String to insert to point to a column in X axis.")
+     (defvar X-as-tic-symbol "|"
+       "String in te voegen die wijst naar een kolom in de X-as.")
 
-   The goal is to make a line that looks like this:
+   Het doel is een regel te maken zie er zo uit ziet:
 
             |   |    |    |
 
-   The first tic is indented so that it is under the first column, which
-is indented to provide space for the Y axis labels.
+   Het eerste merkteken is ingesprongen zodat die onder de eerste kolom
+staat, die ingesprongen is om ruimte te maken voor de Y-as labels.
 
-   A tic element consists of the blank spaces that stretch from one tic
-to the next plus a tic symbol.  The number of blanks is determined by
-the width of the tic symbol and the ‘X-axis-label-spacing’.
+   Een merkteken bestaat uit spaties van het ene merkteken tot het
+volgende plus het merkteken symbool.  Het aantal spaties wordt bepaald
+door de breedte van het merkteken symbool en de ‘X-as-label-spacing’.
 
    De code ziet er zo uit:
 
-     ;;; X-axis-tic-element
+     ;;; X-as-merkteken-element
      ...
      (concat
       (make-string
-       ;; Make a string of blanks.
-       (-  (* symbol-width X-axis-label-spacing)
-           (length X-axis-tic-symbol))
+       ;; Maak een string spaties.
+       (-  (* symbol-width X-as-label-spacing)
+           (length X-as-tic-symbol))
        ? )
-      ;; Concatenate blanks with tic symbol.
-      X-axis-tic-symbol)
+      ;; Plak spaties aan X-as-tic-symbol.
+      X-as-tic-symbol)
      ...
 
-   Next, we determine how many blanks are needed to indent the first tic
-mark to the first column of the graph.  This uses the value of
-‘full-Y-label-width’ passed it by the ‘print-graph’ function.
+   Hierna stellen we vast hoeveel spaties nodig zijn voor het inspringen
+van het eerste merkteken naar de eerste kolom in de grafiek.  Dit
+gebruikt de waarde van ‘volle-Y-label-breedte’ die wordt doorgegeven
+door de functie ‘toon-grafiek’.
 
-   The code to make ‘X-axis-leading-spaces’ looks like this:
+   De code om ‘X-as-leading-spaces’ te maken ziet er zo uit:
 
-     ;; X-axis-leading-spaces
+     ;; X-as-leading-spaces
      ...
-     (make-string full-Y-label-width ? )
+     (make-string volle-Y-label-breedte ? )
      ...
 
-   We also need to determine the length of the horizontal axis, which is
-the length of the numbers list, and the number of ticks in the
-horizontal axis:
+   We moeten ook de lengte van de horizontale as vaststellen, dat is de
+lengte van de getallenlijst, en het aantal merktekens in de horizontale
+as:
 
-     ;; X-length
+     ;; X-lengte
      ...
-     (length numbers-list)
+     (length getallenlijst)
 
-     ;; tic-width
+     ;; merkteken-breedte
      ...
-     (* symbol-width X-axis-label-spacing)
+     (* symbol-width X-axs-label-spacing)
 
-     ;; number-of-X-ticks
+     ;; aantal-merktekens
      (if (zerop (% (X-length tic-width)))
          (/ (X-length tic-width))
        (1+ (/ (X-length tic-width))))
 
-   All this leads us directly to the function for printing the X axis
-tic line:
+   Dit alles leidt ons direct naar de functie om de X-as merkteken regel
+te tonen:
 
-     (defun print-X-axis-tic-line
-       (number-of-X-tics X-axis-leading-spaces X-axis-tic-element)
-       "Print ticks for X axis."
-         (insert X-axis-leading-spaces)
-         (insert X-axis-tic-symbol)  ; Under first column.
+     (defun toon-X-as-tic-line
+       (number-of-X-tics X-as-leading-spaces X-as-tic-element)
+       "Toon ticks for X as."
+         (insert X-as-leading-spaces)
+         (insert X-as-tic-symbol)  ; Onder eerste kolom.
          ;; Insert second tic in the right spot.
          (insert (concat
                   (make-string
@@ -16398,105 +16402,104 @@ tic line:
                        (* 2 (length X-axis-tic-symbol)))
                    ? )
                   X-axis-tic-symbol))
-         ;; Insert remaining ticks.
+         ;; Voeg resterende merktekens in.
          (while (> number-of-X-tics 1)
-           (insert X-axis-tic-element)
+           (insert X-as-tic-element)
            (setq number-of-X-tics (1- number-of-X-tics))))
 
-   The line of numbers is equally straightforward:
+   De regels met getallen en even makkelijk:
 
-   First, we create a numbered element with blank spaces before each
-number:
+   Eerst maken we een genummerd element met spaties voor elk getal:
 
-     (defun X-axis-element (number)
-       "Construct a numbered X axis element."
+     (defun X-as-element (getal)
+       "Construeer een genummerd X-as element."
        (let ((leading-spaces
-              (-  (* symbol-width X-axis-label-spacing)
-                  (length (number-to-string number)))))
+              (-  (* symbol-width X-as-label-spacing)
+                  (length (number-to-string getal)))))
          (concat (make-string leading-spaces ? )
-                 (number-to-string number))))
+                 (number-to-string getal))))
 
-   Next, we create the function to print the numbered line, starting
-with the number 1 under the first column:
+   Vervolgens creëren we de functie om de genummerde regel te tonen,
+beginnend met nummer 1 onder de eerste kolom.
 
-     (defun print-X-axis-numbered-line
-       (number-of-X-tics X-axis-leading-spaces)
-       "Print line of X-axis numbers"
-       (let ((number X-axis-label-spacing))
-         (insert X-axis-leading-spaces)
+     (defun toon-X-as-numbered-line
+       (number-of-X-tics X-as-leading-spaces)
+       "Toon regel X-as getallen"
+       (let ((getal X-as-label-spacing))
+         (insert X-as-leading-spaces)
          (insert "1")
          (insert (concat
                   (make-string
-                   ;; Insert white space up to next number.
-                   (-  (* symbol-width X-axis-label-spacing) 2)
+                   ;; Voeg witte ruimte in tot het volgende getal.
+                   (-  (* symbol-width X-as-label-spacing) 2)
                    ? )
-                  (number-to-string number)))
-         ;; Insert remaining numbers.
-         (setq number (+ number X-axis-label-spacing))
+                  (number-to-string getal)))
+         ;; Voeg resterende getallen in.
+         (setq getal (+ getal X-as-label-spacing))
          (while (> number-of-X-tics 1)
-           (insert (X-axis-element number))
-           (setq number (+ number X-axis-label-spacing))
+           (insert (X-as-element getal))
+           (setq getal(+ getal X-as-label-spacing))
            (setq number-of-X-tics (1- number-of-X-tics)))))
 
-   Finally, we need to write the ‘print-X-axis’ that uses
-‘print-X-axis-tic-line’ and ‘print-X-axis-numbered-line’.
+   Tenslotte moeten de ‘toon-X-as’ schrijven die gebruik maakt van de
+‘toon-X-as-tic-line’ en ‘toon-X-as-numbered-line’.
 
-   The function must determine the local values of the variables used by
-both ‘print-X-axis-tic-line’ and ‘print-X-axis-numbered-line’, and then
-it must call them.  Also, it must print the carriage return that
-separates the two lines.
+   De functie moet de lokale waarden van de variabelen vast stellen die
+door zowel ‘toon-X-as-tic-line’ als ‘toon-X-as-numbered-line’ gebruikt
+worden en moeten we ze aanroepen.  Ook met het een einde regelteken
+tonen, dat de twee regels van elkaar scheidt.
 
-   The function consists of a varlist that specifies five local
-variables, and calls to each of the two line printing functions:
+   De functie bestaat uit een varlist die vijf lokale variabelen
+specificeert en de twee toon-regel functies aanroept.
 
-     (defun print-X-axis (numbers-list)
-       "Print X axis labels to length of NUMBERS-LIST."
+     (defun toon-X-as (getallenlijst)
+       "Toon X as labels voor de lengte van GETALLENLIJST."
        (let* ((leading-spaces
-               (make-string full-Y-label-width ? ))
-            ;; symbol-width is provided by graph-body-print
-            (tic-width (* symbol-width X-axis-label-spacing))
-            (X-length (length numbers-list))
+               (make-string volle-Y-label-breedte ? ))
+            ;; symbol-width wordt verstrekt door grafiek-body-tonen
+            (tic-width (* symbol-width X-as-label-spacing))
+            (X-length (length getallenlijst))
             (X-tic
              (concat
               (make-string
-               ;; Make a string of blanks.
-               (-  (* symbol-width X-axis-label-spacing)
-                   (length X-axis-tic-symbol))
+               ;; Maak een string van spaties.
+               (-  (* symbol-width X-as-label-spacing)
+                   (length X-as-tic-symbol))
                ? )
-              ;; Concatenate blanks with tic symbol.
-              X-axis-tic-symbol))
+              ;; Concatenate spaties met tic symbol.
+              X-as-tic-symbol))
             (tic-number
              (if (zerop (% X-length tic-width))
                  (/ X-length tic-width)
                (1+ (/ X-length tic-width)))))
-         (print-X-axis-tic-line tic-number leading-spaces X-tic)
+         (toon-X-as-tic-line tic-number leading-spaces X-tic)
          (insert "\n")
-         (print-X-axis-numbered-line tic-number leading-spaces)))
+         (toon-X-as-numbered-line tic-number leading-spaces)))
 
-   You can test ‘print-X-axis’:
+   Je kunt ‘toon-X-as’ testen:
 
-  1. Install ‘X-axis-tic-symbol’, ‘X-axis-label-spacing’,
-     ‘print-X-axis-tic-line’, as well as ‘X-axis-element’,
-     ‘print-X-axis-numbered-line’, and ‘print-X-axis’.
+  1. Installeer ‘X-as-tic-symbol’, ‘X-as-label-spacing’,
+     ‘toon-X-as-tic-line’ en ‘X-as-element’,
+     ‘toon-X-as-genummerde-regel’ en ‘toon-X-as’.
 
   2. Kopieer de volgende expressie:
 
           (progn
-           (let ((full-Y-label-width 5)
+           (let ((volle-Y-label-breedte 5)
                  (symbol-width 1))
-             (print-X-axis
+             (toon-X-as
               '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16))))
 
-  3. Switch to the ‘*scratch*’ buffer and place the cursor where you
-     want the axis labels to start.
+  3. Schakel naar het ‘*scratch*’ buffer en plaats de cursor daar waar
+     je de as labels wilt starten.
 
   4. Typ ‘M-:’ (‘eval-expression’).
 
-  5. Yank the test expression into the minibuffer with ‘C-y’ (‘yank)’.
+  5. Yank de test expressie in het minibuffer met ‘C-y’ (‘yank)’.
 
-  6. Press <RET> to evaluate the expression.
+  6. Druk op <RET> om de expressie te evalueren.
 
-   Emacs will print the horizontal axis like this:
+   Emacs toont de horizontale as zoals dit:
 
           |   |    |    |    |
           1   5   10   15   20
@@ -16504,24 +16507,24 @@ variables, and calls to each of the two line printing functions:
 
 File: emacs-lisp-intro-nl.info,  Node: De gehele grafiek afdrukken,  Prev: print-X-axis,  Up: Volledige grafiek
 
-C.4 De hele grafiek afdrukken
-=============================
+C.4 De gehele grafiek tonen
+===========================
 
-Now we are nearly ready to print the whole graph.
+Nu zijn we bijna klaar om de gehele grafiek te tonen.
 
-   The function to print the graph with the proper labels follows the
-outline we created earlier (*note A Graph with Labeled Axes: Full
-Graph.), but with additions.
+   De functie om de grafiek met de juiste labels te tonen volgt de
+outline de we eerder gemaakt hebben (*note Een grafiek met gelabelde
+assen: Volledige grafiek.), maar met toevoegingen.
 
-   Here is the outline:
+   Hier is de outline:
 
-     (defun print-graph (numbers-list)
-       "DOCUMENTATION..."
-       (let ((height  ...
+     (defun toon-grafiek (getallenlijst)
+       "DOCUMENTATIE..."
+       (let ((hoogte  ...
              ...))
-         (print-Y-axis height ... )
-         (graph-body-print numbers-list)
-         (print-X-axis ... )))
+         (toon-Y-as hoogte ... )
+         (grafiek-body-tonen getallenlijst)
+         (toon-X-as ... )))
 
 * Menu:
 
@@ -16537,137 +16540,140 @@ Graph.), but with additions.
 
 File: emacs-lisp-intro-nl.info,  Node: De finale versie,  Next: Test print-graph,  Up: De gehele grafiek afdrukken
 
-Changes for the Final Version
------------------------------
+Wijzigingen voor de finale versie
+---------------------------------
 
-The final version is different from what we planned in two ways: first,
-it contains additional values calculated once in the varlist; second, it
-carries an option to specify the labels' increment per row.  This latter
-feature turns out to be essential; otherwise, a graph may have more rows
-than fit on a display or on a sheet of paper.
+De finale versie wijkt op twee manieren af van wat we hadden gepland:
+ten eerste bevat het additionele eenmalig berekende waarden in de
+varlist, ten tweede heeft het een optie om de stapgrootte per regel van
+de regels te specificeren.  Deze laatste eigenschap blijkt essentieel te
+zijn, anders zou de grafiek meer regels kunnen hebben dan op het display
+of een blad papier passen.
 
-   This new feature requires a change to the ‘Y-axis-column’ function,
-to add ‘vertical-step’ to it.  The function looks like this:
+   Deze nieuwe eigenschap vereist een verandering in de functie
+‘Y-as-kolom’, om de ‘vertikale-stap’ er aan toe te voegen.  De functie
+ziet er zo uit:
 
-     ;;; Final version.
-     (defun Y-axis-column
-       (height width-of-label &optional vertical-step)
-       "Construct list of labels for Y axis.
-     HEIGHT is maximum height of graph.
-     WIDTH-OF-LABEL is maximum width of label.
-     VERTICAL-STEP, an option, is a positive integer
-     that specifies how much a Y axis label increments
-     for each line.  For example, a step of 5 means
-     that each line is five units of the graph."
-       (let (Y-axis
-             (number-per-line (or vertical-step 1)))
-         (while (> height 1)
-           (if (zerop (% height Y-axis-label-spacing))
-               ;; Insert label.
-               (setq Y-axis
+     ;;; Finale versie.
+     (defun Y-as-kolom
+       (hoogte width-of-label &optional vertical-step)
+       "Construeer lijst van labels voor de Y as.
+     HOOGTE is maximum hoogte van de grafiek.
+     WIDTH-OF-LABEL is maximum breedte van label.
+     VERTICAL-STEP, een optie, is een positieve integer
+     die voor elke regel specificeert hoeveel een Y-as label
+     toeneemt.
+     Een stap van vijf bijvoorbeeld betekent dat elke regel
+     vijf eenheden van de grafiek is."
+       (let (Y-as
+             (getal-per-regel (or vertical-step 1)))
+         (while (> hoogte 1)
+           (if (zerop (% hoogte Y-as-label-spacing))
+               ;; Label invoegen.
+               (setq Y-as
                      (cons
-                      (Y-axis-element
-                       (* height number-per-line)
+                      (Y-as-element
+                       (* hoogte getal-per-regel)
                        width-of-label)
-                      Y-axis))
-             ;; Else, insert blanks.
-             (setq Y-axis
+                      Y-as))
+             ;; Anders, voeg spaties in.
+             (setq Y-as
                    (cons
                     (make-string width-of-label ? )
-                    Y-axis)))
-           (setq height (1- height)))
-         ;; Insert base line.
-         (setq Y-axis (cons (Y-axis-element
+                    Y-as)))
+           (setq hoogte (1- hoogte)))
+         ;; Invoegen basis regel.
+         (setq Y-as (cons (Y-as-element
                              (or vertical-step 1)
                              width-of-label)
-                            Y-axis))
-         (nreverse Y-axis)))
+                            Y-as))
+         (nreverse Y-as)))
 
-   The values for the maximum height of graph and the width of a symbol
-are computed by ‘print-graph’ in its ‘let’ expression; so
-‘graph-body-print’ must be changed to accept them.
+   De waarden voor de maximum hoogte van de grafiek en de breedte van
+een symbool worden berekend door ‘toon-grafiek’ in de ‘let’ expressie,
+dus ‘grafiek-body-tonen’ moet worden aangepast om die te accepteren.
 
-     ;;; Final version.
-     (defun graph-body-print (numbers-list height symbol-width)
-       "Print a bar graph of the NUMBERS-LIST.
-     The numbers-list consists of the Y-axis values.
-     HEIGHT is maximum height of graph.
-     SYMBOL-WIDTH is number of each column."
-       (let (from-position)
-         (while numbers-list
-           (setq from-position (point))
+     ;;; Finale versie.
+     (defun grafiek-body-gonen (getallenlijst hoogte symboolbreedte)
+       "Toon een staafgrafiek of the NUMBERS-LIST.
+     The numbers-list consists of the Y-as values.
+     HOOGTE is maximum hoogte van de grafiek.
+     SYMBOOLBREEDTE is getal van elke kolom."
+       (let (van-positie)
+         (while getallenlijst
+           (setq van-positie (point))
            (insert-rectangle
-            (column-of-graph height (car numbers-list)))
-           (goto-char from-position)
-           (forward-char symbol-width)
-           ;; Draw graph column by column.
+            (kolom-van-grafiek hoogte (car getallenlijst)))
+           (goto-char van-positie)
+           (forward-char symboolbreedte)
+           ;; Teken grafiek kolom voor kolom.
            (sit-for 0)
-           (setq numbers-list (cdr numbers-list)))
-         ;; Place point for X axis labels.
-         (forward-line height)
+           (setq getallenlijst (cdr getallenlijst)))
+         ;; Plaats point voor X as labels.
+         (forward-line hoogte)
          (insert "\n")))
 
-   Finally, the code for the ‘print-graph’ function:
+   Tenslotte de code voor de ‘toon-grafiek’ functie:
 
-     ;;; Final version.
-     (defun print-graph
-       (numbers-list &optional vertical-step)
-       "Print labeled bar graph of the NUMBERS-LIST.
-     The numbers-list consists of the Y-axis values.
+     ;;; Finale versie.
+     (defun toon-grafiek
+       (getallenlijst &optional vertical-step)
+       "Toon gelabelde staafgrafiek van de GETALLENLIJST.
+     De getallenlijst bestaat uit de Y-as waarden.
 
-     Optionally, VERTICAL-STEP, a positive integer,
-     specifies how much a Y axis label increments for
-     each line.  For example, a step of 5 means that
-     each row is five units."
-       (let* ((symbol-width (length graph-blank))
-              ;; height is both the largest number
-              ;; and the number with the most digits.
-              (height (apply 'max numbers-list))
-              (height-of-top-line
-               (if (zerop (% height Y-axis-label-spacing))
-                   height
+     Optioneel speficieert VERTICAL-STEP, een positieve
+      integer, hoe veel een Y as label toeneemt bij elke
+     regel.  Een stap van 5 bijvoorbeeld betekent dat
+     elke rij vijf eenheden is."
+       (let* ((symboolbreedte (length grafiek-wit))
+              ;; hoogte is zowel het grootste getal
+              ;; en het getal met de meeste cijfers.
+              (hoogte (apply 'max getallenlijst))
+              (hoogte-van-top-line
+               (if (zerop (% hoogte Y-as-label-spacing))
+                   hoogte
                  ;; else
-                 (* (1+ (/ height Y-axis-label-spacing))
-                    Y-axis-label-spacing)))
+                 (* (1+ (/ hoogte Y-as-label-spacing))
+                    Y-as-label-spacing)))
               (vertical-step (or vertical-step 1))
-              (full-Y-label-width
-               (length
+              (volle-Y-label-breedte          (length
                 (concat
                  (number-to-string
-                  (* height-of-top-line vertical-step))
-                 Y-axis-tic))))
+                  (* hoogte-van-top-line vertical-step))
+                 Y-as-tic))))
 
-         (print-Y-axis
-          height-of-top-line full-Y-label-width vertical-step)
-         (graph-body-print
-          numbers-list height-of-top-line symbol-width)
-         (print-X-axis numbers-list)))
+         (toon-Y-as
+          hoogte-van-top-line volle-Y-label-breedte vertical-step)
+         (grafiek-body-tonen
+          getallenlijst hoogte-van-top-line symboolbreedte)
+         (print-X-as getallenlijst)))
 
 
 File: emacs-lisp-intro-nl.info,  Node: Test print-graph,  Next: Woorden in defuns grafisch weergeven,  Prev: De finale versie,  Up: De gehele grafiek afdrukken
 
-C.4.1 Testing ‘print-graph’
+C.4.1 ‘toon-grafiek’ testen
 ---------------------------
 
-We can test the ‘print-graph’ function with a short list of numbers:
+We kunnen de functie ‘toon-grafiek’ testen met een korte lijst van
+getallen:
 
-  1. Install the final versions of ‘Y-axis-column’, ‘graph-body-print’,
-     and ‘print-graph’ (in addition to the rest of the code.)
+  1. Installeer de finale versie van ‘Y-as-kolom’, ‘grafiek-body-tonen’,
+     en ‘toon-grafiek’ (als aanvulling op de rest van de code).
 
   2. Kopieer de volgende expressie:
 
-          (print-graph '(3 2 5 6 7 5 3 4 6 4 3 2 1))
+          (toon-grafiek '(3 2 5 6 7 5 3 4 6 4 3 2 1))
 
-  3. Switch to the ‘*scratch*’ buffer and place the cursor where you
-     want the axis labels to start.
+  3. Schakel naar het ‘*scratch*’ buffer en plaats de cursor daar waar
+     je de as labels wilt starten.
 
   4. Typ ‘M-:’ (‘eval-expression’).
 
-  5. Yank the test expression into the minibuffer with ‘C-y’ (‘yank)’.
+  5. Yank de test expressie in het minibuffer met ‘C-y’ (‘yank)’.
 
-  6. Press <RET> to evaluate the expression.
+  6. Druk op <RET> om de expressie te evalueren.
 
-   Emacs will print a graph that looks like this:
+   Emacs toont een grafiek die er zo uit ziet:
 
      10 -
 
@@ -16683,12 +16689,12 @@ We can test the ‘print-graph’ function with a short list of numbers:
           |   |    |    |
           1   5   10   15
 
-   On the other hand, if you pass ‘print-graph’ a ‘vertical-step’ value
-of 2, by evaluating this expression:
+   Anderzijds, als je ‘toon-grafiek’ een ‘vertical-step’ waarde van 2
+doorgeeft, door deze expressie te evalueren:
 
-     (print-graph '(3 2 5 6 7 5 3 4 6 4 3 2 1) 2)
+     (toon-grafiek '(3 2 5 6 7 5 3 4 6 4 3 2 1) 2)
 
-The graph looks like this:
+De grafiek ziet er zo uit:
 
      20 -
 
@@ -16704,28 +16710,29 @@ The graph looks like this:
           |   |    |    |
           1   5   10   15
 
-(A question: is the ‘2’ on the bottom of the vertical axis a bug or a
-feature?  If you think it is a bug, and should be a ‘1’ instead, (or
-even a ‘0’), you can modify the sources.)
+(Een vraag: is de ‘2’ aan de onderkant van de vertikale as een bug of
+een feature?  Wanneer je denkt dat dit een bug is, en het een ‘1’ zou
+moeten zijn (of zelfs ‘0’), kan je broncode aanpassen.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Woorden in defuns grafisch weergeven,  Next: lambda,  Prev: Test print-graph,  Up: De gehele grafiek afdrukken
 
-C.4.2 Graphing Numbers of Words and Symbols
--------------------------------------------
+C.4.2 Grafiek met aantallen woorden en symbolen
+-----------------------------------------------
 
-Now for the graph for which all this code was written: a graph that
-shows how many function definitions contain fewer than 10 words and
-symbols, how many contain between 10 and 19 words and symbols, how many
-contain between 20 and 29 words and symbols, and so on.
+Nu naar de grafiek waarvoor al deze code is geschreven: een grafiek die
+toont hoeveel functiedefinities minder dan 10 woorden en symbolen
+bevatten, hoeveel tussen 10 en 19 woorden en symbolen bevatten, en
+hoeveel tussen 20 en 29 woorden en symbolen bevatten, enzovoorts.
 
-   This is a multi-step process.  First make sure you have loaded all
-the requisite code.
+   Dit is een meervoudige stappen proces.  Verzeker je eerst dat je al
+de benodigde code geladen hebt.
 
-   It is a good idea to reset the value of ‘top-of-ranges’ in case you
-have set it to some different value.  You can evaluate the following:
+   Het is een goed idee om de waarde van ‘hoogste-van-ranges’ te
+resetten, in geval je dat op een of andere waarde gezet hebt.  Je kunt
+het volgende evalueren:
 
-     (setq top-of-ranges
+     (setq hoogste-van-ranges
       '(10  20  30  40  50
         60  70  80  90 100
        110 120 130 140 150
@@ -16733,239 +16740,240 @@ have set it to some different value.  You can evaluate the following:
        210 220 230 240 250
        260 270 280 290 300)
 
-Next create a list of the number of words and symbols in each range.
+Maak nu een lijst van het aantal woorden in symbolen in elke range.
 
-Evaluate the following:
+Evalueer het volgende:
 
-     (setq list-for-graph
+     (setq lijst-voor-grafiek
             (defuns-per-range
               (sort
-               (recursive-lengths-list-many-files
+               (recursieve-lengte-lijst-veel-bestanden
                 (directory-files "/usr/local/emacs/lisp"
                                  t ".+el$"))
                '<)
               top-of-ranges))
 
-On my old machine, this took about an hour.  It looked though 303 Lisp
-files in my copy of Emacs version 19.23.  After all that computing, the
-‘list-for-graph’ had this value:
+Op mijn oude machine duurde dit ongeveer een uur.  Het ging door 303
+Lisp bestanden in mijn installatie van Emacs versie 19.23.  Na al daar
+rekenen, de ‘lijst-voor-grafiek’ had deze waarde:
 
      (537 1027 955 785 594 483 349 292 224 199 166 120 116 99
      90 80 67 48 52 45 41 33 28 26 25 20 12 28 11 13 220)
 
-This means that my copy of Emacs had 537 function definitions with fewer
-than 10 words or symbols in them, 1,027 function definitions with 10 to
-19 words or symbols in them, 955 function definitions with 20 to 29
-words or symbols in them, and so on.
+Dit betekent dat mijn installatie van Emacs 537 functiedefinities had
+met minder dan 10 woorden of symbolen, 1.027 functiedefinities met 10
+tot 19 woorden of symbolen, 955 functiedefinities met 20 tot 29 woorden
+of symbolen, enzovoorts.
 
-   Clearly, just by looking at this list we can see that most function
-definitions contain ten to thirty words and symbols.
+   Door gewoon naar deze lijst te kijken kunnen we duidelijk zijn dat de
+meeste functiedefinities tien tot dertig woorden en symbolen bevatten.
 
-   Now for printing.  We do _not_ want to print a graph that is 1,030
-lines high ... Instead, we should print a graph that is fewer than
-twenty-five lines high.  A graph that height can be displayed on almost
-any monitor, and easily printed on a sheet of paper.
+   Nu naar het tonen.  We willen _geen_ grafiek tonen die 1.030 regels
+hoog is ... In plaats daarvan zouden we een grafiek tonen die minder dan
+vijfentwintig regels hoog is.  Een grafiek van die hoogte kan op vrijwel
+elke monitor getoond worden en makkelijk op een vel papier afgedrukt
+worden.
 
-   This means that each value in ‘list-for-graph’ must be reduced to
-one-fiftieth its present value.
+   Dit betekent dat elke waarde in de ‘lijst-voor-grafiek’ moet worden
+gereduceerd tot een vijftigste van zijn huidige waarde.
 
-   Here is a short function to do just that, using two functions we have
-not yet seen, ‘mapcar’ and ‘lambda’.
+   Hier is een korte functie die dat doet, met twee functies die nog
+niet gezien hebben, ‘mapcar’ en ‘lambda’.
 
-     (defun one-fiftieth (full-range)
-       "Return list, each number one-fiftieth of previous."
+     (defun een-vijftigste (full-range)
+       "Geef een lijst terug, met elk getal een vijftigste van de eerdere."
       (mapcar (lambda (arg) (/ arg 50)) full-range))
 
 
 File: emacs-lisp-intro-nl.info,  Node: lambda,  Next: mapcar,  Prev: Woorden in defuns grafisch weergeven,  Up: De gehele grafiek afdrukken
 
-C.4.3 A ‘lambda’ Expression: Useful Anonymity
----------------------------------------------
+C.4.3 Een ‘lambda’ expressie: nuttige anonimiteit
+-------------------------------------------------
 
-‘lambda’ is the symbol for an anonymous function, a function without a
-name.  Every time you use an anonymous function, you need to include its
-whole body.
+‘lambda’ is het symbool voor een anonieme functie, een functie zonder
+een naam.  Elke keer dat je een anonieme functie gebruikt, dien je de
+gehele body er van op te nemen.
 
 Dus
 
      (lambda (arg) (/ arg 50))
 
-is a function that returns the value resulting from dividing whatever is
-passed to it as ‘arg’ by 50.
+is een functie die de waarde teruggeeft die het resultaat is van datgene
+dat is doorgegeven als ‘arg’ gedeeld door 50.
 
-   Earlier, for example, we had a function ‘multiply-by-seven’; it
-multiplied its argument by 7.  This function is similar, except it
-divides its argument by 50; and, it has no name.  The anonymous
-equivalent of ‘multiply-by-seven’ is:
+   Eerder bijvoorbeeld hadden we een functie ‘vermenigvuldig-met-zeven’.
+Het vermenigvuldigt het argument met 7.  Deze functie is vergelijkbaar,
+behalve dat die het argument door 50 deelt, en dat die geen naam heeft.
+Het anonieme equivalent van ‘vermenigvuldig-met-zeven’ is:
 
-     (lambda (number) (* 7 number))
+     (lambda (getal) (* 7 getal))
 
-(*Note The ‘defun’ Macro: defun.)
+(*Note De ‘defun’ macro: defun.)
 
-If we want to multiply 3 by 7, we can write:
+Wanneer we 3 met 7 willen vermenigvuldigen, kunnen we schrijven:
 
-                         (multiply-by-seven 3)
-                          \_______________/ ^
-                                  |         |
-                               function  argument
+ [image src="lambda-1-nl.png" text="     (vermenigvuldig-met-zeven 3)
+      \\______________________/ ^
+                   |           |
+                 functie  argument" ]
 
-This expression returns 21.
+Deze expressie geeft 21 terug.
 
-Similarly, we can write:
+Op dezelfde manier kunnen we schrijven:
 
-                   ((lambda (number) (* 7 number)) 3)
-                    \____________________________/ ^
-                                  |                |
-                         anonymous function     argument
+ [image src="lambda-2-nl.png" text="     ((lambda (getal) (* 7 getal)) 3)
+      \\_________________________/  ^
+                    |              |
+           anonieme functie     argument" ]
 
-If we want to divide 100 by 50, we can write:
+Wanneer we 100 door 50 willen delen, kunnen we schrijven:
 
-                     ((lambda (arg) (/ arg 50)) 100)
-                      \______________________/  \_/
-                                  |              |
-                         anonymous function   argument
+                      [image src="lambda-3-nl.png" ]
 
-This expression returns 2.  The 100 is passed to the function, which
-divides that number by 50.
+Deze expressie geeft 2 terug.  De 100 is doorgegeven aan de functie, die
+dat getal deelt door 50.
 
-   *Note Lambda Expressions: (elisp)Lambda Expressions, for more about
-‘lambda’.  Lisp and lambda expressions derive from the Lambda Calculus.
+   *Note Lambda Expressions: (elisp)Lambda Expressions, voor meer over
+‘lambda’.  Lisp en lambda expressies zijn afkomstig van de Lambda
+Calculus.
 
 
 File: emacs-lisp-intro-nl.info,  Node: mapcar,  Next: Een andere bug,  Prev: lambda,  Up: De gehele grafiek afdrukken
 
-C.4.4 The ‘mapcar’ Function
----------------------------
+C.4.4 De ‘mapcar’ function
+--------------------------
 
-‘mapcar’ is a function that calls its first argument with each element
-of its second argument, in turn.  The second argument must be a
-sequence.
+‘mapcar’ is een functie die het eerste argument beurtelings aanroept met
+elk element uit het tweede argument.  Het tweede argument moet een reeks
+zijn.
 
-   The ‘map’ part of the name comes from the mathematical phrase,
-"mapping over a domain", meaning to apply a function to each of the
-elements in a domain.  The mathematical phrase is based on the metaphor
-of a surveyor walking, one step at a time, over an area he is mapping.
-And ‘car’, of course, comes from the Lisp notion of the first of a list.
+   Het ‘map’ deel van de naam komt van de wiskundige zin "over een
+domein mappen", wat betekent een functie toepassen op elk van elementen
+in een domein.  De wiskundige zin is gebaseerd op de metafoor van een
+lopende landmeter die, stap voor stap, over een gebied loopt dat om in
+kaart te brengen.  En ‘car’ komt natuurlijk van de Lisp notitie van het
+eerste van een lijst.
 
 Bijvoorbeeld,
 
      (mapcar '1+ '(2 4 6))
           ⇒ (3 5 7)
 
-The function ‘1+’ which adds one to its argument, is executed on _each_
-element of the list, and a new list is returned.
+De functie ‘1+’ die een bij het argument optelt, wordt uitgevoerd op
+_elk_ element van de lijst, en een nieuwe lijst wordt teruggegeven.
 
-   Contrast this with ‘apply’, which applies its first argument to all
-the remaining.  (*Note Readying a Graph: Readying a Graph, for an
-explanation of ‘apply’.)
+   Vergelijk dit met ‘apply’, die het eerste argument op alle resterende
+toepast.  *Note Een grafiek voorbereiden: Een grafiek voorbereiden. voor
+een uitleg van ‘apply’.
 
-   In the definition of ‘one-fiftieth’, the first argument is the
-anonymous function:
+   In de definitie van ‘een-vijftigste’ is het eerste argument de
+anonieme functie:
 
      (lambda (arg) (/ arg 50))
 
-and the second argument is ‘full-range’, which will be bound to
-‘list-for-graph’.
+en het tweede argument is ‘full-range’, die gebonden wordt aan
+‘lijst-voor-grafiek’.
 
-   The whole expression looks like this:
+   De hele expressie ziet er zo uit:
 
      (mapcar (lambda (arg) (/ arg 50)) full-range))
 
    *Note Mapping Functions: (elisp)Mapping Functions, for more about
 ‘mapcar’.
 
-   Using the ‘one-fiftieth’ function, we can generate a list in which
-each element is one-fiftieth the size of the corresponding element in
-‘list-for-graph’.
+   Met de functie ‘een-vijftigste’ genereren we een lijst waarin elk
+element een vijftigste is van de grootte van het corresponderende
+element in de ‘lijst-voor-grafiek’.
 
-     (setq fiftieth-list-for-graph
-           (one-fiftieth list-for-graph))
+     (setq vijftigste-lijst-voor-grafiek
+           (een-vijftigste lijst-voor-grafiek))
 
-   The resulting list looks like this:
+   De resulterende lijst ziet er zo uit:
 
      (10 20 19 15 11 9 6 5 4 3 3 2 2
      1 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 4)
 
-This, we are almost ready to print!  (We also notice the loss of
-information: many of the higher ranges are 0, meaning that fewer than 50
-defuns had that many words or symbols--but not necessarily meaning that
-none had that many words or symbols.)
+We zijn bijna klaar om de tonen!  (We merken ook het verlies van
+informatie op: vele van de hogere ranges zijn 0, wat betekent minder dan
+50 defuns hadden dat aantal woorden of symbolen--maar dat betekent niet
+noodzakelijkerwijs dat geen had veel woorden of symbolen.)
 
 
 File: emacs-lisp-intro-nl.info,  Node: Een andere bug,  Next: Finale afgedrukte grafiek,  Prev: mapcar,  Up: De gehele grafiek afdrukken
 
-C.4.5 Another Bug ... Most Insidious
-------------------------------------
+C.4.5 Weer een bug ... meest verraderlijk
+-----------------------------------------
 
-I said "almost ready to print"!  Of course, there is a bug in the
-‘print-graph’ function ... It has a ‘vertical-step’ option, but not a
-‘horizontal-step’ option.  The ‘top-of-range’ scale goes from 10 to 300
-by tens.  But the ‘print-graph’ function will print only by ones.
+Ik zei "bijna klaar om te tonen"!  Natuurlijk is er een bug in de
+functie ‘toon-grafiek’ ... Het heeft een optie ‘vertical-step’ maar geen
+optie ‘horizontal-step’.  De ‘top-of-range’ schaal gaat van 10 tot 300
+in stappen van tien.  Maar de functie ‘toon-grafiek’ toont alleen
+stappen van 1.
 
-   This is a classic example of what some consider the most insidious
-type of bug, the bug of omission.  This is not the kind of bug you can
-find by studying the code, for it is not in the code; it is an omitted
-feature.  Your best actions are to try your program early and often; and
-try to arrange, as much as you can, to write code that is easy to
-understand and easy to change.  Try to be aware, whenever you can, that
-whatever you have written, _will_ be rewritten, if not soon, eventually.
-A hard maxim to follow.
+   Dit is een klassiek voorbeeld van wat sommigen als het meest
+verraderlijke type bug beschouwen, de bug van weglating.  Dit is niet
+het soort bug dat je kunt vinden door de code te bestuderen, omdat het
+niet in de code zit.  Het is een weggelaten eigenschap.  De beste acties
+zijn om je programma vroeg en vaak te testen en zo veel mogelijk te
+proberen code te schrijven die makkelijk te begrijpen en makkelijk te
+wijzigen is.  Probeer je daar waar mogelijk bewust te zijn dat wat je
+ook hebt geschreven, _wordt_ herschreven, zo niet snel, dan
+uiteindelijk.  Een belangrijk principe om te volgen.
 
-   It is the ‘print-X-axis-numbered-line’ function that needs the work;
-and then the ‘print-X-axis’ and the ‘print-graph’ functions need to be
-adapted.  Not much needs to be done; there is one nicety: the numbers
-ought to line up under the tic marks.  This takes a little thought.
+   Het is de functie ‘toon-X-as-numbered-line’ die het werk nodig heeft
+en de functies ‘toon-X-as’ en ‘toon-grafiek’ moeten worden aangepast.
+Er hoeft niet veel te gebeuren, er is één aandachtspunt: de getallen
+horen uitgelijnd onder de merktekens.  Dat vergt wat nadenken.
 
-   Here is the corrected ‘print-X-axis-numbered-line’:
+   Hier is de verbeterde ‘toon-X-as-numbered-line’:
 
-     (defun print-X-axis-numbered-line
-       (number-of-X-tics X-axis-leading-spaces
+     (defun toon-X-as-numbered-line  (number-of-X-tics X-as-leading-spaces)
         &optional horizontal-step)
-       "Print line of X-axis numbers"
-       (let ((number X-axis-label-spacing)
+       "Toon regel X-as getallen"
+       (let ((getal X-as-label-spacing))
              (horizontal-step (or horizontal-step 1)))
-         (insert X-axis-leading-spaces)
-         ;; Delete extra leading spaces.
+         (insert X-as-leading-spaces)
+         ;; Verwijder extra inleidende spaties.
          (delete-char
           (- (1-
               (length (number-to-string horizontal-step)))))
          (insert (concat
                   (make-string
-                   ;; Insert white space.
+                   ;; Voeg witte ruimte in.
                    (-  (* symbol-width
-                          X-axis-label-spacing)
+                          X-as-label-spacing)
                        (1-
                         (length
                          (number-to-string horizontal-step)))
                        2)
                    ? )
                   (number-to-string
-                   (* number horizontal-step))))
-         ;; Insert remaining numbers.
-         (setq number (+ number X-axis-label-spacing))
+                   (* getal horizontal-step))))
+         ;; Invoegen resterende getallen.
+         (setq getal (+ getal X-as-label-spacing))
          (while (> number-of-X-tics 1)
            (insert (X-axis-element
-                    (* number horizontal-step)))
-           (setq number (+ number X-axis-label-spacing))
+                    (* getal horizontal-step)))
+           (setq getal (+ getal X-as-label-spacing))
            (setq number-of-X-tics (1- number-of-X-tics)))))
 
-   If you are reading this in Info, you can see the new versions of
-‘print-X-axis’ ‘print-graph’ and evaluate them.  If you are reading this
-in a printed book, you can see the changed lines here (the full text is
-too much to print).
+   Wanneer je dit in Info lees, dan kun je de nieuwe versies van
+‘toon-X-as’ en ‘toon-grafiek’ bekijken en evalueren.  Wanneer je dit in
+een gedrukt boek leest, dan zie je de gewijzigde regels hier (de
+volledige tekst is te veel om af te drukken.)
 
-     (defun print-X-axis (numbers-list horizontal-step)
-       "Print X axis labels to length of NUMBERS-LIST.
-     Optionally, HORIZONTAL-STEP, a positive integer,
-     specifies how much an X  axis label increments for
-     each column."
-     ;; Value of symbol-width and full-Y-label-width
-     ;; are passed by print-graph.
+     (defun toon-X-as (getallenlijst horizontal-step)
+       "Toon X axis labels op lengte van GETALLENLIJST.
+     Optionally, HORIZONTAL-STEP, een positieve integer,
+     specificeert hoe veel een X as label toeneemt voor
+     elke kolom."
+     ;; Waarde van symbol-width and volle-Y-label-breedte
+     ;; worden doorgegeven door toon-grafiek.
        (let* ((leading-spaces
-               (make-string full-Y-label-width ? ))
-            ;; symbol-width is provided by graph-body-print
-            (tic-width (* symbol-width X-axis-label-spacing))
-            (X-length (length numbers-list))
+               (make-string volle-Y-label-breedte ? ))
+            ;; symbol-width wordt verstrekt door grafiek-body-tonen
+            (tic-width (* symbol-width X-as-label-spacing))
+            (X-length (length getallenlijst))
             (X-tic
              (concat
               (make-string
@@ -16973,67 +16981,66 @@ too much to print).
                (-  (* symbol-width X-axis-label-spacing)
                    (length X-axis-tic-symbol))
                ? )
-              ;; Concatenate blanks with tic symbol.
-              X-axis-tic-symbol))
+              ;; Concatenate spaties met merkteken symbol.
+              X-as-tic-symbol))
             (tic-number
              (if (zerop (% X-length tic-width))
                  (/ X-length tic-width)
                (1+ (/ X-length tic-width)))))
 
-         (print-X-axis-tic-line
+         (toon-X-as-tic-line
           tic-number leading-spaces X-tic)
          (insert "\n")
-         (print-X-axis-numbered-line
+         (toon-X-as-numbered-line
           tic-number leading-spaces horizontal-step)))
 
-     (defun print-graph
-       (numbers-list &optional vertical-step horizontal-step)
-       "Print labeled bar graph of the NUMBERS-LIST.
-     The numbers-list consists of the Y-axis values.
+     (defun toon-grafiek
+       (getallenlijst &optional vertical-step horizontal-step)
+       "Toon gelabelde staafgrafiek van de GETALLENLIJST.
+     De getallenlijst bestaat uit de Y-as waarden.
 
-     Optionally, VERTICAL-STEP, a positive integer,
-     specifies how much a Y axis label increments for
-     each line.  For example, a step of 5 means that
-     each row is five units.
+     Optioneel specificeert VERTICAL-STEP, een positieve
+     integer, hoeveel een Y-as label toeneemt voor elke
+     regel. Bijvoorbeeld een stap van 5 betekent dat
+     elke rij vijf eenheden is.
 
-     Optionally, HORIZONTAL-STEP, a positive integer,
-     specifies how much an X  axis label increments for
-     each column."
-       (let* ((symbol-width (length graph-blank))
-              ;; height is both the largest number
-              ;; and the number with the most digits.
-              (height (apply 'max numbers-list))
-              (height-of-top-line
-               (if (zerop (% height Y-axis-label-spacing))
-                   height
+     Optioneel specificeert HORIZONTAL-STEP, een
+     positieve integer, hoeveel een X as label toeneemt
+     voor elke kolom.
+       (let* ((symbol-width (length grafiek-wit))
+              ;; hoogte is zowel het grootste getal
+              ;; en het getal met de meeste cijfers.
+              (hoogte (apply 'max getallenlijst))
+              (hoogte-van-top-line
+               (if (zerop (% hoogte Y-as-label-spacing))
+                   hoogte
                  ;; else
-                 (* (1+ (/ height Y-axis-label-spacing))
-                    Y-axis-label-spacing)))
+                 (* (1+ (/ hoogte Y-as-label-spacing))
+                    Y-as-label-spacing)))
               (vertical-step (or vertical-step 1))
-              (full-Y-label-width
-               (length
+              (volle-Y-label-breedte          (length
                 (concat
                  (number-to-string
                   (* height-of-top-line vertical-step))
-                 Y-axis-tic))))
-         (print-Y-axis
-          height-of-top-line full-Y-label-width vertical-step)
-         (graph-body-print
-             numbers-list height-of-top-line symbol-width)
+                 Y-ass-tic))))
+         (toon-Y-as
+          height-of-top-line volle-Y-label-breedte vertical-step)
+         (grafiek-body-tonen
+             getallenlijst height-of-top-line symbol-width)
          (print-X-axis numbers-list horizontal-step)))
 
 
 File: emacs-lisp-intro-nl.info,  Node: Finale afgedrukte grafiek,  Prev: Een andere bug,  Up: De gehele grafiek afdrukken
 
-C.4.6 The Printed Graph
------------------------
+C.4.6 De getoonde grafiek
+-------------------------
 
-When made and installed, you can call the ‘print-graph’ command like
-this:
+Na gemaakt en geïnstalleerd roep je het ‘toon-grafiek’ commando aan
+zoals: this:
 
-     (print-graph fiftieth-list-for-graph 50 10)
+     (toon-grafiek een-vijftigste lijst-voor-grafiek 50 10)
 
-Here is the graph:
+Hier is de grafiek:
 
 
      1000 -  *
@@ -17061,13 +17068,13 @@ Here is the graph:
 
 
 
-The largest group of functions contain 10-19 words and symbols each.
+De grootste groep van functies bevat 10-19 woorden en symbolen elk.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Vrije software en vrije handleidingen,  Next: GNU Free Documentation License,  Prev: Volledige grafiek,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: Free Software and Free Manuals,  Next: GNU Free Documentation License,  Prev: Volledige grafiek,  Up: Top
 
-Appendix D Vrije software en vrije handleidingen
-************************************************
+Appendix D Free Software and Free Manuals
+*****************************************
 
 *by Richard M. Stallman*
 
@@ -17185,7 +17192,7 @@ uitgevers:
 <https://www.gnu.org/doc/other-free-books.html>
 
 
-File: emacs-lisp-intro-nl.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Vrije software en vrije handleidingen,  Up: Top
+File: emacs-lisp-intro-nl.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Free Software and Free Manuals,  Up: Top
 
 Appendix E GNU Free Documentation License
 *****************************************
@@ -17687,7 +17694,7 @@ Index
                                                               (line   9)
 * / (deling):                            In geval van een groot buffer.
                                                               (line  39)
-* % (remainder function):                Bereken het restant. (line   6)
+* % (rest functie):                      Bereken het restant. (line   6)
 * <= (kleiner of gelijk):                Inc voorbeeld onderdelen.
                                                               (line  48)
 * > (greater than):                      if in meer detail.   (line  32)
@@ -17699,7 +17706,7 @@ Index
 * add-hook:                              Tekst en auto-fill.  (line  56)
 * and:                                   kill-new functie.    (line 211)
 * and <1>:                               fwd-para let.        (line  66)
-* Anonymous function:                    lambda.              (line   6)
+* Anonieme functie:                      lambda.              (line   6)
 * apostrof om te quoten:                 Draai een programma. (line  13)
 * append-to-buffer:                      append-to-buffer.    (line   6)
 * apply:                                 Kolommen van een grafiek.
@@ -17715,11 +17722,11 @@ Index
 * Argumenten, variabel aantal:           Variabel aantal argumenten.
                                                               (line   6)
 * argumentlijst gedefinieerd:            defun.               (line  62)
+* As, horizontaal tonen:                 print-X-axis.        (line   6)
+* As, verticaal tonen:                   print-Y-axis.        (line   6)
 * Auto Fill mode aangezet:               Tekst en auto-fill.  (line  56)
 * autoload:                              Autoload.            (line   6)
 * Automatische mode selectie:            Tekst en auto-fill.  (line  22)
-* Axis, print horizontal:                print-X-axis.        (line   6)
-* Axis, print vertical:                  print-Y-axis.        (line   6)
 * beginning-of-buffer:                   beginning-of-buffer. (line   6)
 * Bestanden laden:                       Bestanden laden.     (line   6)
 * bestanden-in-onderliggende-directory:  Bestandenlijst.      (line  26)
@@ -17747,7 +17754,7 @@ Index
                                                               (line   6)
 * Buffergrootte <1>:                     Buffer grootte en lokatie.
                                                               (line   6)
-* Bug, most insidious type:              Een andere bug.      (line   6)
+* Bug, meest verraderlijke type:         Een andere bug.      (line   6)
 * Byte compiling:                        Byte compiling.      (line   6)
 * C-taal primitieven:                    Primitieve functies. (line   6)
 * C, een uitweiding naar:                Uitwijding naar C.   (line   6)
@@ -17778,6 +17785,8 @@ Index
 * dan-deel gedefinieerd:                 if in meer detail.   (line   6)
 * Data typen:                            Data typen.          (line   6)
 * Data typen van argumenten:             Data typen.          (line   6)
+* De gehele grafiek tonen:               De gehele grafiek afdrukken.
+                                                              (line   6)
 * De source van een functie vinden:      Meer vinden.         (line  14)
 * De waarde van een variabele zetten:    setq.                (line   6)
 * de-de:                                 de-de.               (line   6)
@@ -17881,17 +17890,19 @@ Index
 * global-unset-key:                      Key bindings.        (line 103)
 * Grafiek prototype:                     Een grafiek voorbereiden.
                                                               (line   6)
-* graph-body-print:                      graph-body-print.    (line   6)
-* graph-body-print Final version.:       De finale versie.    (line  53)
-* Graph, printing all:                   De gehele grafiek afdrukken.
+* grafiek-body-tonen:                    grafiek-body-tonen.  (line   6)
+* grafiek-body-tonen Finale versie.:     De finale versie.    (line  56)
+* Grafiek, alles tonen:                  De gehele grafiek afdrukken.
                                                               (line   6)
 * Hanteren van de killring:              Killring.            (line   6)
+* Hele grafiek tonen:                    De gehele grafiek afdrukken.
+                                                              (line   6)
 * Herhaling (loops):                     Loops en recursie.   (line   6)
 * Het evalueren van een binnenste lijst: Geneste lijsten evalueren.
                                                               (line   6)
 * hoogste-van-ranges:                    Functiedefinities tellen.
                                                               (line  20)
-* Horizontal axis printing:              print-X-axis.        (line   6)
+* Horizontale as tonen:                  print-X-axis.        (line   6)
 * Hulp bij formatteren:                  Typen van lijsten.   (line   6)
 * Hulp bij lijsten typen:                Typen van lijsten.   (line   6)
 * if:                                    if.                  (line   6)
@@ -17906,7 +17917,6 @@ Index
                                                               (line   6)
 * insert-buffer, nieuwe versie body:     Nieuwe insert-buffer.
                                                               (line   6)
-* Insidious type of bug:                 Een andere bug.      (line   6)
 * Installeer een functiedefinitie:       Installeer.          (line   6)
 * Interactieve functies:                 Interactief.         (line   6)
 * Interactieve opties:                   Interactieve opties. (line   6)
@@ -18035,20 +18045,12 @@ Index
                                                               (line  56)
 * Primitieve functies:                   Primitieve functies. (line   6)
 * Primitieven geschreven in C:           Primitieve functies. (line   6)
-* Print horizontal axis:                 print-X-axis.        (line   6)
-* Print vertical axis:                   print-Y-axis.        (line   6)
 * print-elementen-recursief:             Recursie met lijst.  (line  21)
 * print-elements-of-list:                print-elements-of-list.
                                                               (line   6)
-* print-graph Final version.:            De finale versie.    (line  75)
-* print-graph varlist:                   print-graph varlist. (line   6)
-* print-X-axis:                          X-as tic marks.      (line 146)
-* print-X-axis-numbered-line:            X-as tic marks.      (line 116)
-* print-X-axis-tic-line:                 X-as tic marks.      (line  82)
-* print-Y-axis:                          print-Y-axis enalaatste.
+* print-X-axis:                          X-as merktekens.     (line 146)
+* print-Y-axis:                          toon-Y-as enalaatste.
                                                               (line   9)
-* Printing the whole graph:              De gehele grafiek afdrukken.
-                                                              (line   6)
 * progn:                                 progn.               (line   6)
 * Prototype grafiek:                     Een grafiek voorbereiden.
                                                               (line   6)
@@ -18079,8 +18081,8 @@ Index
 * Reguliere expressie voor tellen van woorden: Woorden tellen.
                                                               (line   6)
 * Reguliere expressie zoekopdrachten:    Regexp zoeken.       (line   6)
-* Remainder function, %:                 Bereken het restant. (line   6)
 * Repetitie voor tellen van woorden:     Woorden tellen.      (line   6)
+* Rest functie, %:                       Bereken het restant. (line   6)
 * reverse:                               Functiedefinities tellen.
                                                               (line 114)
 * Ring, een lijst maken zoals een:       Killring.            (line   6)
@@ -18149,6 +18151,12 @@ Index
 * Text Mode aangezet:                    Tekst en auto-fill.  (line  40)
 * Toestcombinaties opnieuw binden:       Keymaps.             (line   6)
 * Toets ontkoppelen:                     Key bindings.        (line  62)
+* Toon horizontale as:                   print-X-axis.        (line   6)
+* Toon verticale as:                     print-Y-axis.        (line   6)
+* toon-grafiek Finale versie.:           De finale versie.    (line  78)
+* toon-grafiek varlist:                  print-graph varlist. (line   6)
+* toon-X-as-genummerde-regel:            X-as merktekens.     (line 116)
+* toon-X-as-tic-line:                    X-as merktekens.     (line  83)
 * Typen van data:                        Data typen.          (line   6)
 * Uitstel in recursie:                   Geen uitstel.        (line   6)
 * Uitwijding naar C:                     Uitwijding naar C.   (line   6)
@@ -18169,13 +18177,14 @@ Index
 * Verbreden, voorbeeld van:              what-line.           (line   6)
 * Verkeerde type argument:               Verkeerde type argument.
                                                               (line   6)
+* Verraderlijk type bug:                 Een andere bug.      (line   6)
 * Versie van Emacs, kiezen:              Eenvoudige uitbreiding.
                                                               (line  35)
 * versimpelde-beginning-of-buffer:       versimpelde-beginning-of-buffer.
                                                               (line   6)
 * Versmallen:                            Versmallen en verbreden.
                                                               (line   6)
-* Vertical axis printing:                print-Y-axis.        (line   6)
+* Verticale as tonen:                    print-Y-axis.        (line   6)
 * Vind functiedocumentatie:              Meer vinden.         (line   6)
 * Voorbeeld let expressie:               Voorbeeld let expressie.
                                                               (line   6)
@@ -18186,8 +18195,6 @@ Index
 * wanneer-deel gedefinieerd:             if in meer detail.   (line   6)
 * what-line:                             what-line.           (line   6)
 * while:                                 while.               (line   6)
-* Whole graph printing:                  De gehele grafiek afdrukken.
-                                                              (line   6)
 * Witte ruimte in lijsten:               Whitespace in lijsten.
                                                               (line   6)
 * Woorden en symbolen in defun:          Woorden en symbolen. (line   6)
@@ -18200,13 +18207,13 @@ Index
 * Woorden, gedupliceerd:                 de-de.               (line   6)
 * Woorden, recursief geteld:             recursive-count-words.
                                                               (line   6)
-* X axis printing:                       print-X-axis.        (line   6)
-* X-axis-element:                        X-as tic marks.      (line 105)
-* Y axis printing:                       print-Y-axis.        (line   6)
+* X-as tonen:                            print-X-axis.        (line   6)
+* X-as-element:                          X-as merktekens.     (line 105)
+* Y-as tonen:                            print-Y-axis.        (line   6)
+* Y-as-kolom finale versie:              De finale versie.    (line  17)
+* Y-as-label-spacing:                    Bereken het restant. (line  79)
+* Y-as-tic:                              Y-as element.        (line  30)
 * Y-axis-column:                         Y-axis-column.       (line  10)
-* Y-axis-column Final version.:          De finale versie.    (line  15)
-* Y-axis-label-spacing:                  Bereken het restant. (line  79)
-* Y-axis-tic:                            Y-as element.        (line  31)
 * yank:                                  Yanking.             (line   6)
 * yank <1>:                              yank.                (line   6)
 * yank-pop:                              yank-pop.            (line   6)
@@ -18243,321 +18250,321 @@ Over de auteur
 
 Tag Table:
 Node: Top1632
-Node: Voorwoord24401
-Node: Waarom25864
-Node: Over het lezen van deze tekst26527
-Node: Doelgroep28867
-Node: Geschiedenis van Lisp31870
-Node: Opmerking voor beginners32774
-Node: Dank35526
-Node: Lijsten verwerken36121
-Ref: Lijsten verwerken-Footnote-137577
-Node: Lisp lijsten37733
-Node: Genummerde lijsten38663
-Node: Lisp atomen39832
-Node: Whitespace in lijsten43746
-Node: Typen van lijsten45098
-Node: Draai een programma46319
-Ref: Draai een programma-Footnote-148872
-Node: Fouten maken49016
-Node: Namen en definities54219
-Node: Lisp interpreter56175
-Node: Complicaties57399
-Node: Byte compiling59648
-Node: Evaluatie60777
-Node: Hoe de interpreter werkt61404
-Node: Geneste lijsten evalueren62777
-Node: Variabelen65465
-Node: fill-column voorbeeld67081
-Node: Void functie68768
-Node: Void variabele70051
-Node: Argumenten71977
-Ref: Argumenten-Footnote-173783
-Node: Data typen74655
-Node: Argumenten als variabele of als lijst76892
-Node: Variabel aantal argumenten78633
-Node: Verkeerde type argument79529
-Ref: Verkeerde type argument-Footnote-183322
-Node: message83397
-Ref: message-Footnote-187619
-Node: setq87824
-Node: Setq gebruiken88549
-Node: Tellen91783
-Node: Samenvatting93845
-Node: Foutmelding oefeningen95848
-Node: Oefenen van evaluatie96404
-Node: Hoe te evalueren97631
-Node: Buffer namen99225
-Node: Buffers pakken105296
-Ref: Buffers pakken-Footnote-1107985
-Node: Van buffer verwisselen108235
-Ref: Van buffer verwisselen-Footnote-1111826
-Ref: Van buffer verwisselen-Footnote-2112168
-Node: Buffer grootte en lokatie112922
-Node: Evaluatie oefening115136
-Node: Defuns schrijven115420
-Node: Primitieve functies116713
-Node: defun117948
-Node: Installeer124812
-Node: Effect van installatie126249
-Node: Een defun wijzigen127176
-Node: Interactief129056
-Node: Interactieve vermenigvuldig-met-zeven130239
-Node: vermenigvuldig-met-zeven in detail132369
-Node: Interactieve opties135222
-Node: Permanent installeren138584
-Node: let140895
-Node: Voorkom verwarring142487
-Ref: Voorkom verwarring-Footnote-1144752
-Node: Delen van een let expressie144896
-Node: Voorbeeld let expressie146611
-Ref: Voorbeeld let expressie-Footnote-1148433
-Node: Niet-geïnitialiseerde let variabelen148688
-Node: Hoe let variabelen bindt150462
-Node: Lexical en dynamische binding verschillen151800
-Node: Lexical vs dynamische binding voorbeeld153717
-Node: if155788
-Node: if in meer detail156734
-Node: type-dier in detail159548
-Node: else162198
-Node: Waar en onwaarheid165160
-Node: nil uitgelegd166169
-Node: save-excursion168366
-Node: Point en mark169142
-Node: Template voor save-excursion172251
-Node: Terugblik173539
-Node: defun oefeningen181582
-Node: Buffer rondleiding182055
-Node: Meer vinden183229
-Ref: Meer vinden-Footnote-1186244
-Node: versimpelde-beginning-of-buffer186461
-Node: mark-whole-buffer190965
-Node: mark-whole-buffer overzicht191839
-Node: Body van mark-whole-buffer193211
-Node: append-to-buffer196276
-Node: append-to-buffer overzicht197003
-Node: append interactief199805
-Node: append-to-buffer body202381
-Node: append save-excursion204568
-Ref: let* geïntroduceerd206365
-Node: Buffer gerelateerde terugblik210054
-Node: Buffer oefeningen212457
-Node: Meer complex212982
-Node: copy-to-buffer214093
-Ref: copy-to-buffer-Footnote-1216976
-Node: insert-buffer217196
-Node: insert-buffer code218655
-Node: insert-buffer interactief219664
-Node: Read-only buffer220214
-Node: b for interactief220858
-Node: insert-buffer body221986
-Node: if en or223208
-Node: Voeg or in226361
-Node: Voeg let in228708
-Node: Nieuwe insert-buffer232557
-Node: beginning-of-buffer233778
-Node: Optionele argumenten235428
-Node: beginning-of-buffer opt arg239071
-Node: Ontrafelen beginning-of-buffer240093
-Node: In geval van een groot buffer241447
-Node: In geval van een klein buffer244095
-Node: beginning-of-buffer compleet245873
-Node: Tweede buffer gerelateerde terugblik248917
-Node: optionele oefening250882
-Node: Versmallen en verbreden251406
-Node: Voordelen van versmallen252112
-Node: save-restriction254093
-Node: what-line256214
-Node: versmal oefening260665
-Node: car cdr en cons261713
-Node: Vreemde namen262899
-Node: car en cdr263621
-Node: cons268360
-Node: Bouw een lijst269452
-Ref: Bouw een lijst-Footnote-1271080
-Node: length271286
-Node: nthcdr272897
-Node: nth276007
-Node: setcar277528
-Node: setcdr280508
-Node: cons oefening282180
-Node: Knippen en opslaan van tekst282599
-Node: Tekst opslaan284014
-Node: zap-to-char286134
-Node: Complete zap-to-char286746
-Node: zap-to-char interactief289112
-Node: zap-to-char body290698
-Node: search-forward292247
-Node: progn295408
-Node: Samenvatting zap-to-char297223
-Node: kill-region298379
-Node: Complete kill-region299377
-Node: condition-case303788
-Node: Lisp macro306359
-Node: copy-region-as-kill308992
-Node: Complete copy-region-as-kill309935
-Node: copy-region-as-kill body312781
-Node: last-command en this-command313922
-Node: kill-append functie316260
-Node: kill-new functie320535
-Node: Uitwijding naar C331513
-Node: defvar337056
-Node: Inzien huidige variabele waarde338934
-Node: defvar en asterisk340896
-Node: cons en search-fwd terugblik342950
-Node: zoek oefening346129
-Node: Implementatie van lijsten346932
-Node: Lijsten uitgetekend348168
-Node: Symbolen als ladekast354657
-Node: Lijst oefening356772
-Node: Yanking357138
-Node: Killring overzicht358533
-Node: kill-ring-yank-pointer360345
-Node: yank nthcdr oefeningen362853
-Node: Loops en recursie363598
-Ref: Loops en recursie-Footnote-1364794
-Node: while365315
-Node: Looping met while366747
-Node: Loop voorbeeld368685
-Node: print-elements-of-list372387
-Node: Incrementele loop374973
-Node: Incrementele loop details375605
-Node: Incrementeel voorbeeld377078
-Node: Inc voorbeeld onderdelen379654
-Node: inc voorbeeld samengesteld383794
-Node: Decrementele loop387396
-Node: Decrementeel voorbeeld388868
-Node: Dec voorbeeld onderdelen390459
-Node: Dec voorbeeld samengesteld392539
-Node: dolist dotimes394815
-Node: dolist395646
-Node: dotimes398823
-Node: Recursie400370
-Node: Robots bouwen401582
-Node: Recursive definitie onderdelen403387
-Node: Recursie met lijst406034
-Node: Recursieve driehoek functie409702
-Node: Recursief voorbeeld arg van 1 of 2411080
-Node: Recursief voorbeeld arg van 3 of 4413345
-Node: Recursie met cond416549
-Node: Recursieve patronen418993
-Node: Elke419486
-Node: Accumuleren422046
-Node: Bewaar423426
-Node: Geen uitstel425494
-Node: Zonder uitstel oplossing428219
-Ref: Zonder uitstel oplossing-Footnote-1432181
-Ref: Zonder uitstel oplossing-Footnote-2432305
-Node: Looping oefening432828
-Node: Regexp zoeken434147
-Node: sentence-end436293
-Node: re-search-forward440340
-Node: forward-sentence442995
-Node: Complete forward-sentence443778
-Node: fwd-sentence while loops447482
-Node: fwd-sentence re-search451295
-Node: forward-paragraph453399
-Node: forward-paragraph in het kort455274
-Node: fwd-para let456832
-Node: fwd-para while463763
-Node: Regexp terugblik472619
-Node: re-search oefeningen475209
-Node: Woorden tellen475982
-Node: Waarom woorden tellen476765
-Node: tel-woorden-voorbeeld477921
-Node: Ontwerp tel-woorden-voorbeeld479294
-Node: Witte ruimte bug486030
-Node: recursive-count-words495865
-Node: Tellen voorbeeld508592
-Node: Woorden in een defun508964
-Node: Verdeel en heers510735
-Node: Woorden en symbolen512046
-Node: Syntax514199
-Node: tel-woorden-in-defun517915
-Node: Enkele defuns524582
-Node: Een bestand vinden527102
-Node: lengte-lijst-bestand529862
-Node: Enkele bestanden535452
-Node: lengths-list-many-files536258
-Node: append539185
-Node: Enkele bestanden recursief539839
-Node: De data voorbereiden542925
-Node: Data in detail te tonen544040
-Node: Sorteren545035
-Node: Bestandenlijst546891
-Ref: Bestandenlijst-Footnote-1554935
-Node: Functiedefinities tellen555157
-Node: Een grafiek voorbereiden564784
-Node: Kolommen van een grafiek566158
-Node: graph-body-print580415
-Node: recursieve-grafiek-body-tonen585199
-Node: Getoonde assen587965
-Node: Lijngrafiek oefening588782
-Node: Initialisatie van Emacs588993
-Node: Standaard configuratie590560
-Ref: Standaard configuratie-Footnote-1592686
-Node: Systeem-brede init593008
-Node: defcustom595269
-Node: Een init bestand beginnen601394
-Node: Tekst en auto-fill603925
-Ref: Tekst en auto-fill-Footnote-1608246
-Ref: Tekst en auto-fill-Footnote-2608539
-Node: Mail aliasen608849
-Node: Indent Tabs Mode609808
-Node: Key bindings610807
-Node: Keymaps616093
-Node: Bestanden laden618927
-Node: Autoload622299
-Node: Eenvoudige uitbreiding625318
-Ref: Eenvoudige uitbreiding-Footnote-1627920
-Node: X11 kleuren628209
-Ref: X11 kleuren-Footnote-1630103
-Node: Diverse630271
-Node: Mode line634631
-Node: Debuggen.640480
-Node: debug641382
-Node: debug-on-entry644691
-Node: debug-on-quit648988
-Node: edebug650038
-Node: Debuggen oefeningen654262
-Node: Conclusie656076
-Node: de-de661541
-Node: Killring664383
-Node: Wat de killring doet665180
-Node: current-kill666723
-Node: Code voor current-kill667423
-Node: current-kill begrijpen670261
-Node: Body van current-kill671098
-Node: Uitwijding over fout674420
-Node: Het element vaststellen675653
-Node: yank679411
-Node: yank-pop682676
-Node: ring bestand685256
-Node: Volledige grafiek685651
-Node: Gelabeld voorbeeld686491
-Node: print-graph varlist688488
-Node: print-Y-axis690211
-Node: print-Y-axis in detail691064
-Node: Hoogte van label691874
-Node: Bereken het restant693891
-Node: Y-as element697757
-Node: Y-axis-column701520
-Node: print-Y-axis enalaatste703132
-Node: print-X-axis705113
-Node: Overeenkomsten verschillen706431
-Node: X-as tic marks707264
-Node: De gehele grafiek afdrukken714266
-Node: De finale versie715382
-Node: Test print-graph719637
-Node: Woorden in defuns grafisch weergeven721320
-Node: lambda723944
-Node: mapcar725823
-Node: Een andere bug727883
-Node: Finale afgedrukte grafiek733412
-Node: Vrije software en vrije handleidingen734363
-Node: GNU Free Documentation License740679
-Node: Index765868
-Node: Over de auteur805050
+Node: Voorwoord24335
+Node: Waarom25798
+Node: Over het lezen van deze tekst26461
+Node: Doelgroep28801
+Node: Geschiedenis van Lisp31804
+Node: Opmerking voor beginners32708
+Node: Dank35460
+Node: Lijsten verwerken36055
+Ref: Lijsten verwerken-Footnote-137511
+Node: Lisp lijsten37667
+Node: Genummerde lijsten38597
+Node: Lisp atomen39766
+Node: Whitespace in lijsten43680
+Node: Typen van lijsten45032
+Node: Draai een programma46253
+Ref: Draai een programma-Footnote-148806
+Node: Fouten maken48950
+Node: Namen en definities54153
+Node: Lisp interpreter56109
+Node: Complicaties57333
+Node: Byte compiling59582
+Node: Evaluatie60711
+Node: Hoe de interpreter werkt61338
+Node: Geneste lijsten evalueren62711
+Node: Variabelen65399
+Node: fill-column voorbeeld67015
+Node: Void functie68702
+Node: Void variabele69985
+Node: Argumenten71911
+Ref: Argumenten-Footnote-173717
+Node: Data typen74589
+Node: Argumenten als variabele of als lijst76826
+Node: Variabel aantal argumenten78567
+Node: Verkeerde type argument79463
+Ref: Verkeerde type argument-Footnote-183256
+Node: message83331
+Ref: message-Footnote-187553
+Node: setq87758
+Node: Setq gebruiken88483
+Node: Tellen91717
+Node: Samenvatting93779
+Node: Foutmelding oefeningen95782
+Node: Oefenen van evaluatie96338
+Node: Hoe te evalueren97565
+Node: Buffer namen99159
+Node: Buffers pakken105230
+Ref: Buffers pakken-Footnote-1107919
+Node: Van buffer verwisselen108169
+Ref: Van buffer verwisselen-Footnote-1111760
+Ref: Van buffer verwisselen-Footnote-2112102
+Node: Buffer grootte en lokatie112856
+Node: Evaluatie oefening115070
+Node: Defuns schrijven115354
+Node: Primitieve functies116647
+Node: defun117882
+Node: Installeer124746
+Node: Effect van installatie126183
+Node: Een defun wijzigen127110
+Node: Interactief128990
+Node: Interactieve vermenigvuldig-met-zeven130173
+Node: vermenigvuldig-met-zeven in detail132303
+Node: Interactieve opties135156
+Node: Permanent installeren138518
+Node: let140829
+Node: Voorkom verwarring142421
+Ref: Voorkom verwarring-Footnote-1144686
+Node: Delen van een let expressie144830
+Node: Voorbeeld let expressie146545
+Ref: Voorbeeld let expressie-Footnote-1148367
+Node: Niet-geïnitialiseerde let variabelen148622
+Node: Hoe let variabelen bindt150396
+Node: Lexical en dynamische binding verschillen151734
+Node: Lexical vs dynamische binding voorbeeld153651
+Node: if155722
+Node: if in meer detail156668
+Node: type-dier in detail159482
+Node: else162132
+Node: Waar en onwaarheid165094
+Node: nil uitgelegd166103
+Node: save-excursion168300
+Node: Point en mark169076
+Node: Template voor save-excursion172185
+Node: Terugblik173473
+Node: defun oefeningen181516
+Node: Buffer rondleiding181989
+Node: Meer vinden183163
+Ref: Meer vinden-Footnote-1186178
+Node: versimpelde-beginning-of-buffer186395
+Node: mark-whole-buffer190899
+Node: mark-whole-buffer overzicht191773
+Node: Body van mark-whole-buffer193145
+Node: append-to-buffer196210
+Node: append-to-buffer overzicht196937
+Node: append interactief199739
+Node: append-to-buffer body202315
+Node: append save-excursion204502
+Ref: let* geïntroduceerd206299
+Node: Buffer gerelateerde terugblik209988
+Node: Buffer oefeningen212391
+Node: Meer complex212916
+Node: copy-to-buffer214027
+Ref: copy-to-buffer-Footnote-1216910
+Node: insert-buffer217130
+Node: insert-buffer code218589
+Node: insert-buffer interactief219598
+Node: Read-only buffer220148
+Node: b for interactief220792
+Node: insert-buffer body221920
+Node: if en or223142
+Node: Voeg or in226295
+Node: Voeg let in228642
+Node: Nieuwe insert-buffer232491
+Node: beginning-of-buffer233712
+Node: Optionele argumenten235362
+Node: beginning-of-buffer opt arg239005
+Node: Ontrafelen beginning-of-buffer240027
+Node: In geval van een groot buffer241381
+Node: In geval van een klein buffer244029
+Node: beginning-of-buffer compleet245807
+Node: Tweede buffer gerelateerde terugblik248851
+Node: optionele oefening250816
+Node: Versmallen en verbreden251340
+Node: Voordelen van versmallen252046
+Node: save-restriction254027
+Node: what-line256148
+Node: versmal oefening260599
+Node: car cdr en cons261647
+Node: Vreemde namen262833
+Node: car en cdr263555
+Node: cons268294
+Node: Bouw een lijst269386
+Ref: Bouw een lijst-Footnote-1271014
+Node: length271220
+Node: nthcdr272831
+Node: nth275941
+Node: setcar277462
+Node: setcdr280442
+Node: cons oefening282114
+Node: Knippen en opslaan van tekst282533
+Node: Tekst opslaan283948
+Node: zap-to-char286068
+Node: Complete zap-to-char286680
+Node: zap-to-char interactief289046
+Node: zap-to-char body290632
+Node: search-forward292181
+Node: progn295342
+Node: Samenvatting zap-to-char297157
+Node: kill-region298313
+Node: Complete kill-region299311
+Node: condition-case303722
+Node: Lisp macro306293
+Node: copy-region-as-kill308926
+Node: Complete copy-region-as-kill309869
+Node: copy-region-as-kill body312715
+Node: last-command en this-command313856
+Node: kill-append functie316194
+Node: kill-new functie320469
+Node: Uitwijding naar C331447
+Node: defvar336990
+Node: Inzien huidige variabele waarde338868
+Node: defvar en asterisk340830
+Node: cons en search-fwd terugblik342884
+Node: zoek oefening346063
+Node: Implementatie van lijsten346866
+Node: Lijsten uitgetekend348102
+Node: Symbolen als ladekast354591
+Node: Lijst oefening356706
+Node: Yanking357072
+Node: Killring overzicht358467
+Node: kill-ring-yank-pointer360279
+Node: yank nthcdr oefeningen362787
+Node: Loops en recursie363532
+Ref: Loops en recursie-Footnote-1364728
+Node: while365249
+Node: Looping met while366681
+Node: Loop voorbeeld368619
+Node: print-elements-of-list372321
+Node: Incrementele loop374907
+Node: Incrementele loop details375539
+Node: Incrementeel voorbeeld377012
+Node: Inc voorbeeld onderdelen379588
+Node: inc voorbeeld samengesteld383728
+Node: Decrementele loop387330
+Node: Decrementeel voorbeeld388802
+Node: Dec voorbeeld onderdelen390393
+Node: Dec voorbeeld samengesteld392473
+Node: dolist dotimes394749
+Node: dolist395580
+Node: dotimes398757
+Node: Recursie400304
+Node: Robots bouwen401516
+Node: Recursive definitie onderdelen403321
+Node: Recursie met lijst405968
+Node: Recursieve driehoek functie409636
+Node: Recursief voorbeeld arg van 1 of 2411014
+Node: Recursief voorbeeld arg van 3 of 4413279
+Node: Recursie met cond416483
+Node: Recursieve patronen418927
+Node: Elke419420
+Node: Accumuleren421973
+Node: Bewaar423348
+Node: Geen uitstel425416
+Node: Zonder uitstel oplossing428141
+Ref: Zonder uitstel oplossing-Footnote-1432103
+Ref: Zonder uitstel oplossing-Footnote-2432227
+Node: Looping oefening432750
+Node: Regexp zoeken434069
+Node: sentence-end436215
+Node: re-search-forward440262
+Node: forward-sentence442917
+Node: Complete forward-sentence443700
+Node: fwd-sentence while loops447404
+Node: fwd-sentence re-search451217
+Node: forward-paragraph453321
+Node: forward-paragraph in het kort455196
+Node: fwd-para let456754
+Node: fwd-para while463685
+Node: Regexp terugblik472541
+Node: re-search oefeningen475131
+Node: Woorden tellen475904
+Node: Waarom woorden tellen476687
+Node: tel-woorden-voorbeeld477843
+Node: Ontwerp tel-woorden-voorbeeld479216
+Node: Witte ruimte bug485952
+Node: recursive-count-words495787
+Node: Tellen voorbeeld508514
+Node: Woorden in een defun508886
+Node: Verdeel en heers510657
+Node: Woorden en symbolen511968
+Node: Syntax514121
+Node: tel-woorden-in-defun517837
+Node: Enkele defuns524504
+Node: Een bestand vinden527024
+Node: lengte-lijst-bestand529784
+Node: Enkele bestanden535374
+Node: lengths-list-many-files536180
+Node: append539107
+Node: Enkele bestanden recursief539761
+Node: De data voorbereiden542847
+Node: Data in detail te tonen543962
+Node: Sorteren544957
+Node: Bestandenlijst546813
+Ref: Bestandenlijst-Footnote-1554857
+Node: Functiedefinities tellen555079
+Node: Een grafiek voorbereiden564706
+Node: Kolommen van een grafiek566080
+Node: grafiek-body-tonen580337
+Node: recursieve-grafiek-body-tonen585123
+Node: Getoonde assen587896
+Node: Lijngrafiek oefening588713
+Node: Initialisatie van Emacs588924
+Node: Standaard configuratie590491
+Ref: Standaard configuratie-Footnote-1592617
+Node: Systeem-brede init592939
+Node: defcustom595200
+Node: Een init bestand beginnen601325
+Node: Tekst en auto-fill603856
+Ref: Tekst en auto-fill-Footnote-1608177
+Ref: Tekst en auto-fill-Footnote-2608470
+Node: Mail aliasen608780
+Node: Indent Tabs Mode609739
+Node: Key bindings610738
+Node: Keymaps616024
+Node: Bestanden laden618858
+Node: Autoload622230
+Node: Eenvoudige uitbreiding625249
+Ref: Eenvoudige uitbreiding-Footnote-1627851
+Node: X11 kleuren628140
+Ref: X11 kleuren-Footnote-1630034
+Node: Diverse630202
+Node: Mode line634562
+Node: Debuggen.640411
+Node: debug641313
+Node: debug-on-entry644622
+Node: debug-on-quit648919
+Node: edebug649969
+Node: Debuggen oefeningen654193
+Node: Conclusie656007
+Node: de-de661472
+Node: Killring664314
+Node: Wat de killring doet665111
+Node: current-kill666654
+Node: Code voor current-kill667354
+Node: current-kill begrijpen670192
+Node: Body van current-kill671029
+Node: Uitwijding over fout674351
+Node: Het element vaststellen675584
+Node: yank679342
+Node: yank-pop682607
+Node: ring bestand685187
+Node: Volledige grafiek685582
+Node: Gelabeld voorbeeld686454
+Node: print-graph varlist688513
+Node: print-Y-axis690291
+Node: toon-Y-as in detail691139
+Node: Hoogte van label691987
+Node: Bereken het restant694053
+Node: Y-as element698016
+Node: Y-axis-column701916
+Node: toon-Y-as enalaatste703475
+Node: print-X-axis705487
+Node: Overeenkomsten verschillen706828
+Node: X-as merktekens707662
+Node: De gehele grafiek afdrukken714749
+Node: De finale versie715884
+Node: Test print-graph720295
+Node: Woorden in defuns grafisch weergeven722009
+Node: lambda724790
+Node: mapcar726613
+Node: Een andere bug728771
+Node: Finale afgedrukte grafiek734429
+Node: Free Software and Free Manuals735402
+Node: GNU Free Documentation License741697
+Node: Index766879
+Node: Over de auteur806058
 
 End Tag Table
 
