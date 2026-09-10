@@ -1518,8 +1518,11 @@ Een @file{*Backtrace*} window opent waarin je het volgende zou moeten zien:
 ---------- Buffer: *Backtrace* ----------
 Debugger entered--Lisp error: (void-function dit)
   (dit is een ongequote lijst)
-  eval((dit is een ongequote lijst) nil)
+  (progn (dit is een ongequote lijst))
+  eval((progn (dit is een ongequote lijst)) t)
   elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
@@ -1951,11 +1954,12 @@ Je maakt een @file{*Backtrace*} buffer dat het volgende toont:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
 Debugger entered--Lisp error: (void-function fill-column)
   (fill-column)
   eval((fill-column) nil)
   elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
@@ -1990,10 +1994,11 @@ toont:
 
 @smallexample
 @group
----------- Buffer: *Backtrace* ----------
 Debugger entered--Lisp error: (void-variable +)
-  eval(+)
+  eval(+ nil)
   elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
@@ -2247,15 +2252,16 @@ Je maakt en betreedt een @file{*Backtrace*} buffer die toont:
 @smallexample
 @group
 ---------- Buffer: *Backtrace* ----------
-Debugger entered--Lisp error:
-         (wrong-type-argument number-or-marker-p hello)
+Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p hello)
   +(2 hello)
   eval((+ 2 'hello) nil)
-  elisp--eval-last-sexp(t)
+  elisp--eval-last-sexp(nil)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
-  funcall-interactively(eval-print-last-sexp nil)
-  call-interactively(eval-print-last-sexp nil nil)
-  command-execute(eval-print-last-sexp)
+  funcall-interactively(eval-last-sexp nil)
+  call-interactively(eval-last-sexp nil nil)
+  command-execute(eval-last-sexp)
 ---------- Buffer: *Backtrace* ----------
 @end group
 @end smallexample
@@ -8502,13 +8508,13 @@ snijden en plakken. In het X windowing system bijvoorbeeld is de functie
 @code{interprogram-cut-function} @code{x-select-text}, die met het
 equivalent voor de Emacs killring van het windowing systeem werkt.
 
-The body of the @code{copy-region-as-kill} function starts with an @code{if}
-clause.  What this clause does is distinguish between two different
-situations: whether or not this command is executed immediately after a
-previous @code{kill-region} command.  In the first case, the new region is
-appended to the previously copied text.  Otherwise, it is inserted into the
-beginning of the kill ring as a separate piece of text from the previous
-piece.
+De body van de @code{copy-region-as-kill} functie start met een
+@code{if}-clausule. Deze clausule maakt onderscheid tussen twee
+verschillende situaties: of dit commando wel of niet inmiddelijk achter een
+voorgaand @code{kill-region} commando is uitgevoerd. In het eerste geval
+wordt de nieuwe region aan de eerder gekopieerde tekst toegevoegd. In het
+andere geval wordt het ingevoegd aan het begin van de kill-ring als een
+separaat stuk tekst apart van het vorige stuk.
 
 De laatste twee regels van de functie voorkomen highighting van de region
 wanneer Transient Mark mode aan staat.
@@ -15206,12 +15212,13 @@ nil
 100
 @end group
 @group
-(20615 27034 579989 697000)
-(17905 55681 0 0)
-(20615 26327 734791 805000)@footnote{Wanneer @code{current-time-list} @code{nil} is,
-zijn de drie timestamps respectievelijk @code{(1351051674579989697
-. 1000000000)}, @code{(1173477761000000000 . 1000000000)} en
-@code{(1351050967734791805 . 1000000000)}.}
+(1351051674579989697 . 1000000000)
+(1173477761000000000 . 1000000000)
+(1351050967734791805 . 1000000000)@footnote{Wanneer @code{current-time-list} is
+@code{t} zijn de drie timestamps respectievelijk
+@code{(20615 27034 579989 697000)},
+@code{(17905 55681 0 0)}, and
+@code{(20615 26327 734791 805000)}.}
 13188
 "-rw-r--r--"
 @end group
@@ -15979,11 +15986,11 @@ de lijst te maken:
 @end group
 
 @group
-    ;; @r{Fill in blanks.}
-    (while (> number-of-top-blanks 0)
-      (setq insert-list (cons " " insert-list))
-      (setq number-of-top-blanks
-            (1- number-of-top-blanks)))
+    ;; @r{@code{grafiek-wit} invullen.}
+    (while (> aantal-bovenste-spaties 0)
+      (setq invoeglijst (cons " " invoeglijst))
+      (setq aantal-bovenste-spaties
+            (1- aantal-bovenste-spaties)))
 @end group
 
 @group
@@ -16569,18 +16576,16 @@ M-x customize
 @end smallexample
 
 @noindent
-en ontdek dat de groep voor het editten van tekstbestanden ``Text'' heet. Ga
-die groep in. Text Mode Hook is het eerste onderdeel. Je kunt op de
-verschillende opties klikken, zoals @code{turn-on-auto-fill}, om de waarden
-te zetten. Daarna klik je op de button en kies je
-
-@smallexample
-Save for Future Sessions
-@end smallexample
-
-@noindent
-Emacs schrijft een expressie in je @file{.emacs} bestand. Het ziet er zo
-uit:
+and find that the group for editing files of text is called @samp{Text}.
+Enter that group by clicking or typing @key{RET} on it.  Text Mode Hook is
+one of the group's members; click on the triangular button (or on the
+@samp{Show Value} button which replaces that on text-only terminals) to its
+left to show its various options.  Then you can click (or type @key{RET} if
+you are on a text-only terminal) on its options, such as
+@code{turn-on-auto-fill}, to set or reset the values.  After you click (or
+type @key{RET}) on the @samp{State} button and select @samp{Save for Future
+Sessions}, Emacs will write an expression into your @file{.emacs} file.  It
+will look like this:
 
 @smallexample
 @group
@@ -16976,10 +16981,10 @@ Het commando dat door de toetsen wordt aangeroepen is
 voorafgegaan door een enkele quote. Anders zou Emacs het eerst het symbool
 proberen te evalueren om zijn waarde te bepalen.
 
-Deze drie dingen, de dubbele aanhalingstekens, de backslash voor de @samp{C}
-en de enkele quote zijn noodzakelijke onderdelen van keybindings die ik vaak
-vergeet. Gelukkig ben ik me gaan herinneren dat ik moet kijken in mijn
-bestaande @file{.emacs} bestand, en gebruiken wat er in staat.
+Deze twee dingen, de dubbele aanhalingstekens en de enkele quote zijn
+noodzakelijke onderdelen van keybindings die ik vaak vergeet. Gelukkig ben
+ik me gaan herinneren dat ik moet kijken in mijn bestaande @file{.emacs}
+bestand, en gebruiken wat er in staat.
 
 Voor wat betreft de keybinding zelf: @kbd{C-c w}. Dit combineert de prefix
 toets @kbd{C-c}, met een enkel karakter, in dit geval @kbd{w}. Deze
@@ -17921,15 +17926,14 @@ Debugger entered--Lisp error: (void-function 1=)
   (while (> getal 0) (setq totaal (+ totaal getal))
         (setq getal (1= getal)))
   (let ((totaal 0)) (while (> getal 0) (setq totaal ...)
-     (setq getal ...)) totaal)
-  driehoek-met-bug(4)
+    (setq getal ...)) totaal)
+  triangle-bugged(4)
+  eval((driehoek-met-bug 4) nil)
 @end group
 @group
-  eval((driehoek-met-bug 4) nil)
   elisp--eval-last-sexp(nil)
-  #f(compiled-function () #<bytecode ...)()
-  handler-bind-1(#f(compiled-function () #<bytecode ...)
-    (error) eval-expression--debug)
+  #f(compiled-function () #<bytecode ...>)()
+  handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
@@ -18026,12 +18030,14 @@ Debugger entered--entering a function:
   eval((driehoek-met-bug 5) nil)
 @end group
 @group
+  elisp--eval-last-sexp(nil)
   #f(compiled-function () #<bytecode ...>)()
   handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
   command-execute(eval-last-sexp)
+---------- Buffer: *Backtrace* ----------
 @end group
 @end smallexample
 
@@ -18090,14 +18096,16 @@ Debugger entered--beginning evaluation of function call form:
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
   command-execute(eval-last-sexp)
-@group
 @end group
+@group
+  elisp--eval-last-sexp(nil)
   #f(compiled-function () #<bytecode ...>)()
   handler-bind-1(#f(compiled-function () #<bytecode ...>) (error) eval-expression--debug)
   eval-last-sexp(nil)
   funcall-interactively(eval-last-sexp nil)
   call-interactively(eval-last-sexp nil nil)
   command-execute(eval-last-sexp)
+---------- Buffer: *Backtrace* ----------
 @end group
 @end smallexample
 
@@ -19436,7 +19444,7 @@ twee expressies:
 @end smallexample
 
 @noindent
-The first expression returns 2 and the second expression returns 0.
+De eerste expressie geeft 2 terug en tweede expressie geeft 0 terug.
 
 Om te testen of de teruggegeven waarde nul is of een ander getal, kunnen we
 de functie @code{zerop} gebruiken. Deze functie geeft @code{t} terug wanneer
@@ -19485,11 +19493,11 @@ Bijvoorbeeld, als je het volgende evalueert, is het resultaat 15:
 (* (1+ (/ 12 5)) 5)
 @end smallexample
 
-All through this discussion, we have been using 5 as the value for spacing
-labels on the Y axis; but we may want to use some other value.  For
-generality, we should replace 5 with a variable to which we can assign a
-value.  The best name I can think of for this variable is
-@code{Y-axis-label-spacing}.
+Gedurende deze discussie hebben we steeds 5 gebruikt als waarde voor de
+spatiëring van de labels op de Y-as, maar we willen misschien een andere
+waarde gebruiken. Voor algemene toepasbaarheid moeten we 5 vervangen door
+een variabele die we een waarde kunnen geven. De beste naam die ik kan
+bedenken voor deze variabele is @code{Y-as-label-spacing}. 
 
 @need 1250
 Met deze term en een @code{if} expressie, maken we het volgende: 
@@ -19957,14 +19965,14 @@ tonen:
     (insert X-as-tic-symbol)  ; @r{Onder eerste kolom.}
 @end group
 @group
-    ;; @r{Insert second tic in the right spot.}
+    ;; @r{Voeg tweede merkteken op juiste plaats in.}
     (insert (concat
              (make-string
-              (-  (* symbol-width X-axis-label-spacing)
-                  ;; @r{Insert white space up to second tic symbol.}
-                  (* 2 (length X-axis-tic-symbol)))
+              (-  (* symbol-width X-as-label-spacing)
+                  ;; @r{Voeg witte ruimte in naar volgende merkteken.}
+                  (* 2 (length X-as-tic-symbol)))
               ? )
-             X-axis-tic-symbol))
+             X-as-tic-symbol))
 @end group
 @group
     ;; @r{Voeg resterende merktekens in.}
@@ -20763,9 +20771,9 @@ elke kolom."
        (X-tic
         (concat
          (make-string
-          ;; @r{Make a string of blanks.}
-          (-  (* symbol-width X-axis-label-spacing)
-              (length X-axis-tic-symbol))
+          ;; @r{Maak een string van spaties.}
+          (-  (* symbol-width X-as-label-spacing)
+              (length X-as-tic-symbol))
           ? )
 @end group
 @group
@@ -20931,7 +20939,7 @@ in een functiedefinitie."
 @group
       (while (re-search-forward "^(defun" nil t)
         (setq lengths-list
-              (cons (count-words-in-defun) lengths-list)))
+              (cons (tel-woorden-in-defun) lengths-list)))
       (kill-buffer buffer)
       lengths-list)))
 @end group
@@ -20969,14 +20977,13 @@ in een functiedefinitie."
 @end group
 
 @group
-    ;; @r{Outer loop.}
-    (while top-of-ranges
-
-      ;; @r{Inner loop.}
+    ;; @r{Buitenste loop.}
+    (while hoogste-van-ranges
+      ;; @r{Binnenste loop.}
       (while (and
-              ;; @r{Need number for numeric test.}
-              (car sorted-lengths)
-              (< (car sorted-lengths) top-of-range))
+              ;; @r{Getal nodig voor numerieke test.}
+              (car gesorteerde-lengtes)
+              (< (car gesorteerde-lengtes) hoogste-van-range))
 
         ;; @r{Tel aantal definities in huidige range.}
         (setq getal-in-range (1+ getal-in-range))
@@ -21098,14 +21105,14 @@ Toon optioneel overeenkomstig met VERTICAL-STEP."
     (insert X-as-tic-symbol)  ; @r{Onder eerste kolom.}
 @end group
 @group
-    ;; @r{Insert second tic in the right spot.}
+    ;; @r{Voeg tweede merkteken op juiste plaats in.}
     (insert (concat
              (make-string
-              (-  (* symbol-width X-axis-label-spacing)
-                  ;; @r{Insert white space up to second tic symbol.}
-                  (* 2 (length X-axis-tic-symbol)))
+              (-  (* symbol-width X-as-label-spacing)
+                  ;; @r{Voeg witte ruimte in naar volgende merkteken.}
+                  (* 2 (length X-as-tic-symbol)))
               ? )
-             X-axis-tic-symbol))
+             X-as-tic-symbol))
 @end group
 @group
     ;; @r{Voeg resterende merktekens in.}
@@ -21163,23 +21170,23 @@ HOOGTE is maximum hoogte van grafiek.
 LABELBREEDTE is maximum breedte van label.
 @end group
 @group
-VERTICAL-STEP, an option, is a positive integer
-that specifies how much a Y axis label increments
-for each line.  For example, a step of 5 means
-that each line is five units of the graph."
-  (let (Y-axis
-        (number-per-line (or vertical-step 1)))
+VERTICAL-STEP, een optie, is een positieve integer
+die specificeert hoeveel een Y as label toeneemt
+op elke regel.  Bijvoorbeeld een stap van 5 betekent
+dat elke regel vijf eenheden van de grafiek is."
+  (let (Y-as
+        (getal-per-regel (or vertical-step 1)))
 @end group
 @group
-    (while (> height 1)
-      (if (zerop (% height Y-axis-label-spacing))
+    (while (> hoogte 1)
+      (if (zerop (% hoogte Y-as-label-spacing))
           ;; @r{Insert label.}
-          (setq Y-axis
+          (setq Y-as
                 (cons
-                 (Y-axis-element
-                  (* height number-per-line)
+                 (Y-as-element
+                  (* hoogte getal-per-regel)
                   width-of-label)
-                 Y-axis))
+                 Y-as))
 @end group
 @group
         ;; @r{Anders, voeg spaties in.}
@@ -21251,9 +21258,9 @@ elke kolom."
        (X-tic
         (concat
          (make-string
-          ;; @r{Make a string of blanks.}
-          (-  (* symbol-width X-axis-label-spacing)
-              (length X-axis-tic-symbol))
+          ;; @r{Maak een string van spaties.}
+          (-  (* symbol-width X-as-label-spacing)
+              (length X-as-tic-symbol))
           ? )
 @end group
 @group

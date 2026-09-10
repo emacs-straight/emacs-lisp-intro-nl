@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  8 SEP 2026 21:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  9 SEP 2026 21:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -233,6 +233,19 @@ already used, duplicate ignored
                                                   }
 l.1447 
         [3]
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 1525--1525
+ []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
+ eval-expression--debug)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+
 pdfTeX warning (ext4): destination with the same identifier (name{4}) has been 
 already used, duplicate ignored
 <to be read again> 
@@ -243,10 +256,61 @@ already used, duplicate ignored
                                                   }
 @\need ... @vskip 0pt plus @dimen 0 @penalty -100 
                                                   @vskip 0pt plus -@dimen 0 ...
-l.1531 @need 1200
-                  [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-[16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 2585--2589
+l.1534 @need 1200
+                  [4] [5] [6] [7] [8] [9]
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 1962--1962
+ []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
+ eval-expression--debug)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[10]
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 2001--2001
+ []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
+ eval-expression--debug)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[11] [12] [13] [14]
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 2255--2255
+ []@reducedtt Debugger entered--Lisp error: (wrong-type-argument number-or-mark
+er-p hello)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@reducedtt D
+.@reducedtt e
+.@reducedtt b
+.etc.
+
+
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 2260--2260
+ []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
+ eval-expression--debug)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[15] [16] [17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 2591--2595
  []@textrm Atomen zi-jn multi-karakter sym-bol-en, zoals @ssectt forward-paragr
 aph[]@textrm ,
 
@@ -263,8 +327,8 @@ aph[]@textrm ,
 .@textrm t
 .etc.
 
-[18] Hoofdstuk 2 [19] [20]
-Underfull \hbox (badness 7925) in paragraph at lines 2745--2749
+[19] Hoofdstuk 2 [20] [21]
+Underfull \hbox (badness 7925) in paragraph at lines 2751--2755
 []@textrm Anderzijds, ter-wi-jl ik dit doc-u-ment schri-jf is de waarde die het
 
 
@@ -277,7 +341,7 @@ Underfull \hbox (badness 7925) in paragraph at lines 2745--2749
 .etc.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2745--2749
+Underfull \hbox (badness 10000) in paragraph at lines 2751--2755
 @textrm eval-ueren van @ssectt (buffer-name)[] @textrm teruggeeft, @ssectt "int
 roduction.texinfo"[]
 
@@ -290,7 +354,7 @@ roduction.texinfo"[]
 .etc.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2745--2749
+Underfull \hbox (badness 10000) in paragraph at lines 2751--2755
 @textrm en de waarde die de eval-u-atie van @ssectt (buffer-file-name)[] @textr
 m teruggeeft
 
@@ -303,7 +367,7 @@ m teruggeeft
 .etc.
 
 
-Overfull \hbox (30.03749pt too wide) in paragraph at lines 2759--2762
+Overfull \hbox (30.03749pt too wide) in paragraph at lines 2765--2768
 @textrm naam van het be-stand waar het naar wi-jst is @ssectt "/gnu/work/intro/
 introduction.texinfo"[]@textrm . 
 
@@ -315,24 +379,24 @@ introduction.texinfo"[]@textrm .
 .@glue 3.33333 plus 1.66666 minus 1.11111
 .etc.
 
-[21] [22] [23] [24] Hoofdstuk 3 [25] [26] [27] [28] [29] [30] [31] [32]
-[33] [34]
+[22] [23] [24] [25] Hoofdstuk 3 [26] [27] [28] [29] [30] [31] [32] [33]
+[34] [35]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
- [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46]
-Hoofdstuk 4 [47]
+ [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+Hoofdstuk 4 [48]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
- [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58]
-Hoofdstuk 5 [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70]
-[71] [72] Hoofdstuk 6 [73] [74] [75] [76] Hoofdstuk 7 [77] [78]
+ [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59]
+Hoofdstuk 5 [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70] [71]
+[72] [73] Hoofdstuk 6 [74] [75] [76] [77] Hoofdstuk 7 [78] [79]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¯ in font cmr10!
- [79] [80]
-[81] [82] [83] [84] Hoofdstuk 8 [85] [86] [87] [88] [89] [90]
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 8134--8134
+ [80] [81]
+[82] [83] [84] [85] Hoofdstuk 8 [86] [87] [88] [89] [90] [91]
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 8140--8140
  []      @reducedtt ;;    de oude aan elkaar. De ^^Mkill-new^^M functie voegt t
 ekst in als een[] 
 
@@ -344,8 +408,8 @@ ekst in als een[]
 .@penalty 10000
 .etc.
 
-[91]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 8181--8181
+[92]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 8187--8187
  []     @reducedtt ;;    Vervolgens, dus als deel van het dan-deel, zet this-co
 mmand, zodat[] 
 
@@ -358,7 +422,7 @@ mmand, zodat[]
 .etc.
 
 
-Overfull \hbox (61.95155pt too wide) in paragraph at lines 8185--8185
+Overfull \hbox (61.95155pt too wide) in paragraph at lines 8191--8191
  []     @reducedtt ;;    tekst niet naar de the killring kan kopi^^?eren zonder
  een fout te signaleren[] 
 
@@ -370,17 +434,17 @@ Overfull \hbox (61.95155pt too wide) in paragraph at lines 8185--8185
 .@penalty 10000
 .etc.
 
-[92] [93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105]
-[106] Hoofdstuk 9 [107] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-1-nl
-.pdf> [108] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-2-nl.pdf> </home
+[93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106]
+[107] Hoofdstuk 9 [108] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-1-nl
+.pdf> [109] </home/elpa/elpa/packages/emacs-lisp-intro-nl/cons-2-nl.pdf> </home
 /elpa/elpa/packages/emacs-lisp-intro-nl/cons-2a-nl.pdf> </home/elpa/elpa/packag
-es/emacs-lisp-intro-nl/cons-3-nl.pdf> [109] </home/elpa/elpa/packages/emacs-lis
-p-intro-nl/cons-4-nl.pdf> [110] </home/elpa/elpa/packages/emacs-lisp-intro-nl/d
-rawers-nl.pdf> [111] Hoofdstuk 10 [112] [113] </home/elpa/elpa/packages/emacs-l
-isp-intro-nl/cons-5-nl.pdf> [114] Hoofdstuk 11 [115] [116] [117] [118] [119]
-[120] [121] [122] [123] [124] [125] [126] [127] [128] [129] [130] [131]
-[132] [133]
-Underfull \hbox (badness 10000) in paragraph at lines 11339--11347
+es/emacs-lisp-intro-nl/cons-3-nl.pdf> [110] </home/elpa/elpa/packages/emacs-lis
+p-intro-nl/cons-4-nl.pdf> [111] </home/elpa/elpa/packages/emacs-lisp-intro-nl/d
+rawers-nl.pdf> [112] Hoofdstuk 10 [113] [114] </home/elpa/elpa/packages/emacs-l
+isp-intro-nl/cons-5-nl.pdf> [115] Hoofdstuk 11 [116] [117] [118] [119] [120]
+[121] [122] [123] [124] [125] [126] [127] [128] [129] [130] [131] [132]
+[133] [134]
+Underfull \hbox (badness 10000) in paragraph at lines 11345--11353
 @ssectt (driehoek-recursief 6)[] @textrm aan-roepen, en vo-or-dat @ssectt (drie
 hoek-recursief 6)[]
 
@@ -392,8 +456,8 @@ hoek-recursief 6)[]
 .@ssectt e
 .etc.
 
-[134] [135] [136] [137]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 11644--11644
+[135] [136] [137] [138]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 11650--11650
  []    @reducedtt ;; combineer behandelde elementen met recursieve aanroep op k
 ortere lijst[] 
 
@@ -406,7 +470,7 @@ ortere lijst[]
 .etc.
 
 
-Overfull \hbox (38.32683pt too wide) in paragraph at lines 11645--11645
+Overfull \hbox (38.32683pt too wide) in paragraph at lines 11651--11651
  []    @reducedtt (cons (car woorden-lijst) (bewaar-drie-letter-woorden (cdr wo
 orden-lijst))))[] 
 
@@ -418,8 +482,8 @@ orden-lijst))))[]
 .@penalty 10000
 .etc.
 
-[138] [139] [140] [141] Hoofdstuk 12 [142] [143] [144] [145] [146]
-Underfull \hbox (badness 10000) in paragraph at lines 12331--12337
+[139] [140] [141] [142] Hoofdstuk 12 [143] [144] [145] [146] [147]
+Underfull \hbox (badness 10000) in paragraph at lines 12337--12343
 []@textrm Wanneer @ssectt forward-sentence[] @textrm non-interactief zon-der ar
 -gu-ment wordt
 
@@ -431,8 +495,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 12331--12337
 .@textrm n
 .etc.
 
-[147] [148] [149]
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 12731--12731
+[148] [149] [150]
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 12737--12737
  []       @reducedtt ;; Remove ^ from paragraph-start and paragraph-sep if they
  are there.[] 
 
@@ -445,7 +509,7 @@ Overfull \hbox (19.42705pt too wide) in paragraph at lines 12731--12731
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 12735--12735
+Overfull \hbox (24.152pt too wide) in paragraph at lines 12741--12741
  []       @reducedtt ;; This hack will not find problem cases like "whatever\\|
 ^something".[] 
 
@@ -457,9 +521,9 @@ Overfull \hbox (24.152pt too wide) in paragraph at lines 12735--12735
 .@penalty 10000
 .etc.
 
-[150] [151] [152] [153] [154] [155] [156] Hoofdstuk 13 [157] [158] [159]
-[160] [161] [162] [163]
-Underfull \hbox (badness 10000) in paragraph at lines 13693--13696
+[151] [152] [153] [154] [155] [156] [157] Hoofdstuk 13 [158] [159] [160]
+[161] [162] [163] [164]
+Underfull \hbox (badness 10000) in paragraph at lines 13699--13702
 []@textrm Na het in-cor-por-eren van deze laat-ste wi-jzigin-gen, werkt
 
 @hbox(6.94444+1.94444)x361.34999, glue set 8.81573
@@ -470,12 +534,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 13693--13696
 .@textrm h
 .etc.
 
-[164] [165] [166] [167] [168] Hoofdstuk 14 [169] [170] [171]
+[165] [166] [167] [168] [169] Hoofdstuk 14 [170] [171] [172]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no « in font cmr10!
- [172] [173]
-[174] [175] [176]
-Overfull \hbox (43.05177pt too wide) in paragraph at lines 14671--14671
+ [173] [174]
+[175] [176] [177]
+Overfull \hbox (43.05177pt too wide) in paragraph at lines 14677--14677
  []  @reducedtt "Geef een lijst terug met definitielengtes in het bestand genaa
 md BESTANDSNAAM.[] 
 
@@ -487,8 +551,8 @@ md BESTANDSNAAM.[]
 .@penalty 10000
 .etc.
 
-[177] [178] [179] [180]
-Underfull \hbox (badness 10000) in paragraph at lines 14987--14993
+[178] [179] [180] [181]
+Underfull \hbox (badness 10000) in paragraph at lines 14993--14999
 []@textrm Installeer @ssectt recursieve-lengte-lijst-veel-bestanden[] @textrm e
 n in-di-en nodig
 
@@ -500,8 +564,8 @@ n in-di-en nodig
 .@textrm t
 .etc.
 
-[181] [182] [183] [184]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 15327--15327
+[182] [183] [184] [185]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 15334--15334
  []              @reducedtt (cons (car (car huidige-directory-lijst)) el-bestan
 den-lijst)))[] 
 
@@ -513,8 +577,8 @@ den-lijst)))[]
 .@penalty 10000
 .etc.
 
-[185]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 15370--15370
+[186]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 15377--15377
  [] @reducedtt (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.
 1.1/lisp/"))[] 
 
@@ -527,7 +591,7 @@ Overfull \hbox (24.152pt too wide) in paragraph at lines 15370--15370
 .etc.
 
 
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 15385--15385
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 15392--15392
  [] @reducedtt (bestanden-in-onderiggende-directory "/usr/local/share/emacs/22.
 1.1/lisp/")[] 
 
@@ -539,10 +603,10 @@ Overfull \hbox (19.42705pt too wide) in paragraph at lines 15385--15385
 .@reducedtt (
 .etc.
 
-[186] [187] [188] [189] Hoofdstuk 15 [190] [191] [192] [193] [194] [195]
-[196] [197] [198] Hoofdstuk 16 [199] [200] [201] [202] [203] [204] [205]
-[206] [207] [208] [209] [210] [211]
-Overfull \hbox (168.15451pt too wide) in paragraph at lines 17396--17397
+[187] [188] [189] [190] Hoofdstuk 15 [191] [192] [193] [194] [195] [196]
+[197] [198] [199] Hoofdstuk 16 [200] [201] [202] [203] [204] [205] [206]
+[207] [208] [209] [210] [211] [212]
+Overfull \hbox (168.15451pt too wide) in paragraph at lines 17401--17402
  [] []@reducedtt verzameling opties emacs -Q -D[] 
 
 @hbox(6.25+2.0)x361.34999
@@ -559,8 +623,8 @@ Overfull \hbox (168.15451pt too wide) in paragraph at lines 17396--17397
 ..etc.
 .etc.
 
-[212] [213] [214] [215] [216] [217] [218] Hoofdstuk 17 [219] [220]
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18030--18030
+[213] [214] [215] [216] [217] [218] [219] Hoofdstuk 17 [220]
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 17936--17936
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -573,7 +637,20 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18030--18030
 .etc.
 
 [221]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 18044--18044
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18035--18035
+ []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
+ eval-expression--debug)[] 
+
+@hbox(6.25+2.0)x361.34999
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 4.72495
+.@penalty 10000
+.etc.
+
+[222]
+Overfull \hbox (24.152pt too wide) in paragraph at lines 18050--18050
  []@reducedtt * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m G
 ETAL terug."[] 
 
@@ -586,7 +663,7 @@ ETAL terug."[]
 .etc.
 
 
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18053--18053
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18059--18059
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -599,7 +676,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18053--18053
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 18081--18081
+Overfull \hbox (24.152pt too wide) in paragraph at lines 18087--18087
  []@reducedtt * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m G
 ETAL terug."[] 
 
@@ -612,7 +689,7 @@ ETAL terug."[]
 .etc.
 
 
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18088--18088
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18094--18094
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -624,8 +701,8 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18088--18088
 .@penalty 10000
 .etc.
 
-
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18096--18096
+[223]
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18103--18103
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -637,9 +714,9 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18096--18096
 .@penalty 10000
 .etc.
 
-[222] [223] [224] Hoofdstuk 18 [225] [226] Appendix A [227] [228] Appendix B
-[229] [230] [231] [232] [233] [234]
-Overfull \hbox (113.92595pt too wide) in paragraph at lines 19039--19039
+[224] [225] [226] Hoofdstuk 18 [227] [228] Appendix A [229] [230] Appendix B
+[231] [232] [233] [234] [235] [236]
+Overfull \hbox (113.92595pt too wide) in paragraph at lines 19047--19047
  []@reducedtt With just \\[universal-argument] as argument, same but put point 
 at beginning (and mark at end).[] 
 
@@ -652,7 +729,7 @@ at beginning (and mark at end).[]
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 19063--19063
+Overfull \hbox (24.152pt too wide) in paragraph at lines 19071--19071
  []      @reducedtt ;; This is like exchange-point-and-mark, but doesn^^Mt acti
 vate the mark.[] 
 
@@ -664,12 +741,12 @@ vate the mark.[]
 .@penalty 10000
 .etc.
 
-[235] [236] Appendix C [237] [238] [239] [240] [241] [242] [243] [244] [245]
-[246] [247] [248] [249] [250] [251] [252] [253] [254] [255] </home/elpa/elpa/pa
-ckages/emacs-lisp-intro-nl/lambda-1-nl.png> [256] </home/elpa/elpa/packages/ema
+[237] [238] Appendix C [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255] [256] [257] </home/elpa/elpa/pa
+ckages/emacs-lisp-intro-nl/lambda-1-nl.png> [258] </home/elpa/elpa/packages/ema
 cs-lisp-intro-nl/lambda-2-nl.png> </home/elpa/elpa/packages/emacs-lisp-intro-nl
-/lambda-3-nl.png> [257] [258]
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 20729--20729
+/lambda-3-nl.png> [259] [260]
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 20737--20737
  []    @reducedtt (toon-X-as-numbered-line     tic-number leading-spaces horizo
 ntal-step))[] 
 
@@ -681,18 +758,18 @@ ntal-step))[]
 .@penalty 10000
 .etc.
 
-[259] Appendix D [260] [261] Appendix E [262]
+[261] Appendix D [262] [263] Appendix E [264]
 texinfo.tex: doing @include of doclicense.texi
 
 
-(/home/elpa/elpa/packages/emacs-lisp-intro-nl/doclicense.texi [263] [264]
-[265] [266] [267] [268] [269] [270]) (Index) [271]
-(/home/elpa/elpa/packages/emacs-lisp-intro-nl/emacs-lisp-intro-nl.cps [272]
-[273] [274] [275] [276]) [277] [278] ) 
+(/home/elpa/elpa/packages/emacs-lisp-intro-nl/doclicense.texi [265] [266]
+[267] [268] [269] [270] [271] [272]) (Index) [273]
+(/home/elpa/elpa/packages/emacs-lisp-intro-nl/emacs-lisp-intro-nl.cps [274]
+[275] [276] [277] [278]) [279] [280] ) 
 Here is how much of TeX's memory you used:
- 5514 strings out of 497075
- 67966 string characters out of 6206386
- 131895 words of memory out of 5000000
+ 5516 strings out of 497075
+ 67972 string characters out of 6206386
+ 131965 words of memory out of 5000000
  5995 multiletter control sequences out of 15000+600000
  37169 words of font info for 128 fonts, out of 8000000 for 9000
  57 hyphenation exceptions out of 8191
@@ -718,10 +795,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on emacs-lisp-intro-nl.pdf (294 pages, 1085786 bytes).
+Output written on emacs-lisp-intro-nl.pdf (296 pages, 1087697 bytes).
 PDF statistics:
- 3753 PDF objects out of 4296 (max. 8388607)
- 3310 compressed objects within 34 object streams
- 528 named destinations out of 1000 (max. 500000)
+ 3763 PDF objects out of 4296 (max. 8388607)
+ 3318 compressed objects within 34 object streams
+ 530 named destinations out of 1000 (max. 500000)
  2511 words of extra memory for PDF output out of 10000 (max. 10000000)
 
