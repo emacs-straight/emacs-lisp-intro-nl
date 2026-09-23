@@ -336,9 +336,9 @@ Lisp lijsten
 
 
 
-* Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
+* Getallen lijsten::         Lijsten bevatten getallen en andere lijsten
 * Lisp atomen::              Elementaire entiteiten
-* Whitespace in lijsten::    Lijsten leesbaar formatteren
+* Witte ruimte in lijsten::  Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 
 De Lisp interpreter
@@ -909,7 +909,7 @@ Het grootste deel van de GNU Emacs geïntegreerde omgeving is geschreven in
 de programmeertaal met de naam Emacs Lisp. De code in deze taal is de
 software, de verzameling instructies, die de computer vertellen wat te doen
 wanneer je die commando's geeft. Emacs is zo ontworpen dat je nieuwe code in
-Emacs Lisp kunt schrijven en die makkelijk als uitbreiding op de editor
+Emacs Lisp kunt schrijven en die je makkelijk als uitbreiding op de editor
 installeert.
 
 (GNU Emacs wordt soms een `uitbreidbare editor'' genoemd, maar biedt veel
@@ -933,7 +933,7 @@ bewerken in de breedste zin van het woord.)
 
 @ifnottex
 @node Waarom
-@unnumberedsec Why Study Emacs Lisp?
+@unnumberedsec Waarom Emacs Lisp bestuderen?
 @end ifnottex
 
 Alhoewel men Emacs Lisp meestal alleen in samenhang met Emacs ziet, is het
@@ -1089,21 +1089,20 @@ en daarna de toets @kbd{t} indrukt en loslaat.)
 
 Ook verwijs ik vaak naar Emacs's standaard commando's door de
 toetscombinaties te noemen die je gebruikt om het commando aan te roepen en
-vervolgens de naam van het commando tussen haakjes, zoals dit:x @kbd{C-M-\}
+vervolgens de naam van het commando tussen haakjes, zoals dit: @kbd{C-M-\}
 (@code{indent-region}). Wat dit betekent is dat het @code{indent-region}
 commando gebruikelijk wordt aangeroepen door @kbd{C-M-\} te typen. (Je kunt,
 als je dat wilt, de toetscombinaties  om commando's aan te roepen wijzigen,
 dit heet @dfn{rebinding}.  @xref{Keymaps, , Keymaps}.)  De afkorting
 @kbd{C-M-\} betekent dat je de @key{CTRL}-toets, de @key{META}-toets en de
-@kbd{\}-toets  allemaal tegelijk indrukt. Soms wordt een toetscombinatie als
-dit een keychord genoemd, omdat het vergelijkbaar is met de manier waarop je
-een akkoord op een piano speelt. Wanneer je toetsenbord geen
-@key{META}-toets heeft, dan gebruik je de @key{ESC}-toets als prefix. In dat
-geval betekent @kbd{C-M-\} dat je eerst de @key{ESC} indrukt en loslaat en
-daarna tegelijkertijd de @key{CTRL}-toets en de @kbd{\}-toets indrukt. Maar
-meestal betekent @kbd{C-M-\} dat je de @key{CTRL}-toets samen met de toets
-die als @key{ALT} is gelabeld indrukt en tegelijkertijd de @kbd{\}-toets
-indrukt.
+@kbd{\}-toets  allemaal tegelijk indrukt. Soms wordt zo'n toetscombinatie
+een keychord genoemd, omdat het vergelijkbaar is met de manier waarop je een
+akkoord op een piano speelt. Wanneer je toetsenbord geen @key{META}-toets
+heeft, dan gebruik je de @key{ESC}-toets als prefix. In dat geval betekent
+@kbd{C-M-\} dat je eerst de @key{ESC} indrukt en loslaat en daarna
+tegelijkertijd de @key{CTRL}-toets en de @kbd{\}-toets indrukt. Maar meestal
+betekent @kbd{C-M-\} dat je de @key{CTRL}-toets samen met de toets die als
+@key{ALT} is gelabeld indrukt en tegelijkertijd de @kbd{\}-toets indrukt.
 
 In aanvulling op het typen van een toetscombinatie, kan je wat je typt
 uitbreiden met de prefix @kbd{C-u}, wat het @dfn{universal argument}
@@ -1236,14 +1235,14 @@ bloemen in een veld met een stenen muur er omheen.
 @cindex Bloemen in een veld
 
 @menu
-* Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
+* Getallen lijsten::         Lijsten bevatten getallen en andere lijsten
 * Lisp atomen::              Elementaire entiteiten
-* Whitespace in lijsten::    Lijsten leesbaar formatteren
+* Witte ruimte in lijsten::  Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 @end menu
 
 @ifnottex
-@node Genummerde lijsten
+@node Getallen lijsten
 @unnumberedsubsec Getallen, lijsten binnen lijsten
 @end ifnottex
 
@@ -1291,7 +1290,7 @@ kunnen meteen naast een haakje staan.
 @cindex @samp{empty list} gedefinieerd
 Technisch gesproken bestaat een lijst in Lisp uit haakjes rondom atomen
 gescheiden door witte ruimte of rondom andere lijsten of rondom zowel atomen
-als andere lijsten. Een list kan slechts een atoom bevatten, of helemaal
+als andere lijsten. Een lijst kan slechts een atoom bevatten, of helemaal
 niets bevatten. Een lijst met niets er in ziet er zo uit: @code{()}, en heet
 een @dfn{lege lijst}. In tegenstelling tot alles anders wordt een lege lijst
 tegelijk zowel als een atoom als een lijst beschouwd. 
@@ -1355,8 +1354,8 @@ characters'') en is het soort dingen dat gebruikt wordt voor boodschappen
 die de computer toont om door mensen gelezen te worden. Strings zijn een
 andere atoom-soort dan getallen of symbolen en worden anders gebruikt.
 
-@node Whitespace in lijsten
-@subsection Whitespace in lijsten
+@node Witte ruimte in lijsten
+@subsection Witte ruimte in lijsten
 @cindex Witte ruimte in lijsten
 
 @need 1200
@@ -1436,14 +1435,14 @@ om iets te doen. (Meestal is dat laatste natuurlijk wat je echt wilt!)
 @cindex quoten met de apostrof
 @cindex apostrof om te quoten
 De enkele apostrof, @code{'}, die ik aan de voorkant van enkele voorbeeld
-lijsten in de voorgaande hoofdstukken gebruikte, heten een
+lijsten in de voorgaande hoofdstukken gebruikte, heet een
 @dfn{quote}. Wanneer die aan een lijst voorafgaan, dan vertelt dat Lisp om
-niets met de lijst te doen, anders dan te accepteren precies zoals die is
-geschreven. Maar wanneer er geen quote aan de lijst voorafgaat, dan is het
-eerste element in de lijst speciaal: het is een commando voor de computer om
-te gehoorzamen. (In Lisp, heten deze commando's @emph{functies}.) De eerder
-genoemde lijst @code{(+ 2 2)} is een instructie om iets met de rest van de
-lijst te doen: tel de getallen die volgen op.
+niets met de lijst te doen, anders dan die te accepteren precies zoals die
+is geschreven. Maar wanneer er geen quote aan de lijst voorafgaat, dan is
+het eerste element in de lijst speciaal: het is een commando voor de
+computer om te gehoorzamen. (In Lisp, heten deze commando's
+@emph{functies}.) De eerder genoemde lijst @code{(+ 2 2)} is een instructie
+om iets met de rest van de lijst te doen: tel de getallen die volgen op.
 
 @need 1250
 Wanneer je dit binnen GNU Emacs in Info leest, dan kun je de lijst als volgt
@@ -1482,7 +1481,7 @@ betekenis van de expressie bedenkt---die het interpreteert.
 Je kunt ook een atoom evalueren dat geen deel van een lijst is---een die
 niet door haakjes ingesloten is. Weer vertaalt de Lisp interpreter van de
 voor mensen leesbare expressie naar de taal van de computer. Maar voor we
-dit bespreken (@pxref{Variabelen}), bespreken we eerste wat de Lisp
+dit bespreken (@pxref{Variabelen}), bespreken we eerst wat de Lisp
 interpreter doet wanneer je een fout maakt. 
 
 @node Fouten maken
@@ -1643,10 +1642,10 @@ gekoppeld aan zowel het symbool @code{plus} als het symbool @code{+} (en
 zijn dat in sommige Lisp-dialecten). Onder mensen kan ik gerefereerd met
 zowel @samp{Robert} als met  @samp{Bob} en ook nog andere woorden.
 
-Aan de andere kant kan maar aan een functiedefinitie tegelijk zijn
-gekoppeld. Anders zou de computer in verwarring raken over welke definitie
-te gebruiken. Wanneer dit onder mensen het geval zou zijn, dan kan er in de
-hele wereld maar een persoon de naam @samp{Bob} hebben. Echter de
+Aan de andere kant kan aan een symbool maar een functiedefinitie tegelijk
+zijn gekoppeld. Anders zou de computer in verwarring raken over welke
+definitie te gebruiken. Wanneer dit onder mensen het geval zou zijn, dan kan
+er in de hele wereld maar een persoon de naam @samp{Bob} hebben. Echter de
 functiedefinitie naar de naam naar refereert kan makkelijk worden
 aangepast. (@xref{Installeer, , Installeer een functiedefinitie}.)
 
@@ -1697,8 +1696,8 @@ De tweede complicatie ontstaat doordat sommige functies ongebruikelijk zijn
 en niet op de normale manier werken. Zij die dat niet doen worden
 @dfn{speciale vormen} genoemd. Zij worden voor speciale taken gebruikt,
 zoals het definieren van een functie, er er zijn er niet veel van. In enkele
-van de volgende hoofdstukken maak je kennis met verschillende belangrijkere
-speciale vormen.
+van de volgende hoofdstukken maak je kennis met verschillende meer
+belangrijke speciale vormen.
 
 Naast speciale vormen zijn er ook @dfn{macros}. Een macro is een in Lisp
 gedefineerde constructie die afwijkt van een functie omdat het een Lisp
@@ -1868,7 +1867,7 @@ een symbool, getal, lijst of string. Een symbool die een waarde heeft wordt
 vaak een @dfn{variabele} genoemd.
 
 Een symbool kan zowel een functiedefinitie als een waarde tegelijkertijd aan
-zich gekoppeld hebben. Of het kan slechts een van die tee hebben. De twee
+zich gekoppeld hebben. Of het kan slechts een van die twee hebben. De twee
 staan los van elkaar. Dit is ongeveer vergelijkbaar me de manier waarop
 Cambridge kan refereren naar een stad in Massachusetts en informatie aan de
 naam gekoppeld kan hebben, zoals ``geweldig programmeercentrum''.
@@ -2141,7 +2140,7 @@ atoom zoals een getal of een symbool.
 @node Argumenten als variabele of als lijst
 @subsection Een argument als de waarde van een variabele of lijst
 
-Een argument kan een symbool zijn die een waarde teruggeeft wanneer het
+Een argument kan een symbool zijn dat een waarde teruggeeft wanneer het
 wordt geëvalueerd. Wanneer bijvoorbeeld het symbool @code{fill-column} op
 zichzelf wordt geëvalueerd, geeft het een getal terug. Dit getal kan in een
 optelling worden gebruikt.
@@ -2459,7 +2458,7 @@ gebonden. Dat wil zeggen dat het symbool @code{bloemen}, welke als een
 variabel gezien kan worden, de lijst als waarde krijgt. (Overigens
 illustreert dit proces hoe een zij-effect voor de Lisp interpreter, de
 waarde zetten, het primaire effect kan zijn waar wij mensen in
-geïnteresseerd zijn.. Dit is omdat elke Lisp functie een waarde moet
+geïnteresseerd zijn. Dit is omdat elke Lisp functie een waarde moet
 teruggeven wanneer het geen fout krijgt, maar alleen een zij-effect heeft
 wanneer die is ontworpen om er een te hebben.
 
@@ -2504,7 +2503,7 @@ herbivoren aan het symbool @code{herbivoren} toe te kennen:
 @smallexample
 @group
 (setq bomen '(den spar eik esdoorn)
-      herbivoren '(gazelle antiloop zebra)
+      herbivoren '(gazelle antiloop zebra))
 @end group
 @end smallexample
 
@@ -2580,7 +2579,7 @@ Samenvattend,
 @itemize @bullet
 
 @item
-Lisp programma's zijn gemaakt van expressies, elke lijsten of enkelvoudige
+Lisp programma's zijn gemaakt van expressies, welke lijsten of enkelvoudige
 atomen zijn.
 
 @item
@@ -21075,7 +21074,7 @@ De strings zijn hetzij grafiek-wit dan wel grafiek-symbool."
 @smallexample
 @group
 (defun toon-Y-as
-  (hoogte full-Y-label-width &optional vertical-step)
+  (hoogte volle-Y-label-breedte &optional vertical-step)
   "Voeg  Y as in bij HOOGTE en VOLLE-Y-LABEL-BREEDTE.
 Hoogte moet de  maximum hoogte van de grafiek zijn.
 Volle breedte is de breedte van het hoogste label element.

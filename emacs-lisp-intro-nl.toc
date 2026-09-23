@@ -7,7 +7,7 @@
 @numchapentry{Lijsten verwerken}{1}{Lijsten verwerken}{1}
 @numsecentry{Lisp lijsten}{1.1}{Lisp lijsten}{1}
 @numsubsecentry{Lisp atomen}{1.1.1}{Lisp atomen}{1}
-@numsubsecentry{Whitespace in lijsten}{1.1.2}{Whitespace in lijsten}{2}
+@numsubsecentry{Witte ruimte in lijsten}{1.1.2}{Witte ruimte in lijsten}{2}
 @numsubsecentry{GNU Emacs helpt je om lijsten te typen}{1.1.3}{Typen van lijsten}{3}
 @numsecentry{Draai een programma}{1.2}{Draai een programma}{3}
 @numsecentry{Een foutmelding genereren}{1.3}{Fouten maken}{4}

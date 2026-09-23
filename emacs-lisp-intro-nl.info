@@ -150,9 +150,9 @@ Lisp lijsten
 
 
 
-* Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
+* Getallen lijsten::         Lijsten bevatten getallen en andere lijsten
 * Lisp atomen::              Elementaire entiteiten
-* Whitespace in lijsten::    Lijsten leesbaar formatteren
+* Witte ruimte in lijsten::  Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 
 De Lisp interpreter
@@ -724,7 +724,7 @@ Het grootste deel van de GNU Emacs geïntegreerde omgeving is geschreven
 in de programmeertaal met de naam Emacs Lisp.  De code in deze taal is
 de software, de verzameling instructies, die de computer vertellen wat
 te doen wanneer je die commando's geeft.  Emacs is zo ontworpen dat je
-nieuwe code in Emacs Lisp kunt schrijven en die makkelijk als
+nieuwe code in Emacs Lisp kunt schrijven en die je makkelijk als
 uitbreiding op de editor installeert.
 
    (GNU Emacs wordt soms een 'uitbreidbare editor" genoemd, maar biedt
@@ -750,8 +750,8 @@ woord.)
 
 File: emacs-lisp-intro-nl.info,  Node: Waarom,  Next: Over het lezen van deze tekst,  Up: Voorwoord
 
-Why Study Emacs Lisp?
-=====================
+Waarom Emacs Lisp bestuderen?
+=============================
 
 Alhoewel men Emacs Lisp meestal alleen in samenhang met Emacs ziet, is
 het een volwaardige computer programmeertaal.  Je kunt Emacs Lisp net
@@ -899,20 +899,20 @@ loslaat, en daarna de toets ‘t’ indrukt en loslaat.)
 
    Ook verwijs ik vaak naar Emacs's standaard commando's door de
 toetscombinaties te noemen die je gebruikt om het commando aan te roepen
-en vervolgens de naam van het commando tussen haakjes, zoals dit:x
+en vervolgens de naam van het commando tussen haakjes, zoals dit:
 ‘C-M-\’ (‘indent-region’).  Wat dit betekent is dat het ‘indent-region’
 commando gebruikelijk wordt aangeroepen door ‘C-M-\’ te typen.  (Je
 kunt, als je dat wilt, de toetscombinaties om commando's aan te roepen
 wijzigen, dit heet “rebinding”.  *Note Keymaps: Keymaps.)  De afkorting
 ‘C-M-\’ betekent dat je de <CTRL>-toets, de <META>-toets en de ‘\’-toets
-allemaal tegelijk indrukt.  Soms wordt een toetscombinatie als dit een
-keychord genoemd, omdat het vergelijkbaar is met de manier waarop je een
-akkoord op een piano speelt.  Wanneer je toetsenbord geen <META>-toets
-heeft, dan gebruik je de <ESC>-toets als prefix.  In dat geval betekent
-‘C-M-\’ dat je eerst de <ESC> indrukt en loslaat en daarna
-tegelijkertijd de <CTRL>-toets en de ‘\’-toets indrukt.  Maar meestal
-betekent ‘C-M-\’ dat je de <CTRL>-toets samen met de toets die als <ALT>
-is gelabeld indrukt en tegelijkertijd de ‘\’-toets indrukt.
+allemaal tegelijk indrukt.  Soms wordt zo'n toetscombinatie een keychord
+genoemd, omdat het vergelijkbaar is met de manier waarop je een akkoord
+op een piano speelt.  Wanneer je toetsenbord geen <META>-toets heeft,
+dan gebruik je de <ESC>-toets als prefix.  In dat geval betekent ‘C-M-\’
+dat je eerst de <ESC> indrukt en loslaat en daarna tegelijkertijd de
+<CTRL>-toets en de ‘\’-toets indrukt.  Maar meestal betekent ‘C-M-\’ dat
+je de <CTRL>-toets samen met de toets die als <ALT> is gelabeld indrukt
+en tegelijkertijd de ‘\’-toets indrukt.
 
    In aanvulling op het typen van een toetscombinatie, kan je wat je
 typt uitbreiden met de prefix ‘C-u’, wat het “universal argument” heet.
@@ -1005,13 +1005,13 @@ net als bloemen in een veld met een stenen muur er omheen.
 
 * Menu:
 
-* Genummerde lijsten::       Lijsten bevatten getallen en andere lijsten
+* Getallen lijsten::         Lijsten bevatten getallen en andere lijsten
 * Lisp atomen::              Elementaire entiteiten
-* Whitespace in lijsten::    Lijsten leesbaar formatteren
+* Witte ruimte in lijsten::  Lijsten leesbaar formatteren
 * Typen van lijsten::        Hoe GNU Emacs helpt bij het typen van lijsten
 
 
-File: emacs-lisp-intro-nl.info,  Node: Genummerde lijsten,  Next: Lisp atomen,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Getallen lijsten,  Next: Lisp atomen,  Up: Lisp lijsten
 
 Getallen, lijsten binnen lijsten
 --------------------------------
@@ -1037,7 +1037,7 @@ Lisp lijsten, omdat zij ‘;’ en ‘.’ als leesteken bevatten.)
 bestaat uit de woorden ‘van’, ‘binnen’, ‘een’ en ‘lijst’.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Lisp atomen,  Next: Whitespace in lijsten,  Prev: Genummerde lijsten,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Lisp atomen,  Next: Witte ruimte in lijsten,  Prev: Getallen lijsten,  Up: Lisp lijsten
 
 1.1.1 Lisp atomen
 -----------------
@@ -1057,7 +1057,7 @@ Zij kunnen meteen naast een haakje staan.
 
    Technisch gesproken bestaat een lijst in Lisp uit haakjes rondom
 atomen gescheiden door witte ruimte of rondom andere lijsten of rondom
-zowel atomen als andere lijsten.  Een list kan slechts een atoom
+zowel atomen als andere lijsten.  Een lijst kan slechts een atoom
 bevatten, of helemaal niets bevatten.  Een lijst met niets er in ziet er
 zo uit: ‘()’, en heet een “lege lijst”.  In tegenstelling tot alles
 anders wordt een lege lijst tegelijk zowel als een atoom als een lijst
@@ -1111,10 +1111,10 @@ een andere atoom-soort dan getallen of symbolen en worden anders
 gebruikt.
 
 
-File: emacs-lisp-intro-nl.info,  Node: Whitespace in lijsten,  Next: Typen van lijsten,  Prev: Lisp atomen,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Witte ruimte in lijsten,  Next: Typen van lijsten,  Prev: Lisp atomen,  Up: Lisp lijsten
 
-1.1.2 Whitespace in lijsten
----------------------------
+1.1.2 Witte ruimte in lijsten
+-----------------------------
 
 De hoeveelheid witte ruimte in een lijst maakt niet uit.  Vanuit het
 gezichtspunt van de Lisp taal, is
@@ -1145,7 +1145,7 @@ vierkante haken, punten en enkele andere speciale karakters gebruikt,
 maar we gaan vrij ver zonder hen.)
 
 
-File: emacs-lisp-intro-nl.info,  Node: Typen van lijsten,  Prev: Whitespace in lijsten,  Up: Lisp lijsten
+File: emacs-lisp-intro-nl.info,  Node: Typen van lijsten,  Prev: Witte ruimte in lijsten,  Up: Lisp lijsten
 
 1.1.3 GNU Emacs helpt je om lijsten te typen
 --------------------------------------------
@@ -1182,9 +1182,9 @@ commando om iets te doen.  (Meestal is dat laatste natuurlijk wat je
 echt wilt!)
 
    De enkele apostrof, ‘'’, die ik aan de voorkant van enkele voorbeeld
-lijsten in de voorgaande hoofdstukken gebruikte, heten een “quote”.
+lijsten in de voorgaande hoofdstukken gebruikte, heet een “quote”.
 Wanneer die aan een lijst voorafgaan, dan vertelt dat Lisp om niets met
-de lijst te doen, anders dan te accepteren precies zoals die is
+de lijst te doen, anders dan die te accepteren precies zoals die is
 geschreven.  Maar wanneer er geen quote aan de lijst voorafgaat, dan is
 het eerste element in de lijst speciaal: het is een commando voor de
 computer om te gehoorzamen.  (In Lisp, heten deze commando's
@@ -1216,7 +1216,7 @@ betekenis van de expressie bedenkt--die het interpreteert.
    Je kunt ook een atoom evalueren dat geen deel van een lijst is--een
 die niet door haakjes ingesloten is.  Weer vertaalt de Lisp interpreter
 van de voor mensen leesbare expressie naar de taal van de computer.
-Maar voor we dit bespreken (*note Variabelen::), bespreken we eerste wat
+Maar voor we dit bespreken (*note Variabelen::), bespreken we eerst wat
 de Lisp interpreter doet wanneer je een fout maakt.
 
    ---------- Footnotes ----------
@@ -1366,12 +1366,13 @@ gekoppeld aan zowel het symbool ‘plus’ als het symbool ‘+’ (en zijn dat
 in sommige Lisp-dialecten).  Onder mensen kan ik gerefereerd met zowel
 ‘Robert’ als met ‘Bob’ en ook nog andere woorden.
 
-   Aan de andere kant kan maar aan een functiedefinitie tegelijk zijn
-gekoppeld.  Anders zou de computer in verwarring raken over welke
-definitie te gebruiken.  Wanneer dit onder mensen het geval zou zijn,
-dan kan er in de hele wereld maar een persoon de naam ‘Bob’ hebben.
-Echter de functiedefinitie naar de naam naar refereert kan makkelijk
-worden aangepast.  (*Note Installeer een functiedefinitie: Installeer.)
+   Aan de andere kant kan aan een symbool maar een functiedefinitie
+tegelijk zijn gekoppeld.  Anders zou de computer in verwarring raken
+over welke definitie te gebruiken.  Wanneer dit onder mensen het geval
+zou zijn, dan kan er in de hele wereld maar een persoon de naam ‘Bob’
+hebben.  Echter de functiedefinitie naar de naam naar refereert kan
+makkelijk worden aangepast.  (*Note Installeer een functiedefinitie:
+Installeer.)
 
    Omdat Emacs erg groot is, is het gebruikelijk om de symbolen zo te
 benoemen dat zij het deel van Emacs waar zij thuishoren identificeren.
@@ -1423,7 +1424,7 @@ ongebruikelijk zijn en niet op de normale manier werken.  Zij die dat
 niet doen worden “speciale vormen” genoemd.  Zij worden voor speciale
 taken gebruikt, zoals het definieren van een functie, er er zijn er niet
 veel van.  In enkele van de volgende hoofdstukken maak je kennis met
-verschillende belangrijkere speciale vormen.
+verschillende meer belangrijke speciale vormen.
 
    Naast speciale vormen zijn er ook “macros”.  Een macro is een in Lisp
 gedefineerde constructie die afwijkt van een functie omdat het een Lisp
@@ -1595,7 +1596,7 @@ een waarde heeft wordt vaak een “variabele” genoemd.
 
    Een symbool kan zowel een functiedefinitie als een waarde
 tegelijkertijd aan zich gekoppeld hebben.  Of het kan slechts een van
-die tee hebben.  De twee staan los van elkaar.  Dit is ongeveer
+die twee hebben.  De twee staan los van elkaar.  Dit is ongeveer
 vergelijkbaar me de manier waarop Cambridge kan refereren naar een stad
 in Massachusetts en informatie aan de naam gekoppeld kan hebben, zoals
 "geweldig programmeercentrum".
@@ -1836,7 +1837,7 @@ File: emacs-lisp-intro-nl.info,  Node: Argumenten als variabele of als lijst,  N
 1.8.2 Een argument als de waarde van een variabele of lijst
 -----------------------------------------------------------
 
-Een argument kan een symbool zijn die een waarde teruggeeft wanneer het
+Een argument kan een symbool zijn dat een waarde teruggeeft wanneer het
 wordt geëvalueerd.  Wanneer bijvoorbeeld het symbool ‘fill-column’ op
 zichzelf wordt geëvalueerd, geeft het een getal terug.  Dit getal kan in
 een optelling worden gebruikt.
@@ -2111,10 +2112,10 @@ Als zij-effect is het symbool ‘bloemen’ aan de lijst gebonden.  Dat wil
 zeggen dat het symbool ‘bloemen’, welke als een variabel gezien kan
 worden, de lijst als waarde krijgt.  (Overigens illustreert dit proces
 hoe een zij-effect voor de Lisp interpreter, de waarde zetten, het
-primaire effect kan zijn waar wij mensen in geïnteresseerd zijn..  Dit
-is omdat elke Lisp functie een waarde moet teruggeven wanneer het geen
-fout krijgt, maar alleen een zij-effect heeft wanneer die is ontworpen
-om er een te hebben.
+primaire effect kan zijn waar wij mensen in geïnteresseerd zijn.  Dit is
+omdat elke Lisp functie een waarde moet teruggeven wanneer het geen fout
+krijgt, maar alleen een zij-effect heeft wanneer die is ontworpen om er
+een te hebben.
 
    Nadat je de ‘setq’ expressie hebt geëvalueerd, kun je het symbool
 ‘bloemen’ evalueren, dit geeft je de waarde terug die je zojuist gezet
@@ -2148,7 +2149,7 @@ volgende gebruiken om een lijst van bomen aan het symbool ‘bomen’ en een
 lijst van herbivoren aan het symbool ‘herbivoren’ toe te kennen:
 
      (setq bomen '(den spar eik esdoorn)
-           herbivoren '(gazelle antiloop zebra)
+           herbivoren '(gazelle antiloop zebra))
 
 (De expressie had net zo goed op een enkele regel gekund, maar het zou
 misschien niet op een bladzijde passen, en mensen vinden het makkelijker
@@ -2217,7 +2218,7 @@ overblijft wordt makkelijker naarmate je verder komt.
 
    Samenvattend,
 
-   • Lisp programma's zijn gemaakt van expressies, elke lijsten of
+   • Lisp programma's zijn gemaakt van expressies, welke lijsten of
      enkelvoudige atomen zijn.
 
    • Lijsten zijn gemaakt van nul of meer atomen of binnenliggende
@@ -18204,7 +18205,7 @@ Index
 * wanneer-deel gedefinieerd:             if in meer detail.   (line   6)
 * what-line:                             what-line.           (line   6)
 * while:                                 while.               (line   6)
-* Witte ruimte in lijsten:               Whitespace in lijsten.
+* Witte ruimte in lijsten:               Witte ruimte in lijsten.
                                                               (line   6)
 * Woorden en symbolen in defun:          Woorden en symbolen. (line   6)
 * Woorden tellen in een defun:           Woorden in een defun.
@@ -18260,320 +18261,320 @@ Over de auteur
 Tag Table:
 Node: Top1632
 Node: Voorwoord24335
-Node: Waarom25798
-Node: Over het lezen van deze tekst26461
-Node: Doelgroep28801
-Node: Geschiedenis van Lisp31804
-Node: Opmerking voor beginners32708
-Node: Dank35460
-Node: Lijsten verwerken36055
-Ref: Lijsten verwerken-Footnote-137511
-Node: Lisp lijsten37667
-Node: Genummerde lijsten38597
-Node: Lisp atomen39766
-Node: Whitespace in lijsten43680
-Node: Typen van lijsten45032
-Node: Draai een programma46253
-Ref: Draai een programma-Footnote-148806
-Node: Fouten maken48950
-Node: Namen en definities54348
-Node: Lisp interpreter56304
-Node: Complicaties57528
-Node: Byte compiling59777
-Node: Evaluatie60906
-Node: Hoe de interpreter werkt61533
-Node: Geneste lijsten evalueren62906
-Node: Variabelen65594
-Node: fill-column voorbeeld67210
-Node: Void functie68897
-Node: Void variabele70278
-Node: Argumenten72306
-Ref: Argumenten-Footnote-174112
-Node: Data typen74984
-Node: Argumenten als variabele of als lijst77221
-Node: Variabel aantal argumenten78962
-Node: Verkeerde type argument79858
-Ref: Verkeerde type argument-Footnote-183766
-Node: message83841
-Ref: message-Footnote-188063
-Node: setq88268
-Node: Setq gebruiken88993
-Node: Tellen92227
-Node: Samenvatting94289
-Node: Foutmelding oefeningen96292
-Node: Oefenen van evaluatie96848
-Node: Hoe te evalueren98075
-Node: Buffer namen99669
-Node: Buffers pakken105740
-Ref: Buffers pakken-Footnote-1108429
-Node: Van buffer verwisselen108679
-Ref: Van buffer verwisselen-Footnote-1112270
-Ref: Van buffer verwisselen-Footnote-2112612
-Node: Buffer grootte en lokatie113366
-Node: Evaluatie oefening115580
-Node: Defuns schrijven115864
-Node: Primitieve functies117157
-Node: defun118392
-Node: Installeer125256
-Node: Effect van installatie126693
-Node: Een defun wijzigen127620
-Node: Interactief129500
-Node: Interactieve vermenigvuldig-met-zeven130683
-Node: vermenigvuldig-met-zeven in detail132813
-Node: Interactieve opties135666
-Node: Permanent installeren139028
-Node: let141339
-Node: Voorkom verwarring142931
-Ref: Voorkom verwarring-Footnote-1145196
-Node: Delen van een let expressie145340
-Node: Voorbeeld let expressie147055
-Ref: Voorbeeld let expressie-Footnote-1148877
-Node: Niet-geïnitialiseerde let variabelen149132
-Node: Hoe let variabelen bindt150906
-Node: Lexical en dynamische binding verschillen152244
-Node: Lexical vs dynamische binding voorbeeld154161
-Node: if156232
-Node: if in meer detail157178
-Node: type-dier in detail159992
-Node: else162642
-Node: Waar en onwaarheid165604
-Node: nil uitgelegd166613
-Node: save-excursion168810
-Node: Point en mark169586
-Node: Template voor save-excursion172695
-Node: Terugblik173983
-Node: defun oefeningen182026
-Node: Buffer rondleiding182499
-Node: Meer vinden183673
-Ref: Meer vinden-Footnote-1186688
-Node: versimpelde-beginning-of-buffer186905
-Node: mark-whole-buffer191409
-Node: mark-whole-buffer overzicht192283
-Node: Body van mark-whole-buffer193655
-Node: append-to-buffer196720
-Node: append-to-buffer overzicht197447
-Node: append interactief200249
-Node: append-to-buffer body202825
-Node: append save-excursion205012
-Ref: let* geïntroduceerd206809
-Node: Buffer gerelateerde terugblik210498
-Node: Buffer oefeningen212901
-Node: Meer complex213426
-Node: copy-to-buffer214537
-Ref: copy-to-buffer-Footnote-1217420
-Node: insert-buffer217640
-Node: insert-buffer code219099
-Node: insert-buffer interactief220108
-Node: Read-only buffer220658
-Node: b for interactief221302
-Node: insert-buffer body222430
-Node: if en or223652
-Node: Voeg or in226805
-Node: Voeg let in229152
-Node: Nieuwe insert-buffer233001
-Node: beginning-of-buffer234222
-Node: Optionele argumenten235872
-Node: beginning-of-buffer opt arg239515
-Node: Ontrafelen beginning-of-buffer240537
-Node: In geval van een groot buffer241891
-Node: In geval van een klein buffer244539
-Node: beginning-of-buffer compleet246317
-Node: Tweede buffer gerelateerde terugblik249361
-Node: optionele oefening251326
-Node: Versmallen en verbreden251850
-Node: Voordelen van versmallen252556
-Node: save-restriction254537
-Node: what-line256658
-Node: versmal oefening261109
-Node: car cdr en cons262157
-Node: Vreemde namen263343
-Node: car en cdr264065
-Node: cons268804
-Node: Bouw een lijst269896
-Ref: Bouw een lijst-Footnote-1271524
-Node: length271730
-Node: nthcdr273341
-Node: nth276451
-Node: setcar277972
-Node: setcdr280952
-Node: cons oefening282624
-Node: Knippen en opslaan van tekst283043
-Node: Tekst opslaan284458
-Node: zap-to-char286578
-Node: Complete zap-to-char287190
-Node: zap-to-char interactief289556
-Node: zap-to-char body291142
-Node: search-forward292691
-Node: progn295852
-Node: Samenvatting zap-to-char297667
-Node: kill-region298823
-Node: Complete kill-region299821
-Node: condition-case304232
-Node: Lisp macro306803
-Node: copy-region-as-kill309436
-Node: Complete copy-region-as-kill310379
-Node: copy-region-as-kill body313250
-Node: last-command en this-command314391
-Node: kill-append functie316729
-Node: kill-new functie321004
-Node: Uitwijding naar C331982
-Node: defvar337525
-Node: Inzien huidige variabele waarde339403
-Node: defvar en asterisk341365
-Node: cons en search-fwd terugblik343419
-Node: zoek oefening346598
-Node: Implementatie van lijsten347401
-Node: Lijsten uitgetekend348637
-Node: Symbolen als ladekast355126
-Node: Lijst oefening357241
-Node: Yanking357607
-Node: Killring overzicht359002
-Node: kill-ring-yank-pointer360814
-Node: yank nthcdr oefeningen363322
-Node: Loops en recursie364067
-Ref: Loops en recursie-Footnote-1365263
-Node: while365784
-Node: Looping met while367216
-Node: Loop voorbeeld369154
-Node: print-elements-of-list372856
-Node: Incrementele loop375442
-Node: Incrementele loop details376074
-Node: Incrementeel voorbeeld377547
-Node: Inc voorbeeld onderdelen380123
-Node: inc voorbeeld samengesteld384263
-Node: Decrementele loop387865
-Node: Decrementeel voorbeeld389337
-Node: Dec voorbeeld onderdelen390928
-Node: Dec voorbeeld samengesteld393008
-Node: dolist dotimes395284
-Node: dolist396115
-Node: dotimes399292
-Node: Recursie400839
-Node: Robots bouwen402051
-Node: Recursive definitie onderdelen403856
-Node: Recursie met lijst406503
-Node: Recursieve driehoek functie410171
-Node: Recursief voorbeeld arg van 1 of 2411549
-Node: Recursief voorbeeld arg van 3 of 4413814
-Node: Recursie met cond417018
-Node: Recursieve patronen419462
-Node: Elke419955
-Node: Accumuleren422508
-Node: Bewaar423883
-Node: Geen uitstel425951
-Node: Zonder uitstel oplossing428676
-Ref: Zonder uitstel oplossing-Footnote-1432638
-Ref: Zonder uitstel oplossing-Footnote-2432762
-Node: Looping oefening433285
-Node: Regexp zoeken434604
-Node: sentence-end436750
-Node: re-search-forward440797
-Node: forward-sentence443452
-Node: Complete forward-sentence444235
-Node: fwd-sentence while loops447939
-Node: fwd-sentence re-search451752
-Node: forward-paragraph453856
-Node: forward-paragraph in het kort455731
-Node: fwd-para let457289
-Node: fwd-para while464220
-Node: Regexp terugblik473076
-Node: re-search oefeningen475666
-Node: Woorden tellen476439
-Node: Waarom woorden tellen477222
-Node: tel-woorden-voorbeeld478378
-Node: Ontwerp tel-woorden-voorbeeld479751
-Node: Witte ruimte bug486487
-Node: recursive-count-words496322
-Node: Tellen voorbeeld509049
-Node: Woorden in een defun509421
-Node: Verdeel en heers511192
-Node: Woorden en symbolen512503
-Node: Syntax514656
-Node: tel-woorden-in-defun518372
-Node: Enkele defuns525039
-Node: Een bestand vinden527559
-Node: lengte-lijst-bestand530319
-Node: Enkele bestanden535909
-Node: lengths-list-many-files536715
-Node: append539642
-Node: Enkele bestanden recursief540296
-Node: De data voorbereiden543382
-Node: Data in detail te tonen544497
-Node: Sorteren545492
-Node: Bestandenlijst547348
-Ref: Bestandenlijst-Footnote-1555423
-Node: Functiedefinities tellen555613
-Node: Een grafiek voorbereiden565240
-Node: Kolommen van een grafiek566614
-Node: grafiek-body-tonen580892
-Node: recursieve-grafiek-body-tonen585678
-Node: Getoonde assen588451
-Node: Lijngrafiek oefening589268
-Node: Initialisatie van Emacs589479
-Node: Standaard configuratie591046
-Ref: Standaard configuratie-Footnote-1593172
-Node: Systeem-brede init593494
-Node: defcustom595755
-Node: Een init bestand beginnen602156
-Node: Tekst en auto-fill604687
-Ref: Tekst en auto-fill-Footnote-1609008
-Ref: Tekst en auto-fill-Footnote-2609301
-Node: Mail aliasen609611
-Node: Indent Tabs Mode610570
-Node: Key bindings611569
-Node: Keymaps616825
-Node: Bestanden laden619659
-Node: Autoload623031
-Node: Eenvoudige uitbreiding626050
-Ref: Eenvoudige uitbreiding-Footnote-1628652
-Node: X11 kleuren628941
-Ref: X11 kleuren-Footnote-1630835
-Node: Diverse631003
-Node: Mode line635363
-Node: Debuggen.641212
-Node: debug642114
-Node: debug-on-entry645414
-Node: debug-on-quit649873
-Node: edebug650923
-Node: Debuggen oefeningen655147
-Node: Conclusie656961
-Node: de-de662426
-Node: Killring665268
-Node: Wat de killring doet666065
-Node: current-kill667608
-Node: Code voor current-kill668308
-Node: current-kill begrijpen671146
-Node: Body van current-kill671983
-Node: Uitwijding over fout675305
-Node: Het element vaststellen676538
-Node: yank680296
-Node: yank-pop683561
-Node: ring bestand686141
-Node: Volledige grafiek686536
-Node: Gelabeld voorbeeld687408
-Node: print-graph varlist689467
-Node: print-Y-axis691245
-Node: toon-Y-as in detail692093
-Node: Hoogte van label692941
-Node: Bereken het restant695007
-Node: Y-as element699021
-Node: Y-axis-column702921
-Node: toon-Y-as enalaatste704480
-Node: print-X-axis706492
-Node: Overeenkomsten verschillen707833
-Node: X-as merktekens708667
-Node: De gehele grafiek afdrukken715756
-Node: De finale versie716891
-Node: Test print-graph721302
-Node: Woorden in defuns grafisch weergeven723016
-Node: lambda725797
-Node: mapcar727620
-Node: Een andere bug729778
-Node: Finale afgedrukte grafiek735436
-Node: Free Software and Free Manuals736409
-Node: GNU Free Documentation License742704
-Node: Index767886
-Node: Over de auteur807065
+Node: Waarom25801
+Node: Over het lezen van deze tekst26480
+Node: Doelgroep28820
+Node: Geschiedenis van Lisp31823
+Node: Opmerking voor beginners32727
+Node: Dank35471
+Node: Lijsten verwerken36066
+Ref: Lijsten verwerken-Footnote-137522
+Node: Lisp lijsten37678
+Node: Getallen lijsten38608
+Node: Lisp atomen39775
+Node: Witte ruimte in lijsten43690
+Node: Typen van lijsten45048
+Node: Draai een programma46271
+Ref: Draai een programma-Footnote-148826
+Node: Fouten maken48970
+Node: Namen en definities54368
+Node: Lisp interpreter56337
+Node: Complicaties57561
+Node: Byte compiling59813
+Node: Evaluatie60942
+Node: Hoe de interpreter werkt61569
+Node: Geneste lijsten evalueren62942
+Node: Variabelen65630
+Node: fill-column voorbeeld67247
+Node: Void functie68934
+Node: Void variabele70315
+Node: Argumenten72343
+Ref: Argumenten-Footnote-174149
+Node: Data typen75021
+Node: Argumenten als variabele of als lijst77258
+Node: Variabel aantal argumenten78999
+Node: Verkeerde type argument79895
+Ref: Verkeerde type argument-Footnote-183803
+Node: message83878
+Ref: message-Footnote-188100
+Node: setq88305
+Node: Setq gebruiken89030
+Node: Tellen92264
+Node: Samenvatting94326
+Node: Foutmelding oefeningen96330
+Node: Oefenen van evaluatie96886
+Node: Hoe te evalueren98113
+Node: Buffer namen99707
+Node: Buffers pakken105778
+Ref: Buffers pakken-Footnote-1108467
+Node: Van buffer verwisselen108717
+Ref: Van buffer verwisselen-Footnote-1112308
+Ref: Van buffer verwisselen-Footnote-2112650
+Node: Buffer grootte en lokatie113404
+Node: Evaluatie oefening115618
+Node: Defuns schrijven115902
+Node: Primitieve functies117195
+Node: defun118430
+Node: Installeer125294
+Node: Effect van installatie126731
+Node: Een defun wijzigen127658
+Node: Interactief129538
+Node: Interactieve vermenigvuldig-met-zeven130721
+Node: vermenigvuldig-met-zeven in detail132851
+Node: Interactieve opties135704
+Node: Permanent installeren139066
+Node: let141377
+Node: Voorkom verwarring142969
+Ref: Voorkom verwarring-Footnote-1145234
+Node: Delen van een let expressie145378
+Node: Voorbeeld let expressie147093
+Ref: Voorbeeld let expressie-Footnote-1148915
+Node: Niet-geïnitialiseerde let variabelen149170
+Node: Hoe let variabelen bindt150944
+Node: Lexical en dynamische binding verschillen152282
+Node: Lexical vs dynamische binding voorbeeld154199
+Node: if156270
+Node: if in meer detail157216
+Node: type-dier in detail160030
+Node: else162680
+Node: Waar en onwaarheid165642
+Node: nil uitgelegd166651
+Node: save-excursion168848
+Node: Point en mark169624
+Node: Template voor save-excursion172733
+Node: Terugblik174021
+Node: defun oefeningen182064
+Node: Buffer rondleiding182537
+Node: Meer vinden183711
+Ref: Meer vinden-Footnote-1186726
+Node: versimpelde-beginning-of-buffer186943
+Node: mark-whole-buffer191447
+Node: mark-whole-buffer overzicht192321
+Node: Body van mark-whole-buffer193693
+Node: append-to-buffer196758
+Node: append-to-buffer overzicht197485
+Node: append interactief200287
+Node: append-to-buffer body202863
+Node: append save-excursion205050
+Ref: let* geïntroduceerd206847
+Node: Buffer gerelateerde terugblik210536
+Node: Buffer oefeningen212939
+Node: Meer complex213464
+Node: copy-to-buffer214575
+Ref: copy-to-buffer-Footnote-1217458
+Node: insert-buffer217678
+Node: insert-buffer code219137
+Node: insert-buffer interactief220146
+Node: Read-only buffer220696
+Node: b for interactief221340
+Node: insert-buffer body222468
+Node: if en or223690
+Node: Voeg or in226843
+Node: Voeg let in229190
+Node: Nieuwe insert-buffer233039
+Node: beginning-of-buffer234260
+Node: Optionele argumenten235910
+Node: beginning-of-buffer opt arg239553
+Node: Ontrafelen beginning-of-buffer240575
+Node: In geval van een groot buffer241929
+Node: In geval van een klein buffer244577
+Node: beginning-of-buffer compleet246355
+Node: Tweede buffer gerelateerde terugblik249399
+Node: optionele oefening251364
+Node: Versmallen en verbreden251888
+Node: Voordelen van versmallen252594
+Node: save-restriction254575
+Node: what-line256696
+Node: versmal oefening261147
+Node: car cdr en cons262195
+Node: Vreemde namen263381
+Node: car en cdr264103
+Node: cons268842
+Node: Bouw een lijst269934
+Ref: Bouw een lijst-Footnote-1271562
+Node: length271768
+Node: nthcdr273379
+Node: nth276489
+Node: setcar278010
+Node: setcdr280990
+Node: cons oefening282662
+Node: Knippen en opslaan van tekst283081
+Node: Tekst opslaan284496
+Node: zap-to-char286616
+Node: Complete zap-to-char287228
+Node: zap-to-char interactief289594
+Node: zap-to-char body291180
+Node: search-forward292729
+Node: progn295890
+Node: Samenvatting zap-to-char297705
+Node: kill-region298861
+Node: Complete kill-region299859
+Node: condition-case304270
+Node: Lisp macro306841
+Node: copy-region-as-kill309474
+Node: Complete copy-region-as-kill310417
+Node: copy-region-as-kill body313288
+Node: last-command en this-command314429
+Node: kill-append functie316767
+Node: kill-new functie321042
+Node: Uitwijding naar C332020
+Node: defvar337563
+Node: Inzien huidige variabele waarde339441
+Node: defvar en asterisk341403
+Node: cons en search-fwd terugblik343457
+Node: zoek oefening346636
+Node: Implementatie van lijsten347439
+Node: Lijsten uitgetekend348675
+Node: Symbolen als ladekast355164
+Node: Lijst oefening357279
+Node: Yanking357645
+Node: Killring overzicht359040
+Node: kill-ring-yank-pointer360852
+Node: yank nthcdr oefeningen363360
+Node: Loops en recursie364105
+Ref: Loops en recursie-Footnote-1365301
+Node: while365822
+Node: Looping met while367254
+Node: Loop voorbeeld369192
+Node: print-elements-of-list372894
+Node: Incrementele loop375480
+Node: Incrementele loop details376112
+Node: Incrementeel voorbeeld377585
+Node: Inc voorbeeld onderdelen380161
+Node: inc voorbeeld samengesteld384301
+Node: Decrementele loop387903
+Node: Decrementeel voorbeeld389375
+Node: Dec voorbeeld onderdelen390966
+Node: Dec voorbeeld samengesteld393046
+Node: dolist dotimes395322
+Node: dolist396153
+Node: dotimes399330
+Node: Recursie400877
+Node: Robots bouwen402089
+Node: Recursive definitie onderdelen403894
+Node: Recursie met lijst406541
+Node: Recursieve driehoek functie410209
+Node: Recursief voorbeeld arg van 1 of 2411587
+Node: Recursief voorbeeld arg van 3 of 4413852
+Node: Recursie met cond417056
+Node: Recursieve patronen419500
+Node: Elke419993
+Node: Accumuleren422546
+Node: Bewaar423921
+Node: Geen uitstel425989
+Node: Zonder uitstel oplossing428714
+Ref: Zonder uitstel oplossing-Footnote-1432676
+Ref: Zonder uitstel oplossing-Footnote-2432800
+Node: Looping oefening433323
+Node: Regexp zoeken434642
+Node: sentence-end436788
+Node: re-search-forward440835
+Node: forward-sentence443490
+Node: Complete forward-sentence444273
+Node: fwd-sentence while loops447977
+Node: fwd-sentence re-search451790
+Node: forward-paragraph453894
+Node: forward-paragraph in het kort455769
+Node: fwd-para let457327
+Node: fwd-para while464258
+Node: Regexp terugblik473114
+Node: re-search oefeningen475704
+Node: Woorden tellen476477
+Node: Waarom woorden tellen477260
+Node: tel-woorden-voorbeeld478416
+Node: Ontwerp tel-woorden-voorbeeld479789
+Node: Witte ruimte bug486525
+Node: recursive-count-words496360
+Node: Tellen voorbeeld509087
+Node: Woorden in een defun509459
+Node: Verdeel en heers511230
+Node: Woorden en symbolen512541
+Node: Syntax514694
+Node: tel-woorden-in-defun518410
+Node: Enkele defuns525077
+Node: Een bestand vinden527597
+Node: lengte-lijst-bestand530357
+Node: Enkele bestanden535947
+Node: lengths-list-many-files536753
+Node: append539680
+Node: Enkele bestanden recursief540334
+Node: De data voorbereiden543420
+Node: Data in detail te tonen544535
+Node: Sorteren545530
+Node: Bestandenlijst547386
+Ref: Bestandenlijst-Footnote-1555461
+Node: Functiedefinities tellen555651
+Node: Een grafiek voorbereiden565278
+Node: Kolommen van een grafiek566652
+Node: grafiek-body-tonen580930
+Node: recursieve-grafiek-body-tonen585716
+Node: Getoonde assen588489
+Node: Lijngrafiek oefening589306
+Node: Initialisatie van Emacs589517
+Node: Standaard configuratie591084
+Ref: Standaard configuratie-Footnote-1593210
+Node: Systeem-brede init593532
+Node: defcustom595793
+Node: Een init bestand beginnen602194
+Node: Tekst en auto-fill604725
+Ref: Tekst en auto-fill-Footnote-1609046
+Ref: Tekst en auto-fill-Footnote-2609339
+Node: Mail aliasen609649
+Node: Indent Tabs Mode610608
+Node: Key bindings611607
+Node: Keymaps616863
+Node: Bestanden laden619697
+Node: Autoload623069
+Node: Eenvoudige uitbreiding626088
+Ref: Eenvoudige uitbreiding-Footnote-1628690
+Node: X11 kleuren628979
+Ref: X11 kleuren-Footnote-1630873
+Node: Diverse631041
+Node: Mode line635401
+Node: Debuggen.641250
+Node: debug642152
+Node: debug-on-entry645452
+Node: debug-on-quit649911
+Node: edebug650961
+Node: Debuggen oefeningen655185
+Node: Conclusie656999
+Node: de-de662464
+Node: Killring665306
+Node: Wat de killring doet666103
+Node: current-kill667646
+Node: Code voor current-kill668346
+Node: current-kill begrijpen671184
+Node: Body van current-kill672021
+Node: Uitwijding over fout675343
+Node: Het element vaststellen676576
+Node: yank680334
+Node: yank-pop683599
+Node: ring bestand686179
+Node: Volledige grafiek686574
+Node: Gelabeld voorbeeld687446
+Node: print-graph varlist689505
+Node: print-Y-axis691283
+Node: toon-Y-as in detail692131
+Node: Hoogte van label692979
+Node: Bereken het restant695045
+Node: Y-as element699059
+Node: Y-axis-column702959
+Node: toon-Y-as enalaatste704518
+Node: print-X-axis706530
+Node: Overeenkomsten verschillen707871
+Node: X-as merktekens708705
+Node: De gehele grafiek afdrukken715794
+Node: De finale versie716929
+Node: Test print-graph721340
+Node: Woorden in defuns grafisch weergeven723054
+Node: lambda725835
+Node: mapcar727658
+Node: Een andere bug729816
+Node: Finale afgedrukte grafiek735474
+Node: Free Software and Free Manuals736447
+Node: GNU Free Documentation License742742
+Node: Index767924
+Node: Over de auteur807105
 
 End Tag Table
 
