@@ -31,7 +31,7 @@
 @numsecentry{Samenvatting}{1.10}{Samenvatting}{19}
 @numsecentry{Oefeningen}{1.11}{Foutmelding oefeningen}{20}
 @numchapentry{Oefenen van evaluatie}{2}{Oefenen van evaluatie}{21}
-@numsecentry{Buffer namen}{2.1}{Buffer namen}{21}
+@numsecentry{Buffernamen}{2.1}{Buffernamen}{21}
 @numsecentry{Buffers pakken}{2.2}{Buffers pakken}{23}
 @numsecentry{Van buffer verwisselen}{2.3}{Van buffer verwisselen}{24}
 @numsecentry{Buffergrootte en de lokatie van point}{2.4}{Buffer grootte en lokatie}{25}

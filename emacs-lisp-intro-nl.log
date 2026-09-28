@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  22 SEP 2026 21:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  27 SEP 2026 21:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -768,8 +768,8 @@ texinfo.tex: doing @include of doclicense.texi
 [275] [276] [277] [278]) [279] [280] ) 
 Here is how much of TeX's memory you used:
  5516 strings out of 497075
- 67983 string characters out of 6206386
- 131920 words of memory out of 5000000
+ 67976 string characters out of 6206386
+ 130919 words of memory out of 5000000
  5995 multiletter control sequences out of 15000+600000
  37169 words of font info for 128 fonts, out of 8000000 for 9000
  57 hyphenation exceptions out of 8191
@@ -795,7 +795,7 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on emacs-lisp-intro-nl.pdf (296 pages, 1087674 bytes).
+Output written on emacs-lisp-intro-nl.pdf (296 pages, 1087678 bytes).
 PDF statistics:
  3762 PDF objects out of 4296 (max. 8388607)
  3317 compressed objects within 34 object streams
