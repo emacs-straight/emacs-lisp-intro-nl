@@ -3154,7 +3154,7 @@ door het typen van een passende toets of toetscombinatie.
 
 @cindex @samp{body} gedefinieerd
 @item
-De code die de computer instrueert wat de doen de @dfn{body} van de
+De code die de computer instrueert wat de doen: de @dfn{body} van de
 functiedefinitie.
 @end enumerate
 
@@ -3207,7 +3207,7 @@ Je kunt inderdaad elke naam die je maar wilt kiezen voor een symbool in de
 argumentlijst, zelfs de naam van een symbool die in een andere functie
 gebruikt wordt: de naam die je gebruikt in de argumentlijst is privé voor
 die specifieke definitie. In die definitie refereert de naam naar een andere
-entiteit dan elk gebruik van de zelfde naam buiten de functiedefinitie. Stel
+entiteit dan elk gebruik van dezelfde naam buiten de functiedefinitie. Stel
 je hebt de bijnaam ``Kleintje'' in je familie, dan refereren familieleden
 met ``Kleintje'' naar jou. Maar buiten jouw familie, bijvoorbeeld in een
 speelfilm, refereert de naam ``Kleintje'' naar iemand anders. Omdat de naam
@@ -3367,13 +3367,13 @@ dit de tweede versie is.
 @smallexample
 @group
 (defun vermenigvuldig-met-zeven (getal)       ; @r{Tweede versie.}
-  "Multiply GETAL by seven."
+  "Vermenigvuldig GETAL met zeven."
   (+ getal getal getal getal getal getal getal))
 @end group
 @end smallexample
 
 @cindex Commentaar in Lisp code
-Het commentaar volgt op een puntkomma, @samp{;}. In Lisp is alles op een
+Het commentaar volgt na een puntkomma, @samp{;}. In Lisp is alles op een
 regel dat volgt achter een puntkomma commentaar. Het einde van de regel is
 het einde van het commentaar. Om het commentaar over twee of meer regels te
 spreiden, begin je elke regel met een puntkomma.
@@ -3548,8 +3548,8 @@ als een zij-effect zonder de aanhalingstekens.)
 In het voorbeeld gebruikte @code{vermenigvuldig-met-zeven} @code{"p"} als
 argument voor @code{interactive}. Dit argument vertelde Emacs om door wat je
 typte, hetzij @kbd{C-u} gevolgd door een getal of @key{META} gevold door een
-cijfer, te interpreteren als een commando om dat getal door te geven aan de
-functie als zijn argument. Emacs heeft meer dan twintig karakters
+cijfer, te interpreteren als een commando om dat getal als argument door te
+geven aan de functie. Emacs heeft meer dan twintig karakters
 voorgedefinieerd om met @code{interactive} te gebruiken. In vrijwel alle
 gevallen maakt een van deze opties het je mogelijk de juiste informatie
 interactief aan een functie door te geven. (@xref{Interactive Codes, , Code
@@ -3627,7 +3627,7 @@ deze techniek.
 @cindex Code installtie
 
 Wanneer je een functiedefinitie installeert door het te evalueren, blijft
-het geïnstalleerd totdat je Emacs sluit. De volgende keer dat je een nieuwe
+die geïnstalleerd totdat je Emacs sluit. De volgende keer dat je een nieuwe
 sessie van Emacs start, is de functie niet geïnstalleerd tenzij je de
 functiedefinitie opnieuw evalueert.
 
@@ -3638,7 +3638,10 @@ dit te doen:
 @itemize @bullet
 @item
 Wanneer je code hebt die uitsluitend voor jezelf is, kan je de code voor de
-functiedefinitie opnemen in je @file{.emacs} initialisatiebestand.
+functiedefinitie opnemen in je @file{.emacs} initialisatiebestand. Wanneer
+je Emacs start, wordt je @file{.emacs} bestand automatisch geëvalueerd en
+alle functiedefinities er in geïnstalleerd. @xref{Initialisatie van Emacs, ,
+Jouw @file{.emacs} bestand}.
 
 @item
 Een andere manier is de functiedefinities die je geïnstalleerd wilt hebben
@@ -3733,7 +3736,7 @@ variabele.@footnote{Dit beschrijft het gedrag van @code{let} bij het gebruik
 van een stijl met de naam ``lexical binding'' (@pxref{Hoe let variabelen
 bindt}).} 
 
-@code{let} kan meer dan een variabele tegelijk creëren. Dus @code{let} geeft
+@code{let} kan meer dan een variabele tegelijk creëren. Ook geeft @code{let}
 iedere variabele die het creëert een initiële waarde, of een door jou
 gespecificeerde waarde, of @code{nil}. (In het jargon is dit het binden van
 de variabele aan de waarde.) Nadat @code{let} de variabelen heeft gecreëerd
@@ -4472,9 +4475,9 @@ code (of, meer preciezer en in het juiste jargon, ``in geval van een
 abnormale exit''). Deze eigenschap is erg behulpzaam.
 
 Naast het registreren van de waarde van point houdt @code{save-excursion}
-bij wat de huidige buffer is en herstelt die ook. Dit betekent dat je code
+bij wat het huidige buffer is en herstelt die ook. Dit betekent dat je code
 kunt schrijven die van buffer wisselt en je @code{save-excursion} laat
-terugschakelen naar de originele buffer. Dit is hoe @code{save-excursion}
+terugschakelen naar het originele buffer. Dit is hoe @code{save-excursion}
 gebruikt wordt in @code{append-to-buffer}. (@xref{append-to-buffer, , De
 definitie van @code{append-to-buffer}}.)
 
@@ -4800,7 +4803,7 @@ bufers. Later kijken we naar andere functies.
 
 @findex describe-function@r{, geïntroduceerd}
 @cindex Vind functiedocumentatie
-In deze rondleiding beschrijf ik elke nieuwe functie die we behandelen. Soms
+In deze rondleiding beschrijf ik elke nieuwe functie die we behandelen, soms
 in detail en soms kort. Wanneer je geïnteresseerd bent vraag je op elk
 moment de volledige documentatie op van elke Emacs Lisp functie door
 @kbd{C-h f} te typen, en daarna de naam van de functie (gevolg met
@@ -20601,7 +20604,7 @@ De functie @code{1+} die een bij het argument optelt, wordt uitgevoerd op
 @emph{elk} element van de lijst, en een nieuwe lijst wordt teruggegeven.
 
 Vergelijk dit met @code{apply}, die het eerste argument op alle resterende
-toepast. @xref{Een grafiek voorbereiden, , Een grafiek voorbereiden} voor
+toepast. @xref{Een grafiek voorbereiden, , Een grafiek voorbereiden}, voor
 een uitleg van @code{apply}.
 
 @need 1250

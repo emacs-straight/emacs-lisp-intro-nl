@@ -40,203 +40,203 @@
 @numsecentry{De @code {defun} macro}{3.1}{defun}{27}
 @numsecentry{Installeer een functiedefinitie}{3.2}{Installeer}{29}
 @numsubsecentry{Wijzig een functiedefinitie}{3.2.1}{Een defun wijzigen}{30}
-@numsecentry{Een functie interactief maken}{3.3}{Interactief}{30}
-@numsubsecentry{Een interactieve @code {vermenigvuldig-met-zeven}}{3.3.1}{vermenigvuldig-met-zeven in detail}{31}
-@numsecentry{Verschillende opties voor @code {interactive}}{3.4}{Interactieve opties}{32}
-@numsecentry{Code permanent installeren}{3.5}{Permanent installeren}{33}
-@numsecentry{@code {let}}{3.6}{let}{34}
-@numsubsecentry{De delen van een @code {let} expressie}{3.6.1}{Delen van een let expressie}{35}
-@numsubsecentry{Voorbeeld @code {let} expressie}{3.6.2}{Voorbeeld let expressie}{36}
-@numsubsecentry{Ongeïnitialiseerde variabelen in een @code {let} statement}{3.6.3}{Niet-geïnitialiseerde let variabelen}{36}
-@numsubsecentry{Hoe @code {let} variabelen bindt}{3.6.4}{Hoe let variabelen bindt}{37}
-@unnsubsubsecentry{Verschillen tussen lexical en dynamische binding}{10001.6.4.1}{Lexical en dynamische binding verschillen}{37}
-@unnsubsubsecentry{Voorbeeld van lexical vs.@: dynamische binding}{10001.6.4.2}{Lexical vs dynamische binding voorbeeld}{38}
-@numsecentry{De @code {if} speciale vorm}{3.7}{if}{39}
-@numsubsecentry{De @code {type-dier}-functie in detail}{3.7.1}{type-dier in detail}{40}
-@numsecentry{If--then--else expressies}{3.8}{else}{41}
-@numsecentry{Waar en onwaarheid in Emacs Lisp}{3.9}{Waar en onwaarheid}{42}
-@numsecentry{@code {save-excursion}}{3.10}{save-excursion}{43}
-@numsubsecentry{Sjabloon voor een @code {save-excursion} expressie}{3.10.1}{Template voor save-excursion}{44}
-@numsecentry{Terugblik}{3.11}{Terugblik}{45}
-@numsecentry{Oefeningen}{3.12}{defun oefeningen}{48}
-@numchapentry{Enkele buffer gerelateerde functies}{4}{Buffer rondleiding}{49}
-@numsecentry{Meer informatie vinden}{4.1}{Meer vinden}{49}
-@numsecentry{Een versimpelde @code {beginning-of-buffer} definitie}{4.2}{versimpelde-beginning-of-buffer}{50}
-@numsecentry{De definitie van @code {mark-whole-buffer}}{4.3}{mark-whole-buffer}{51}
-@numsubsecentry{Body van @code {mark-whole-buffer}}{4.3.1}{Body van mark-whole-buffer}{52}
-@numsecentry{De definitie van @code {append-to-buffer}}{4.4}{append-to-buffer}{53}
-@numsubsecentry{De @code {append-to-buffer} interactieve expressie}{4.4.1}{append interactief}{54}
-@numsubsecentry{De body van @code {append-to-buffer}}{4.4.2}{append-to-buffer body}{56}
-@numsubsecentry{@code {save-excursion} in @code {append-to-buffer}}{4.4.3}{append save-excursion}{57}
-@numsecentry{Terugblik}{4.5}{Buffer gerelateerde terugblik}{59}
-@numsecentry{Oefeningen}{4.6}{Buffer oefeningen}{60}
-@numchapentry{Enkele meer complexe functies}{5}{Meer complex}{61}
-@numsecentry{De definitie van @code {copy-to-buffer}}{5.1}{copy-to-buffer}{61}
-@numsecentry{De definitie van @code {insert-buffer}}{5.2}{insert-buffer}{62}
-@numsubsecentry{De interactieve expressie in @code {insert-buffer}}{5.2.1}{insert-buffer interactief}{63}
-@unnsubsubsecentry{Een read-only buffer}{10001.2.1.1}{Read-only buffer}{63}
-@unnsubsubsecentry{@samp {b} in een interactive expressie}{10001.2.1.2}{b for interactief}{63}
-@numsubsecentry{De body van de @code {insert-buffer} functie}{5.2.2}{insert-buffer body}{63}
-@numsubsecentry{@code {insert-buffer} met een @code {if} in plaats van een @code {or}}{5.2.3}{if en or}{64}
-@numsubsecentry{De @code {or} in de body}{5.2.4}{Voeg or in}{65}
-@numsubsecentry{De @code {let} expresse in @code {insert-buffer}}{5.2.5}{Voeg let in}{66}
-@numsubsecentry{Nieuwe body voor @code {insert-buffer}}{5.2.6}{Nieuwe insert-buffer}{67}
-@numsecentry{Complete definitie van @code {beginning-of-buffer}}{5.3}{beginning-of-buffer}{67}
-@numsubsecentry{Optionele argumenten}{5.3.1}{Optionele argumenten}{68}
-@numsubsecentry{@code {beginning-of-buffer} met een argument}{5.3.2}{beginning-of-buffer opt arg}{69}
-@unnsubsubsecentry{Wat in een groot buffer gebeurt}{10001.3.2.1}{In geval van een groot buffer}{70}
-@unnsubsubsecentry{Wat in een klein buffer gebeurt}{10001.3.2.2}{In geval van een klein buffer}{70}
-@numsubsecentry{De complete @code {beginning-of-buffer}}{5.3.3}{beginning-of-buffer compleet}{72}
-@numsecentry{Terugblik}{5.4}{Tweede buffer gerelateerde terugblik}{73}
-@numsecentry{@code {optioneel} argument oefening}{5.5}{optionele oefening}{74}
-@numchapentry{Versmallen en verbreden}{6}{Versmallen en verbreden}{75}
-@numsecentry{De speciale vorm @code {save-restriction}}{6.1}{save-restriction}{75}
-@numsecentry{@code {what-line}}{6.2}{what-line}{76}
-@numsecentry{Oefening met versmalling}{6.3}{versmal oefening}{78}
-@numchapentry{@code {car}, @code {cdr}, @code {cons}: Fundamentele functies}{7}{car cdr en cons}{79}
-@numsecentry{@code {car} en @code {cdr}}{7.1}{car en cdr}{79}
-@numsecentry{@code {cons}}{7.2}{cons}{81}
-@numsubsecentry{Achterhaal de lengte van een lijst: @code {length}}{7.2.1}{length}{82}
-@numsecentry{@code {nthcdr}}{7.3}{nthcdr}{82}
-@numsecentry{@code {nth}}{7.4}{nth}{84}
-@numsecentry{@code {setcar}}{7.5}{setcar}{85}
-@numsecentry{@code {setcdr}}{7.6}{setcdr}{86}
-@numsecentry{Oefening}{7.7}{cons oefening}{86}
-@numchapentry{Tekst knippen en opslaan}{8}{Knippen en opslaan van tekst}{87}
-@numsecentry{@code {zap-to-char}}{8.1}{zap-to-char}{87}
-@numsubsecentry{De @code {interactive} expressie}{8.1.1}{zap-to-char interactief}{88}
-@numsubsecentry{De body van @code {zap-to-char}}{8.1.2}{zap-to-char body}{89}
-@numsubsecentry{De functie @code {search-forward}}{8.1.3}{search-forward}{89}
-@numsubsecentry{De speciale vorm @code {progn}}{8.1.4}{progn}{90}
-@numsubsecentry{@code {zap-to-char} samengevat}{8.1.5}{Samenvatting zap-to-char}{91}
-@numsecentry{@code {kill-region}}{8.2}{kill-region}{91}
-@numsubsecentry{@code {condition-case}}{8.2.1}{condition-case}{93}
-@numsubsecentry{Lisp macro}{8.2.2}{Lisp macro}{94}
-@numsecentry{@code {copy-region-as-kill}}{8.3}{copy-region-as-kill}{95}
-@numsubsecentry{De body van @code {copy-region-as-kill}}{8.3.1}{copy-region-as-kill body}{96}
-@unnsubsubsecentry{De functie @code {kill-append}}{10001.3.1.1}{kill-append functie}{97}
-@unnsubsubsecentry{De functie @code {kill-new}}{10001.3.1.2}{kill-new functie}{99}
-@numsecentry{Uitwijding naar C}{8.4}{Uitwijding naar C}{103}
-@numsecentry{Initialiseer een variabele met @code {defvar}}{8.5}{defvar}{105}
-@numsubsecentry{@code {defvar} en een sterretje}{8.5.1}{defvar en asterisk}{106}
-@numsecentry{Terugblik}{8.6}{cons en search-fwd terugblik}{107}
-@numsecentry{Zoek-oefeningen}{8.7}{zoek oefening}{108}
-@numchapentry{Hoe lijsten zijn geïmplementeerd}{9}{Implementatie van lijsten}{109}
-@numsecentry{Symbolen als een ladekast}{9.1}{Symbolen als ladekast}{112}
-@numsecentry{Oefening}{9.2}{Lijst oefening}{113}
-@numchapentry{Tekst terug yanken}{10}{Yanking}{114}
-@numsecentry{Killring overzicht}{10.1}{Killring overzicht}{114}
-@numsecentry{De variabele @code {kill-ring-yank-pointer}}{10.2}{kill-ring-yank-pointer}{115}
-@numsecentry{Oefeningen met @code {yank} en @code {nthcdr}}{10.3}{yank nthcdr oefeningen}{116}
-@numchapentry{Loops en recursie}{11}{Loops en recursie}{117}
-@numsecentry{@code {while}}{11.1}{while}{117}
-@numsubsecentry{Een @code {while} loop en een lijst}{11.1.1}{Loop voorbeeld}{118}
-@numsubsecentry{Een voorbeeld: @code {toon-elementen-van-lijst}}{11.1.2}{print-elements-of-list}{119}
-@numsubsecentry{Een loop met een incrementele teller}{11.1.3}{Incrementele loop}{120}
-@unnsubsubsecentry{Voorbeeld met een incrementele teller}{10001.1.3.1}{Incrementeel voorbeeld}{121}
-@unnsubsubsecentry{De onderdelen van de functiedefinitie}{10001.1.3.2}{Inc voorbeeld onderdelen}{122}
-@unnsubsubsecentry{De functiedefinitie samenstellen}{10001.1.3.3}{inc voorbeeld samengesteld}{123}
-@numsubsecentry{Loop met een decrementele teller}{11.1.4}{Decrementele loop}{125}
-@unnsubsubsecentry{Voorbeeld met een aflopende teller}{10001.1.4.1}{Decrementeel voorbeeld}{125}
-@unnsubsubsecentry{De onderdelen van de functiedefinitie}{10001.1.4.2}{Dec voorbeeld onderdelen}{126}
-@unnsubsubsecentry{De functiedefinitie samenstellen}{10001.1.4.3}{Dec voorbeeld samengesteld}{126}
-@numsecentry{Bespaar je tijd: @code {dolist} en @code {dotimes}}{11.2}{dolist dotimes}{127}
-@unnsubsecentry{De @code {dolist} macro}{10001.2.1}{dolist}{128}
-@unnsubsecentry{De @code {dotimes} macro}{10001.2.2}{dotimes}{129}
-@numsecentry{Recursie}{11.3}{Recursie}{130}
-@numsubsecentry{Robots bouwen: de metafoor uitbreiden}{11.3.1}{Robots bouwen}{130}
-@numsubsecentry{De onderdelen van een recursieve definitie}{11.3.2}{Recursive definitie onderdelen}{131}
-@numsubsecentry{Recursie met een lijst}{11.3.3}{Recursie met lijst}{132}
-@numsubsecentry{Recursie in plaats van een teller}{11.3.4}{Recursieve driehoek functie}{133}
-@unnsubsubsecentry{Een argument van 3 of 4}{10001.3.4.1}{Recursief voorbeeld arg van 3 of 4}{134}
-@numsubsecentry{Recursie voorbeeld met @code {cond}}{11.3.5}{Recursie met cond}{135}
-@numsubsecentry{Recursieve patronen}{11.3.6}{Recursieve patronen}{136}
-@unnsubsubsecentry{Recursief patroon: @emph {elke}}{10001.3.6.1}{Elke}{136}
-@unnsubsubsecentry{Recursief patroon: @emph {accumuleren}}{10001.3.6.2}{Accumuleren}{138}
-@unnsubsubsecentry{Recursieve patronen: @emph {bewaren}}{10001.3.6.3}{Bewaar}{138}
-@numsubsecentry{Recursie zonder uitstel}{11.3.7}{Geen uitstel}{139}
-@numsubsecentry{Zonder uitstel oplossing}{11.3.8}{Zonder uitstel oplossing}{140}
-@numsecentry{Looping oefening}{11.4}{Looping oefening}{142}
-@numchapentry{Reguliere expressie zoekopdrachten}{12}{Regexp zoeken}{144}
-@numsecentry{De reguliere expressie for @code {sentence-end}}{12.1}{sentence-end}{144}
-@numsecentry{De functie @code {re-search-forward}}{12.2}{re-search-forward}{146}
-@numsecentry{@code {forward-sentence}}{12.3}{forward-sentence}{146}
-@unnsubsecentry{De @code {while} loops}{10001.3.1}{fwd-sentence while loops}{148}
-@unnsubsecentry{De reguliere expressie zoekopdracht}{10001.3.2}{fwd-sentence re-search}{149}
-@numsecentry{@code {forward-paragraph}: een goudmijn van functies}{12.4}{forward-paragraph}{150}
-@unnsubsecentry{De @code {let*} expressie}{10001.4.1}{fwd-para let}{151}
-@unnsubsecentry{De voorwaarts bewegende @code {while} loop}{10001.4.2}{fwd-para while}{153}
-@numsecentry{Terugblik}{12.5}{Regexp terugblik}{156}
-@numsecentry{Oefeningen met @code {re-search-forward}}{12.6}{re-search oefeningen}{158}
-@numchapentry{Tellen via repetitie en regexps}{13}{Woorden tellen}{159}
-@numsecentry{De @code {tel-woorden-voorbeeld} functie}{13.1}{tel-woorden-voorbeeld}{159}
-@numsubsecentry{De witte ruimte bug in @code {tel-woorden-voorbeeld}}{13.1.1}{Witte ruimte bug}{162}
-@numsecentry{Recursief woorden tellen}{13.2}{recursive-count-words}{165}
-@numsecentry{Oefening: Leestekens tellen}{13.3}{Tellen voorbeeld}{171}
-@numchapentry{Woorden tellen in een @code {defun}}{14}{Woorden in een defun}{172}
-@numsecentry{Wat te tellen?}{14.1}{Woorden en symbolen}{172}
-@numsecentry{Wat vormt een woord of symbool?}{14.2}{Syntax}{173}
-@numsecentry{De @code {tel-woorden-in-defun} functie}{14.3}{tel-woorden-in-defun}{174}
-@numsecentry{Tel verschillende @code {defuns} in een bestand}{14.4}{Enkele defuns}{177}
-@numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{177}
-@numsecentry{@code {lengte-lijst-bestand} in detail}{14.6}{lengte-lijst-bestand}{178}
-@numsecentry{Woorden tellen in @code {defuns} in verschillende bestanden}{14.7}{Enkele bestanden}{180}
-@numsubsecentry{De functie @code {append}}{14.7.1}{append}{182}
-@numsecentry{Recursief woorden tellen in verschillende bestanden}{14.8}{Enkele bestanden recursief}{182}
-@numsecentry{De data voorbereiden om in een grafiek te tonen}{14.9}{De data voorbereiden}{183}
-@numsubsecentry{Lijsten sorteren}{14.9.1}{Sorteren}{184}
-@numsubsecentry{Een lijst van bestanden maken}{14.9.2}{Bestandenlijst}{184}
-@numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{188}
-@numchapentry{Een grafiek voorbereiden}{15}{Een grafiek voorbereiden}{192}
-@numsecentry{De functie @code {grafiek-body-tonen}}{15.1}{grafiek-body-tonen}{197}
-@numsecentry{De functie recursieve-grafiek-body-tonen}{15.2}{recursieve-grafiek-body-tonen}{199}
-@numsecentry{Noodzaak voor getoonde assen}{15.3}{Getoonde assen}{200}
-@numsecentry{Oefening}{15.4}{Lijngrafiek oefening}{200}
-@numchapentry{Jouw @file {.emacs} bestand}{16}{Initialisatie van Emacs}{201}
-@numsecentry{Systeembrede initialisatiebestanden}{16.1}{Systeem-brede init}{202}
-@numsecentry{Variabelen specificeren met @code {defcustom}}{16.2}{defcustom}{202}
-@numsecentry{Starten met een @file {.emacs} bestand}{16.3}{Een init bestand beginnen}{204}
-@numsecentry{Text and Auto Fill Mode}{16.4}{Tekst en auto-fill}{205}
-@numsecentry{Mail aliasen}{16.5}{Mail aliasen}{207}
-@numsecentry{Indent Tabs Mode}{16.6}{Indent Tabs Mode}{207}
-@numsecentry{Enkele keybindings}{16.7}{Key bindings}{208}
-@numsubsecentry{Verouderde globale keybinding commando's}{16.7.1}{}{209}
-@numsecentry{Keymaps}{16.8}{Keymaps}{209}
-@numsecentry{Bestanden laden}{16.9}{Bestanden laden}{210}
-@numsecentry{Autoloading}{16.10}{Autoload}{211}
-@numsecentry{Een eenvoudige uitbreiding: @code {line-to-top-of-window}}{16.11}{Eenvoudige uitbreiding}{212}
-@numsecentry{X11 kleuren}{16.12}{X11 kleuren}{214}
-@numsecentry{Diverse instellingen voor een @file {.emacs} bestand}{16.13}{Diverse}{216}
-@numsecentry{Een aangepaste mode line}{16.14}{Mode line}{218}
-@numchapentry{Debuggen.}{17}{Debuggen.}{221}
-@numsecentry{@code {debug}}{17.1}{debug}{221}
-@numsecentry{@code {debug-on-entry}}{17.2}{debug-on-entry}{222}
-@numsecentry{@code {debug-on-quit} en @code {(debug)}}{17.3}{debug-on-quit}{224}
-@numsecentry{De @code {edebug} Source Level Debugger}{17.4}{edebug}{225}
-@numsecentry{Debuggen oefeningen}{17.5}{Debuggen oefeningen}{227}
-@numchapentry{Conclusie}{18}{Conclusie}{228}
-@appentry{De @code {de-de} functie}{A}{de-de}{230}
-@appentry{De killring hanteren}{B}{Killring}{232}
-@appsecentry{De @code {current-kill} functie}{B.1}{current-kill}{232}
-@appsecentry{@code {yank}}{B.2}{yank}{237}
-@appsecentry{@code {yank-pop}}{B.3}{yank-pop}{239}
-@appsecentry{Het bestand @file {ring.el}}{B.4}{ring bestand}{240}
-@appentry{Een grafiek met labels op de assen}{C}{Volledige grafiek}{241}
-@appsecentry{The @code {toon-grafiek} varlist}{C.1}{print-graph varlist}{242}
-@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{243}
-@appsubsecentry{Zijspoor: bereken een rest}{C.2.1}{Bereken het restant}{244}
-@appsubsecentry{Construeer een Y-as element}{C.2.2}{Y-as element}{245}
-@appsubsecentry{De Y-as kolom maken}{C.2.3}{Y-axis-column}{247}
-@appsubsecentry{De Niet Geheel Finale Versie van @code {toon-Y-as}}{C.2.4}{toon-Y-as enalaatste}{248}
-@appsecentry{De @code {print-X-as} functie}{C.3}{print-X-axis}{249}
-@appsubsecentry{X-as merktekens}{C.3.1}{X-as merktekens}{249}
-@appsecentry{De gehele grafiek tonen}{C.4}{De gehele grafiek afdrukken}{253}
-@appsubsecentry{@code {toon-grafiek} testen}{C.4.1}{Test print-graph}{255}
-@appsubsecentry{Grafiek met aantallen woorden en symbolen}{C.4.2}{Woorden in defuns grafisch weergeven}{257}
-@appsubsecentry{Een @code {lambda} expressie: nuttige anonimiteit}{C.4.3}{lambda}{258}
-@appsubsecentry{De @code {mapcar} function}{C.4.4}{mapcar}{259}
-@appsubsecentry{Weer een bug @dots {} meest verraderlijk}{C.4.5}{Een andere bug}{260}
-@appsubsecentry{De getoonde grafiek}{C.4.6}{Finale afgedrukte grafiek}{262}
-@appentry{Free Software and Free Manuals}{D}{Free Software and Free Manuals}{263}
-@appentry{GNU Free Documentation License}{E}{GNU Free Documentation License}{265}
-@unnchapentry{Index}{10002}{Index}{274}
+@numsecentry{Een functie interactief maken}{3.3}{Interactief}{31}
+@numsubsecentry{Een interactieve @code {vermenigvuldig-met-zeven}}{3.3.1}{vermenigvuldig-met-zeven in detail}{32}
+@numsecentry{Verschillende opties voor @code {interactive}}{3.4}{Interactieve opties}{33}
+@numsecentry{Code permanent installeren}{3.5}{Permanent installeren}{34}
+@numsecentry{@code {let}}{3.6}{let}{35}
+@numsubsecentry{De delen van een @code {let} expressie}{3.6.1}{Delen van een let expressie}{36}
+@numsubsecentry{Voorbeeld @code {let} expressie}{3.6.2}{Voorbeeld let expressie}{37}
+@numsubsecentry{Ongeïnitialiseerde variabelen in een @code {let} statement}{3.6.3}{Niet-geïnitialiseerde let variabelen}{38}
+@numsubsecentry{Hoe @code {let} variabelen bindt}{3.6.4}{Hoe let variabelen bindt}{38}
+@unnsubsubsecentry{Verschillen tussen lexical en dynamische binding}{10001.6.4.1}{Lexical en dynamische binding verschillen}{39}
+@unnsubsubsecentry{Voorbeeld van lexical vs.@: dynamische binding}{10001.6.4.2}{Lexical vs dynamische binding voorbeeld}{39}
+@numsecentry{De @code {if} speciale vorm}{3.7}{if}{40}
+@numsubsecentry{De @code {type-dier}-functie in detail}{3.7.1}{type-dier in detail}{41}
+@numsecentry{If--then--else expressies}{3.8}{else}{42}
+@numsecentry{Waar en onwaarheid in Emacs Lisp}{3.9}{Waar en onwaarheid}{43}
+@numsecentry{@code {save-excursion}}{3.10}{save-excursion}{44}
+@numsubsecentry{Sjabloon voor een @code {save-excursion} expressie}{3.10.1}{Template voor save-excursion}{45}
+@numsecentry{Terugblik}{3.11}{Terugblik}{46}
+@numsecentry{Oefeningen}{3.12}{defun oefeningen}{50}
+@numchapentry{Enkele buffer gerelateerde functies}{4}{Buffer rondleiding}{51}
+@numsecentry{Meer informatie vinden}{4.1}{Meer vinden}{51}
+@numsecentry{Een versimpelde @code {beginning-of-buffer} definitie}{4.2}{versimpelde-beginning-of-buffer}{52}
+@numsecentry{De definitie van @code {mark-whole-buffer}}{4.3}{mark-whole-buffer}{53}
+@numsubsecentry{Body van @code {mark-whole-buffer}}{4.3.1}{Body van mark-whole-buffer}{54}
+@numsecentry{De definitie van @code {append-to-buffer}}{4.4}{append-to-buffer}{55}
+@numsubsecentry{De @code {append-to-buffer} interactieve expressie}{4.4.1}{append interactief}{56}
+@numsubsecentry{De body van @code {append-to-buffer}}{4.4.2}{append-to-buffer body}{58}
+@numsubsecentry{@code {save-excursion} in @code {append-to-buffer}}{4.4.3}{append save-excursion}{59}
+@numsecentry{Terugblik}{4.5}{Buffer gerelateerde terugblik}{61}
+@numsecentry{Oefeningen}{4.6}{Buffer oefeningen}{62}
+@numchapentry{Enkele meer complexe functies}{5}{Meer complex}{63}
+@numsecentry{De definitie van @code {copy-to-buffer}}{5.1}{copy-to-buffer}{63}
+@numsecentry{De definitie van @code {insert-buffer}}{5.2}{insert-buffer}{64}
+@numsubsecentry{De interactieve expressie in @code {insert-buffer}}{5.2.1}{insert-buffer interactief}{65}
+@unnsubsubsecentry{Een read-only buffer}{10001.2.1.1}{Read-only buffer}{65}
+@unnsubsubsecentry{@samp {b} in een interactive expressie}{10001.2.1.2}{b for interactief}{65}
+@numsubsecentry{De body van de @code {insert-buffer} functie}{5.2.2}{insert-buffer body}{65}
+@numsubsecentry{@code {insert-buffer} met een @code {if} in plaats van een @code {or}}{5.2.3}{if en or}{66}
+@numsubsecentry{De @code {or} in de body}{5.2.4}{Voeg or in}{67}
+@numsubsecentry{De @code {let} expresse in @code {insert-buffer}}{5.2.5}{Voeg let in}{68}
+@numsubsecentry{Nieuwe body voor @code {insert-buffer}}{5.2.6}{Nieuwe insert-buffer}{69}
+@numsecentry{Complete definitie van @code {beginning-of-buffer}}{5.3}{beginning-of-buffer}{69}
+@numsubsecentry{Optionele argumenten}{5.3.1}{Optionele argumenten}{70}
+@numsubsecentry{@code {beginning-of-buffer} met een argument}{5.3.2}{beginning-of-buffer opt arg}{71}
+@unnsubsubsecentry{Wat in een groot buffer gebeurt}{10001.3.2.1}{In geval van een groot buffer}{72}
+@unnsubsubsecentry{Wat in een klein buffer gebeurt}{10001.3.2.2}{In geval van een klein buffer}{72}
+@numsubsecentry{De complete @code {beginning-of-buffer}}{5.3.3}{beginning-of-buffer compleet}{74}
+@numsecentry{Terugblik}{5.4}{Tweede buffer gerelateerde terugblik}{75}
+@numsecentry{@code {optioneel} argument oefening}{5.5}{optionele oefening}{76}
+@numchapentry{Versmallen en verbreden}{6}{Versmallen en verbreden}{77}
+@numsecentry{De speciale vorm @code {save-restriction}}{6.1}{save-restriction}{77}
+@numsecentry{@code {what-line}}{6.2}{what-line}{78}
+@numsecentry{Oefening met versmalling}{6.3}{versmal oefening}{80}
+@numchapentry{@code {car}, @code {cdr}, @code {cons}: Fundamentele functies}{7}{car cdr en cons}{81}
+@numsecentry{@code {car} en @code {cdr}}{7.1}{car en cdr}{81}
+@numsecentry{@code {cons}}{7.2}{cons}{83}
+@numsubsecentry{Achterhaal de lengte van een lijst: @code {length}}{7.2.1}{length}{84}
+@numsecentry{@code {nthcdr}}{7.3}{nthcdr}{84}
+@numsecentry{@code {nth}}{7.4}{nth}{86}
+@numsecentry{@code {setcar}}{7.5}{setcar}{87}
+@numsecentry{@code {setcdr}}{7.6}{setcdr}{88}
+@numsecentry{Oefening}{7.7}{cons oefening}{88}
+@numchapentry{Tekst knippen en opslaan}{8}{Knippen en opslaan van tekst}{89}
+@numsecentry{@code {zap-to-char}}{8.1}{zap-to-char}{89}
+@numsubsecentry{De @code {interactive} expressie}{8.1.1}{zap-to-char interactief}{90}
+@numsubsecentry{De body van @code {zap-to-char}}{8.1.2}{zap-to-char body}{91}
+@numsubsecentry{De functie @code {search-forward}}{8.1.3}{search-forward}{91}
+@numsubsecentry{De speciale vorm @code {progn}}{8.1.4}{progn}{92}
+@numsubsecentry{@code {zap-to-char} samengevat}{8.1.5}{Samenvatting zap-to-char}{93}
+@numsecentry{@code {kill-region}}{8.2}{kill-region}{93}
+@numsubsecentry{@code {condition-case}}{8.2.1}{condition-case}{95}
+@numsubsecentry{Lisp macro}{8.2.2}{Lisp macro}{96}
+@numsecentry{@code {copy-region-as-kill}}{8.3}{copy-region-as-kill}{97}
+@numsubsecentry{De body van @code {copy-region-as-kill}}{8.3.1}{copy-region-as-kill body}{98}
+@unnsubsubsecentry{De functie @code {kill-append}}{10001.3.1.1}{kill-append functie}{99}
+@unnsubsubsecentry{De functie @code {kill-new}}{10001.3.1.2}{kill-new functie}{101}
+@numsecentry{Uitwijding naar C}{8.4}{Uitwijding naar C}{105}
+@numsecentry{Initialiseer een variabele met @code {defvar}}{8.5}{defvar}{107}
+@numsubsecentry{@code {defvar} en een sterretje}{8.5.1}{defvar en asterisk}{108}
+@numsecentry{Terugblik}{8.6}{cons en search-fwd terugblik}{109}
+@numsecentry{Zoek-oefeningen}{8.7}{zoek oefening}{110}
+@numchapentry{Hoe lijsten zijn geïmplementeerd}{9}{Implementatie van lijsten}{111}
+@numsecentry{Symbolen als een ladekast}{9.1}{Symbolen als ladekast}{114}
+@numsecentry{Oefening}{9.2}{Lijst oefening}{115}
+@numchapentry{Tekst terug yanken}{10}{Yanking}{116}
+@numsecentry{Killring overzicht}{10.1}{Killring overzicht}{116}
+@numsecentry{De variabele @code {kill-ring-yank-pointer}}{10.2}{kill-ring-yank-pointer}{117}
+@numsecentry{Oefeningen met @code {yank} en @code {nthcdr}}{10.3}{yank nthcdr oefeningen}{118}
+@numchapentry{Loops en recursie}{11}{Loops en recursie}{119}
+@numsecentry{@code {while}}{11.1}{while}{119}
+@numsubsecentry{Een @code {while} loop en een lijst}{11.1.1}{Loop voorbeeld}{120}
+@numsubsecentry{Een voorbeeld: @code {toon-elementen-van-lijst}}{11.1.2}{print-elements-of-list}{121}
+@numsubsecentry{Een loop met een incrementele teller}{11.1.3}{Incrementele loop}{122}
+@unnsubsubsecentry{Voorbeeld met een incrementele teller}{10001.1.3.1}{Incrementeel voorbeeld}{123}
+@unnsubsubsecentry{De onderdelen van de functiedefinitie}{10001.1.3.2}{Inc voorbeeld onderdelen}{124}
+@unnsubsubsecentry{De functiedefinitie samenstellen}{10001.1.3.3}{inc voorbeeld samengesteld}{125}
+@numsubsecentry{Loop met een decrementele teller}{11.1.4}{Decrementele loop}{127}
+@unnsubsubsecentry{Voorbeeld met een aflopende teller}{10001.1.4.1}{Decrementeel voorbeeld}{127}
+@unnsubsubsecentry{De onderdelen van de functiedefinitie}{10001.1.4.2}{Dec voorbeeld onderdelen}{128}
+@unnsubsubsecentry{De functiedefinitie samenstellen}{10001.1.4.3}{Dec voorbeeld samengesteld}{128}
+@numsecentry{Bespaar je tijd: @code {dolist} en @code {dotimes}}{11.2}{dolist dotimes}{129}
+@unnsubsecentry{De @code {dolist} macro}{10001.2.1}{dolist}{130}
+@unnsubsecentry{De @code {dotimes} macro}{10001.2.2}{dotimes}{131}
+@numsecentry{Recursie}{11.3}{Recursie}{132}
+@numsubsecentry{Robots bouwen: de metafoor uitbreiden}{11.3.1}{Robots bouwen}{132}
+@numsubsecentry{De onderdelen van een recursieve definitie}{11.3.2}{Recursive definitie onderdelen}{133}
+@numsubsecentry{Recursie met een lijst}{11.3.3}{Recursie met lijst}{134}
+@numsubsecentry{Recursie in plaats van een teller}{11.3.4}{Recursieve driehoek functie}{135}
+@unnsubsubsecentry{Een argument van 3 of 4}{10001.3.4.1}{Recursief voorbeeld arg van 3 of 4}{136}
+@numsubsecentry{Recursie voorbeeld met @code {cond}}{11.3.5}{Recursie met cond}{137}
+@numsubsecentry{Recursieve patronen}{11.3.6}{Recursieve patronen}{138}
+@unnsubsubsecentry{Recursief patroon: @emph {elke}}{10001.3.6.1}{Elke}{138}
+@unnsubsubsecentry{Recursief patroon: @emph {accumuleren}}{10001.3.6.2}{Accumuleren}{140}
+@unnsubsubsecentry{Recursieve patronen: @emph {bewaren}}{10001.3.6.3}{Bewaar}{140}
+@numsubsecentry{Recursie zonder uitstel}{11.3.7}{Geen uitstel}{141}
+@numsubsecentry{Zonder uitstel oplossing}{11.3.8}{Zonder uitstel oplossing}{142}
+@numsecentry{Looping oefening}{11.4}{Looping oefening}{144}
+@numchapentry{Reguliere expressie zoekopdrachten}{12}{Regexp zoeken}{146}
+@numsecentry{De reguliere expressie for @code {sentence-end}}{12.1}{sentence-end}{146}
+@numsecentry{De functie @code {re-search-forward}}{12.2}{re-search-forward}{148}
+@numsecentry{@code {forward-sentence}}{12.3}{forward-sentence}{148}
+@unnsubsecentry{De @code {while} loops}{10001.3.1}{fwd-sentence while loops}{150}
+@unnsubsecentry{De reguliere expressie zoekopdracht}{10001.3.2}{fwd-sentence re-search}{151}
+@numsecentry{@code {forward-paragraph}: een goudmijn van functies}{12.4}{forward-paragraph}{152}
+@unnsubsecentry{De @code {let*} expressie}{10001.4.1}{fwd-para let}{153}
+@unnsubsecentry{De voorwaarts bewegende @code {while} loop}{10001.4.2}{fwd-para while}{155}
+@numsecentry{Terugblik}{12.5}{Regexp terugblik}{158}
+@numsecentry{Oefeningen met @code {re-search-forward}}{12.6}{re-search oefeningen}{160}
+@numchapentry{Tellen via repetitie en regexps}{13}{Woorden tellen}{161}
+@numsecentry{De @code {tel-woorden-voorbeeld} functie}{13.1}{tel-woorden-voorbeeld}{161}
+@numsubsecentry{De witte ruimte bug in @code {tel-woorden-voorbeeld}}{13.1.1}{Witte ruimte bug}{164}
+@numsecentry{Recursief woorden tellen}{13.2}{recursive-count-words}{167}
+@numsecentry{Oefening: Leestekens tellen}{13.3}{Tellen voorbeeld}{173}
+@numchapentry{Woorden tellen in een @code {defun}}{14}{Woorden in een defun}{174}
+@numsecentry{Wat te tellen?}{14.1}{Woorden en symbolen}{174}
+@numsecentry{Wat vormt een woord of symbool?}{14.2}{Syntax}{175}
+@numsecentry{De @code {tel-woorden-in-defun} functie}{14.3}{tel-woorden-in-defun}{176}
+@numsecentry{Tel verschillende @code {defuns} in een bestand}{14.4}{Enkele defuns}{179}
+@numsecentry{Een bestand vinden}{14.5}{Een bestand vinden}{179}
+@numsecentry{@code {lengte-lijst-bestand} in detail}{14.6}{lengte-lijst-bestand}{180}
+@numsecentry{Woorden tellen in @code {defuns} in verschillende bestanden}{14.7}{Enkele bestanden}{182}
+@numsubsecentry{De functie @code {append}}{14.7.1}{append}{184}
+@numsecentry{Recursief woorden tellen in verschillende bestanden}{14.8}{Enkele bestanden recursief}{184}
+@numsecentry{De data voorbereiden om in een grafiek te tonen}{14.9}{De data voorbereiden}{185}
+@numsubsecentry{Lijsten sorteren}{14.9.1}{Sorteren}{186}
+@numsubsecentry{Een lijst van bestanden maken}{14.9.2}{Bestandenlijst}{186}
+@numsubsecentry{Functiedefinities tellen}{14.9.3}{Functiedefinities tellen}{190}
+@numchapentry{Een grafiek voorbereiden}{15}{Een grafiek voorbereiden}{194}
+@numsecentry{De functie @code {grafiek-body-tonen}}{15.1}{grafiek-body-tonen}{199}
+@numsecentry{De functie recursieve-grafiek-body-tonen}{15.2}{recursieve-grafiek-body-tonen}{201}
+@numsecentry{Noodzaak voor getoonde assen}{15.3}{Getoonde assen}{202}
+@numsecentry{Oefening}{15.4}{Lijngrafiek oefening}{202}
+@numchapentry{Jouw @file {.emacs} bestand}{16}{Initialisatie van Emacs}{203}
+@numsecentry{Systeembrede initialisatiebestanden}{16.1}{Systeem-brede init}{204}
+@numsecentry{Variabelen specificeren met @code {defcustom}}{16.2}{defcustom}{204}
+@numsecentry{Starten met een @file {.emacs} bestand}{16.3}{Een init bestand beginnen}{206}
+@numsecentry{Text and Auto Fill Mode}{16.4}{Tekst en auto-fill}{207}
+@numsecentry{Mail aliasen}{16.5}{Mail aliasen}{209}
+@numsecentry{Indent Tabs Mode}{16.6}{Indent Tabs Mode}{209}
+@numsecentry{Enkele keybindings}{16.7}{Key bindings}{210}
+@numsubsecentry{Verouderde globale keybinding commando's}{16.7.1}{}{211}
+@numsecentry{Keymaps}{16.8}{Keymaps}{211}
+@numsecentry{Bestanden laden}{16.9}{Bestanden laden}{212}
+@numsecentry{Autoloading}{16.10}{Autoload}{213}
+@numsecentry{Een eenvoudige uitbreiding: @code {line-to-top-of-window}}{16.11}{Eenvoudige uitbreiding}{214}
+@numsecentry{X11 kleuren}{16.12}{X11 kleuren}{216}
+@numsecentry{Diverse instellingen voor een @file {.emacs} bestand}{16.13}{Diverse}{218}
+@numsecentry{Een aangepaste mode line}{16.14}{Mode line}{220}
+@numchapentry{Debuggen.}{17}{Debuggen.}{223}
+@numsecentry{@code {debug}}{17.1}{debug}{223}
+@numsecentry{@code {debug-on-entry}}{17.2}{debug-on-entry}{224}
+@numsecentry{@code {debug-on-quit} en @code {(debug)}}{17.3}{debug-on-quit}{226}
+@numsecentry{De @code {edebug} Source Level Debugger}{17.4}{edebug}{227}
+@numsecentry{Debuggen oefeningen}{17.5}{Debuggen oefeningen}{229}
+@numchapentry{Conclusie}{18}{Conclusie}{230}
+@appentry{De @code {de-de} functie}{A}{de-de}{232}
+@appentry{De killring hanteren}{B}{Killring}{234}
+@appsecentry{De @code {current-kill} functie}{B.1}{current-kill}{234}
+@appsecentry{@code {yank}}{B.2}{yank}{239}
+@appsecentry{@code {yank-pop}}{B.3}{yank-pop}{241}
+@appsecentry{Het bestand @file {ring.el}}{B.4}{ring bestand}{242}
+@appentry{Een grafiek met labels op de assen}{C}{Volledige grafiek}{243}
+@appsecentry{The @code {toon-grafiek} varlist}{C.1}{print-graph varlist}{244}
+@appsecentry{De @code {print-Y-axis} functie}{C.2}{print-Y-axis}{245}
+@appsubsecentry{Zijspoor: bereken een rest}{C.2.1}{Bereken het restant}{246}
+@appsubsecentry{Construeer een Y-as element}{C.2.2}{Y-as element}{247}
+@appsubsecentry{De Y-as kolom maken}{C.2.3}{Y-axis-column}{249}
+@appsubsecentry{De Niet Geheel Finale Versie van @code {toon-Y-as}}{C.2.4}{toon-Y-as enalaatste}{250}
+@appsecentry{De @code {print-X-as} functie}{C.3}{print-X-axis}{251}
+@appsubsecentry{X-as merktekens}{C.3.1}{X-as merktekens}{251}
+@appsecentry{De gehele grafiek tonen}{C.4}{De gehele grafiek afdrukken}{255}
+@appsubsecentry{@code {toon-grafiek} testen}{C.4.1}{Test print-graph}{257}
+@appsubsecentry{Grafiek met aantallen woorden en symbolen}{C.4.2}{Woorden in defuns grafisch weergeven}{259}
+@appsubsecentry{Een @code {lambda} expressie: nuttige anonimiteit}{C.4.3}{lambda}{260}
+@appsubsecentry{De @code {mapcar} function}{C.4.4}{mapcar}{261}
+@appsubsecentry{Weer een bug @dots {} meest verraderlijk}{C.4.5}{Een andere bug}{262}
+@appsubsecentry{De getoonde grafiek}{C.4.6}{Finale afgedrukte grafiek}{264}
+@appentry{Free Software and Free Manuals}{D}{Free Software and Free Manuals}{265}
+@appentry{GNU Free Documentation License}{E}{GNU Free Documentation License}{267}
+@unnchapentry{Index}{10002}{Index}{276}
