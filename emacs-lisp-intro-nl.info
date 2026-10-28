@@ -4647,10 +4647,10 @@ met de ‘let’-expressie.
 
      (oldbuf (current-buffer))
 
-In dit deel van de ‘let’ de ene variabele, ‘oldbuf’, is gebonden aan de
-waarde die de ‘(current-buffer)’ expressie teruggeeft.  De variabele,
-‘oldbuf’ wordt gebruikt om het buffer bij te houden in welk je werkt en
-vanwaar je kopieert.
+In dit deel van de ‘let’ wordt de enige variabele, ‘oldbuf’, gebonden
+aan de waarde die de ‘(current-buffer)’ expressie teruggeeft.  De
+variabele, ‘oldbuf’ wordt gebruikt om het buffer bij te houden in welk
+je werkt en vanwaar je kopieert.
 
    Het element of de elementen van een varlist zijn omgeven door een
 paar haakjes, zodat de Lisp interpreter de varlist kan onderscheiden van
@@ -4926,7 +4926,7 @@ expressie dan ‘append-to-buffer’.
 
      (with-current-buffer (get-buffer-create buffer) ...
 
-   Kijk ten eerste naar de vroegste binnenste expressie, die wordt het
+   Kijk ten eerste naar de meest binnenste expressie, die wordt het
 eerste geëvalueerd.  De expressie start met ‘get-buffer-create buffer’.
 De functie vertelt de computer het buffer te gebruiken met de naam
 gespecificeerd als diegene waarnaar je wilt kopiëren, of die aan te
@@ -5126,8 +5126,8 @@ De taak die gedaan moet worden is zorgen dat de waarde van ‘buffer’ echt
 een buffer en niet de naam van een buffer.  Wanneer de waarde de naam
 is, dan moet het buffer zelf worden verkregen.
 
-   Stel je voor dat je op een conferentie bent en de ceremoniemeester
-loopt rond met een lijst waar je naam op staat en is op zoek naar je: de
+   Stel je voor dat je op een conferentie bent waar de ceremoniemeester
+rondloopt met een lijst waar je naam op staat en op zoek naar je is: de
 ceremoniemeester is gebonden aan je naam, niet aan jou, maar wanneer die
 je vindt en je bij je arm neemt, raakt de ceremoniemeester gebonden aan
 jou.
@@ -5237,11 +5237,11 @@ File: emacs-lisp-intro-nl.info,  Node: Voeg let in,  Next: Nieuwe insert-buffer,
 5.2.5 De ‘let’ expresse in ‘insert-buffer’
 ------------------------------------------
 
-Na zeker stelling dat de variabele ‘buffer’ naar een buffer en niet
+Na zekerstelling dat de variabele ‘buffer’ naar een buffer en niet
 slechts naar de naam van een buffer refereert, gaat de functie
 ‘insert-buffer’ verder met de ‘let’ expressie.  Deze specificeert drie
 lokale variabelen, ‘start’, ‘end’ en ‘newmark’ en bindt ze aan de
-initiele waarde ‘nil’.  Deze variabelen worden binnen de rest van de
+initiële waarde ‘nil’.  Deze variabelen worden binnen de rest van de
 ‘let’ gebruikt en verbergen tijdelijk elke andere variabele met
 eenzelfde naam in Emacs tot het einde van de ‘let’.
 
@@ -5288,11 +5288,11 @@ point naar zijn oorspronkelijke plek teruggeplaatst.
    Het is echter handig om de mark aan het eind van de nieuw ingevoegde
 tekst te plaatsen en point aan het begin.  De variabele ‘newmark’
 registreert het eind van de ingevoegde tekst.  In de laatste regel van
-de ‘let’ expressie zet de ‘(push-mark newmark)’ expressie op deze
-lokatie.  (De vorige plek van de mark is nog steeds bereikbaar: het is
-opgeslagen in de mark-ring en je kunt teruggaan met ‘C-u C-<SPC>’.)
+de ‘let’ expressie zet de ‘(push-mark newmark)’ expressie een mark op
+deze lokatie.  (De vorige plek van de mark is nog steeds bereikbaar: het
+is opgeslagen in de mark-ring en je kunt teruggaan met ‘C-u C-<SPC>’.)
 Ondertussen staat point aan het begin van de ingevoegde tekst, waar deze
-was voordat je de insert-functie aanriep, die plek was bewaarde met de
+was voordat je de insert-functie aanriep, die plek was bewaard met de
 eerste ‘save-excursion’.
 
    De hele ‘let’ ziet er zo uit:
@@ -5513,7 +5513,7 @@ File: emacs-lisp-intro-nl.info,  Node: In geval van een groot buffer,  Next: In 
 Wat in een groot buffer gebeurt
 ...............................
 
-In In ‘beginning-of-buffer’ test de binnenliggende ‘if’-expressie of de
+In ‘beginning-of-buffer’ test de binnenliggende ‘if’-expressie of de
 grootte van het buffer groter is dan 10.000 karakters.  Om dit te doen
 gebruikt het de functie ‘>’ en de berekening van ‘size’ die van de
 let-expressie komt.
@@ -18358,226 +18358,226 @@ Node: append-to-buffer196958
 Node: append-to-buffer overzicht197685
 Node: append interactief200487
 Node: append-to-buffer body203064
-Node: append save-excursion205251
-Ref: let* geïntroduceerd207048
-Node: Buffer gerelateerde terugblik210737
-Node: Buffer oefeningen213140
-Node: Meer complex213665
-Node: copy-to-buffer214776
-Ref: copy-to-buffer-Footnote-1217659
-Node: insert-buffer217879
-Node: insert-buffer code219338
-Node: insert-buffer interactief220347
-Node: Read-only buffer220897
-Node: b for interactief221541
-Node: insert-buffer body222669
-Node: if en or223891
-Node: Voeg or in227044
-Node: Voeg let in229391
-Node: Nieuwe insert-buffer233240
-Node: beginning-of-buffer234461
-Node: Optionele argumenten236111
-Node: beginning-of-buffer opt arg239754
-Node: Ontrafelen beginning-of-buffer240776
-Node: In geval van een groot buffer242130
-Node: In geval van een klein buffer244778
-Node: beginning-of-buffer compleet246556
-Node: Tweede buffer gerelateerde terugblik249600
-Node: optionele oefening251565
-Node: Versmallen en verbreden252089
-Node: Voordelen van versmallen252795
-Node: save-restriction254776
-Node: what-line256897
-Node: versmal oefening261348
-Node: car cdr en cons262396
-Node: Vreemde namen263582
-Node: car en cdr264304
-Node: cons269043
-Node: Bouw een lijst270135
-Ref: Bouw een lijst-Footnote-1271763
-Node: length271969
-Node: nthcdr273580
-Node: nth276690
-Node: setcar278211
-Node: setcdr281191
-Node: cons oefening282863
-Node: Knippen en opslaan van tekst283282
-Node: Tekst opslaan284697
-Node: zap-to-char286817
-Node: Complete zap-to-char287429
-Node: zap-to-char interactief289795
-Node: zap-to-char body291381
-Node: search-forward292930
-Node: progn296091
-Node: Samenvatting zap-to-char297906
-Node: kill-region299062
-Node: Complete kill-region300060
-Node: condition-case304471
-Node: Lisp macro307042
-Node: copy-region-as-kill309675
-Node: Complete copy-region-as-kill310618
-Node: copy-region-as-kill body313489
-Node: last-command en this-command314630
-Node: kill-append functie316968
-Node: kill-new functie321243
-Node: Uitwijding naar C332221
-Node: defvar337764
-Node: Inzien huidige variabele waarde339642
-Node: defvar en asterisk341604
-Node: cons en search-fwd terugblik343658
-Node: zoek oefening346837
-Node: Implementatie van lijsten347640
-Node: Lijsten uitgetekend348876
-Node: Symbolen als ladekast355365
-Node: Lijst oefening357480
-Node: Yanking357846
-Node: Killring overzicht359241
-Node: kill-ring-yank-pointer361053
-Node: yank nthcdr oefeningen363561
-Node: Loops en recursie364306
-Ref: Loops en recursie-Footnote-1365502
-Node: while366023
-Node: Looping met while367455
-Node: Loop voorbeeld369393
-Node: print-elements-of-list373095
-Node: Incrementele loop375681
-Node: Incrementele loop details376313
-Node: Incrementeel voorbeeld377786
-Node: Inc voorbeeld onderdelen380362
-Node: inc voorbeeld samengesteld384502
-Node: Decrementele loop388104
-Node: Decrementeel voorbeeld389576
-Node: Dec voorbeeld onderdelen391167
-Node: Dec voorbeeld samengesteld393247
-Node: dolist dotimes395523
-Node: dolist396354
-Node: dotimes399531
-Node: Recursie401078
-Node: Robots bouwen402290
-Node: Recursive definitie onderdelen404095
-Node: Recursie met lijst406742
-Node: Recursieve driehoek functie410410
-Node: Recursief voorbeeld arg van 1 of 2411788
-Node: Recursief voorbeeld arg van 3 of 4414053
-Node: Recursie met cond417257
-Node: Recursieve patronen419701
-Node: Elke420194
-Node: Accumuleren422747
-Node: Bewaar424122
-Node: Geen uitstel426190
-Node: Zonder uitstel oplossing428915
-Ref: Zonder uitstel oplossing-Footnote-1432877
-Ref: Zonder uitstel oplossing-Footnote-2433001
-Node: Looping oefening433524
-Node: Regexp zoeken434843
-Node: sentence-end436989
-Node: re-search-forward441036
-Node: forward-sentence443691
-Node: Complete forward-sentence444474
-Node: fwd-sentence while loops448178
-Node: fwd-sentence re-search451991
-Node: forward-paragraph454095
-Node: forward-paragraph in het kort455970
-Node: fwd-para let457528
-Node: fwd-para while464459
-Node: Regexp terugblik473315
-Node: re-search oefeningen475905
-Node: Woorden tellen476678
-Node: Waarom woorden tellen477461
-Node: tel-woorden-voorbeeld478617
-Node: Ontwerp tel-woorden-voorbeeld479990
-Node: Witte ruimte bug486726
-Node: recursive-count-words496561
-Node: Tellen voorbeeld509288
-Node: Woorden in een defun509660
-Node: Verdeel en heers511431
-Node: Woorden en symbolen512742
-Node: Syntax514895
-Node: tel-woorden-in-defun518611
-Node: Enkele defuns525278
-Node: Een bestand vinden527798
-Node: lengte-lijst-bestand530558
-Node: Enkele bestanden536148
-Node: lengths-list-many-files536954
-Node: append539881
-Node: Enkele bestanden recursief540535
-Node: De data voorbereiden543621
-Node: Data in detail te tonen544736
-Node: Sorteren545731
-Node: Bestandenlijst547587
-Ref: Bestandenlijst-Footnote-1555662
-Node: Functiedefinities tellen555852
-Node: Een grafiek voorbereiden565479
-Node: Kolommen van een grafiek566853
-Node: grafiek-body-tonen581131
-Node: recursieve-grafiek-body-tonen585917
-Node: Getoonde assen588690
-Node: Lijngrafiek oefening589507
-Node: Initialisatie van Emacs589718
-Node: Standaard configuratie591285
-Ref: Standaard configuratie-Footnote-1593411
-Node: Systeem-brede init593733
-Node: defcustom595994
-Node: Een init bestand beginnen602395
-Node: Tekst en auto-fill604926
-Ref: Tekst en auto-fill-Footnote-1609247
-Ref: Tekst en auto-fill-Footnote-2609540
-Node: Mail aliasen609850
-Node: Indent Tabs Mode610809
-Node: Key bindings611808
-Node: Keymaps617064
-Node: Bestanden laden619898
-Node: Autoload623270
-Node: Eenvoudige uitbreiding626289
-Ref: Eenvoudige uitbreiding-Footnote-1628891
-Node: X11 kleuren629180
-Ref: X11 kleuren-Footnote-1631074
-Node: Diverse631242
-Node: Mode line635602
-Node: Debuggen.641451
-Node: debug642353
-Node: debug-on-entry645653
-Node: debug-on-quit650112
-Node: edebug651162
-Node: Debuggen oefeningen655386
-Node: Conclusie657200
-Node: de-de662665
-Node: Killring665507
-Node: Wat de killring doet666304
-Node: current-kill667847
-Node: Code voor current-kill668547
-Node: current-kill begrijpen671385
-Node: Body van current-kill672222
-Node: Uitwijding over fout675544
-Node: Het element vaststellen676777
-Node: yank680535
-Node: yank-pop683800
-Node: ring bestand686380
-Node: Volledige grafiek686775
-Node: Gelabeld voorbeeld687647
-Node: print-graph varlist689706
-Node: print-Y-axis691484
-Node: toon-Y-as in detail692332
-Node: Hoogte van label693180
-Node: Bereken het restant695246
-Node: Y-as element699260
-Node: Y-axis-column703160
-Node: toon-Y-as enalaatste704719
-Node: print-X-axis706731
-Node: Overeenkomsten verschillen708072
-Node: X-as merktekens708906
-Node: De gehele grafiek afdrukken715995
-Node: De finale versie717130
-Node: Test print-graph721541
-Node: Woorden in defuns grafisch weergeven723255
-Node: lambda726036
-Node: mapcar727859
-Node: Een andere bug730017
-Node: Finale afgedrukte grafiek735675
-Node: Free Software and Free Manuals736648
-Node: GNU Free Documentation License742943
-Node: Index768125
-Node: Over de auteur807306
+Node: append save-excursion205256
+Ref: let* geïntroduceerd207053
+Node: Buffer gerelateerde terugblik210742
+Node: Buffer oefeningen213145
+Node: Meer complex213670
+Node: copy-to-buffer214781
+Ref: copy-to-buffer-Footnote-1217661
+Node: insert-buffer217881
+Node: insert-buffer code219340
+Node: insert-buffer interactief220349
+Node: Read-only buffer220899
+Node: b for interactief221543
+Node: insert-buffer body222671
+Node: if en or223893
+Node: Voeg or in227047
+Node: Voeg let in229394
+Node: Nieuwe insert-buffer233251
+Node: beginning-of-buffer234472
+Node: Optionele argumenten236122
+Node: beginning-of-buffer opt arg239765
+Node: Ontrafelen beginning-of-buffer240787
+Node: In geval van een groot buffer242141
+Node: In geval van een klein buffer244786
+Node: beginning-of-buffer compleet246564
+Node: Tweede buffer gerelateerde terugblik249608
+Node: optionele oefening251573
+Node: Versmallen en verbreden252097
+Node: Voordelen van versmallen252803
+Node: save-restriction254784
+Node: what-line256905
+Node: versmal oefening261356
+Node: car cdr en cons262404
+Node: Vreemde namen263590
+Node: car en cdr264312
+Node: cons269051
+Node: Bouw een lijst270143
+Ref: Bouw een lijst-Footnote-1271771
+Node: length271977
+Node: nthcdr273588
+Node: nth276698
+Node: setcar278219
+Node: setcdr281199
+Node: cons oefening282871
+Node: Knippen en opslaan van tekst283290
+Node: Tekst opslaan284705
+Node: zap-to-char286825
+Node: Complete zap-to-char287437
+Node: zap-to-char interactief289803
+Node: zap-to-char body291389
+Node: search-forward292938
+Node: progn296099
+Node: Samenvatting zap-to-char297914
+Node: kill-region299070
+Node: Complete kill-region300068
+Node: condition-case304479
+Node: Lisp macro307050
+Node: copy-region-as-kill309683
+Node: Complete copy-region-as-kill310626
+Node: copy-region-as-kill body313497
+Node: last-command en this-command314638
+Node: kill-append functie316976
+Node: kill-new functie321251
+Node: Uitwijding naar C332229
+Node: defvar337772
+Node: Inzien huidige variabele waarde339650
+Node: defvar en asterisk341612
+Node: cons en search-fwd terugblik343666
+Node: zoek oefening346845
+Node: Implementatie van lijsten347648
+Node: Lijsten uitgetekend348884
+Node: Symbolen als ladekast355373
+Node: Lijst oefening357488
+Node: Yanking357854
+Node: Killring overzicht359249
+Node: kill-ring-yank-pointer361061
+Node: yank nthcdr oefeningen363569
+Node: Loops en recursie364314
+Ref: Loops en recursie-Footnote-1365510
+Node: while366031
+Node: Looping met while367463
+Node: Loop voorbeeld369401
+Node: print-elements-of-list373103
+Node: Incrementele loop375689
+Node: Incrementele loop details376321
+Node: Incrementeel voorbeeld377794
+Node: Inc voorbeeld onderdelen380370
+Node: inc voorbeeld samengesteld384510
+Node: Decrementele loop388112
+Node: Decrementeel voorbeeld389584
+Node: Dec voorbeeld onderdelen391175
+Node: Dec voorbeeld samengesteld393255
+Node: dolist dotimes395531
+Node: dolist396362
+Node: dotimes399539
+Node: Recursie401086
+Node: Robots bouwen402298
+Node: Recursive definitie onderdelen404103
+Node: Recursie met lijst406750
+Node: Recursieve driehoek functie410418
+Node: Recursief voorbeeld arg van 1 of 2411796
+Node: Recursief voorbeeld arg van 3 of 4414061
+Node: Recursie met cond417265
+Node: Recursieve patronen419709
+Node: Elke420202
+Node: Accumuleren422755
+Node: Bewaar424130
+Node: Geen uitstel426198
+Node: Zonder uitstel oplossing428923
+Ref: Zonder uitstel oplossing-Footnote-1432885
+Ref: Zonder uitstel oplossing-Footnote-2433009
+Node: Looping oefening433532
+Node: Regexp zoeken434851
+Node: sentence-end436997
+Node: re-search-forward441044
+Node: forward-sentence443699
+Node: Complete forward-sentence444482
+Node: fwd-sentence while loops448186
+Node: fwd-sentence re-search451999
+Node: forward-paragraph454103
+Node: forward-paragraph in het kort455978
+Node: fwd-para let457536
+Node: fwd-para while464467
+Node: Regexp terugblik473323
+Node: re-search oefeningen475913
+Node: Woorden tellen476686
+Node: Waarom woorden tellen477469
+Node: tel-woorden-voorbeeld478625
+Node: Ontwerp tel-woorden-voorbeeld479998
+Node: Witte ruimte bug486734
+Node: recursive-count-words496569
+Node: Tellen voorbeeld509296
+Node: Woorden in een defun509668
+Node: Verdeel en heers511439
+Node: Woorden en symbolen512750
+Node: Syntax514903
+Node: tel-woorden-in-defun518619
+Node: Enkele defuns525286
+Node: Een bestand vinden527806
+Node: lengte-lijst-bestand530566
+Node: Enkele bestanden536156
+Node: lengths-list-many-files536962
+Node: append539889
+Node: Enkele bestanden recursief540543
+Node: De data voorbereiden543629
+Node: Data in detail te tonen544744
+Node: Sorteren545739
+Node: Bestandenlijst547595
+Ref: Bestandenlijst-Footnote-1555670
+Node: Functiedefinities tellen555860
+Node: Een grafiek voorbereiden565487
+Node: Kolommen van een grafiek566861
+Node: grafiek-body-tonen581139
+Node: recursieve-grafiek-body-tonen585925
+Node: Getoonde assen588698
+Node: Lijngrafiek oefening589515
+Node: Initialisatie van Emacs589726
+Node: Standaard configuratie591293
+Ref: Standaard configuratie-Footnote-1593419
+Node: Systeem-brede init593741
+Node: defcustom596002
+Node: Een init bestand beginnen602403
+Node: Tekst en auto-fill604934
+Ref: Tekst en auto-fill-Footnote-1609255
+Ref: Tekst en auto-fill-Footnote-2609548
+Node: Mail aliasen609858
+Node: Indent Tabs Mode610817
+Node: Key bindings611816
+Node: Keymaps617072
+Node: Bestanden laden619906
+Node: Autoload623278
+Node: Eenvoudige uitbreiding626297
+Ref: Eenvoudige uitbreiding-Footnote-1628899
+Node: X11 kleuren629188
+Ref: X11 kleuren-Footnote-1631082
+Node: Diverse631250
+Node: Mode line635610
+Node: Debuggen.641459
+Node: debug642361
+Node: debug-on-entry645661
+Node: debug-on-quit650120
+Node: edebug651170
+Node: Debuggen oefeningen655394
+Node: Conclusie657208
+Node: de-de662673
+Node: Killring665515
+Node: Wat de killring doet666312
+Node: current-kill667855
+Node: Code voor current-kill668555
+Node: current-kill begrijpen671393
+Node: Body van current-kill672230
+Node: Uitwijding over fout675552
+Node: Het element vaststellen676785
+Node: yank680543
+Node: yank-pop683808
+Node: ring bestand686388
+Node: Volledige grafiek686783
+Node: Gelabeld voorbeeld687655
+Node: print-graph varlist689714
+Node: print-Y-axis691492
+Node: toon-Y-as in detail692340
+Node: Hoogte van label693188
+Node: Bereken het restant695254
+Node: Y-as element699268
+Node: Y-axis-column703168
+Node: toon-Y-as enalaatste704727
+Node: print-X-axis706739
+Node: Overeenkomsten verschillen708080
+Node: X-as merktekens708914
+Node: De gehele grafiek afdrukken716003
+Node: De finale versie717138
+Node: Test print-graph721549
+Node: Woorden in defuns grafisch weergeven723263
+Node: lambda726044
+Node: mapcar727867
+Node: Een andere bug730025
+Node: Finale afgedrukte grafiek735683
+Node: Free Software and Free Manuals736656
+Node: GNU Free Documentation License742951
+Node: Index768133
+Node: Over de auteur807314
 
 End Tag Table
 
