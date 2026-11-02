@@ -7010,7 +7010,7 @@ jargon. Deze eigenschap blijkt belangrijk te zijn.
 De @sc{cdr} van een lijst is de rest van de lijst, dat wil zeggen dat de
 @sc{cdr} het deel van de lijst dat volgt op het eerste item. Dus terwijl de
 @sc{car} van de lijst @code{'(roos viool madelief boterbloem)} @code{roos}
-is, is de rest van de, de waarde die de functie @code{cdr} teruggeeft, is
+is, is de rest van de lijst, de waarde die de functie @code{cdr} teruggeeft,
 @code{(viool madelief boterbloem)}.
 
 @need 800
@@ -7063,7 +7063,7 @@ Wanneer @code{car} en @code{cdr} worden toegepast op lijsten van symbolen,
 zoals de lijst @code{(den spar eik esdoorn)}, is het element van de lijst
 dat de functie @code{car} teruggeeft het symbool @code{den}, zonder haakjes
 er omheen. @code{den} is het eerste symbool in de lijst. De @sc{cdr} van de
-lijst is echter een list op zichzelf, @code{(spar eik esdoorn)}, zoals je
+lijst is echter een lijst op zichzelf, @code{(spar eik esdoorn)}, zoals je
 ziet door de volgende expressie op de gebruikelijke manier te evalueren:
 
 @smallexample
@@ -7184,7 +7184,7 @@ gebruikelijke manier evalueren. De waarde wordt in deze tekst getoond na
 
 @group
 (cons 'viool '(madelief boterbloem))
-     @result{} (violet madelief boterbloem)
+     @result{} (viool madelief boterbloem)
 @end group
 
 @group
@@ -7304,7 +7304,7 @@ hiermee doorgaat, dan krijg je uiteindelijk de lege lijst terug, welke in
 dit geval in plaats van @code{()} getoond wordt als @code{nil}.
 
 @need 1200
-Ter beoordeling is hier een lijst van herhaaldelijke @sc{cdr}'s, de tekst
+Hier is een lijst van herhaaldelijke @sc{cdr}'s om te bekijken, de tekst
 volgend op @samp{@result{}} toont wat wordt teruggegeven.
 
 @smallexample
@@ -7439,11 +7439,11 @@ maar de definitie was in de jaren tachtig opnieuw gedaan in C.)
 De functie @code{nth} geeft een enkel element van een lijst terug. Dit kan
 erg handig zijn.
 
-Merk op de de elementen vanaf nul zijn genummerd, niet een. Dat wil zeggen
-dat het eerste element van een lijst, zijn @sc{car}, is het nulde
-element. Deze nul-gebaseerde telling is lastig voor mensen die gewend zijn
-die gewend zijn dat het eerste element in een lijst nummer een is, wat
-een-gebaseerd is.
+Merk op de de elementen vanaf nul zijn genummerd, niet vanaf één. Dat wil
+zeggen dat het eerste element van een lijst, zijn @sc{car}, het nulde
+element is. Deze nul-gebaseerde telling is lastig voor mensen die gewend
+zijn dat het eerste element in een lijst nummer één is, wat één-gebaseerd
+is.
 
 @need 1250
 Bijvoorbeeld:
@@ -7555,8 +7555,9 @@ behalve dat de functie de tweede en volgende elementen van een lijst
 vervangt in plaats van het eerste element.
 
 (Kijk vooruit naar @ref{kill-new functie, , De @code{kill-new} functie} om
-te zien hoe het laatste element van een list te wijzigen. De @code{kill-new}
-functie gebruikt de @code{nthcdr} en de @code{setcdr} functies.)
+te zien hoe het laatste element van een lijst te wijzigen. De
+@code{kill-new} functie gebruikt de @code{nthcdr} en de @code{setcdr}
+functies.)
 
 @need 1200
 Om de zien hoe dit werkt stel je waarde van de variabele in op een lijst van

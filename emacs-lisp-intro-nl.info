@@ -6034,7 +6034,7 @@ eigenschap blijkt belangrijk te zijn.
    De CDR van een lijst is de rest van de lijst, dat wil zeggen dat de
 CDR het deel van de lijst dat volgt op het eerste item.  Dus terwijl de
 CAR van de lijst ‘'(roos viool madelief boterbloem)’ ‘roos’ is, is de
-rest van de, de waarde die de functie ‘cdr’ teruggeeft, is ‘(viool
+rest van de lijst, de waarde die de functie ‘cdr’ teruggeeft, ‘(viool
 madelief boterbloem)’.
 
    Je ziet door het volgende op de gebruikelijke manier te evalueren:
@@ -6070,7 +6070,7 @@ gebruikt worden.
 zoals de lijst ‘(den spar eik esdoorn)’, is het element van de lijst dat
 de functie ‘car’ teruggeeft het symbool ‘den’, zonder haakjes er omheen.
 ‘den’ is het eerste symbool in de lijst.  De CDR van de lijst is echter
-een list op zichzelf, ‘(spar eik esdoorn)’, zoals je ziet door de
+een lijst op zichzelf, ‘(spar eik esdoorn)’, zoals je ziet door de
 volgende expressie op de gebruikelijke manier te evalueren:
 
      (car '(den spar eik esdoorn))
@@ -6165,7 +6165,7 @@ zien als "evalueert naar".
           ⇒ (madelief boterbloem)
 
      (cons 'viool '(madelief boterbloem))
-          ⇒ (violet madelief boterbloem)
+          ⇒ (viool madelief boterbloem)
 
      (cons 'roos '(viool madelief boterbloem))
           ⇒ (roos viool madelief boterbloem)
@@ -6256,7 +6256,7 @@ verandert.  Je moet de CDR van de CDR nemen, enzovoort.)  Wanneer je
 hiermee doorgaat, dan krijg je uiteindelijk de lege lijst terug, welke
 in dit geval in plaats van ‘()’ getoond wordt als ‘nil’.
 
-   Ter beoordeling is hier een lijst van herhaaldelijke CDR's, de tekst
+   Hier is een lijst van herhaaldelijke CDR's om te bekijken, de tekst
 volgend op ‘⇒’ toont wat wordt teruggegeven.
 
      (cdr '(den spar eik esdoorn))
@@ -6349,11 +6349,11 @@ de definitie was in de jaren tachtig opnieuw gedaan in C.)
    De functie ‘nth’ geeft een enkel element van een lijst terug.  Dit
 kan erg handig zijn.
 
-   Merk op de de elementen vanaf nul zijn genummerd, niet een.  Dat wil
-zeggen dat het eerste element van een lijst, zijn CAR, is het nulde
-element.  Deze nul-gebaseerde telling is lastig voor mensen die gewend
-zijn die gewend zijn dat het eerste element in een lijst nummer een is,
-wat een-gebaseerd is.
+   Merk op de de elementen vanaf nul zijn genummerd, niet vanaf één.
+Dat wil zeggen dat het eerste element van een lijst, zijn CAR, het nulde
+element is.  Deze nul-gebaseerde telling is lastig voor mensen die
+gewend zijn dat het eerste element in een lijst nummer één is, wat
+één-gebaseerd is.
 
    Bijvoorbeeld:
 
@@ -6444,8 +6444,8 @@ dat de functie de tweede en volgende elementen van een lijst vervangt in
 plaats van het eerste element.
 
    (Kijk vooruit naar *note De ‘kill-new’ functie: kill-new functie. om
-te zien hoe het laatste element van een list te wijzigen.  De ‘kill-new’
-functie gebruikt de ‘nthcdr’ en de ‘setcdr’ functies.)
+te zien hoe het laatste element van een lijst te wijzigen.  De
+‘kill-new’ functie gebruikt de ‘nthcdr’ en de ‘setcdr’ functies.)
 
    Om de zien hoe dit werkt stel je waarde van de variabele in op een
 lijst van gedomesticeerde dieren door de volgende expressie te
@@ -18392,192 +18392,192 @@ Node: versmal oefening261356
 Node: car cdr en cons262404
 Node: Vreemde namen263590
 Node: car en cdr264312
-Node: cons269051
-Node: Bouw een lijst270143
-Ref: Bouw een lijst-Footnote-1271771
-Node: length271977
-Node: nthcdr273588
-Node: nth276698
-Node: setcar278219
-Node: setcdr281199
-Node: cons oefening282871
-Node: Knippen en opslaan van tekst283290
-Node: Tekst opslaan284705
-Node: zap-to-char286825
-Node: Complete zap-to-char287437
-Node: zap-to-char interactief289803
-Node: zap-to-char body291389
-Node: search-forward292938
-Node: progn296099
-Node: Samenvatting zap-to-char297914
-Node: kill-region299070
-Node: Complete kill-region300068
-Node: condition-case304479
-Node: Lisp macro307050
-Node: copy-region-as-kill309683
-Node: Complete copy-region-as-kill310626
-Node: copy-region-as-kill body313497
-Node: last-command en this-command314638
-Node: kill-append functie316976
-Node: kill-new functie321251
-Node: Uitwijding naar C332229
-Node: defvar337772
-Node: Inzien huidige variabele waarde339650
-Node: defvar en asterisk341612
-Node: cons en search-fwd terugblik343666
-Node: zoek oefening346845
-Node: Implementatie van lijsten347648
-Node: Lijsten uitgetekend348884
-Node: Symbolen als ladekast355373
-Node: Lijst oefening357488
-Node: Yanking357854
-Node: Killring overzicht359249
-Node: kill-ring-yank-pointer361061
-Node: yank nthcdr oefeningen363569
-Node: Loops en recursie364314
-Ref: Loops en recursie-Footnote-1365510
-Node: while366031
-Node: Looping met while367463
-Node: Loop voorbeeld369401
-Node: print-elements-of-list373103
-Node: Incrementele loop375689
-Node: Incrementele loop details376321
-Node: Incrementeel voorbeeld377794
-Node: Inc voorbeeld onderdelen380370
-Node: inc voorbeeld samengesteld384510
-Node: Decrementele loop388112
-Node: Decrementeel voorbeeld389584
-Node: Dec voorbeeld onderdelen391175
-Node: Dec voorbeeld samengesteld393255
-Node: dolist dotimes395531
-Node: dolist396362
-Node: dotimes399539
-Node: Recursie401086
-Node: Robots bouwen402298
-Node: Recursive definitie onderdelen404103
-Node: Recursie met lijst406750
-Node: Recursieve driehoek functie410418
-Node: Recursief voorbeeld arg van 1 of 2411796
-Node: Recursief voorbeeld arg van 3 of 4414061
-Node: Recursie met cond417265
-Node: Recursieve patronen419709
-Node: Elke420202
-Node: Accumuleren422755
-Node: Bewaar424130
-Node: Geen uitstel426198
-Node: Zonder uitstel oplossing428923
-Ref: Zonder uitstel oplossing-Footnote-1432885
-Ref: Zonder uitstel oplossing-Footnote-2433009
-Node: Looping oefening433532
-Node: Regexp zoeken434851
-Node: sentence-end436997
-Node: re-search-forward441044
-Node: forward-sentence443699
-Node: Complete forward-sentence444482
-Node: fwd-sentence while loops448186
-Node: fwd-sentence re-search451999
-Node: forward-paragraph454103
-Node: forward-paragraph in het kort455978
-Node: fwd-para let457536
-Node: fwd-para while464467
-Node: Regexp terugblik473323
-Node: re-search oefeningen475913
-Node: Woorden tellen476686
-Node: Waarom woorden tellen477469
-Node: tel-woorden-voorbeeld478625
-Node: Ontwerp tel-woorden-voorbeeld479998
-Node: Witte ruimte bug486734
-Node: recursive-count-words496569
-Node: Tellen voorbeeld509296
-Node: Woorden in een defun509668
-Node: Verdeel en heers511439
-Node: Woorden en symbolen512750
-Node: Syntax514903
-Node: tel-woorden-in-defun518619
-Node: Enkele defuns525286
-Node: Een bestand vinden527806
-Node: lengte-lijst-bestand530566
-Node: Enkele bestanden536156
-Node: lengths-list-many-files536962
-Node: append539889
-Node: Enkele bestanden recursief540543
-Node: De data voorbereiden543629
-Node: Data in detail te tonen544744
-Node: Sorteren545739
-Node: Bestandenlijst547595
-Ref: Bestandenlijst-Footnote-1555670
-Node: Functiedefinities tellen555860
-Node: Een grafiek voorbereiden565487
-Node: Kolommen van een grafiek566861
-Node: grafiek-body-tonen581139
-Node: recursieve-grafiek-body-tonen585925
-Node: Getoonde assen588698
-Node: Lijngrafiek oefening589515
-Node: Initialisatie van Emacs589726
-Node: Standaard configuratie591293
-Ref: Standaard configuratie-Footnote-1593419
-Node: Systeem-brede init593741
-Node: defcustom596002
-Node: Een init bestand beginnen602403
-Node: Tekst en auto-fill604934
-Ref: Tekst en auto-fill-Footnote-1609255
-Ref: Tekst en auto-fill-Footnote-2609548
-Node: Mail aliasen609858
-Node: Indent Tabs Mode610817
-Node: Key bindings611816
-Node: Keymaps617072
-Node: Bestanden laden619906
-Node: Autoload623278
-Node: Eenvoudige uitbreiding626297
-Ref: Eenvoudige uitbreiding-Footnote-1628899
-Node: X11 kleuren629188
-Ref: X11 kleuren-Footnote-1631082
-Node: Diverse631250
-Node: Mode line635610
-Node: Debuggen.641459
-Node: debug642361
-Node: debug-on-entry645661
-Node: debug-on-quit650120
-Node: edebug651170
-Node: Debuggen oefeningen655394
-Node: Conclusie657208
-Node: de-de662673
-Node: Killring665515
-Node: Wat de killring doet666312
-Node: current-kill667855
-Node: Code voor current-kill668555
-Node: current-kill begrijpen671393
-Node: Body van current-kill672230
-Node: Uitwijding over fout675552
-Node: Het element vaststellen676785
-Node: yank680543
-Node: yank-pop683808
-Node: ring bestand686388
-Node: Volledige grafiek686783
-Node: Gelabeld voorbeeld687655
-Node: print-graph varlist689714
-Node: print-Y-axis691492
-Node: toon-Y-as in detail692340
-Node: Hoogte van label693188
-Node: Bereken het restant695254
-Node: Y-as element699268
-Node: Y-axis-column703168
-Node: toon-Y-as enalaatste704727
-Node: print-X-axis706739
-Node: Overeenkomsten verschillen708080
-Node: X-as merktekens708914
-Node: De gehele grafiek afdrukken716003
-Node: De finale versie717138
-Node: Test print-graph721549
-Node: Woorden in defuns grafisch weergeven723263
-Node: lambda726044
-Node: mapcar727867
-Node: Een andere bug730025
-Node: Finale afgedrukte grafiek735683
-Node: Free Software and Free Manuals736656
-Node: GNU Free Documentation License742951
-Node: Index768133
-Node: Over de auteur807314
+Node: cons269055
+Node: Bouw een lijst270147
+Ref: Bouw een lijst-Footnote-1271774
+Node: length271980
+Node: nthcdr273591
+Node: nth276700
+Node: setcar278216
+Node: setcdr281196
+Node: cons oefening282869
+Node: Knippen en opslaan van tekst283288
+Node: Tekst opslaan284703
+Node: zap-to-char286823
+Node: Complete zap-to-char287435
+Node: zap-to-char interactief289801
+Node: zap-to-char body291387
+Node: search-forward292936
+Node: progn296097
+Node: Samenvatting zap-to-char297912
+Node: kill-region299068
+Node: Complete kill-region300066
+Node: condition-case304477
+Node: Lisp macro307048
+Node: copy-region-as-kill309681
+Node: Complete copy-region-as-kill310624
+Node: copy-region-as-kill body313495
+Node: last-command en this-command314636
+Node: kill-append functie316974
+Node: kill-new functie321249
+Node: Uitwijding naar C332227
+Node: defvar337770
+Node: Inzien huidige variabele waarde339648
+Node: defvar en asterisk341610
+Node: cons en search-fwd terugblik343664
+Node: zoek oefening346843
+Node: Implementatie van lijsten347646
+Node: Lijsten uitgetekend348882
+Node: Symbolen als ladekast355371
+Node: Lijst oefening357486
+Node: Yanking357852
+Node: Killring overzicht359247
+Node: kill-ring-yank-pointer361059
+Node: yank nthcdr oefeningen363567
+Node: Loops en recursie364312
+Ref: Loops en recursie-Footnote-1365508
+Node: while366029
+Node: Looping met while367461
+Node: Loop voorbeeld369399
+Node: print-elements-of-list373101
+Node: Incrementele loop375687
+Node: Incrementele loop details376319
+Node: Incrementeel voorbeeld377792
+Node: Inc voorbeeld onderdelen380368
+Node: inc voorbeeld samengesteld384508
+Node: Decrementele loop388110
+Node: Decrementeel voorbeeld389582
+Node: Dec voorbeeld onderdelen391173
+Node: Dec voorbeeld samengesteld393253
+Node: dolist dotimes395529
+Node: dolist396360
+Node: dotimes399537
+Node: Recursie401084
+Node: Robots bouwen402296
+Node: Recursive definitie onderdelen404101
+Node: Recursie met lijst406748
+Node: Recursieve driehoek functie410416
+Node: Recursief voorbeeld arg van 1 of 2411794
+Node: Recursief voorbeeld arg van 3 of 4414059
+Node: Recursie met cond417263
+Node: Recursieve patronen419707
+Node: Elke420200
+Node: Accumuleren422753
+Node: Bewaar424128
+Node: Geen uitstel426196
+Node: Zonder uitstel oplossing428921
+Ref: Zonder uitstel oplossing-Footnote-1432883
+Ref: Zonder uitstel oplossing-Footnote-2433007
+Node: Looping oefening433530
+Node: Regexp zoeken434849
+Node: sentence-end436995
+Node: re-search-forward441042
+Node: forward-sentence443697
+Node: Complete forward-sentence444480
+Node: fwd-sentence while loops448184
+Node: fwd-sentence re-search451997
+Node: forward-paragraph454101
+Node: forward-paragraph in het kort455976
+Node: fwd-para let457534
+Node: fwd-para while464465
+Node: Regexp terugblik473321
+Node: re-search oefeningen475911
+Node: Woorden tellen476684
+Node: Waarom woorden tellen477467
+Node: tel-woorden-voorbeeld478623
+Node: Ontwerp tel-woorden-voorbeeld479996
+Node: Witte ruimte bug486732
+Node: recursive-count-words496567
+Node: Tellen voorbeeld509294
+Node: Woorden in een defun509666
+Node: Verdeel en heers511437
+Node: Woorden en symbolen512748
+Node: Syntax514901
+Node: tel-woorden-in-defun518617
+Node: Enkele defuns525284
+Node: Een bestand vinden527804
+Node: lengte-lijst-bestand530564
+Node: Enkele bestanden536154
+Node: lengths-list-many-files536960
+Node: append539887
+Node: Enkele bestanden recursief540541
+Node: De data voorbereiden543627
+Node: Data in detail te tonen544742
+Node: Sorteren545737
+Node: Bestandenlijst547593
+Ref: Bestandenlijst-Footnote-1555668
+Node: Functiedefinities tellen555858
+Node: Een grafiek voorbereiden565485
+Node: Kolommen van een grafiek566859
+Node: grafiek-body-tonen581137
+Node: recursieve-grafiek-body-tonen585923
+Node: Getoonde assen588696
+Node: Lijngrafiek oefening589513
+Node: Initialisatie van Emacs589724
+Node: Standaard configuratie591291
+Ref: Standaard configuratie-Footnote-1593417
+Node: Systeem-brede init593739
+Node: defcustom596000
+Node: Een init bestand beginnen602401
+Node: Tekst en auto-fill604932
+Ref: Tekst en auto-fill-Footnote-1609253
+Ref: Tekst en auto-fill-Footnote-2609546
+Node: Mail aliasen609856
+Node: Indent Tabs Mode610815
+Node: Key bindings611814
+Node: Keymaps617070
+Node: Bestanden laden619904
+Node: Autoload623276
+Node: Eenvoudige uitbreiding626295
+Ref: Eenvoudige uitbreiding-Footnote-1628897
+Node: X11 kleuren629186
+Ref: X11 kleuren-Footnote-1631080
+Node: Diverse631248
+Node: Mode line635608
+Node: Debuggen.641457
+Node: debug642359
+Node: debug-on-entry645659
+Node: debug-on-quit650118
+Node: edebug651168
+Node: Debuggen oefeningen655392
+Node: Conclusie657206
+Node: de-de662671
+Node: Killring665513
+Node: Wat de killring doet666310
+Node: current-kill667853
+Node: Code voor current-kill668553
+Node: current-kill begrijpen671391
+Node: Body van current-kill672228
+Node: Uitwijding over fout675550
+Node: Het element vaststellen676783
+Node: yank680541
+Node: yank-pop683806
+Node: ring bestand686386
+Node: Volledige grafiek686781
+Node: Gelabeld voorbeeld687653
+Node: print-graph varlist689712
+Node: print-Y-axis691490
+Node: toon-Y-as in detail692338
+Node: Hoogte van label693186
+Node: Bereken het restant695252
+Node: Y-as element699266
+Node: Y-axis-column703166
+Node: toon-Y-as enalaatste704725
+Node: print-X-axis706737
+Node: Overeenkomsten verschillen708078
+Node: X-as merktekens708912
+Node: De gehele grafiek afdrukken716001
+Node: De finale versie717136
+Node: Test print-graph721547
+Node: Woorden in defuns grafisch weergeven723261
+Node: lambda726042
+Node: mapcar727865
+Node: Een andere bug730023
+Node: Finale afgedrukte grafiek735681
+Node: Free Software and Free Manuals736654
+Node: GNU Free Documentation License742949
+Node: Index768131
+Node: Over de auteur807312
 
 End Tag Table
 
