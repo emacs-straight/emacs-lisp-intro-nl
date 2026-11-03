@@ -8107,7 +8107,7 @@ The command \\[yank] can retrieve it from there. @dots{} "
 @end group
 
 @group
-  ;; @bullet{} Omdat volgorde belangrijk is, geeft eerst point door.
+  ;; @bullet{} Omdat volgorde belangrijk is, geef eerst point door.
   (interactive (list (point) (mark)))
   ;; @bullet{} En vertel ons wanneer we geen tekst kunnen snijden.
   ;; 'unless' is een 'if' zonder een dan-deel.
@@ -8118,7 +8118,7 @@ The command \\[yank] can retrieve it from there. @dots{} "
 @group
   ;; @bullet{} 'condition-case' verwacht drie argumenten.
   ;;    Wanneer het eerste argument nil is, zoals hier,
-  ;;    wordt information over het fout signaal niet
+  ;;    wordt informatie over het foutsignaal niet
   ;;    bewaard voor gebruik in een andere functie.
   (condition-case nil
 @end group
@@ -8139,15 +8139,15 @@ The command \\[yank] can retrieve it from there. @dots{} "
 @end group
 
 @group
-      ;;    De 'kill-append' functie plakken de nieuwe string en
+      ;;    De 'kill-append' functie plakt de nieuwe string en
       ;;    de oude aan elkaar. De 'kill-new' functie voegt tekst in als een
       ;;    nieuw item in de killring.
 @end group
 
 @group
-      ;;    'when' is een 'if' zonder een dan-deel.  De tweede 'when'
+      ;;    'when' is een 'if' zonder een anders-deel.  De tweede 'when'
       ;;    controleert opnieuw of de bestaande string bestaat;
-      ;;    daarnaast, controleert het of het vorige commando een
+      ;;    daarnaast controleert het of het vorige commando een
       ;;    andere aanroep van 'kill-region' was.  Wanneer een van beide
       ;;    condities waar zijn, dan stelt het het huidige commando in
       ;;    op 'kill-region'.
@@ -8198,7 +8198,7 @@ The command \\[yank] can retrieve it from there. @dots{} "
      (if kill-read-only-ok
          (progn (message "Read only text copied to kill ring") nil)
        (barf-if-buffer-read-only)
-       ;; Als het buffer niet read-only is, is de tekst.
+       ;; Als het buffer niet read-only is, is de tekst het.
        (signal 'text-read-only (list (current-buffer)))))))
 @end group
 @end smallexample
@@ -8513,7 +8513,7 @@ equivalent voor de Emacs killring van het windowing systeem werkt.
 
 De body van de @code{copy-region-as-kill} functie start met een
 @code{if}-clausule. Deze clausule maakt onderscheid tussen twee
-verschillende situaties: of dit commando wel of niet inmiddelijk achter een
+verschillende situaties: of dit commando wel of niet onmiddelijk achter een
 voorgaand @code{kill-region} commando is uitgevoerd. In het eerste geval
 wordt de nieuwe region aan de eerder gekopieerde tekst toegevoegd. In het
 andere geval wordt het ingevoegd aan het begin van de kill-ring als een
@@ -8654,8 +8654,8 @@ veroorzaakt?)
 
 Bekijk de conditional die een van de twee argumenten van @code{kill-new}
 is. Het gebruikt @code{concat} om de nieuwe tekst aan de @sc{car} van de
-kill ring te plakken. Of het vooraan of achteraan de tekst plakt hangt af
-van het resultaat van een @code{if} expressie:
+killring te plakken. Of het vooraan of achteraan de tekst plakt hangt af van
+het resultaat van een @code{if} expressie:
 
 @smallexample
 @group
@@ -8847,7 +8847,7 @@ wanneer twee condities voldoen: de killring bevast iets en de variabele
 @code{replace} variable is waar.
 
 @need 1250
-Wanneer de functie @code{kill-append} @code{kill-append} op waar instelt en
+Wanneer de functie @code{kill-append} @code{replace} op waar instelt en
 wanneer de killring tenminste een element bevat, wordt de @code{setcar}
 expressie uitgevoerd:
 
@@ -8897,7 +8897,7 @@ De @code{push} regel in het anders-deel stelt de nieuwe waarde van de kill
 ring in op wat het resultaat is van het aan de oude killring toevoegen van
 de gekillde string.
 
-We zijn hoe dit werkt aan de hand van een voorbeeld.
+We zien hoe dit werkt aan de hand van een voorbeeld.
 
 @need 800
 Eerst
@@ -9148,8 +9148,8 @@ see Initializing a Variable with @code{defvar}
 @cindex C, een uitweiding naar
 @cindex Uitwijding naar C
 
-De functie @code{copy-region-as-kill} function (@pxref{copy-region-as-kill,
-, @code{copy-region-as-kill}}) gebruikt de functie
+De functie @code{copy-region-as-kill} (@pxref{copy-region-as-kill, ,
+@code{copy-region-as-kill}}) gebruikt de functie
 @code{filter-buffer-substring}, die op zijn beurt de functie
 @code{delete-and-extract-region} gebruikt. Het verwijdert de inhoud van een
 region en die kun je niet terugkrijgen.
@@ -9219,7 +9219,7 @@ een null-string is) zoals in deze macro.
 
 Wanneer je argumenten specificeert, dan zet je die tussen
 aanhalingstekens. De C macro voor @code{goto-char} bevat @code{"NGoto char:
-"} op deze plek om aan te gevne dat de functie een raw prefix verwacht, in
+"} op deze plek om aan te geven dat de functie een raw prefix verwacht, in
 dit geval een numerieke lokatie in het buffer, en een prompt verschaft.
 
 @item
@@ -9301,7 +9301,7 @@ see Initializing a Variable with @code{defvar}
 @end ignore
 
 De functie @code{copy-region-as-kill} is in Emacs Lisp geschreven. Twee
-functies in het, @code{kill-append} en @code{kill-new}, kopiëren een region
+functies er in, @code{kill-append} en @code{kill-new}, kopiëren een region
 in een buffer en bewaren het in een variabele met de naam
 @code{kill-ring}. Deze sectie beschijft hoe de @code{kill-ring} met de
 speciale vorm @code{defvar} is gecreëerd en geïnitialiseerd.
@@ -9379,7 +9379,7 @@ In deze variabele definitie krijgt de variabele de initiële waarde
 terughalen met een @code{yank} commando. De documentatiestring schrijf je op
 dezelfde manier als de documentatiestring van een @code{defun}. Net als bij
 de documentatiestring van de @code{defun}, moet de eerste regel van de
-documentatie ene volledige zin zijn omdat sommige commando's, zoals
+documentatie een volledige zin zijn omdat sommige commando's, zoals
 @code{apropos} alleen de eerste documentatieregel tonen. Opvolgende regels
 moeten niet ingesprongen worden, anders zien ze er raar uit als je @kbd{C-h
 v} (@code{describe-variable}) gebruikt.
