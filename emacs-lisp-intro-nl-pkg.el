@@ -1,2 +1,2 @@
 ;; Generated package description from emacs-lisp-intro-nl.el  -*- no-byte-compile: t; lexical-binding:t -*-
-(define-package "emacs-lisp-intro-nl" "0.0.20261102.55" "ELisp intro manual in NL" 'nil :commit "9a6f509329d219ef7b659e7f15ac7e012f5b1a00" :url "https://elpa.gnu.org/packages/emacs-lisp-intro-nl.html" :authors '(("Matto Fransen" . "matto@matto.nl")) :maintainer '("Matto Fransen" . "matto@matto.nl"))
+(define-package "emacs-lisp-intro-nl" "0.0.20261107.56" "ELisp intro manual in NL" 'nil :commit "c4cb6163c793ae595b569a6db41013bcfd1383ca" :url "https://elpa.gnu.org/packages/emacs-lisp-intro-nl.html" :authors '(("Matto Fransen" . "matto@matto.nl")) :maintainer '("Matto Fransen" . "matto@matto.nl"))
