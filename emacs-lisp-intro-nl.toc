@@ -141,7 +141,7 @@
 @unnsubsubsecentry{De onderdelen van de functiedefinitie}{10001.1.4.2}{Dec voorbeeld onderdelen}{128}
 @unnsubsubsecentry{De functiedefinitie samenstellen}{10001.1.4.3}{Dec voorbeeld samengesteld}{128}
 @numsecentry{Bespaar je tijd: @code {dolist} en @code {dotimes}}{11.2}{dolist dotimes}{129}
-@unnsubsecentry{De @code {dolist} macro}{10001.2.1}{dolist}{130}
+@unnsubsecentry{De @code {dolist} macro}{10001.2.1}{dolist}{129}
 @unnsubsecentry{De @code {dotimes} macro}{10001.2.2}{dotimes}{131}
 @numsecentry{Recursie}{11.3}{Recursie}{132}
 @numsubsecentry{Robots bouwen: de metafoor uitbreiden}{11.3.1}{Robots bouwen}{132}

@@ -10014,7 +10014,7 @@ mentale middelen omgaan---kunnen soms aanzienlijke computermiddelen
 gebruiken. Emacs was ontworpen om op machines te draaien die we nu beperkt
 vinden en de standaard instellingen zijn terughoudend. Je wilt misschien de
 instelling van @code{max-lisp-eval-depth} verhogen. In mijn @file{.emacs}
-bestand heb ik het op 30 keer de standaard waarde ingesteld.}
+bestand heb ik het op 30 keer de standaard waarde ingesteld.}.
 
 @menu
 * while::                    Een stuk code zich laten herhalen.
@@ -10036,7 +10036,7 @@ echter anders.
 Wanneer in een @code{while} expressie de waarde teruggeven door het eerste
 argument te evalueren onwaar is, slaat de Lisp interpreter de rest van de
 expressie (de @dfn{body} van de expressie) over en evalueert die
-niet. Wanneer echter de waarde waar is, can evalueert de Lisp interpreter de
+niet. Wanneer echter de waarde waar is, dan evalueert de Lisp interpreter de
 body van de expressie en test opnieuw of het eerste argument van
 @code{while} waar is of onwaar. Wanneer de waarde teruggegeven door het
 eerste argument te evalueren opnieuw waar is, evalueert de Lisp interpreter
@@ -10091,7 +10091,7 @@ nooit. Een @code{while} loop die succesvol evalueert geeft nooit een waarde
 waar terug! Dit betekent dat @code{while} altijd geëvalueerd wordt voor zijn
 zij-effecten, met andere woorden, de consequenties van het evalueren van de
 expressies in de body van de @code{while} loop. Dat is logisch. Het is niet
-slechts het loopen dat gewest is, maar de consequenties van wat gebeurt
+slechts het loopen dat gewenst is, maar de consequenties van wat gebeurt
 wanneer de expressies in de loop herhaaldelijk worden geëvalueerd.
 
 @node Loop voorbeeld
@@ -10103,13 +10103,13 @@ wanneer dat niet zo is, wordt de herhaling beëindigd. Omdat dit een
 belangrijke techniek is, maken we hier een klein voorbeeld om het te
 illustreren.
 
-Een simpele manier om te testen of een lijsten elementen heeft is de lijst
-te evalueren: wanneer die geen elementen heeft is het een lege lijst en
-geeft het een lege lijst terug, @code{()}, wat een synoniem is voor
-@code{nil} of onwaar. Anderzijds geeft een lijst met elementen die elementen
-terug wanneer die wordt geëvalueerd. Omdat Emacs Lisp elke waarde ongelijk
-aan @code{nil} als waar beschouwt, en lijst die elementen teruggeeft zal als
-waar testen in een @code{while} loop.
+Een simpele manier om te testen of een lijst elementen heeft is de lijst te
+evalueren: wanneer die geen elementen heeft is het een lege lijst en geeft
+het een lege lijst terug, @code{()}, wat een synoniem is voor @code{nil} of
+onwaar. Anderzijds geeft een lijst met elementen die elementen terug wanneer
+die wordt geëvalueerd. Omdat Emacs Lisp elke waarde ongelijk aan @code{nil}
+als waar beschouwt, en lijst die elementen teruggeeft zal als waar testen in
+een @code{while} loop.
 
 @need 1200
 Als voorbeeld kun je de variabele @code{lege-lijst} op @code{nil} zetten met
@@ -10207,7 +10207,7 @@ De @code{toon-elementen-van-lijst} functie illustreert een @code{while} loop
 met een lijst.
 
 @cindex @file{*scratch*} buffer
-Deze functie benodigd meerdere regels voor de output. Wanneer je dit in een
+Deze functie benodigt meerdere regels voor de output. Wanneer je dit in een
 recente versie van GNU Emacs leest, kan je de volgende expressies in Info
 evalueren, zoals gebruikelijk.
 
@@ -10233,7 +10233,7 @@ plaats van in het echogebied. (Anders zie je iets als dit in het echogebied:
 voor een nieuwe regel staat.)
 
 @need 1500
-Je kunt de volgende expressie direct in het Info buffer evalueren en het
+Je kunt de volgende expressies direct in het Info buffer evalueren en het
 echogebied groeit om de resultaten te tonen.
 
 @smallexample
@@ -10470,7 +10470,7 @@ Na het zetten van de waarde van @code{totaal} moeten de condities worden
 ingesteld voor de volgende herhaling van de loop, als die er is. Dit gebeurt
 door de waarde van de variabele @code{rij-nummer} te verhogen, die als
 teller dient. Nadat de variabele @code{rij-nummer} is verhoogd, test de
-waar-of-onwaar-test aan het begin van de @code{while} loop of de zijn waarde
+waar-of-onwaar-test aan het begin van de @code{while} loop of zijn waarde
 nog steeds kleiner of gelijk is aan de waarde van de @code{aantal-rijen} en
 als dat zo is, telt het de nieuwe waarde van de variable @code{rij-nummer}
 bij de @code{totaal} van de vorige herhaling van de loop.
@@ -10490,7 +10490,7 @@ We hebben de onderdelen van de functiedefinitie gecreëerd, nu moeten we ze
 samenstellen.
 
 @need 800
-Ten eerste de inhoud vna de @code{while} expressie: 
+Ten eerste de inhoud van de @code{while} expressie: 
 
 @smallexample
 @group
@@ -10603,7 +10603,7 @@ een vorm die herhaaldelijk wordt geëvalueerd.
 De test is een expressie zoals @code{(> teller 0)} die @code{t} voor waar
 teruggeeft wanneer de waarde van @code{teller} groter is dan nul, en
 @code{nil} voor onwaar wanneer de waarde van @code{teller} kleiner of gelijk
-is aan nul. De expressie die het getal kleiner en kleiner makat kan een
+is aan nul. De expressie die het getal kleiner en kleiner maakt kan een
 eenvoudige @code{setq} zijn zoals @code{(setq teller (1- teller))}, waar
 @code{1-} een in Emacs Lisp ingebouwde functie die 1 van zijn argument
 aftrekt.
@@ -10688,7 +10688,7 @@ wil zeggen herhaaldelijk de volgende expressie evalueren:
 
 @noindent
 Na het optellen van @code{aantal-steentjes-in-rij} bij @code{totaal}, het
-@code{aantal-steentjes-in-rij} moet met een verminderd worden, omdat de
+@code{aantal-steentjes-in-rij} moet met één verminderd worden, omdat de
 volgende keer dat de loop herhaalt, de voorafgaande rij opgeteld wordt bij
 het totaal.
 
@@ -10699,7 +10699,8 @@ berekenen. Dit kan met de volgende expressie:
 
 @smallexample
 @group
-(setq aantal-steentjes-in-rij      (1- aantal-steentjes-in-rij))
+(setq aantal-steentjes-in-rij
+      (1- aantal-steentjes-in-rij))
 @end group
 @end smallexample
 
@@ -10791,7 +10792,7 @@ Lisp macros. (@xref{Macros, , Macros, elisp, The GNU Emacs Lisp Reference
 Manual}. )
 
 @code{dolist} werkt net als een @code{while} loop die door een lijst
-@sc{cdr}t: @code{dolist} verkort elke keer dat het loopt automatisch de
+@sc{cdr}-t: @code{dolist} verkort elke keer dat het loopt automatisch de
 lijst---neemt de @sc{cdr} van de lijst---en bindt de @sc{car} van elke
 kortere versie van de lijst aan het eerste van zijn argumenten.
 
@@ -10882,7 +10883,7 @@ de voorkant van het tweede element wordt ingevoegd, wordt de lijst
 omgedraaid.
 
 In de expressie met een @code{while} loop maakt de @w{@code{(setq list (cdr
-list))}} de lijst korter, waardoor de @code{loop} uiteindelijk stopt. Ook
+list))}} de lijst korter, waardoor de @code{while} uiteindelijk stopt. Ook
 geeft die bij elke herhaling van de loop de @code{cons} expressie een nieuw
 eerste element en maakt het een nieuwe en kortere lijst.
 
@@ -10915,7 +10916,7 @@ getallen 0, 1, 2 enzovoorts. Je moet de waarde van het tweede argument
 opgeven, het aantal keer dat de macro een loop moet doen.
 
 @need 1250
-Bijvoorbeeld et volgende bindt de getallen vanaf 0 tot, maar niet tot en
+Bijvoorbeeld het volgende bindt de getallen vanaf 0 tot, maar niet tot en
 met, het getal 3 aan het eerste argument, @var{getal}, en maakt dan een
 lijst van de drie getallen. (Het eerste getal is 0, het tweede getal is 1 en
 het derde getal is 2, dit zijn drie getallen in totaal, beginnend met 0 als
@@ -11046,7 +11047,7 @@ herhalingen naar onwaar testen.
 
 Recursieve functies kunnen veel eenvoudiger zijn dan elk ander soort
 functie. Inderdaad, wanneer mensen ze beginnen te gebruiken, lijken ze vaak
-zo mysterieus eenvoudig dat ze onbegrijpelijk zijn Net als op een fiets
+zo mysterieus eenvoudig dat ze onbegrijpelijk zijn. Net als op een fiets
 rijden, vereist het lezen van een recursieve functie een bepaalde kundigheid
 die in het begin moeilijk is maar later eenvoudig lijkt.
 
@@ -11065,7 +11066,7 @@ patroon ziet er zo uit:
 @end group
 @end smallexample
 
-Elke keer dat een recursieve functie wordt geëvalueerd worden een nieuwe
+Elke keer dat een recursieve functie wordt geëvalueerd wordt een nieuwe
 instantie er van gecreëerd en verteld wat te doen. De argumenten vertellen
 de instantie wat te doen.
 
@@ -11093,7 +11094,7 @@ getallen kan recursief geschreven worden. Hier is de code inclusief een
 expressie die de waarde van de variabele @code{dieren} naar een lijst zet.
 
 Wanneer je dit in Info in Emacs leest, kan je expressie direct in Info
-evalueren. Zo dan, dan moet je het voorbeeld kopiëren in het
+evalueren. Zo niet, dan moet je het voorbeeld kopiëren in het
 @file{*scratch*} buffer en het daar evalueren. Gebruik @kbd{C-u C-x C-e} om
 de @code{(print-elementen-recursief dieren)} te evalueren zodat de
 resultaten in het buffer getoond worden, zo niet dan probeert de Lisp
@@ -11220,7 +11221,7 @@ argument krijgt doorgegeven.
 
 Ten eerste wat gebeurt als de waarde van het argument 1 is?
 
-De functie heef een @code{if} expressie na de documentatiestring. Die test
+De functie heeft een @code{if} expressie na de documentatiestring. Die test
 of de waarde van @code{aantal} gelijk is aan 1. Wanneer dat zo is, evalueert
 Emacs het dan-deel van de @code{if} exprissie, die 1 teruggeeft als waarde
 van de functie. (Een driehoek met één rij bevat één steentje.)
@@ -11440,9 +11441,9 @@ gelijk aan 0 is, het geeft 1 terug wanneer het getal 1 is, en het evalueert
 @subsection Recursieve patronen
 @cindex Recursieve patronen
 
-Here are three common recursive patterns.  Each involves a list.  Recursion
-does not need to involve lists, but Lisp is designed for lists and this
-provides a sense of its primal capabilities.
+Hier zijn drie gebruikelijke recursieve patronen. Elke gebruikt een
+lijst. Recusie hoeft geen lijst te gebruiken, maar Lisp is ontworpen voor
+lijsten en dit geeft een idee van de oervaardigheden.
 
 @menu
 * Elke::                     Elke
@@ -11465,14 +11466,14 @@ Het basispatroon is:
 @item
 Als een lijst leeg is, geef @code{nil} terug.
 @item
-Else, act on the beginning of the list (the @sc{car} of the list)
+Anders acteer op het begin van de lijst (de @sc{car} van de lijst)
     @itemize @minus
     @item
-    through a recursive call by the function on the rest (the @sc{cdr}) of the
-list,
+    via een recursive aanroep van de functie op de rest (de @sc{cdr}) van de
+lijst,
     @item
-    and, optionally, combine the acted-on element, using @code{cons}, with the
-results of acting on the rest.
+    en, optioneel, combineer het bewerkte element met @code{cons} met het
+resultaat van het bewerken van de rest.
     @end itemize
 @end itemize
 
@@ -11508,7 +11509,7 @@ de actie uitvoert wanneer de lijst met getallen niet leeg is.)
 
 De functie @code{print-elementen-recursief} (@pxref{Recursie met lijst, ,
 Recursie met een lijst}) is een ander voorbeeld van een @code{elke} patroon,
-behalve vat in dit geval, in plaats van het samenbrengen van de resultaten
+behalve dat in dit geval, in plaats van het samenbrengen van de resultaten
 met @code{cons}, we elk output-element tonen.
 
 @need 1250
@@ -11539,12 +11540,12 @@ Het patroon voor @code{print-elementen-recursief} is:
 @item
 Wanneer de lijst leeg is, doe niets.
 @item
-But when the list has at least one element,
+Maar wanneer de lijst tenminste een element bevat,
     @itemize @minus
     @item
-    act on the beginning of the list (the @sc{car} of the list),
+    acteer op het begin van de lijst (de @sc{car} van de lijst),
     @item
-    and make a recursive call on the rest (the @sc{cdr}) of the list.
+    en maak een recursieve aanroep met de rest (de @sc{cdr}) van de lijst.
     @end itemize
 @end itemize
 
@@ -11568,13 +11569,14 @@ Het patroon is:
 @item
 Als een lijst leeg is, geef nul terug of een andere constante.
 @item
-Else, act on the beginning of the list (the @sc{car} of the list),
+Zo niet, acteer op het begin van de lijst (de @sc{car} van de lijst),
     @itemize @minus
     @item
-    and combine that acted-on element, using @code{+} or some other combining
-function, with
+    en combineer dat bewerkte element, met @code{+} of een andere combinerende
+functie met
     @item
-    a recursive call by the function on the rest (the @sc{cdr}) of the list.
+    een recursieve aanroep met de functie op de rest (de @sc{cdr}) van de
+lijst. 
     @end itemize
 @end itemize
 
@@ -11619,21 +11621,22 @@ Het patroon heeft drie elementen:
 @item
 Als een lijst leeg is, geef @code{nil} terug.
 @item
-Else, if the beginning of the list (the @sc{car} of the list) passes a test
+Anders, als het begin van de lijst (de @sc{car} van de lijst) voor een test
+slaagt
     @itemize @minus
     @item
-    act on that element and combine it, using @code{cons} with
+    acteer op dat element van de lijst en combineer het met @code{cons} met
     @item
-    a recursive call by the function on the rest (the @sc{cdr}) of the list.
+    een recursieve aanroep met de functie op de rest (de @sc{cdr}) van de
+lijst. 
     @end itemize
 @item
-Otherwise, if the beginning of the list (the @sc{car} of the list) fails the
-test
+Zoniet, als het begin van de lijst (de @sc{car} van de lijst) niet slaagt
     @itemize @minus
     @item
-    skip on that element,
+    Sla het elmeent over,
     @item
-    and, recursively call the function on the rest (the @sc{cdr}) of the list.
+    en roep recursief de functie aan op de rest (de @sc{cdr} van de lijst.
     @end itemize
 @end itemize
 

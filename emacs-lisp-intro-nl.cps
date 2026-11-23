@@ -28,7 +28,7 @@
 \entry{@code {append-to-buffer}}{55}
 \entry{@code {apply}}{196}
 \entry{@code {apropos}}{194}
-\entry{Argument als lokale variabele}{129}
+\entry{Argument als lokale variabele}{128}
 \entry{@samp {argument} gedefinieerd}{12}
 \entry{Argument, verkeerde type}{14}
 \entry{Argumenten}{12}
@@ -113,7 +113,7 @@
 \entry{@code {describe-function}}{53}
 \entry{@code {describe-function@r {, geïntroduceerd}}}{51}
 \entry{@code {directory-files}}{186}
-\entry{@code {dolist}}{130}
+\entry{@code {dolist}}{129}
 \entry{@code {dotimes}}{131}
 \entry{dotted pair}{113}
 \entry{Draai een programma}{3}

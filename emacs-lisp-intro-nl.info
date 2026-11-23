@@ -8328,7 +8328,7 @@ mensen kan hebben.
 
    Men schrijft meestal Emacs Lisp functies met ‘while’ loops en hun
 soortgenoten.  maar je kunt ook recursie gebruiken, wat een erg
-krachtige manier biedt om over problemen te denken en op te lossen(1)
+krachtige manier biedt om over problemen te denken en op te lossen(1).
 
 * Menu:
 
@@ -8362,7 +8362,7 @@ is echter anders.
    Wanneer in een ‘while’ expressie de waarde teruggeven door het eerste
 argument te evalueren onwaar is, slaat de Lisp interpreter de rest van
 de expressie (de “body” van de expressie) over en evalueert die niet.
-Wanneer echter de waarde waar is, can evalueert de Lisp interpreter de
+Wanneer echter de waarde waar is, dan evalueert de Lisp interpreter de
 body van de expressie en test opnieuw of het eerste argument van ‘while’
 waar is of onwaar.  Wanneer de waarde teruggegeven door het eerste
 argument te evalueren opnieuw waar is, evalueert de Lisp interpreter
@@ -8414,7 +8414,7 @@ ongeacht of het 1 of 100 keer heeft geloopt, of helemaal nooit.  Een
 Dit betekent dat ‘while’ altijd geëvalueerd wordt voor zijn
 zij-effecten, met andere woorden, de consequenties van het evalueren van
 de expressies in de body van de ‘while’ loop.  Dat is logisch.  Het is
-niet slechts het loopen dat gewest is, maar de consequenties van wat
+niet slechts het loopen dat gewenst is, maar de consequenties van wat
 gebeurt wanneer de expressies in de loop herhaaldelijk worden
 geëvalueerd.
 
@@ -8430,7 +8430,7 @@ maar wanneer dat niet zo is, wordt de herhaling beëindigd.  Omdat dit
 een belangrijke techniek is, maken we hier een klein voorbeeld om het te
 illustreren.
 
-   Een simpele manier om te testen of een lijsten elementen heeft is de
+   Een simpele manier om te testen of een lijst elementen heeft is de
 lijst te evalueren: wanneer die geen elementen heeft is het een lege
 lijst en geeft het een lege lijst terug, ‘()’, wat een synoniem is voor
 ‘nil’ of onwaar.  Anderzijds geeft een lijst met elementen die elementen
@@ -8513,7 +8513,7 @@ File: emacs-lisp-intro-nl.info,  Node: print-elements-of-list,  Next: Incremente
 De ‘toon-elementen-van-lijst’ functie illustreert een ‘while’ loop met
 een lijst.
 
-   Deze functie benodigd meerdere regels voor de output.  Wanneer je dit
+   Deze functie benodigt meerdere regels voor de output.  Wanneer je dit
 in een recente versie van GNU Emacs leest, kan je de volgende expressies
 in Info evalueren, zoals gebruikelijk.
 
@@ -8538,7 +8538,7 @@ plaats van in het echogebied.  (Anders zie je iets als dit in het
 echogebied: ‘^Jgazelle^J^Jgiraf^J^Jleeuw^J^Jtijger^Jnil’, waarbij elk
 ‘^J’ voor een nieuwe regel staat.)
 
-   Je kunt de volgende expressie direct in het Info buffer evalueren en
+   Je kunt de volgende expressies direct in het Info buffer evalueren en
 het echogebied groeit om de resultaten te tonen.
 
      (setq dieren '(gazelle giraf leeuw tijger))
@@ -8739,10 +8739,10 @@ steentjes in de rij en het vorige totaal.
 ingesteld voor de volgende herhaling van de loop, als die er is.  Dit
 gebeurt door de waarde van de variabele ‘rij-nummer’ te verhogen, die
 als teller dient.  Nadat de variabele ‘rij-nummer’ is verhoogd, test de
-waar-of-onwaar-test aan het begin van de ‘while’ loop of de zijn waarde
-nog steeds kleiner of gelijk is aan de waarde van de ‘aantal-rijen’ en
-als dat zo is, telt het de nieuwe waarde van de variable ‘rij-nummer’
-bij de ‘totaal’ van de vorige herhaling van de loop.
+waar-of-onwaar-test aan het begin van de ‘while’ loop of zijn waarde nog
+steeds kleiner of gelijk is aan de waarde van de ‘aantal-rijen’ en als
+dat zo is, telt het de nieuwe waarde van de variable ‘rij-nummer’ bij de
+‘totaal’ van de vorige herhaling van de loop.
 
    De in Emacs Lisp ingebouwde functie ‘1+’ telt 1 bij een getal op, dus
 de variabele ‘rij-nummer’ kan met deze expressie worden verhoogd:
@@ -8758,7 +8758,7 @@ De functiedefinitie samenstellen
 We hebben de onderdelen van de functiedefinitie gecreëerd, nu moeten we
 ze samenstellen.
 
-   Ten eerste de inhoud vna de ‘while’ expressie:
+   Ten eerste de inhoud van de ‘while’ expressie:
 
      (while (<= rij-nummer aantal-rijen)   ; waar-of-onwaar-test
        (setq totaal (+ total rij-nummer))
@@ -8848,7 +8848,7 @@ gemaakt worden door een vorm die herhaaldelijk wordt geëvalueerd.
    De test is een expressie zoals ‘(> teller 0)’ die ‘t’ voor waar
 teruggeeft wanneer de waarde van ‘teller’ groter is dan nul, en ‘nil’
 voor onwaar wanneer de waarde van ‘teller’ kleiner of gelijk is aan nul.
-De expressie die het getal kleiner en kleiner makat kan een eenvoudige
+De expressie die het getal kleiner en kleiner maakt kan een eenvoudige
 ‘setq’ zijn zoals ‘(setq teller (1- teller))’, waar ‘1-’ een in Emacs
 Lisp ingebouwde functie die 1 van zijn argument aftrekt.
 
@@ -8926,7 +8926,7 @@ tellen, dat wil zeggen herhaaldelijk de volgende expressie evalueren:
      (setq totaal (+ totaal aantal-steentjes-in-rij))
 
 Na het optellen van ‘aantal-steentjes-in-rij’ bij ‘totaal’, het
-‘aantal-steentjes-in-rij’ moet met een verminderd worden, omdat de
+‘aantal-steentjes-in-rij’ moet met één verminderd worden, omdat de
 volgende keer dat de loop herhaalt, de voorafgaande rij opgeteld wordt
 bij het totaal.
 
@@ -8935,7 +8935,8 @@ aantal steentjes in een rij, waardoor de in Emacs Lisp ingebouwde
 functie ‘1-’ kan worden gebruikt om het aantal steentjes in de
 voorafgaand rij te berekenen.  Dit kan met de volgende expressie:
 
-     (setq aantal-steentjes-in-rij      (1- aantal-steentjes-in-rij))
+     (setq aantal-steentjes-in-rij
+           (1- aantal-steentjes-in-rij))
 
    Tenslotte weten we dat ‘while’ loop de herhalende optellingen moet
 stoppen wanneer er geen steentjes in een rij zijn.  Daarom is de test
@@ -9011,7 +9012,7 @@ Naast ‘while’ bieden ‘dolist’ en ‘dotimes’ looping.  Soms zijn ze
 sneller te schrijven dan een equivalente ‘while’ loop.  Beide zijn Lisp
 macros.  (*Note Macros: (elisp)Macros.  )
 
-   ‘dolist’ werkt net als een ‘while’ loop die door een lijst CDRt:
+   ‘dolist’ werkt net als een ‘while’ loop die door een lijst CDR-t:
 ‘dolist’ verkort elke keer dat het loopt automatisch de lijst--neemt de
 CDR van de lijst--en bindt de CAR van elke kortere versie van de lijst
 aan het eerste van zijn argumenten.
@@ -9083,7 +9084,7 @@ aan de voorkant van het tweede element wordt ingevoegd, wordt de lijst
 omgedraaid.
 
    In de expressie met een ‘while’ loop maakt de
-‘(setq list (cdr list))’ de lijst korter, waardoor de ‘loop’
+‘(setq list (cdr list))’ de lijst korter, waardoor de ‘while’
 uiteindelijk stopt.  Ook geeft die bij elke herhaling van de loop de
 ‘cons’ expressie een nieuw eerste element en maakt het een nieuwe en
 kortere lijst.
@@ -9118,8 +9119,8 @@ specifiek aantal keer de loop uitvoert.
 getallen 0, 1, 2 enzovoorts.  Je moet de waarde van het tweede argument
 opgeven, het aantal keer dat de macro een loop moet doen.
 
-   Bijvoorbeeld et volgende bindt de getallen vanaf 0 tot, maar niet tot
-en met, het getal 3 aan het eerste argument, GETAL, en maakt dan een
+   Bijvoorbeeld het volgende bindt de getallen vanaf 0 tot, maar niet
+tot en met, het getal 3 aan het eerste argument, GETAL, en maakt dan een
 lijst van de drie getallen.  (Het eerste getal is 0, het tweede getal is
 1 en het derde getal is 2, dit zijn drie getallen in totaal, beginnend
 met 0 als het eerste getal.)
@@ -9239,7 +9240,7 @@ onderdelen heeft:
 
    Recursieve functies kunnen veel eenvoudiger zijn dan elk ander soort
 functie.  Inderdaad, wanneer mensen ze beginnen te gebruiken, lijken ze
-vaak zo mysterieus eenvoudig dat ze onbegrijpelijk zijn Net als op een
+vaak zo mysterieus eenvoudig dat ze onbegrijpelijk zijn.  Net als op een
 fiets rijden, vereist het lezen van een recursieve functie een bepaalde
 kundigheid die in het begin moeilijk is maar later eenvoudig lijkt.
 
@@ -9253,7 +9254,7 @@ eenvoudig patroon ziet er zo uit:
          (NAAM-VAN-RECURSIEVE-FUNCTIE
               VOLGENDE-STAP-EXPRESSIE)))
 
-   Elke keer dat een recursieve functie wordt geëvalueerd worden een
+   Elke keer dat een recursieve functie wordt geëvalueerd wordt een
 nieuwe instantie er van gecreëerd en verteld wat te doen.  De argumenten
 vertellen de instantie wat te doen.
 
@@ -9285,7 +9286,7 @@ getallen kan recursief geschreven worden.  Hier is de code inclusief een
 expressie die de waarde van de variabele ‘dieren’ naar een lijst zet.
 
    Wanneer je dit in Info in Emacs leest, kan je expressie direct in
-Info evalueren.  Zo dan, dan moet je het voorbeeld kopiëren in het
+Info evalueren.  Zo niet, dan moet je het voorbeeld kopiëren in het
 ‘*scratch*’ buffer en het daar evalueren.  Gebruik ‘C-u C-x C-e’ om de
 ‘(print-elementen-recursief dieren)’ te evalueren zodat de resultaten in
 het buffer getoond worden, zo niet dan probeert de Lisp interpreter de
@@ -9398,7 +9399,7 @@ Een argument van 1 of 2
 
 Ten eerste wat gebeurt als de waarde van het argument 1 is?
 
-   De functie heef een ‘if’ expressie na de documentatiestring.  Die
+   De functie heeft een ‘if’ expressie na de documentatiestring.  Die
 test of de waarde van ‘aantal’ gelijk is aan 1.  Wanneer dat zo is,
 evalueert Emacs het dan-deel van de ‘if’ exprissie, die 1 teruggeeft als
 waarde van de functie.  (Een driehoek met één rij bevat één steentje.)
@@ -9590,9 +9591,9 @@ File: emacs-lisp-intro-nl.info,  Node: Recursieve patronen,  Next: Geen uitstel,
 11.3.6 Recursieve patronen
 --------------------------
 
-Here are three common recursive patterns.  Each involves a list.
-Recursion does not need to involve lists, but Lisp is designed for lists
-and this provides a sense of its primal capabilities.
+Hier zijn drie gebruikelijke recursieve patronen.  Elke gebruikt een
+lijst.  Recusie hoeft geen lijst te gebruiken, maar Lisp is ontworpen
+voor lijsten en dit geeft een idee van de oervaardigheden.
 
 * Menu:
 
@@ -9612,11 +9613,11 @@ element van de lijst.
    Het basispatroon is:
 
    • Als een lijst leeg is, geef ‘nil’ terug.
-   • Else, act on the beginning of the list (the CAR of the list)
-        − through a recursive call by the function on the rest (the CDR)
-          of the list,
-        − and, optionally, combine the acted-on element, using ‘cons’,
-          with the results of acting on the rest.
+   • Anders acteer op het begin van de lijst (de CAR van de lijst)
+        − via een recursive aanroep van de functie op de rest (de CDR)
+          van de lijst,
+        − en, optioneel, combineer het bewerkte element met ‘cons’ met
+          het resultaat van het bewerken van de rest.
 
    Hier is een voorbeeld:
 
@@ -9642,7 +9643,7 @@ is.)
 
    De functie ‘print-elementen-recursief’ (*note Recursie met een lijst:
 Recursie met lijst.) is een ander voorbeeld van een ‘elke’ patroon,
-behalve vat in dit geval, in plaats van het samenbrengen van de
+behalve dat in dit geval, in plaats van het samenbrengen van de
 resultaten met ‘cons’, we elk output-element tonen.
 
    De functie ‘print-elementen-recursief’ ziet er zo uit:
@@ -9662,9 +9663,10 @@ resultaten met ‘cons’, we elk output-element tonen.
    Het patroon voor ‘print-elementen-recursief’ is:
 
    • Wanneer de lijst leeg is, doe niets.
-   • But when the list has at least one element,
-        − act on the beginning of the list (the CAR of the list),
-        − and make a recursive call on the rest (the CDR) of the list.
+   • Maar wanneer de lijst tenminste een element bevat,
+        − acteer op het begin van de lijst (de CAR van de lijst),
+        − en maak een recursieve aanroep met de rest (de CDR) van de
+          lijst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: Accumuleren,  Next: Bewaar,  Prev: Elke,  Up: Recursieve patronen
@@ -9684,11 +9686,11 @@ niet wordt gebruikt, maar een andere combinerende functie.
    Het patroon is:
 
    • Als een lijst leeg is, geef nul terug of een andere constante.
-   • Else, act on the beginning of the list (the CAR of the list),
-        − and combine that acted-on element, using ‘+’ or some other
-          combining function, with
-        − a recursive call by the function on the rest (the CDR) of the
-          list.
+   • Zo niet, acteer op het begin van de lijst (de CAR van de lijst),
+        − en combineer dat bewerkte element, met ‘+’ of een andere
+          combinerende functie met
+        − een recursieve aanroep met de functie op de rest (de CDR) van
+          de lijst.
 
    Hier is een voorbeeld:
 
@@ -9721,16 +9723,17 @@ worden overgeslagen tenzij ze aan een criterium voldoen.
    Het patroon heeft drie elementen:
 
    • Als een lijst leeg is, geef ‘nil’ terug.
-   • Else, if the beginning of the list (the CAR of the list) passes a
-     test
-        − act on that element and combine it, using ‘cons’ with
-        − a recursive call by the function on the rest (the CDR) of the
-          list.
-   • Otherwise, if the beginning of the list (the CAR of the list) fails
-     the test
-        − skip on that element,
-        − and, recursively call the function on the rest (the CDR) of
-          the list.
+   • Anders, als het begin van de lijst (de CAR van de lijst) voor een
+     test slaagt
+        − acteer op dat element van de lijst en combineer het met ‘cons’
+          met
+        − een recursieve aanroep met de functie op de rest (de CDR) van
+          de lijst.
+   • Zoniet, als het begin van de lijst (de CAR van de lijst) niet
+     slaagt
+        − Sla het elmeent over,
+        − en roep recursief de functie aan op de rest (de CDR van de
+          lijst.
 
    Hier is een voorbeeld met ‘cond’:
 
@@ -18435,149 +18438,149 @@ Node: Killring overzicht359234
 Node: kill-ring-yank-pointer361046
 Node: yank nthcdr oefeningen363555
 Node: Loops en recursie364300
-Ref: Loops en recursie-Footnote-1365496
-Node: while366017
-Node: Looping met while367449
-Node: Loop voorbeeld369387
+Ref: Loops en recursie-Footnote-1365497
+Node: while366018
+Node: Looping met while367450
+Node: Loop voorbeeld369389
 Node: print-elements-of-list373089
-Node: Incrementele loop375675
-Node: Incrementele loop details376307
-Node: Incrementeel voorbeeld377780
-Node: Inc voorbeeld onderdelen380356
-Node: inc voorbeeld samengesteld384496
-Node: Decrementele loop388098
-Node: Decrementeel voorbeeld389570
-Node: Dec voorbeeld onderdelen391161
-Node: Dec voorbeeld samengesteld393241
-Node: dolist dotimes395517
-Node: dolist396348
-Node: dotimes399525
-Node: Recursie401072
-Node: Robots bouwen402284
-Node: Recursive definitie onderdelen404089
-Node: Recursie met lijst406736
-Node: Recursieve driehoek functie410404
-Node: Recursief voorbeeld arg van 1 of 2411782
-Node: Recursief voorbeeld arg van 3 of 4414047
-Node: Recursie met cond417251
-Node: Recursieve patronen419695
-Node: Elke420188
-Node: Accumuleren422741
-Node: Bewaar424116
-Node: Geen uitstel426184
-Node: Zonder uitstel oplossing428909
-Ref: Zonder uitstel oplossing-Footnote-1432871
-Ref: Zonder uitstel oplossing-Footnote-2432995
-Node: Looping oefening433518
-Node: Regexp zoeken434837
-Node: sentence-end436983
-Node: re-search-forward441030
-Node: forward-sentence443685
-Node: Complete forward-sentence444468
-Node: fwd-sentence while loops448172
-Node: fwd-sentence re-search451985
-Node: forward-paragraph454089
-Node: forward-paragraph in het kort455964
-Node: fwd-para let457522
-Node: fwd-para while464453
-Node: Regexp terugblik473309
-Node: re-search oefeningen475899
-Node: Woorden tellen476672
-Node: Waarom woorden tellen477455
-Node: tel-woorden-voorbeeld478611
-Node: Ontwerp tel-woorden-voorbeeld479984
-Node: Witte ruimte bug486720
-Node: recursive-count-words496555
-Node: Tellen voorbeeld509282
-Node: Woorden in een defun509654
-Node: Verdeel en heers511425
-Node: Woorden en symbolen512736
-Node: Syntax514889
-Node: tel-woorden-in-defun518605
-Node: Enkele defuns525272
-Node: Een bestand vinden527792
-Node: lengte-lijst-bestand530552
-Node: Enkele bestanden536142
-Node: lengths-list-many-files536948
-Node: append539875
-Node: Enkele bestanden recursief540529
-Node: De data voorbereiden543615
-Node: Data in detail te tonen544730
-Node: Sorteren545725
-Node: Bestandenlijst547581
-Ref: Bestandenlijst-Footnote-1555656
-Node: Functiedefinities tellen555846
-Node: Een grafiek voorbereiden565473
-Node: Kolommen van een grafiek566847
-Node: grafiek-body-tonen581125
-Node: recursieve-grafiek-body-tonen585911
-Node: Getoonde assen588684
-Node: Lijngrafiek oefening589501
-Node: Initialisatie van Emacs589712
-Node: Standaard configuratie591279
-Ref: Standaard configuratie-Footnote-1593405
-Node: Systeem-brede init593727
-Node: defcustom595988
-Node: Een init bestand beginnen602389
-Node: Tekst en auto-fill604920
-Ref: Tekst en auto-fill-Footnote-1609241
-Ref: Tekst en auto-fill-Footnote-2609534
-Node: Mail aliasen609844
-Node: Indent Tabs Mode610803
-Node: Key bindings611802
-Node: Keymaps617058
-Node: Bestanden laden619892
-Node: Autoload623264
-Node: Eenvoudige uitbreiding626283
-Ref: Eenvoudige uitbreiding-Footnote-1628885
-Node: X11 kleuren629174
-Ref: X11 kleuren-Footnote-1631068
-Node: Diverse631236
-Node: Mode line635596
-Node: Debuggen.641445
-Node: debug642347
-Node: debug-on-entry645647
-Node: debug-on-quit650106
-Node: edebug651156
-Node: Debuggen oefeningen655380
-Node: Conclusie657194
-Node: de-de662659
-Node: Killring665501
-Node: Wat de killring doet666298
-Node: current-kill667841
-Node: Code voor current-kill668541
-Node: current-kill begrijpen671379
-Node: Body van current-kill672216
-Node: Uitwijding over fout675538
-Node: Het element vaststellen676771
-Node: yank680529
-Node: yank-pop683794
-Node: ring bestand686374
-Node: Volledige grafiek686769
-Node: Gelabeld voorbeeld687641
-Node: print-graph varlist689700
-Node: print-Y-axis691478
-Node: toon-Y-as in detail692326
-Node: Hoogte van label693174
-Node: Bereken het restant695240
-Node: Y-as element699254
-Node: Y-axis-column703154
-Node: toon-Y-as enalaatste704713
-Node: print-X-axis706725
-Node: Overeenkomsten verschillen708066
-Node: X-as merktekens708900
-Node: De gehele grafiek afdrukken715989
-Node: De finale versie717124
-Node: Test print-graph721535
-Node: Woorden in defuns grafisch weergeven723249
-Node: lambda726030
-Node: mapcar727853
-Node: Een andere bug730011
-Node: Finale afgedrukte grafiek735669
-Node: Free Software and Free Manuals736642
-Node: GNU Free Documentation License742937
-Node: Index768119
-Node: Over de auteur807300
+Node: Incrementele loop375676
+Node: Incrementele loop details376308
+Node: Incrementeel voorbeeld377781
+Node: Inc voorbeeld onderdelen380357
+Node: inc voorbeeld samengesteld384494
+Node: Decrementele loop388096
+Node: Decrementeel voorbeeld389568
+Node: Dec voorbeeld onderdelen391159
+Node: Dec voorbeeld samengesteld393247
+Node: dolist dotimes395523
+Node: dolist396355
+Node: dotimes399533
+Node: Recursie401081
+Node: Robots bouwen402293
+Node: Recursive definitie onderdelen404098
+Node: Recursie met lijst406746
+Node: Recursieve driehoek functie410415
+Node: Recursief voorbeeld arg van 1 of 2411793
+Node: Recursief voorbeeld arg van 3 of 4414059
+Node: Recursie met cond417263
+Node: Recursieve patronen419707
+Node: Elke420206
+Node: Accumuleren422785
+Node: Bewaar424165
+Node: Geen uitstel426255
+Node: Zonder uitstel oplossing428980
+Ref: Zonder uitstel oplossing-Footnote-1432942
+Ref: Zonder uitstel oplossing-Footnote-2433066
+Node: Looping oefening433589
+Node: Regexp zoeken434908
+Node: sentence-end437054
+Node: re-search-forward441101
+Node: forward-sentence443756
+Node: Complete forward-sentence444539
+Node: fwd-sentence while loops448243
+Node: fwd-sentence re-search452056
+Node: forward-paragraph454160
+Node: forward-paragraph in het kort456035
+Node: fwd-para let457593
+Node: fwd-para while464524
+Node: Regexp terugblik473380
+Node: re-search oefeningen475970
+Node: Woorden tellen476743
+Node: Waarom woorden tellen477526
+Node: tel-woorden-voorbeeld478682
+Node: Ontwerp tel-woorden-voorbeeld480055
+Node: Witte ruimte bug486791
+Node: recursive-count-words496626
+Node: Tellen voorbeeld509353
+Node: Woorden in een defun509725
+Node: Verdeel en heers511496
+Node: Woorden en symbolen512807
+Node: Syntax514960
+Node: tel-woorden-in-defun518676
+Node: Enkele defuns525343
+Node: Een bestand vinden527863
+Node: lengte-lijst-bestand530623
+Node: Enkele bestanden536213
+Node: lengths-list-many-files537019
+Node: append539946
+Node: Enkele bestanden recursief540600
+Node: De data voorbereiden543686
+Node: Data in detail te tonen544801
+Node: Sorteren545796
+Node: Bestandenlijst547652
+Ref: Bestandenlijst-Footnote-1555727
+Node: Functiedefinities tellen555917
+Node: Een grafiek voorbereiden565544
+Node: Kolommen van een grafiek566918
+Node: grafiek-body-tonen581196
+Node: recursieve-grafiek-body-tonen585982
+Node: Getoonde assen588755
+Node: Lijngrafiek oefening589572
+Node: Initialisatie van Emacs589783
+Node: Standaard configuratie591350
+Ref: Standaard configuratie-Footnote-1593476
+Node: Systeem-brede init593798
+Node: defcustom596059
+Node: Een init bestand beginnen602460
+Node: Tekst en auto-fill604991
+Ref: Tekst en auto-fill-Footnote-1609312
+Ref: Tekst en auto-fill-Footnote-2609605
+Node: Mail aliasen609915
+Node: Indent Tabs Mode610874
+Node: Key bindings611873
+Node: Keymaps617129
+Node: Bestanden laden619963
+Node: Autoload623335
+Node: Eenvoudige uitbreiding626354
+Ref: Eenvoudige uitbreiding-Footnote-1628956
+Node: X11 kleuren629245
+Ref: X11 kleuren-Footnote-1631139
+Node: Diverse631307
+Node: Mode line635667
+Node: Debuggen.641516
+Node: debug642418
+Node: debug-on-entry645718
+Node: debug-on-quit650177
+Node: edebug651227
+Node: Debuggen oefeningen655451
+Node: Conclusie657265
+Node: de-de662730
+Node: Killring665572
+Node: Wat de killring doet666369
+Node: current-kill667912
+Node: Code voor current-kill668612
+Node: current-kill begrijpen671450
+Node: Body van current-kill672287
+Node: Uitwijding over fout675609
+Node: Het element vaststellen676842
+Node: yank680600
+Node: yank-pop683865
+Node: ring bestand686445
+Node: Volledige grafiek686840
+Node: Gelabeld voorbeeld687712
+Node: print-graph varlist689771
+Node: print-Y-axis691549
+Node: toon-Y-as in detail692397
+Node: Hoogte van label693245
+Node: Bereken het restant695311
+Node: Y-as element699325
+Node: Y-axis-column703225
+Node: toon-Y-as enalaatste704784
+Node: print-X-axis706796
+Node: Overeenkomsten verschillen708137
+Node: X-as merktekens708971
+Node: De gehele grafiek afdrukken716060
+Node: De finale versie717195
+Node: Test print-graph721606
+Node: Woorden in defuns grafisch weergeven723320
+Node: lambda726101
+Node: mapcar727924
+Node: Een andere bug730082
+Node: Finale afgedrukte grafiek735740
+Node: Free Software and Free Manuals736713
+Node: GNU Free Documentation License743008
+Node: Index768190
+Node: Over de auteur807371
 
 End Tag Table
 

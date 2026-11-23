@@ -237,8 +237,8 @@
 \entry{print-elements-of-list}{121}{@code {print-elements-of-list}}
 \entry{*scratch* buffer}{121}{@file {*scratch*} buffer}
 \entry{<= (kleiner of gelijk)}{125}{@code {<= @r {(kleiner of gelijk)}}}
-\entry{Argument als lokale variabele}{129}{Argument als lokale variabele}
-\entry{dolist}{130}{@code {dolist}}
+\entry{Argument als lokale variabele}{128}{Argument als lokale variabele}
+\entry{dolist}{129}{@code {dolist}}
 \entry{dotimes}{131}{@code {dotimes}}
 \entry{Recursie}{132}{Recursie}
 \entry{Robots bouwen}{132}{Robots bouwen}
