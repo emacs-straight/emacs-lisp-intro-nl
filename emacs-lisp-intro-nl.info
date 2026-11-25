@@ -7981,11 +7981,11 @@ het atoom ‘boterbloem’ bevat.
    Dit klinkt gecompliceerder dan het is en is makkelijker te zien in
 een diagram:
 
-                  ___ ___      ___ ___      ___ ___
-                 |___|___|--> |___|___|--> |___|___|--> nil
-                   |            |            |
-                   |            |            |
-                    --> roos     --> viool    --> boterbloem
+ [image src="cons-1-nl.png" text="         ___ ___      ___ ___      ___ ___
+        |___|___|--> |___|___|--> |___|___|--> nil
+          |            |            |
+          |            |            |
+           --> roos     --> viool    --> boterbloem" ]
 
 Elk vakje in het diagram representeert een computergeheugen woord dat
 een Lisp object bevat, meestal in de vorm van een geheugenadres.  De
@@ -8005,13 +8005,13 @@ evaluatie van de expressie
 
 creëert een situatie zoals dit:
 
-             boeket
-              |
-              |     ___ ___      ___ ___      ___ ___
-               --> |___|___|--> |___|___|--> |___|___|--> nil
-                     |            |            |
-                     |            |            |
-                      --> roos     --> viool    --> boterbloem
+ [image src="cons-2-nl.png" text="     boeket
+      |
+      |     ___ ___      ___ ___      ___ ___
+       --> |___|___|--> |___|___|--> |___|___|--> nil
+             |            |            |
+             |            |            |
+              --> roos     --> viool    --> boterbloem" ]
 
 In dit voorbeeld bevat het symbool ‘boeket’ het adres van het eerste
 paar vakjes.
@@ -8019,13 +8019,13 @@ paar vakjes.
    Dezelfde lijst kan met een ander soort vakjes-notatie worden
 geïllustreerd, zoals dit:
 
-     boeket
+ [image src="cons-2a-nl.png" text="     boeket
       |
       |    --------------       ---------------       ----------------
       |   | car   | cdr  |     | car    | cdr  |     | car     | cdr  |
        -->| roos  |   o------->| viool  |   o------->| boter-  |  nil |
           |       |      |     |        |      |     | bloem   |      |
-           --------------       ---------------       ----------------
+           --------------       ---------------       ----------------" ]
 
    (Symbolen bestaan uit meer dan paren van adressen, maar de structuur
 van een symbool is gemaakt van adressen.  Het symbool ‘boeket’ bestaat
@@ -8046,14 +8046,14 @@ evaluatie van de volgende expressie
 
 produceert dit:
 
-           boeket         bloemen
-             |              |
-             |     ___ ___  |     ___ ___      ___ ___
-              --> |   |   |  --> |   |   |    |   |   |
-                  |___|___|----> |___|___|--> |___|___|--> nil
-                    |              |            |
-                    |              |            |
-                     --> roos       --> viool    --> boterbloem
+ [image src="cons-3-nl.png" text="     boeket         bloemen
+       |              |
+       |     ___ ___  |     ___ ___      ___ ___
+        --> |   |   |  --> |   |   |    |   |   |
+            |___|___|----> |___|___|--> |___|___|--> nil
+              |              |            |
+              |              |            |
+               --> roos       --> viool    --> boterbloem" ]
 
 De waarde van ‘bloemen’ is ‘(viool boterbloem)’, dat wil zeggen, het
 symbool ‘bloemen’ bevat het adres van het paar adresvakjes, waarvan de
@@ -8073,14 +8073,14 @@ evalueren van de expressie
 
 produceert:
 
-     boeket                        bloemen
+ [image src="cons-4-nl.png" text="     boeket                        bloemen
        |                             |
        |     ___ ___        ___ ___  |     ___ ___       ___ ___
         --> |   |   |      |   |   |  --> |   |   |     |   |   |
             |___|___|----> |___|___|----> |___|___|---->|___|___|--> nil
               |              |              |             |
               |              |              |             |
-               --> lelie      --> roos       --> viool      --> boterbloem
+               --> lelie      --> roos       --> viool      --> boterbloem" ]
 
 Dit verandert echter niet de waarde van het symbool ‘bloemen’, zoals je
 kunt zien door het volgende te evalueren:
@@ -8131,32 +8131,33 @@ zie *note Property Lists: (elisp)Property Lists.)
 
    Hier is een fantasierijke weergave:
 
-    		     Ladekast              Inhoud van de lade
-    
-    		 __   o0O0o   __
-    	       /                 \
-    	      ---------------------
-    	     |  routebeschrijving  |
-    	     |         naar        |           [wijst naar]
-                 |     symboolnaam     |              boeket
-    	     |                     |
-    	     +---------------------+
-    	     |  routebeschrijving  |
-    	     |         naar        |
-    	     |  symbooldefinitie   |              [geen]
-    	     |                     |
-    	     +---------------------+
-    	     |  routebeschrijving  |
-    	     |         naar        |           [wijst naar]
-    	     |    variabele naam   |            (roos viool boterbloom)
-    	     |                     |
-    	     +---------------------+
-    	     |  routebeschrijving  |
-    	     |         naar        |
-    	     |    property list    |           [hier niet beschreven]
-    	     |                     |
-    	     +---------------------+
-    	     |/                   \|
+ [image src="drawers-nl.png" text="		     Ladekast              Inhoud van de lade
+
+		 __   o0O0o   __
+	       /                 \\
+	      ---------------------
+	     |  routebeschrijving  |
+	     |         naar        |           [wijst naar]
+             |     symboolnaam     |              boeket
+	     |                     |
+	     +---------------------+
+	     |  routebeschrijving  |
+	     |         naar        |
+	     |  symbooldefinitie   |              [geen]
+	     |                     |
+	     +---------------------+
+	     |  routebeschrijving  |
+	     |         naar        |           [wijst naar]
+	     |    variabele naam   |            (roos viool boterbloom)
+	     |                     |
+	     +---------------------+
+	     |  routebeschrijving  |
+	     |         naar        |
+	     |    property list    |           [hier niet beschreven]
+	     |                     |
+	     +---------------------+
+	     |/                   \\|
+" ]
 
 
 File: emacs-lisp-intro-nl.info,  Node: Lijst oefening,  Prev: Symbolen als ladekast,  Up: Implementatie van lijsten
@@ -8264,18 +8265,18 @@ wijzen.  De woorden "een ander stuk tekst" en "nog meer tekst" worden
 niet gedupliceerd.  In plaats daarvan wijzen de twee Lisp variabelen
 naar hetzelfde stuk tekst.  Hier is een diagram:
 
-       kill-ring     kill-ring-yank-pointer
-           |               |
-           |      ___ ___  |     ___ ___      ___ ___
-            ---> |   |   |  --> |   |   |    |   |   |
-                 |___|___|----> |___|___|--> |___|___|--> nil
-                   |              |            |
-                   |              |            |
-                   |              |             --> "nog meer tekst"
-                   |              |
-                   |               --> "een ander stuk tekst"
-                   |
-                    --> "wat tekst"
+ [image src="cons-5-nl.png" text="     kill-ring     kill-ring-yank-pointer
+         |               |
+         |      ___ ___  |     ___ ___      ___ ___
+          ---> |   |   |  --> |   |   |    |   |   |
+               |___|___|----> |___|___|--> |___|___|--> nil
+                 |              |            |
+                 |              |            |
+                 |              |             --> \"nog meer tekst\"
+                 |              |
+                 |               --> \"een ander stuk tekst\"
+                 |
+                  --> \"wat tekst\"" ]
 
    Zowel de variabele ‘kill-ring’ als de variabele
 ‘kill-ring-yank-pointer’ zijn pointers.  Maar de killring zelf wordt
@@ -10047,10 +10048,10 @@ na een afkorting.  Meer informatie is dus benodigd.
 
    Volgens de conventie typ je in het Engels twee spaties achter elke
 zin, maar alleen één spatie achter een punt, vraagteken of uitroepteken
-in de body van een zin.  Een een punt, vraagteken of uitroepteken
-gevolgd door twee spaties is daarom een goede indicator van het einde
-van een zin.  In een bestand echter, kan een tab of het einde van regel
-in plaats van de twee spaties staan.  Dit betekent dat de reguliere
+in de body van een zin.  Een punt, vraagteken of uitroepteken gevolgd
+door twee spaties is daarom een goede indicator van het einde van een
+zin.  In een bestand echter, kan een tab of het einde van regel in
+plaats van de twee spaties staan.  Dit betekent dat de reguliere
 expressie deze drie alternatieven moet bevatten.
 
    Deze groep van alternatieven zijn er zo uit:
@@ -10064,9 +10065,9 @@ tab en de twee spaties zijn ingevoegd in de expressie.  Beide zijn
 ingevoegd door de betreffende letters in de expressie op te nemen.
 
    Twee backslashes, ‘\\’ zijn vereist voor de haakjes en het vertikale
-streepje (vertical bar): de eerste backslash quote hde volgende
-backslash in Emacs, en de tweede geeft aan dat het volgende karakter,
-het haakje of het vertikale streepje, speciaal is.
+streepje (vertical bar): de eerste backslash quote de volgende backslash
+in Emacs, en de tweede geeft aan dat het volgende karakter, het haakje
+of het vertikale streepje, speciaal is.
 
    Een zin kan ook door een of meer carriage returns gevolgd worden,
 zoals dit:
@@ -10107,11 +10108,11 @@ het verschil tussen een waarde en een functie in Emacs Lisp.)  De
 functie geeft de waarde terug die geconstrueerd is met de variabelen
 ‘sentence-end-base’, ‘sentence-end-double-space’,
 ‘sentence-end-without-period’, and ‘sentence-end-without-space’.  De
-kritieke variabele ‘sentence-end-base’.  De globale waarde daarvan lijkt
-op die hierboven beschreven maar bevat twee extra aanhalingstekens.
-Deze zijn op verschillende manieren gebogen.  Wanneer de variabele
-‘sentence-end-without-period’ waar is, dan vertelt dat Emacs dat een zin
-mag eindigen zonder punt, zoals Taise tekst.
+kritieke variabele is ‘sentence-end-base’.  De globale waarde daarvan
+lijkt op die hierboven beschreven maar bevat twee extra
+aanhalingstekens.  Deze zijn op verschillende manieren gebogen.  Wanneer
+de variabele ‘sentence-end-without-period’ waar is, dan vertelt dat
+Emacs dat een zin mag eindigen zonder punt, zoals in Taise tekst.
 
 
 File: emacs-lisp-intro-nl.info,  Node: re-search-forward,  Next: forward-sentence,  Prev: sentence-end,  Up: Regexp zoeken
@@ -10304,7 +10305,7 @@ elke keer als de loop herhaalt 1 aftrekt van de waarde van de teller.
 
    Wanneer geen prefix argument aan ‘forward-sentence’ wordt
 doorgegeven, wat de meest voorkomende manier is om dit commando te
-gebruiken, de ‘while’ loop draait maar een keer, omdat de waarde van
+gebruiken, draait de ‘while’ loop maar een keer, omdat de waarde van
 ‘arg’ dan 1 is.
 
    De body van de ‘while’ loop bestaat uit een ‘let’ expressie, die de
@@ -10398,7 +10399,7 @@ volledig bewegen, dan komt de functie ‘constrain-to-field’ in het spel.)
    Reguliere expressie zoekopdrachten zijn uiterst nuttig en het patroon
 geïllustreerd met ‘re-search-forward’ waarin de zoekopdrachten de test
 is van een ‘if’ expressie is handig.  Je ziet of schrijft vaak code dat
-die patroon incorporeert.
+dit patroon incorporeert.
 
 
 File: emacs-lisp-intro-nl.info,  Node: forward-paragraph,  Next: Regexp terugblik,  Prev: forward-sentence,  Up: Regexp zoeken
@@ -10935,7 +10936,7 @@ Woorden tellen
 ==============
 
 De standaard Emacs distributie bevat functies om het aantal regels en
-het het aantal woorden in een region te tellen.
+het aantal woorden in een region te tellen.
 
    Sommige soorten schrijfwerk vragen je woorden te tellen.  Zoals
 wanneer je een essay schrijft kan dat gelimiteerd zijn op 800 woorden.
@@ -11007,7 +11008,7 @@ woorden te tellen, noemen we onze implantatie ‘tel-woorden-voorbeeld’.
    De functie telt woorden in een region.  Dat betekent dat de
 arugmentlist symbolen moet bevatten die gebonden worden aan de twee
 posities, het begin en einde van de region.  Deze twee posities noemen
-we respectievelijk ‘begin’ en ‘end’.  De eerste regel van de
+we respectievelijk ‘beginning’ en ‘end’.  De eerste regel van de
 documentatie met een enkele zin zijn, omdat dit alles wat als
 documentatie getoond wordt door een commando zoals ‘apropos’.  De
 interactieve expressie heeft de vorm ‘(interactive "r")’, omdat die
@@ -11202,12 +11203,13 @@ de region één woord bevat!
 
    Voor de derde test, kopieer de voorbeeldregel aan het eind van het
 ‘*scratch*’ buffer en typ dan meerder spaties aan het einde van de
-regel.  Plaats mar direct achter het woord ‘drie’ en point aan het einde
-van de regel.  (Het einde van de regel is het einde van het buffer.)
-Typ ‘C-c =’ (of ‘M-x tel-woorden-voorbeeld’) net als je eerder deed.
-Opnieuw zou Emacs je moeten zeggen dat de region geen woorden heeft,
-omdat het bestaat uit witte ruimte aan het einde van de regel.  In
-plaats daarvan toont Emacs een foutboodschap die ‘Search failed’ zegt.
+regel.  Plaats mark direct achter het woord ‘drie’ en point aan het
+einde van de regel.  (Het einde van de regel is het einde van het
+buffer.)  Typ ‘C-c =’ (of ‘M-x tel-woorden-voorbeeld’) net als je eerder
+deed.  Opnieuw zou Emacs je moeten zeggen dat de region geen woorden
+heeft, omdat het bestaat uit witte ruimte aan het einde van de regel.
+In plaats daarvan toont Emacs een foutboodschap die ‘Search failed’
+zegt.
 
    De twee bugs stammen van hetzelfde probleem.
 
@@ -11626,7 +11628,7 @@ De omliggende functie:
      Woorden worden gedefinieerd als minstens een woord-vormend
      karakter gevolgd door minstens een karakter dat
      niet woord-vormend is. De syntax table van het buffer
-     bepaald welke karakters dat zijn."
+     bepaalt welke karakters dat zijn."
        (interactive "r")
        (message "Tel woorden in region ... ")
        (save-excursion
@@ -11660,7 +11662,7 @@ File: emacs-lisp-intro-nl.info,  Node: Woorden in een defun,  Next: Een grafiek 
 Ons volgende project is het tellen van het aantal woorden in een
 functiedefinitie.  Het is duidelijk dat dit kan met een variant van
 ‘tel-woorden-voorbeeld’.  *Note Tellen via repetitie en regexps: Woorden
-tellen.  Wanneer we de woorden gaan tellen in éénn definitie, is het
+tellen.  Wanneer we de woorden gaan tellen in één definitie, is het
 makkelijk genoeg om de definitie met het commando ‘C-M-h’ (‘mark-defun’)
 te markeren en dan ‘tel-woorden-voorbeeld’ aan te roepen.
 
@@ -11772,7 +11774,7 @@ File: emacs-lisp-intro-nl.info,  Node: Syntax,  Next: tel-woorden-in-defun,  Pre
 ====================================
 
 Emacs behandelt verschillende karakters als behorend bij verschillende
-“syntax categorieën”.  De reguliere expressie ‘\\w+’ bijvoorbeeld is ene
+“syntax categorieën”.  De reguliere expressie ‘\\w+’ bijvoorbeeld is een
 patroon dat een of meer woord-vormende karakters specificeert.
 Woord-vormende karakters zijn leden van een syntax categorie.  Andere
 syntax categorieën bevatten de klasse van leestekens, zoals de punt en
@@ -11810,12 +11812,12 @@ karakter matchen dat een woord of symbool vormt.  Dus:
 
 De ‘\\(’ is het eerste van de groeperende constructie die de ‘\\w’ en de
 ‘\\s_’ als alternatieven bevat, geschieden door de ‘\\|’.  De ‘\\w’
-matcht elk woord-vormend karakter en e ‘\\s_’ matcht elke karakter dat
+matcht elk woord-vormend karakter en de ‘\\s_’ matcht elke karakter dat
 onderdeel is van een symboolnaam maar geen woord-vormend karakter is.
 De ‘+’ die op de groep volgt geeft aan dat het woord- of symboolvormend
 karakter tenminste eenmaal moet worden gematcht.x
 
-   Het tweede van de regexp is echter moeilijker te maken.  Wat we
+   Het tweede deel van de regexp is echter moeilijker te maken.  Wat we
 willen is het eerste deel op te volgen met optioneel een of meer
 karakters die geen woord of symbool vormen.  In eerste instantie dacht
 ik dat ik dit met het volgende kon doen:
@@ -11832,7 +11834,7 @@ probeerde een patroon dat een of meer spaties matcht achter het patroon
 voor een of meer woord- of symboolvormende karakters te plaatsten.  Dit
 mislukte ook.  Woorden en symbolen zijn vaak gescheiden door witte
 ruimte, maar in de code mogen haakjes op symbolen volgen en leestekens
-op woorden.  Daarom maakte uiteindelijk ene patroon waarin woord- of
+op woorden.  Daarom maakte ik uiteindelijk een patroon waarin woord- of
 symboolvormende karakters worden gevolgd door optionele karakters die
 geen witten ruimte zijn en dan optioneel gevold door witte ruimte.
 
@@ -11886,15 +11888,15 @@ bereikt.
    De functie ‘beginning-of-defun’ zoekt achterwaarts naar een
 openingsscheidingsteken zoals een ‘(’ aan het begin van de regel en
 verplaatst point naar die positie of anders naar de begrenzing van de
-zoekopdracht.  In de praktijk betekent dit dat ‘beginning-of-defun’ pint
-naar het begin van een buitenliggende of voorgaande functiedefinitie
-verplaatst, of anders naar het begin van het buffer.  De kunnen
-‘beginning-of-defun’ gebruiken om de point daar neer te zetten waar wij
-willen beginnen.
+zoekopdracht.  In de praktijk betekent dit dat ‘beginning-of-defun’
+point naar het begin van een buitenliggende of voorgaande
+functiedefinitie verplaatst, of anders naar het begin van het buffer.
+De kunnen ‘beginning-of-defun’ gebruiken om de point daar neer te zetten
+waar wij willen beginnen.
 
    De ‘while’ loop vereist een teller om het aantal getelde woorden of
 symbolen bij te houden.  Een ‘let’ expressie kan worden gebruikt om een
-lokale variabele voor dit doel te maken en te binnen aan een initiële
+lokale variabele voor dit doel te maken en te binden aan een initiële
 waarde van nul.
 
    De functie ‘end-of-defun’ werkt net als de ‘beginning-of-defun’
@@ -11984,9 +11986,9 @@ Laten we ‘C-c =’ hergebruiken als een handige keybinding:
 
    Nu kunnen we ‘tel-woorden-defun’ uitproberen: installeer zowel
 ‘tel-woorden-in-defun’ als ‘tel-woorden-defun’ en zet de keybinding.
-Kopieer dat het volgende naar een Emacs Lisp buffer (zoals bijvoorbeeld
-‘*scratch*’), plaats de cursor in de functie en gebruik het ‘C-c =’
-commando.
+Kopieer vervolgens het volgende naar een Emacs Lisp buffer (zoals
+bijvoorbeeld ‘*scratch*’), plaats de cursor in de functie en gebruik het
+‘C-c =’ commando.
 
      (defun vermenigvuldig-met-zeven (getal)
        "Vermenigvuldig GETAL met zeven."
@@ -12076,7 +12078,7 @@ geschikt voor het lengte probleem.
 toe dat je optionele wildcards specificeert om meerder files te
 bezoeken.  Dat maakt de definitie meer complex en dat bespreken we hier
 niet, omdat het niet relevant is.  Je kunt de broncode zien met hetzij
-‘M-.’ (‘xref-find-definitions’) or ‘C-h f’ (‘describe-function’).)
+‘M-.’ (‘xref-find-definitions’) of ‘C-h f’ (‘describe-function’).)
 
    De definitie die ik laat zien bevat een korte maar complete
 documentatie en een interactieve specificatie die je naar een
@@ -12116,10 +12118,10 @@ File: emacs-lisp-intro-nl.info,  Node: lengte-lijst-bestand,  Next: Enkele besta
 14.6 ‘lengte-lijst-bestand’ in detail
 =====================================
 
-De kern van de functie ‘lengte-lijst-bestand’ is een ‘while’ loop dat
+De kern van de functie ‘lengte-lijst-bestand’ is een ‘while’ loop die
 een functie bevat om point defun voor defun voorwaarts te verplaatsen en
 een functie om het aantal woorden en symbolen in elke defun te tellen.
-Deze kern moet worden omgeven door functie die verschillende andere
+Deze kern moet worden omgeven door functies die verschillende andere
 taken doen, waaronder het bestand vinden en zorgen dat point start vanaf
 het begin van het bestand.  De functiedefinitie ziet er zo uit:
 
@@ -12162,8 +12164,8 @@ Tegelijkertijd maakt Emacs ‘lengte-lijst’ als lokale variabele.
    In de volgende regel maakt Emacs het buffer read-only.  In het ideale
 geval is deze regel niet nodig.  Geen van de functies om woorden en
 symbolen te tellen zou het buffer moeten veranderen.  En daarnaast wordt
-het buffer niet gesaved zelf wanneer het is gewijzigd.  Deze regel is
-geheel het gevolg van de een grote, misschien overdreven,
+het buffer niet gesaved, zelfs niet wanneer het is gewijzigd.  Deze
+regel is geheel het gevolg van de een grote, misschien overdreven,
 voorzichtigheid.  De reden voor deze voorzichtigheid is dat de functie
 en de functies die het aanroept werken op de broncode van Emacs en het
 is ongemakkelijk wanneer die per ongeluk worden gewijzigd.  Het spreekt
@@ -12452,7 +12454,7 @@ De data om in detail te tonen
 -----------------------------
 
 Gebaseerd op wat we eerder gedaan hebben, kunnen we makkelijk voorzien
-dat het niet al te moeilijk moet zijn een functie te schrijven die CRD-t
+dat het niet al te moeilijk moet zijn een functie te schrijven die CDR-t
 de lengte-lijst afloopt, vaststelt in welke lengte-range die in is, en
 een teller verhoogt voor die range.
 
@@ -12513,7 +12515,7 @@ produceert:
 
      (29 32 38 71 82 90 95 178 180 218 263 283 321 324 480)
 
-(Merk op dat in dit voorbeeld het eerste argument van ‘sort’ is niet
+(Merk op dat in dit voorbeeld het eerste argument van ‘sort’ niet is
 gequote omdat de expressie moet worden geëvalueerd om de lijst te
 produceren die wordt doorgegeven aan ‘sort’.)
 
@@ -12552,7 +12554,7 @@ subdirectories, maar ook hun attributen.
 
    Om ons doel opnieuw te formuleren: maak een functie die ons in staat
 stelt ‘recursieve-lengte-lijst-veel-bestanden’ te voeden met de
-bestandsnamen als een lijst die er zo iut ziet (maar met meer
+bestandsnamen als een lijst die er zo uit ziet (maar met meer
 elementen):
 
      ("./lisp/macros.el"
@@ -12562,7 +12564,7 @@ elementen):
    De functie ‘directory-files-and-atributes’ geeft een lijst van
 lijsten terug.  Elk van deze lijsten in de hoofdlijst bestaat uit 13
 elementen.  Het eerste element is een string die de bestandsnaam
-bevat--welke, in GNU/Linux, een “dicectory file” kan zijn, met andere
+bevat--welke, in GNU/Linux, een “directory file” kan zijn, met andere
 woorden een bestand met de speciale attributen van een directory.  Het
 tweede element van de lijst is ‘t’ voor een directory, een string voor
 een symbolische link (de string is de naam waar naartoe gelinkt), or
@@ -12601,7 +12603,7 @@ begin van de listing ziet er zo uit:
    (Zie de documentatie van ‘file-attributes’ om meer te leren over de
 verschillende atributen.  Hou er rekening mee dat de functie
 ‘file-attributes’ de bestandsnaam niet vermeldt, zodat het eerste
-element is het tweede element in ‘directory-files-and-atributes’.)
+element het tweede element is in ‘directory-files-and-atributes’.)
 
    Wij willen dat onze nieuwe functie,
 ‘bestanden-in-onderiggende-directory’ de ‘.el’ bestanden vermeldt in de
@@ -12722,11 +12724,11 @@ woorden en symbolen bevatten, hoeveel tussen de 20 en 29 woorden en
 symbolen, enzovoorts.
 
    Met een gesorteerde lijst met getallen is dit makkelijk.  Tel hoeveel
-elementen in de lijst kleiner dan 10 zijn, dan na voorbij de net getelde
-getallen te gaan, tel hoeveel er kleiner dan 20 zijn, dan na voorbij de
-net getelde getallen te gaan, hoeveel kleiner zijn dan 30, enzovoorts.
-Elk van de getallen 10, 20, 30, 40 en dergelijke is een groter dan de
-hoogste van die range.  We kunnen de lijst met zulke getallen de
+elementen in de lijst kleiner dan 10 zijn, ga dan voorbij de net getelde
+getallen, tel hoeveel er kleiner dan 20 zijn, ga dan voorbij de net
+getelde getallen, hoeveel kleiner zijn dan 30, enzovoorts.  Elk van de
+getallen 10, 20, 30, 40 en dergelijke is een groter dan de hoogste van
+die range.  We kunnen de lijst met zulke getallen de
 ‘hoogste-van-ranges’ lijst noemen.
 
    Als we dat willen kunnen we zo'n lijst automatisch genereren, maar
@@ -12748,12 +12750,12 @@ getallen van de definities binnen een range.  Deze functie moet
 ‘gesorteerde-lengtes’ en ‘hoogste-van-ranges’ als argument gebruiken.
 
    De functie ‘defuns-per-range’ moet twee dingen steeds opnieuw doen:
-het moet het nummer van definities binnen een range tellen,
-gespecificeerd door de huidge ‘hoogste-van-ranges’ waarde en het moet
-naar de eerstvolgende hogere waarde n de ‘hoogste-van-ranges’ lijst
-opschuiven nadat het de definities in de huidige range geteld heeft.
-Omdat deze acties repeterend zijn, kunnen we een ‘while’ loop voor de
-taak gebruiken.  Een loop telt het aantal definities in de range
+het moet het aantal definities binnen een range tellen, gespecificeerd
+door de huidge ‘hoogste-van-ranges’ waarde en het moet naar de
+eerstvolgende hogere waarde n de ‘hoogste-van-ranges’ lijst opschuiven
+nadat het de definities in de huidige range geteld heeft.  Omdat deze
+acties repeterend zijn, kunnen we een ‘while’ loop voor de taak
+gebruiken.  Een loop telt het aantal definities in de range
 gespecificeerd door de huidge hoogste-van-ranges waarde, en de andere
 loop selecteert elk van de hoogste-van-ranges op hun beurt.
 
@@ -18431,156 +18433,156 @@ Node: cons en search-fwd terugblik343650
 Node: zoek oefening346829
 Node: Implementatie van lijsten347632
 Node: Lijsten uitgetekend348868
-Node: Symbolen als ladekast355357
-Node: Lijst oefening357472
-Node: Yanking357838
-Node: Killring overzicht359234
-Node: kill-ring-yank-pointer361046
-Node: yank nthcdr oefeningen363555
-Node: Loops en recursie364300
-Ref: Loops en recursie-Footnote-1365497
-Node: while366018
-Node: Looping met while367450
-Node: Loop voorbeeld369389
-Node: print-elements-of-list373089
-Node: Incrementele loop375676
-Node: Incrementele loop details376308
-Node: Incrementeel voorbeeld377781
-Node: Inc voorbeeld onderdelen380357
-Node: inc voorbeeld samengesteld384494
-Node: Decrementele loop388096
-Node: Decrementeel voorbeeld389568
-Node: Dec voorbeeld onderdelen391159
-Node: Dec voorbeeld samengesteld393247
-Node: dolist dotimes395523
-Node: dolist396355
-Node: dotimes399533
-Node: Recursie401081
-Node: Robots bouwen402293
-Node: Recursive definitie onderdelen404098
-Node: Recursie met lijst406746
-Node: Recursieve driehoek functie410415
-Node: Recursief voorbeeld arg van 1 of 2411793
-Node: Recursief voorbeeld arg van 3 of 4414059
-Node: Recursie met cond417263
-Node: Recursieve patronen419707
-Node: Elke420206
-Node: Accumuleren422785
-Node: Bewaar424165
-Node: Geen uitstel426255
-Node: Zonder uitstel oplossing428980
-Ref: Zonder uitstel oplossing-Footnote-1432942
-Ref: Zonder uitstel oplossing-Footnote-2433066
-Node: Looping oefening433589
-Node: Regexp zoeken434908
-Node: sentence-end437054
-Node: re-search-forward441101
-Node: forward-sentence443756
-Node: Complete forward-sentence444539
-Node: fwd-sentence while loops448243
-Node: fwd-sentence re-search452056
-Node: forward-paragraph454160
-Node: forward-paragraph in het kort456035
-Node: fwd-para let457593
-Node: fwd-para while464524
-Node: Regexp terugblik473380
-Node: re-search oefeningen475970
-Node: Woorden tellen476743
-Node: Waarom woorden tellen477526
-Node: tel-woorden-voorbeeld478682
-Node: Ontwerp tel-woorden-voorbeeld480055
-Node: Witte ruimte bug486791
-Node: recursive-count-words496626
-Node: Tellen voorbeeld509353
-Node: Woorden in een defun509725
-Node: Verdeel en heers511496
-Node: Woorden en symbolen512807
-Node: Syntax514960
-Node: tel-woorden-in-defun518676
-Node: Enkele defuns525343
-Node: Een bestand vinden527863
-Node: lengte-lijst-bestand530623
-Node: Enkele bestanden536213
-Node: lengths-list-many-files537019
-Node: append539946
-Node: Enkele bestanden recursief540600
-Node: De data voorbereiden543686
-Node: Data in detail te tonen544801
-Node: Sorteren545796
-Node: Bestandenlijst547652
-Ref: Bestandenlijst-Footnote-1555727
-Node: Functiedefinities tellen555917
-Node: Een grafiek voorbereiden565544
-Node: Kolommen van een grafiek566918
-Node: grafiek-body-tonen581196
-Node: recursieve-grafiek-body-tonen585982
-Node: Getoonde assen588755
-Node: Lijngrafiek oefening589572
-Node: Initialisatie van Emacs589783
-Node: Standaard configuratie591350
-Ref: Standaard configuratie-Footnote-1593476
-Node: Systeem-brede init593798
-Node: defcustom596059
-Node: Een init bestand beginnen602460
-Node: Tekst en auto-fill604991
-Ref: Tekst en auto-fill-Footnote-1609312
-Ref: Tekst en auto-fill-Footnote-2609605
-Node: Mail aliasen609915
-Node: Indent Tabs Mode610874
-Node: Key bindings611873
-Node: Keymaps617129
-Node: Bestanden laden619963
-Node: Autoload623335
-Node: Eenvoudige uitbreiding626354
-Ref: Eenvoudige uitbreiding-Footnote-1628956
-Node: X11 kleuren629245
-Ref: X11 kleuren-Footnote-1631139
-Node: Diverse631307
-Node: Mode line635667
-Node: Debuggen.641516
-Node: debug642418
-Node: debug-on-entry645718
-Node: debug-on-quit650177
-Node: edebug651227
-Node: Debuggen oefeningen655451
-Node: Conclusie657265
-Node: de-de662730
-Node: Killring665572
-Node: Wat de killring doet666369
-Node: current-kill667912
-Node: Code voor current-kill668612
-Node: current-kill begrijpen671450
-Node: Body van current-kill672287
-Node: Uitwijding over fout675609
-Node: Het element vaststellen676842
-Node: yank680600
-Node: yank-pop683865
-Node: ring bestand686445
-Node: Volledige grafiek686840
-Node: Gelabeld voorbeeld687712
-Node: print-graph varlist689771
-Node: print-Y-axis691549
-Node: toon-Y-as in detail692397
-Node: Hoogte van label693245
-Node: Bereken het restant695311
-Node: Y-as element699325
-Node: Y-axis-column703225
-Node: toon-Y-as enalaatste704784
-Node: print-X-axis706796
-Node: Overeenkomsten verschillen708137
-Node: X-as merktekens708971
-Node: De gehele grafiek afdrukken716060
-Node: De finale versie717195
-Node: Test print-graph721606
-Node: Woorden in defuns grafisch weergeven723320
-Node: lambda726101
-Node: mapcar727924
-Node: Een andere bug730082
-Node: Finale afgedrukte grafiek735740
-Node: Free Software and Free Manuals736713
-Node: GNU Free Documentation License743008
-Node: Index768190
-Node: Over de auteur807371
+Node: Symbolen als ladekast355404
+Node: Lijst oefening357458
+Node: Yanking357824
+Node: Killring overzicht359220
+Node: kill-ring-yank-pointer361032
+Node: yank nthcdr oefeningen363562
+Node: Loops en recursie364307
+Ref: Loops en recursie-Footnote-1365504
+Node: while366025
+Node: Looping met while367457
+Node: Loop voorbeeld369396
+Node: print-elements-of-list373096
+Node: Incrementele loop375683
+Node: Incrementele loop details376315
+Node: Incrementeel voorbeeld377788
+Node: Inc voorbeeld onderdelen380364
+Node: inc voorbeeld samengesteld384501
+Node: Decrementele loop388103
+Node: Decrementeel voorbeeld389575
+Node: Dec voorbeeld onderdelen391166
+Node: Dec voorbeeld samengesteld393254
+Node: dolist dotimes395530
+Node: dolist396362
+Node: dotimes399540
+Node: Recursie401088
+Node: Robots bouwen402300
+Node: Recursive definitie onderdelen404105
+Node: Recursie met lijst406753
+Node: Recursieve driehoek functie410422
+Node: Recursief voorbeeld arg van 1 of 2411800
+Node: Recursief voorbeeld arg van 3 of 4414066
+Node: Recursie met cond417270
+Node: Recursieve patronen419714
+Node: Elke420213
+Node: Accumuleren422792
+Node: Bewaar424172
+Node: Geen uitstel426262
+Node: Zonder uitstel oplossing428987
+Ref: Zonder uitstel oplossing-Footnote-1432949
+Ref: Zonder uitstel oplossing-Footnote-2433073
+Node: Looping oefening433596
+Node: Regexp zoeken434915
+Node: sentence-end437061
+Node: re-search-forward441110
+Node: forward-sentence443765
+Node: Complete forward-sentence444548
+Node: fwd-sentence while loops448252
+Node: fwd-sentence re-search452065
+Node: forward-paragraph454169
+Node: forward-paragraph in het kort456044
+Node: fwd-para let457602
+Node: fwd-para while464533
+Node: Regexp terugblik473389
+Node: re-search oefeningen475979
+Node: Woorden tellen476752
+Node: Waarom woorden tellen477535
+Node: tel-woorden-voorbeeld478687
+Node: Ontwerp tel-woorden-voorbeeld480060
+Node: Witte ruimte bug486800
+Node: recursive-count-words496637
+Node: Tellen voorbeeld509364
+Node: Woorden in een defun509736
+Node: Verdeel en heers511506
+Node: Woorden en symbolen512817
+Node: Syntax514970
+Node: tel-woorden-in-defun518695
+Node: Enkele defuns525369
+Node: Een bestand vinden527889
+Node: lengte-lijst-bestand530649
+Node: Enkele bestanden536247
+Node: lengths-list-many-files537053
+Node: append539980
+Node: Enkele bestanden recursief540634
+Node: De data voorbereiden543720
+Node: Data in detail te tonen544835
+Node: Sorteren545830
+Node: Bestandenlijst547686
+Ref: Bestandenlijst-Footnote-1555761
+Node: Functiedefinities tellen555951
+Node: Een grafiek voorbereiden565560
+Node: Kolommen van een grafiek566934
+Node: grafiek-body-tonen581212
+Node: recursieve-grafiek-body-tonen585998
+Node: Getoonde assen588771
+Node: Lijngrafiek oefening589588
+Node: Initialisatie van Emacs589799
+Node: Standaard configuratie591366
+Ref: Standaard configuratie-Footnote-1593492
+Node: Systeem-brede init593814
+Node: defcustom596075
+Node: Een init bestand beginnen602476
+Node: Tekst en auto-fill605007
+Ref: Tekst en auto-fill-Footnote-1609328
+Ref: Tekst en auto-fill-Footnote-2609621
+Node: Mail aliasen609931
+Node: Indent Tabs Mode610890
+Node: Key bindings611889
+Node: Keymaps617145
+Node: Bestanden laden619979
+Node: Autoload623351
+Node: Eenvoudige uitbreiding626370
+Ref: Eenvoudige uitbreiding-Footnote-1628972
+Node: X11 kleuren629261
+Ref: X11 kleuren-Footnote-1631155
+Node: Diverse631323
+Node: Mode line635683
+Node: Debuggen.641532
+Node: debug642434
+Node: debug-on-entry645734
+Node: debug-on-quit650193
+Node: edebug651243
+Node: Debuggen oefeningen655467
+Node: Conclusie657281
+Node: de-de662746
+Node: Killring665588
+Node: Wat de killring doet666385
+Node: current-kill667928
+Node: Code voor current-kill668628
+Node: current-kill begrijpen671466
+Node: Body van current-kill672303
+Node: Uitwijding over fout675625
+Node: Het element vaststellen676858
+Node: yank680616
+Node: yank-pop683881
+Node: ring bestand686461
+Node: Volledige grafiek686856
+Node: Gelabeld voorbeeld687728
+Node: print-graph varlist689787
+Node: print-Y-axis691565
+Node: toon-Y-as in detail692413
+Node: Hoogte van label693261
+Node: Bereken het restant695327
+Node: Y-as element699341
+Node: Y-axis-column703241
+Node: toon-Y-as enalaatste704800
+Node: print-X-axis706812
+Node: Overeenkomsten verschillen708153
+Node: X-as merktekens708987
+Node: De gehele grafiek afdrukken716076
+Node: De finale versie717211
+Node: Test print-graph721622
+Node: Woorden in defuns grafisch weergeven723336
+Node: lambda726117
+Node: mapcar727940
+Node: Een andere bug730098
+Node: Finale afgedrukte grafiek735756
+Node: Free Software and Free Manuals736729
+Node: GNU Free Documentation License743024
+Node: Index768206
+Node: Over de auteur807387
 
 End Tag Table
 
