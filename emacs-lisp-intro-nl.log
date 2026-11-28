@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  24 NOV 2026 22:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdfetex 2025.11.26)  27 NOV 2026 22:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -606,7 +606,7 @@ Overfull \hbox (19.42705pt too wide) in paragraph at lines 15396--15396
 [189] [190] [191] [192] Hoofdstuk 15 [193] [194] [195] [196] [197] [198]
 [199] [200] [201] Hoofdstuk 16 [202] [203] [204] [205] [206] [207] [208]
 [209] [210] [211] [212] [213] [214]
-Overfull \hbox (168.15451pt too wide) in paragraph at lines 17405--17406
+Overfull \hbox (168.15451pt too wide) in paragraph at lines 17404--17405
  [] []@reducedtt verzameling opties emacs -Q -D[] 
 
 @hbox(6.25+2.0)x361.34999
@@ -624,7 +624,7 @@ Overfull \hbox (168.15451pt too wide) in paragraph at lines 17405--17406
 .etc.
 
 [215] [216] [217] [218] [219] [220] [221] Hoofdstuk 17 [222]
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 17940--17940
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 17939--17939
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -637,7 +637,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 17940--17940
 .etc.
 
 [223]
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18039--18039
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18038--18038
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -650,7 +650,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18039--18039
 .etc.
 
 [224]
-Overfull \hbox (24.152pt too wide) in paragraph at lines 18054--18054
+Overfull \hbox (24.152pt too wide) in paragraph at lines 18053--18053
  []@reducedtt * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m G
 ETAL terug."[] 
 
@@ -663,7 +663,7 @@ ETAL terug."[]
 .etc.
 
 
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18063--18063
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18062--18062
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -676,7 +676,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18063--18063
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 18091--18091
+Overfull \hbox (24.152pt too wide) in paragraph at lines 18090--18090
  []@reducedtt * apply(#f(lambda (getal) :dynbind "Geef som van getallen 1 t/m G
 ETAL terug."[] 
 
@@ -689,7 +689,7 @@ ETAL terug."[]
 .etc.
 
 
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18098--18098
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18097--18097
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -702,7 +702,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18098--18098
 .etc.
 
 [225]
-Overfull \hbox (80.85133pt too wide) in paragraph at lines 18107--18107
+Overfull \hbox (80.85133pt too wide) in paragraph at lines 18106--18106
  []  @reducedtt handler-bind-1(#f(compiled-function () #<bytecode ...>) (error)
  eval-expression--debug)[] 
 
@@ -716,7 +716,7 @@ Overfull \hbox (80.85133pt too wide) in paragraph at lines 18107--18107
 
 [226] [227] [228] Hoofdstuk 18 [229] [230] Appendix A [231] [232] Appendix B
 [233] [234] [235] [236] [237] [238]
-Overfull \hbox (113.92595pt too wide) in paragraph at lines 19051--19051
+Overfull \hbox (113.92595pt too wide) in paragraph at lines 19050--19050
  []@reducedtt With just \\[universal-argument] as argument, same but put point 
 at beginning (and mark at end).[] 
 
@@ -729,7 +729,7 @@ at beginning (and mark at end).[]
 .etc.
 
 
-Overfull \hbox (24.152pt too wide) in paragraph at lines 19075--19075
+Overfull \hbox (24.152pt too wide) in paragraph at lines 19074--19074
  []      @reducedtt ;; This is like exchange-point-and-mark, but doesn^^Mt acti
 vate the mark.[] 
 
@@ -746,7 +746,7 @@ vate the mark.[]
 ckages/emacs-lisp-intro-nl/lambda-1-nl.png> [260] </home/elpa/elpa/packages/ema
 cs-lisp-intro-nl/lambda-2-nl.png> </home/elpa/elpa/packages/emacs-lisp-intro-nl
 /lambda-3-nl.png> [261] [262]
-Overfull \hbox (19.42705pt too wide) in paragraph at lines 20741--20741
+Overfull \hbox (19.42705pt too wide) in paragraph at lines 20740--20740
  []    @reducedtt (toon-X-as-numbered-line     tic-number leading-spaces horizo
 ntal-step))[] 
 
@@ -795,7 +795,7 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on emacs-lisp-intro-nl.pdf (298 pages, 1089336 bytes).
+Output written on emacs-lisp-intro-nl.pdf (298 pages, 1089339 bytes).
 PDF statistics:
  3771 PDF objects out of 4296 (max. 8388607)
  3324 compressed objects within 34 object streams
